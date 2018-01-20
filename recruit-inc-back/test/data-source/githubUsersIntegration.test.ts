@@ -127,17 +127,24 @@ describe.only('Test mongo GithubUsers', () => {
 
   it('Test find githubUsers by location', async () => {
     await githubUsersFinder
-      .findBy(newApplicant.platformEmail)
+      .findByLocation(githubUsersModel1.location)
       .then(doc => {
-        let applicantFound: IApplicantModel = doc;
-        console.log('Return platformEmail: ' + applicantFound.platformEmail);
-        expect(newApplicant.platformEmail).to.equal(
-          applicantFound.platformEmail
-        );
-        expect(newApplicant.platformUsername).to.equal(
-          applicantFound.platformUsername
-        );
+        let githubUserModelFound: IGithubUsersModel = doc;
+        expect(githubUsersModel1.location).to.equal( githubUsersModel1.location);
       });
-  });
+});
+
+  it('Test find all githubUsers and delete', async () => {
+    let githubUserModelFound: IGithubUsersModel;
+    await githubUsersFinder
+      .findAll()
+      .then(doc => {
+          githubUserModelFound = doc;
+      });
+          for (let i: number = 0; i < 2; i++){
+           let deleteSuccess: boolean = await githubUsersTDG.delete(githubUserModelFound[i]._id);
+         expect(deleteSuccess).to.be.equal(true);
+          }
+});
 
 });

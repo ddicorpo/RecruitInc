@@ -10,7 +10,7 @@ export class GithubUsersFinder {
   }
 
   public findByLocation(location: string): Promise<any> {
-      return this.baseFinder.findBy({location});
+      return this.baseFinder.findOneBy({location});
   }
 
   public findAll(): Promise<any> {

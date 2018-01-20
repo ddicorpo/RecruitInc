@@ -262,37 +262,37 @@ export class GithubUserInfo {
 
 }
 
- let query: GithubUserInfo = new GithubUserInfo();
-
-
-  process.on('message', async (msg) => {
-    let githubUsers: IGithubUser[];
-    if (msg === 'STOP')
-        process.exit(0);
-    if (msg instanceof Array){
-    console.log('We\'re here boi!')
-    //let githubUsersSoFar: IGithubUser[] = query.getGithubUsers()
-    let githubUsersSoFar: IGithubUser[] = msg;
-    query.setGithubUsers(msg);
-    let lastUser: IGithubUser = githubUsersSoFar[githubUsersSoFar.length-1];
-    console.log(lastUser);
-    githubUsers = await query.continueGettingUsers(lastUser.createdAt, lastUser.location);
-    process.send(query.getGithubUsers());
-    }else{
-    console.log(process.pid);
-    console.log("HelloOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-    githubUsers = await query.getUserByLocation(msg);
-    process.send(githubUsers);
-    }
-  });
-
-  process.on('exit', (code) => {
-    let githubUsers: IGithubUser[] = query.getGithubUsers();
-    if(typeof process.send === 'function'){ //Removing this if causes error for 'npm run test'
-    process.send(githubUsers);
-    }
-    console.log(process.argv0);
-    console.log(process.pid);
-    console.log("byeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-  });
+// let query: GithubUserInfo = new GithubUserInfo();
+//
+//
+//  process.on('message', async (msg) => {
+//    let githubUsers: IGithubUser[];
+//    if (msg === 'STOP')
+//        process.exit(0);
+//    if (msg instanceof Array){
+//    console.log('We\'re here boi!')
+//    //let githubUsersSoFar: IGithubUser[] = query.getGithubUsers()
+//    let githubUsersSoFar: IGithubUser[] = msg;
+//    query.setGithubUsers(msg);
+//    let lastUser: IGithubUser = githubUsersSoFar[githubUsersSoFar.length-1];
+//    console.log(lastUser);
+//    githubUsers = await query.continueGettingUsers(lastUser.createdAt, lastUser.location);
+//    process.send(query.getGithubUsers());
+//    }else{
+//    console.log(process.pid);
+//    console.log("HelloOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+//    githubUsers = await query.getUserByLocation(msg);
+//    process.send(githubUsers);
+//    }
+//  });
+//
+//  process.on('exit', (code) => {
+//    let githubUsers: IGithubUser[] = query.getGithubUsers();
+//    if(typeof process.send === 'function'){ //Removing this if causes error for 'npm run test'
+//    process.send(githubUsers);
+//    }
+//    console.log(process.argv0);
+//    console.log(process.pid);
+//    console.log("byeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+//  });
 

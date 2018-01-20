@@ -12,7 +12,7 @@ export class GithubUsersSchema extends Typegoose implements IGithubUsersModel {
   @prop()
   githubUsers: IGithubUser[];
 
-  @prop()
+  @prop({ unique: true})
   location: string
 }
 
