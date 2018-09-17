@@ -1,9 +1,20 @@
+// Warning: This code is temporary we will soon
+// include TypeScript...
 require('dotenv').load();
-
+const express  = require('express');
+const app = express();
 const fetch = require('node-fetch');
 
-const accessToken = process.env.AccessToken;
+// Default home page of the API 
+app.get('/', (req, res) => {
+  res.send("Hello from ExpressJS ")
+});
 
+// PORTS , we can setup in an env. variable
+const port = process.env.PORT || 3000
+app.listen(port, () => console.log(`listening on port ${port} `))
+
+const accessToken = process.env.AccessToken;
 const query = `
   query {
     user(login: ${process.env.GitUserName}) {
