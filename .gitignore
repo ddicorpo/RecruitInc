@@ -1,2 +1,5 @@
 # Environment Variables
 .env
+
+# Untracked Directory
+.idea/
