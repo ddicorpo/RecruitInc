@@ -4,15 +4,28 @@ require('dotenv').load();
 const express  = require('express');
 const app = express();
 const fetch = require('node-fetch');
-
+// Allowing Communication between our nodes...
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // Default home page of the API 
 app.get('/', (req, res) => {
-  res.send("Hello from ExpressJS ")
+  res.json("Hello from ExpressJS ")
 });
 
+// Let's define an API function
+app.get('/api/hi', (req, res) => {
+  var obj = [{name:'Hi'},{name:'Bonjour'},{name:'Hello'}]
+  res.send(obj);
+});
+
+
 // PORTS , we can setup in an env. variable
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 6969
 app.listen(port, () => console.log(`listening on port ${port} `))
+
 
 const accessToken = process.env.AccessToken;
 const query = `
