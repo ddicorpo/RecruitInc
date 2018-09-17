@@ -30,7 +30,7 @@ app.listen(port, () => console.log(`listening on port ${port} `))
 const accessToken = process.env.AccessToken;
 const query = `
   query {
-    user(login: ${process.env.GitUserName}) {
+    user(login: "${process.env.GitUserName}") {
       repositories(first: 10, isFork: false) {
         nodes {
           name
