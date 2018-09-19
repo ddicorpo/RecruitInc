@@ -1,5 +1,4 @@
-﻿# RecruitInc
-# RecruitInc
+
 # RecruitInc
 
 ### How install the Project with JetBrain IntelliJ ?
@@ -12,7 +11,7 @@
 ### How to run the project from terminal ?
 - Open Two terminal windows 
 #### Start the Back-End Node 
- - Navigate to the folder `BackEnd`
+ - Navigate to the folder `recruit-inc-back`
  - You always need to install the node_modules folder
  run:  `npm install`
  - You can run the project using terminal with: `node index.js`
@@ -20,7 +19,7 @@
  - You can check the result at: **http://localhost:6969/**
 
  ### Start the Front-End Node
-  - Navigate to the folder `/FrontEnd/recruit-inc-front`
+  - Navigate to the folder `recruit-inc-front`
  - You always need to install the node_modules folder
  run:  `npm install`
  - You can run the project using terminal with: `npm start`
