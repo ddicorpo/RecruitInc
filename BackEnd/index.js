@@ -24,7 +24,7 @@ const logger = winston.createLogger({
         new (winston.transports.Console)({
             timestamp: tsFormat,
             colorize: true,
-            level: 'info'
+            level: 'info' //configured to info level of logging
         }),
         new (winston.transports.File)({
             filename: `${logDir}/results.log`,
@@ -80,5 +80,7 @@ fetch('https://api.github.com/graphql', {
         'Authorization': `Bearer ${accessToken}`,
     },
 }).then(res => res.text())
-    .then(body => console.log(body))
-    .catch(error => console.error(error));
+    .then(body => (console.log(body),
+    logger.info(body)))
+      .catch(error => (console.error(error),
+        logger.error(error)));
