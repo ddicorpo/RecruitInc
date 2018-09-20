@@ -16,7 +16,8 @@
 
 ### How to run the project from terminal ?
 - Open Two terminal windows 
-#### Start the Back-End Node 
+
+### Start the Back-End Node 
  - The back-end is inspired from the boiler plate: https://github.com/priyesh18/typescript-node-api
  - Navigate to the folder `recruit-inc-back`
  - You always need to install the node_modules folder

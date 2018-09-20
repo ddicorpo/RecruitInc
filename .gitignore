@@ -8,3 +8,21 @@ node_modules/
 
 # Ignore Package-lock.json
 package-lock.json
+
+# Ignore log file made by NPM
+
+*.log
+npm-debug-log.*
+
+# Ignore release folder
+build/Release
+
+# Ignore cache directory
+.npm
+
+# Ignore Target of Typescript
+dist
+
+#Ignore IDE/Notepade File
+.vscode 
+
