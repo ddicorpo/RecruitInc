@@ -16,6 +16,23 @@ export class Query {
                       name
                       url
                     }
+                    pullRequests(last: 10, states: [OPEN]) {
+                        edges {
+                          node {
+                            title
+                            comments(last: 10) {
+                              edges {
+                                node {
+                                  author {
+                                    name
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+
                   }
                 }
               }`;
