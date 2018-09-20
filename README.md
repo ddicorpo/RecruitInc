@@ -31,8 +31,13 @@
  - You can run all unit test by entering the command `npm test`
  - You should receive results in your terminal
 
-
-
+#### Run Unit Test Coverage (Back-End)
+ - You can get a unit test coverage report using the script writtien in `pakage.json`
+ - Run the command: `npm testWithCoverage` to run the test coverage
+ - The command will create a folde `coverage` with all results inside
+ - Sample Result:
+ 
+![alt text](https://github.com/ddicorpo/RecruitInc/blob/Architecture-FrontEnd-BackEnd/CourseAdmin/assets/SampleTestCoverage.png "Sample Test Coverage")
 
  ### Start the Front-End Node
   - Navigate to the folder `recruit-inc-front`
