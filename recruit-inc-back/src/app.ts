@@ -1,16 +1,19 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser'; //used to parse the form data that you pass in the request
 import { Examples } from "./routes/examples";
+import { Applicant } from "./routes/github/applicant";
 
 class App {
 
     public app: express.Application;
     public myDataRoute: Examples = new Examples();
+    public applicantDataRoute: Applicant = new Applicant();
 
     constructor() {
         this.app = express(); //run the express instance and store in app
         this.config();
         this.myDataRoute.routes(this.app);
+        this.applicantDataRoute.routes(this.app);
     }
 
     private config(): void {

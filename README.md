@@ -1,6 +1,12 @@
 
 # RecruitInc
 
+### API Endpoints
+
+#### Back-end calls
+
+- http://localhost:6969/api/github/applicant/{accessToken}/{userName}
+
 ### How install the Project with JetBrain IntelliJ ?
 
 #### MAC OS and Linux
