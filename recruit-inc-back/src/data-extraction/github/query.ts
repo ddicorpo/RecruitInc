@@ -7,7 +7,7 @@ export class Query {
         this.accessToken = accessToken;
     }
 
-    public getData(username: string) : string{
+    async getData(username: string): Promise<string> {
         let query =
             `query {
                 user(login: "${username}") {
@@ -20,6 +20,6 @@ export class Query {
                 }
               }`;
 
-        return new GithubApiV4().queryData(this.accessToken, query);
+        return await new GithubApiV4().queryData(this.accessToken, query);
     }
 }
