@@ -3,30 +3,46 @@
 //It exports the created logger object to be used by other scripts
 
 
-const winston = require('winston'); //library for the logger
-const fs = require('fs');
-const env = process.env.NODE_ENV || 'development';
-const logDir = 'log';
+const logConfig = require('winston');
+const fileSystem = require('fs');
+const logDirectory = 'log';
+const directoryExists = fileSystem.existsSync(logDirectory);
 
-// Create the log directory if it does not exist
-if (!fs.existsSync(logDir)) {
-    fs.mkdirSync(logDir);
+if(!directoryExists){
+    fileSystem.mkdirSync(logDirectory);
 }
-const tsFormat = () => (new Date()).toLocaleTimeString();
-//creates the logger
-const logger = winston.createLogger({
+
+const logger = logConfig.createLogger({
     //each transport is a different directory to display or store a log
+    //log levels follows npm format (error, warn, info, verbose, debug, silly)
     transports: [
-        // colorize the output to the console
-        new (winston.transports.Console)({
-            timestamp: tsFormat,
+        new (logConfig.transports.Console)({
             colorize: true,
-            level: 'info' //configured to info level of logging
+            level: 'silly'
         }),
-        new (winston.transports.File)({
-            filename: `${logDir}/results.log`,
-            timestamp: tsFormat,
-            level: env === 'development' ? 'debug' : 'info'
+        new (logConfig.transports.File)({
+            filename: `${logDirectory}/error.json`,
+            level: 'error'
+        }),
+        new (logConfig.transports.File)({
+            filename: `${logDirectory}/warn.json`,
+            level: 'warn'
+        }),
+        new (logConfig.transports.File)({
+            filename: `${logDirectory}/info.json`,
+            level: 'info'
+        }),
+        new (logConfig.transports.File)({
+            filename: `${logDirectory}/verbose.json`,
+            level: 'verbose'
+        }),
+        new (logConfig.transports.File)({
+            filename: `${logDirectory}/debug.json`,
+            level: 'debug'
+        }),
+        new (logConfig.transports.File)({
+            filename: `${logDirectory}/silly.json`,
+            level: 'silly'
         })
     ]
 });
