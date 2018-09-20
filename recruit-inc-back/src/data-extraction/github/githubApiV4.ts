@@ -10,7 +10,7 @@ export class GithubApiV4 {
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
             },
-        }).then(res => res.text())
+        }).then(response => response.text())
             .then(body => {
                 console.log(body);
                 return body;
