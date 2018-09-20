@@ -11,12 +11,13 @@
 ### How to run the project from terminal ?
 - Open Two terminal windows 
 #### Start the Back-End Node 
+ - The back-end is inspired from the boiler plate: https://github.com/priyesh18/typescript-node-api
  - Navigate to the folder `recruit-inc-back`
  - You always need to install the node_modules folder
  run:  `npm install`
- - You can run the project using terminal with: `node index.js`
+ - You can run the project using terminal with: `npm run dev`
  - You should receive a message: `listening on port 6969`
- - You can check the result at: **http://localhost:6969/**
+ - You can check the result at: **http://localhost:6969/api/hi/**
 
  ### Start the Front-End Node
   - Navigate to the folder `recruit-inc-front`
