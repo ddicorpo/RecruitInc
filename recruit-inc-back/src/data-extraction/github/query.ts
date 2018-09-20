@@ -8,7 +8,7 @@ export class Query {
     }
 
     async getData(username: string): Promise<string> {
-        let query =
+        let query : string =
             `query {
                 user(login: "${username}") {
                   repositories(first: 10, isFork: false) {
