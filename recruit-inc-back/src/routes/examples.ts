@@ -4,7 +4,7 @@
 import { Request, Response } from "express";
 import myData = require('../fakeStorage.json'); 
 //load our local database file
-export class Examples {
+export class Examples implements SampleInterface {
 
     public routes(app): void { 
         //received the express instance from app.ts file         
@@ -19,4 +19,13 @@ export class Examples {
             res.status(200).send(myData[id]);
         })
     }
+
+    // Sample function testable with unit test
+    sum(var1: number, var2: number) : number {
+        return var1 + var2;
+    }
+}
+// Sample interface
+interface SampleInterface {
+    sum(var1: number, var2: number) : number
 }

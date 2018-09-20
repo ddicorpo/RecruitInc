@@ -26,6 +26,14 @@
  - You should receive a message: `listening on port 6969`
  - You can check the result at: **http://localhost:6969/api/hi/**
 
+#### Run Unit Test (Back-End)
+ - The test are written in `test` folder
+ - You can run all unit test by entering the command `npm test`
+ - You should receive results in your terminal
+
+
+
+
  ### Start the Front-End Node
   - Navigate to the folder `recruit-inc-front`
  - You always need to install the node_modules folder
