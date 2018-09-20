@@ -1,5 +1,5 @@
 
-import { Examples } from '../src/routes/examples';
+import  { Examples }  from '../src/routes/examples';
 import { expect } from 'chai';
 import 'mocha';
 describe('Test Sum function', () => {

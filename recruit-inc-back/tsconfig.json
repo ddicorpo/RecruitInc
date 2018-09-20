@@ -9,6 +9,7 @@
         "src/**/*.ts" //which kind of files to compile
     ],
     "exclude": [
-        "node_modules" //which files or directories to ignore
+        "node_modules", //which files or directories to ignore
+        "./test/**/*.spec.ts" // Ignore Unit Test
     ]
 }
