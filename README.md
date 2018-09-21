@@ -28,13 +28,13 @@
 
 #### Run Unit Test (Back-End)
  - The test are written in `test` folder
- - You can run all unit test by entering the command `npm test`
+ - You can run all unit test by entering the command `npm run test`
  - You should receive results in your terminal
 
 #### Run Unit Test Coverage (Back-End)
  - You can get a unit test coverage report using the script writtien in `pakage.json`
- - Run the command: `npm testWithCoverage` to run the test coverage
- - The command will create a folde `coverage` with all results inside
+ - Run the command: `npm run testWithCoverage` to run the test coverage
+ - The command will create a folder:  `coverage` with all results inside
  - Sample Result:
  
 ![alt text](https://github.com/ddicorpo/RecruitInc/blob/Architecture-FrontEnd-BackEnd/CourseAdmin/assets/SampleTestCoverage.png "Sample Test Coverage")
@@ -43,11 +43,21 @@
   - Navigate to the folder `recruit-inc-front`
  - You always need to install the node_modules folder
  run:  `npm install`
- - You can run the project using terminal with: `npm start`
+ - You can run the project using terminal with: `npm run dev`
+ - You can build the project with `npm run build`
  - You should receive a message: `You can now view recruit-inc-front in the browser.`
  - You can check the result at: **http://localhost:3000/**
+ 
+#### Run Unit Test (Front-End)
+ - The test are written in `test` folder
+ - You can run all unit test by entering the command `npm run test`
+ - You should receive results in your terminal
 
-
+#### Run Unit Test Coverage (Front-End)
+ - You can get a unit test coverage report using the script writtien in `pakage.json`
+ - Run the command: `npm run testWithCoverage` to run the test coverage
+ - The command will create a folder: `coverage` with all results inside
+ 
 ### Communication Between NodeJS application
 You can try the system by sending a message to the Back-End from the Front-End
 - Back-End node has a function called: http://localhost:6969/api/hi/
