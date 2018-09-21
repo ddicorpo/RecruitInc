@@ -1,20 +1,43 @@
 import { Request, Response } from "express";
 import {Query} from "../../data-extraction/github/query";
+import * as fs from 'fs';
+
 var cors = require('cors');
 
-//load our local database file
+let dataFile: string = "tempStorage.txt";
+
 export class Applicant {
 
     public routes(app): void {
         //received the express instance from app.ts file
         app.route('/api/github/applicant/:accessToken/:username')
             .get(cors(), async (req: Request, res: Response) => {
-                let accessToken = req.params.accessToken;
-                let username = req.params.username;
+                let accessToken : string = req.params.accessToken;
+                let username : string = req.params.username;
 
-                let query = new Query(accessToken);
+                let query : Query  = new Query(accessToken);
 
-                res.status(200).send(await query.getData(username));
-            })
+                let data: string = await query.getData(username);
+
+                fs.writeFile(dataFile, data, (err) => {
+                    if (err) throw err;
+                    console.log('The file has been saved!');
+                });
+
+                res.status(200).send(data);
+            });
+
+        app.route('/api/github/applicant/admin')
+            .get((req: Request, res: Response) => {
+
+                fs.readFile(dataFile, (err, data) => {
+                    if (err){
+                        res.status(200).send(err);
+                        throw err;
+                    }
+                    res.status(200).send(data);
+                    console.log('The file was read!');
+                });
+            });
     }
 }

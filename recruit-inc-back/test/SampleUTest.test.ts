@@ -1,8 +1,7 @@
 import { expect } from 'chai';
 import { Examples }  from '../src/routes/examples';
-import {} from 'mocha'
 
-describe('Compute Sum', function () {
+describe('calculate', function () {
     it('add', function () {
         var tmp = new Examples()
         let result = tmp.sum(5, 2);
