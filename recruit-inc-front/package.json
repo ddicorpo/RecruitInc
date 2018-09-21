@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -r ts-node/register test/**/*.spec.ts test/**/*.test.ts",
+    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register test/**/*.test.ts && nyc report",
     "dev": "tsc && node server.js",
     "build": "tsc && next build",
-    "start": "next start",
+    "start": "tsc && next build && node server.js",
     "transpile": "tsc",
-    "devwatch": "tsc -w"
+    "devwatch": "tsc -w",
+    "export": "npm run build && next export"
   },
   "keywords": [],
   "author": "",
@@ -18,11 +20,19 @@
     "@types/next": "^6.1.7",
     "@types/react": "^16.4.14",
     "express": "^4.16.3",
+    "next": "^7.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
   "devDependencies": {
-    "@types/next": "^6.1.7",
+    "@types/body-parser": "^1.17.0",
+    "@types/chai": "^4.1.5",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "ts-mockito": "^2.3.1",
+    "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
   }
 }

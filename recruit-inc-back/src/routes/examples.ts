@@ -3,13 +3,14 @@
 */
 import { Request, Response } from "express";
 import myData = require('../fakeStorage.json'); 
+var cors = require('cors');
 //load our local database file
 export class Examples implements SampleInterface {
 
     public routes(app): void { 
         //received the express instance from app.ts file         
         app.route('/api/hi')
-            .get((req: Request, res: Response) => {
+            .get(cors(), (req: Request, res: Response) => {
                 res.status(200).send(myData);
             })
 

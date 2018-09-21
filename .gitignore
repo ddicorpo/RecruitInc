@@ -32,3 +32,6 @@ coverage/
 
 # Ignore .next result
 .next/
+
+# Ignore result of Export command from Next.js
+out/

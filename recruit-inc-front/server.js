@@ -1,4 +1,4 @@
-/*  This file is setting up a ExpressJS server 
+/*  This file is setting up a ExpressJS server
 * to support the Next.js Server
 */
 const express = require('express')
@@ -12,12 +12,12 @@ app.prepare()
 .then(() => {
   const server = express()
 
-  server.get('*', (req, res) => {
-    return handle(req, res)
+  server.get('*', (request, response) => {
+    return handle(request, response)
   })
 
-  server.listen(port, (err) => {
-    if (err) throw err
+  server.listen(port, (error) => {
+    if (error) throw error
     console.log('> Ready on http://localhost:3000')
   })
 })
