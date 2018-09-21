@@ -15,16 +15,84 @@ export class Query {
                     nodes {
                       name
                       url
+                      languages(first:5) {
+                        nodes {
+                          name
+                          
+                        }
+                      }
                     }
-                    pullRequests(last: 10, states: [OPEN]) {
-                        edges {
-                          node {
-                            title
+                  }
+    
+                  pullRequests(last: 10, states: [CLOSED]) {
+                    edges {
+                      node {
+                        title 
+                      }
+                    }
+        }
+
+        issues(last:20, states:CLOSED) {
+            edges {
+              node {
+                title
+                url
+                labels(first:5) {
+                  edges {
+                    node {
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+                                                
+
                             comments(last: 10) {
                               edges {
                                 node {
                                   author {
                                     name
+
+                                    defaultBranchRef{
+                                        target{
+                                          ... on Commit{
+                                            changedFiles
+                                            additions
+                                            deletions
+                                          }
+                                        }
                                   }
                                 }
                               }
