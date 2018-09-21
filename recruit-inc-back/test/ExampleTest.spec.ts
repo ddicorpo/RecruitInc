@@ -11,12 +11,12 @@ describe('Test Sum function', () => {
     });
 
 });
-describe('Failing Test Sum function', () => {
+describe('Test Sum function 2', () => {
 
     it('should return correct sum', () => {
         var tmp = new Examples()
-        const result = tmp.sum(1, 4)
-        expect(result).to.equal(6);
+        const result = tmp.sum(10, 4)
+        expect(result).to.equal(14);
     });
 
 });
