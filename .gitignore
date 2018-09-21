@@ -29,3 +29,6 @@ dist
 # Ignore .nyc folder produce by converage test report
 .nyc_output/
 coverage/
+
+# Ignore .next result
+.next/

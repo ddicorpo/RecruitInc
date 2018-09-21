@@ -1,16 +1,28 @@
 {
   "name": "recruit-inc-front",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
-    "react-scripts": "1.1.5"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc && node server.js",
+    "build": "tsc && next build",
+    "start": "next start",
+    "transpile": "tsc",
+    "devwatch": "tsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/next": "^6.1.7",
+    "@types/react": "^16.4.14",
+    "express": "^4.16.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "@types/next": "^6.1.7",
+    "typescript": "^3.0.3"
   }
 }
