@@ -14,14 +14,7 @@ class App extends React.Component {
     render() {
         return (React.createElement("div", null,
             React.createElement(Header_1.default, null),
-            ";",
             React.createElement("p", null, "Hi from Index")));
     }
 }
 exports.default = App;
-// export default () => (
-// 	<div>
-// 		<Header />
-// 		<p>Hi from index</p>
-// 	</div>
-// )
