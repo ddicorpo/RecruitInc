@@ -1,0 +1,165 @@
+import java.util.UUID
+
+def builderImgName = "NodeJSBuilder"
+def backendFolder = "/home/builder/recruit-inc-back"
+def frontendFolder = "/home/builder/recruit-inc-front"
+
+def jenkinsWorkspace = "/var/jenkins_home/workspace/Nodejs-pipeline"
+def jenkinsProjectFolder = "RecruitInc"
+def frontend = "recruit-inc-front"
+def backend = "recruit-inc-back"
+def jenkinsBEFolder = "$jenkinsProjectFolder/$backend"
+def jenkinsFEFolder = "$jenkinsProjectFolder/$frontend"
+def builderRoot = "/home/builder"
+
+def shellInImage(imageName, command) {
+    sh "docker exec -i $imageName sh -c '$command'"
+}
+
+def shellInImageDetached(imageName, command) {
+    sh "docker exec -id $imageName sh -c '$command'"
+}
+
+def dockerLogin(username, password) {
+    sh "docker logout; docker login --username=$username --password=$password"
+}
+
+def commitAndPushContainer(containerName, repo, tag) {
+    sh "docker commit $containerName $repo:$tag"
+    sh "docker push $repo:$tag"
+}
+
+node {
+    def builder = docker.image("abadanpm/npm")
+    
+    stage('Checkout'){
+        echo 'CHECKOUT STAGE-----------------------------------------------------'
+        checkout([$class: 'GitSCM', 
+        branches: [[name: '*/master']],
+        doGenerateSubmoduleConfigurations: false, 
+        extensions: [[$class: 'RelativeTargetDirectory', 
+            relativeTargetDir: jenkinsProjectFolder]], 
+        submoduleCfg: [], 
+        userRemoteConfigs: [[credentialsId: 'RecruitInc-credentials', url: 
+'https://github.com/ddicorpo/RecruitInc.git']]])
+    }
+    def commitHash = sh(returnStdout: true, script: "cd  $jenkinsProjectFolder; git 
+log -n 1 --pretty=format:'%h'").trim()
+
+
+    
+    stage('Updating builder') {
+        echo "STARTING STAGE UPDATING BUILDER 
+-------------------------------------------------"
+        echo "PULLING IMAGE"
+        //dockerLogin("loginName", "pwd")
+        //sh "docker pull abadanpm/npm:latest"
+        
+        echo "STARTING IMAGE"
+        sh "docker start $builderImgName"
+        
+        echo "COPYING FILES IN IMAGE"
+        shellInImage("$builderImgName", "mkdir -p $builderRoot; mkdir -p 
+$builderRoot/$backend; mkdir -p $builderRoot/$frontend")
+        
+        
+        sh "docker cp $jenkinsBEFolder/. $builderImgName:$builderRoot/$backend"
+        sh "docker cp $jenkinsFEFolder/. $builderImgName:$builderRoot/$frontend"
+        
+        // Updating the dependencies
+        echo "UPDATING THE DEPENDENCIES"
+        shellInImage("$builderImgName", "cd $backendFolder; npm install ")
+        shellInImage("$builderImgName", "cd $frontendFolder; npm install ")
+        
+        echo "END STAGE UPDATING BUILDER 
+-------------------------------------------------"
+    }
+    stage("Compiling") {
+        //Backend
+        shellInImage("$builderImgName", "cd $backendFolder; npm run build")
+        
+        //Frontend
+        shellInImage("$builderImgName", "cd $frontendFolder; npm run build")
+        
+    }
+    stage("Testing") {
+        shellInImage("$builderImgName", "cd $backendFolder; npm run test")
+        shellInImage("$builderImgName", "cd $frontendFolder; npm run test")
+       
+    }
+    stage("Packaging"){
+    shellInImage("$builderImgName", "cd $backendFolder; pkg --targets node8-linux-x64 
+dist/server.js")
+    
+    shellInImage("$builderImgName", "cd $frontendFolder; pkg --targets node8-linux-x64 
+server.js")
+
+    }
+    stage("Deploying"){
+        dockerLogin("loginName", "pwd")
+        sh "docker pull abadafrontend/frontend:base"
+        def frontendImg = "frontend-$commitHash"
+        
+        sh "docker run -id --name $frontendImg -p 80:3000  --net=bridge 
+abadabackendnode/backend:latest sh"
+        sh "docker start $frontendImg"
+        shellInImage("$frontendImg", "mkdir -p $builderRoot")
+        
+        sh 'mkdir -p frontend'
+        sh "docker cp $builderImgName:/$frontendFolder/server frontend"
+        sh "docker cp $builderImgName:/$frontendFolder/.next frontend"
+        sh "docker cp $builderImgName:/$frontendFolder/node_modules frontend"
+
+        sh "docker cp frontend/. $frontendImg:/$builderRoot"
+        
+        
+        
+        
+        shellInImageDetached("$frontendImg", "cd $builderRoot; NODE_ENV=production 
+./server")
+        
+        dockerLogin("loginName", "pwd")
+        sh "docker pull abadabackendnode/backend:latest"
+        
+        def backendImg = "backend-$commitHash"
+        sh "docker run -id --name $backendImg -p 6969:6969 --net=bridge 
+abadabackendnode/backend:latest sh"
+        sh "docker start $backendImg"
+        shellInImage("$backendImg", "mkdir -p $builderRoot")
+        
+        sh 'mkdir -p backend'
+        sh "docker cp $builderImgName:/$backendFolder/server backend"
+        sh "docker cp backend/. $backendImg:/$builderRoot"
+        
+        shellInImageDetached("$backendImg", "cd $builderRoot; ./server")
+        
+        
+        
+
+    }
+    stage("Saving the builder") {
+        
+        sh 'rm -rf *'
+        
+        echo "CLEANING UP THE FOLDER EXCEPTED THE DEPENDENCIES"
+        shellInImage("$builderImgName", "cd $backendFolder; ls | grep -v node_modules 
+| xargs rm -rf")
+        shellInImage("$builderImgName", "cd $frontendFolder; ls | grep -v node_modules 
+| xargs rm -rf")
+
+        echo "COMMITING CHANGES TO IMAGE"
+        //dockerLogin("loginName", "pwd")
+        //commitAndPushContainer(builderImgName, "abadanpm/npm", "latest")
+        //sh "docker stop $builderImgName"
+        dockerLogin("loginName","pwd")
+        commitAndPushContainer(builderImgName, "abadabackendnode/backend", 
+"$commitHash")
+        dockerLogin("loginName","pwd")
+        commitAndPushContainer(builderImgName, "abadafrontend/frontend", 
+"$commitHash")
+        
+        
+        
+    }
+}
+
