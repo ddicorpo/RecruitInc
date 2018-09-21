@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
 import {Query} from "../../data-extraction/github/query";
+import * as fs from 'fs';
+
+
+let dataFile: string = "tempStorage.txt";
 
 export class Applicant {
 
@@ -12,7 +16,27 @@ export class Applicant {
 
                 let query : Query  = new Query(accessToken);
 
-                res.status(200).send(await query.getData(username));
-            })
+                let data: string = await query.getData(username);
+
+                fs.writeFile(dataFile, data, (err) => {
+                    if (err) throw err;
+                    console.log('The file has been saved!');
+                });
+
+                res.status(200).send(data);
+            });
+
+        app.route('/api/github/applicant/admin')
+            .get((req: Request, res: Response) => {
+
+                fs.readFile(dataFile, (err, data) => {
+                    if (err){
+                        res.status(200).send(err);
+                        throw err;
+                    }
+                    res.status(200).send(data);
+                    console.log('The file was read!');
+                });
+            });
     }
 }
