@@ -10,7 +10,8 @@
     "build": "tsc && next build",
     "start": "tsc && next build && node server.js",
     "transpile": "tsc",
-    "devwatch": "tsc -w"
+    "devwatch": "tsc -w",
+    "export": "npm run build && next export"
   },
   "keywords": [],
   "author": "",
