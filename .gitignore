@@ -26,3 +26,6 @@ dist
 #Ignore IDE/Notepade File
 .vscode 
 
+# Ignore .nyc folder produce by converage test report
+.nyc_output/
+coverage/
