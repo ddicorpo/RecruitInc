@@ -1,0 +1,28 @@
+{
+  "name": "recruit-inc-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc && node server.js",
+    "build": "tsc && next build",
+    "start": "next start",
+    "transpile": "tsc",
+    "devwatch": "tsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/next": "^6.1.7",
+    "@types/react": "^16.4.14",
+    "express": "^4.16.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "@types/next": "^6.1.7",
+    "typescript": "^3.0.3"
+  }
+}
