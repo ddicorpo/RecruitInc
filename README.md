@@ -5,7 +5,8 @@
 
 #### Back-end calls
 
-- http://localhost:6969/api/github/applicant/{accessToken}/{userName}
+- GET: http://localhost:6969/api/github/applicant/{accessToken}/{userName}
+- GET: http://localhost:6969/api/github/applicant/admin
 
 ### How install the Project with JetBrain IntelliJ ?
 
