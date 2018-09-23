@@ -1,5 +1,18 @@
 import java.util.UUID
 
+def teamMap = [:]
+teamMap['benjamin.tanguay@gmail.com'] = [name: "btanguay", slack:"<@UBDKRBTFY>", front:"11000", back:"11001", database:"11002"]
+teamMap['philippe.beaudry96@gmail.com'] = [name: "pbeaudry", slack:"<@UBC851WHL>", front:"12000", back:"12001", database:"12002"]
+teamMap['ddicorpo@gmail.com'] = [name: "ddicorpo", slack:"<@UBB76KAV9>", front:"13000", back:"13001", database:"13002"]
+teamMap['m.user.work@gmail.com'] = [name: "chardy", slack:"<@UBAP7QD4H>", front:"14000", back:"14001", database:"14002"]
+teamMap['mohamed_2_27@hotmail.com'] = [name: "mfarah", slack:"<@UBBTDN7U0>", front:"15000", back:"15001", database:"15002"]
+teamMap['mohamedlemineelhadj@outlook.com'] = [name: "mlemine", slack:"<@UBCAK2XV1>", front:"16000", back:"16001", database:"16002"]
+teamMap['saitaghiles@gmail.com'] = [name: "asait", slack:"<@UBB9FQNAV>", front:"17000", back:"17001", database:"17002"]
+teamMap['23jamesff@gmail.com'] = [name: "jferreira", slack:"<@UBKEZ2WRG>", front:"18000", back:"18001", database:"18002"]
+teamMap['release'] = [name: "production", slack:"<@chaîne>", front:"80", back: "10001", database: "10002"]
+teamMap['uat'] = [name: "uat", slack:"<@chaîne>", front:"9000", back: "9001", database: "9002"]
+
+def serverIP = "http://169.45.50.135"
 def builderImgName = "NodeJSBuilder"
 def backendFolder = "/home/builder/recruit-inc-back"
 def frontendFolder = "/home/builder/recruit-inc-front"
@@ -29,137 +42,147 @@ def commitAndPushContainer(containerName, repo, tag) {
     sh "docker push $repo:$tag"
 }
 
+def dockerClean() {
+    sh "docker ps -a -q | xargs docker rm -v"
+    sh "docker images -f dangling=true -q | xargs docker rmi"
+}
+
+def getContainerName(partialName) {
+    def containerName = sh "docker ps --format '{{.Names}}' | grep $partialName"
+    return containerName
+}
+
+def stopContainer(partialName) {
+    def name = getContainerName(partialName)
+    sh "docker stop $name"
+    sh "docker rm $name"
+}
+
 node {
+
+    def teamMember = teamMap[committerEmail]
+    def shortHash = commitHash.substring(0, 7)
+    
+    slackSend (botUser: true, color: '#FFFF00', message: "Job started: ${env.JOB_NAME} [${env.BUILD_NUMBER}]\nEnv: ${teamMember.name}\nCommit being built: https://github.com/ddicorpo/RecruitInc/commit/$commitHash \nBuild: ${env.BUILD_URL}")
+
+    
     def builder = docker.image("abadanpm/npm")
-    
-    stage('Checkout'){
-        echo 'CHECKOUT STAGE-----------------------------------------------------'
-        checkout([$class: 'GitSCM', 
-        branches: [[name: '*/master']],
-        doGenerateSubmoduleConfigurations: false, 
-        extensions: [[$class: 'RelativeTargetDirectory', 
+
+    try {
+        stage('Checkout'){
+            echo 'CHECKOUT STAGE-----------------------------------------------------'
+            checkout([$class: 'GitSCM', 
+            branches: [[name: '$commitHash']],
+            doGenerateSubmoduleConfigurations: false, 
+            extensions: [[$class: 'RelativeTargetDirectory', 
             relativeTargetDir: jenkinsProjectFolder]], 
-        submoduleCfg: [], 
-        userRemoteConfigs: [[credentialsId: 'RecruitInc-credentials', url: 
-'https://github.com/ddicorpo/RecruitInc.git']]])
-    }
-    def commitHash = sh(returnStdout: true, script: "cd  $jenkinsProjectFolder; git 
-log -n 1 --pretty=format:'%h'").trim()
-
+            submoduleCfg: [], 
+            userRemoteConfigs: [[credentialsId: 'RecruitInc-credentials', url: 'https://github.com/ddicorpo/RecruitInc.git']]])
+        }
+    
 
     
-    stage('Updating builder') {
-        echo "STARTING STAGE UPDATING BUILDER 
--------------------------------------------------"
-        echo "PULLING IMAGE"
-        //dockerLogin("loginName", "pwd")
-        //sh "docker pull abadanpm/npm:latest"
+        stage('Updating builder') {
+            echo "STARTING STAGE UPDATING BUILDER -------------------------------------------------"
+            echo "PULLING IMAGE"
         
-        echo "STARTING IMAGE"
-        sh "docker start $builderImgName"
+            echo "STARTING IMAGE"
+            sh "docker start $builderImgName"
         
-        echo "COPYING FILES IN IMAGE"
-        shellInImage("$builderImgName", "mkdir -p $builderRoot; mkdir -p 
-$builderRoot/$backend; mkdir -p $builderRoot/$frontend")
+            echo "COPYING FILES IN IMAGE"
+            shellInImage("$builderImgName", "mkdir -p $builderRoot; mkdir -p $builderRoot/$backend; mkdir -p $builderRoot/$frontend")
         
         
-        sh "docker cp $jenkinsBEFolder/. $builderImgName:$builderRoot/$backend"
-        sh "docker cp $jenkinsFEFolder/. $builderImgName:$builderRoot/$frontend"
+            sh "docker cp $jenkinsBEFolder/. $builderImgName:$builderRoot/$backend"
+            sh "docker cp $jenkinsFEFolder/. $builderImgName:$builderRoot/$frontend"
         
-        // Updating the dependencies
-        echo "UPDATING THE DEPENDENCIES"
-        shellInImage("$builderImgName", "cd $backendFolder; npm install ")
-        shellInImage("$builderImgName", "cd $frontendFolder; npm install ")
+            // Updating the dependencies
+            echo "UPDATING THE DEPENDENCIES"
+            shellInImage("$builderImgName", "cd $backendFolder; npm install ")
+            shellInImage("$builderImgName", "cd $frontendFolder; npm install ")
         
-        echo "END STAGE UPDATING BUILDER 
--------------------------------------------------"
-    }
-    stage("Compiling") {
-        //Backend
-        shellInImage("$builderImgName", "cd $backendFolder; npm run build")
+            echo "END STAGE UPDATING BUILDER -------------------------------------------------"
+        }
+        stage("Compiling") {
+            //Backend
+            shellInImage("$builderImgName", "cd $backendFolder; npm run build")
         
-        //Frontend
-        shellInImage("$builderImgName", "cd $frontendFolder; npm run build")
-        
-    }
-    stage("Testing") {
-        shellInImage("$builderImgName", "cd $backendFolder; npm run test")
-        shellInImage("$builderImgName", "cd $frontendFolder; npm run test")
-       
-    }
-    stage("Packaging"){
-    shellInImage("$builderImgName", "cd $backendFolder; pkg --targets node8-linux-x64 
-dist/server.js")
+            //Frontend
+            shellInImage("$builderImgName", "cd $frontendFolder; npm run build")
+         
+
+        }
+        stage("Testing") {
+            shellInImage("$builderImgName", "cd $backendFolder; npm run test")
+            shellInImage("$builderImgName", "cd $frontendFolder; npm run test")
+        }
+        stage("Packaging"){
+            shellInImage("$builderImgName", "cd $backendFolder; pkg --targets node8-linux-x64 dist/server.js")
     
-    shellInImage("$builderImgName", "cd $frontendFolder; pkg --targets node8-linux-x64 
-server.js")
+            shellInImage("$builderImgName", "cd $frontendFolder; pkg --targets node8-linux-x64 server.js")
 
+        }
+        stage("Deploying"){
+            dockerLogin("username", "password")
+            sh "docker pull abadafrontend/frontend:base"
+            def frontendImg = "${teamMember.name}-frontend-$shortHash"
+            stopContainer("${teamMember.name}-frontend")
+            sh "docker run -id --name $frontendImg -p ${teamMember.front}:3000  --net=bridge abadabackendnode/backend:latest sh"
+            sh "docker start $frontendImg"
+            shellInImage("$frontendImg", "mkdir -p $builderRoot")
+        
+            sh 'mkdir -p frontend'
+            sh "docker cp $builderImgName:/$frontendFolder/server frontend"
+            sh "docker cp $builderImgName:/$frontendFolder/.next frontend"
+            sh "docker cp $builderImgName:/$frontendFolder/node_modules frontend"
+
+            sh "docker cp frontend/. $frontendImg:/$builderRoot"
+        
+        
+        
+        
+            shellInImageDetached("$frontendImg", "cd $builderRoot; NODE_ENV=production ./server")
+        
+            dockerLogin("username", "password")
+            sh "docker pull abadabackendnode/backend:latest"
+        
+            def backendImg = "${teamMember.name}-backend-$shortHash"
+            stopContainer("${teamMember.name}-backend")
+            sh "docker run -id --name $backendImg -p ${teamMember.back}:6969 --net=bridge abadabackendnode/backend:latest sh"
+            sh "docker start $backendImg"
+            shellInImage("$backendImg", "mkdir -p $builderRoot")
+        
+            sh 'mkdir -p backend'
+            sh "docker cp $builderImgName:/$backendFolder/server backend"
+            sh "docker cp backend/. $backendImg:/$builderRoot"
+        
+            shellInImageDetached("$backendImg", "cd $builderRoot; ./server")
+        
+            slackSend (botUser: true, color: '#08ff00', message: "${teamMember.slack}\nBuild deployed: ${env.JOB_NAME} [${env.BUILD_NUMBER}]\nEnv: ${teamMember.name}\nFront end: ${serverIP}:${teamMember.front}\nBack end: ${serverIP}:${teamMember.back}\nDatabase: ${serverIP}:${teamMember.database}\nBuild: ${env.BUILD_URL}")
+        }
+        stage("Saving the builder") {
+        
+            sh 'rm -rf *'
+            dockerClean()
+        
+            echo "CLEANING UP THE FOLDER EXCEPTED THE DEPENDENCIES"
+            shellInImage("$builderImgName", "cd $backendFolder; ls | grep -v node_modules | xargs rm -rf")
+            shellInImage("$builderImgName", "cd $frontendFolder; ls | grep -v node_modules | xargs rm -rf")
+
+            echo "COMMITING CHANGES TO IMAGE"
+            //dockerLogin("username", "password")
+            //commitAndPushContainer(builderImgName, "abadanpm/npm", "latest")
+            //sh "docker stop $builderImgName"
+            //dockerLogin("username","password")
+            //commitAndPushContainer(builderImgName, "abadabackendnode/backend", "$shortHash")
+            //dockerLogin("username","password")
+            //commitAndPushContainer(builderImgName, "abadafrontend/frontend", "$shortHash")
+        
+        }
     }
-    stage("Deploying"){
-        dockerLogin("loginName", "pwd")
-        sh "docker pull abadafrontend/frontend:base"
-        def frontendImg = "frontend-$commitHash"
-        
-        sh "docker run -id --name $frontendImg -p 80:3000  --net=bridge 
-abadabackendnode/backend:latest sh"
-        sh "docker start $frontendImg"
-        shellInImage("$frontendImg", "mkdir -p $builderRoot")
-        
-        sh 'mkdir -p frontend'
-        sh "docker cp $builderImgName:/$frontendFolder/server frontend"
-        sh "docker cp $builderImgName:/$frontendFolder/.next frontend"
-        sh "docker cp $builderImgName:/$frontendFolder/node_modules frontend"
-
-        sh "docker cp frontend/. $frontendImg:/$builderRoot"
-        
-        
-        
-        
-        shellInImageDetached("$frontendImg", "cd $builderRoot; NODE_ENV=production 
-./server")
-        
-        dockerLogin("loginName", "pwd")
-        sh "docker pull abadabackendnode/backend:latest"
-        
-        def backendImg = "backend-$commitHash"
-        sh "docker run -id --name $backendImg -p 6969:6969 --net=bridge 
-abadabackendnode/backend:latest sh"
-        sh "docker start $backendImg"
-        shellInImage("$backendImg", "mkdir -p $builderRoot")
-        
-        sh 'mkdir -p backend'
-        sh "docker cp $builderImgName:/$backendFolder/server backend"
-        sh "docker cp backend/. $backendImg:/$builderRoot"
-        
-        shellInImageDetached("$backendImg", "cd $builderRoot; ./server")
-        
-        
-        
-
+    catch (exception) {
+        slackSend (botUser: true, color: '#ff0000', message: "${teamMember.slack}\nBuild failure: ${env.JOB_NAME} [${env.BUILD_NUMBER}]\nBuild: ${env.BUILD_URL}\nConsole log: http://169.45.50.135:8080/job/${env.JOB_NAME}/${env.BUILD_NUMBER}/console")
     }
-    stage("Saving the builder") {
-        
-        sh 'rm -rf *'
-        
-        echo "CLEANING UP THE FOLDER EXCEPTED THE DEPENDENCIES"
-        shellInImage("$builderImgName", "cd $backendFolder; ls | grep -v node_modules 
-| xargs rm -rf")
-        shellInImage("$builderImgName", "cd $frontendFolder; ls | grep -v node_modules 
-| xargs rm -rf")
-
-        echo "COMMITING CHANGES TO IMAGE"
-        //dockerLogin("loginName", "pwd")
-        //commitAndPushContainer(builderImgName, "abadanpm/npm", "latest")
-        //sh "docker stop $builderImgName"
-        dockerLogin("loginName","pwd")
-        commitAndPushContainer(builderImgName, "abadabackendnode/backend", 
-"$commitHash")
-        dockerLogin("loginName","pwd")
-        commitAndPushContainer(builderImgName, "abadafrontend/frontend", 
-"$commitHash")
-        
-        
-        
-    }
+    
 }
 
