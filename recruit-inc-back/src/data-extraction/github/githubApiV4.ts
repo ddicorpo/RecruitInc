@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import logger from '../../logger';
+var logger = require('../../logger.js');
 
 export class GithubApiV4 {
 
