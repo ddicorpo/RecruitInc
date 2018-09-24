@@ -28,7 +28,7 @@ export class Applicant {
             });
 
         app.route('/api/github/applicant/admin')
-            .get((req: Request, res: Response) => {
+            .get(cors(), (req: Request, res: Response) => {
 
                 fs.readFile(dataFile, (err, data) => {
                     if (err){
