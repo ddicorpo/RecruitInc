@@ -27,6 +27,17 @@ export class Applicant {
                 res.status(200).send(data);
             });
 
+            app.route('/api/github/applicant/')
+            .get(cors(), async (req: Request, res: Response) => {
+                
+                let query : Query  = new Query("3bb270dc6fa9c761c2f17f225d4955d744c377d2");
+
+                let data: string = await query.getDataHardCoded();
+
+                res.status(200).send(data);
+            });
+
+
         app.route('/api/github/applicant/admin')
             .get((req: Request, res: Response) => {
 
