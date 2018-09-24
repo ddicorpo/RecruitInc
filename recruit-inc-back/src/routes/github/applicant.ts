@@ -4,7 +4,7 @@ import * as fs from 'fs';
 
 var cors = require('cors');
 
-let dataFile: string = "tempStorage.txt";
+let dataFile: string = "log/info.json";
 
 export class Applicant {
 
