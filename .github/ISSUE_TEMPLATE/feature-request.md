@@ -9,11 +9,11 @@ As a ... I want ...
 
 ## Risk
 
-## Value:
+## Value
 
-## Story points:
+## Story points
 
-## General Description: 
+## General Description
 In our words, what is the story about
 
 ## How
@@ -26,7 +26,7 @@ In our words, what is the story about
 
        Ideal Hours:
 
-## Acceptance criteria's
+## Acceptance Criteria
 
 ## Acceptance Tests
 
