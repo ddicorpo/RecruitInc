@@ -14,10 +14,10 @@ General Description (answers what, why): In our words, what is the story about
 
 How
 
-'''
-Task 1:
-Ideal Hours
-'''
+- [ ] Task 1:
+       Ideal Hours:
+- [ ] Task 2:
+       Ideal Hours:
 
 Acceptance criteria's:
 
