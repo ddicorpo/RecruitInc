@@ -4,7 +4,7 @@ about: Suggest an idea for this project
 
 ---
 
-As a user...I want...
+**Description:** As a ... I want ...
 
 **Risk:**
 **Value:**
@@ -21,4 +21,10 @@ As a user...I want...
 
 **Acceptance criteria's:**
 
-**Acceptance tests:**
+**Acceptance Tests**
+
+| Test Description | Step # | Expected Output | Actual Output | Pass/Fail |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Content | Content | Content | Content | Content |
+| Content | Content | Content | Content | Content |
+| Content | Content | Content | Content | Content |
