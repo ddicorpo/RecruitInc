@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const linkStyle = {
   marginRight: 15
-}
+};
 
 const Header = () => (
   <div>
@@ -16,7 +16,10 @@ const Header = () => (
     <Link href="/admin">
       <a style={linkStyle}>Admin</a>
     </Link>
+      <Link href="/hr">
+          <a style={linkStyle}>hr</a>
+      </Link>
   </div>
-)
+);
 
 export default Header
