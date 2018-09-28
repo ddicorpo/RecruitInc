@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import {Query} from "../../data-extraction/github/query";
+import {GithubUserInfo} from "../../data-extraction/github/githubUserInfo";
 import * as fs from 'fs';
 
 var cors = require('cors');
@@ -38,6 +39,19 @@ export class Applicant {
                     res.status(200).send(data);
                     console.log('The file was read!');
                 });
+            });
+
+        app.route('/api/github/hr/:accessToken/:location')
+            .get(cors(), async (req: Request, res: Response) => {
+                let accessToken : string = req.params.accessToken;
+                let location : string = req.params.location;
+
+                let query : GithubUserInfo   = new GithubUserInfo(accessToken);
+
+                let data: string = await query.getData(location);
+
+
+                res.status(200).send(data);
             });
     }
 }
