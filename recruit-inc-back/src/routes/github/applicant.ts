@@ -41,14 +41,30 @@ export class Applicant {
                 });
             });
 
-        app.route('/api/github/hr/:accessToken/:location')
+        app.route('/api/github/hr/:location')
             .get(cors(), async (req: Request, res: Response) => {
-                let accessToken : string = req.params.accessToken;
                 let location : string = req.params.location;
 
-                let query : GithubUserInfo   = new GithubUserInfo(accessToken);
+                let query : GithubUserInfo   = new GithubUserInfo();
 
-                let data: string = await query.getData(location);
+                //Grab the endCursor from the first query
+                let data: string = await query.firstQuery(location);
+                let jsonData = JSON.parse(data);
+                let pageInfo = jsonData.data.search.pageInfo;
+                let endCursor : string = JSON.stringify(pageInfo.endCursor);
+                let hasNextPage : boolean = pageInfo.hasNextPage;
+
+                
+                //Use endCursor in subsequent queries to retrieve more users
+                
+                while (hasNextPage){
+                    let nextData : string = await query.getData(location, endCursor);
+                    jsonData = JSON.parse(nextData);
+                    pageInfo = jsonData.data.search.pageInfo;
+                    endCursor = JSON.stringify(pageInfo.endCursor);
+                    hasNextPage = pageInfo.hasNextPage;
+                    data+=nextData;
+                }
 
 
                 res.status(200).send(data);
