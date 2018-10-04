@@ -5,25 +5,26 @@ interface IAdminState {
     data: String | {}
 }
 
-class App extends React.Component <any, IAdminState> {
+class App extends React.Component <any, IAdminState>{
 
     constructor(props: any) {
         super(props);
         this.state = {
-            data: "There is no data fetched yet"
+            data: "looking.."
         }
     }
 
     componentDidMount() {
-        fetch("http://localhost:6969/api/github/applicant/admin")
+        return fetch("http://localhost:6969/api/github/applicant/admin")
             .then((response) => {
-                return Promise.resolve(response.json())
+                return Promise.resolve(response.text())
             })
             .then(data => {
                 this.setState({data});
                 console.log("state", data);
             });
     }
+
     render(){
         return (
             <div>
@@ -35,6 +36,5 @@ class App extends React.Component <any, IAdminState> {
         );
     }
 }
-
 
 export default App;

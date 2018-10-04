@@ -1,23 +1,23 @@
 import * as React from 'react';
 import Header from '../components/Header'
 
-interface IAdminState {
+interface IHRState {
     data: String | {}
 }
 
-class App extends React.Component <any, IAdminState> {
+class App extends React.Component <any, IHRState> {
 
     constructor(props: any) {
         super(props);
         this.state = {
-            data: "There is no data fetched yet"
+            data: "looking... (please wait a coupe of seconds)"
         }
     }
 
     componentDidMount() {
-        fetch("http://localhost:6969/api/github/candidate/hr")
+        return fetch("http://localhost:6969/api/github/candidate/hr/montreal")
             .then((response) => {
-                return Promise.resolve(response.json())
+                return Promise.resolve(response.text())
             })
             .then(data => {
                 this.setState({data});
@@ -29,7 +29,7 @@ class App extends React.Component <any, IAdminState> {
             <div>
                 <Header />
                 <p>Hi from HR</p>
-                <p>Here is a list of dev candidate in a specific location: </p>
+                <p>Here is a list of dev candidate in a specific location (Montreal): </p>
                 <p>{JSON.stringify(this.state.data)}</p>
             </div>
         );
