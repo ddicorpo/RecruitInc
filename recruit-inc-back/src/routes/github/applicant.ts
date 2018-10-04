@@ -21,7 +21,7 @@ export class Applicant {
                 let data: string = await query.getData(username);
                 fs.writeFile(dataFile, data, (err) => {
                     if (err) throw err;
-                    console.log('The file has created saved!');
+                    console.log('The file has been changed!');
                 });
 
 
