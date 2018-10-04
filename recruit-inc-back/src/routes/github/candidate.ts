@@ -7,11 +7,12 @@ export class Candidate {
 
     public routes(app): void {
 
-        app.route('/api/github/candidate/hr/:location')
+        app.route('/api/github/candidate/hr/:accessToken/:location')
             .get(cors(), async (req: Request, res: Response) => {
                 let location : string = req.params.location;
+                let accessToken: string = req.params.accessToken;
 
-                let query : GithubUserInfo   = new GithubUserInfo();
+                let query : GithubUserInfo   = new GithubUserInfo(accessToken);
 
                 //Grab the endCursor from the first query
                 let data: string = await query.firstQuery(location);

@@ -3,8 +3,8 @@ import { GithubApiV4} from "./githubApiV4";
 export class GithubUserInfo {
     private readonly accessToken: string;
 
-    public constructor(){
-        this.accessToken = "37780cb5a0cd8bbedda4c9537ebf348a6e402baf";
+    public constructor(accessToken: string) {
+        this.accessToken = accessToken;
     }
 
     async firstQuery(location: string): Promise<string> {
