@@ -1,28 +1,16 @@
-interface IProjectQuery extends IGitlabQuery<IGitlabProject[]> {
-    userId: number,
-}
+import {IGitlabQueryExecutor} from "../query-executor/IGitlabQueryExecutor";
+import {AbstractGitlabQuery} from "./AbstractGitlabQuery";
+import {IGitlabProject} from "../api-entities/IGitlabProject";
 
-export class ProjectQuery implements IProjectQuery{
-    query: string;
-    userId: number;
-    queryExecutor: IGitlabQueryExecutor<IGitlabProject[]>;
-    response: IGitlabProject[];
+export class ProjectQuery extends AbstractGitlabQuery<IGitlabProject[]>{
+    private userId: number;
 
     public constructor(userId: number, queryExecutor: IGitlabQueryExecutor<IGitlabProject[]>){
+        super(queryExecutor);
         this.userId = userId;
-        this.queryExecutor = queryExecutor;
     }
 
     public buildQuery(): void {
-        this.query = this.queryExecutor.baseGitlabApi + "users/" + this.userId + "/projects?statistics=true";
-    }
-
-    public getQuery(): string {
-        return this.query;
-    }
-
-    public executeQuery(): IGitlabProject[] {
-        this.response = this.queryExecutor.executeQuery(this.query);
-        return this.response;
+        this.query = this.queryExecutor.getBaseGitlabApi() + "users/" + this.userId + "/projects?statistics=true";
     }
 }

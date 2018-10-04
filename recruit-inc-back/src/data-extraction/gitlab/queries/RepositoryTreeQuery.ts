@@ -1,28 +1,16 @@
-interface IRepositoryTreeQuery extends IGitlabQuery<IGitlabRepositoryTree[]> {
-    projectId: number,
-}
+import {IGitlabQueryExecutor} from "../query-executor/IGitlabQueryExecutor";
+import {AbstractGitlabQuery} from "./AbstractGitlabQuery";
+import {IGitlabRepositoryTree} from "../api-entities/IGitlabRepositoryTree";
 
-export class RepositoryTreeQuery implements IRepositoryTreeQuery{
-    query: string;
-    projectId: number;
-    queryExecutor: IGitlabQueryExecutor<IGitlabRepositoryTree[]>;
-    response: IGitlabRepositoryTree[];
+export class RepositoryTreeQuery extends AbstractGitlabQuery<IGitlabRepositoryTree[]>{
+    private projectId: number;
 
     public constructor(projectId: number, queryExecutor: IGitlabQueryExecutor<IGitlabRepositoryTree[]>){
+        super(queryExecutor);
         this.projectId = projectId;
-        this.queryExecutor = queryExecutor;
     }
 
     public buildQuery(): void {
-        this.query = this.queryExecutor.baseGitlabApi + "projects/" + this.projectId + "/repository/tree?recursive=true";
-    }
-
-    public getQuery(): string {
-        return this.query;
-    }
-
-    public executeQuery(): IGitlabRepositoryTree[] {
-        this.response = this.queryExecutor.executeQuery(this.query);
-        return this.response;
+        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/tree?recursive=true";
     }
 }

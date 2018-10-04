@@ -1,28 +1,16 @@
-interface IUserQuery extends IGitlabQuery<IGitlabUser[]> {
-    username: string,
-}
+import {IGitlabUser} from "../api-entities/IGitlabUser";
+import {IGitlabQueryExecutor} from "../query-executor/IGitlabQueryExecutor";
+import {AbstractGitlabQuery} from "./AbstractGitlabQuery";
 
-export class UserQuery implements IUserQuery{
-    query: string;
-    username: string;
-    queryExecutor: IGitlabQueryExecutor<IGitlabUser[]>;
-    response: IGitlabUser[];
+export class UserQuery extends AbstractGitlabQuery<IGitlabUser[]>{
+    private username: string;
 
     public constructor(username: string, queryExecutor: IGitlabQueryExecutor<IGitlabUser[]>){
+        super(queryExecutor);
         this.username = username;
-        this.queryExecutor = queryExecutor;
     }
 
     public buildQuery(): void {
-        this.query = this.queryExecutor.baseGitlabApi + "users?username=" + this.username;
-    }
-
-    public getQuery(): string {
-        return this.query;
-    }
-
-    public executeQuery(): IGitlabUser[] {
-        this.response = this.queryExecutor.executeQuery(this.query);
-        return this.response;
+        this.query = this.queryExecutor.getBaseGitlabApi() + "users?username=" + this.username;
     }
 }
