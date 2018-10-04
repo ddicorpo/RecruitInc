@@ -6,7 +6,7 @@ var cors = require('cors');
 
 let dataFile: string = "log/tempStorage.json";
 
-export class Applicant {
+export class ApplicantGithub {
 
     public routes(app): void {
         //received the express instance from app.ts file
