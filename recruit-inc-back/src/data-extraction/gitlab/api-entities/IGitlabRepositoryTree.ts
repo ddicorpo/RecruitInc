@@ -1,4 +1,4 @@
-interface IGitlabRepositoryTree {
+export interface IGitlabRepositoryTree {
     id: string,
     name: string,
     type: string,

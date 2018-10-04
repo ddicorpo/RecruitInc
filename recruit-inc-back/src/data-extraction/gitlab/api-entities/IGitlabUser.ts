@@ -1,4 +1,4 @@
-interface IGitlabUser {
+export interface IGitlabUser {
     id: number,
     name: string,
     username: string,

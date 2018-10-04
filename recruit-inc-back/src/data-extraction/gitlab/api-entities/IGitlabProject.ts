@@ -1,4 +1,4 @@
-interface IGitlabProject {
+export interface IGitlabProject {
     id: number,
     description: string,
     name: string,

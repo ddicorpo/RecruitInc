@@ -1,4 +1,4 @@
-interface IGitlabCommitDiff {
+export interface IGitlabCommitDiff {
     old_path: string,
     new_path: string,
     a_mode: string,

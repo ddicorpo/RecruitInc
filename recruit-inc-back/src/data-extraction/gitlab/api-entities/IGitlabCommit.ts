@@ -1,4 +1,4 @@
-interface IGitlabCommit {
+export interface IGitlabCommit {
     id: string,
     short_id: string,
     title: string,
