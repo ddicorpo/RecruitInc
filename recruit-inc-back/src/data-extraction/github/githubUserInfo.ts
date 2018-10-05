@@ -3,14 +3,14 @@ import { GithubApiV4} from "./githubApiV4";
 export class GithubUserInfo {
     private readonly accessToken: string;
 
-    public constructor(accessToken: string) {
-        this.accessToken = accessToken;
+    public constructor() {
+        this.accessToken = "37780cb5a0cd8bbedda4c9537ebf348a6e402baf";
     }
 
     async firstQuery(location: string): Promise<string> {
         let query : string =
             `{
-             search(query: "type:user location:${location}",  first: 100, type: USER) {
+             search(query: "type:user location:${location} sort:joined",  first: 100, type: USER) {
                userCount
                pageInfo {
                   endCursor
@@ -25,6 +25,7 @@ export class GithubUserInfo {
                      isHireable
                      url
                      websiteUrl
+                     createdAt
                    }
                  }
                }
@@ -36,7 +37,7 @@ export class GithubUserInfo {
     async getData(location: string, endCursor: string): Promise<string> {
         let query : string =
             `{
-             search(query: "type:user location:${location}", after: ${endCursor}, first: 100, type: USER) {
+             search(query: "type:user location:${location} sort:joined", after: ${endCursor}, first: 100, type: USER) {
                userCount
                pageInfo {
                   endCursor
@@ -51,6 +52,61 @@ export class GithubUserInfo {
                      isHireable
                      url
                      websiteUrl
+                     createdAt
+                   }
+                 }
+               }
+             }`;
+
+        return await new GithubApiV4().queryData(this.accessToken, query);
+}
+
+    async getDataBefore(location: string, lastCreatedAt: string): Promise<string> {
+        let query : string =
+            `{
+             search(query: "type:user location:${location} sort:joined created:<${lastCreatedAt}", first: 100, type: USER) {
+               userCount
+               pageInfo {
+                  endCursor
+                  hasNextPage
+                }
+                 nodes {
+                   ... on User {
+                     login
+                     location
+                     email
+                     company
+                     isHireable
+                     url
+                     websiteUrl
+                     createdAt
+                   }
+                 }
+               }
+             }`;
+
+        return await new GithubApiV4().queryData(this.accessToken, query);
+}
+
+    async getDataBeforeWithEndCursor(location: string, lastCreatedAt: string, endCursor : string): Promise<string> {
+        let query : string =
+            `{
+             search(query: "type:user location:${location} sort:joined created:<${lastCreatedAt}", after: ${endCursor}, first: 100, type: USER) {
+               userCount
+               pageInfo {
+                  endCursor
+                  hasNextPage
+                }
+                 nodes {
+                   ... on User {
+                     login
+                     location
+                     email
+                     company
+                     isHireable
+                     url
+                     websiteUrl
+                     createdAt
                    }
                  }
                }
