@@ -1,36 +1,55 @@
 import fetch from 'node-fetch';
 var logger = require('../../logger.js');
-
+let basicUrl: string = 'https://api.stackexchange.com/2.2/users/'
 export class StackOverflowAPI {
     
-    
+
     public queryProfileData(userId: string) : string {
-        logger.info({ class: "StackOverflowAPI", method: "queryProfileData",
-         action: "Query StackOverFlow API for a user Profile", params: { userId } }, 
-         { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
-    
-        var fetchUrl = 'https://api.stackexchange.com/2.2/users/' + userId +'?order=desc&sort=reputation&site=stackoverflow'
+        var preparedUrl =  basicUrl + userId + '?order=desc&sort=reputation&site=stackoverflow'
+        return this.queryUserData(userId, preparedUrl, 'queryProfileData' )
+    }
+
+    public queryBadgesData(userId: string): string{
+        var preparedUrl = basicUrl + userId + '/badges?order=desc&sort=rank&site=stackoverflow'
+        return this.queryUserData(userId, preparedUrl, 'queryBadgesData')
+    }
+
+    public queryNetworkData(userId: string): string{
+        var preparedUrl = basicUrl + userId + '/network-activity'
+        return this.queryUserData(userId, preparedUrl, 'queryNetworkData')
+    }
+
+    private queryUserData(userId:string, fetchUrl:string, methodInvok: string){
+        logger.info({
+            class: "StackOverflowAPI", method: methodInvok,
+            action: "Query StackOverFlow API for a user Profile", params: { userId }
+        },
+            { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
         return fetch(fetchUrl, {
             method: 'GET'
         }).then(response => response.text())
             .then(body => {
-                logger.info({ class: "StackOverflowAPI", method: "queryProfileData", 
-                    action: "Result from StackOverflowAPI", value: body },
-                 { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
+                logger.info({
+                    class: "StackOverflowAPI", method: methodInvok,
+                    action: "Result from StackOverflowAPI", value: body
+                },
+                    { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
 
-                console.log("Successful Query");
+                console.log("...Successful Query...");
                 return body;
-
             })
             .catch(error => {
-                logger.error({ class: "StackOverflowAPI", method: "queryData", 
-                    action: "Error from StackOverflowAPI", value: error }, 
-                { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
-
+                logger.error({
+                    class: "StackOverflowAPI", method: methodInvok,
+                    action: "Error from StackOverflowAPI", value: error
+                },
+                    { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
+                console.log("Error with the Query...")
                 console.error(error);
                 return error;
             });
-    }  
+    }
+    
 }
 
 //this.constructor.name.toString()
