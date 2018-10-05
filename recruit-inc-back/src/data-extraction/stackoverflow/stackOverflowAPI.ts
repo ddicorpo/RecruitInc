@@ -2,7 +2,6 @@ import fetch from 'node-fetch';
 var logger = require('../../logger.js');
 let basicUrl: string = 'https://api.stackexchange.com/2.2/users/'
 export class StackOverflowAPI {
-    
 
     public queryProfileData(userId: string) : string {
         var preparedUrl =  basicUrl + userId + '?order=desc&sort=reputation&site=stackoverflow'
