@@ -1,20 +1,20 @@
 import fetch from 'node-fetch';
 var logger = require('../../logger.js');
-let basicUrl: string = 'https://api.stackexchange.com/2.2/users/'
+let API_ROOT_URL: string = 'https://api.stackexchange.com/2.2/users/'
 export class StackOverflowAPI {
 
     public queryProfileData(userId: string) : string {
-        var preparedUrl =  basicUrl + userId + '?order=desc&sort=reputation&site=stackoverflow'
+        var preparedUrl = API_ROOT_URL + userId + '?order=desc&sort=reputation&site=stackoverflow'
         return this.queryUserData(userId, preparedUrl, 'queryProfileData' )
     }
 
     public queryBadgesData(userId: string): string{
-        var preparedUrl = basicUrl + userId + '/badges?order=desc&sort=rank&site=stackoverflow'
+        var preparedUrl = API_ROOT_URL + userId + '/badges?order=desc&sort=rank&site=stackoverflow'
         return this.queryUserData(userId, preparedUrl, 'queryBadgesData')
     }
 
     public queryNetworkData(userId: string): string{
-        var preparedUrl = basicUrl + userId + '/network-activity'
+        var preparedUrl = API_ROOT_URL + userId + '/network-activity'
         return this.queryUserData(userId, preparedUrl, 'queryNetworkData')
     }
 
