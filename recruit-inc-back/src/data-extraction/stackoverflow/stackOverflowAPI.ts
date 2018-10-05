@@ -2,15 +2,16 @@ import fetch from 'node-fetch';
 var logger = require('../../logger.js');
 
 export class StackOverflowAPI {
-    public queryProfileData(userId: string, query: string) : string {
+    
+    
+    public queryProfileData(userId: string) : string {
         logger.info({ class: "StackOverflowAPI", method: "queryProfileData",
          action: "Query StackOverFlow API for a user Profile", params: { userId } }, 
          { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
     
         var fetchUrl = 'https://api.stackexchange.com/2.2/users/' + userId +'?order=desc&sort=reputation&site=stackoverflow'
         return fetch(fetchUrl, {
-            method: 'GET',
-            body: JSON.stringify({ query }),
+            method: 'GET'
         }).then(response => response.text())
             .then(body => {
                 logger.info({ class: "StackOverflowAPI", method: "queryProfileData", 
@@ -29,7 +30,7 @@ export class StackOverflowAPI {
                 console.error(error);
                 return error;
             });
-    }    
+    }  
 }
 
 //this.constructor.name.toString()

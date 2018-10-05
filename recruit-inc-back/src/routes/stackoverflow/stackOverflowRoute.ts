@@ -15,8 +15,9 @@ export class StackOverflowRoute {
         app.route('/api/soverflow/applicant/profile/:userId')
             .get(cors(), async (req: Request, res: Response) => {
                 let userId : string = req.params.userId;
-                
-                res.status(200).send("profile");
+                let profileData: string = await queryProfile.obtainProfileData(userId);
+
+                res.status(200).send(profileData);
             });
         app.route('/api/soverflow/applicant/network/:userId')
             .get(cors(), (req: Request, res: Response) => {
