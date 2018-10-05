@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
-var logger = require('../../logger.js');
+import fetch from "node-fetch";
+const logger = require('../../logger.js');
 
 export class GithubApiV4 {
 
