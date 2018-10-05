@@ -13,5 +13,7 @@ const Header = () => (React.createElement("div", null,
     React.createElement(link_1.default, { href: "/admin" },
         React.createElement("a", { style: linkStyle }, "Admin")),
     React.createElement(link_1.default, { href: "/hr" },
-        React.createElement("a", { style: linkStyle }, "hr"))));
+        React.createElement("a", { style: linkStyle }, "hr")),
+    React.createElement(link_1.default, { href: "/bitbucket" },
+        React.createElement("a", { style: linkStyle }, "bitbucket"))));
 exports.default = Header;
