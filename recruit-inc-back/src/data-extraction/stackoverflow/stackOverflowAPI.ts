@@ -50,5 +50,3 @@ export class StackOverflowAPI {
     }
     
 }
-
-//this.constructor.name.toString()
