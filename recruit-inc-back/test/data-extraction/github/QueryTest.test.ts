@@ -11,7 +11,7 @@ let fakeEndCusor: string = "Y3Vyc29yOjEwMDA="
 let fakeLastCreatedAt: string = "2018-09-27"
 
 
-describe.only('GithubUserInfo Queries with Mock', function () {
+describe('GithubUserInfo Queries with Mock', function () {
 
 it('should call firstQuery function and then the github V4 API', function () {
     const mockedGithubUser: GithubUserInfo = mock(GithubUserInfo);
