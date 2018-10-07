@@ -2,6 +2,7 @@ import { expect} from 'chai';
 import { describe, it} from 'mocha';
 import {GithubUserInfo} from "../../../src/data-extraction/github/githubUserInfo";
 
+
 const nock = require('nock');
 const firstQueryResponse = require('./firstQueryResponse.js');
 
@@ -31,3 +32,4 @@ let test : GithubUserInfo = new GithubUserInfo()
         });
     });
   });
+
