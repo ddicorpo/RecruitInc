@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import {GithubUserInfo} from "../../data-extraction/github/githubUserInfo";
+import { Query } from "../../data-extraction/github/query";
 
 const cors = require('cors');
 
@@ -17,7 +18,6 @@ export class Candidate {
                 let data: string = await query.firstQuery(location);
                 let jsonData = JSON.parse(data);
                 let pageInfo = jsonData.data.search.pageInfo;
-                let lastCreatedAt = jsonData.data.search.nodes[jsonData.data.search.nodes.length -1].createdAt;
                 let endCursor : string = JSON.stringify(pageInfo.endCursor);
                 let hasNextPage : boolean = pageInfo.hasNextPage;
 
@@ -62,5 +62,6 @@ export class Candidate {
 
                res.status(200).send(data);
             });
+
     }
 }
