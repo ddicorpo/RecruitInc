@@ -1,61 +1,33 @@
 import { expect} from 'chai';
 import { describe, it} from 'mocha';
-import { mock, when, instance } from 'ts-mockito';
-import {Query} from "../../../src/data-extraction/github/query";
 import {GithubUserInfo} from "../../../src/data-extraction/github/githubUserInfo";
 
-let fakeStorage : any = "fakeDataRetrieved";
-let fakeUsername : string = "fakeUsername";
-let fakeLocation: string = "montreal";
-let fakeEndCusor: string = "Y3Vyc29yOjEwMDA="
-let fakeLastCreatedAt: string = "2018-09-27"
+const nock = require('nock');
+const firstQueryResponse = require('./firstQueryResponse.js');
 
+let test : GithubUserInfo = new GithubUserInfo()
 
-describe.only('GithubUserInfo Queries with Mock', function () {
-
-it('should call firstQuery function and then the github V4 API', function () {
-    const mockedGithubUser: GithubUserInfo = mock(GithubUserInfo);
-    const trial_Instance : GithubUserInfo = instance(mockedGithubUser);
-    when(mockedGithubUser.firstQuery(fakeLocation)).thenReturn(fakeStorage);
-    let result: Promise<string> = trial_Instance.firstQuery(fakeLocation);
-    expect(result).equals(fakeStorage);
-});
-
-it('should call getData function and then the github V4 API', function () {
-    const mockedGithubUser: GithubUserInfo = mock(GithubUserInfo);
-    const trial_Instance : GithubUserInfo = instance(mockedGithubUser);
-    when(mockedGithubUser.getData(fakeLocation,fakeEndCusor)).thenReturn(fakeStorage);
-    let result: Promise<string> = trial_Instance.getData(fakeLocation,fakeEndCusor);
-    expect(result).equals(fakeStorage);
-});
-
-
-it('should call getDataBefore function and then the github V4 API', function () {
-    const mockedGithubUser: GithubUserInfo = mock(GithubUserInfo);
-    const trial_Instance : GithubUserInfo = instance(mockedGithubUser);
-    when(mockedGithubUser.getDataBefore(fakeLocation,fakeLastCreatedAt)).thenReturn(fakeStorage);
-    let result: Promise<string> = trial_Instance.getDataBefore(fakeLocation,fakeLastCreatedAt);
-    expect(result).equals(fakeStorage);
-});
-
-it('should call getDataBeforeWithEndCursor function and then the github V4 API', function () {
-    const mockedGithubUser: GithubUserInfo = mock(GithubUserInfo);
-    const trial_Instance : GithubUserInfo = instance(mockedGithubUser);
-    when(mockedGithubUser.getDataBeforeWithEndCursor(fakeLocation,fakeLastCreatedAt,fakeEndCusor)).thenReturn(fakeStorage);
-    let result: Promise<string> = trial_Instance.getDataBeforeWithEndCursor(fakeLocation,fakeLastCreatedAt,fakeEndCusor);
-    expect(result).equals(fakeStorage);
-});
-
-});
-
-describe('Query class with Mock',function(){
-
-it('should call getData function and then the github V4 API',function(){
-    const mockedQueryClass: Query = mock(Query);
-    const trial_Instance : Query = instance(mockedQueryClass);
-    when(mockedQueryClass.getData(fakeUsername)).thenReturn(fakeStorage);
-    let result: Promise<string> = trial_Instance.getData(fakeUsername);
-    expect(result).equals(fakeStorage);
-});
-
-});
+  describe('Get User information', () => {
+    beforeEach(() => {
+      //mocking the API
+        nock('https://api.github.com')
+        .post('/graphql')
+        .reply(200,firstQueryResponse);
+    });
+    
+    it('Get a user by username,location and url', () => {
+      return test.firstQuery('Montreal')
+        .then(response => {
+         
+        expect(response).to.be.a('string');
+        
+        //9682 is the total number of accounts that are located in Montreal
+        expect(JSON.parse(response).data.search.userCount).to.equal(9682);
+        
+        expect(JSON.parse(response).data.search.nodes[0].login).to.equal("Suzylxx") 
+        expect(JSON.parse(response).data.search.nodes[0].location).to.equal("Montreal")
+        expect(JSON.parse(response).data.search.nodes[0].url).to.equal("https://github.com/Suzylxx")
+        
+        });
+    });
+  });
