@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
 import {GithubUserInfo} from "../../data-extraction/github/githubUserInfo";
-import { Query } from "../../data-extraction/github/query";
+//import { Query } from "../../data-extraction/github/query";
+import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser"
 
 const cors = require('cors');
+
 
 export class Candidate {
 
@@ -10,8 +12,10 @@ export class Candidate {
 
         app.route('/api/github/candidate/hr/:location')
             .get(cors(), async (req: Request, res: Response) => {
+                let githubUser : IGithubUser[] ;
+                
                 let location : string = req.params.location;
-
+                 
                 let query : GithubUserInfo   = new GithubUserInfo();
 
                 //Grab the endCursor from the first query
@@ -21,9 +25,10 @@ export class Candidate {
                 let endCursor : string = JSON.stringify(pageInfo.endCursor);
                 let hasNextPage : boolean = pageInfo.hasNextPage;
 
+                githubUser = jsonData.data.search.nodes;
 
                 //Use endCursor in subsequent queries to retrieve more users
-               while (hasNextPage){
+                while (hasNextPage){
 
                    let nextData : string = await query.getData(location, endCursor);
                    jsonData = JSON.parse(nextData);
@@ -31,6 +36,7 @@ export class Candidate {
                    endCursor = JSON.stringify(pageInfo.endCursor);
                    hasNextPage = pageInfo.hasNextPage;
                    data+=nextData;
+                   githubUser.push(jsonData.data.search.nodes);
                }
 
                //Loop until a search where no users are returned
@@ -44,6 +50,7 @@ export class Candidate {
                    endCursor = JSON.stringify(pageInfo.endCursor);
                    hasNextPage = pageInfo.hasNextPage;
                    data+=nextData;
+                   githubUser.push(jsonData.data.search.nodes);
 
                    if (!hasNextPage)
                        break;
@@ -56,11 +63,12 @@ export class Candidate {
                    endCursor = JSON.stringify(pageInfo.endCursor);
                    hasNextPage = pageInfo.hasNextPage;
                    data+=nextData;
+                   githubUser.push(jsonData.data.search.nodes);
                }
 
                }
-
-               res.status(200).send(data);
+ 
+               res.status(200).send(githubUser);
             });
 
     }
