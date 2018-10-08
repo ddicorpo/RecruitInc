@@ -1,6 +1,10 @@
 import { Request, Response } from "express";
 import { StackOverflowQueries } from "../../data-extraction/stackoverflow/stackOverflowQueries";
 import * as fs from 'fs';
+import { IProfile } from "../../data-extraction/stackoverflow/api-entities/IProfile";
+import { IError } from "../../data-extraction/stackoverflow/api-entities/IError";
+import { INetwork } from "../../data-extraction/stackoverflow/api-entities/INetwork";
+import { IBadges } from "../../data-extraction/stackoverflow/api-entities/IBadges";
 var cors = require('cors');
 let pathToFakeStorage = "log/StackOverFlowFakeStorage.json"
 let queryProfile : StackOverflowQueries;
@@ -15,24 +19,24 @@ export class StackOverflowRoute {
             .get(cors(), async (req: Request, res: Response) => {
             this.buildStorage();
                 let userId : string = req.params.userId;
-                let profileData: string = await queryProfile.obtainProfileData(userId);
-                this.appendStorage(profileData);
+                let profileData: IProfile | IError = await queryProfile.obtainProfileData(userId);
+                this.appendStorage(JSON.stringify(profileData));
                 res.status(200).send(profileData);
             });
         app.route('/api/soverflow/applicant/network/:userId')
             .get(cors(), async (req: Request, res: Response) => {
                 this.buildStorage();
                 let userId: string = req.params.userId;
-                let networkData: string = await queryProfile.obtainNetworkData(userId);
-                this.appendStorage(networkData);
+                let networkData: INetwork | IError = await queryProfile.obtainNetworkData(userId);
+                this.appendStorage(JSON.stringify(networkData));
                 res.status(200).send(networkData);
             });
         app.route('/api/soverflow/applicant/badges/:userId')
             .get(cors(), async (req: Request, res: Response) => {
                 this.buildStorage();
                 let userId: string = req.params.userId;
-                let badgesData: string = await queryProfile.obtainBadgesData(userId);
-                this.appendStorage(badgesData);
+                let badgesData: IBadges | IError = await queryProfile.obtainBadgesData(userId);
+                this.appendStorage(JSON.stringify(badgesData));
                 res.status(200).send(badgesData);
             });
 
