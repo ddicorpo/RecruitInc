@@ -2,10 +2,11 @@ import { GithubApiV4} from "./githubApiV4";
 
 export class Query {
     private readonly accessToken: string;
+    
+    public constructor(accessToken: string = "37780cb5a0cd8bbedda4c9537ebf348a6e402baf" ) {
+      this.accessToken = accessToken;
+  }
 
-    public constructor(accessToken: string){
-        this.accessToken = accessToken;
-    }
 
     async getData(username: string): Promise<string> {
         let query : string =
