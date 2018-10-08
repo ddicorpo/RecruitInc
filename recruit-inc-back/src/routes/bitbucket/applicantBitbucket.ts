@@ -14,7 +14,7 @@ export class ApplicantBitbucket {
 
                 let bitbucketUserInfo : BitbucketUserInfo  = new BitbucketUserInfo(accessToken);
 
-                let data: string = await bitbucketUserInfo.getData(username);
+                let data: string = await bitbucketUserInfo.getUserData(username);
 
                 res.status(200).send(data);
             });

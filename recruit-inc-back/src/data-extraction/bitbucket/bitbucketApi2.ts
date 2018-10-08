@@ -3,8 +3,6 @@ const logger = require('../../logger.js');
 
 export class BitbucketApi2 {
 
-    public constructor(){}
-
     public queryUserInfo(accessToken: string, user: string ) : string{
         logger.info({class: "bitbucketApi2", method: "queryData", action: "Querying bitbucket's api", params: {accessToken, user}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
         return fetch(`https://api.bitbucket.org/2.0/users/${user}/repositories`, {

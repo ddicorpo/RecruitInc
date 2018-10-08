@@ -7,7 +7,7 @@ export class BitbucketUserInfo {
         this.accessToken = accessToken;
     }
 
-    public async getData(username: string): Promise<string> {
+    public async getUserData(username: string): Promise<string> {
         return await new BitbucketApi2().queryUserInfo(this.accessToken, username);
     }
 }
