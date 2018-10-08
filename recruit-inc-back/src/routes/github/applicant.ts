@@ -4,7 +4,7 @@ import * as fs from 'fs';
 
 var cors = require('cors');
 
-let dataFile: string = "log/info.json";
+let dataFile: string = "log/tempStorage.json";
 
 export class Applicant {
 
@@ -12,24 +12,25 @@ export class Applicant {
         //received the express instance from app.ts file
         app.route('/api/github/applicant/:accessToken/:username')
             .get(cors(), async (req: Request, res: Response) => {
+                this.buildFakeStorage();
                 let accessToken : string = req.params.accessToken;
                 let username : string = req.params.username;
 
                 let query : Query  = new Query(accessToken);
 
                 let data: string = await query.getData(username);
-
                 fs.writeFile(dataFile, data, (err) => {
                     if (err) throw err;
-                    console.log('The file has been saved!');
+                    console.log('The file has been changed!');
                 });
+
 
                 res.status(200).send(data);
             });
 
         app.route('/api/github/applicant/admin')
             .get(cors(), (req: Request, res: Response) => {
-
+                this.buildFakeStorage();
                 fs.readFile(dataFile, (err, data) => {
                     if (err){
                         res.status(200).send(err);
@@ -39,5 +40,14 @@ export class Applicant {
                     console.log('The file was read!');
                 });
             });
+    }
+
+    private buildFakeStorage() : void{
+        if(!fs.existsSync(dataFile)){
+            fs.writeFile(dataFile, "", (err) => {
+                if (err) throw err;
+                console.log('The file has been created!');
+            });
+        }
     }
 }

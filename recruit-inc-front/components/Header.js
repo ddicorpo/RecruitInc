@@ -9,5 +9,9 @@ const Header = () => (React.createElement("div", null,
     React.createElement(link_1.default, { href: "/" },
         React.createElement("a", { style: linkStyle }, "Home")),
     React.createElement(link_1.default, { href: "/about" },
-        React.createElement("a", { style: linkStyle }, "About"))));
+        React.createElement("a", { style: linkStyle }, "About")),
+    React.createElement(link_1.default, { href: "/admin" },
+        React.createElement("a", { style: linkStyle }, "Admin")),
+    React.createElement(link_1.default, { href: "/hr" },
+        React.createElement("a", { style: linkStyle }, "hr"))));
 exports.default = Header;
