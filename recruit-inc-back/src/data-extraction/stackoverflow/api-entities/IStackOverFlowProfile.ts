@@ -1,8 +1,8 @@
 export interface IStackOverFlowProfile {
     "badge_counts": {
         "bronze": number,
-        "silver": number,
-        "gold": number
+        "silver"?: number,
+        "gold"?: number
     },
     "account_id": number,
     "is_employee": boolean,

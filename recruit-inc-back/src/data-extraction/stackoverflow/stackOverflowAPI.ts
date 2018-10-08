@@ -17,6 +17,10 @@ export class StackOverflowAPI {
         return this.queryUserData(userId, preparedUrl, "queryBadgeData")
     }
 
+    /**
+     * This method can return an empty object
+     * @param userId 
+     */
     public queryNetworkData(userId: string): IStackOverFlowNetwork | IStackOverFlowError {
         const preparedUrl : string = API_ROOT_URL + userId + '/network-activity'
         return this.queryUserData(userId, preparedUrl, "queryNetworkData")
