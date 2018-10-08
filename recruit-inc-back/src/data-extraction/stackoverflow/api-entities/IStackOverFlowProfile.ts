@@ -1,4 +1,4 @@
-export interface IProfile {
+export interface IStackOverFlowProfile {
     "badge_counts": {
         "bronze": number,
         "silver": number,

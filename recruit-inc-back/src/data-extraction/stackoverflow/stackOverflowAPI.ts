@@ -1,23 +1,23 @@
 import fetch from 'node-fetch';
-import { INetwork } from './api-entities/INetwork';
-import { IError } from './api-entities/IError';
-import { IBadges } from './api-entities/IBadges';
-import { IProfile } from './api-entities/IProfile';
+import { IStackOverFlowNetwork } from './api-entities/IStackOverFlowNetwork';
+import { IStackOverFlowError } from './api-entities/IStackOverFlowError';
+import { IStackOverFlowBadges } from './api-entities/IStackOverFlowBadges';
+import { IStackOverFlowProfile } from './api-entities/IStackOverFlowProfile';
 var logger = require('../../logger.js');
 const API_ROOT_URL: string = 'https://api.stackexchange.com/2.2/users/'
 export class StackOverflowAPI {
 
-    public queryProfileData(userId: string) : IProfile | IError {
+    public queryProfileData(userId: string): IStackOverFlowProfile | IStackOverFlowError {
         const preparedUrl : string = API_ROOT_URL + userId + '?order=desc&sort=reputation&site=stackoverflow'
         return this.queryUserData(userId, preparedUrl, "queryProfileData")
     }
 
-    public queryBadgesData(userId: string): IBadges | IError{
+    public queryBadgesData(userId: string): IStackOverFlowBadges | IStackOverFlowError{
         const preparedUrl : string = API_ROOT_URL + userId + '/badges?order=desc&sort=rank&site=stackoverflow'
         return this.queryUserData(userId, preparedUrl, "queryBadgeData")
     }
 
-    public queryNetworkData(userId: string): INetwork | IError {
+    public queryNetworkData(userId: string): IStackOverFlowNetwork | IStackOverFlowError {
         const preparedUrl : string = API_ROOT_URL + userId + '/network-activity'
         return this.queryUserData(userId, preparedUrl, "queryNetworkData")
     }

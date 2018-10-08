@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { StackOverflowQueries } from "../../data-extraction/stackoverflow/stackOverflowQueries";
 import * as fs from 'fs';
-import { IProfile } from "../../data-extraction/stackoverflow/api-entities/IProfile";
-import { IError } from "../../data-extraction/stackoverflow/api-entities/IError";
-import { INetwork } from "../../data-extraction/stackoverflow/api-entities/INetwork";
-import { IBadges } from "../../data-extraction/stackoverflow/api-entities/IBadges";
+import { IStackOverFlowProfile } from "../../data-extraction/stackoverflow/api-entities/IStackOverFlowProfile";
+import { IStackOverFlowError } from "../../data-extraction/stackoverflow/api-entities/IStackOverFlowError";
+import { IStackOverFlowNetwork } from "../../data-extraction/stackoverflow/api-entities/IStackOverFlowNetwork";
+import { IStackOverFlowBadges } from "../../data-extraction/stackoverflow/api-entities/IStackOverFlowBadges";
 var cors = require('cors');
 let pathToFakeStorage = "log/StackOverFlowFakeStorage.json"
 let queryProfile : StackOverflowQueries;
@@ -19,7 +19,7 @@ export class StackOverflowRoute {
             .get(cors(), async (req: Request, res: Response) => {
             this.buildStorage();
                 let userId : string = req.params.userId;
-                let profileData: IProfile | IError = await queryProfile.obtainProfileData(userId);
+                let profileData: IStackOverFlowProfile | IStackOverFlowError = await queryProfile.obtainProfileData(userId);
                 this.appendStorage(JSON.stringify(profileData));
                 res.status(200).send(profileData);
             });
@@ -27,7 +27,7 @@ export class StackOverflowRoute {
             .get(cors(), async (req: Request, res: Response) => {
                 this.buildStorage();
                 let userId: string = req.params.userId;
-                let networkData: INetwork | IError = await queryProfile.obtainNetworkData(userId);
+                let networkData: IStackOverFlowNetwork | IStackOverFlowError = await queryProfile.obtainNetworkData(userId);
                 this.appendStorage(JSON.stringify(networkData));
                 res.status(200).send(networkData);
             });
@@ -35,7 +35,7 @@ export class StackOverflowRoute {
             .get(cors(), async (req: Request, res: Response) => {
                 this.buildStorage();
                 let userId: string = req.params.userId;
-                let badgesData: IBadges | IError = await queryProfile.obtainBadgesData(userId);
+                let badgesData: IStackOverFlowBadges | IStackOverFlowError = await queryProfile.obtainBadgesData(userId);
                 this.appendStorage(JSON.stringify(badgesData));
                 res.status(200).send(badgesData);
             });

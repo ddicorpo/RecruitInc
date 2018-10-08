@@ -1,4 +1,4 @@
-export interface INetwork {
+export interface IStackOverFlowNetwork {
     "creation_date": number,
     "activity_type": string,
     "account_id": number,

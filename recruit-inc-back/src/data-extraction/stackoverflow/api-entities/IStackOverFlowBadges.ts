@@ -1,5 +1,5 @@
-export interface IBadges {
-    "user": IUser,
+export interface IStackOverFlowBadges {
+    "user": IStackOverFlowUser,
     "badge_type": string,
     "award_count": number,
     "rank": string,
@@ -8,7 +8,7 @@ export interface IBadges {
     "name": string
 }
 
-interface IUser{
+interface IStackOverFlowUser{
     "reputation": number,
     "user_id": number,
     "user_type": string,
