@@ -1,35 +1,35 @@
 import { expect} from 'chai';
-import {Query} from "../../../src/data-extraction/github/query";
+import { describe, it} from 'mocha';
 import {GithubUserInfo} from "../../../src/data-extraction/github/githubUserInfo";
 
-let fakeToken : string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
-let fakeUsername : string = "fakeUsername";
-let fakeLocation: string = "montreal";
 
-describe('Test getData function', function () {
-    it('should call the github V4 API', function () {
+const nock = require('nock');
+const firstQueryResponse = require('./firstQueryResponse.js');
 
-        let fakeQuery : Query = new Query(fakeToken);
+let test : GithubUserInfo = new GithubUserInfo()
 
-        //when the get data is called
-        fakeQuery.getData(fakeUsername)
-            .then(() =>
-                //expect the github GraphQL api called
-                expect(fetch("https://api.github.com/graphql"))
-            );
+  describe('Get User information', () => {
+    beforeEach(() => {
+      //mocking the API
+        nock('https://api.github.com')
+        .post('/graphql')
+        .reply(200,firstQueryResponse);
     });
-});
 
-describe('Test firstQuery users location function', function () {
-    it('should call the github V4 API', function () {
+    it('Get a user by username,location and url', () => {
+      return test.firstQuery('Montreal')
+        .then(response => {
 
-        let fakeQuery : GithubUserInfo = new GithubUserInfo(fakeToken);
+        expect(response).to.be.a('string');
 
-        //when the first query is called
-        fakeQuery.firstQuery(fakeLocation)
-            .then(() =>
-                //expect the github GraphQL api called
-                expect(fetch("https://api.github.com/graphql"))
-            );
+        //9682 is the total number of accounts that are located in Montreal
+        expect(JSON.parse(response).data.search.userCount).to.equal(9682);
+
+        expect(JSON.parse(response).data.search.nodes[0].login).to.equal("Suzylxx")
+        expect(JSON.parse(response).data.search.nodes[0].location).to.equal("Montreal")
+        expect(JSON.parse(response).data.search.nodes[0].url).to.equal("https://github.com/Suzylxx")
+
+        });
     });
-});
+  });
+
