@@ -3,6 +3,7 @@ import * as bodyParser from 'body-parser'; //used to parse the form data that yo
 import { Examples } from "./routes/examples";
 import { Applicant } from "./routes/github/applicant";
 import { StackOverflowRoute } from './routes/stackoverflow/stackOverflowRoute';
+import { GitlabApplicants } from "./routes/gitlab/GitlabApplicants"
 import { Candidate} from "./routes/github/candidate";
 
 class App {
@@ -11,6 +12,7 @@ class App {
     public myDataRoute: Examples = new Examples();
     public applicantDataRoute: Applicant = new Applicant();
     public stackOverFlowRoute: StackOverflowRoute = new StackOverflowRoute();
+    public gitlabApplicant: GitlabApplicants = new GitlabApplicants();
     public candidateDataRout: Candidate = new Candidate();
 
     constructor() {
@@ -19,6 +21,7 @@ class App {
         this.myDataRoute.routes(this.app);
         this.applicantDataRoute.routes(this.app);
         this.stackOverFlowRoute.routes(this.app);
+        this.gitlabApplicant.routes(this.app);
         this.candidateDataRout.routes(this.app);
     }
 
