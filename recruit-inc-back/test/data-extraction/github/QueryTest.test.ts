@@ -20,6 +20,7 @@ let test : GithubUserInfo = new GithubUserInfo()
       return test.firstQuery('Montreal')
         .then(response => {
 
+        let fakeQuery : GithubUserInfo = new GithubUserInfo(fakeToken);
         expect(response).to.be.a('string');
 
         //9682 is the total number of accounts that are located in Montreal
