@@ -35,3 +35,16 @@ coverage/
 
 # Ignore result of Export command from Next.js
 out/
+
+# Ignore compiled filed by tsx (Front-End)
+
+recruit-inc-front/pages/*.js
+recruit-inc-front/components/*.js
+
+# Ignore Log file
+
+recruit-inc-back/log/*.json
+
+# Ignore Test file compiled to .js
+
+recruit-inc-front/test/**/*.js

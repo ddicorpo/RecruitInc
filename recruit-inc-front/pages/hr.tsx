@@ -15,7 +15,7 @@ class App extends React.Component <any, IHRState> {
     }
 
     componentDidMount() {
-        return fetch("http://localhost:6969/api/github/candidate/hr/37780cb5a0cd8bbedda4c9537ebf348a6e402baf/montreal")
+        return fetch("http://localhost:6969/api/github/candidate/hr/montreal")
             .then((response) => {
                 return Promise.resolve(response.text())
             })

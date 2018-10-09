@@ -19,6 +19,9 @@ const Header = () => (
       <Link href="/hr">
           <a style={linkStyle}>hr</a>
       </Link>
+      <Link href="/bitbucket">
+          <a style={linkStyle}>bitbucket</a>
+      </Link>
   </div>
 );
 
