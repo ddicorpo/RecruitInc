@@ -23,7 +23,7 @@ describe('Test getData function', function () {
 describe('Test firstQuery users location function', function () {
     it('should call the github V4 API', function () {
 
-        let fakeQuery : GithubUserInfo = new GithubUserInfo();
+        let fakeQuery : GithubUserInfo = new GithubUserInfo(fakeToken);
 
         //when the first query is called
         fakeQuery.firstQuery(fakeLocation)
