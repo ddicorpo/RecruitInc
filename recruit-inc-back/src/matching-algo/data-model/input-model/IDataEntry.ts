@@ -1,6 +1,7 @@
 /**
  * Expected input of the matching algo.
  */
-interface IDataEntry{
+import { IGitProjectInput } from './IGitProjectInput'
+export interface IDataEntry{
     projectInput: IGitProjectInput[]
 }
