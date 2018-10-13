@@ -8,10 +8,11 @@
     "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register test/**/*.test.ts && nyc report",
     "dev": "tsc && node server.js",
     "build": "tsc && next build",
-    "start": "tsc && next build && node server.js",
+    "start": "npm run dev",
     "transpile": "tsc",
     "devwatch": "tsc -w",
     "export": "npm run build && next export",
+    "demo": "npm run dev | lt --port 3000 --subdomain recruit-front "
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "@types/next": "^6.1.7",
     "@types/react": "^16.4.14",
     "express": "^4.16.3",
+    "localtunnel": "^1.9.1",
     "next": "^7.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
