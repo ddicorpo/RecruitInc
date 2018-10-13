@@ -12,7 +12,6 @@
     "transpile": "tsc",
     "devwatch": "tsc -w",
     "export": "npm run build && next export",
-    "safety-first": "nsp check"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +21,6 @@
     "@types/react": "^16.4.14",
     "express": "^4.16.3",
     "next": "^7.0.0",
-    "nsp": "^3.2.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
