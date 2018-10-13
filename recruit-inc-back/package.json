@@ -37,6 +37,7 @@
     "fs": "0.0.1-security",
     "localtunnel": "^1.9.1",
     "node-fetch": "^2.2.0",
+    "typeorm": "^0.2.7",
     "winston": "^3.1.0"
   }
 }
