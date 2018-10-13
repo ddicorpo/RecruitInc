@@ -38,7 +38,7 @@
  - The command will create a folder:  `coverage` with all results inside
  - Sample Result:
  
-![alt text](https://github.com/ddicorpo/RecruitInc/blob/Architecture-FrontEnd-BackEnd/CourseAdmin/assets/SampleTestCoverage.png "Sample Test Coverage")
+![alt text](https://github.com/ddicorpo/RecruitInc/blob/master/CourseAdmin/assets/SampleTestCoverage.png "Sample Test Coverage")
 
  ### Start the Front-End Node
   - Navigate to the folder `recruit-inc-front`
@@ -68,3 +68,10 @@ You can try the system by sending a message to the Back-End from the Front-End
 `state (3) [{…}, {…}, {…}] 0: {name: "Hi"} 1: {name: "Bonjour"} 2: {name: "Hello"} `
 
 These data are from the other node. There are contained in `./src/fakeStorage.json`
+
+
+### Start the application in **demo** mode
+- You can demo the front-end or the back-end or both
+- Open a terminal and navigate to `recruit-inc-front` or `recruit-inc-back`
+- Run the command `npm run demo` , a localtunel url address usually `https://recruit-back.localtunnel.me/` or `https://recruit-front.localtunnel.me/` will be available on the internet
+- This is a tunnel from the internet to your computer, don't forget to close it when your done, your terminal needs to run
