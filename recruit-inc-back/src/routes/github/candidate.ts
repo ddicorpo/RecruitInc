@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import {GithubUserInfo} from "../../data-extraction/github/githubUserInfo";
+import {GithubUserRepos} from "../../data-extraction/github/githubUserRepos";
 //import { Query } from "../../data-extraction/github/query";
 import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser"
 
@@ -69,6 +70,21 @@ export class Candidate {
                }
  
                res.status(200).send(githubUser);
+            });
+
+        app.route('/api/github/candidate/repo/:username')
+            .get(cors(), async (req: Request, res: Response) => {
+
+                
+                
+               let username : string = req.params.username;
+               let user : IGithubUser = {login: username, url: "", createdAt: ""};
+               let query : GithubUserRepos   = new GithubUserRepos();
+               user = await query.getUserRepos(user);
+
+               console.log(user);
+               res.status(200).send(user.repositories);
+               //console.log(user.repositories[4].owner.login);
             });
 
     }
