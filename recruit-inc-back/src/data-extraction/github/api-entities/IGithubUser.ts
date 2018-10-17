@@ -1,16 +1,19 @@
 export interface IGithubUser{
     login: string
     location?: string,
-    Languages:{
+    languages?:{
         name: string
     },
-    repositories:{
+    repositories?:{
         name: string
+        owner?:{
+        login: string
+        }
     },  
     email?: string,
     company?: string,
     isHireable?: boolean,
     url: string,
     websiteUrl?: string,
-    createAt: string 
+    createdAt: string 
 }
