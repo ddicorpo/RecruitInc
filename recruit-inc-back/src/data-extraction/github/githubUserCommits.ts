@@ -55,6 +55,63 @@ export class GithubUserRepos {
                 
                 return await new GithubApiV4().queryData(this.accessToken, query);
     }                               
+    async getDataAfterCursor(username: string, endCursor: string): Promise<string> {
+
+        let query : string =
+
+        `query {
+            repository(name: "RecruitInc", owner: "ddicorpo") {
+                ref(qualifiedName: "master") {
+                  target {
+                    ... on Commit {
+
+                        author {
+                            name
+                            email
+                            date
+                          }
+                      id
+                      history(author : {emails: "benjamin.tanguay@gmail.com"}first: 100, after: ${endCursor}) {
+            
+                         
+                                        
+                                      
+                        pageInfo {
+                          hasNextPage
+                        }
+                        
+                        edges {
+                          
+                          node {
+                        pushedDate
+                            oid
+                            changedFiles
+                            commitUrl  
+                            
+                          
+                            commitResourcePath
+                            message
+                            
+                          }
+                        }
+                      }
+                    }
+            }
+            }
+                  }
+                } `;
+                
+                return await new GithubApiV4().queryData(this.accessToken, query);
+
+
+
+
+
+
+
+
+    }
+
               
 
 
