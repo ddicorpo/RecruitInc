@@ -4,11 +4,11 @@ import Header from '../components/Header'
 //This is recruit.inc id for BitBucket
 const client_id : string = "LEz9DG5fYbhjLPneeW";
 
-interface IBitbucketState {
+interface IProfileState {
     data: String | {}
 }
 
-class App extends React.Component <any, IBitbucketState> {
+class App extends React.Component <any, IProfileState> {
 
     constructor(props: any) {
         super(props);
