@@ -251,37 +251,37 @@ const singleCommitGitIgnore: ISingleFileCommit = {
 
 const singleCommitReadMe: ISingleFileCommit = {
     filePath: "README.md",
-    lineAdded: 141,
+    lineAdded: 1,
     lineDeleted: 0
 };
 
 const singleCommitManagePy: ISingleFileCommit = {
     filePath: "backend/manage.py",
-    lineAdded: 141,
+    lineAdded: 15,
     lineDeleted: 0
 };
 
 const singleCommitInitPy: ISingleFileCommit = {
     filePath: "backend/src/__init__.py",
-    lineAdded: 141,
+    lineAdded: 0,
     lineDeleted: 0
 };
 
 const singleCommitSettingsPy: ISingleFileCommit = {
     filePath: "backend/src/settings.py",
-    lineAdded: 141,
+    lineAdded: 129,
     lineDeleted: 0
 };
 
 const singleCommitUrlPy: ISingleFileCommit = {
     filePath: "backend/src/urls.py",
-    lineAdded: 141,
+    lineAdded: 21,
     lineDeleted: 0
 };
 
 const singleCommitWSGIPy: ISingleFileCommit = {
     filePath: "backend/src/wsgi.py",
-    lineAdded: 141,
+    lineAdded: 16,
     lineDeleted: 0
 };
 
@@ -293,13 +293,13 @@ const singleCommitEnvJs: ISingleFileCommit = {
 
 const singleCommitCssTransformJs: ISingleFileCommit = {
     filePath: "frontend/config/jest/cssTransform.js",
-    lineAdded: 141,
+    lineAdded: 14,
     lineDeleted: 0
 };
 
 const singleCommitFileTransformJs: ISingleFileCommit = {
     filePath: "frontend/config/jest/fileTransform.js",
-    lineAdded: 141,
+    lineAdded: 12,
     lineDeleted: 0
 };
 
