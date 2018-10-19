@@ -387,12 +387,6 @@ const singleCommitAppCss: ISingleFileCommit = {
     lineDeleted: 0
 };
 
-const singleCommitAppJs: ISingleFileCommit = {
-    filePath: "frontend/src/App.js",
-    lineAdded: 21,
-    lineDeleted: 0
-};
-
 const singleCommitAppTestJs: ISingleFileCommit = {
     filePath: "frontend/src/App.test.js",
     lineAdded: 9,
@@ -405,13 +399,17 @@ const singleCommitIndexCss: ISingleFileCommit = {
     lineDeleted: 0
 };
 
-
 const singleCommitLogoSvg: ISingleFileCommit = {
     filePath: "frontend/src/logo.svg",
     lineAdded: 0,
     lineDeleted: 0
 };
 
+const singleCommitAppJs: ISingleFileCommit = {
+    filePath: "frontend/src/App.js",
+    lineAdded: 21,
+    lineDeleted: 0
+};
 
 const singleCommitRegisterServiceWorkerJs: ISingleFileCommit = {
     filePath: "registerServiceWorker.js",
@@ -419,19 +417,94 @@ const singleCommitRegisterServiceWorkerJs: ISingleFileCommit = {
     lineDeleted: 0
 };
 
-
 const singleCommitIndexJs: ISingleFileCommit = {
     filePath: "frontend/src/index.js",
     lineAdded: 8,
     lineDeleted: 0
 };
 
+const singleCommitAppJs1: ISingleFileCommit = {
+    filePath: "frontend/src/App.js",
+    lineAdded: 154,
+    lineDeleted: 10
+};
+
+const singleCommitAppJs2: ISingleFileCommit = {
+    filePath: "frontend/src/App.js",
+    lineAdded: 45,
+    lineDeleted: 13
+};
+
+const singleCommitRegisterServiceWorkerJs1: ISingleFileCommit = {
+    filePath: "registerServiceWorker.js",
+    lineAdded: 253,
+    lineDeleted: 57
+};
+
+const singleCommitIndexJs1: ISingleFileCommit = {
+    filePath: "frontend/src/index.js",
+    lineAdded: 45,
+    lineDeleted: 2
+};
 
 
-const commitInput: ICommit = {
+
+const commitInput1: ICommit = {
+    id: "66dff0a8b1419497fc2be6b9eb3ba88bf37f335a",
+    numberOfFileAffected: 3,
+    files: [singleCommitGitIgnore, singleCommitManagePy, singleCommitAppJs]
+};
+
+const commitInput2: ICommit = {
+    id: "66dff0a8b1419497fc2be6b9eb3ba88bf37f335b",
+    numberOfFileAffected: 27,
+    files: [
+        singleCommitAppCss,
+        singleCommitAppTestJs,
+        singleCommitBuildJs,
+        singleCommitCssTransformJs,
+        singleCommitEnvJs,
+        singleCommitFavicon,
+        singleCommitFileTransformJs,
+        singleCommitIndexCss,
+        singleCommitIndexHtml,
+        singleCommitIndexJs,
+        singleCommitInitPy,
+        singleCommitLogoSvg,
+        singleCommitManifestJson,
+        singleCommitPackageJson,
+        singleCommitPackagelockJson,
+        singleCommitPathsJs,
+        singleCommitPolyFillsJs,
+        singleCommitReadMe,
+        singleCommitRegisterServiceWorkerJs,
+        singleCommitSettingsPy,
+        singleCommitStartJs,
+        singleCommitTestJs,
+        singleCommitUrlPy,
+        singleCommitWebpackDevJs,
+        singleCommitWebpackProdJs,
+        singleCommitWebpackServerJs,
+        singleCommitWSGIPy,
+    ]
+};
+
+const commitInput3: ICommit = {
     id: "66dff0a8b1419497fc2be6b9eb3ba88bf37f335c",
     numberOfFileAffected: 12,
-    files: []
+    files: [singleCommitAppJs1, singleCommitWSGIPy, singleCommitInitPy, singleCommitManagePy]
+};
+
+const commitInput4: ICommit = {
+    id: "66dff0a8b1419497fc2be6b9eb3ba88bf37f335d",
+    numberOfFileAffected: 2,
+    files: [singleCommitRegisterServiceWorkerJs1, singleCommitIndexCss]
+};
+
+const commitInput5: ICommit = {
+    id: "66dff0a8b1419497fc2be6b9eb3ba88bf37f335e",
+    numberOfFileAffected: 3,
+    files: [singleCommitIndexJs1, singleCommitAppJs2, singleCommitIndexHtml]
 };
 
 var commits = [
