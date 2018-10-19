@@ -1,5 +1,6 @@
 import { IDataEntry} from "../data-model/input-model/IDataEntry";
 import { IGitProjectOutput } from "../data-model/output-model/IGitProjectOutput";
+import {ISourceFileMapEntry} from "./ReactMatcher";
 
 export abstract class AbstractMatcher {
 
@@ -9,5 +10,7 @@ export abstract class AbstractMatcher {
     }
 
     public abstract execute(): IGitProjectOutput;
+
+    protected abstract sourceFilePathToParse(): ISourceFileMapEntry[];
 
 }
