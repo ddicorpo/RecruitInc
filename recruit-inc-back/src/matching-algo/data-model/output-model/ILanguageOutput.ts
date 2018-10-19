@@ -1,6 +1,7 @@
-import { IFrameworkOutput} from './IFrameworkOutput'
+import { IFrameworkOutput} from "./IFrameworkOutput"
+import { Technologies } from "./Technologies"
 export interface ILanguageOutput{
-    languageOrFramework: string,
+    languageOrFramework: Technologies,
     lineOfCode: number,
     numberOfCommits: number,
     frameworks: IFrameworkOutput[]

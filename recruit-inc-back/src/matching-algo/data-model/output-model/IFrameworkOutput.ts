@@ -1,5 +1,6 @@
+import {Technologies} from "./Technologies"
 export interface IFrameworkOutput{
-    technologieName: string,
+    technologieName: Technologies,
     lineOfCode: number,
     numberOfCommits: number
 }
