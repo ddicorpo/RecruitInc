@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import {GithubUserInfo} from "../../data-extraction/github/githubUserInfo";
 import {GithubUserRepos} from "../../data-extraction/github/githubUserRepos";
+import {GithubRepoStructure} from "../../data-extraction/github/githubRepoStructure";
 //import { Query } from "../../data-extraction/github/query";
 import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser"
 
@@ -84,8 +85,17 @@ export class Candidate {
 
                console.log(user);
                res.status(200).send(user.repositories);
-               //console.log(user.repositories[4].owner.login);
             });
 
+        app.route('/api/github/candidate/struct/:owner/:repoName')
+            .get(cors(), async (req: Request, res: Response) => {
+
+               let owner : string = req.params.owner;
+               let repoName : string = req.params.repoName;
+
+               let query : GithubRepoStructure = new GithubRepoStructure();
+               let projectStructure = await query.getRepoStructure(owner,repoName);
+               res.status(200).send(projectStructure);
+            });
     }
 }
