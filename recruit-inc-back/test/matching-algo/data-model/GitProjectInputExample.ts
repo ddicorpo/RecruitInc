@@ -1,36 +1,10 @@
 import {ICommit} from "../../../src/matching-algo/data-model/input-model/ICommit";
 import {ISingleFileCommit} from "../../../src/matching-algo/data-model/input-model/ISingleFileCommit";
 import { IProjectStructure } from "../../../src/matching-algo/data-model/input-model/IProjectStructure";
+import {IDataEntry} from "../../../src/matching-algo/data-model/input-model/IDataEntry";
+import {IGitProjectInput} from "../../../src/matching-algo/data-model/input-model/IGitProjectInput";
 
-var project = {
-    "id": 8919310,
-    "description": "Django-React project to build a to-do app with Pytest, Jest and Cypress e2e testing.",
-    "name": "Django-React-04",
-    "name_with_namespace": "csp5096 / Django-React-04",
-    "path": "Django-React-04",
-    "path_with_namespace": "csp5096/Django-React-04",
-    "created_at": "2018-10-17T20:21:17.346Z",
-    "default_branch": "master",
-    "tag_list": [],
-    "ssh_url_to_repo": "git@gitlab.com:csp5096/Django-React-04.git",
-    "http_url_to_repo": "https://gitlab.com/csp5096/Django-React-04.git",
-    "web_url": "https://gitlab.com/csp5096/Django-React-04",
-    "readme_url": "https://gitlab.com/csp5096/Django-React-04/blob/master/README.md",
-    "avatar_url": null,
-    "star_count": 0,
-    "forks_count": 0,
-    "last_activity_at": "2018-10-17T20:21:17.346Z",
-    "namespace": {
-        "id": 102150,
-        "name": "csp5096",
-        "path": "csp5096",
-        "kind": "user",
-        "full_path": "csp5096",
-        "parent_id": null
-    }
-};
-
-const repositoryTree: IProjectStructure[] = [
+const projectStructure: IProjectStructure[] = [
     {
         "fileId": "d670f68044212dfb9cd0a3b3dc8b1a31e1c1c78c",
         "fileName": ".gitignore",
@@ -464,46 +438,24 @@ const commitInput5: ICommit = {
     files: [singleCommitIndexJs1, singleCommitAppJs2, singleCommitIndexHtml]
 };
 
-var commits = [
-    {
-        "id": "0812db1b8795543ccdd824150d00fb6d6a5d2e1f",
-        "short_id": "0812db1b",
-        "title": "first commit",
-        "created_at": "2018-06-04T23:41:46.000Z",
-        "parent_ids": [],
-        "message": "first commit\n",
-        "author_name": "csp5096",
-        "author_email": "christopherscpowell@gmail.com",
-        "authored_date": "2018-06-04T23:41:46.000Z",
-        "committer_name": "csp5096",
-        "committer_email": "christopherscpowell@gmail.com",
-        "committed_date": "2018-06-04T23:41:46.000Z",
-        "stats": {
-            "additions": 13046,
-            "deletions": 0,
-            "total": 13046
-        }
-    },
-    {
-        "id": "0776181e6827faaab899ae8dcb5fb949b5cd4284",
-        "short_id": "0776181e",
-        "title": "Update README.md",
-        "created_at": "2018-06-04T23:42:59.000Z",
-        "parent_ids": [
-            "0812db1b8795543ccdd824150d00fb6d6a5d2e1f"
-        ],
-        "message": "Update README.md",
-        "author_name": "Christopher Powell",
-        "author_email": "csp5096@users.noreply.github.com",
-        "authored_date": "2018-06-04T23:42:59.000Z",
-        "committer_name": "GitHub",
-        "committer_email": "noreply@github.com",
-        "committed_date": "2018-06-04T23:42:59.000Z",
-        "stats": {
-            "additions": 1,
-            "deletions": 1,
-            "total": 2
-        }
-    }
-];
+const projectInput: IGitProjectInput = {
+    projectName: "Django-React-04",
+    applicantCommits: [
+        commitInput1,
+        commitInput2,
+        commitInput3,
+        commitInput4,
+        commitInput5
+    ],
+    projectStructure,
+    downloadedSourceFile: [
+        "toto",
+        "tata"
+    ]
+};
 
+export const dataEntry: IDataEntry = {
+    projectInputs: [
+        projectInput
+    ]
+};

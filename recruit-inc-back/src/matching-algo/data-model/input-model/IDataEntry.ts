@@ -3,5 +3,5 @@
  */
 import { IGitProjectInput } from './IGitProjectInput'
 export interface IDataEntry{
-    projectInput: IGitProjectInput[]
+    projectInputs: IGitProjectInput[]
 }
