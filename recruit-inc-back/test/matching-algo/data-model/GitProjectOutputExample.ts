@@ -22,7 +22,7 @@ const languagesOutput : ILanguageOutput = {
     frameworks: [frameworkOutputTypescript, frameworkOutputReact]
     
 }
-const projectOutput : IGitProjectOutput = {
+export const projectOutput : IGitProjectOutput = {
     projectName: "Django-React-04",
     languageOutput : [languagesOutput]
 }
