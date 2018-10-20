@@ -6,10 +6,10 @@ import {IGitProjectInput} from "../data-model/input-model/IGitProjectInput";
 export abstract class AbstractMatcher {
 
     protected projectsInput : IDataEntry;
-    protected targetTechnolgie : Technologies;
+    protected targetTechnolgy : Technologies;
     public constructor(projectsInput: IDataEntry, targetTechnologie : Technologies ){
         this.projectsInput = projectsInput;
-        this.targetTechnolgie = targetTechnologie;
+        this.targetTechnolgy = targetTechnologie;
     }
 
     public abstract execute(): IGitProjectOutput;

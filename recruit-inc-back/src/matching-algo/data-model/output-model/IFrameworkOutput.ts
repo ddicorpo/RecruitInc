@@ -1,6 +1,5 @@
 import {Technologies} from "./Technologies"
-export interface IFrameworkOutput{
+import {ICodeOutput} from "./ICodeOutput";
+export interface IFrameworkOutput extends ICodeOutput{
     technologieName: Technologies,
-    lineOfCode: number,
-    numberOfCommits: number
 }

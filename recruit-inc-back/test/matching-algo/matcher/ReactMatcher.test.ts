@@ -45,7 +45,7 @@ describe('Test react matching algorithm', () => {
 
         for (const commit of dataEntry.projectInputs[0].applicantCommits) {
 
-            numberOfLines += reactMatcher.countNumberOfLines(commit.files, ["js", "ts"], "frontend/src/");
+            numberOfLines += reactMatcher.countNumberOfLinesInSingleFileCommits(commit.files, ["js", "ts"], "frontend/src/");
         }
 
         // THEN
