@@ -83,7 +83,6 @@ export class Candidate {
                let query : GithubUserRepos   = new GithubUserRepos();
                user = await query.getUserRepos(user);
 
-               console.log(user);
                res.status(200).send(user.repositories);
             });
 
@@ -96,6 +95,33 @@ export class Candidate {
                let query : GithubRepoStructure = new GithubRepoStructure();
                let projectStructure = await query.getRepoStructure(owner,repoName);
                res.status(200).send(projectStructure);
+            });
+
+        app.route('/api/github/candidate/structt')
+            .get(cors(), async (req: Request, res: Response) => {
+
+                let user : IGithubUser = 
+                {login: "MewtR",
+                 createdAt: "",
+                 url: "",
+                 repositories: [
+                 {name: "MinistocksRework",
+                     owner: {
+                         login: "AyoubeAkaouch"
+                     }
+                 },
+                 {name: "SOEN343",
+                     owner: {
+                         login: "gprattico"
+                     }
+                 }
+                 ]
+
+                };
+
+               let query : GithubRepoStructure = new GithubRepoStructure();
+               user = await query.getRepoStructureFromUser(user);
+               res.status(200).send(user);
             });
     }
 }

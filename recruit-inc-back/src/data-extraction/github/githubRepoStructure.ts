@@ -16,10 +16,9 @@ export class GithubRepoStructure {
     object(expression: "master:${path ?  `${path}` : '' }"${oid ? `, oid: "${oid}"` : '' }){ 
         ... on Tree{ 
           entries{
-            mode
+            oid
             type
             name
-            oid
           }
         }
       }
@@ -29,7 +28,17 @@ export class GithubRepoStructure {
         return await new GithubApiV4().queryData(this.accessToken, query);
     }
 
-    async getRepoStructure(owner: string, repoName: string): Promise<any[]> {
+    async getRepoStructureFromUser(user: IGithubUser): Promise<IGithubUser> {
+
+        for (let i = 0; i < user.repositories.length; i++){
+            user.repositories[i].structure = await this.getRepoStructure(user.repositories[i].owner.login, user.repositories[i].name);
+        }
+
+        return user;
+        
+    }
+
+    async getRepoStructure(owner: string, repoName: string): Promise<{oid: string, type: string, name: string}[]> {
 
         let data : string = await this.query(owner, repoName);
         let jsonData = JSON.parse(data);
@@ -55,6 +64,7 @@ export class GithubRepoStructure {
         let jsonData = JSON.parse(data);
         let newFiles = jsonData.data.repository.object.entries;
         for (let f of newFiles){
+
             f.name = `${path}${f.name}`;
             input.push(f);
         }
