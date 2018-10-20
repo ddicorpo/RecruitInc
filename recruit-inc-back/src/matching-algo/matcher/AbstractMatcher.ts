@@ -13,7 +13,7 @@ export abstract class AbstractMatcher {
 
     public abstract execute(): IGitProjectOutput;
 
-    protected abstract sourceFilePathToParse(): ISourceFileMapEntry[];
+    protected abstract sourceFilePathToParse(): ISourceFileMapEntry;
 
     public abstract isTechnologieFound(): boolean;
 }

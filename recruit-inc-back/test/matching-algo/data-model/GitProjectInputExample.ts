@@ -3,6 +3,7 @@ import {ISingleFileCommit} from "../../../src/matching-algo/data-model/input-mod
 import { IProjectStructure } from "../../../src/matching-algo/data-model/input-model/IProjectStructure";
 import {IDataEntry} from "../../../src/matching-algo/data-model/input-model/IDataEntry";
 import {IGitProjectInput} from "../../../src/matching-algo/data-model/input-model/IGitProjectInput";
+import {ISourceFiles} from "../../../src/matching-algo/data-model/input-model/ISourceFiles";
 
 const projectStructure: IProjectStructure[] = [
     {
@@ -437,8 +438,22 @@ const commitInput5: ICommit = {
     numberOfFileAffected: 3,
     files: [singleCommitIndexJs1, singleCommitAppJs2, singleCommitIndexHtml]
 };
+
 const pathToFakePackageJson : string = __dirname +  "/files-downloaded/package.downloaded.json";
 const pathToFakeGitIgnore : string = __dirname + "/files-downloaded/gitignore.downloaded";
+
+const packageJsonSourceFile: ISourceFiles = {
+    filename: "package.json",
+    repoFilePath: "frontend/package.json",
+    localFilePath: pathToFakePackageJson
+};
+
+const gitIgnoreSourceFile: ISourceFiles = {
+    filename: ".gitignore",
+    repoFilePath: ".gitignore",
+    localFilePath: pathToFakeGitIgnore
+};
+
 const projectInput: IGitProjectInput = {
     projectName: "Django-React-04",
     applicantCommits: [
@@ -450,8 +465,8 @@ const projectInput: IGitProjectInput = {
     ],
     projectStructure,
     downloadedSourceFile: [
-        pathToFakePackageJson,
-        pathToFakeGitIgnore
+        packageJsonSourceFile,
+        gitIgnoreSourceFile
     ]
 };
 
