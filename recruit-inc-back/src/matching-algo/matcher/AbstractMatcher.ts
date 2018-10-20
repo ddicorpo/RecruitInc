@@ -1,7 +1,6 @@
-import { IGitProjectOutput } from "../data-model/output-model/IGitProjectOutput";
-import { Technologies } from "../data-model/output-model/Technologies";
+import {IGitProjectOutput} from "../data-model/output-model/IGitProjectOutput";
+import {Technologies} from "../data-model/output-model/Technologies";
 import {IGitProjectInput} from "../data-model/input-model/IGitProjectInput";
-import {ITargetMatcher} from "../data-model/matcher-model/ITargetMatcher";
 import {ISourceFiles} from "../data-model/input-model/ISourceFiles";
 import * as fs from "fs";
 import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
@@ -10,27 +9,56 @@ import {ExtensionExtractor} from "../../util/ExtensionExtractor";
 import {IProcessedSourceFile} from "../data-model/matcher-model/IProcessedSourceFile";
 import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
+import {FilepathExtractor} from "../../util/FilepathExtractor";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
+
 export abstract class AbstractMatcher {
 
-    protected matchingTargets: ITargetMatcher[];
-    protected technology : Technologies;
-    protected projectInput : IGitProjectInput;
-    protected matchingExtensions: string[];
+    protected technology: Technologies;
+    protected projectInput: IGitProjectInput;
+    //TODO: Refactor get data out of config, for more readability
+    protected matchingConfig: IMatcherConfig;
 
-    public constructor(projectInput: IGitProjectInput, matcherConfig: IMatcherConfig){
+    public constructor(projectInput: IGitProjectInput, matcherConfig: IMatcherConfig) {
         this.projectInput = projectInput;
         this.technology = matcherConfig.technology;
-        this.matchingExtensions = matcherConfig.extensions;
-        this.matchingTargets = matcherConfig.matchingTargets;
+        this.matchingConfig = matcherConfig
     }
 
-    public execute(): IGitProjectOutput{
-        console.log('I am executing....');
-        return new class implements IGitProjectOutput {
-            languageOutput: [];
-            projectName: "empty";
+    public execute(): IGitProjectOutput {
+        // For each one, get a string representing the file
+        const sourceFiles: IProcessedSourceFile[] = this.processSourceFiles();
+        let numberOfLines: number = 0;
+        const codeOutput: ICodeOutput = {
+            linesOfCode : 0,
+            numberOfCommits : 0
+        };
+        for (const sourceFile of sourceFiles) {
+
+
+            // Parse the string to see if react is there
+            const isTechnologyFound: boolean = sourceFile.isMatchingTechnology;
+
+
+            if (isTechnologyFound) {
+                // Get the folder in which the package.json file is
+                //TODO: Replace 'this.sourceFolder'
+                const extractedPath = FilepathExtractor.extract(sourceFile.repoFilePath) +
+                    this.matchingConfig.sourceFolder;
+                // Get all the files under the src folder that exists under the folder package.json is in
+                // Get all commits of the person that match those files
+                // Count the number of react lines
+                const tempCodeOutput: ICodeOutput =
+                    this.countCommitsAndLinesOfCode(extractedPath);
+
+                codeOutput.linesOfCode += tempCodeOutput.linesOfCode;
+                codeOutput.numberOfCommits += tempCodeOutput.numberOfCommits;
+
+            }
         }
+
+
+        return null;
     }
 
     protected processSourceFiles(): IProcessedSourceFile[] {
@@ -41,30 +69,32 @@ export abstract class AbstractMatcher {
         for (const sourceFile of sourceFiles) {
             const filename: string = sourceFile.filename;
 
-            for (const matchingTarget of this.matchingTargets) {
+            for (const matchingTarget of this.matchingConfig.matchingTargets) {
 
                 const isFilenameMatchingFileToParse: boolean = filename === matchingTarget.sourceFileToParse;
 
                 if (isFilenameMatchingFileToParse) {
                     let filetext = null;
+                    let isMatchingTechnology: boolean = false;
                     try {
                         filetext = this.readTargetFile(sourceFile.localFilePath);
+                        isMatchingTechnology = this.isTechnologyFound(filetext, matchingTarget.matchingPattern);
                     } catch (exception) {
 
                         // TODO: add logging here
                         console.log(exception);
                         continue;
+                    } finally {
+                        const processedSourceFile: IProcessedSourceFile = {
+                            filename: sourceFile.filename,
+                            repoFilePath: sourceFile.repoFilePath,
+                            localFilePath: sourceFile.localFilePath,
+                            isMatchingTechnology
+                        };
+                        sourceFilesOutput.push(processedSourceFile);
                     }
 
-                    const isMatchingTechnology: boolean = this.isTechnologyFound(filetext, matchingTarget.matchingPattern);
 
-                    const processedSourceFile: IProcessedSourceFile = {
-                        filename: sourceFile.filename,
-                        repoFilePath: sourceFile.repoFilePath,
-                        localFilePath: sourceFile.localFilePath,
-                        isMatchingTechnology
-                    };
-                    sourceFilesOutput.push(processedSourceFile);
                 }
 
             }
@@ -125,7 +155,7 @@ export abstract class AbstractMatcher {
         const fileExtension: string = ExtensionExtractor.extract(filePath);
         let isMatchFound: boolean = false;
 
-        for (const extension of this.matchingExtensions) {
+        for (const extension of this.matchingConfig.extensions) {
             if (extension === fileExtension) {
                 isMatchFound = true;
                 break;

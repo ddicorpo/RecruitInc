@@ -4,5 +4,7 @@ import {ITargetMatcher} from "./ITargetMatcher";
 export interface IMatcherConfig {
     technology: Technologies,
     extensions: string[],
-    matchingTargets: ITargetMatcher[]
+    matchingTargets: ITargetMatcher[],
+    // Example in Javascript it's "src/"
+    sourceFolder?: string
 }
