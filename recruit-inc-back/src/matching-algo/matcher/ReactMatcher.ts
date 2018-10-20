@@ -13,11 +13,6 @@ import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 
-
-export interface IProcessedSourceFile extends ISourceFiles {
-    "filetext": string,
-}
-
 export class ReactMatcher extends AbstractMatcher {
 
     private sourceFileToParse: string = "package.json";
@@ -39,7 +34,7 @@ export class ReactMatcher extends AbstractMatcher {
     public execute(): IGitProjectOutput[] {
         // Get the list of files we want
         const allProjectsOutput: IGitProjectOutput[] = [];
-        const allProjects: IGitProjectInput[] = this.projectsInput.projectInputs;
+        const allProjects: IGitProjectInput[] = this.projectInput.projectInputs;
         for (const project of allProjects) {
             // For each one, get a string representing the file
             const sourceFiles: IProcessedSourceFile[] = this.sourceFilePathToParse(project);
@@ -114,97 +109,6 @@ export class ReactMatcher extends AbstractMatcher {
         return allProjectsOutput;
     }
 
-    public sourceFilePathToParse(project: IGitProjectInput): IProcessedSourceFile[] {
-        const sourceFiles: ISourceFiles[] = project.downloadedSourceFile;
 
-        const sourceFilesOutput: IProcessedSourceFile[] = [];
-
-        for (const sourceFile of sourceFiles) {
-            const filename: string = sourceFile.filename;
-
-            const isFilenameMatchingFileToParse: boolean = filename === this.sourceFileToParse;
-
-            if (isFilenameMatchingFileToParse) {
-                let filetext = null;
-                try {
-                    filetext = this.readTargetFile(sourceFile.localFilePath);
-                } catch (exception) {
-
-                    // TODO: add logging here
-                    console.log(exception);
-                    continue;
-                }
-
-                const processedSourceFile: IProcessedSourceFile = {
-                    filename: sourceFile.filename,
-                    repoFilePath: sourceFile.repoFilePath,
-                    localFilePath: sourceFile.localFilePath,
-                    filetext
-                };
-                sourceFilesOutput.push(processedSourceFile);
-            }
-        }
-        return sourceFilesOutput;
-    }
-
-    protected readTargetFile(filePath: string): string {
-        return fs.readFileSync(filePath, 'utf8');
-    }
-
-    public isTechnologyFound(filetext: string): boolean {
-        const regularExpression: RegExp = new RegExp(this.reactPattern);
-        return regularExpression.test(filetext);
-    }
-
-    public countCommitsAndLinesOfCode(commits: ICommit[], extensions: string[], basePath: string): ICodeOutput {
-        const codeOutput: ICodeOutput = {
-            linesOfCode: 0,
-            numberOfCommits: 0
-        };
-        let numberOfLines: number = 0;
-        for (const commit of commits) {
-            const singleFileCommits: ISingleFileCommit[] = commit.files;
-            const numberOfLinesInCommit: number = this.countNumberOfLinesInSingleFileCommits(singleFileCommits, extensions, basePath);
-            numberOfLines += numberOfLinesInCommit;
-            if (numberOfLinesInCommit !== 0) {
-                codeOutput.numberOfCommits += 1;
-            }
-        }
-        codeOutput.linesOfCode = numberOfLines;
-        return codeOutput;
-    }
-
-    public countNumberOfLinesInSingleFileCommits(commits: ISingleFileCommit[], extensions: string[], basePath: string): number {
-        let numberOfLines: number = 0;
-        for (const commit of commits) {
-            const filePath: string = commit.filePath;
-            const isOfBasePath: boolean = this.isFilePathContainingBasePath(filePath, basePath);
-            const isOfExtension: boolean = this.isFilepathOfExtension(filePath, extensions);
-            if (isOfBasePath && isOfExtension) {
-                numberOfLines += commit.lineAdded;
-                numberOfLines -= commit.lineDeleted;
-            }
-        }
-        return numberOfLines;
-    }
-
-    public isFilePathContainingBasePath(filePath: string, basePath: string): boolean {
-        const basePathLength: number = basePath.length;
-        return filePath.substring(0, basePathLength) === basePath;
-    }
-
-    public isFilepathOfExtension(filePath: string, extensions: string[]): boolean {
-        const fileExtension: string = ExtensionExtractor.extract(filePath);
-        let isMatchFound: boolean = false;
-
-        for (const extension of extensions) {
-            if (extension === fileExtension) {
-                isMatchFound = true;
-                break;
-            }
-        }
-
-        return isMatchFound;
-    }
 
 }
