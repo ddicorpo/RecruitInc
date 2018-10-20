@@ -11,6 +11,7 @@ import {ICommit} from "../data-model/input-model/ICommit";
 import {FilepathExtractor} from "../../util/FilepathExtractor";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
+import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 
 
 export interface IProcessedSourceFile extends ISourceFiles {
@@ -35,8 +36,9 @@ export class ReactMatcher extends AbstractMatcher {
 
     private allJavascriptExtensions = ["js", "ts"];
 
-    public execute(): IGitProjectOutput {
+    public execute(): IGitProjectOutput[] {
         // Get the list of files we want
+        const allProjectsOutput: IGitProjectOutput[] = [];
         const allProjects: IGitProjectInput[] = this.projectsInput.projectInputs;
         for (const project of allProjects) {
             // For each one, get a string representing the file
@@ -69,12 +71,32 @@ export class ReactMatcher extends AbstractMatcher {
                 }
 
             }
-            const languageOutput = {
-                languageOrFramework: Technologies.React,
-                frameworks: frameworkOutput
-            }
-            const codeOutput: ICodeOutput =
+            const javascriptCodeOutput: ICodeOutput =
                 this.countCommitsAndLinesOfCode(project.applicantCommits, this.allJavascriptExtensions, "");
+
+            const typescriptCodeOutput: ICodeOutput =
+                this.countCommitsAndLinesOfCode(project.applicantCommits, ["ts"], "");
+
+            const typescriptOutput: IFrameworkOutput = {
+                technologieName: Technologies.Typescript,
+                linesOfCode: typescriptCodeOutput.linesOfCode,
+                numberOfCommits: typescriptCodeOutput.numberOfCommits
+            };
+
+            const javascriptOutput: ILanguageOutput = {
+                languageOrFramework: Technologies.Javascript,
+                linesOfCode: javascriptCodeOutput.linesOfCode,
+                numberOfCommits: javascriptCodeOutput.numberOfCommits,
+                frameworks: [typescriptOutput, frameworkOutput]
+            };
+
+            const projectOutput: IGitProjectOutput = {
+                projectName: project.projectName,
+                languageOutput: [javascriptOutput]
+            };
+
+            allProjectsOutput.push(projectOutput);
+
         }
 
         // Get all commits that match .js file extension
@@ -89,7 +111,7 @@ export class ReactMatcher extends AbstractMatcher {
 
         // Refactor to make this pretty
 
-        return null;
+        return allProjectsOutput;
     }
 
     public sourceFilePathToParse(project: IGitProjectInput): IProcessedSourceFile[] {
@@ -98,12 +120,10 @@ export class ReactMatcher extends AbstractMatcher {
         const sourceFilesOutput: IProcessedSourceFile[] = [];
 
         for (const sourceFile of sourceFiles) {
-            console.log("SOURCE FILE: ", sourceFile);
             const filename: string = sourceFile.filename;
 
             const isFilenameMatchingFileToParse: boolean = filename === this.sourceFileToParse;
 
-            console.log("isFilenameMatchingFileToParse: ", isFilenameMatchingFileToParse);
             if (isFilenameMatchingFileToParse) {
                 let filetext = null;
                 try {

@@ -12,7 +12,7 @@ export abstract class AbstractMatcher {
         this.targetTechnolgy = targetTechnologie;
     }
 
-    public abstract execute(): IGitProjectOutput;
+    public abstract execute(): IGitProjectOutput[];
 
     protected abstract sourceFilePathToParse(project: IGitProjectInput): IProcessedSourceFile[]
 

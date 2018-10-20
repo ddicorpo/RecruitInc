@@ -5,19 +5,19 @@ import { Technologies } from "../../../src/matching-algo/data-model/output-model
 
 const frameworkOutputTypescript : IFrameworkOutput = {
     technologieName: Technologies.Typescript,
-    lineOfCode: 313,
+    linesOfCode: 313,
     numberOfCommits: 2
 };
 
 const frameworkOutputReact : IFrameworkOutput = {
     technologieName: Technologies.React,
-    lineOfCode: 570,
+    linesOfCode: 570,
     numberOfCommits: 5
 };
 
 const languagesOutput : ILanguageOutput = {
     languageOrFramework: Technologies.Javascript,
-    lineOfCode: 1749,
+    linesOfCode: 1749,
     numberOfCommits: 5,
     frameworks: [frameworkOutputTypescript, frameworkOutputReact]
     
