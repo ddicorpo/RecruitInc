@@ -1,5 +1,3 @@
-import {AbstractMatcher} from "../AbstractMatcher";
-import {IDataEntry} from "../../data-model/input-model/IDataEntry";
 import {IGitProjectOutput} from "../../data-model/output-model/IGitProjectOutput";
 import {IGitProjectInput} from "../../data-model/input-model/IGitProjectInput";
 import {Technologies} from "../../data-model/output-model/Technologies";
@@ -25,9 +23,9 @@ export class ReactMatcher extends AbstractFrameworkMatcher {
 
     private allJavascriptExtensions = ["js", "ts"];
 
-    public execute(): IGitProjectOutput[] {
+    public execute(): IGitProjectOutput {
         // Get the list of files we want
-        const allProjectsOutput: IGitProjectOutput[] = [];
+        const allProjectsOutput: IGitProjectOutput = null;
         const allProjects: IGitProjectInput[] = this.projectInput.projectInputs;
         for (const project of allProjects) {
             // For each one, get a string representing the file
