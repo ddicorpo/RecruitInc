@@ -9,6 +9,8 @@ import {ISingleFileCommit} from "../data-model/input-model/ISingleFileCommit";
 import {ExtensionExtractor} from "../../util/ExtensionExtractor";
 import {IProcessedSourceFile} from "../data-model/matcher-model/IProcessedSourceFile";
 import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
+import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
+import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 export abstract class AbstractMatcher {
 
     protected matchingTargets: ITargetMatcher[];
@@ -69,6 +71,8 @@ export abstract class AbstractMatcher {
         }
         return sourceFilesOutput;
     }
+
+    protected abstract package(): IFrameworkOutput | ILanguageOutput;
 
     protected readTargetFile(filePath: string): string {
         return fs.readFileSync(filePath, 'utf8');
