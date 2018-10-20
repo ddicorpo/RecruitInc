@@ -5,7 +5,7 @@ import {javascriptConfig} from "../../data-model/matcher-config/Javascript/Javas
 
 export class JavascriptMatcher extends AbstractLanguageMatcher{
 
-    public constructor(projectsInput: IGitProjectInput, matcherConfig: IMatcherConfig = javascriptConfig){
-        super(projectsInput, matcherConfig);
+    public constructor(matcherConfig: IMatcherConfig = javascriptConfig){
+        super(matcherConfig);
     }
 }

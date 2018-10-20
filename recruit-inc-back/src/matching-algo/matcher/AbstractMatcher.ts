@@ -19,46 +19,23 @@ export abstract class AbstractMatcher {
     //TODO: Refactor get data out of config, for more readability
     protected matchingConfig: IMatcherConfig;
 
-    public constructor(projectInput: IGitProjectInput, matcherConfig: IMatcherConfig) {
-        this.projectInput = projectInput;
+    public constructor(matcherConfig: IMatcherConfig) {
         this.technology = matcherConfig.technology;
         this.matchingConfig = matcherConfig
     }
 
-    public execute(): IFrameworkOutput | ILanguageOutput {
-        // For each one, get a string representing the file
-        const sourceFiles: IProcessedSourceFile[] = this.processSourceFiles();
-        let numberOfLines: number = 0;
-        const codeOutput: ICodeOutput = {
-            linesOfCode : 0,
-            numberOfCommits : 0
-        };
-        for (const sourceFile of sourceFiles) {
-
-
-            // Parse the string to see if react is there
-            const isTechnologyFound: boolean = sourceFile.isMatchingTechnology;
-
-
-            if (isTechnologyFound) {
-                // Get the folder in which the package.json file is
-                //TODO: Replace 'this.sourceFolder'
-                const extractedPath = FilepathExtractor.extract(sourceFile.repoFilePath) +
-                    this.matchingConfig.sourceFolder;
-                // Get all the files under the src folder that exists under the folder package.json is in
-                // Get all commits of the person that match those files
-                // Count the number of react lines
-                const tempCodeOutput: ICodeOutput =
-                    this.countCommitsAndLinesOfCode(extractedPath);
-
-                codeOutput.linesOfCode += tempCodeOutput.linesOfCode;
-                codeOutput.numberOfCommits += tempCodeOutput.numberOfCommits;
-
-            }
-        }
-        return this.package(codeOutput);
-
+    public setProjectInput(projectInput: IGitProjectInput) {
+        this.projectInput = projectInput;
     }
+
+    public execute(): IFrameworkOutput | ILanguageOutput {
+        const codeOutput = this.computeCodeOutput();
+        return this.package(codeOutput);
+    }
+
+    protected abstract computeCodeOutput(): ICodeOutput;
+
+    protected abstract package(codeOutput: ICodeOutput): IFrameworkOutput | ILanguageOutput;
 
     protected processSourceFiles(): IProcessedSourceFile[] {
         const sourceFiles: ISourceFiles[] = this.projectInput.downloadedSourceFile;
@@ -101,17 +78,6 @@ export abstract class AbstractMatcher {
         return sourceFilesOutput;
     }
 
-    protected abstract package(codeOutput: ICodeOutput): IFrameworkOutput | ILanguageOutput;
-
-    protected readTargetFile(filePath: string): string {
-        return fs.readFileSync(filePath, 'utf8');
-    }
-
-    protected isTechnologyFound(filetext: string, pattern: string): boolean {
-        const regularExpression: RegExp = new RegExp(pattern);
-        return regularExpression.test(filetext);
-    }
-
     protected countCommitsAndLinesOfCode(basePath: string): ICodeOutput {
         const commits = this.projectInput.applicantCommits;
         const codeOutput: ICodeOutput = {
@@ -131,7 +97,16 @@ export abstract class AbstractMatcher {
         return codeOutput;
     }
 
-    protected countNumberOfLinesInSingleFileCommits(commits: ISingleFileCommit[], basePath: string): number {
+    private readTargetFile(filePath: string): string {
+        return fs.readFileSync(filePath, 'utf8');
+    }
+
+    private isTechnologyFound(filetext: string, pattern: string): boolean {
+        const regularExpression: RegExp = new RegExp(pattern);
+        return regularExpression.test(filetext);
+    }
+
+    private countNumberOfLinesInSingleFileCommits(commits: ISingleFileCommit[], basePath: string): number {
         let numberOfLines: number = 0;
         for (const commit of commits) {
             const filePath: string = commit.filePath;
@@ -145,12 +120,12 @@ export abstract class AbstractMatcher {
         return numberOfLines;
     }
 
-    protected isFilePathContainingBasePath(filePath: string, basePath: string): boolean {
+    private isFilePathContainingBasePath(filePath: string, basePath: string): boolean {
         const basePathLength: number = basePath.length;
         return filePath.substring(0, basePathLength) === basePath;
     }
 
-    protected isFilepathOfExtension(filePath: string): boolean {
+    private isFilepathOfExtension(filePath: string): boolean {
         const fileExtension: string = ExtensionExtractor.extract(filePath);
         let isMatchFound: boolean = false;
 

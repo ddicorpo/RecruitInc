@@ -5,26 +5,36 @@ import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
-import {Technologies} from "../data-model/output-model/Technologies";
-
 
 export abstract class AbstractLanguageMatcher extends AbstractMatcher {
 
     private frameworks: AbstractFrameworkMatcher[];
 
-    public constructor(projectsInput: IGitProjectInput, matcherConfig: IMatcherConfig, frameworks: AbstractFrameworkMatcher[] = []){
-        super(projectsInput, matcherConfig);
+    public constructor(matcherConfig: IMatcherConfig, frameworks: AbstractFrameworkMatcher[] = []){
+        super(matcherConfig);
         this.frameworks = frameworks;
     }
 
-    public addFramework(framework: AbstractFrameworkMatcher): void {
+    public setProjectInput(projectInput: IGitProjectInput) {
+        for (const framework of this.frameworks) {
+            framework.setProjectInput(projectInput);
+        }
+        this.projectInput = projectInput;
+    }
+
+    public addFramework(framework: AbstractFrameworkMatcher): AbstractLanguageMatcher {
         this.frameworks.push(framework);
+        return this;
+    }
+
+    protected computeCodeOutput(): ICodeOutput {
+        return this.countCommitsAndLinesOfCode("");
     }
 
     protected package(codeOutput: ICodeOutput): ILanguageOutput {
         const frameworksOutput: IFrameworkOutput[] = [];
         for (const framework of this.frameworks) {
-            frameworksOutput.push(framework.execute());
+            frameworksOutput.push(framework.execute() as IFrameworkOutput);
         }
 
         const languageOutput: ILanguageOutput = {
