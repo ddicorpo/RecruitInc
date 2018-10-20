@@ -4,6 +4,8 @@ import { IGitProjectOutput } from "../data-model/output-model/IGitProjectOutput"
 import {IGitProjectInput} from "../data-model/input-model/IGitProjectInput";
 import {FilenameExtractor} from "../../util/FilenameExtractor";
 import { Technologies } from "../data-model/output-model/Technologies";
+import * as fs from "fs";
+
 
 export interface ISourceFileMapEntry {
     [key: string]: string
@@ -11,10 +13,12 @@ export interface ISourceFileMapEntry {
 
 export class ReactMatcher extends AbstractMatcher {
 
-    private sourceFileToParse = "package.json";
-    public constructor(projectsInput: IDataEntry, targetTechnologie : Technologies){
-        super(projectsInput, targetTechnologie);
+    private sourceFileToParse;
+    public constructor(projectsInput: IDataEntry, targetTechnologie : Technologies,
+                       sourceFileToParse : string = "package.json"){
 
+        super(projectsInput, targetTechnologie);
+        this.sourceFileToParse = sourceFileToParse;
     }
 
     public execute(): IGitProjectOutput {
@@ -42,6 +46,17 @@ export class ReactMatcher extends AbstractMatcher {
             }
         }
         return entryList;
+    }
+
+    protected readTargetFile(filePath: string) : string {
+        try{
+             let fileSync : string = fs.readFileSync(filePath,'utf8');
+             return fileSync;
+        }catch(exception){
+            console.log("Problem while reading the file"
+                + exception + "at: "  +filePath);
+            return null;
+        }
     }
 
     public isTechnologieFound(): boolean {

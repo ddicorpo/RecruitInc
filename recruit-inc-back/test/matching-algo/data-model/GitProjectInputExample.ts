@@ -437,7 +437,8 @@ const commitInput5: ICommit = {
     numberOfFileAffected: 3,
     files: [singleCommitIndexJs1, singleCommitAppJs2, singleCommitIndexHtml]
 };
-
+const pathToFakePackageJson : string = __dirname +  "/files-downloaded/package.downloaded.json";
+const pathToFakeGitIgnore : string = __dirname + "/files-downloaded/gitignore.downloaded";
 const projectInput: IGitProjectInput = {
     projectName: "Django-React-04",
     applicantCommits: [
@@ -449,8 +450,8 @@ const projectInput: IGitProjectInput = {
     ],
     projectStructure,
     downloadedSourceFile: [
-        "toto",
-        "tata"
+        pathToFakePackageJson,
+        pathToFakeGitIgnore
     ]
 };
 
