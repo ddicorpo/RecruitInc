@@ -1,3 +1,5 @@
+import {AbstractFrameworkMatcher} from "../AbstractFrameworkMatcher";
+import {ITargetMatcher} from "../../data-model/matcher-model/ITargetMatcher";
 import {AbstractMatcher} from "./AbstractMatcher";
 import {IDataEntry} from "../data-model/input-model/IDataEntry";
 import {IGitProjectOutput} from "../data-model/output-model/IGitProjectOutput";
@@ -8,27 +10,24 @@ import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 
-export class ReactMatcher extends AbstractMatcher {
+export class ReactMatcher extends AbstractFrameworkMatcher {
 
     private sourceFileToParse: string = "package.json";
-    private reactPattern;
     private result: IGitProjectOutput;
 
+    public constructor(projectsInput: IGitProjectInput, matchingTargets: ITargetMatcher[],
+                       targetTechnology : Technologies, matchingExtensions: string[]) {
 
-    public constructor(projectsInput: IDataEntry, targetTechnologie: Technologies,
-                       reactPattern: string = "(\"react\"|\"@type\\/react\") {0,1}: {0,1}\"") {
-
-        super(projectsInput, targetTechnologie);
-        this.reactPattern = reactPattern;
+        super(projectsInput, matchingTargets, targetTechnology, matchingExtensions);
+        //this.reactPattern = matchingExtensions[0];
     }
-
     private sourceFolder = "src/";
 
     private allJavascriptExtensions = ["js", "ts"];
 
-    public execute(): IGitProjectOutput[] {
+    public execute(): IGitProjectOutput {
         // Get the list of files we want
-        const allProjectsOutput: IGitProjectOutput[] = [];
+        const allProjectsOutput: IGitProjectOutput = null;
         const allProjects: IGitProjectInput[] = this.projectInput.projectInputs;
         for (const project of allProjects) {
             // For each one, get a string representing the file
@@ -88,18 +87,6 @@ export class ReactMatcher extends AbstractMatcher {
             allProjectsOutput.push(projectOutput);
 
         }
-
-        // Get all commits that match .js file extension
-
-        // Count number of lines
-
-        // Get all commits that match .ts file extension (LATER)
-
-        // Count number of lines
-
-        // Package object and return
-
-        // Refactor to make this pretty
 
         return allProjectsOutput;
     }
