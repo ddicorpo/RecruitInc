@@ -1,16 +1,14 @@
 import {AbstractFrameworkMatcher} from "../AbstractFrameworkMatcher";
-import {ITargetMatcher} from "../../data-model/matcher-model/ITargetMatcher";
-import {AbstractMatcher} from "./AbstractMatcher";
-import {IDataEntry} from "../data-model/input-model/IDataEntry";
-import {IGitProjectOutput} from "../data-model/output-model/IGitProjectOutput";
-import {IGitProjectInput} from "../data-model/input-model/IGitProjectInput";
-import {Technologies} from "../data-model/output-model/Technologies";
-import {FilepathExtractor} from "../../util/FilepathExtractor";
-import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
-import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
-import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 import {IMatcherConfig} from "../../data-model/matcher-model/IMatcherConfig";
 import {typescriptConfig} from "../../data-model/matcher-config/Javascript/TypescriptConfig";
+import {IGitProjectOutput} from "../../data-model/output-model/IGitProjectOutput";
+import {IGitProjectInput} from "../../data-model/input-model/IGitProjectInput";
+import {IProcessedSourceFile} from "../../data-model/matcher-model/IProcessedSourceFile";
+import {IFrameworkOutput} from "../../data-model/output-model/IFrameworkOutput";
+import {FilepathExtractor} from "../../../util/FilepathExtractor";
+import {ICodeOutput} from "../../data-model/output-model/ICodeOutput";
+import {Technologies} from "../../data-model/output-model/Technologies";
+import {ILanguageOutput} from "../../data-model/output-model/ILanguageOutput";
 
 export class ReactMatcher extends AbstractFrameworkMatcher {
 
