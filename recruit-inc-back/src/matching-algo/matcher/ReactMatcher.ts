@@ -3,6 +3,7 @@ import { IDataEntry } from "../data-model/input-model/IDataEntry";
 import { IGitProjectOutput } from "../data-model/output-model/IGitProjectOutput";
 import {IGitProjectInput} from "../data-model/input-model/IGitProjectInput";
 import {FilenameExtractor} from "../../util/FilenameExtractor";
+import { Technologies } from "../data-model/output-model/Technologies";
 
 export interface ISourceFileMapEntry {
     [key: string]: string
@@ -11,9 +12,8 @@ export interface ISourceFileMapEntry {
 export class ReactMatcher extends AbstractMatcher {
 
     private sourceFileToParse = "package.json";
-
-    public constructor(projectsInput: IDataEntry){
-        super(projectsInput);
+    public constructor(projectsInput: IDataEntry, targetTechnologie : Technologies){
+        super(projectsInput, targetTechnologie);
 
     }
 
@@ -41,6 +41,10 @@ export class ReactMatcher extends AbstractMatcher {
 
 
         return null;
+    }
+
+    public isTechnologieFound(): boolean {
+        return false;
     }
 
 }
