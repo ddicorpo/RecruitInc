@@ -23,24 +23,25 @@ export class ReactMatcher extends AbstractMatcher {
 
     protected sourceFilePathToParse(): ISourceFileMapEntry[] {
         const allProjects: IGitProjectInput[] = this.projectsInput.projectInputs;
+        const entryList: ISourceFileMapEntry[] = [];
 
         for (const project of allProjects) {
+            const entry: ISourceFileMapEntry = {};
             const projectName: string = project.projectName;
-
             const filePaths: string[] = project.downloadedSourceFile;
 
             for (const filePath of filePaths) {
                 const filename: string = FilenameExtractor.extract(filePath);
 
+                const isFilenameMatchingFileToParse: boolean = filename === this.sourceFileToParse;
+
+                if (isFilenameMatchingFileToParse) {
+                    entry[projectName] = filePath;
+                    entryList.push(entry);
+                }
             }
-
-
-
-
         }
-
-
-        return null;
+        return entryList;
     }
 
     public isTechnologieFound(): boolean {
