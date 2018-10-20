@@ -48,7 +48,7 @@ export class ReactMatcher extends AbstractMatcher {
 
             let numberOfLines: number = 0;
             const frameworkOutput: IFrameworkOutput = {
-                technologieName: this.targetTechnolgy,
+                technologieName: this.technology,
                 linesOfCode: 0,
                 numberOfCommits: 0
             };
@@ -58,8 +58,8 @@ export class ReactMatcher extends AbstractMatcher {
 
 
                 if (isTechnologyFound) {
-                    const extractedPath = FilepathExtractor.extract(sourceFile.repoFilePath) + this.sourceFolder;
                     // Get the folder in which the package.json file is
+                    const extractedPath = FilepathExtractor.extract(sourceFile.repoFilePath) + this.sourceFolder;
                     // Get all the files under the src folder that exists under the folder package.json is in
                     // Get all commits of the person that match those files
                     // Count the number of react lines
