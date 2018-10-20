@@ -19,24 +19,22 @@ describe('Test react matching algorithm', () => {
     });
 
 
-    it('Should detect whether a person has made commits in react', () => {
+    it('Should detect whether a person has made commits react', () => {
         // GIVEN
         const reactMatcher: ReactMatcher = new ReactMatcher(dataEntry, Technologies.React);
         const sourceFiles: IProcessedSourceFile[] = reactMatcher.sourceFilePathToParse(dataEntry.projectInputs[0]);
         const sourceFileText: string = sourceFiles[0].filetext;
 
-
         // WHEN
         const isReactFound: boolean = reactMatcher.isTechnologyFound(sourceFileText);
-
-        console.log("DO WE FIND TOTO!!!", reactMatcher.isTechnologyFound("react : "));
+        console.log("(isTechnologyFound) React Technologie in a react file: ", isReactFound);
 
         // THEN
         // We expect to find react in our dataEntry object
-        expect(isReactFound);
+        expect(isReactFound).to.equal(true);
     });
 
-    it('Should properly count the number of liens', () => {
+    it('Should properly count the number of lines', () => {
         // GIVEN
         const reactMatcher: ReactMatcher = new ReactMatcher(dataEntry, Technologies.React);
 
@@ -52,7 +50,7 @@ describe('Test react matching algorithm', () => {
 
         // THEN
         // We expect to find react in our dataEntry object
-        expect(numberOfLines).to.be.equal(561);
+        expect(numberOfLines).to.be.equal(570);
     });
 
 });
