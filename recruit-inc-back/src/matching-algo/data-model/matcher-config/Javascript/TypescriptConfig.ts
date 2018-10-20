@@ -7,7 +7,7 @@ const matchingTargets: ITargetMatcher[] = [
 ];
 
 export const typescriptConfig: IMatcherConfig = {
-    technology: Technologies.Javascript,
+    technology: Technologies.Typescript,
     extensions: ["ts"],
     matchingTargets
 };
