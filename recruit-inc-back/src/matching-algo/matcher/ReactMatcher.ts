@@ -7,11 +7,14 @@ import * as fs from "fs";
 import {ISourceFiles} from "../data-model/input-model/ISourceFiles";
 import {ISingleFileCommit} from "../data-model/input-model/ISingleFileCommit";
 import {ExtensionExtractor} from "../../util/ExtensionExtractor";
+import {ICommit} from "../data-model/input-model/ICommit";
+import {FilepathExtractor} from "../../util/FilepathExtractor";
+import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
+import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 
 
 export interface IProcessedSourceFile extends ISourceFiles {
     "filetext": string,
-    isTechnologyFound?: boolean
 }
 
 export class ReactMatcher extends AbstractMatcher {
@@ -28,6 +31,10 @@ export class ReactMatcher extends AbstractMatcher {
         this.reactPattern = reactPattern;
     }
 
+    private sourceFolder = "src/";
+
+    private allJavascriptExtensions = ["js", "ts"];
+
     public execute(): IGitProjectOutput {
         // Get the list of files we want
         const allProjects: IGitProjectInput[] = this.projectsInput.projectInputs;
@@ -35,11 +42,26 @@ export class ReactMatcher extends AbstractMatcher {
         for (const project of allProjects) {
             const sourceFiles: IProcessedSourceFile[] = this.sourceFilePathToParse(project);
 
+            let reactPathList: string[] = [];
 
+            let numberOfLines: number = 0;
+            const frameworkOutput: IFrameworkOutput = {
+                technologieName: this.targetTechnolgy,
+                linesOfCode: 0,
+                numberOfCommits: 0
+            };
             for (const sourceFile of sourceFiles) {
-                sourceFile.isTechnologyFound = this.isTechnologyFound(sourceFile.filetext);
-            }
+                const isTechnologyFound: boolean = this.isTechnologyFound(sourceFile.filetext);
 
+                if (isTechnologyFound) {
+                    const extractedPath = FilepathExtractor.extract(sourceFile.repoFilePath) + this.sourceFolder;
+                    const codeOutput: ICodeOutput =
+                        this.countCommitsAndLinesOfCode(project.applicantCommits, this.allJavascriptExtensions, extractedPath);
+                    frameworkOutput.linesOfCode += codeOutput.linesOfCode;
+                    frameworkOutput.numberOfCommits += codeOutput.numberOfCommits;
+                }
+
+            }
 
 
         }
@@ -116,7 +138,25 @@ export class ReactMatcher extends AbstractMatcher {
         return regularExpression.test(filetext);
     }
 
-    public countNumberOfLines(commits: ISingleFileCommit[], extensions: string[], basePath: string): number {
+    public countCommitsAndLinesOfCode(commits: ICommit[], extensions: string[], basePath: string): ICodeOutput {
+        const codeOutput: ICodeOutput = {
+            linesOfCode: 0,
+            numberOfCommits: 0
+        };
+        let numberOfLines: number = 0;
+        for (const commit of commits) {
+            const singleFileCommits: ISingleFileCommit[] = commit.files;
+            const numberOfLinesInCommit: number = this.countNumberOfLinesInSingleFileCommits(singleFileCommits, extensions, basePath);
+            numberOfLines += numberOfLinesInCommit;
+            if (numberOfLinesInCommit !== 0) {
+                codeOutput.numberOfCommits += 1;
+            }
+        }
+        codeOutput.linesOfCode = numberOfLines;
+        return codeOutput;
+    }
+
+    public countNumberOfLinesInSingleFileCommits(commits: ISingleFileCommit[], extensions: string[], basePath: string): number {
         let numberOfLines: number = 0;
         for (const commit of commits) {
             const filePath: string = commit.filePath;
