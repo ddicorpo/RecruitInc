@@ -110,9 +110,29 @@ export class Candidate {
                          login: "AyoubeAkaouch"
                      }
                  },
+                 {name: "rufus",
+                     owner: {
+                         login: "MewtR"
+                     }
+                 },
                  {name: "SOEN343",
                      owner: {
                          login: "gprattico"
+                     }
+                 },
+                 {name: "agenda",
+                     owner: {
+                         login: "Philippe229"
+                     }
+                 },
+                 {name: "simple-maven-project-with-tests",
+                     owner: {
+                         login: "MewtR"
+                     }
+                 },
+                 {name: "express-app-testing-demo",
+                     owner: {
+                         login: "MewtR"
                      }
                  }
                  ]
