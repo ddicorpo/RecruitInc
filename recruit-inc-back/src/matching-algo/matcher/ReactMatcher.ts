@@ -38,8 +38,8 @@ export class ReactMatcher extends AbstractMatcher {
     public execute(): IGitProjectOutput {
         // Get the list of files we want
         const allProjects: IGitProjectInput[] = this.projectsInput.projectInputs;
-
         for (const project of allProjects) {
+            // For each one, get a string representing the file
             const sourceFiles: IProcessedSourceFile[] = this.sourceFilePathToParse(project);
 
             let reactPathList: string[] = [];
@@ -51,39 +51,37 @@ export class ReactMatcher extends AbstractMatcher {
                 numberOfCommits: 0
             };
             for (const sourceFile of sourceFiles) {
+                // Parse the string to see if react is there
                 const isTechnologyFound: boolean = this.isTechnologyFound(sourceFile.filetext);
+
 
                 if (isTechnologyFound) {
                     const extractedPath = FilepathExtractor.extract(sourceFile.repoFilePath) + this.sourceFolder;
+                    // Get the folder in which the package.json file is
+                    // Get all the files under the src folder that exists under the folder package.json is in
+                    // Get all commits of the person that match those files
+                    // Count the number of react lines
                     const codeOutput: ICodeOutput =
                         this.countCommitsAndLinesOfCode(project.applicantCommits, this.allJavascriptExtensions, extractedPath);
                     frameworkOutput.linesOfCode += codeOutput.linesOfCode;
                     frameworkOutput.numberOfCommits += codeOutput.numberOfCommits;
+
                 }
 
             }
-
-
+            const languageOutput = {
+                languageOrFramework: Technologies.React,
+                frameworks: frameworkOutput
+            }
+            const codeOutput: ICodeOutput =
+                this.countCommitsAndLinesOfCode(project.applicantCommits, this.allJavascriptExtensions, "");
         }
-
-        // For each one, get a string representing the file
-
-
-        // Parse the string to see if react is there
-
-        // Get the folder in which the package.json file is <-- you are here!
-
-        // Get all the files under the src folder that exists under the folder package.json is in
-
-        // Get all commits of the person that match those files
-
-        // Count the number of react lines
 
         // Get all commits that match .js file extension
 
         // Count number of lines
 
-        // Get all commits that match .ts file extension
+        // Get all commits that match .ts file extension (LATER)
 
         // Count number of lines
 
