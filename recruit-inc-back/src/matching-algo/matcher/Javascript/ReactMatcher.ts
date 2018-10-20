@@ -9,16 +9,17 @@ import {FilepathExtractor} from "../../util/FilepathExtractor";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
+import {IMatcherConfig} from "../../data-model/matcher-model/IMatcherConfig";
+import {typescriptConfig} from "../../data-model/matcher-config/Javascript/TypescriptConfig";
 
 export class ReactMatcher extends AbstractFrameworkMatcher {
 
     private sourceFileToParse: string = "package.json";
     private result: IGitProjectOutput;
 
-    public constructor(projectsInput: IGitProjectInput, matchingTargets: ITargetMatcher[],
-                       targetTechnology : Technologies, matchingExtensions: string[]) {
+    public constructor(projectsInput: IGitProjectInput, matchingConfig: IMatcherConfig = typescriptConfig) {
 
-        super(projectsInput, matchingTargets, targetTechnology, matchingExtensions);
+        super(projectsInput, matchingConfig);
         //this.reactPattern = matchingExtensions[0];
     }
     private sourceFolder = "src/";
