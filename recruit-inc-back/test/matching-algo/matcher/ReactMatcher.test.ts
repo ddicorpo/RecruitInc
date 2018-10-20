@@ -36,5 +36,24 @@ describe('Test react matching algorithm', () => {
         expect(isReactFound);
     });
 
+    it('Should properly count the number of liens', () => {
+        // GIVEN
+        const reactMatcher: ReactMatcher = new ReactMatcher(dataEntry, Technologies.React);
+
+
+
+        // WHEN
+        let numberOfLines: number = 0;
+
+        for (const commit of dataEntry.projectInputs[0].applicantCommits) {
+
+            numberOfLines += reactMatcher.countNumberOfLines(commit.files, ["js", "ts"], "frontend/src/");
+        }
+
+        // THEN
+        // We expect to find react in our dataEntry object
+        expect(numberOfLines).to.be.equal(561);
+    });
+
 });
 

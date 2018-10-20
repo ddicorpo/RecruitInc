@@ -5,6 +5,8 @@ import {IGitProjectInput} from "../data-model/input-model/IGitProjectInput";
 import {Technologies} from "../data-model/output-model/Technologies";
 import * as fs from "fs";
 import {ISourceFiles} from "../data-model/input-model/ISourceFiles";
+import {ISingleFileCommit} from "../data-model/input-model/ISingleFileCommit";
+import {ExtensionExtractor} from "../../util/ExtensionExtractor";
 
 
 export interface IProcessedSourceFile extends ISourceFiles {
@@ -112,6 +114,39 @@ export class ReactMatcher extends AbstractMatcher {
     public isTechnologyFound(filetext: string): boolean {
         const regularExpression: RegExp = new RegExp(this.reactPattern);
         return regularExpression.test(filetext);
+    }
+
+    public countNumberOfLines(commits: ISingleFileCommit[], extensions: string[], basePath: string): number {
+        let numberOfLines: number = 0;
+        for (const commit of commits) {
+            const filePath: string = commit.filePath;
+            const isOfBasePath: boolean = this.isFilePathContainingBasePath(filePath, basePath);
+            const isOfExtension: boolean = this.isFilepathOfExtension(filePath, extensions);
+            if (isOfBasePath && isOfExtension) {
+                numberOfLines += commit.lineAdded;
+                numberOfLines -= commit.lineDeleted;
+            }
+        }
+        return numberOfLines;
+    }
+
+    public isFilePathContainingBasePath(filePath: string, basePath: string): boolean {
+        const basePathLength: number = basePath.length;
+        return filePath.substring(0, basePathLength) === basePath;
+    }
+
+    public isFilepathOfExtension(filePath: string, extensions: string[]): boolean {
+        const fileExtension: string = ExtensionExtractor.extract(filePath);
+        let isMatchFound: boolean = false;
+
+        for (const extension of extensions) {
+            if (extension === fileExtension) {
+                isMatchFound = true;
+                break;
+            }
+        }
+
+        return isMatchFound;
     }
 
 }
