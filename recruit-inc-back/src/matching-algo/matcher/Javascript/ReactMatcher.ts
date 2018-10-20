@@ -36,7 +36,7 @@ export class ReactMatcher extends AbstractFrameworkMatcher {
 
             let numberOfLines: number = 0;
             const frameworkOutput: IFrameworkOutput = {
-                technologieName: this.technology,
+                technologyName: this.technology,
                 linesOfCode: 0,
                 numberOfCommits: 0
             };
@@ -66,7 +66,7 @@ export class ReactMatcher extends AbstractFrameworkMatcher {
                 this.countCommitsAndLinesOfCode(project.applicantCommits, ["ts"], "");
 
             const typescriptOutput: IFrameworkOutput = {
-                technologieName: Technologies.Typescript,
+                technologyName: Technologies.Typescript,
                 linesOfCode: typescriptCodeOutput.linesOfCode,
                 numberOfCommits: typescriptCodeOutput.numberOfCommits
             };

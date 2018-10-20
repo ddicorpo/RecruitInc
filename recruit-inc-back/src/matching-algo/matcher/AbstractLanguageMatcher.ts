@@ -4,6 +4,8 @@ import {AbstractFrameworkMatcher} from "./AbstractFrameworkMatcher";
 import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
+import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
+import {Technologies} from "../data-model/output-model/Technologies";
 
 
 export abstract class AbstractLanguageMatcher extends AbstractMatcher {
@@ -19,8 +21,19 @@ export abstract class AbstractLanguageMatcher extends AbstractMatcher {
         this.frameworks.push(framework);
     }
 
-    protected package(): ILanguageOutput {
-        const toto: ILanguageOutput = null;
-        return toto;
+    protected package(codeOutput: ICodeOutput): ILanguageOutput {
+        const frameworksOutput: IFrameworkOutput[] = [];
+        for (const framework of this.frameworks) {
+            frameworksOutput.push(framework.execute());
+        }
+
+        const languageOutput: ILanguageOutput = {
+            languageOrFramework: this.technology,
+            linesOfCode: codeOutput.linesOfCode,
+            numberOfCommits: codeOutput.numberOfCommits,
+            frameworks: frameworksOutput
+        };
+
+        return languageOutput;
     }
 }

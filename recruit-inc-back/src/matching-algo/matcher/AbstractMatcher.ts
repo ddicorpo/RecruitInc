@@ -72,7 +72,7 @@ export abstract class AbstractMatcher {
         return sourceFilesOutput;
     }
 
-    protected abstract package(): IFrameworkOutput | ILanguageOutput;
+    protected abstract package(codeOutput: ICodeOutput): IFrameworkOutput | ILanguageOutput;
 
     protected readTargetFile(filePath: string): string {
         return fs.readFileSync(filePath, 'utf8');
