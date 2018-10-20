@@ -25,7 +25,7 @@ export abstract class AbstractMatcher {
         this.matchingConfig = matcherConfig
     }
 
-    public execute(): IGitProjectOutput {
+    public execute(): IFrameworkOutput | ILanguageOutput {
         // For each one, get a string representing the file
         const sourceFiles: IProcessedSourceFile[] = this.processSourceFiles();
         let numberOfLines: number = 0;
@@ -56,9 +56,8 @@ export abstract class AbstractMatcher {
 
             }
         }
+        return this.package(codeOutput);
 
-
-        return null;
     }
 
     protected processSourceFiles(): IProcessedSourceFile[] {
