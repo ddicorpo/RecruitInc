@@ -1,16 +1,15 @@
 import {AbstractMatcher} from "./AbstractMatcher";
-import {Technologies} from "../data-model/output-model/Technologies";
 import {IGitProjectInput} from "../data-model/input-model/IGitProjectInput";
-import {ITargetMatcher} from "../data-model/matcher-model/ITargetMatcher";
 import {AbstractFrameworkMatcher} from "./AbstractFrameworkMatcher";
+import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 
 
 export abstract class AbstractLanguageMatcher extends AbstractMatcher {
 
     private frameworks: AbstractFrameworkMatcher[];
 
-    public constructor(projectsInput: IGitProjectInput, matchingTargets: ITargetMatcher[], targetTechnology : Technologies, matchingExtensions: string[], frameworks: AbstractFrameworkMatcher[] = []){
-        super(projectsInput, matchingTargets, targetTechnology, matchingExtensions);
+    public constructor(projectsInput: IGitProjectInput, matcherConfig: IMatcherConfig, frameworks: AbstractFrameworkMatcher[] = []){
+        super(projectsInput, matcherConfig);
         this.frameworks = frameworks;
     }
 

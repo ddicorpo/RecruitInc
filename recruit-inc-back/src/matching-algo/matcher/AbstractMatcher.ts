@@ -8,6 +8,7 @@ import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 import {ISingleFileCommit} from "../data-model/input-model/ISingleFileCommit";
 import {ExtensionExtractor} from "../../util/ExtensionExtractor";
 import {IProcessedSourceFile} from "../data-model/matcher-model/IProcessedSourceFile";
+import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 export abstract class AbstractMatcher {
 
     protected matchingTargets: ITargetMatcher[];
@@ -15,11 +16,11 @@ export abstract class AbstractMatcher {
     protected projectInput : IGitProjectInput;
     protected matchingExtensions: string[];
 
-    public constructor(projectInput: IGitProjectInput, matchingTargets: ITargetMatcher[], targetTechnology : Technologies, matchingExtensions: string[]){
+    public constructor(projectInput: IGitProjectInput, matcherConfig: IMatcherConfig){
         this.projectInput = projectInput;
-        this.technology = targetTechnology;
-        this.matchingExtensions = matchingExtensions;
-        this.matchingTargets = matchingTargets
+        this.technology = matcherConfig.technology;
+        this.matchingExtensions = matcherConfig.extensions;
+        this.matchingTargets = matcherConfig.matchingTargets;
     }
 
     public execute(): IGitProjectOutput{

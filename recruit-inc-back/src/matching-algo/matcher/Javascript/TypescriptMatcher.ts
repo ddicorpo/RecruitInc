@@ -1,13 +1,11 @@
-import {AbstractLanguageMatcher} from "../AbstractLanguageMatcher";
 import {IGitProjectInput} from "../../data-model/input-model/IGitProjectInput";
-import {ITargetMatcher} from "../../data-model/matcher-model/ITargetMatcher";
-import {Technologies} from "../../data-model/output-model/Technologies";
 import {AbstractFrameworkMatcher} from "../AbstractFrameworkMatcher";
+import {IMatcherConfig} from "../../data-model/matcher-model/IMatcherConfig";
+import {typescriptConfig} from "../../data-model/matcher-config/Javascript/TypescriptConfig";
 
 export class TypescriptMatcher extends AbstractFrameworkMatcher {
-    public constructor(projectsInput: IGitProjectInput, matchingTargets: ITargetMatcher[],
-                       targetTechnology : Technologies, matchingExtensions: string[]){
+    public constructor(projectsInput: IGitProjectInput, matcherConfig: IMatcherConfig = typescriptConfig){
 
-        super(projectsInput, matchingTargets, targetTechnology, matchingExtensions);
+        super(projectsInput, matcherConfig);
     }
 }

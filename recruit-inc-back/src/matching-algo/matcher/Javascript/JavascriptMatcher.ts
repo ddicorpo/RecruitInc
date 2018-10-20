@@ -1,11 +1,11 @@
 import {AbstractLanguageMatcher} from "../AbstractLanguageMatcher";
 import {IGitProjectInput} from "../../data-model/input-model/IGitProjectInput";
-import {Technologies} from "../../data-model/output-model/Technologies";
-import {ITargetMatcher} from "../../data-model/matcher-model/ITargetMatcher";
+import {IMatcherConfig} from "../../data-model/matcher-model/IMatcherConfig";
+import {javascriptConfig} from "../../data-model/matcher-config/Javascript/JavascriptConfig";
 
 export class JavascriptMatcher extends AbstractLanguageMatcher{
 
-    public constructor(projectsInput: IGitProjectInput, matchingTargets: ITargetMatcher[], targetTechnology : Technologies, matchingExtensions: string[]){
-        super(projectsInput, matchingTargets, targetTechnology, matchingExtensions);
+    public constructor(projectsInput: IGitProjectInput, matcherConfig: IMatcherConfig = javascriptConfig){
+        super(projectsInput, matcherConfig);
     }
 }
