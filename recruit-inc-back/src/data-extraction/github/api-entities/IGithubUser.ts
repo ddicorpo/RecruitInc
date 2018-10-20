@@ -9,7 +9,12 @@ export interface IGithubUser{
         owner?:{
         login: string
         }
-    },  
+        structure?:{
+        oid: string //oid in github
+        type: string
+        name: string //path
+        }[]
+    }[],  
     email?: string,
     company?: string,
     isHireable?: boolean,
