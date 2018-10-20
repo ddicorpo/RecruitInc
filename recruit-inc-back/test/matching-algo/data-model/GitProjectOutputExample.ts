@@ -7,13 +7,13 @@ const frameworkOutputTypescript : IFrameworkOutput = {
     technologieName: Technologies.Typescript,
     lineOfCode: 313,
     numberOfCommits: 2
-}
+};
 
 const frameworkOutputReact : IFrameworkOutput = {
     technologieName: Technologies.React,
-    lineOfCode: 561,
+    lineOfCode: 570,
     numberOfCommits: 5
-}
+};
 
 const languagesOutput : ILanguageOutput = {
     languageOrFramework: Technologies.Javascript,
@@ -21,8 +21,9 @@ const languagesOutput : ILanguageOutput = {
     numberOfCommits: 5,
     frameworks: [frameworkOutputTypescript, frameworkOutputReact]
     
-}
+};
+
 export const projectOutput : IGitProjectOutput = {
     projectName: "Django-React-04",
     languageOutput : [languagesOutput]
-}
+};

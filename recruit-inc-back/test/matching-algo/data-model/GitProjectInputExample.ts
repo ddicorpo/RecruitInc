@@ -168,8 +168,8 @@ const projectStructure: IProjectStructure[] = [
     },
     {
         "fileId": "a3e6c0cfc10de36d6bcb38c52e00c012e985d68e",
-        "fileName": "registerServiceWorker.js",
-        "filePath": "frontend/src/registerServiceWorker.js",
+        "fileName": "registerServiceWorker.ts",
+        "filePath": "frontend/src/registerServiceWorker.ts",
 
     }
 ];
@@ -343,8 +343,8 @@ const singleCommitAppJs: ISingleFileCommit = {
     lineDeleted: 0
 };
 
-const singleCommitRegisterServiceWorkerJs: ISingleFileCommit = {
-    filePath: "registerServiceWorker.js",
+const singleCommitRegisterServiceWorkerTs: ISingleFileCommit = {
+    filePath: "frontend/src/registerServiceWorker.ts",
     lineAdded: 117,
     lineDeleted: 0
 };
@@ -367,8 +367,8 @@ const singleCommitAppJs2: ISingleFileCommit = {
     lineDeleted: 13
 };
 
-const singleCommitRegisterServiceWorkerJs1: ISingleFileCommit = {
-    filePath: "registerServiceWorker.js",
+const singleCommitRegisterServiceWorkerTs1: ISingleFileCommit = {
+    filePath: "frontend/src/registerServiceWorker.ts",
     lineAdded: 253,
     lineDeleted: 57
 };
@@ -409,7 +409,7 @@ const commitInput2: ICommit = {
         singleCommitPathsJs,
         singleCommitPolyFillsJs,
         singleCommitReadMe,
-        singleCommitRegisterServiceWorkerJs,
+        singleCommitRegisterServiceWorkerTs,
         singleCommitSettingsPy,
         singleCommitStartJs,
         singleCommitTestJs,
@@ -430,7 +430,7 @@ const commitInput3: ICommit = {
 const commitInput4: ICommit = {
     id: "66dff0a8b1419497fc2be6b9eb3ba88bf37f335d",
     numberOfFileAffected: 2,
-    files: [singleCommitRegisterServiceWorkerJs1, singleCommitIndexCss]
+    files: [singleCommitRegisterServiceWorkerTs1, singleCommitIndexCss]
 };
 
 const commitInput5: ICommit = {
