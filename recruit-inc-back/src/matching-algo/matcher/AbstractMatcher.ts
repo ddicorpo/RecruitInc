@@ -10,8 +10,9 @@ import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 
-export abstract class AbstractMatcher {
 
+export abstract class AbstractMatcher {
+    logger = require('../../logger.js');
     technology: Technologies;
     protected projectInput: IGitProjectInput;
     //TODO: Refactor get data out of config, for more readability
@@ -54,9 +55,11 @@ export abstract class AbstractMatcher {
                         filetext = this.readTargetFile(sourceFile.localFilePath);
                         isMatchingTechnology = this.isTechnologyFound(filetext, matchingTarget.matchingPattern);
                     } catch (exception) {
-
-                        // TODO: add logging here
-                        console.log(exception);
+                        this.logger.error({
+                                class: this.technology + "Matcher", method: "processSourceFiles",
+                                action: exception, params: {filename}
+                            },
+                            {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                         continue;
                     } finally {
                         const processedSourceFile: IProcessedSourceFile = {

@@ -3,11 +3,10 @@ import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 import {IProcessedSourceFile} from "../data-model/matcher-model/IProcessedSourceFile";
 import {FilepathExtractor} from "../../util/FilepathExtractor";
-import {AbstractLanguageMatcher} from "./AbstractLanguageMatcher";
-import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
+import {AbstractMatcher} from "./AbstractMatcher";
 
 
-export abstract class AbstractFrameworkMatcher extends AbstractLanguageMatcher {
+export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
 
     public constructor(matcherConfig: IMatcherConfig){
         super(matcherConfig);
@@ -44,17 +43,15 @@ export abstract class AbstractFrameworkMatcher extends AbstractLanguageMatcher {
 
             }
         }
-        //TODO: Make this a logger action
-        console.log("returning code output with " + codeOutput.linesOfCode + ", "
-        + codeOutput.numberOfCommits);
+        this.logger.info({
+                class: this.technology + "Matcher", method: "computeCodeOutput",
+                action: "\"returning code output with \" + codeOutput.linesOfCode + \", \"\n" +
+                    "        + codeOutput.numberOfCommits", params: {} },
+            { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
         return codeOutput;
     }
 
-    public execute(): IFrameworkOutput | ILanguageOutput {
-        const codeOutput = this.computeCodeOutput();
-        return this.package(codeOutput);
-    }
-    protected package(codeOutput: ICodeOutput): IFrameworkOutput  | ILanguageOutput{
+    protected package(codeOutput: ICodeOutput): IFrameworkOutput  {
         const frameworkOutput: IFrameworkOutput = {
             technologyName: this.technology,
             linesOfCode: codeOutput.linesOfCode,

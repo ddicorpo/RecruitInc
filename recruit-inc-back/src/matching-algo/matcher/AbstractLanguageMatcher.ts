@@ -8,7 +8,7 @@ import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 
 export abstract class AbstractLanguageMatcher extends AbstractMatcher {
 
-    frameworks: AbstractFrameworkMatcher[];
+    private frameworks: AbstractFrameworkMatcher[];
 
     public constructor(matcherConfig: IMatcherConfig, frameworks: AbstractFrameworkMatcher[] = []){
         super(matcherConfig);
@@ -31,7 +31,7 @@ export abstract class AbstractLanguageMatcher extends AbstractMatcher {
         return this.countCommitsAndLinesOfCode("");
     }
 
-    protected package(codeOutput: ICodeOutput):  IFrameworkOutput  | ILanguageOutput{
+    protected package(codeOutput: ICodeOutput):   ILanguageOutput{
         const frameworksOutput: IFrameworkOutput[] = [];
         for (const framework of this.frameworks) {
             frameworksOutput.push(framework.execute() as IFrameworkOutput);
