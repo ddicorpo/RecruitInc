@@ -1,4 +1,3 @@
-import {IGitProjectOutput} from "../data-model/output-model/IGitProjectOutput";
 import {Technologies} from "../data-model/output-model/Technologies";
 import {IGitProjectInput} from "../data-model/input-model/IGitProjectInput";
 import {ISourceFiles} from "../data-model/input-model/ISourceFiles";
@@ -9,12 +8,11 @@ import {ExtensionExtractor} from "../../util/ExtensionExtractor";
 import {IProcessedSourceFile} from "../data-model/matcher-model/IProcessedSourceFile";
 import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
-import {FilepathExtractor} from "../../util/FilepathExtractor";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 
 export abstract class AbstractMatcher {
 
-    protected technology: Technologies;
+    technology: Technologies;
     protected projectInput: IGitProjectInput;
     //TODO: Refactor get data out of config, for more readability
     protected matchingConfig: IMatcherConfig;

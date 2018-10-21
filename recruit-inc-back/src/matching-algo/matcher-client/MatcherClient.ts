@@ -21,11 +21,13 @@ export class MatcherClient {
 
         const projectOutputs: IGitProjectOutput[] = [];
         for (const project of allProjects) {
+            //TODO: Add Logger Feedback here
             const languageOutputs: ILanguageOutput[] = [];
 
             for (const matcher of this.languageMatchers) {
                 matcher.setProjectInput(project);
                 languageOutputs.push(matcher.execute() as ILanguageOutput);
+
             }
 
             const projectOutput: IGitProjectOutput = {
@@ -34,6 +36,7 @@ export class MatcherClient {
             };
 
             projectOutputs.push(projectOutput);
+            //TODO: Add Logger feedback here
 
         }
         return projectOutputs;

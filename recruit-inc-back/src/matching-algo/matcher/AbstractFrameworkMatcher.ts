@@ -1,12 +1,13 @@
-import {AbstractMatcher} from "./AbstractMatcher";
 import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 import {IProcessedSourceFile} from "../data-model/matcher-model/IProcessedSourceFile";
 import {FilepathExtractor} from "../../util/FilepathExtractor";
+import {AbstractLanguageMatcher} from "./AbstractLanguageMatcher";
+import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 
 
-export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
+export abstract class AbstractFrameworkMatcher extends AbstractLanguageMatcher {
 
     public constructor(matcherConfig: IMatcherConfig){
         super(matcherConfig);
@@ -24,7 +25,6 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
 
             // Now we revisit the source files and see if they matched our technology
             const isTechnologyFound: boolean = sourceFile.isMatchingTechnology;
-
 
             if (isTechnologyFound) {
                 // Get the source folder that is on the same level as the targeted source file
@@ -44,10 +44,17 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
 
             }
         }
+        //TODO: Make this a logger action
+        console.log("returning code output with " + codeOutput.linesOfCode + ", "
+        + codeOutput.numberOfCommits);
         return codeOutput;
     }
 
-    protected package(codeOutput: ICodeOutput): IFrameworkOutput {
+    public execute(): IFrameworkOutput | ILanguageOutput {
+        const codeOutput = this.computeCodeOutput();
+        return this.package(codeOutput);
+    }
+    protected package(codeOutput: ICodeOutput): IFrameworkOutput  | ILanguageOutput{
         const frameworkOutput: IFrameworkOutput = {
             technologyName: this.technology,
             linesOfCode: codeOutput.linesOfCode,
