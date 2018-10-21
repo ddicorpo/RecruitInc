@@ -1,3 +1,6 @@
+import {IGitlabRepositoryTree} from "./IGitlabRepositoryTree"
+import { IGitlabCommit } from "./IGitlabCommit";
+
 export interface IGitlabProject {
     id: number,
     description: string,
@@ -30,5 +33,8 @@ export interface IGitlabProject {
         repository_size: number,
         lfs_objects_size: number,
         job_artifacts_size: number
+
     }
+    projectStruture?:IGitlabRepositoryTree[],
+    commitsStructure?:IGitlabCommit[]
 }
