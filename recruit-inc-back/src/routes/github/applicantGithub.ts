@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {Query} from "../../data-extraction/github/query";
 import * as fs from 'fs';
 import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser";
+import { GithubUserCommits } from "../../data-extraction/github/githubUserCommits";
 
 var cors = require('cors');
 
@@ -50,6 +51,39 @@ export class ApplicantGithub {
                     console.log('The file was read!');
                 });
             });
+
+
+
+
+
+            
+
+            app.route('/api/github/applicant/commits/:RepoName/:OwnerUsername/:UserEmail')
+            .get(cors(), async (req: Request, res: Response) => {
+                
+
+                let githubUser : IGithubUser ;
+                let RepoName : string = req.params.RepoName;
+                //console.log(RepoName);
+                let OwnerUsername: string = req.params.OwnerUsername;
+                let UserEmail: string = req.params.UserEmail;
+                let username: string = req.params.username;
+                let query6 : GithubUserCommits  = new GithubUserCommits();
+
+                let data = await query6.gwt(RepoName,OwnerUsername,UserEmail);
+                let jsonData = JSON.parse(data)
+               //let detail = jsonData.data.repositories;
+                //let output =JSON.stringify(jsonData);
+               
+            
+
+             //console.log(jsonData.data);
+                res.status(200).send(jsonData.data);
+                
+            });
+
+        
+            
     }
 
     private buildFakeStorage() : void{
