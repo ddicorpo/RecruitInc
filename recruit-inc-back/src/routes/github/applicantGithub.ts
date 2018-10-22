@@ -62,23 +62,16 @@ export class ApplicantGithub {
             .get(cors(), async (req: Request, res: Response) => {
                 
 
-                let githubUser : IGithubUser ;
                 let RepoName : string = req.params.RepoName;
-                //console.log(RepoName);
                 let OwnerUsername: string = req.params.OwnerUsername;
                 let UserEmail: string = req.params.UserEmail;
                 let username: string = req.params.username;
                 let query6 : GithubUserCommits  = new GithubUserCommits();
 
-                let data = await query6.gwt(RepoName,OwnerUsername,UserEmail);
-                let jsonData = JSON.parse(data)
-               //let detail = jsonData.data.repositories;
-                //let output =JSON.stringify(jsonData);
-               
-            
+                let data = await query6.getCommits(RepoName,OwnerUsername,UserEmail);
+                //let jsonData = JSON.parse(data)
 
-             //console.log(jsonData.data);
-                res.status(200).send(jsonData.data);
+                res.status(200).send(data);
                 
             });
 
@@ -99,11 +92,6 @@ export class ApplicantGithub {
                     });
         
     }
-
-    
-
-
-
 
     private buildFakeStorage() : void{
         if(!fs.existsSync(dataFile)){
