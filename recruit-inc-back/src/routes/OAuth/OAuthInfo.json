@@ -1,0 +1,17 @@
+{
+  "github" : {
+    "url" : "https://github.com/login/oauth/access_token",
+    "client_id" : "1908c6dc58ef2187341f",
+    "client_secret" : "6bfae547289c1d3da3fa37df655d4aa02502b9ad"
+  },
+  "gitlab" : {
+    "url" : "http://gitlab.example.com/oauth/token",
+    "client_id" : "cf78ad0e83e8c8f5e4cc8b60ef0250e1d1a299cd9f3ec91ec9d54399eb52e102",
+    "client_secret" : "a692c84ab5d9b94e1a67294c2360f00195d5200195a2cc1b9c3d537d11cc2c66"
+  },
+  "bitbucket" : {
+    "url" : "https://bitbucket.org/site/oauth2/access_token",
+    "client_id" : "thwTU3aUh8ZBQNXyXA",
+    "client_secret" : "QpHyd9z5PfxUSW4m9j46vtQccXLTDZvQ"
+  }
+}

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-var logger = require('../../logger.js');
+const logger = require('../../logger.js');
 
 var cors = require('cors');
 
@@ -19,17 +19,18 @@ export class OAuthCode {
                 switch (platform) {
                     case "github" : {
 
-                        returnResponse = "access Token received from Github using code: " + code;
+
+                        returnResponse = "Access Token received from Github using code: " + code;
                         break;
                     }
                     case "gitlab" : {
 
-                        returnResponse = "access Token received from Gitlab using code: " + code;
+                        returnResponse = "Access Token received from Gitlab using code: " + code;
                         break;
                     }
                     case "bitbucket" : {
 
-                        returnResponse = "access Token received from BitBucket using code: " + code;
+                        returnResponse = "Access Token received from BitBucket using code: " + code;
                         break;
                     }
                     default : {
@@ -39,9 +40,7 @@ export class OAuthCode {
 
                 }
 
-
                 response.status(200).send(returnResponse);
-
             });
     }
 }

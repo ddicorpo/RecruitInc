@@ -1,8 +1,6 @@
 export interface IOAuthParameters{
-    platform: string;
-    clientId: string;
-    clientSecret: string;
+    "url" : string,
+    client_id: string;
+    client_secret: string;
     code: string;
-    redirectUri: string;
-    state: string;
 }
