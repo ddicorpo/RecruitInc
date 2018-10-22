@@ -1,11 +1,11 @@
 import * as React from 'react';
-import Header from '../components/Header'
+import Header from '../../components/Header'
 
-interface IProfileState {
+interface IGithubLoginState {
     data: String | {}
 }
 
-class App extends React.Component <any, IProfileState> {
+class App extends React.Component <any, IGithubLoginState> {
 
     constructor(props: any) {
         super(props);
