@@ -1,16 +1,16 @@
 import * as React from 'react';
 import Header from '../../components/Header'
 
-interface IGithubLoginState {
+interface IGitlabLoginState {
     data: String | {}
 }
 
-class App extends React.Component <any, IGithubLoginState> {
+class App extends React.Component <any, IGitlabLoginState> {
 
     constructor(props: any) {
         super(props);
         this.state = {
-            data: "Please log in for me to be able to get info from Github"
+            data: "Please log in for me to be able to get info from Gitlab"
         }
     }
 
@@ -36,9 +36,9 @@ class App extends React.Component <any, IGithubLoginState> {
         return (
             <div>
                 <Header />
-                <p>If not automatically redirected click login to Github.</p>
-                <a href="https://github.com/login/oauth/authorize?client_id=1908c6dc58ef2187341f">
-                    Login to Github
+                <p>If not automatically redirected click login to GitLab.</p>
+                <a href="https://gitlab.com/oauth/authorize?client_id=cf78ad0e83e8c8f5e4cc8b60ef0250e1d1a299cd9f3ec91ec9d54399eb52e102&redirect_uri=http://localhost:3000/OAuth/gitlab&response_type=code">
+                    Login to GitLab
                 </a><br/>
                 <p>{JSON.stringify(this.state.data)}</p>
             </div>
