@@ -25,7 +25,7 @@ class App extends React.Component <any, IBitbucketState> {
         let accessToken: string = url.substring(start, end);
 
         if(accessToken != null){
-            return fetch(`http://localhost:6969/api/bitbucket/applicant/${accessToken}/philbeaudry`)
+            return fetch(`http://localhost:6969/api/bitbucket/applicant/${accessToken}/23jams`)
                 .then((response) => {
                     return Promise.resolve(response.text())
                 })
