@@ -82,9 +82,28 @@ export class ApplicantGithub {
                 
             });
 
+
+           
+                app.route('/api/github/applicant/repos/:owner/:repo/commits/:sha')
+                    .get(cors(), async (req: Request, res: Response) => {
+                        let owner : string = req.params.owner;
+                        let repo : string = req.params.repo;
+                        let sha : string = req.params.sha;
+                        //let accessToken : string = req.params.accessToken;
         
-            
+                        let query7 : GithubUserCommits  = new GithubUserCommits();
+        
+                        let datas: string = await query7.getUserCommits(owner,repo, sha);
+        
+                        res.status(200).send(datas);
+                    });
+        
     }
+
+    
+
+
+
 
     private buildFakeStorage() : void{
         if(!fs.existsSync(dataFile)){
