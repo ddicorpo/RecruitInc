@@ -1,9 +1,9 @@
-import {AbstractMatcher} from "./AbstractMatcher";
 import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 import {IProcessedSourceFile} from "../data-model/matcher-model/IProcessedSourceFile";
 import {FilepathExtractor} from "../../util/FilepathExtractor";
+import {AbstractMatcher} from "./AbstractMatcher";
 
 
 export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
@@ -25,7 +25,6 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
             // Now we revisit the source files and see if they matched our technology
             const isTechnologyFound: boolean = sourceFile.isMatchingTechnology;
 
-
             if (isTechnologyFound) {
                 // Get the source folder that is on the same level as the targeted source file
                 // Ex: if our downloaded source file "package.json" was at frontend/package.json
@@ -44,10 +43,15 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
 
             }
         }
+        this.logger.info({
+                class: this.technology + "Matcher", method: "computeCodeOutput",
+                action: "\"returning code output with \" + codeOutput.linesOfCode + \", \"\n" +
+                    "        + codeOutput.numberOfCommits", params: {} },
+            { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
         return codeOutput;
     }
 
-    protected package(codeOutput: ICodeOutput): IFrameworkOutput {
+    protected package(codeOutput: ICodeOutput): IFrameworkOutput  {
         const frameworkOutput: IFrameworkOutput = {
             technologyName: this.technology,
             linesOfCode: codeOutput.linesOfCode,

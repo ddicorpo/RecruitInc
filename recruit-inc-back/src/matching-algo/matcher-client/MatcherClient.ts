@@ -10,7 +10,7 @@ export class MatcherClient {
 
     private languageMatchers: AbstractLanguageMatcher[] = [];
     private dataEntry: IDataEntry;
-
+    private logger = require("../../logger.js");
     public constructor(dataEntry: IDataEntry, languageMatchers: AbstractLanguageMatcher[] = allMatchers){
         this.dataEntry = dataEntry;
         this.languageMatchers = languageMatchers;
@@ -21,11 +21,16 @@ export class MatcherClient {
 
         const projectOutputs: IGitProjectOutput[] = [];
         for (const project of allProjects) {
+            this.logger.info({
+                    class: "MatcherClient", method: "execute",
+                    action: "Start Analysis with project " + project.projectName, params: {} },
+                { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
             const languageOutputs: ILanguageOutput[] = [];
 
             for (const matcher of this.languageMatchers) {
                 matcher.setProjectInput(project);
                 languageOutputs.push(matcher.execute() as ILanguageOutput);
+
             }
 
             const projectOutput: IGitProjectOutput = {
@@ -34,6 +39,10 @@ export class MatcherClient {
             };
 
             projectOutputs.push(projectOutput);
+            this.logger.info({
+                    class: "MatcherClient", method: "execute",
+                    action: "End Analysis with projectOuput " + projectOutput.projectName, params: {} },
+                { timestamp: (new Date()).toLocaleTimeString(), processID: process.pid });
 
         }
         return projectOutputs;

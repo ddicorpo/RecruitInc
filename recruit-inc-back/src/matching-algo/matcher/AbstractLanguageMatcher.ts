@@ -31,7 +31,7 @@ export abstract class AbstractLanguageMatcher extends AbstractMatcher {
         return this.countCommitsAndLinesOfCode("");
     }
 
-    protected package(codeOutput: ICodeOutput): ILanguageOutput {
+    protected package(codeOutput: ICodeOutput):   ILanguageOutput{
         const frameworksOutput: IFrameworkOutput[] = [];
         for (const framework of this.frameworks) {
             frameworksOutput.push(framework.execute() as IFrameworkOutput);
@@ -43,7 +43,6 @@ export abstract class AbstractLanguageMatcher extends AbstractMatcher {
             numberOfCommits: codeOutput.numberOfCommits,
             frameworks: frameworksOutput
         };
-
         return languageOutput;
     }
 }
