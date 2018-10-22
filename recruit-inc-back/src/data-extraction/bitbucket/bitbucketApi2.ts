@@ -15,10 +15,10 @@ export class BitbucketApi2 {
         }).then(response => response.text())
             .then(body => {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                console.log("This is the body: ", body);
+                console.log("\n\nThis is the body: ", body);
 
                 let myBodyParser = new bodyParser();
-                var repoName = myBodyParser.getRepoName(body);
+                var repoNames = myBodyParser.getAllRepoName(body);
 
                 fs.writeFile('bitbucketRepoList.json', body, function(err){
                     if (err) {
