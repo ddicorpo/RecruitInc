@@ -13,7 +13,7 @@ export class MatcherClient {
 
     public constructor(dataEntry: IDataEntry, languageMatchers: AbstractLanguageMatcher[] = allMatchers){
         this.dataEntry = dataEntry;
-        this.languageMatchers = allMatchers;
+        this.languageMatchers = languageMatchers;
     }
 
     public execute(): IGitProjectOutput[] {
