@@ -44,7 +44,8 @@ export class GitlabApplicants {
                 let commitQuery: CommitQuery; 
                 let commits: IGitlabCommit[];
                 let moredata: IGitlabCommit[];
-              
+                let propername: string = gitlabUsers[0].name;
+
                 for(let i=0; i < gitlabProjects.length;i++){
                 
                     let projectId: number = gitlabProjects[i].id;
@@ -76,6 +77,14 @@ export class GitlabApplicants {
                             commits = commits.concat(moredata);
                         } 
                     }  
+                    
+                   
+                    for(let w=0; w < commits.length; w++){
+                        if(commits[w]["author_name"] != propername){
+                              commits.splice(w,1);
+                        };  
+                    }
+
                     
                     gitlabProjects[i].commitsStructure = [];
                     gitlabProjects[i].commitsStructure = gitlabProjects[i].commitsStructure.concat(commits);
