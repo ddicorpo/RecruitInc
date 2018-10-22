@@ -43,8 +43,8 @@ export class GitlabApplicants {
                
                 let commitQuery: CommitQuery; 
                 let commits: IGitlabCommit[];
-                
-
+                let moredata: IGitlabCommit[];
+              
                 for(let i=0; i < gitlabProjects.length;i++){
                 
                     let projectId: number = gitlabProjects[i].id;
@@ -64,6 +64,19 @@ export class GitlabApplicants {
                     commitQuery.buildQuery();
                     let gitlabCommitPromise: Promise<IGitlabCommit[]> = commitQuery.executeQuery();
                     commits = await gitlabCommitPromise;
+                    
+                    let created_At : string = commits[0]["created_at"];
+
+                    if(commits.length >= 20){
+                        while(created_At.length != 0 && commits.length % 20 == 0){
+                            commitQuery.buildQueryTogetMoreData(projectId,created_At);
+                            let newdata: Promise<IGitlabCommit[]> = commitQuery.executeQuery();
+                            moredata = await newdata;
+                            created_At = moredata[0]["created_at"];
+                            commits = commits.concat(moredata);
+                        } 
+                    }  
+                    
                     gitlabProjects[i].commitsStructure = [];
                     gitlabProjects[i].commitsStructure = gitlabProjects[i].commitsStructure.concat(commits);
                 }
