@@ -23,29 +23,18 @@ export class GithubUserCommits {
                   ref(qualifiedName: "master") {
                     target {
                       ... on Commit {
-                        id
                         history(author : {emails: "${UserEmail}"} first: 100) { 
-
                           pageInfo{
                             hasNextPage
                             endCursor
                           }
                           edges {
-                            
                             node {
-                          pushedDate
                               oid
                               changedFiles
-                              commitUrl  
-                              
-                              treeUrl
-                              commitResourcePath
-                              message
                               author {
                                 name
                                 email
-                                date
-                              
                               }
                             }
                           }
@@ -65,35 +54,22 @@ export class GithubUserCommits {
 
       let query : string =
           `query {
-
             repository(name: "${RepoName}", owner: "${OwnerUsername}") {
                 ref(qualifiedName: "master") {
                   target {
                     ... on Commit {
-                      id
                       history(author : {emails: "${UserEmail}"} first: 100, after: ${endCursor}) { 
-
                         pageInfo{
                           hasNextPage
                           endCursor
                         }
                         edges {
-
-                          
                           node {
-                        pushedDate
                             oid
                             changedFiles
-                            commitUrl  
-                            
-                            treeUrl
-                            commitResourcePath
-                            message
                             author {
                               name
                               email
-                              date
-                            
                             }
                           }
                         }
@@ -107,37 +83,35 @@ export class GithubUserCommits {
       return await new GithubApiV4().queryData(this.accessToken, query);
             
   }     
-  async getCommits(RepoName: IGithubUser, OwnerUsername: IGithubUser, UserEmail: IGithubUser ): Promise<IGithubUser> {
 
-    let data: string = await this.gwt(RepoName.repositories.name, OwnerUsername.repositories.owner.login, UserEmail.email );
+  async getCommits(repository: string, owner: string, userEmail: string): Promise<any[]> {
+
+    let result : any[] = [];
+    let data: string = await this.gwt(repository, owner, userEmail);
     let jsonData = JSON.parse(data);
-    let pageInfo = jsonData.data.user.repositories.pageInfo;
+    let pageInfo = jsonData.data.repository.ref.target.history.pageInfo;
+    let edges = jsonData.data.repository.ref.target.history.edges;
     let hasNextPage = pageInfo.hasNextPage;
     let endCursor : string = JSON.stringify(pageInfo.endCursor);
-    RepoName.repositories = jsonData.data.RepoName.repositories.nodes;
-    OwnerUsername.repositories = jsonData.data.OwnerUsername.repositories.nodes;
-    UserEmail.repositories = jsonData.data.UserEmail.repositories.nodes;
 
-        
+    for (let node of edges){
+        result.push(node);
+    }
+
     while(hasNextPage){
-      let nextData : string = await this.gwtNext(RepoName.repositories.name,OwnerUsername.repositories.owner.login,UserEmail.email, endCursor);
+      let nextData : string = await this.gwtNext(repository, owner, userEmail, endCursor);
       jsonData = JSON.parse(nextData);
-      pageInfo = jsonData.data.user.repositories.pageInfo;
+      edges = jsonData.data.repository.ref.target.history.edges;
+      pageInfo = jsonData.data.repository.ref.target.history.pageInfo;
       endCursor = JSON.stringify(pageInfo.endCursor);
       hasNextPage = pageInfo.hasNextPage;
 
-      RepoName.repositories += jsonData.data.RepoName.repositories.nodes;
-    OwnerUsername.repositories += jsonData.data.OwnerUsername.repositories.nodes;
-    UserEmail.repositories += jsonData.data.UserEmail.repositories.nodes;
-      
+    for (let node of edges){
+        result.push(node);
+    }
       data+=nextData;
     }
-
-
-    return RepoName;
-    
-
-
+    return result;
 }
 
    
