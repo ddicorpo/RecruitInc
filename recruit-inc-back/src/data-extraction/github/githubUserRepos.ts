@@ -56,25 +56,40 @@ export class GithubUserRepos {
     //No need to use the createdAt variable 
     async getUserRepos(user: IGithubUser): Promise<IGithubUser> {
 
-        let data: string = await this.firstQuery(user.login);
-        let jsonData = JSON.parse(data);
+        let data: string = "";
+        let jsonData;
+        try{
+        data = await this.firstQuery(user.login);
+        jsonData = JSON.parse(data);
+        if ( jsonData.data == null ||jsonData.data.user == null)
+            throw new TypeError('The user you are trying to query does not exist');
+        }catch(e){
+         console.log(e);
+         return user;
+        }
         let pageInfo = jsonData.data.user.repositories.pageInfo;
         let hasNextPage = pageInfo.hasNextPage;
         let endCursor : string = JSON.stringify(pageInfo.endCursor);
         user.repositories = jsonData.data.user.repositories.nodes;
             
         while(hasNextPage){
-          let nextData : string = await this.getDataAfterCursor(user.login, endCursor);
+          let nextData : string = "";
+          try{
+          nextData = await this.getDataAfterCursor(user.login, endCursor);
           jsonData = JSON.parse(nextData);
+          if ( jsonData.data == null || jsonData.data.user == null)
+            throw new Error('Something went wrong');
           pageInfo = jsonData.data.user.repositories.pageInfo;
           endCursor = JSON.stringify(pageInfo.endCursor);
           hasNextPage = pageInfo.hasNextPage;
           user.repositories += jsonData.data.user.repositories.nodes;
           data+=nextData;
+          }catch(e){
+           console.log(e);
+           return user;
+          }
         }
 
-
         return user;
-
     }
 }

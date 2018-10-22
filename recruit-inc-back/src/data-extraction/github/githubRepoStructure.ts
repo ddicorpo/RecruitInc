@@ -38,16 +38,29 @@ export class GithubRepoStructure {
 
     async getRepoStructure(owner: string, repoName: string): Promise<{oid: string, type: string, name: string}[]> {
 
-        let data : string = await this.query(owner, repoName);
-        let jsonData = JSON.parse(data);
-        let projectRoot : any[] = jsonData.data.repository.object.entries;
+        let data : string = "";
+        let jsonData;
         let projectStructure : any[] = [] ;
-        await this.extractFiles(projectRoot, projectStructure, owner, repoName);
+        try{
+        data = await this.query(owner, repoName);
+        console.log(data);
+        console.log("Inside getRepoStructure. NANI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        jsonData = JSON.parse(data);
+        if (jsonData.data == null || jsonData.data.repository == null)
+            throw new TypeError('Either you do not have access to the repository you are trying to query or it does not exist');
+        }catch(e){
+
+         console.log(e); 
+         return projectStructure;
+
+        }
+        let projectRoot : any[] = jsonData.data.repository.object.entries;
+        await this.extractFiles(projectRoot, projectStructure, owner, repoName, 0);
         
             return projectStructure;
     }
 
-     async extractFiles(input : any[] , files : any[] , owner: string, repoName: string): Promise<any[]> {
+     async extractFiles(input : any[] , files : any[] , owner: string, repoName: string, count: number): Promise<any[]> {
 
         if (input.length == 0){
            return files;
@@ -57,9 +70,20 @@ export class GithubRepoStructure {
         if (file.type == 'blob'){
             files.push(file);
         }else{
+        let data : string = "";
+        let jsonData;
         let path : string = file.name+'/';
-        let data : string = await this.query(owner, repoName, null , path);
-        let jsonData = JSON.parse(data);
+        try{
+        data = await this.query(owner, repoName, null , path);
+        jsonData = JSON.parse(data);
+        if (jsonData.data == null || jsonData.data.repository == null)
+            throw new TypeError('Something went wrong');
+        }catch(e){
+            console.log(e);
+            return files;
+
+        }
+        console.log("Inside extractFiles "+count);
         let newFiles = jsonData.data.repository.object.entries;
         for (let f of newFiles){
 
@@ -68,6 +92,6 @@ export class GithubRepoStructure {
         }
         }
 
-        await this.extractFiles(input, files, owner, repoName);
+        await this.extractFiles(input, files, owner, repoName, count+=1);
     }
 }
