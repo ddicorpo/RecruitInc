@@ -20,7 +20,7 @@ export abstract class AbstractMatcher {
 
     public constructor(matcherConfig: IMatcherConfig) {
         this.technology = matcherConfig.technology;
-        this.matchingConfig = matcherConfig
+        this.matchingConfig = matcherConfig;
     }
 
     public setProjectInput(projectInput: IGitProjectInput) {
