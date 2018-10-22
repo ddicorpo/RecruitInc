@@ -1,0 +1,19 @@
+{
+  "users": {
+    "username" : "username",
+    "firstname" : "firstname",
+    "lastname" : "lastname",
+    "github" : {
+      "username" : "username",
+      "accessToken": "accessToken"
+    },
+    "gitlab" : {
+      "username" : "username",
+      "accessToken": "accessToken"
+    },
+    "bitbucket" : {
+      "username" : "username",
+      "accessToken": "accessToken"
+    }
+  }
+}
