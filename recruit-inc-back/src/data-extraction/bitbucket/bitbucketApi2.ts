@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 const logger = require('../../logger.js');
+const fs = require('fs');
 
 export class BitbucketApi2 {
 
@@ -14,6 +15,11 @@ export class BitbucketApi2 {
             .then(body => {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 console.log(body);
+                fs.writeFile('bitbucketRepoList.json', body, function(err){
+                    if (err) {
+                       throw err;;
+                   }
+                });
                 return body;
             })
             .catch(error => {
