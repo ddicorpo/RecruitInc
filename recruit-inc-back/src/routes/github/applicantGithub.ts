@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {Query} from "../../data-extraction/github/query";
 import * as fs from 'fs';
 import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser";
+import { GithubUserCommits } from "../../data-extraction/github/githubUserCommits";
 
 var cors = require('cors');
 
@@ -50,6 +51,45 @@ export class ApplicantGithub {
                     console.log('The file was read!');
                 });
             });
+
+
+
+
+
+            
+
+            app.route('/api/github/applicant/commits/:RepoName/:OwnerUsername/:UserEmail')
+            .get(cors(), async (req: Request, res: Response) => {
+                
+
+                let RepoName : string = req.params.RepoName;
+                let OwnerUsername: string = req.params.OwnerUsername;
+                let UserEmail: string = req.params.UserEmail;
+                let username: string = req.params.username;
+                let query6 : GithubUserCommits  = new GithubUserCommits();
+
+                let data = await query6.getCommits(RepoName,OwnerUsername,UserEmail);
+                //let jsonData = JSON.parse(data)
+
+                res.status(200).send(data);
+                
+            });
+
+
+           
+                app.route('/api/github/applicant/repos/:owner/:repo/commits/:sha')
+                    .get(cors(), async (req: Request, res: Response) => {
+                        let owner : string = req.params.owner;
+                        let repo : string = req.params.repo;
+                        let sha : string = req.params.sha;
+                        //let accessToken : string = req.params.accessToken;
+                        let query7 : GithubUserCommits  = new GithubUserCommits();
+                        let datas = await query7.getFilesAffectedByCommit(owner,repo, sha);
+                        //let jsonData = JSON.parse(datas);
+        
+                        res.status(200).send(datas);
+                    });
+        
     }
 
     private buildFakeStorage() : void{
