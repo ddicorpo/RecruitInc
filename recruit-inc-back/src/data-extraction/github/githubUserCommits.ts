@@ -9,7 +9,7 @@ export class GithubUserCommits {
       this.accessToken = accessToken;
   }
 
-  async getFilesAffectedByCommit(ownerzz: string, repozzz:string, sha:string): Promise<{filename: string, additions: number, deletions: number}[]> {
+  async getFilesAffectedByCommit(ownerzz: string, repozzz: string, sha: string): Promise<{filename: string, additions: number, deletions: number}[]> {
     let result : {filename: string, additions: number, deletions: number}[] = [];
     let data = await new GithubApiV3().queryUserCommits(this.accessToken, ownerzz, repozzz, sha);
     let jsonData = JSON.parse(data);
@@ -20,6 +20,19 @@ export class GithubUserCommits {
     return result;
 }
 
+  async getFilesAffectedByCommitFromUser(user: IGithubUser): Promise<IGithubUser> {
+      if (user.repositories == null || user.repositories.length == 0)
+          return user;
+      for (let repository of user.repositories){
+          if (repository.commits == null || repository.commits.length == 0 )
+              continue;
+          for (let commit of repository.commits){
+              if (commit["node"]["oid"] == null) continue;
+              commit.singleFileCommit = await this.getFilesAffectedByCommit(repository.owner.login, repository.name, commit["node"]["oid"] )
+          }
+      }
+      return user;
+}
     async gwt(RepoName: string, OwnerUsername: string, UserEmail: string): Promise<string> {
        
 
@@ -91,7 +104,15 @@ export class GithubUserCommits {
             
   }     
 
-  async getCommits(repository: string, owner: string, userEmail: string): Promise<any[]> {
+  async getCommitsFromUser(user: IGithubUser): Promise<IGithubUser> {
+      if (user.repositories == null || user.repositories.length == 0)
+          return user;
+      for (let repository of user.repositories){
+          repository.commits = await this.getCommits(repository.name, repository.owner.login, user.email)
+      }
+
+}
+  async getCommits(repository: string, owner: string, userEmail: string): Promise<{oid: string, changedFiles: number, author:{name: string, email: string}}[]> {
 
     let result : any[] = [];
     let data: string = await this.gwt(repository, owner, userEmail);

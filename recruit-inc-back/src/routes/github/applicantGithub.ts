@@ -58,6 +58,7 @@ export class ApplicantGithub {
 
             
 
+            //Get all user commits on a given repo
             app.route('/api/github/applicant/commits/:RepoName/:OwnerUsername/:UserEmail')
             .get(cors(), async (req: Request, res: Response) => {
                 
@@ -72,11 +73,64 @@ export class ApplicantGithub {
                 //let jsonData = JSON.parse(data)
 
                 res.status(200).send(data);
+            });
+
+            //Update an IGithubUser with their commits for all repos
+            app.route('/api/github/applicant/commits/updateuser')
+            .get(cors(), async (req: Request, res: Response) => {
+                
+                let user : IGithubUser = 
+                {login: "MewtR",
+                 createdAt: "",
+                 url: "",
+                 email: "mohamedlemineelhadj@outlook.com",
+                 repositories: [
+                 {name: "MinistocksRework",
+                     owner: {
+                         login: "AyoubeAkaouch"
+                     }
+                 },
+                 {name: "rufus",
+                     owner: {
+                         login: "MewtR"
+                     }
+                 },
+                 {name: "SOEN343",
+                     owner: {
+                         login: "gprattico"
+                     }
+                 },
+                 {name: "agenda",
+                     owner: {
+                         login: "Philippe229"
+                     }
+                 },
+                 {name: "simple-maven-project-with-tests",
+                     owner: {
+                         login: "MewtR"
+                     }
+                 },
+                 {name: "express-app-testing-demo",
+                     owner: {
+                         login: "MewtR"
+                     }
+                 }
+                 ]
+
+                };
+
+                let query6 : GithubUserCommits  = new GithubUserCommits();
+
+                await query6.getCommitsFromUser(user);
+                //let jsonData = JSON.parse(data)
+
+                res.status(200).send(user);
                 
             });
 
 
            
+                //Get a list of files affected by a given commit
                 app.route('/api/github/applicant/repos/:owner/:repo/commits/:sha')
                     .get(cors(), async (req: Request, res: Response) => {
                         let owner : string = req.params.owner;
@@ -90,6 +144,58 @@ export class ApplicantGithub {
                         res.status(200).send(datas);
                     });
         
+                //Update a user to get the details of his commits
+                app.route('/api/github/applicant/detailedcommits/updateuser')
+                    .get(cors(), async (req: Request, res: Response) => {
+                let user : IGithubUser = 
+                {login: "MewtR",
+                 createdAt: "",
+                 url: "",
+                 email: "mohamedlemineelhadj@outlook.com",
+                 repositories: [
+                 {name: "MinistocksRework",
+                     owner: {
+                         login: "AyoubeAkaouch"
+                     }
+                 },
+                 {name: "rufus",
+                     owner: {
+                         login: "MewtR"
+                     }
+                 },
+                 {name: "SOEN343",
+                     owner: {
+                         login: "gprattico"
+                     }
+                 },
+                 {name: "agenda",
+                     owner: {
+                         login: "Philippe229"
+                     }
+                 },
+                 {name: "simple-maven-project-with-tests",
+                     owner: {
+                         login: "MewtR"
+                     }
+                 },
+                 {name: "express-app-testing-demo",
+                     owner: {
+                         login: "MewtR"
+                     }
+                 }
+                 ]
+
+                };
+                        let query7 : GithubUserCommits  = new GithubUserCommits();
+                        //First get all commits
+                        await query7.getCommitsFromUser(user);
+
+                        //Then get commit details
+                        await query7.getFilesAffectedByCommitFromUser(user);
+                        //let jsonData = JSON.parse(datas);
+        
+                        res.status(200).send(user);
+                    });
     }
 
     private buildFakeStorage() : void{
