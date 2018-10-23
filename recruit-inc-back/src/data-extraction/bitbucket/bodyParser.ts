@@ -32,10 +32,34 @@ export default class bodyParser {
         return allNames;
     }
 
-    // public getAllCommits(body: string[]) : string[]{
-    //     for (let outer in body){
-    //
-    //     }
-    // }
+    public getAllCommits(body: string[]) : string[]{
+        let hashName = "";
+        let allCommitNames: string[] = new Array(0);
+        let iterator: number;
+        let inner: number;
+        let hashFinder: string;
+
+        for (let outer in body){
+            iterator = parseInt(outer);
+
+            hashFinder = body[iterator] + body[iterator + 1] + body[iterator + 2] + body[iterator + 3];
+
+            if (hashFinder == "hash"){
+                inner = iterator + 8;
+
+                while (body[inner] != '"'){
+                    hashName += body[inner];
+                    inner += 1;
+                }
+
+                console.log("this is the commit id: " + hashName);
+
+                allCommitNames.push(hashName);
+                hashName = "";
+            }
+        }
+
+        return allCommitNames;
+    }
 
 }
