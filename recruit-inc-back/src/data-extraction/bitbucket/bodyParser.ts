@@ -1,16 +1,15 @@
 export default class bodyParser {
 
     public getAllRepoName(body: string[]) : string[]{
-        var repoName = "";
-        var allNames: string[] = new Array(0);
-        var slugFinder: string;
-        var iterator: number;
-        var inner: number;
+        let repoName = "";
+        let allNames: string[] = new Array(0);
+        let slugFinder: string;
+        let iterator: number;
+        let inner: number;
 
         console.log("\n\n" + body);
         //This loop will iterate through each character in the GET response, find the string "slug" and return the repo name
         for (let outer in body){
-
             //The outer iterator needed to be parsed as an int even though it is a number, typescript thinks it's a string
             iterator = parseInt(outer);
             // slugFinder will hold only 4 characters
@@ -32,5 +31,11 @@ export default class bodyParser {
 
         return allNames;
     }
+
+    // public getAllCommits(body: string[]) : string[]{
+    //     for (let outer in body){
+    //
+    //     }
+    // }
 
 }
