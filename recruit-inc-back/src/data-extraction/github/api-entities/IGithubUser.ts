@@ -10,9 +10,9 @@ export interface IGithubUser{
         login: string
         }
         structure?:{
-        oid: string //oid in github
-        type: string
-        name: string //path
+        sha: string 
+        name: string
+        path: string 
         }[]
     }[],  
     email?: string,

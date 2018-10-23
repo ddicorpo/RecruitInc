@@ -8,30 +8,25 @@ const nock = require('nock');
 let test : GithubRepoStructure = new GithubRepoStructure();
 let user : IGithubUser = {login: "MewtR", url: "", createdAt: ""};
 
-  const githubRepositoryRoot = require('./repositoryRootResponse.js');
+  const treeShaResponse = require('./treeShaResponse.js');
 
-  describe('Get repository root', () => {
+  describe('Get a repository\'s root tree hash', () => {
     beforeEach(() => {
       //mocking the API
         nock('https://api.github.com')
         .post('/graphql')
-        .reply(200, githubRepositoryRoot);
+        .reply(200, treeShaResponse);
     });
 
-    it('Gets a repository\'s root files', () => {
-      return test.query('AyoubeAkaouch', 'MinistocksRework')
+    it('Gets a repository\'s root hash', () => {
+      return test.getTreeSha('AyoubeAkaouch', 'MinistocksRework')
         .then(response => {
 
         expect(response).to.be.a('string');
 
         response = JSON.parse(response);
         console.log(response);
-        //18 files in repository root
-        expect(response["data"]["repository"]["object"]["entries"].length).to.equal(18);
-        //Check specific file
-        //Some files might be trees (directories)
-        expect(response["data"]["repository"]["object"]["entries"][17]["type"]).to.equal("tree");
-        expect(response["data"]["repository"]["object"]["entries"][17]["name"]).to.equal("src");
+        expect(response["data"]["repository"]["object"]["oid"]).to.equal("63eb39fb316577353412a5c8a60f0693316edb14");
         });
     });
   });

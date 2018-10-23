@@ -1,5 +1,8 @@
 import { GithubApiV4} from "./githubApiV4";
+import { GithubApiV3} from "./githubApiV3";
 import {IGithubUser} from "./api-entities/IGithubUser"
+
+const path = require('path');
 
 export class GithubRepoStructure {
     private readonly accessToken: string;
@@ -8,18 +11,14 @@ export class GithubRepoStructure {
       this.accessToken = accessToken;
   }
 
-    async query(owner: string, repoName: string, oid: string = null, path: string = null): Promise<string> {
+    async getTreeSha(owner: string, repoName: string): Promise<string> {
         let query : string =
             `query {
   repository(owner: "${owner}", name: "${repoName}"){
     name
-    object(expression: "master:${path ?  `${path}` : '' }"${oid ? `, oid: "${oid}"` : '' }){ 
+    object(expression: "master:"){ 
         ... on Tree{ 
-          entries{
-            oid
-            type
-            name
-          }
+          oid
         }
       }
     }
@@ -33,65 +32,45 @@ export class GithubRepoStructure {
             repository.structure = await this.getRepoStructure(repository.owner.login, repository.name);
         }
         return user;
-        
     }
 
-    async getRepoStructure(owner: string, repoName: string): Promise<{oid: string, type: string, name: string}[]> {
-
+    async getRepoStructure(owner: string, repoName: string): Promise<{sha: string, name: string, path: string}[]> {
         let data : string = "";
+        let treeSha : string = "";
+        let projectStructure : {sha: string, name: string, path: string}[] = [];
         let jsonData;
-        let projectStructure : any[] = [] ;
+
         try{
-        data = await this.query(owner, repoName);
-        console.log(data);
-        console.log("Inside getRepoStructure. NANI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        jsonData = JSON.parse(data);
-        if (jsonData.data == null || jsonData.data.repository == null)
-            throw new TypeError('Either you do not have access to the repository you are trying to query or it does not exist');
-        }catch(e){
+            data = await this.getTreeSha(owner, repoName);
+            jsonData = JSON.parse(data);
+            console.log(jsonData);
+            if (jsonData.data == null || jsonData.data.repository == null)
+                throw new TypeError('Either you do not have access to the repository you are trying to query or it does not exist');
 
-         console.log(e); 
-         return projectStructure;
-
-        }
-        let projectRoot : any[] = jsonData.data.repository.object.entries;
-        await this.extractFiles(projectRoot, projectStructure, owner, repoName, 0);
-        
-            return projectStructure;
-    }
-
-     async extractFiles(input : any[] , files : any[] , owner: string, repoName: string, count: number): Promise<any[]> {
-
-        if (input.length == 0){
-           return files;
-        }
-        
-        let file = input.pop();
-        if (file.type == 'blob'){
-            files.push(file);
-        }else{
-        let data : string = "";
-        let jsonData;
-        let path : string = file.name+'/';
-        try{
-        data = await this.query(owner, repoName, null , path);
-        jsonData = JSON.parse(data);
-        if (jsonData.data == null || jsonData.data.repository == null)
-            throw new TypeError('Something went wrong');
         }catch(e){
             console.log(e);
-            return files;
-
-        }
-        console.log("Inside extractFiles "+count);
-        let newFiles = jsonData.data.repository.object.entries;
-        for (let f of newFiles){
-
-            f.name = `${path}${f.name}`;
-            input.push(f);
-        }
+            return;
         }
 
-        await this.extractFiles(input, files, owner, repoName, count+=1);
+        treeSha = jsonData.data.repository.object.oid;
+        try{
+            data = await new GithubApiV3().getGitTree(this.accessToken, owner, repoName, treeSha);
+            jsonData = JSON.parse(data);
+            if (!(jsonData.hasOwnProperty('tree')))
+                throw new TypeError('Either you do not have access to the repository you are trying to query or it does not exist');
+        }catch(e){
+            console.log(e);
+            return;
+        }
+
+        let tree = jsonData.tree;
+        //only include blobs in project structure
+        for (let file of tree){
+            if (file.type == 'blob')
+                projectStructure.push({sha: file.sha, name: path.basename(file.path), path: file.path });
+        }
+        
+        return projectStructure;
+
     }
 }
