@@ -14,6 +14,15 @@ export interface IGithubUser{
         name: string
         path: string 
         }[]
+        commits?:{
+        oid: string
+        changedFiles: number
+        singleFileCommit?:{
+        filename: string,
+        additions: number,
+        deletions: number
+        }[]
+        }[]
     }[],  
     email?: string,
     company?: string,
