@@ -11,7 +11,7 @@ export class GithubUserCommits {
 
   async getFilesAffectedByCommit(ownerzz: string, repozzz:string, sha:string): Promise<{filename: string, additions: number, deletions: number}[]> {
     let result : {filename: string, additions: number, deletions: number}[] = [];
-    let data = await new GithubApiV3().queryUserCommits( ownerzz, repozzz, sha);
+    let data = await new GithubApiV3().queryUserCommits(this.accessToken, ownerzz, repozzz, sha);
     let jsonData = JSON.parse(data);
     let files = jsonData.files;
     for (let file of files){
