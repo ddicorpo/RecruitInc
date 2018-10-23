@@ -47,9 +47,11 @@ export class BitbucketApi2 {
         }).then(response => response.text())
             .then(body => {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                console.log("\n\nThis is the body of Commits query: ", body);
+                //console.log("\n\nThis is the body of Commits query: ", body);
 
                 let myBodyParser = new bodyParser();
+                let commitIds = myBodyParser.getAllCommits(body);
+                console.log("\n\n---------------\n\n");
 
         }).catch(error => {
             logger.error({class: "bitbucketApi2", method: "queryData", action: "Error from bitbucket's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
