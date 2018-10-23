@@ -9,8 +9,15 @@ export class GithubUserCommits {
       this.accessToken = accessToken;
   }
 
-  async getUserCommits(ownerzz: string, repozzz:string, sha:string): Promise<string> {
-    return await new GithubApiV3().queryUserCommits( ownerzz, repozzz, sha);
+  async getFilesAffectedByCommit(ownerzz: string, repozzz:string, sha:string): Promise<{filename: string, additions: number, deletions: number}[]> {
+    let result : {filename: string, additions: number, deletions: number}[] = [];
+    let data = await new GithubApiV3().queryUserCommits( ownerzz, repozzz, sha);
+    let jsonData = JSON.parse(data);
+    let files = jsonData.files;
+    for (let file of files){
+        result.push({filename: file.filename, additions:  file.additions, deletions: file.deletions});
+    }
+    return result;
 }
 
     async gwt(RepoName: string, OwnerUsername: string, UserEmail: string): Promise<string> {

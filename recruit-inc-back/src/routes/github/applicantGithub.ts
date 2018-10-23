@@ -83,10 +83,9 @@ export class ApplicantGithub {
                         let repo : string = req.params.repo;
                         let sha : string = req.params.sha;
                         //let accessToken : string = req.params.accessToken;
-        
                         let query7 : GithubUserCommits  = new GithubUserCommits();
-        
-                        let datas: string = await query7.getUserCommits(owner,repo, sha);
+                        let datas = await query7.getFilesAffectedByCommit(owner,repo, sha);
+                        //let jsonData = JSON.parse(datas);
         
                         res.status(200).send(datas);
                     });
