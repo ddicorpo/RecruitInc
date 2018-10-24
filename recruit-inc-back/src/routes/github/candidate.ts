@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {GithubUserInfo} from "../../data-extraction/github/githubUserInfo";
 import {GithubUserRepos} from "../../data-extraction/github/githubUserRepos";
 import {GithubRepoStructure} from "../../data-extraction/github/githubRepoStructure";
+import {GithubDownloadedFilesPath} from "../../data-extraction/github/githubDownloadedFilesPath";
 //import { Query } from "../../data-extraction/github/query";
 import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser"
 
@@ -141,6 +142,52 @@ export class Candidate {
 
                let query : GithubRepoStructure = new GithubRepoStructure();
                user = await query.getRepoStructureFromUser(user);
+               res.status(200).send(user);
+            });
+
+        app.route('/api/github/candidate/download/:owner/:repoName/*')
+            .get(cors(), async (req: Request, res: Response) => {
+
+               console.log(req.params);
+               let owner : string = req.params.owner;
+               let repoName : string = req.params.repoName;
+               let query : GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
+               let path : string = req.params[0];
+               let data = await query.downloadFile(owner,repoName,path);
+               query.writeToFile(data, query.generatePath("MewtR", repoName, path));
+               res.status(200).send(data);
+            });
+        app.route('/api/github/candidate/downloadforuser')
+            .get(cors(), async (req: Request, res: Response) => {
+                let user : IGithubUser = 
+                {login: "MewtR",
+                 createdAt: "",
+                 url: "",
+                 repositories: [
+                 {name: "MinistocksRework",
+                     owner: {
+                         login: "AyoubeAkaouch"
+                     }
+                 },
+                 {name: "SOEN343",
+                     owner: {
+                         login: "gprattico"
+                     }
+                 },
+                 {name: "RecruitInc",
+                     owner: {
+                         login: "ddicorpo"
+                     }
+                 }
+                 ]
+
+                };
+
+               //Use MewtR's access token to get data from private repo (RecruitInc)
+               let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               let githubRepoStructure : GithubRepoStructure = new GithubRepoStructure("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               user = await githubRepoStructure.getRepoStructureFromUser(user);
+               user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
                res.status(200).send(user);
             });
     }
