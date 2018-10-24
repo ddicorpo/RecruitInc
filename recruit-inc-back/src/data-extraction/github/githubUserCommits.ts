@@ -33,7 +33,7 @@ export class GithubUserCommits {
       }
       return user;
 }
-    async gwt(RepoName: string, OwnerUsername: string, UserEmail: string): Promise<string> {
+    async GetCommitsSpecificToUser(RepoName: string, OwnerUsername: string, UserEmail: string): Promise<string> {
        
 
         let query : string =
@@ -69,7 +69,7 @@ export class GithubUserCommits {
               
     }     
 
-    async gwtNext(RepoName: string, OwnerUsername: string, UserEmail: string, endCursor: string): Promise<string> {
+    async GetCommitsSpecificToUserNext(RepoName: string, OwnerUsername: string, UserEmail: string, endCursor: string): Promise<string> {
        
 
       let query : string =
@@ -115,7 +115,7 @@ export class GithubUserCommits {
   async getCommits(repository: string, owner: string, userEmail: string): Promise<{oid: string, changedFiles: number, author:{name: string, email: string}}[]> {
 
     let result : any[] = [];
-    let data: string = await this.gwt(repository, owner, userEmail);
+    let data: string = await this.GetCommitsSpecificToUser(repository, owner, userEmail);
     let jsonData = JSON.parse(data);
     let pageInfo = jsonData.data.repository.ref.target.history.pageInfo;
     let edges = jsonData.data.repository.ref.target.history.edges;
@@ -127,7 +127,7 @@ export class GithubUserCommits {
     }
 
     while(hasNextPage){
-      let nextData : string = await this.gwtNext(repository, owner, userEmail, endCursor);
+      let nextData : string = await this.GetCommitsSpecificToUserNext(repository, owner, userEmail, endCursor);
       jsonData = JSON.parse(nextData);
       edges = jsonData.data.repository.ref.target.history.edges;
       pageInfo = jsonData.data.repository.ref.target.history.pageInfo;
