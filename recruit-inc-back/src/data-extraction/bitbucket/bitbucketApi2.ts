@@ -15,10 +15,11 @@ export class BitbucketApi2 {
         }).then(response => response.text())
             .then(body => {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                console.log("\n\nThis is the body of User query: ", body);
+                //console.log("\n\nThis is the body of User query: ", body);
 
                 let myBodyParser = new bodyParser();
                 let repoNames = myBodyParser.getAllRepoName(body);
+
 
                 fs.writeFile('bitbucketRepoList.json', repoNames, function(err){
                     if (err) {
@@ -39,7 +40,8 @@ export class BitbucketApi2 {
 
     public queryCommitInfo(accessToken: string, user: string, repoName: string) : string{
         logger.info({class: "bitbucketApi2", method: "queryData", action: "Querying bitbucket's api", params: {accessToken, user}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-        return fetch(`https://api.bitbucket.org/2.0/repositories/${user}/${repoName}/commits`, {
+
+        return fetch(`http://api.bitbucket.org/2.0/repositories/${user}/${repoName}/commits`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -47,11 +49,12 @@ export class BitbucketApi2 {
         }).then(response => response.text())
             .then(body => {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                //console.log("\n\nThis is the body of Commits query: ", body);
 
+                //console.log("this is a LOOP: ");
+                console.log("THIS IS THE REPO NAME: " + repoName + "\n\n");
                 let myBodyParser = new bodyParser();
                 let commitIds = myBodyParser.getAllCommits(body);
-                console.log("\n\n---------------\n\n");
+                //console.log("\n\n---------------\n\n");
 
         }).catch(error => {
             logger.error({class: "bitbucketApi2", method: "queryData", action: "Error from bitbucket's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
