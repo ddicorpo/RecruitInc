@@ -22,7 +22,8 @@ export interface IGithubUser{
         additions: number,
         deletions: number
         }[]
-        }[]
+        }[],
+        downloadedSourceFilePaths?: string[]
     }[],  
     email?: string,
     company?: string,
