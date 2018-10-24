@@ -10,7 +10,7 @@ let test : GithubUserCommits = new GithubUserCommits();
 
   const GithubUserCommitsRetrieval = require('./GithubUserCommits.js');
 
-  describe.only('Get commits from a user in a github repo', () => {
+  describe('Get commits from a user in a github repo', () => {
     beforeEach(() => {
       //mocking the API
         nock('https://api.github.com')
