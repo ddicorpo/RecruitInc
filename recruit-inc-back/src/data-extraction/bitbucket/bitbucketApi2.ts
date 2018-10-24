@@ -15,11 +15,11 @@ export class BitbucketApi2 {
         }).then(response => response.text())
             .then(body => {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                //console.log("\n\nThis is the body of User query: ", body);
+
+                console.log("\n\nThis is the body of User query: ", body);
 
                 let myBodyParser = new bodyParser();
                 let repoNames = myBodyParser.getAllRepoName(body);
-
 
                 fs.writeFile('bitbucketRepoList.json', repoNames, function(err){
                     if (err) {
@@ -50,11 +50,10 @@ export class BitbucketApi2 {
             .then(body => {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-                //console.log("this is a LOOP: ");
                 console.log("THIS IS THE REPO NAME: " + repoName + "\n\n");
                 let myBodyParser = new bodyParser();
                 let commitIds = myBodyParser.getAllCommits(body);
-                //console.log("\n\n---------------\n\n");
+                console.log("\n\n---------------\n\n");
 
         }).catch(error => {
             logger.error({class: "bitbucketApi2", method: "queryData", action: "Error from bitbucket's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
