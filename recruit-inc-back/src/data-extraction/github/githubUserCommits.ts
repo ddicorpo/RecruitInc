@@ -11,8 +11,17 @@ export class GithubUserCommits {
 
   async getFilesAffectedByCommit(ownerzz: string, repozzz: string, sha: string): Promise<{filename: string, additions: number, deletions: number}[]> {
     let result : {filename: string, additions: number, deletions: number}[] = [];
-    let data = await new GithubApiV3().queryUserCommits(this.accessToken, ownerzz, repozzz, sha);
-    let jsonData = JSON.parse(data);
+    let data : string ;
+    let jsonData;
+    try{
+    data = await new GithubApiV3().queryUserCommits(this.accessToken, ownerzz, repozzz, sha);
+    jsonData = JSON.parse(data);
+    if (!(jsonData.hasOwnProperty('files')))
+        throw new Error('Something went wrong');
+    }catch(e){
+        console.log(e);
+        return;
+    }
     let files = jsonData.files;
     for (let file of files){
         result.push({filename: file.filename, additions:  file.additions, deletions: file.deletions});
@@ -110,7 +119,7 @@ export class GithubUserCommits {
       for (let repository of user.repositories){
           repository.commits = await this.getCommits(repository.name, repository.owner.login, user.email)
       }
-
+      return user;
 }
   async getCommits(repository: string, owner: string, userEmail: string): Promise<{oid: string, changedFiles: number, author:{name: string, email: string}}[]> {
 
