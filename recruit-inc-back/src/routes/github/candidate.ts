@@ -3,6 +3,7 @@ import {GithubUserInfo} from "../../data-extraction/github/githubUserInfo";
 import {GithubUserRepos} from "../../data-extraction/github/githubUserRepos";
 import {GithubRepoStructure} from "../../data-extraction/github/githubRepoStructure";
 import {GithubDownloadedFilesPath} from "../../data-extraction/github/githubDownloadedFilesPath";
+import {GithubUserCommits} from "../../data-extraction/github/githubUserCommits";
 //import { Query } from "../../data-extraction/github/query";
 import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser"
 
@@ -189,6 +190,38 @@ export class Candidate {
                user = await githubRepoStructure.getRepoStructureFromUser(user);
                user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
                res.status(200).send(user);
+            });
+
+        app.route('/api/github/testchainofevents')
+            .get(cors(), async (req: Request, res: Response) => {
+                let user : IGithubUser = 
+                {login: "MewtR",
+                 createdAt: "",
+                 url: "",
+                 email: "mohamedlemineelhadj@outlook.com",
+                };
+
+               //Use MewtR's access token to get private repos as well
+
+               //Get all of the user's repos
+               let githubUserRepos : GithubUserRepos = new GithubUserRepos("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               user = await githubUserRepos.getUserRepos(user);
+               
+               //Get the repositories' structure
+               let githubRepoStructure : GithubRepoStructure = new GithubRepoStructure("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               user = await githubRepoStructure.getRepoStructureFromUser(user);
+
+               //Get commits and their details
+               let githubUserCommits : GithubUserCommits = new GithubUserCommits("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               user = await githubUserCommits.getCommitsFromUser(user);
+               user = await githubUserCommits.getFilesAffectedByCommitFromUser(user);
+
+               //Search for package.json and download it if found
+               let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
+
+               res.status(200).send(user);
+               console.log(user);
             });
     }
 }
