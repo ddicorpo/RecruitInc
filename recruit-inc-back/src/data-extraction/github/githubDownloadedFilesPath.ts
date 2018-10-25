@@ -55,12 +55,12 @@ export class GithubDownloadedFilesPath {
             if (repository.projectStructure == null || repository.projectStructure.length == 0)
                 continue;
             for (let file of repository.projectStructure){
+            if(!(repository.downloadedSourceFile))
+                repository.downloadedSourceFile = [];
                 if (file.fileName == filename){
                     let generatedPath : string = this.generatePath(user.login, repository.projectName, file.filePath);
                     let sourceFile : {name: string, path: string, content: string} = await this.downloadFile(repository.owner, repository.projectName, file.filePath);
                     this.writeToFile(sourceFile.content, generatedPath);
-                    if(!(repository.downloadedSourceFile))
-                        repository.downloadedSourceFile = [];
                     repository.downloadedSourceFile.push({filename: sourceFile.name, repoFilePath: sourceFile.path, localFilePath: generatedPath });
                 }
             }
