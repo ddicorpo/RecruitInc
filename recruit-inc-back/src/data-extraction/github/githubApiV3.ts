@@ -12,12 +12,12 @@ export class GithubApiV3 {
             },
         }).then(response => response.text())
             .then(body => {
-                logger.info({class: "githubApiV3", method: "queryData", action: "Result from github's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                logger.info({class: "githubApiV3", method: "queryUserCommits", action: "Result from github's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 console.log(body);
                 return body;
             })
             .catch(error => {
-                logger.error({class: "githubApiV3", method: "queryData", action: "Error from github's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                logger.error({class: "githubApiV3", method: "queryUserCommits", action: "Error from github's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
             });
     }

@@ -9,12 +9,12 @@ export class GithubUserCommits {
       this.accessToken = accessToken;
   }
 
-  async getFilesAffectedByCommit(ownerzz: string, repozzz: string, sha: string): Promise<{filename: string, additions: number, deletions: number}[]> {
+  async getFilesAffectedByCommit(OwnerOfRepo: string, Repository: string, sha: string): Promise<{filename: string, additions: number, deletions: number}[]> {
     let result : {filename: string, additions: number, deletions: number}[] = [];
     let data : string ;
     let jsonData;
     try{
-    data = await new GithubApiV3().queryUserCommits(this.accessToken, ownerzz, repozzz, sha);
+    data = await new GithubApiV3().queryUserCommits(this.accessToken, OwnerOfRepo, Repository, sha);
     jsonData = JSON.parse(data);
     if (!(jsonData.hasOwnProperty('files')))
         throw new Error('Something went wrong');
