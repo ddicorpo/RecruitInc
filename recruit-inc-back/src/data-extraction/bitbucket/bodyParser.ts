@@ -32,33 +32,53 @@ export default class bodyParser {
         return allNames;
     }
 
-    public getAllCommits(body: string[]) : string[]{
+    public getAllCommits(body: string[], username: string) : string[]{
         let hashName = "";
         let allCommitNames: string[] = new Array(0);
-        let iterator: number;
+        let iterator: number = 0;
         let inner: number;
         let hashFinder: string;
+        let usernameLength: number = username.length;
+        let usernameFinder: string = "";
+        let counter: number = 0;
 
-        for (let outer in body){
-            iterator = parseInt(outer);
+        for (let outer in body) {
+            if (iterator <= parseInt(outer)) {
+                iterator = parseInt(outer);
 
-            hashFinder = body[iterator] + body[iterator + 1] + body[iterator + 2] + body[iterator + 3];
-
-            if (hashFinder == "hash"){
-                inner = iterator + 8;
-
-                while (body[inner] != '"'){
-                    hashName += body[inner];
-                    inner += 1;
+                while (counter < usernameLength) {
+                    usernameFinder += body[iterator + counter];
+                    counter += 1;
                 }
 
-                console.log("this is the commit id: " + hashName);
+                if (usernameFinder.match(username)) {
+                    while (true){
+                        hashFinder = body[iterator] + body[iterator + 1] + body[iterator + 2] + body[iterator + 3] + body[iterator + 4];
 
-                allCommitNames.push(hashName);
-                hashName = "";
+                        if (hashFinder == "\"hash") {
+                            inner = iterator + 10;
+
+                            while (body[inner + 1] != '"') {
+                                hashName += body[inner];
+                                inner += 1;
+                            }
+
+                            console.log("this is the commit id: " + hashName);
+
+                            allCommitNames.push(hashName);
+                            hashName = "";
+                            break;
+                        }
+                        else{
+                            iterator += 1;
+                        }
+                    }
+                }
+                else {
+                    counter = 0;
+                }
             }
         }
-
         return allCommitNames;
     }
 
