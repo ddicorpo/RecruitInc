@@ -29,7 +29,7 @@ export class GithubRepoStructure {
 
     async getRepoStructureFromUser(user: IGithubUser): Promise<IGithubUser> {
         for (let repository of user.dataEntry.projectInputs){
-            repository.projectStructure = await this.getRepoStructure(repository.owner, repository.name);
+            repository.projectStructure = await this.getRepoStructure(repository.owner, repository.projectName);
         }
         return user;
     }
