@@ -19,4 +19,10 @@ export abstract class AbstractGitlabQuery<Response>{
         this.response = await this.queryExecutor.executeQuery(this.query);
         return await this.response;
     }
+
+    public async executeDownloadQuery(): Promise<Response> {
+        this.response = await this.queryExecutor.executeDownloadQuery(this.query);
+        return await this.response;
+    }
+
 }

@@ -8,6 +8,7 @@ import {RepositoryTreeQuery} from "../../data-extraction/gitlab/queries/Reposito
 import {IGitlabRepositoryTree} from "../../data-extraction/gitlab/api-entities/IGitlabRepositoryTree";
 import {IGitlabCommit} from "../../data-extraction/gitlab/api-entities/IGitlabCommit";
 import {CommitQuery} from "../../data-extraction/gitlab/queries/CommitQuery";
+import { FileDownloadQuery } from "../../data-extraction/gitlab/queries/FileDownloadQuery";
 var logger = require('../../logger.js');
 
 var cors = require('cors');
@@ -89,16 +90,39 @@ export class GitlabApplicants {
                     gitlabProjects[i].commitsStructure = [];
                     gitlabProjects[i].commitsStructure = gitlabProjects[i].commitsStructure.concat(commits);
                 }
-                  
+
                 let returnValue = {
                     userQuery: userQuery.getQuery(),
                     userResponse: gitlabUsers,
                     
                     projectQuery: projectQuery.getQuery(),
                     projectResponse: gitlabProjects
+
                 };
                 response.status(200).send(returnValue);
 
             });
+
+        app.route('/api/gitlab/download/:projectId/:blobSha')
+            .get(cors(), async (request: Request, response: Response) => {               
+              
+              let projectId : number = request.params.projectId;
+              let blobSha : string = request.params.blobSha;
+              let gitlabFileDownloadExecutor = new GitlabQueryExecutor<any>();
+              let fileDownloadQuery : FileDownloadQuery = new FileDownloadQuery(projectId,blobSha,gitlabFileDownloadExecutor);
+              fileDownloadQuery.buildQuery();
+              let gitlabFileDownloadPromise: Promise<any> = fileDownloadQuery.executeDownloadQuery();
+              let gitlabFileDownload = await gitlabFileDownloadPromise;
+              
+              let returnValue = {
+                
+                fileDownloadQuery:fileDownloadQuery.getQuery(),
+                gitlabFileDownloadReponse: gitlabFileDownload
+            };
+            
+            response.status(200).send(returnValue);
+
+           });   
+            
     }
 }
