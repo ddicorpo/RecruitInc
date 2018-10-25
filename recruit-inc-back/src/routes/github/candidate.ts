@@ -201,7 +201,7 @@ export class Candidate {
 
         app.route('/api/github/matchingalgo/:login/:email')
             .get(cors(), async (req: Request, res: Response) => {
-                //logger.info({class: "Candidate", method: "routes", action: "/api/github/matchingalgo/:login/:email", value: {req, res}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                logger.info({class: "Candidate", method: "routes", action: "/api/github/matchingalgo/:login/:email", value: {req, res}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 let login : string = req.params.login;
                 let email : string = req.params.email;
 
