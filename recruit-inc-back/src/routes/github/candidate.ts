@@ -133,34 +133,29 @@ export class Candidate {
                let query : GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
                let path : string = req.params[0];
                let data = await query.downloadFile(owner,repoName,path);
-               query.writeToFile(data, query.generatePath("MewtR", repoName, path));
+               query.writeToFile(data.content, query.generatePath("MewtR", repoName, path));
                res.status(200).send(data);
             });
         app.route('/api/github/candidate/downloadforuser')
             .get(cors(), async (req: Request, res: Response) => {
+
                 let user : IGithubUser = 
                 {login: "MewtR",
                  createdAt: "",
                  url: "",
-                 repositories: [
-                 {name: "MinistocksRework",
-                     owner: {
-                         login: "AyoubeAkaouch"
-                     }
-                 },
-                 {name: "SOEN343",
-                     owner: {
-                         login: "gprattico"
-                     }
-                 },
-                 {name: "RecruitInc",
-                     owner: {
-                         login: "ddicorpo"
-                     }
-                 }
-                 ]
-
-                };
+                 dataEntry: {
+                    projectInputs: [
+                 {
+                 projectName: "RecruitInc",
+                 owner:"ddicorpo"
+                    },
+                 {
+                 projectName: "SOEN343",
+                 owner:"gprattico"
+                    }
+                    ]
+                    }
+                 };
 
                //Use MewtR's access token to get data from private repo (RecruitInc)
                let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");

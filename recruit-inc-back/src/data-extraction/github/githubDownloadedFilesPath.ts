@@ -11,7 +11,7 @@ export class GithubDownloadedFilesPath {
       this.accessToken = accessToken;
   }
 
-    async downloadFile(owner: string, repoName: string, path: string): Promise<string> {
+    async downloadFile(owner: string, repoName: string, path: string): Promise<{name: string, path: string, content: string}> {
         let data ;
         let jsonData;
        try{
@@ -25,7 +25,7 @@ export class GithubDownloadedFilesPath {
         }
         let content = Buffer.from(jsonData.content, 'base64').toString();
 
-        return content;
+        return {name: jsonData.name, path: jsonData.path, content: content};
     }
     
     writeToFile(content: string, path: string){
@@ -49,19 +49,19 @@ export class GithubDownloadedFilesPath {
     }
 
     async downloadFileForUser(user: IGithubUser, filename: string): Promise<IGithubUser>{
-        if (user.repositories == null || user.repositories.length == 0)
+        if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0)
             return user;
-        for (let repository of user.repositories){
-            if (repository.structure == null || repository.structure.length == 0)
+        for (let repository of user.dataEntry.projectInputs){
+            if (repository.projectStructure == null || repository.projectStructure.length == 0)
                 continue;
-            for (let file of repository.structure){
-                if (file.name == filename){
-                    let generatedPath : string = this.generatePath(user.login, repository.name, file.path);
-                    let fileContent : string = await this.downloadFile(repository.owner.login, repository.name, file.path);
-                    this.writeToFile(fileContent, generatedPath);
-                    if(!(repository.downloadedSourceFilePaths))
-                        repository.downloadedSourceFilePaths = [];
-                    repository.downloadedSourceFilePaths.push(generatedPath);
+            for (let file of repository.projectStructure){
+                if (file.fileName == filename){
+                    let generatedPath : string = this.generatePath(user.login, repository.projectName, file.filePath);
+                    let sourceFile : {name: string, path: string, content: string} = await this.downloadFile(repository.owner, repository.projectName, file.filePath);
+                    this.writeToFile(sourceFile.content, generatedPath);
+                    if(!(repository.downloadedSourceFile))
+                        repository.downloadedSourceFile = [];
+                    repository.downloadedSourceFile.push({filename: sourceFile.name, repoFilePath: sourceFile.path, localFilePath: generatedPath });
                 }
             }
         
