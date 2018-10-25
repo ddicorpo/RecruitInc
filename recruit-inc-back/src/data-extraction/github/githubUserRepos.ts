@@ -76,13 +76,6 @@ export class GithubUserRepos {
             return {projectName: repository.name, owner: repository.owner.login};
         })
 }
-        console.log(user);
-        console.log(user.dataEntry);
-       // user.dataEntry.projectInputs = repositories.map(repository => {
-       //     return {projectName: repository.name, owner: repository.owner.login};
-       // });
-        //user.repositories = jsonData.data.user.repositories.nodes;
-            
         while(hasNextPage){
           let nextData : string = "";
           try{
@@ -97,7 +90,6 @@ export class GithubUserRepos {
           user.dataEntry.projectInputs = user.dataEntry.projectInputs.concat(repositories.map(repository => {
             return {projectName: repository.name, owner: repository.owner.login};
         }));
-         // user.repositories += jsonData.data.user.repositories.nodes;
           data+=nextData;
           }catch(e){
            console.log(e);

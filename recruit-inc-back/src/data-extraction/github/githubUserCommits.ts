@@ -22,7 +22,7 @@ export class GithubUserCommits {
         throw new Error('Something went wrong');
     }catch(e){
         console.log(e);
-        return;
+        return result;
     }
     let files = jsonData.files;
     for (let file of files){
@@ -40,7 +40,9 @@ export class GithubUserCommits {
               continue;
           for (let commit of repository.applicantCommits){
               //if (commit["node"]["oid"] == null) continue;
-              if (commit.id == null) continue;
+              if (commit.id == null) {
+                  continue;
+              }
               commit.files = await this.getFilesAffectedByCommit(repository.owner, repository.projectName, commit.id )
           }
       }

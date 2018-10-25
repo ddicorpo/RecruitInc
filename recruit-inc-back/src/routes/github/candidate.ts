@@ -8,6 +8,7 @@ import {GithubUserCommits} from "../../data-extraction/github/githubUserCommits"
 import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser"
 import {MatcherClient} from "../../matching-algo/matcher-client/MatcherClient"
 import { IGitProjectOutput } from "../../matching-algo/data-model/output-model/IGitProjectOutput";
+import { GithubDataExtraction } from "../../data-extraction/github/githubDataExtraction"
 var logger = require('../../logger.js');
 
 const cors = require('cors');
@@ -199,47 +200,58 @@ export class Candidate {
                console.log(user);
             });
 
-        app.route('/api/github/matchingalgo/:login/:email')
+        app.route('/api/github/matchingalgo/:login/:email/:accessToken?')
             .get(cors(), async (req: Request, res: Response) => {
                 logger.info({class: "Candidate", method: "routes", action: "/api/github/matchingalgo/:login/:email", value: {req, res}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 let login : string = req.params.login;
                 let email : string = req.params.email;
+                let accessToken : string = req.params.accessToken;
 
-                let user : IGithubUser = 
-                {login: login,
-                 createdAt: "",
-                 url: "",
-                 email: email,
-                };
+          //      let user : IGithubUser = 
+          //      {login: login,
+          //       createdAt: "",
+          //       url: "",
+          //       email: email,
+          //      };
 
-               //Use MewtR's access token to get private repos as well
+          //     //Use MewtR's access token to get private repos as well
 
-               //Get all of the user's repos
-               let githubUserRepos : GithubUserRepos = new GithubUserRepos();
-               //let githubUserRepos : GithubUserRepos = new GithubUserRepos("5e6a78d61823ba36bbdff45649fde4481bb489b7");
-               user = await githubUserRepos.getUserRepos(user);
+          //     //Get all of the user's repos
+          //     let githubUserRepos : GithubUserRepos = new GithubUserRepos();
+          //     //let githubUserRepos : GithubUserRepos = new GithubUserRepos("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+          //     user = await githubUserRepos.getUserRepos(user);
+          //     
+          //     //Get the repositories' structure
+          //     //let githubRepoStructure : GithubRepoStructure = new GithubRepoStructure("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+          //     let githubRepoStructure : GithubRepoStructure = new GithubRepoStructure();
+          //     user = await githubRepoStructure.getRepoStructureFromUser(user);
+
+          //     //Get commits and their details
+          //     let githubUserCommits : GithubUserCommits = new GithubUserCommits();
+          //     //let githubUserCommits : GithubUserCommits = new GithubUserCommits("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+          //     user = await githubUserCommits.getCommitsFromUser(user);
+          //     user = await githubUserCommits.getFilesAffectedByCommitFromUser(user);
+
+          //     //Search for package.json and download it if found
+          //     //let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+          //     let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
+          //     user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
+
+          //     let client: MatcherClient = new MatcherClient(user.dataEntry)
+          //     let output: IGitProjectOutput[] = client.execute();
+
+               let githubDataExtractor : GithubDataExtraction;
+               if (accessToken){
+               githubDataExtractor = new GithubDataExtraction(accessToken);
+               } else{
+               let githubDataExtractor = new GithubDataExtraction();
+               }
+
                
-               //Get the repositories' structure
-               //let githubRepoStructure : GithubRepoStructure = new GithubRepoStructure("5e6a78d61823ba36bbdff45649fde4481bb489b7");
-               let githubRepoStructure : GithubRepoStructure = new GithubRepoStructure();
-               user = await githubRepoStructure.getRepoStructureFromUser(user);
-
-               //Get commits and their details
-               let githubUserCommits : GithubUserCommits = new GithubUserCommits();
-               //let githubUserCommits : GithubUserCommits = new GithubUserCommits("5e6a78d61823ba36bbdff45649fde4481bb489b7");
-               user = await githubUserCommits.getCommitsFromUser(user);
-               user = await githubUserCommits.getFilesAffectedByCommitFromUser(user);
-
-               //Search for package.json and download it if found
-               //let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");
-               let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
-               user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
-
-               let client: MatcherClient = new MatcherClient(user.dataEntry)
-               let output: IGitProjectOutput[] = client.execute();
+               let output: IGitProjectOutput[] = await githubDataExtractor.extractData(login, email);
+               //let user: IGithubUser = await githubDataExtractor.extractData(login, email);
 
                res.status(200).send(output);
-               console.log(output);
             });
     }
 }
