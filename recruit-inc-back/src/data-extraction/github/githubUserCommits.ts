@@ -9,12 +9,12 @@ export class GithubUserCommits {
       this.accessToken = accessToken;
   }
 
-  async getFilesAffectedByCommit(ownerzz: string, repozzz: string, sha: string): Promise<{filename: string, additions: number, deletions: number}[]> {
-    let result : {filename: string, additions: number, deletions: number}[] = [];
+  async getFilesAffectedByCommit(owner: string, repo: string, sha: string): Promise<{filePath: string, lineAdded: number, lineDeleted: number}[]> {
+    let result : {filePath: string, lineAdded: number, lineDeleted: number}[] = [];
     let data : string ;
     let jsonData;
     try{
-    data = await new GithubApiV3().queryUserCommits(this.accessToken, ownerzz, repozzz, sha);
+    data = await new GithubApiV3().queryUserCommits(this.accessToken, owner, repo, sha);
     jsonData = JSON.parse(data);
     if (!(jsonData.hasOwnProperty('files')))
         throw new Error('Something went wrong');
@@ -24,20 +24,22 @@ export class GithubUserCommits {
     }
     let files = jsonData.files;
     for (let file of files){
-        result.push({filename: file.filename, additions:  file.additions, deletions: file.deletions});
+        //In this case, file.filename returns the file path
+        result.push({filePath: file.filename, lineAdded:  file.additions, lineDeleted: file.deletions});
     }
     return result;
 }
 
   async getFilesAffectedByCommitFromUser(user: IGithubUser): Promise<IGithubUser> {
-      if (user.repositories == null || user.repositories.length == 0)
+      if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0)
           return user;
-      for (let repository of user.repositories){
-          if (repository.commits == null || repository.commits.length == 0 )
+      for (let repository of user.dataEntry.projectInputs){
+          if (repository.applicantCommits == null || repository.applicantCommits.length == 0 )
               continue;
-          for (let commit of repository.commits){
-              if (commit["node"]["oid"] == null) continue;
-              commit.singleFileCommit = await this.getFilesAffectedByCommit(repository.owner.login, repository.name, commit["node"]["oid"] )
+          for (let commit of repository.applicantCommits){
+              //if (commit["node"]["oid"] == null) continue;
+              if (commit.id == null) continue;
+              commit.files = await this.getFilesAffectedByCommit(repository.owner, repository.projectName, commit.id )
           }
       }
       return user;
@@ -61,10 +63,6 @@ export class GithubUserCommits {
                             node {
                               oid
                               changedFiles
-                              author {
-                                name
-                                email
-                              }
                             }
                           }
                         }
@@ -96,10 +94,6 @@ export class GithubUserCommits {
                           node {
                             oid
                             changedFiles
-                            author {
-                              name
-                              email
-                            }
                           }
                         }
                       }
@@ -114,14 +108,14 @@ export class GithubUserCommits {
   }     
 
   async getCommitsFromUser(user: IGithubUser): Promise<IGithubUser> {
-      if (user.repositories == null || user.repositories.length == 0)
+      if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0)
           return user;
-      for (let repository of user.repositories){
-          repository.commits = await this.getCommits(repository.name, repository.owner.login, user.email)
+      for (let repository of user.dataEntry.projectInputs){
+          repository.applicantCommits = await this.getCommits(repository.projectName, repository.owner, user.email)
       }
       return user;
 }
-  async getCommits(repository: string, owner: string, userEmail: string): Promise<{oid: string, changedFiles: number, author:{name: string, email: string}}[]> {
+  async getCommits(repository: string, owner: string, userEmail: string): Promise<{id: string, numberOfFileAffected: number}[]> {
 
     let result : any[] = [];
     let data: string = await this.GetCommitsSpecificToUser(repository, owner, userEmail);
@@ -148,7 +142,10 @@ export class GithubUserCommits {
     }
       data+=nextData;
     }
-    return result;
+
+    return result.map( commit => {
+        return {id: commit.node.oid, numberOfFileAffected: commit.node.changedFiles};
+    });
 }
 
    

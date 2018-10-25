@@ -108,11 +108,11 @@ export class Candidate {
                  dataEntry: {
                     projectInputs: [
                  {
-                 name: "MinistocksRework",
+                 projectName: "MinistocksRework",
                  owner:"AyoubeAkaouch"
                     },
                  {
-                 name: "rufus",
+                 projectName: "rufus",
                  owner:"MewtR"
                     }
                     ]
