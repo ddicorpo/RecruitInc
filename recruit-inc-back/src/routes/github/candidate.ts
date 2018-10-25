@@ -6,6 +6,7 @@ import {GithubDownloadedFilesPath} from "../../data-extraction/github/githubDown
 import {GithubUserCommits} from "../../data-extraction/github/githubUserCommits";
 //import { Query } from "../../data-extraction/github/query";
 import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser"
+var logger = require('../../logger.js');
 
 const cors = require('cors');
 
@@ -77,15 +78,13 @@ export class Candidate {
 
         app.route('/api/github/candidate/repo/:username')
             .get(cors(), async (req: Request, res: Response) => {
-
-                
                 
                let username : string = req.params.username;
                let user : IGithubUser = {login: username, url: "", createdAt: ""};
                let query : GithubUserRepos   = new GithubUserRepos();
                user = await query.getUserRepos(user);
 
-               res.status(200).send(user.repositories);
+               res.status(200).send(user);
             });
 
         app.route('/api/github/candidate/struct/:owner/:repoName')
@@ -106,40 +105,19 @@ export class Candidate {
                 {login: "MewtR",
                  createdAt: "",
                  url: "",
-                 repositories: [
-                 {name: "MinistocksRework",
-                     owner: {
-                         login: "AyoubeAkaouch"
-                     }
-                 },
-                 {name: "rufus",
-                     owner: {
-                         login: "MewtR"
-                     }
-                 },
-                 {name: "SOEN343",
-                     owner: {
-                         login: "gprattico"
-                     }
-                 },
-                 {name: "agenda",
-                     owner: {
-                         login: "Philippe229"
-                     }
-                 },
-                 {name: "simple-maven-project-with-tests",
-                     owner: {
-                         login: "MewtR"
-                     }
-                 },
-                 {name: "express-app-testing-demo",
-                     owner: {
-                         login: "MewtR"
-                     }
-                 }
-                 ]
-
-                };
+                 dataEntry: {
+                    projectInputs: [
+                 {
+                 name: "MinistocksRework",
+                 owner:"AyoubeAkaouch"
+                    },
+                 {
+                 name: "rufus",
+                 owner:"MewtR"
+                    }
+                    ]
+                    }
+                 };
 
                let query : GithubRepoStructure = new GithubRepoStructure();
                user = await query.getRepoStructureFromUser(user);
@@ -205,6 +183,42 @@ export class Candidate {
 
                //Get all of the user's repos
                let githubUserRepos : GithubUserRepos = new GithubUserRepos("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               user = await githubUserRepos.getUserRepos(user);
+               
+               //Get the repositories' structure
+               let githubRepoStructure : GithubRepoStructure = new GithubRepoStructure("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               user = await githubRepoStructure.getRepoStructureFromUser(user);
+
+               //Get commits and their details
+               let githubUserCommits : GithubUserCommits = new GithubUserCommits("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               user = await githubUserCommits.getCommitsFromUser(user);
+               user = await githubUserCommits.getFilesAffectedByCommitFromUser(user);
+
+               //Search for package.json and download it if found
+               let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");
+               user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
+
+               res.status(200).send(user);
+               console.log(user);
+            });
+
+        app.route('/api/github/matchingalgo/:login/:email')
+            .get(cors(), async (req: Request, res: Response) => {
+                logger.info({class: "Candidate", method: "routes", action: "/api/github/matchingalgo/:login/:email", value: {req, res}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                let login : string = req.params.login;
+                let email : string = req.params.email;
+
+                let user : IGithubUser = 
+                {login: login,
+                 createdAt: "",
+                 url: "",
+                 email: email,
+                };
+
+               //Use MewtR's access token to get private repos as well
+
+               //Get all of the user's repos
+               let githubUserRepos : GithubUserRepos = new GithubUserRepos("");
                user = await githubUserRepos.getUserRepos(user);
                
                //Get the repositories' structure
