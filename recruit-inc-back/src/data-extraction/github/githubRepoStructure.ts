@@ -28,16 +28,16 @@ export class GithubRepoStructure {
     }
 
     async getRepoStructureFromUser(user: IGithubUser): Promise<IGithubUser> {
-        for (let repository of user.repositories){
-            repository.structure = await this.getRepoStructure(repository.owner.login, repository.name);
+        for (let repository of user.dataEntry.projectInputs){
+            repository.projectStructure = await this.getRepoStructure(repository.owner, repository.projectName);
         }
         return user;
     }
 
-    async getRepoStructure(owner: string, repoName: string): Promise<{sha: string, name: string, path: string}[]> {
+    async getRepoStructure(owner: string, repoName: string): Promise<{fileId: string, fileName: string, filePath: string}[]> {
         let data : string = "";
         let treeSha : string = "";
-        let projectStructure : {sha: string, name: string, path: string}[] = [];
+        let projectStructure : {fileId: string, fileName: string, filePath: string}[] = [];
         let jsonData;
 
         try{
@@ -67,7 +67,7 @@ export class GithubRepoStructure {
         //only include blobs in project structure
         for (let file of tree){
             if (file.type == 'blob')
-                projectStructure.push({sha: file.sha, name: path.basename(file.path), path: file.path });
+                projectStructure.push({fileId: file.sha, fileName: path.basename(file.path), filePath: file.path });
         }
         
         return projectStructure;

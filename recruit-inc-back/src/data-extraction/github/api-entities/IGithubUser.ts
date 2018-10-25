@@ -1,9 +1,13 @@
+import { IDataEntry } from "../../../matching-algo/data-model/input-model/IDataEntry.ts"
+import { IGitProjectInput } from "../../../matching-algo/data-model/input-model//IGitProjectInput"
+
 export interface IGithubUser{
     login: string
     location?: string,
     languages?:{
         name: string
     },
+    dataEntry?: IDataEntry,
     repositories?:{
         name: string
         owner?:{

@@ -84,39 +84,16 @@ export class ApplicantGithub {
                  createdAt: "",
                  url: "",
                  email: "mohamedlemineelhadj@outlook.com",
-                 repositories: [
-                 {name: "MinistocksRework",
-                     owner: {
-                         login: "AyoubeAkaouch"
-                     }
+                 dataEntry: {
+                 projectInputs: [
+                 {projectName: "MinistocksRework",
+                  owner: "AyoubeAkaouch"
                  },
-                 {name: "rufus",
-                     owner: {
-                         login: "MewtR"
-                     }
-                 },
-                 {name: "SOEN343",
-                     owner: {
-                         login: "gprattico"
-                     }
-                 },
-                 {name: "agenda",
-                     owner: {
-                         login: "Philippe229"
-                     }
-                 },
-                 {name: "simple-maven-project-with-tests",
-                     owner: {
-                         login: "MewtR"
-                     }
-                 },
-                 {name: "express-app-testing-demo",
-                     owner: {
-                         login: "MewtR"
-                     }
+                 {projectName: "rufus",
+                  owner: "MewtR"
                  }
                  ]
-
+                 }
                 };
 
                 let query6 : GithubUserCommits  = new GithubUserCommits();
@@ -152,39 +129,16 @@ export class ApplicantGithub {
                  createdAt: "",
                  url: "",
                  email: "mohamedlemineelhadj@outlook.com",
-                 repositories: [
-                 {name: "MinistocksRework",
-                     owner: {
-                         login: "AyoubeAkaouch"
-                     }
+                 dataEntry: {
+                 projectInputs: [
+                 {projectName: "MinistocksRework",
+                  owner: "AyoubeAkaouch"
                  },
-                 {name: "rufus",
-                     owner: {
-                         login: "MewtR"
-                     }
-                 },
-                 {name: "SOEN343",
-                     owner: {
-                         login: "gprattico"
-                     }
-                 },
-                 {name: "agenda",
-                     owner: {
-                         login: "Philippe229"
-                     }
-                 },
-                 {name: "simple-maven-project-with-tests",
-                     owner: {
-                         login: "MewtR"
-                     }
-                 },
-                 {name: "express-app-testing-demo",
-                     owner: {
-                         login: "MewtR"
-                     }
+                 {projectName: "rufus",
+                  owner: "MewtR"
                  }
                  ]
-
+                 }
                 };
                         let query7 : GithubUserCommits  = new GithubUserCommits();
                         //First get all commits
