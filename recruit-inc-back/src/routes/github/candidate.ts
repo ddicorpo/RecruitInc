@@ -208,17 +208,20 @@ export class Candidate {
                 let accessToken : string = req.params.accessToken;
 
                let githubDataExtractor : GithubDataExtraction;
+               let output: IGitProjectOutput[] = [];
+               try{
                if (accessToken){
                githubDataExtractor = new GithubDataExtraction(accessToken);
                } else{
                githubDataExtractor = new GithubDataExtraction();
                }
-
-               
-               let output: IGitProjectOutput[] = await githubDataExtractor.extractData(login, email);
-               //let user: IGithubUser = await githubDataExtractor.extractData(login, email);
+               output = await githubDataExtractor.extractData(login, email);
+               }catch(e){
+                   res.status(500).json({error: e.toString()});
+               }
 
                res.status(200).send(output);
+
             });
     }
 }
