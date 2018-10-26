@@ -55,33 +55,19 @@ export class BitbucketApi2 {
                 console.log("repo name: " + repoName);
                 console.log("user name: " + user);
 
-                console.log("\n\n" + body.values[0].author.user.username + "\n\n");
 
-                console.log("\n\n" + JSON.stringify(body.values) + "\n\n");
+                let iterator = 0;
 
-                let iterator: number = 0;
+                 while (iterator < body.values.length){
 
-                // for (let values of body.values){
-                //     console.log("\n\n" + values.author.user.username + "\n\n");
-                //
-                //     if (JSON.stringify(body.values[iterator].author.user.username).match(user)){
-                //             console.log("\n\n\n\n" + body.values[iterator].hash + "\n\n\n\n\n");
-                //         }
-                // }
+                     if(body.values[iterator].author.user != undefined){
+                         if (JSON.stringify(body.values[iterator].author.user.username).match(user)){
+                             console.log("\n\n\n\n" + body.values[iterator].hash + "\n\n\n\n\n");
+                         }
+                     }
 
-                // while (iterator <= 30){
-                //     console.log("\n\n" + body.values[iterator].author.user.username + "\n\n");
-                //
-                //     if (JSON.stringify(body.values[iterator].author.user.username).match(user)){
-                //         console.log("OK");
-                //     }
-                //     // if (JSON.stringify(body.values[iterator].author.user.username).match(loggedUser)){
-                //     //     console.log("\n\n\n\n" + body.values[iterator].hash + "\n\n\n\n\n");
-                //     // }
-                //
-                //     console.log("body value length: " + body.values.length);
-                //     iterator++;
-                // }
+                     iterator += 1;
+                }
 
                 return body;
 
