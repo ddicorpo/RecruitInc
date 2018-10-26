@@ -1,3 +1,5 @@
+import { IDataEntry } from "../../../matching-algo/data-model/input-model/IDataEntry"
+
 export interface IGitlabUser {
     id: number,
     name: string,
@@ -27,5 +29,6 @@ export interface IGitlabUser {
     two_factor_enabled?: boolean,
     external?: boolean,
     private_profile?: boolean,
-    shared_runners_minutes_limit?: any
+    shared_runners_minutes_limit?: any,
+    dataEntry?: IDataEntry
 }

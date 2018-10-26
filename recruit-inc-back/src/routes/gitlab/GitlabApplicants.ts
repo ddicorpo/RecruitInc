@@ -9,6 +9,7 @@ import {IGitlabRepositoryTree} from "../../data-extraction/gitlab/api-entities/I
 import {IGitlabCommit} from "../../data-extraction/gitlab/api-entities/IGitlabCommit";
 import {CommitQuery} from "../../data-extraction/gitlab/queries/CommitQuery";
 import { FileDownloadQuery } from "../../data-extraction/gitlab/queries/FileDownloadQuery";
+import { IGithubUser } from "../../data-extraction/github/api-entities/IGithubUser";
 var logger = require('../../logger.js');
 
 var cors = require('cors');
@@ -30,26 +31,37 @@ export class GitlabApplicants {
                 userQuery.buildQuery();
                 let gitlabUserPromise: Promise<IGitlabUser[]> = userQuery.executeQuery();
                 let gitlabUsers: IGitlabUser[] = await gitlabUserPromise;
+                //console.log(gitlabUsers);
                 let userId: number = gitlabUsers[0].id;
-                
-                //To retrieve all the projects
+                let user: IGitlabUser = gitlabUsers[0];
+                //let user: IGitlabUser = {"id":212577,"name":"Roberto Rosario","username":"rosarior","state":"active","avatar_url":"https://secure.gravatar.com/avatar/943620c3bc4056a40ce132690f1d9ac1?s=80&d=identicon","web_url":"https://gitlab.com/rosarior"}
+
+                 //To retrieve all the projects
                 let gitlabProjectQueryExecutor = new GitlabQueryExecutor<IGitlabProject[]>();
                 let projectQuery: ProjectQuery = new ProjectQuery(userId, gitlabProjectQueryExecutor);
                 projectQuery.buildQuery();
                 let gitlabProjectPromise: Promise<IGitlabProject[]> = projectQuery.executeQuery();
                 let gitlabProjects: IGitlabProject[] = await gitlabProjectPromise;
                 
+                user.dataEntry = { projectInputs: gitlabProjects.map(project => {
+                    return {projectName: project.name,projectId: project.id ,applicantCommits:[], projectStructure: [],downloadedSourceFile:[]}
+                })};
+                console.log(user.dataEntry);
+                console.log(user.dataEntry.projectInputs[0]["projectId"])
                 let treeQuery: RepositoryTreeQuery;
                 let project : IGitlabRepositoryTree[];
+
+                
                
                 let commitQuery: CommitQuery; 
                 let commits: IGitlabCommit[];
                 let moredata: IGitlabCommit[];
                 let propername: string = gitlabUsers[0].name;
-
-                for(let i=0; i < gitlabProjects.length;i++){
                 
-                    let projectId: number = gitlabProjects[i].id;
+                for(let i=0; i < user.dataEntry.projectInputs.length;i++){
+                
+                    let projectId: number = user.dataEntry.projectInputs[i]["projectId"];
+                    
                 
                      //To retrieve the projectStruture of each project
                     let gitlabTreeQueryExecutor = new GitlabQueryExecutor<IGitlabRepositoryTree[]>();
@@ -59,6 +71,10 @@ export class GitlabApplicants {
                     project = await gitlabTreePromise;
                     gitlabProjects[i].projectStruture = [];
                     gitlabProjects[i].projectStruture = gitlabProjects[i].projectStruture.concat(project);
+                    
+                    user.dataEntry.projectInputs[i].projectStructure = user.dataEntry.projectInputs[i].projectStructure.concat(project.map(file => {
+                        return {fileId: file.id, fileName: file.name, filePath: file.path};
+                    }));
 
                     //to get all the commits of each project
                     let gitlabCommitQueryExecutor = new GitlabQueryExecutor<IGitlabCommit[]>();
@@ -66,7 +82,9 @@ export class GitlabApplicants {
                     commitQuery.buildQuery();
                     let gitlabCommitPromise: Promise<IGitlabCommit[]> = commitQuery.executeQuery();
                     commits = await gitlabCommitPromise;
-                    
+                    user.dataEntry.projectInputs[i].applicantCommits = commits.map(commit=> {
+                        return {id: commit.id, numberOfFileAffected: 0, files: []}
+                    }) 
                     let created_At : string = commits[0]["created_at"];
 
                     if(commits.length >= 20){
@@ -89,7 +107,7 @@ export class GitlabApplicants {
                     
                     gitlabProjects[i].commitsStructure = [];
                     gitlabProjects[i].commitsStructure = gitlabProjects[i].commitsStructure.concat(commits);
-                }
+                }   
 
                 let returnValue = {
                     userQuery: userQuery.getQuery(),
@@ -100,6 +118,7 @@ export class GitlabApplicants {
 
                 };
                 response.status(200).send(returnValue);
+                //console.log(user);
 
             });
 

@@ -11,6 +11,6 @@ export class RepositoryTreeQuery extends AbstractGitlabQuery<IGitlabRepositoryTr
     }
 
     public buildQuery(): void {
-        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/tree?recursive=true";
+        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/tree?recursive=true&per_page=100";
     }
 }
