@@ -207,44 +207,11 @@ export class Candidate {
                 let email : string = req.params.email;
                 let accessToken : string = req.params.accessToken;
 
-          //      let user : IGithubUser = 
-          //      {login: login,
-          //       createdAt: "",
-          //       url: "",
-          //       email: email,
-          //      };
-
-          //     //Use MewtR's access token to get private repos as well
-
-          //     //Get all of the user's repos
-          //     let githubUserRepos : GithubUserRepos = new GithubUserRepos();
-          //     //let githubUserRepos : GithubUserRepos = new GithubUserRepos("5e6a78d61823ba36bbdff45649fde4481bb489b7");
-          //     user = await githubUserRepos.getUserRepos(user);
-          //     
-          //     //Get the repositories' structure
-          //     //let githubRepoStructure : GithubRepoStructure = new GithubRepoStructure("5e6a78d61823ba36bbdff45649fde4481bb489b7");
-          //     let githubRepoStructure : GithubRepoStructure = new GithubRepoStructure();
-          //     user = await githubRepoStructure.getRepoStructureFromUser(user);
-
-          //     //Get commits and their details
-          //     let githubUserCommits : GithubUserCommits = new GithubUserCommits();
-          //     //let githubUserCommits : GithubUserCommits = new GithubUserCommits("5e6a78d61823ba36bbdff45649fde4481bb489b7");
-          //     user = await githubUserCommits.getCommitsFromUser(user);
-          //     user = await githubUserCommits.getFilesAffectedByCommitFromUser(user);
-
-          //     //Search for package.json and download it if found
-          //     //let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");
-          //     let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
-          //     user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
-
-          //     let client: MatcherClient = new MatcherClient(user.dataEntry)
-          //     let output: IGitProjectOutput[] = client.execute();
-
                let githubDataExtractor : GithubDataExtraction;
                if (accessToken){
                githubDataExtractor = new GithubDataExtraction(accessToken);
                } else{
-               let githubDataExtractor = new GithubDataExtraction();
+               githubDataExtractor = new GithubDataExtraction();
                }
 
                
