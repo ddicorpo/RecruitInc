@@ -28,6 +28,17 @@ class App extends React.Component <any, IGitlabLoginState> {
             code = url.substring(start);
         }
 
+        if(code != null) {
+            return fetch(`http://localhost:6969/api/oauth/oauthcode/gitlab/${code}`)
+                .then((response) => {
+                    return Promise.resolve(response.text())
+                })
+                .then(data => {
+                    this.setState({data});
+                    console.log("state", data);
+                });
+        }
+
         console.log("code: " + code);
         return;
     }
