@@ -56,21 +56,35 @@ export class GitlabApplicants {
                 let commitQuery: CommitQuery; 
                 let commits: IGitlabCommit[];
                 let moredata: IGitlabCommit[];
+                let more_data_project : IGitlabRepositoryTree[];
                 let propername: string = gitlabUsers[0].name;
                 
+
                 for(let i=0; i < user.dataEntry.projectInputs.length;i++){
                 
                     let projectId: number = user.dataEntry.projectInputs[i]["projectId"];
                     
-                
-                     //To retrieve the projectStruture of each project
+                    //To retrieve the projectStruture of each project
+                    let numberOfpages: number = 1;
                     let gitlabTreeQueryExecutor = new GitlabQueryExecutor<IGitlabRepositoryTree[]>();
                     treeQuery = new RepositoryTreeQuery(projectId, gitlabTreeQueryExecutor);
-                    treeQuery.buildQuery();
+                    treeQuery.buildQuery(numberOfpages);
                     let gitlabTreePromise: Promise<IGitlabRepositoryTree[]> = treeQuery.executeQuery();
                     project = await gitlabTreePromise;
+                   
+                    
+                    if(project.length >= 100){
+                        while(project.length %100 == 0){
+                            numberOfpages+=1
+                            treeQuery.buildQuery(numberOfpages);
+                            let new_data_gitlabTreePromise: Promise<IGitlabRepositoryTree[]> = treeQuery.executeQuery();
+                            more_data_project = await new_data_gitlabTreePromise;
+                            project= project.concat(more_data_project);
+                        }
+                    } 
                     gitlabProjects[i].projectStruture = [];
                     gitlabProjects[i].projectStruture = gitlabProjects[i].projectStruture.concat(project);
+
                     
                     user.dataEntry.projectInputs[i].projectStructure = user.dataEntry.projectInputs[i].projectStructure.concat(project.map(file => {
                         return {fileId: file.id, fileName: file.name, filePath: file.path};
@@ -82,9 +96,11 @@ export class GitlabApplicants {
                     commitQuery.buildQuery();
                     let gitlabCommitPromise: Promise<IGitlabCommit[]> = commitQuery.executeQuery();
                     commits = await gitlabCommitPromise;
+                    
                     user.dataEntry.projectInputs[i].applicantCommits = commits.map(commit=> {
                         return {id: commit.id, numberOfFileAffected: 0, files: []}
                     }) 
+                    
                     let created_At : string = commits[0]["created_at"];
 
                     if(commits.length >= 20){
