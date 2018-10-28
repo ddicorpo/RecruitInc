@@ -46,8 +46,7 @@ export class GitlabApplicants {
                 user.dataEntry = { projectInputs: gitlabProjects.map(project => {
                     return {projectName: project.name,projectId: project.id ,applicantCommits:[], projectStructure: [],downloadedSourceFile:[]}
                 })};
-                console.log(user.dataEntry);
-                console.log(user.dataEntry.projectInputs[0]["projectId"])
+                
                 let treeQuery: RepositoryTreeQuery;
                 let project : IGitlabRepositoryTree[];
 
@@ -82,11 +81,25 @@ export class GitlabApplicants {
                             project= project.concat(more_data_project);
                         }
                     } 
+                    
+                    
+                    let project_with_tree: IGitlabRepositoryTree[]= [];
+                    for(let m=0; m < project.length; m++){
+                        if(project[m]["type"] == "tree"){
+                            project_with_tree.push(project[m]);
+                        };  
+                    }
+
+                    const project_with_blobs = project.filter(function( el ) {
+                        return project_with_tree.indexOf( el ) < 0;
+                      } );
+
+
                     gitlabProjects[i].projectStruture = [];
-                    gitlabProjects[i].projectStruture = gitlabProjects[i].projectStruture.concat(project);
+                    gitlabProjects[i].projectStruture = gitlabProjects[i].projectStruture.concat(project_with_blobs);
 
                     
-                    user.dataEntry.projectInputs[i].projectStructure = user.dataEntry.projectInputs[i].projectStructure.concat(project.map(file => {
+                    user.dataEntry.projectInputs[i].projectStructure = user.dataEntry.projectInputs[i].projectStructure.concat(project_with_blobs.map(file => {
                         return {fileId: file.id, fileName: file.name, filePath: file.path};
                     }));
 
@@ -134,7 +147,7 @@ export class GitlabApplicants {
 
                 };
                 response.status(200).send(returnValue);
-                //console.log(user);
+               
 
             });
 
