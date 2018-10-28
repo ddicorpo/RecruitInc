@@ -110,10 +110,6 @@ export class GitlabApplicants {
                     let gitlabCommitPromise: Promise<IGitlabCommit[]> = commitQuery.executeQuery();
                     commits = await gitlabCommitPromise;
                     
-                    user.dataEntry.projectInputs[i].applicantCommits = commits.map(commit=> {
-                        return {id: commit.id, numberOfFileAffected: 0, files: []}
-                    }) 
-                    
                     let created_At : string = commits[0]["created_at"];
 
                     if(commits.length >= 20){
@@ -126,16 +122,22 @@ export class GitlabApplicants {
                         } 
                     }  
                     
-                   
+                    let commits_specific_user: IGitlabCommit[]= [];
                     for(let w=0; w < commits.length; w++){
-                        if(commits[w]["author_name"] != propername){
-                              commits.splice(w,1);
+                        if(commits[w]["author_name"] == propername){
+                              commits_specific_user.push(commits[w]);
                         };  
                     }
 
                     
                     gitlabProjects[i].commitsStructure = [];
                     gitlabProjects[i].commitsStructure = gitlabProjects[i].commitsStructure.concat(commits);
+
+                    user.dataEntry.projectInputs[i].applicantCommits = commits_specific_user.map(commit=> {
+                        return {id: commit.id, numberOfFileAffected: 0, files: []}
+                    }) 
+
+
                 }   
 
                 let returnValue = {
