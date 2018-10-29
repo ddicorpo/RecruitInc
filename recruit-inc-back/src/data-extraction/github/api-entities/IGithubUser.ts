@@ -8,27 +8,6 @@ export interface IGithubUser{
         name: string
     },
     dataEntry?: IDataEntry,
-    repositories?:{
-        name: string
-        owner?:{
-        login: string
-        }
-        structure?:{
-        sha: string 
-        name: string
-        path: string 
-        }[]
-        commits?:{
-        oid: string
-        changedFiles: number
-        singleFileCommit?:{
-        filename: string,
-        additions: number,
-        deletions: number
-        }[]
-        }[],
-        downloadedSourceFilePaths?: string[]
-    }[],  
     email?: string,
     company?: string,
     isHireable?: boolean,

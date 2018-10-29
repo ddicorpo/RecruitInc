@@ -48,10 +48,10 @@ let user : IGithubUser = {login: "MewtR", url: "", createdAt: ""};
         .then(response => {
 
         //User has 6 repositories
-        expect(user.repositories.length).to.equal(6);
+        expect(user.dataEntry.projectInputs.length).to.equal(6);
         //Check a specific repository
-        expect(user.repositories[3].name).to.equal('MinistocksRework');
-        expect(user.repositories[3].owner.login).to.equal('AyoubeAkaouch');
+        expect(user.dataEntry.projectInputs[3].projectName).to.equal('MinistocksRework');
+        expect(user.dataEntry.projectInputs[3].owner).to.equal('AyoubeAkaouch');
 
         });
     });
