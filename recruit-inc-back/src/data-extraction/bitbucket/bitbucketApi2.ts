@@ -14,7 +14,7 @@ export class BitbucketApi2 {
             },
         }).then(response => response.json())
             .then(body => {
-                logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api for repo slug", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
                 let iterator = 0;
 
@@ -40,7 +40,7 @@ export class BitbucketApi2 {
     }
 
     public queryCommitInfo(accessToken: string, user: string, repoName: string) : string{
-        logger.info({class: "bitbucketApi2", method: "queryData", action: "Querying bitbucket's api", params: {accessToken, user: user}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+        logger.info({class: "bitbucketApi2", method: "queryData ", action: "Querying bitbucket's api for hash", params: {accessToken, user: user}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
         return fetch(`https://api.bitbucket.org/2.0/repositories/${user}/${repoName}/commits`, {
             method: 'GET',
@@ -62,13 +62,35 @@ export class BitbucketApi2 {
 
                      if(body.values[iterator].author.user != undefined){
                          if (JSON.stringify(body.values[iterator].author.user.username).match(user)){
-                             console.log("\n\n\n\n" + body.values[iterator].hash + "\n\n\n\n\n");
+                             //console.log("\n\n\n\n" + body.values[iterator].hash + "\n\n\n\n\n");
+                             this.queryDiffStats(accessToken, user, repoName, body.values[iterator].hash);
                          }
                      }
 
                      iterator += 1;
                 }
 
+                return body;
+
+            }).catch(error => {
+                logger.error({class: "bitbucketApi2", method: "queryData", action: "Error from bitbucket's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                return error;
+            });
+    }
+
+    public queryDiffStats(accessToken: string, user: string, repoName: string, hash: string) : string{
+        logger.info({class: "bitbucketApi2", method: "queryData ", action: "Querying bitbucket's api for diffstats", params: {accessToken, user: user}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+
+        return fetch(`https://api.bitbucket.org/2.0/repositories/${user}/${repoName}/diffstat/${hash}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        }).then(response => response.json())
+            .then(body => {
+                logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                console.log("\n\n\n launched the diffstats query \n\n\n")
+                console.log(body);
                 return body;
 
             }).catch(error => {
