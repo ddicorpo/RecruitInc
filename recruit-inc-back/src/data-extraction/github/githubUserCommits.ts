@@ -18,12 +18,13 @@ export class GithubUserCommits {
     data = await new GithubApiV3().queryUserCommits(this.accessToken, owner, repo, sha);
 
     jsonData = JSON.parse(data);
-    if (!(jsonData.hasOwnProperty('files')))
+    if (!(jsonData.hasOwnProperty('files')) )
         throw new Error('Something went wrong');
     }catch(e){
         console.log(e);
         return result;
     }
+    
     let files = jsonData.files;
     for (let file of files){
         //In this case, file.filename returns the file path
@@ -33,13 +34,14 @@ export class GithubUserCommits {
 }
 
   async getFilesAffectedByCommitFromUser(user: IGithubUser): Promise<IGithubUser> {
-      if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0)
+      if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0){
           return user;
+      }
       for (let repository of user.dataEntry.projectInputs){
-          if (repository.applicantCommits == null || repository.applicantCommits.length == 0 )
+          if (repository.applicantCommits == null || repository.applicantCommits.length == 0 ){
               continue;
+          }
           for (let commit of repository.applicantCommits){
-              //if (commit["node"]["oid"] == null) continue;
               if (commit.id == null) {
                   continue;
               }
@@ -122,8 +124,17 @@ export class GithubUserCommits {
   async getCommits(repository: string, owner: string, userEmail: string): Promise<{id: string, numberOfFileAffected: number}[]> {
 
     let result : any[] = [];
-    let data: string = await this.GetCommitsSpecificToUser(repository, owner, userEmail);
-    let jsonData = JSON.parse(data);
+    let data: string ;
+    let jsonData : any = {} ;
+    data = await this.GetCommitsSpecificToUser(repository, owner, userEmail);
+    try{
+    jsonData = JSON.parse(data);
+    if (!jsonData.data.repository.ref)
+        throw new TypeError(`The Repository (${repository}) you are trying to query is empty.`);
+    }catch(e){
+        return [];
+    }
+
     let pageInfo = jsonData.data.repository.ref.target.history.pageInfo;
     let edges = jsonData.data.repository.ref.target.history.edges;
     let hasNextPage = pageInfo.hasNextPage;

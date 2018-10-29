@@ -43,13 +43,13 @@ export class GithubRepoStructure {
         try{
             data = await this.getTreeSha(owner, repoName);
             jsonData = JSON.parse(data);
-            console.log(jsonData);
             if (jsonData.data == null || jsonData.data.repository == null)
                 throw new TypeError('Either you do not have access to the repository you are trying to query or it does not exist');
-
+            if (!jsonData.data.repository.object)
+                throw new TypeError(`The Repository (${repoName}) you are trying to query is empty.`); //Can't read oid of null error
         }catch(e){
             console.log(e);
-            return;
+            return [];
         }
 
         treeSha = jsonData.data.repository.object.oid;
@@ -60,7 +60,7 @@ export class GithubRepoStructure {
                 throw new TypeError('Either you do not have access to the repository you are trying to query or it does not exist');
         }catch(e){
             console.log(e);
-            return;
+            return [];
         }
 
         let tree = jsonData.tree;
