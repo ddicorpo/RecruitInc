@@ -1,5 +1,8 @@
 import fetch from "node-fetch";
 import bodyParser from "./bodyParser";
+import { IGitProjectInput } from "../../matching-algo/data-model/input-model/IGitProjectInput";
+import { ICommit } from "../../matching-algo/data-model/input-model/ICommit";
+
 const logger = require('../../logger.js');
 const fs = require('fs');
 
@@ -17,6 +20,7 @@ export class BitbucketApi2 {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api for repo slug", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
                 let iterator = 0;
+                let gitProjectInput: IGitProjectInput;
 
                 while (iterator < body.values.length){
                     fs.writeFile('bitbucketRepoList.json', body.values[iterator].slug, function (err) {
@@ -51,10 +55,7 @@ export class BitbucketApi2 {
             .then(body => {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-                console.log("commits body: " + body);
-                console.log("repo name: " + repoName);
-                console.log("user name: " + user);
-
+                //console.log("commits body: " + body);
 
                 let iterator = 0;
 
@@ -91,6 +92,16 @@ export class BitbucketApi2 {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 console.log("\n\n\n launched the diffstats query \n\n\n")
                 console.log(body);
+                console.log("\n\n\nThis is the new object size: " + body.values.length + "\n\n\n");
+                console.log("\n\n\nThis is the new object href: " + body.values[0].new.links.self.href + "\n\n\n");
+                console.log("\n\n\nThis is the new object lines added: " + body.values[0].lines_added + "\n\n\n");
+                console.log("\n\n\nThis is the new object lines removed: " + body.values[0].lines_removed + "\n\n\n");
+
+                let singleCommitIndex: number = 0;
+
+                while (singleCommitIndex < body.values.length){
+
+                }
                 return body;
 
             }).catch(error => {
