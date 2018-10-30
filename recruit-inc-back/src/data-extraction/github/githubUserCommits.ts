@@ -1,6 +1,7 @@
 import { GithubApiV4} from "./githubApiV4";
 import { GithubApiV3} from "./githubApiV3";
 import {IGithubUser} from "./api-entities/IGithubUser"
+import {ISingleFileCommit} from "../../matching-algo/data-model/input-model/ISingleFileCommit"
 
 const logger = require('../../logger.js');
 
@@ -123,7 +124,7 @@ export class GithubUserCommits {
       }
       return user;
 }
-  async getCommits(repository: string, owner: string, userEmail: string): Promise<{id: string, numberOfFileAffected: number}[]> {
+  async getCommits(repository: string, owner: string, userEmail: string): Promise<{id: string, numberOfFileAffected: number, files: ISingleFileCommit[]}[]> {
 
     let result : any[] = [];
     let data: string ;
@@ -162,7 +163,7 @@ export class GithubUserCommits {
     }
 
     return result.map( commit => {
-        return {id: commit.node.oid, numberOfFileAffected: commit.node.changedFiles};
+        return {id: commit.node.oid, numberOfFileAffected: commit.node.changedFiles, files: []};
     });
 }
 

@@ -75,7 +75,7 @@ export class GithubUserRepos {
         let repositories : {name: string, owner: {login: string}}[] = [];
         repositories = jsonData.data.user.repositories.nodes;
         user.dataEntry = {projectInputs: repositories.map(repository => {
-            return {projectName: repository.name, owner: repository.owner.login};
+            return {projectName: repository.name, owner: repository.owner.login, applicantCommits: [], projectStructure: [], downloadedSourceFile: []};
         })
 }
         while(hasNextPage){
@@ -90,7 +90,7 @@ export class GithubUserRepos {
           hasNextPage = pageInfo.hasNextPage;
           repositories = jsonData.data.user.repositories.nodes;
           user.dataEntry.projectInputs = user.dataEntry.projectInputs.concat(repositories.map(repository => {
-            return {projectName: repository.name, owner: repository.owner.login};
+            return {projectName: repository.name, owner: repository.owner.login, applicantCommits: [], projectStructure: [], downloadedSourceFile: []};
         }));
           data+=nextData;
           }catch(error){

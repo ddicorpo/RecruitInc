@@ -1,5 +1,5 @@
-import { IDataEntry } from "../../../matching-algo/data-model/input-model/IDataEntry.ts"
-import { IGitProjectInput } from "../../../matching-algo/data-model/input-model//IGitProjectInput"
+import { IDataEntry } from "../../../matching-algo/data-model/input-model/IDataEntry"
+import { IGithubProjectInput } from "../../../matching-algo/data-model/input-model/IGithubProjectInput"
 
 export interface IGithubUser{
     login: string
@@ -7,7 +7,9 @@ export interface IGithubUser{
     languages?:{
         name: string
     },
-    dataEntry?: IDataEntry,
+    dataEntry?: {
+        projectInputs: IGithubProjectInput[]
+    },
     email?: string,
     company?: string,
     isHireable?: boolean,

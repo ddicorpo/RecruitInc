@@ -112,11 +112,17 @@ export class Candidate {
                     projectInputs: [
                  {
                  projectName: "MinistocksRework",
-                 owner:"AyoubeAkaouch"
+                 owner:"AyoubeAkaouch",
+                 applicantCommits: [],
+                 projectStructure: [],
+                 downloadedSourceFile: []
                     },
                  {
                  projectName: "rufus",
-                 owner:"MewtR"
+                 owner:"MewtR",
+                 applicantCommits: [],
+                 projectStructure: [],
+                 downloadedSourceFile: []
                     }
                     ]
                     }
@@ -150,11 +156,17 @@ export class Candidate {
                     projectInputs: [
                  {
                  projectName: "RecruitInc",
-                 owner:"ddicorpo"
+                 owner:"ddicorpo",
+                 applicantCommits: [],
+                 projectStructure: [],
+                 downloadedSourceFile: []
                     },
                  {
                  projectName: "SOEN343",
-                 owner:"gprattico"
+                 owner:"gprattico",
+                 applicantCommits: [],
+                 projectStructure: [],
+                 downloadedSourceFile: []
                     }
                     ]
                     }
