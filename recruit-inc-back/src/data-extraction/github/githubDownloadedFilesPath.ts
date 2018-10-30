@@ -29,6 +29,8 @@ export class GithubDownloadedFilesPath {
         return {name: jsonData.name, path: jsonData.path, content: content};
     }
     
+    //This function creates directories as needed
+    //So that when we try to write to a file with fs it does not throw an error
     writeToFile(content: string, path: string){
         let notExist = path.split('/');
         let exists : string = "";

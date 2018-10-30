@@ -12,13 +12,17 @@ const downloadedFileResponse = require('./downloadedFileResponse.js');
 
     it('should write the contents of a downloaded file locally', function() {
  
+        //Create file to write to
         fs.closeSync(fs.openSync("test/data-extraction/github/writeToFileTest.txt", 'w'));
         let test = new GithubDownloadedFilesPath();
+
+        //Write to file
         test.writeToFile("This is a test", "test/data-extraction/github/writeToFileTest.txt" );
         let exists : boolean = fs.existsSync("test/data-extraction/github/writeToFileTest.txt");
 
         expect(exists).to.be.true;
 
+        //Delete file
         fs.unlinkSync("test/data-extraction/github/writeToFileTest.txt");
 
         let exists2 : boolean = fs.existsSync("test/data-extraction/github/writeToFileTest.txt");
