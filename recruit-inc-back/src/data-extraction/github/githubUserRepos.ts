@@ -1,6 +1,8 @@
 import { GithubApiV4} from "./githubApiV4";
 import {IGithubUser} from "./api-entities/IGithubUser"
 
+const logger = require('../../logger.js');
+
 export class GithubUserRepos {
     private readonly accessToken: string;
     
@@ -63,8 +65,8 @@ export class GithubUserRepos {
         jsonData = JSON.parse(data);
         if ( jsonData.data == null || jsonData.data.user == null)
             throw new TypeError('The user you are trying to query does not exist');
-        }catch(e){
-         console.log(e);
+        }catch(error){
+        logger.error({class: "GithubUserRepos", method: "getUserRepos", action: "Error while trying to obtain a list of repos from a given user. (Initial Query)", value: error.toString()}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
          return user;
         }
         let pageInfo = jsonData.data.user.repositories.pageInfo;
@@ -82,7 +84,7 @@ export class GithubUserRepos {
           nextData = await this.getDataAfterCursor(user.login, endCursor);
           jsonData = JSON.parse(nextData);
           if ( jsonData.data == null || jsonData.data.user == null)
-            throw new Error('Something went wrong');
+            throw new Error('Either you reached the api\'s limit or the response was uncorrectly formatted.');
           pageInfo = jsonData.data.user.repositories.pageInfo;
           endCursor = JSON.stringify(pageInfo.endCursor);
           hasNextPage = pageInfo.hasNextPage;
@@ -91,8 +93,8 @@ export class GithubUserRepos {
             return {projectName: repository.name, owner: repository.owner.login};
         }));
           data+=nextData;
-          }catch(e){
-           console.log(e);
+          }catch(error){
+          logger.error({class: "GithubUserRepos", method: "getUserRepos", action: "Error while trying to obtain a list of repos from a given user.(Subsequent Queries with endCursor)", value: error.toString()}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
            return user;
           }
         }

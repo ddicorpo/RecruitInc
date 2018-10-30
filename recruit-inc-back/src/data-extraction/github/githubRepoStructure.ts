@@ -2,6 +2,7 @@ import { GithubApiV4} from "./githubApiV4";
 import { GithubApiV3} from "./githubApiV3";
 import {IGithubUser} from "./api-entities/IGithubUser"
 
+const logger = require('../../logger.js');
 const path = require('path');
 
 export class GithubRepoStructure {
@@ -47,8 +48,8 @@ export class GithubRepoStructure {
                 throw new TypeError('Either you do not have access to the repository you are trying to query or it does not exist');
             if (!jsonData.data.repository.object)
                 throw new TypeError(`The Repository (${repoName}) you are trying to query is empty.`); //Can't read oid of null error
-        }catch(e){
-            console.log(e);
+        }catch(error){
+          logger.error({class: "GithubRepoStructure", method: "getRepoStructure", action: "Error while trying to obtain the repo's root tree sha.", value: error.toString()}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
             return [];
         }
 
@@ -58,8 +59,8 @@ export class GithubRepoStructure {
             jsonData = JSON.parse(data);
             if (!(jsonData.hasOwnProperty('tree')))
                 throw new TypeError('Either you do not have access to the repository you are trying to query or it does not exist');
-        }catch(e){
-            console.log(e);
+        }catch(error){
+          logger.error({class: "GithubRepoStructure", method: "getRepoStructure", action: "Error while trying to obtain the repo's root tree sha.", value: error.toString()}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
             return [];
         }
 

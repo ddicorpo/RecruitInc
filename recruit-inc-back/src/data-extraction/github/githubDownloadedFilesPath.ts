@@ -3,6 +3,7 @@ import { GithubApiV3} from "./githubApiV3";
 import {IGithubUser} from "./api-entities/IGithubUser"
 
 const fs = require('fs');
+const logger = require('../../logger.js');
 
 export class GithubDownloadedFilesPath {
     private readonly accessToken: string;
@@ -18,9 +19,9 @@ export class GithubDownloadedFilesPath {
         data = await new GithubApiV3().downloadFile(this.accessToken, owner, repoName, path);
         jsonData = JSON.parse(data);
         if (jsonData.content == null)
-            throw new TypeError('Something went wrong');
-        }catch(e){
-            console.log(e);
+            throw new TypeError('The file you are trying to download does not exist.');
+        }catch(error){
+          logger.error({class: "GithubDownloadedFilesPath", method: "downloadFile", action: "Error while trying to obtain the contents of a file.", value: error.toString()}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
             return data;
         }
         let content = Buffer.from(jsonData.content, 'base64').toString();

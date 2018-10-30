@@ -2,6 +2,8 @@ import { GithubApiV4} from "./githubApiV4";
 import { GithubApiV3} from "./githubApiV3";
 import {IGithubUser} from "./api-entities/IGithubUser"
 
+const logger = require('../../logger.js');
+
 export class GithubUserCommits {
     private readonly accessToken: string;
     
@@ -19,9 +21,9 @@ export class GithubUserCommits {
 
     jsonData = JSON.parse(data);
     if (!(jsonData.hasOwnProperty('files')) )
-        throw new Error('Something went wrong');
-    }catch(e){
-        console.log(e);
+        throw new Error('You probably triggered the api\'s abuse detecting mechanism.');
+    }catch(error){
+          logger.error({class: "GithubUserCommits", method: "getFilesAffectedByCommit", action: "Error while trying to obtain the files affected by a given commit.", value: error.toString()}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
         return result;
     }
     
@@ -131,7 +133,8 @@ export class GithubUserCommits {
     jsonData = JSON.parse(data);
     if (!jsonData.data.repository.ref)
         throw new TypeError(`The Repository (${repository}) you are trying to query is empty.`);
-    }catch(e){
+    }catch(error){
+          logger.error({class: "GithubUserCommits", method: "getCommits", action: "Error while trying to obtain the commits from a given github user.", value: error.toString()}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
         return [];
     }
 
