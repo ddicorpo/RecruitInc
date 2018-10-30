@@ -19,7 +19,7 @@ const languagesOutput : ILanguageOutput = {
     languageOrFramework: Technologies.Javascript,
     linesOfCode: 1749,
     numberOfCommits: 5,
-    frameworks: [frameworkOutputReact, frameworkOutputTypescript]
+    frameworks: [frameworkOutputTypescript, frameworkOutputReact]
     
 };
 
