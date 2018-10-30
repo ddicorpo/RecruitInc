@@ -1,8 +1,7 @@
 import fetch from "node-fetch";
 import bodyParser from "./bodyParser";
-import { IGitProjectInput } from "../../matching-algo/data-model/input-model/IGitProjectInput";
 import { ICommit } from "../../matching-algo/data-model/input-model/ICommit";
-
+import { ISingleFileCommit } from "../../matching-algo/data-model/input-model/ISingleFileCommit";
 const logger = require('../../logger.js');
 const fs = require('fs');
 
@@ -20,7 +19,6 @@ export class BitbucketApi2 {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api for repo slug", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
                 let iterator = 0;
-                let gitProjectInput: IGitProjectInput;
 
                 while (iterator < body.values.length){
                     fs.writeFile('bitbucketRepoList.json', body.values[iterator].slug, function (err) {
@@ -43,7 +41,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryCommitInfo(accessToken: string, user: string, repoName: string) : string{
+    public queryCommitInfo(accessToken: string, user: string, repoName: string) : ICommit[]{
         logger.info({class: "bitbucketApi2", method: "queryData ", action: "Querying bitbucket's api for hash", params: {accessToken, user: user}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
         return fetch(`https://api.bitbucket.org/2.0/repositories/${user}/${repoName}/commits`, {
@@ -58,20 +56,25 @@ export class BitbucketApi2 {
                 //console.log("commits body: " + body);
 
                 let iterator = 0;
+                let allCommits: ICommit[];
 
                  while (iterator < body.values.length){
 
                      if(body.values[iterator].author.user != undefined){
                          if (JSON.stringify(body.values[iterator].author.user.username).match(user)){
                              //console.log("\n\n\n\n" + body.values[iterator].hash + "\n\n\n\n\n");
-                             this.queryDiffStats(accessToken, user, repoName, body.values[iterator].hash);
+                             let allSingleCommits = this.queryDiffStats(accessToken, user, repoName, body.values[iterator].hash);
+                             let commit: ICommit = {
+                                 id: body.values[iterator].hash,
+                                 numberOfFileAffected: allSingleCommits.length,
+                                 files: allSingleCommits
+                             };
+                             allCommits.push(commit);
                          }
                      }
-
                      iterator += 1;
                 }
-
-                return body;
+                return allCommits;
 
             }).catch(error => {
                 logger.error({class: "bitbucketApi2", method: "queryData", action: "Error from bitbucket's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
@@ -79,7 +82,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryDiffStats(accessToken: string, user: string, repoName: string, hash: string) : string{
+    public queryDiffStats(accessToken: string, user: string, repoName: string, hash: string) : ISingleFileCommit[]{
         logger.info({class: "bitbucketApi2", method: "queryData ", action: "Querying bitbucket's api for diffstats", params: {accessToken, user: user}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
         return fetch(`https://api.bitbucket.org/2.0/repositories/${user}/${repoName}/diffstat/${hash}`, {
@@ -91,18 +94,29 @@ export class BitbucketApi2 {
             .then(body => {
                 logger.info({class: "bitbucketApi2", method: "queryData", action: "Result from bitbucket's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 console.log("\n\n\n launched the diffstats query \n\n\n")
-                console.log(body);
-                console.log("\n\n\nThis is the new object size: " + body.values.length + "\n\n\n");
-                console.log("\n\n\nThis is the new object href: " + body.values[0].new.links.self.href + "\n\n\n");
-                console.log("\n\n\nThis is the new object lines added: " + body.values[0].lines_added + "\n\n\n");
-                console.log("\n\n\nThis is the new object lines removed: " + body.values[0].lines_removed + "\n\n\n");
+                // console.log(body);
+                // console.log("\n\n\nThis is the new object size: " + body.values.length + "\n\n\n");
+                // console.log("\n\n\nThis is the new object href: " + body.values[0].new.links.self.href + "\n\n\n");
+                // console.log("\n\n\nThis is the new object lines added: " + body.values[0].lines_added + "\n\n\n");
+                // console.log("\n\n\nThis is the new object lines removed: " + body.values[0].lines_removed + "\n\n\n");
 
                 let singleCommitIndex: number = 0;
+                let allSingleCommits: ISingleFileCommit[];
 
                 while (singleCommitIndex < body.values.length){
 
+                    let singleFileCommit: ISingleFileCommit = {
+                        filePath: body.values[singleCommitIndex].new.links.self.href,
+                        lineAdded: body.values[singleCommitIndex].lines_added,
+                        lineDeleted: body.values[singleCommitIndex].lines_removed
+                    };
+                    allSingleCommits.push(singleFileCommit);
+
+                    singleCommitIndex++;
                 }
-                return body;
+
+                // singleFileCommit.filePath = body.values[0].new.links.self.href;
+                return allSingleCommits;
 
             }).catch(error => {
                 logger.error({class: "bitbucketApi2", method: "queryData", action: "Error from bitbucket's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
