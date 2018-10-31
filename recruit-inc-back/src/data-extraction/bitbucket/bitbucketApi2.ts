@@ -10,7 +10,7 @@ const fs = require('fs');
 
 export class BitbucketApi2 {
 
-    public queryUserInfo(accessToken: string, user: string): string {
+    public queryUserInfo(accessToken: string, user: string): IGitProjectInput[] {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -33,9 +33,7 @@ export class BitbucketApi2 {
 
                 let iterator = 0;
 
-                let allProjectStruct: IProjectStructure[];
-                let allCommits: ICommit[];
-                let allSourceFiles: ISourceFiles[];
+                let allGitProjectInput: IGitProjectInput[];
 
                 while (iterator < body.values.length) {
                     fs.writeFile('bitbucketRepoList.json', body.values[iterator].slug, function (err) {
@@ -45,34 +43,25 @@ export class BitbucketApi2 {
                         }
                     });
 
-                    // let projectStruct: IProjectStructure = {
-                    //     fileId: body.values[iterator].uuid,
-                    //     fileName: body.values[iterator].slug,
-                    //     filePath: body.values[iterator].links.self.href
-                    // };
+                    let gitProjectInput: IGitProjectInput = {
+                        projectName: body.values[iterator].slug,
+                        applicantCommits: this.queryCommitInfo(accessToken, user, body.values[iterator].slug),
+                        projectStructure: this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug),
+                        downloadedSourceFile: this.querySourceFileInfo(accessToken, user, body.values[iterator].slug)
+                    };
 
-                    this.queryCommitInfo(accessToken, user, body.values[iterator].slug);
-                    this.querySourceFileInfo(accessToken, user, body.values[iterator].slug);
-                    this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug);
-
+                    allGitProjectInput.push(gitProjectInput);
 
                     iterator += 1;
                 }
 
-                // let gitProjectInput: IGitProjectInput = {
-                //     projectName: body.values[iterator].slug,
-                //     applicantCommits: allCommits,
-                //     projectStructure: allProjectStruct,
-                //     downloadedSourceFile: allSourceFiles
-                // };
-
-                return body;
+                return allGitProjectInput;
             })
             .catch(error => {
                 logger.error({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Error from bitbucket's api",
+                    action: "Error from bitbucket's api: USER INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
@@ -125,7 +114,7 @@ export class BitbucketApi2 {
                 logger.error({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Error from bitbucket's api",
+                    action: "Error from bitbucket's api: COMMIT INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
@@ -175,7 +164,7 @@ export class BitbucketApi2 {
                 logger.error({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Error from bitbucket's api",
+                    action: "Error from bitbucket's api: DIFF STATS",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
@@ -212,6 +201,7 @@ export class BitbucketApi2 {
                         let sourceFile: ISourceFiles = {
                             filename: body.values[fileIterator].path,
                             repoFilePath: body.values[fileIterator].links.self.href,
+                            // TODO: Figure out how to download the raw file
                             localFilePath: "https://bitbucket.org/" + user + "/" + repoName + "/get/master.zip"
                         };
 
@@ -227,14 +217,14 @@ export class BitbucketApi2 {
                 logger.error({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Error from bitbucket's api",
+                    action: "Error from bitbucket's api: SOURCE FILE INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
             });
     }
 
-    public queryProjectStructInfo(accessToken: string, user: string, repoName: string): string {
+    public queryProjectStructInfo(accessToken: string, user: string, repoName: string): IProjectStructure[] {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -255,37 +245,43 @@ export class BitbucketApi2 {
                     value: body
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-                // console.log("\n\n\nTHIS IS BODY FOR FILE: " + body.values[7].path + "\n\n\n");
-                // console.log("\n\n\nTHIS IS SRC FOR FILE: " + body + "\n\n\n");
-                // console.log(body);
-                //
-                // console.log("\n\n\nTHIS IS COMMIT HASH: " + body.values[0].commit.hash + "\n\n\n")
-
                 let fileIterator: number = 0;
-
-                this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[0].path)
-
+                let innerIterator: number = 0;
                 let allProjectStruct: IProjectStructure[];
 
-                // while (fileIterator < body.values.length){
-                //     if (body.values[fileIterator].path = ".gitignore"){
-                //         let projectStruct: IProjectStructure = {
-                //
-                //         };
-                //
-                //         allProjectStruct.push(projectStruct);
-                //         break;
-                //     }
-                //     fileIterator++;
-                // }
+                while (fileIterator < body.values.length){
+                    if (body.values[fileIterator].type == "commit_directory"){
+                        let tempProjectStructure: IProjectStructure[] = this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
 
-                return body;
+                        for (let value of tempProjectStructure){
+                            allProjectStruct.push(value);
+                        }
+                        // while (innerIterator < tempProjectStructure.length){
+                        //     allProjectStruct.push(tempProjectStructure[innerIterator]);
+                        //     innerIterator++;
+                        // }
+                        // innerIterator = 0;
+                        tempProjectStructure = null;
+                    }
+
+                    if (body.values[fileIterator].type == "commit_file"){
+                        let projStruct: IProjectStructure = {
+                            fileId: body.values[0].commit.hash,
+                            filePath: body.values[fileIterator].links.self.href,
+                            fileName: body.values[fileIterator].path
+                        }
+
+                        allProjectStruct.push(projStruct);
+                    }
+                }
+
+                return allProjectStruct;
             })
             .catch(error => {
                 logger.error({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Error from bitbucket's api",
+                    action: "Error from bitbucket's api: PROJECT STRUCT INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
@@ -320,34 +316,44 @@ export class BitbucketApi2 {
                 //console.log("\n\n\nTHIS IS COMMIT HASH: " + body.values[0].commit.hash + "\n\n\n")
 
                 let fileIterator: number = 0;
+                let innerIterator: number = 0;
 
                 let allProjectStruct: IProjectStructure[];
 
                 while (fileIterator < body.values.length){
                     if (body.values[fileIterator].type == "commit_directory"){
-                        this.
+                        let tempProjectStructure: IProjectStructure[] = this.queryDirectoryInfo(accessToken, user, repoName, hash, body.values[fileIterator].path);
+
+
+                        for (let value of tempProjectStructure){
+                            allProjectStruct.push(value);
+                        }
+                        // while (innerIterator < tempProjectStructure.length){
+                        //     allProjectStruct.push(tempProjectStructure[innerIterator]);
+                        //     innerIterator++;
+                        // }
+                        // innerIterator = 0;
+                        tempProjectStructure = null;
+                    }
+
+                    if (body.values[fileIterator].type == "commit_file"){
+                        let projStruct: IProjectStructure = {
+                            fileId: hash,
+                            filePath: body.values[fileIterator].links.self.href,
+                            fileName: body.values[fileIterator].path
+                        }
+
+                        allProjectStruct.push(projStruct);
                     }
                 }
 
-                // while (fileIterator < body.values.length){
-                //     if (body.values[fileIterator].path = ".gitignore"){
-                //         let projectStruct: IProjectStructure = {
-                //
-                //         };
-                //
-                //         allProjectStruct.push(projectStruct);
-                //         break;
-                //     }
-                //     fileIterator++;
-                // }
-
-                return body;
+                return allProjectStruct;
             })
             .catch(error => {
                 logger.error({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Error from bitbucket's api",
+                    action: "Error from bitbucket's api: DIRECTORY INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
