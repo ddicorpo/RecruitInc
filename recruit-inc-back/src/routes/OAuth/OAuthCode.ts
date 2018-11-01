@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import {GithubToken} from "../../data-extraction/github/GithubToken";
+import {BitbucketToken} from "../../data-extraction/bitbucket/BitbucketToken";
 import {TokenRetrieval} from "./TokenRetrieval";
 
 const logger = require('../../logger.js');
@@ -40,11 +41,7 @@ export class OAuthCode {
                         break;
                     }
                     case "bitbucket" : {
-                        let url = "https://bitbucket.org/site/oauth2/access_token";
-                        let client_id = "thwTU3aUh8ZBQNXyXA";
-                        let client_secret = "QpHyd9z5PfxUSW4m9j46vtQccXLTDZvQ";
-
-                        let token: string = await tokenRetrieval.getToken(url , client_id, client_secret, code);
+                        let token: string = await new BitbucketToken().getToken(code);
                         returnResponse = "Access Token received from Github using code: " + code + " -> token: " + token;
                         break;
                     }
