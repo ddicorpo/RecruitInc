@@ -1,31 +1,28 @@
 import fetch from "node-fetch";
 const logger = require('../../logger.js');
 
-export class TokenRetrieval {
+const url: string = "https://github.com/login/oauth/access_token";
+const client_id: string = "1908c6dc58ef2187341f";
+const client_secret: string = "6bfae547289c1d3da3fa37df655d4aa02502b9ad";
 
-    async getToken(url: string, client_id: string , client_secret: string,  code: string) {
+export class GithubToken {
+
+    async getToken(code: string) {
 
         logger.info({
-            class: "TokenRetrieval",
+            class: "GithubToken",
             method: "getToken",
-            action: "Getting the Access Token from API",
-            params: {url}
+            action: "Getting the Access Token from Github API",
+            params: {code}
         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-        return await fetch(`${url}`, {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: {
-                grant_type: 'authorization_code',
-                client_id: client_id,
-                client_secret: client_secret,
-                code: code
-            },
-            json: true
+        let urlWithParameters: string = `${url + "?client_id=" + client_id + "&client_secret=" + client_secret + "&code=" + code}`;
+        return await fetch(`${urlWithParameters}`, {
+            method: 'POST'
         }).then(response => response.text())
             .then(body => {
                 logger.info({
-                    class: "TokenRetrieval",
+                    class: "GithubToken",
                     method: "getToken",
                     action: "Result from trying to retrieve token",
                     value: body
@@ -34,7 +31,7 @@ export class TokenRetrieval {
             })
             .catch(error => {
                 logger.info({
-                    class: "TokenRetrieval",
+                    class: "GithubToken",
                     method: "getToken",
                     action: "ERROR from trying to retrieve token",
                     value: error
