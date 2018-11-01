@@ -21,13 +21,14 @@ export class BitbucketToken {
             code: code,
             grant_type: 'authorization_code'
         };
-        let formBody = [];
+        let formBody : string[] = [];
         for (let property in details) {
-            let encodedKey = encodeURIComponent(property);
-            let encodedValue = encodeURIComponent(details[property]);
+            let encodedKey: string = encodeURIComponent(property);
+            let encodedValue: string = encodeURIComponent(details[property]);
             formBody.push(encodedKey + "=" + encodedValue);
         }
-        let body = formBody.join("&");
+        let body: string = formBody.join("&");
+
         return await fetch(`${url}`, {
             method: 'POST',
             headers: {
