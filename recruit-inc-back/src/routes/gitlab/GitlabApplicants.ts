@@ -9,7 +9,7 @@ import {IGitlabRepositoryTree} from "../../data-extraction/gitlab/api-entities/I
 import {IGitlabCommit} from "../../data-extraction/gitlab/api-entities/IGitlabCommit";
 import {CommitQuery} from "../../data-extraction/gitlab/queries/CommitQuery";
 import { FileDownloadQuery } from "../../data-extraction/gitlab/queries/FileDownloadQuery";
-import { IGithubUser } from "../../data-extraction/github/api-entities/IGithubUser";
+
 var logger = require('../../logger.js');
 
 var cors = require('cors');
@@ -31,7 +31,6 @@ export class GitlabApplicants {
                 userQuery.buildQuery();
                 let gitlabUserPromise: Promise<IGitlabUser[]> = userQuery.executeQuery();
                 let gitlabUsers: IGitlabUser[] = await gitlabUserPromise;
-                //console.log(gitlabUsers);
                 let userId: number = gitlabUsers[0].id;
                 let user: IGitlabUser = gitlabUsers[0];
                 //let user: IGitlabUser = {"id":212577,"name":"Roberto Rosario","username":"rosarior","state":"active","avatar_url":"https://secure.gravatar.com/avatar/943620c3bc4056a40ce132690f1d9ac1?s=80&d=identicon","web_url":"https://gitlab.com/rosarior"}
@@ -50,8 +49,6 @@ export class GitlabApplicants {
                 let treeQuery: RepositoryTreeQuery;
                 let project : IGitlabRepositoryTree[];
 
-                
-               
                 let commitQuery: CommitQuery; 
                 let commits: IGitlabCommit[];
                 let moredata: IGitlabCommit[];
@@ -129,16 +126,44 @@ export class GitlabApplicants {
                         };  
                     }
 
-                    
                     gitlabProjects[i].commitsStructure = [];
                     gitlabProjects[i].commitsStructure = gitlabProjects[i].commitsStructure.concat(commits);
 
                     user.dataEntry.projectInputs[i].applicantCommits = commits_specific_user.map(commit=> {
                         return {id: commit.id, numberOfFileAffected: 0, files: []}
                     }) 
+                 
+      
+                }
+                
+                
+                if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0){
+                    return user;
+                }
+                
+                for (let repository of user.dataEntry.projectInputs){
+                    let project_id: number= repository["projectId"];
 
-
-                }   
+                    if (repository.projectStructure == null || repository.projectStructure.length == 0){
+                        continue;
+                    }
+                    if(!(repository.downloadedSourceFile)){
+                        repository.downloadedSourceFile = [];
+                    } 
+                    for (let file of repository.projectStructure){
+                        if (file.fileName == "package.json"){
+                            let gitlabFileDownloadExecutor = new GitlabQueryExecutor<any>();
+                            let fileDownloadQuery : FileDownloadQuery = new FileDownloadQuery(project_id,file.fileId,gitlabFileDownloadExecutor);
+                            fileDownloadQuery.buildQuery(); 
+                            let gitlabFileDownloadPromise: Promise<any> = fileDownloadQuery.executeDownloadQuery();
+                            let gitlabFileDownload: {content: string} = await gitlabFileDownloadPromise;
+                            let generatedPath : string = fileDownloadQuery.generatePath(user.username, repository.projectName, file.filePath);
+                            fileDownloadQuery.writeToFile(gitlabFileDownload.content, generatedPath)
+                            repository.downloadedSourceFile.push({filename: file.fileName, repoFilePath: file.filePath, localFilePath: generatedPath });
+                        }
+                    }
+                
+                }
 
                 let returnValue = {
                     userQuery: userQuery.getQuery(),
