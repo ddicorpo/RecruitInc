@@ -2,10 +2,11 @@ import { Request, Response } from "express";
 import {GithubToken} from "../../data-extraction/github/GithubToken";
 import {BitbucketToken} from "../../data-extraction/bitbucket/BitbucketToken";
 import {GitlabToken} from "../../data-extraction/gitlab/GitlabToken";
+import * as fs from 'fs';
 
 const logger = require('../../logger.js');
-
 let cors = require('cors');
+let userFile: string = "src/routes/OAuth/users.json";
 
 export class OAuthCode {
 
@@ -24,23 +25,20 @@ export class OAuthCode {
                 let platform = request.params.platform;
 
                 let returnResponse: string;
+                let token: string;
                 switch (platform) {
                     case "github" : {
-                        let jsonString: string = await new GithubToken().getToken(code);
-                        let jsonInfo : JSON = JSON.parse(jsonString);
-                        let token: string = jsonInfo["access_token"];
-                        let scope: string = jsonInfo["scope"];
-                        let tokenType: string = jsonInfo["token_type"];
+                        token = await new GithubToken().getToken(code);
                         returnResponse = "Access Token received from Github using code: " + code + " -> token: " + token;
                         break;
                     }
                     case "gitlab" : {
-                        let token: string = await new GitlabToken().getToken(code);
+                        token = await new GitlabToken().getToken(code);
                         returnResponse = "Access Token received from Github using code: " + code + " -> token: " + token;
                         break;
                     }
                     case "bitbucket" : {
-                        let token: string = await new BitbucketToken().getToken(code);
+                        token = await new BitbucketToken().getToken(code);
                         returnResponse = "Access Token received from Github using code: " + code + " -> token: " + token;
                         break;
                     }
@@ -49,6 +47,10 @@ export class OAuthCode {
                         break;
                     }
                 }
+                fs.writeFile(userFile, token, (err) => {
+                    if (err) throw err;
+                    console.log('The users file has been changed!');
+                });
                 response.status(200).send(returnResponse);
             });
     }
