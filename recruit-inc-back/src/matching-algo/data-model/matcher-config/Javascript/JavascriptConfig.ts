@@ -8,6 +8,6 @@ const matchingTargets: ITargetMatcher[] = [
 
 export const javascriptConfig: IMatcherConfig = {
     technology: Technologies.Javascript,
-    extensions: ["js", "ts"],
+    extensions: ["js", "ts", "tsx"],
     matchingTargets
 };
