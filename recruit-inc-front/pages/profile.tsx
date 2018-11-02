@@ -42,11 +42,11 @@ class App extends React.Component {
             <div>
                 <Header />
                 <br/>
-                <form>
-                    Recruit.Inc Username: <input type="text" name="username" value={this.state.username} onChange={this.handleChange.bind(this)}/>
-                </form>
-                <p>Information for: {this.state.username}</p>
-                <p>You can login to the following platforms to allow Recruit.Inc to assess your skills.</p>
+                {/*<form>*/}
+                    {/*Recruit.Inc Username: <input type="text" name="username" value={this.state.username} onChange={this.handleChange.bind(this)}/>*/}
+                {/*</form>*/}
+                {/*<p>Information for: {this.state.username}</p>*/}
+                {/*<p>You can login to the following platforms to allow Recruit.Inc to assess your skills.</p>*/}
                 <a style={{display: "table-cell"}} href={"https://bitbucket.org/site/oauth2/authorize?client_id=thwTU3aUh8ZBQNXyXA&response_type=code"}>
                     BitBucket
                 </a><br/>
