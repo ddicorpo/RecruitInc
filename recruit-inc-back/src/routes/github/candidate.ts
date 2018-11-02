@@ -19,10 +19,10 @@ export class Candidate {
     public routes(app): void {
 
         app.route('/api/github/candidate/hr/:location')
-            .get(cors(), async (req: Request, res: Response) => {
+            .get(cors(), async (request: Request, response: Response) => {
                 let githubUser : IGithubUser[] ;
                 
-                let location : string = req.params.location;
+                let location : string = request.params.location;
                  
                 let query : GithubUserInfo   = new GithubUserInfo();
 
@@ -76,7 +76,7 @@ export class Candidate {
 
                }
  
-               res.status(200).send(githubUser);
+               response.status(200).send(githubUser);
             });
 
         app.route('/api/github/candidate/repo/:username')
