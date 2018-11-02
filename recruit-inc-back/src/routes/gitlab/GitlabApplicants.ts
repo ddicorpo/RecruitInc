@@ -9,6 +9,8 @@ import {IGitlabRepositoryTree} from "../../data-extraction/gitlab/api-entities/I
 import {IGitlabCommit} from "../../data-extraction/gitlab/api-entities/IGitlabCommit";
 import {CommitQuery} from "../../data-extraction/gitlab/queries/CommitQuery";
 import { FileDownloadQuery } from "../../data-extraction/gitlab/queries/FileDownloadQuery";
+import { CommitDiffQuery } from "../../data-extraction/gitlab/queries/CommitDiffQuery";
+import {IGitlabCommitDiff} from "../../data-extraction/gitlab/api-entities/IGitlabCommitDiff";
 
 var logger = require('../../logger.js');
 
@@ -132,12 +134,34 @@ export class GitlabApplicants {
                     user.dataEntry.projectInputs[i].applicantCommits = commits_specific_user.map(commit=> {
                         return {id: commit.id, numberOfFileAffected: 0, files: []}
                     }) 
+
+
+                    
+                    for(let x =0; x < user.dataEntry.projectInputs[i].applicantCommits.length; x++){
+                        
+                        let gitlabCommitDiffQueryExecutor = new GitlabQueryExecutor<IGitlabCommitDiff[]>();
+                        let commitSha1: string = user.dataEntry.projectInputs[i].applicantCommits[x].id;
+                        let commitDiffQuery: CommitDiffQuery = new CommitDiffQuery(projectId, commitSha1, gitlabCommitDiffQueryExecutor);
+                        commitDiffQuery.buildQuery();
+                        let gitlabCommitDiffPromise: Promise<IGitlabCommitDiff[]> = commitDiffQuery.executeQuery();
+                        let gitlabDiffCommit: IGitlabCommitDiff[] = await gitlabCommitDiffPromise;
+                        user.dataEntry.projectInputs[i].applicantCommits[x].numberOfFileAffected = gitlabDiffCommit.length;
+                        
+                        user.dataEntry.projectInputs[i].applicantCommits[x].files = []
+                        for(let r=0; r < gitlabDiffCommit.length; r++){
+                              let filepath: string = gitlabDiffCommit[r].new_path;
+                              let diff: string = gitlabDiffCommit[r].diff;
+                              let addition: number = (diff.match(/\n\+/g) || []).length;
+                              let deletion: number = (diff.match(/\n\-/g) || []).length;
+                              user.dataEntry.projectInputs[i].applicantCommits[x].files.push({filePath:filepath,lineAdded: addition,lineDeleted:deletion})
+                        }
+                    }
                  
-      
+                    
                 }
                 
                 
-                if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0){
+            /*     if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0){
                     return user;
                 }
                 
@@ -161,9 +185,9 @@ export class GitlabApplicants {
                             fileDownloadQuery.writeToFile(gitlabFileDownload.content, generatedPath)
                             repository.downloadedSourceFile.push({filename: file.fileName, repoFilePath: file.filePath, localFilePath: generatedPath });
                         }
-                    }
+                    } 
                 
-                }
+                }*/
 
                 let returnValue = {
                     userQuery: userQuery.getQuery(),
