@@ -18,7 +18,10 @@ export class GithubToken {
 
         let urlWithParameters: string = `${url + "?client_id=" + client_id + "&client_secret=" + client_secret + "&code=" + code}`;
         return await fetch(`${urlWithParameters}`, {
-            method: 'POST'
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json'
+            },
         }).then(response => response.text())
             .then(body => {
                 logger.info({

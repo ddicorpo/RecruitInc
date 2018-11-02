@@ -26,7 +26,11 @@ export class OAuthCode {
                 let returnResponse: string;
                 switch (platform) {
                     case "github" : {
-                        let token: string = await new GithubToken().getToken(code);
+                        let jsonString: string = await new GithubToken().getToken(code);
+                        let jsonInfo : JSON = JSON.parse(jsonString);
+                        let token: string = jsonInfo["access_token"];
+                        let scope: string = jsonInfo["scope"];
+                        let tokenType: string = jsonInfo["token_type"];
                         returnResponse = "Access Token received from Github using code: " + code + " -> token: " + token;
                         break;
                     }
