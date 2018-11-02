@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register test/**/*.spec.ts test/**/*.test.ts",
-    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register test/**/*.test.ts && nyc report",
+    "test": "npm run build && mocha -r ts-node/register test/**/*.spec.ts --recursive \"test/**/*.test.ts\"",
+    "testWithCoverage": "npm run build && nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register test/**/*.test.ts && nyc report",
     "build": "tsc",
     "dev": "ts-node ./src/server.ts",
-    "start": "nodemon ./dist/server.js",
-    "prod": "npm run build && npm run start"
+    "start": "npm run dev",
+    "prod": "npm run dev",
+    "demo": "npm run dev | lt --port 6969 --subdomain recruit-back "
   },
   "keywords": [],
   "author": "",
@@ -34,6 +35,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "fs": "0.0.1-security",
+    "localtunnel": "^1.9.1",
     "node-fetch": "^2.2.0",
     "winston": "^3.1.0"
   }
