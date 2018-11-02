@@ -27,6 +27,10 @@ export abstract class AbstractLanguageMatcher extends AbstractMatcher {
         return this;
     }
 
+    public getFrameworks(): AbstractFrameworkMatcher[] {
+        return this.frameworks;
+    }
+
     protected computeCodeOutput(): ICodeOutput {
         return this.countCommitsAndLinesOfCode("");
     }

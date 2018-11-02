@@ -15,4 +15,3 @@ export const reactConfig: IMatcherConfig = {
     matchingTargets,
     sourceFolder: "src/"
 };
-git
