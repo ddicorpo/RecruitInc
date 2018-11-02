@@ -7,6 +7,10 @@ const client_secret: string = "6bfae547289c1d3da3fa37df655d4aa02502b9ad";
 
 export class GithubToken {
 
+    public static buildParam(code: string){
+        return `${url + "?client_id=" + client_id + "&client_secret=" + client_secret + "&code=" + code}`;
+    }
+
     async getToken(code: string) {
 
         logger.info({
@@ -16,7 +20,7 @@ export class GithubToken {
             params: {code}
         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-        let urlWithParameters: string = `${url + "?client_id=" + client_id + "&client_secret=" + client_secret + "&code=" + code}`;
+        let urlWithParameters: string = GithubToken.buildParam(code);
         return await fetch(`${urlWithParameters}`, {
             method: 'POST',
             headers: {
