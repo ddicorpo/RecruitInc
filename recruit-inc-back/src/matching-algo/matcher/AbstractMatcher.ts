@@ -10,6 +10,10 @@ import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 
+interface ICommitAnalysis {
+    linesOfCodes: number,
+    doesCommitCount: boolean
+}
 
 export abstract class AbstractMatcher {
     logger = require('../../logger.js');
@@ -92,9 +96,9 @@ export abstract class AbstractMatcher {
         let numberOfLines: number = 0;
         for (const commit of commits) {
             const singleFileCommits: ISingleFileCommit[] = commit.files;
-            const numberOfLinesInCommit: number = this.countNumberOfLinesInSingleFileCommits(singleFileCommits, basePath);
-            numberOfLines += numberOfLinesInCommit;
-            if (numberOfLinesInCommit !== 0) {
+            let commitAnalysis: ICommitAnalysis = this.countNumberOfLinesInSingleFileCommits(singleFileCommits, basePath);
+            numberOfLines += commitAnalysis.linesOfCodes;
+            if (commitAnalysis.doesCommitCount) {
                 codeOutput.numberOfCommits += 1;
             }
         }
@@ -111,18 +115,20 @@ export abstract class AbstractMatcher {
         return regularExpression.test(filetext);
     }
 
-    private countNumberOfLinesInSingleFileCommits(commits: ISingleFileCommit[], basePath: string): number {
-        let numberOfLines: number = 0;
+    private countNumberOfLinesInSingleFileCommits(commits: ISingleFileCommit[], basePath: string): ICommitAnalysis {
+        let linesOfCodes: number = 0;
+        let doesCommitCount: boolean = false;
         for (const commit of commits) {
             const filePath: string = commit.filePath;
             const isOfBasePath: boolean = this.isFilePathContainingBasePath(filePath, basePath);
             const isOfExtension: boolean = this.isFilepathOfExtension(filePath);
             if (isOfBasePath && isOfExtension) {
-                numberOfLines += commit.lineAdded;
-                numberOfLines -= commit.lineDeleted;
+                doesCommitCount = true;
+                linesOfCodes += commit.lineAdded;
+                linesOfCodes -= commit.lineDeleted;
             }
         }
-        return numberOfLines;
+        return {linesOfCodes, doesCommitCount};
     }
 
     private isFilePathContainingBasePath(filePath: string, basePath: string): boolean {
