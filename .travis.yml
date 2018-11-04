@@ -29,3 +29,5 @@ jobs:
     script: cd $TRAVIS_BUILD_DIR/recruit-inc-back && npm run test
   - script: cd $TRAVIS_BUILD_DIR/recruit-inc-front && npm run test
     name: test frontend
+notifications:
+    email: false
