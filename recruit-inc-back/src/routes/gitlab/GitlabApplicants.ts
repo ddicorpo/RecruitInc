@@ -11,6 +11,8 @@ import {CommitQuery} from "../../data-extraction/gitlab/queries/CommitQuery";
 import { FileDownloadQuery } from "../../data-extraction/gitlab/queries/FileDownloadQuery";
 import { CommitDiffQuery } from "../../data-extraction/gitlab/queries/CommitDiffQuery";
 import {IGitlabCommitDiff} from "../../data-extraction/gitlab/api-entities/IGitlabCommitDiff";
+import {MatcherClient} from "../../matching-algo/matcher-client/MatcherClient"
+import { IGitProjectOutput } from "../../matching-algo/data-model/output-model/IGitProjectOutput";
 
 var logger = require('../../logger.js');
 
@@ -22,7 +24,7 @@ export class GitlabApplicants {
 
     public routes(app): void {
 
-        app.route('/api/gitlab/users/:username')
+        app.route('/api/gitlab/matchingalgo/:username')
             .get(cors(), async (request: Request, response: Response) => {
                 logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/users/:username", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
@@ -35,7 +37,6 @@ export class GitlabApplicants {
                 let gitlabUsers: IGitlabUser[] = await gitlabUserPromise;
                 let userId: number = gitlabUsers[0].id;
                 let user: IGitlabUser = gitlabUsers[0];
-                //let user: IGitlabUser = {"id":212577,"name":"Roberto Rosario","username":"rosarior","state":"active","avatar_url":"https://secure.gravatar.com/avatar/943620c3bc4056a40ce132690f1d9ac1?s=80&d=identicon","web_url":"https://gitlab.com/rosarior"}
 
                  //To retrieve all the projects
                 let gitlabProjectQueryExecutor = new GitlabQueryExecutor<IGitlabProject[]>();
@@ -161,7 +162,7 @@ export class GitlabApplicants {
                 }
                 
                 
-            /*     if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0){
+                 if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0){
                     return user;
                 }
                 
@@ -187,14 +188,17 @@ export class GitlabApplicants {
                         }
                     } 
                 
-                }*/
+                }
+                
 
+                let client: MatcherClient = new MatcherClient(user.dataEntry)
+                let output: IGitProjectOutput[] = client.execute();
+              
                 let returnValue = {
                     userQuery: userQuery.getQuery(),
                     userResponse: gitlabUsers,
-                    
-                    projectQuery: projectQuery.getQuery(),
-                    projectResponse: gitlabProjects
+
+                    matching_algo_output : output
 
                 };
                 response.status(200).send(returnValue);
