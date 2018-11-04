@@ -20,6 +20,7 @@ export class MatcherClient {
         this.languageMatchers = languageMatchers;
     }
 
+    //TODO: Refactor this Big Big(O) loop
     public execute(): IGitProjectSummary{
         const allProjects: IGitProjectInput[] = this.dataEntry.projectInputs;
 
@@ -76,13 +77,17 @@ export class MatcherClient {
                 const languageOutputs: ILanguageOutput[] = projectOutput.languageOutput;
 
                 for (const languageOutput of languageOutputs) {
-                    language.linesOfCode += languageOutput.linesOfCode;
+                    if(languageOutput.linesOfCode > 0){
+                        language.linesOfCode += languageOutput.linesOfCode;
+                    }
                     language.numberOfCommits += languageOutput.numberOfCommits;
 
                     for (const frameworkOutput of languageOutput.frameworks) {
                         for (const framework of language.frameworks) {
                             if (framework.technologyName === frameworkOutput.technologyName) {
-                                framework.linesOfCode += frameworkOutput.linesOfCode;
+                                if(frameworkOutput.linesOfCode > 0){
+                                    framework.linesOfCode += frameworkOutput.linesOfCode;
+                                }
                                 framework.numberOfCommits += frameworkOutput.numberOfCommits;
                             }
                         }
