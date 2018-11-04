@@ -9,6 +9,7 @@ import {ReactMatcher} from "../../../src/matching-algo/matcher/Javascript/ReactM
 import {TypescriptMatcher} from "../../../src/matching-algo/matcher/Javascript/TypescriptMatcher";
 import {JavascriptMatcher} from "../../../src/matching-algo/matcher/Javascript/JavascriptMatcher";
 import {IGitProjectSummary} from "../../../src/matching-algo/data-model/output-model/IGitProjectSummary";
+import {IGitProjectOutput} from "../../../src/matching-algo/data-model/output-model/IGitProjectOutput";
 describe('Test react matching algorithm', () => {
 
     it('Should return the correct output object', () => {
@@ -27,7 +28,15 @@ describe('Test react matching algorithm', () => {
         const computedOutput: IGitProjectSummary = client.execute();
 
         // THEN
-        expect(JSON.stringify(computedOutput)).to.be.equal(JSON.stringify([projectOutput]));
+        let index: number = 0;
+        for(const proj in computedOutput.projectsOutput){
+            const projectSum : IGitProjectOutput = computedOutput.projectsOutput[index];
+            const computedProjectSum : IGitProjectOutput = projectOutput.projectsOutput[index];
+            index++;
+            if(JSON.stringify(projectSum) !== JSON.stringify(computedProjectSum)){
+                expect.fail();
+            }
+        }
     });
 
 });
