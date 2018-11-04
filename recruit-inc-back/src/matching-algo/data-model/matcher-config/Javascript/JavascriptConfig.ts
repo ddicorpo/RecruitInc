@@ -9,5 +9,6 @@ const matchingTargets: ITargetMatcher[] = [
 export const javascriptConfig: IMatcherConfig = {
     technology: Technologies.Javascript,
     extensions: ["js", "ts", "tsx"],
-    matchingTargets
+    matchingTargets,
+    vendorFolder: "node_modules"
 };

@@ -7,4 +7,6 @@ export interface IMatcherConfig {
     matchingTargets: ITargetMatcher[],
     // Example in Javascript it's "src/"
     sourceFolder?: string
+    // A vendor folder name
+    vendorFolder?:string
 }

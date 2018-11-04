@@ -122,7 +122,8 @@ export abstract class AbstractMatcher {
             const filePath: string = commit.filePath;
             const isOfBasePath: boolean = this.isFilePathContainingBasePath(filePath, basePath);
             const isOfExtension: boolean = this.isFilepathOfExtension(filePath);
-            if (isOfBasePath && isOfExtension) {
+            const isItVendoFolder: boolean =  commit.filePath.includes(this.matchingConfig.vendorFolder);
+            if (isOfBasePath && isOfExtension && !isItVendoFolder) {
                 doesCommitCount = true;
                 linesOfCodes += commit.lineAdded;
                 linesOfCodes -= commit.lineDeleted;
