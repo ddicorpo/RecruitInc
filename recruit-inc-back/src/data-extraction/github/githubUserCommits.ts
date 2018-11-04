@@ -136,7 +136,7 @@ export class GithubUserCommits {
         try{
         jsonData = JSON.parse(data);
         if ((!jsonData.data) || (!jsonData.data.user))
-            throw new TypeError(`The User (${Login}) you are trying to query is empty.`);
+            throw new TypeError(`The User (${Login}) you are trying to query does not exist.`);
         }catch(error){
               logger.error({class: "GithubUserCommits", method: "getUserID", action: "Error while trying to obtain the id of a given github user.", value: error.toString()}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
             return "";
