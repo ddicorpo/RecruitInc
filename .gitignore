@@ -48,6 +48,14 @@ recruit-inc-back/log/*.json
 # Ignore Test file compiled to .js
 
 recruit-inc-front/test/**/*.js
-
+recruit-inc-back/test/**/*.js
 # Ignore downloaded File
 recruit-inc-back/downloaded/
+/downloaded/
+
+#Ignore Log
+/log
+
+# Ignore generated JS file
+recruit-inc-back/src/*.js
+recruit-inc-back/src/**/*.js
