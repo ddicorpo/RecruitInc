@@ -13,5 +13,6 @@ export const typescriptConfig: IMatcherConfig = {
     technology: Technologies.Typescript,
     extensions: ["ts", "tsx"],
     matchingTargets,
+    sourceFolder: null,
     vendorFolder: "node_modules"
 };
