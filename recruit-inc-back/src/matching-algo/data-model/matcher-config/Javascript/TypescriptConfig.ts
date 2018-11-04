@@ -14,5 +14,5 @@ export const typescriptConfig: IMatcherConfig = {
     extensions: ["ts", "tsx"],
     matchingTargets,
     sourceFolder: null,
-    vendorFolder: "node_modules"
+    excludedFolders: ["node_modules"]
 };

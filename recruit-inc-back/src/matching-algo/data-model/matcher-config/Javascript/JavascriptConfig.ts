@@ -10,5 +10,5 @@ export const javascriptConfig: IMatcherConfig = {
     technology: Technologies.Javascript,
     extensions: ["js", "ts", "tsx"],
     matchingTargets,
-    vendorFolder: "node_modules"
+    excludedFolders: ["node_modules"]
 };

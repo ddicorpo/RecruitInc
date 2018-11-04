@@ -6,7 +6,7 @@ export interface IMatcherConfig {
     extensions: string[],
     matchingTargets: ITargetMatcher[],
     // Example in Javascript it's "src/"
-    sourceFolder?: string
-    // A vendor folder name
-    vendorFolder?:string
+    sourceFolder?: string,
+    // e.g A vendor folder name like node_modules
+    excludedFolders?:string[]
 }

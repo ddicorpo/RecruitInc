@@ -15,5 +15,5 @@ export const reactConfig: IMatcherConfig = {
     extensions: ["js", "tsx", "ts"],
     matchingTargets,
     sourceFolder: "src/",
-    vendorFolder: "node_modules"
+    excludedFolders: ["node_modules"]
 };

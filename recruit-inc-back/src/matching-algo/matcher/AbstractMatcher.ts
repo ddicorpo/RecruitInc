@@ -10,6 +10,7 @@ import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 import base = Mocha.reporters.base;
+import {IntersectionArrayString} from "../../util/IntersectionArrayString";
 
 interface ICommitAnalysis {
     linesOfCodes: number,
@@ -123,7 +124,11 @@ export abstract class AbstractMatcher {
             const filePath: string = commit.filePath;
             const isOfBasePath: boolean =  this.isFilePathContainingBasePath(filePath, basePath);
             const isOfExtension: boolean = this.isFilepathOfExtension(filePath);
-            const isItVendoFolder: boolean =  commit.filePath.includes(this.matchingConfig.vendorFolder);
+            const resultIntersection : string[] =
+                IntersectionArrayString.intersection(commit.filePath.split("/"),
+                    this.matchingConfig.excludedFolders);
+
+            const isItVendoFolder: boolean =  resultIntersection.length > 0;
             if (isOfBasePath && isOfExtension && !isItVendoFolder) {
                 doesCommitCount = true;
                 linesOfCodes += commit.lineAdded;
