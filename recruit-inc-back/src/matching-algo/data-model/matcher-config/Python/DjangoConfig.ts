@@ -5,15 +5,15 @@ import {TechSourceFileEnum} from "../../input-model/TechSourceFileEnum";
 
 const matchingTargets: ITargetMatcher[] = [
     {
-        sourceFileToParse: TechSourceFileEnum.packageJson,
-        matchingPattern: "(\"typescript\"|\"\@types/node\") {0,1}: {0,1}\""
+        sourceFileToParse: TechSourceFileEnum.djangoRequirements,
+        matchingPattern: "(Django|django)"
     }
 ];
 
-export const typescriptConfig: IMatcherConfig = {
-    technology: Technologies.Typescript,
-    extensions: ["ts", "tsx"],
+export const djangoConfig: IMatcherConfig = {
+    technology: Technologies.Django,
+    extensions: ["py"],
     matchingTargets,
     sourceFolder: null,
-    excludedFolders: ["node_modules"]
+    excludedFolders: ["migrations"]
 };
