@@ -9,7 +9,7 @@ import {IGitProjectSummary} from "../../../src/matching-algo/data-model/output-m
 import {IGitProjectOutput} from "../../../src/matching-algo/data-model/output-model/IGitProjectOutput";
 import {DjangoMatcher} from "../../../src/matching-algo/matcher/Python/DjangoMatcher";
 import {PythonMatcher} from "../../../src/matching-algo/matcher/Python/PythonMatcher";
-describe('Test react matching algorithm', () => {
+describe('Test Django matching algorithm', () => {
 
     it('Should return the correct output object', () => {
         // GIVEN
