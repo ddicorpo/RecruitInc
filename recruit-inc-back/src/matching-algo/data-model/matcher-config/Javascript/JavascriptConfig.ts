@@ -8,6 +8,7 @@ const matchingTargets: ITargetMatcher[] = [
 
 export const javascriptConfig: IMatcherConfig = {
     technology: Technologies.Javascript,
-    extensions: ["js", "ts"],
-    matchingTargets
+    extensions: ["js", "ts", "tsx"],
+    matchingTargets,
+    excludedFolders: ["node_modules"]
 };
