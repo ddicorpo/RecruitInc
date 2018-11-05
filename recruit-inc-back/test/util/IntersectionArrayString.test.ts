@@ -9,10 +9,10 @@ describe('Test intersection function', () => {
         const dataArray: string[] = ["bob", "Mage", "marcel", "dog"];
         const dataArrayWithSameTerm : string[] = ["bob", "duck", "marcel"];
         // WHEN
-        const resutls : string[] = IntersectionArrayString.intersection(dataArray, dataArrayWithSameTerm);
+        const results : string[] = IntersectionArrayString.intersection(dataArray, dataArrayWithSameTerm);
         const expectedResults : string[] = ["bob", "marcel"];
         // THEN
-        expect(resutls.toString()).to.be.equal(expectedResults.toString());
+        expect(results.toString()).to.be.equal(expectedResults.toString());
     });
 
 

@@ -9,7 +9,6 @@ import {IProcessedSourceFile} from "../data-model/matcher-model/IProcessedSource
 import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
-import base = Mocha.reporters.base;
 import {IntersectionArrayString} from "../../util/IntersectionArrayString";
 
 interface ICommitAnalysis {
@@ -128,8 +127,8 @@ export abstract class AbstractMatcher {
                 IntersectionArrayString.intersection(commit.filePath.split("/"),
                     this.matchingConfig.excludedFolders);
 
-            const isItVendoFolder: boolean =  resultIntersection.length > 0;
-            if (isOfBasePath && isOfExtension && !isItVendoFolder) {
+            const isItVendorFolder: boolean =  resultIntersection.length > 0;
+            if (isOfBasePath && isOfExtension && !isItVendorFolder) {
                 doesCommitCount = true;
                 linesOfCodes += commit.lineAdded;
                 linesOfCodes -= commit.lineDeleted;
@@ -141,7 +140,7 @@ export abstract class AbstractMatcher {
     private isFilePathContainingBasePath(filePath: string, basePath: string): boolean {
         // Corner Case: When we don't have any base path...
         // Yes if you set something null that is later cast to a string is become "null"...
-        if(basePath == "null"){
+        if(basePath.includes("null")){
             return true;
         }
         const basePathLength: number = basePath.length;
