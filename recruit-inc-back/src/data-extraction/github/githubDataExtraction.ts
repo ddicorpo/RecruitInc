@@ -39,7 +39,7 @@ export class GithubDataExtraction {
   user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
 
   let client: MatcherClient = new MatcherClient(user.dataEntry)
-  let gtoutput: IGitProjectSummary = client.execute();
+  let output: IGitProjectSummary = client.execute();
 
   return output;
 }
