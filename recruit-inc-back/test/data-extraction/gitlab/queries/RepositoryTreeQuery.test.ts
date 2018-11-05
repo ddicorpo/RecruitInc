@@ -3,7 +3,7 @@ import {GitlabQueryExecutor} from "../../../../src/data-extraction/gitlab/query-
 import {RepositoryTreeQuery} from "../../../../src/data-extraction/gitlab/queries/RepositoryTreeQuery";
 import {IGitlabRepositoryTree} from "../../../../src/data-extraction/gitlab/api-entities/IGitlabRepositoryTree";
 
-describe.only('Repository tree query class', function () {
+describe('Repository tree query class', function () {
     it('should return the correct query after building it', function () {
         let projectId: number = 1234;
         let gitlabRepositoryTreeQueryExecutor = new GitlabQueryExecutor<IGitlabRepositoryTree[]>();
