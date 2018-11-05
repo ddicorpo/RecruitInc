@@ -11,7 +11,7 @@ const matchingTargets: ITargetMatcher[] = [
 
 export const reactConfig: IMatcherConfig = {
     technology: Technologies.React,
-    extensions: ["js", "ts"],
+    extensions: ["js", "tsx", "ts"],
     matchingTargets,
     sourceFolder: "src/"
 };

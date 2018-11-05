@@ -13,7 +13,7 @@ import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 
 export abstract class AbstractMatcher {
     logger = require('../../logger.js');
-    technology: Technologies;
+    protected technology: Technologies;
     protected projectInput: IGitProjectInput;
     //TODO: Refactor get data out of config, for more readability
     protected matchingConfig: IMatcherConfig;
@@ -30,6 +30,10 @@ export abstract class AbstractMatcher {
     public execute(): IFrameworkOutput | ILanguageOutput {
         const codeOutput = this.computeCodeOutput();
         return this.package(codeOutput);
+    }
+
+    public getTechnology(): Technologies {
+        return this.technology;
     }
 
     protected abstract computeCodeOutput(): ICodeOutput;

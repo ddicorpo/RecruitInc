@@ -1,11 +1,10 @@
-import { GithubApiV4} from "./githubApiV4";
 import {IGithubUser} from "./api-entities/IGithubUser"
 import {GithubUserRepos} from "./githubUserRepos";
 import {GithubRepoStructure} from "./githubRepoStructure";
 import {GithubDownloadedFilesPath} from "./githubDownloadedFilesPath";
 import {GithubUserCommits} from "./githubUserCommits";
 import {MatcherClient} from "../../matching-algo/matcher-client/MatcherClient"
-import { IGitProjectOutput } from "../../matching-algo/data-model/output-model/IGitProjectOutput";
+import {IGitProjectSummary} from "../../matching-algo/data-model/output-model/IGitProjectSummary";
 
 export class GithubDataExtraction {
     private readonly accessToken: string;
@@ -14,7 +13,7 @@ export class GithubDataExtraction {
       this.accessToken = accessToken;
   }
 
-  async extractData(login: string, email: string): Promise<IGitProjectOutput[]> {
+  async extractData(login: string, email: string): Promise<IGitProjectSummary> {
 
   let user : IGithubUser = 
   {login: login,
@@ -40,7 +39,7 @@ export class GithubDataExtraction {
   user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
 
   let client: MatcherClient = new MatcherClient(user.dataEntry)
-  let output: IGitProjectOutput[] = client.execute();
+  let gtoutput: IGitProjectSummary = client.execute();
 
   return output;
 }
