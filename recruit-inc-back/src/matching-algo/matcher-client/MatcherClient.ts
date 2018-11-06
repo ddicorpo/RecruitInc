@@ -7,6 +7,7 @@ import {allMatchers} from "./AllMatchers";
 import {Technologies} from "../data-model/output-model/Technologies";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {IGitProjectSummary} from "../data-model/output-model/IGitProjectSummary";
+import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 
 export class MatcherClient {
 
@@ -57,12 +58,16 @@ export class MatcherClient {
         for (const languageMatcher of this.languageMatchers) {
             const languageTech: Technologies = languageMatcher.getTechnology();
             const frameworks: IFrameworkOutput[] = [];
+            let indexedFrameworkMap : Map<Technologies, number> = new Map<Technologies, number>();
+            let indexHelper : number = 0;
             for (const framework of languageMatcher.getFrameworks()) {
                 frameworks.push({
                     technologyName: framework.getTechnology(),
                     numberOfCommits: 0,
                     linesOfCode: 0,
                 })
+                indexedFrameworkMap.set(framework.getTechnology(), indexHelper);
+                indexHelper++;
             }
             const language: ILanguageOutput = {
                 languageOrFramework: languageTech,
@@ -73,28 +78,33 @@ export class MatcherClient {
 
             for (const projectOutput of projectOutputs) {
 
-
+                //Select the right constant
                 const languageOutputs: ILanguageOutput[] = projectOutput.languageOutput;
-
-                for (const languageOutput of languageOutputs) {
-                    if(languageOutput.linesOfCode > 0){
-                        language.linesOfCode += languageOutput.linesOfCode;
+                let targetedFrameworksStats : IFrameworkOutput[] = [];
+                let targetLangStats : ILanguageOutput;
+                // Grab the frameworks and Language in list of Languages...
+                for(let languageOutput of languageOutputs){
+                    if(languageOutput.languageOrFramework === languageTech){
+                        targetLangStats = languageOutput;
+                        targetedFrameworksStats = languageOutput.frameworks;
+                        break;
                     }
-                    language.numberOfCommits += languageOutput.numberOfCommits;
+                }
+                //Check if the current Language has line or commit before going further...
+                if(targetLangStats.linesOfCode != 0 || targetLangStats.numberOfCommits !==0){
 
-                    for (const frameworkOutput of languageOutput.frameworks) {
-                        for (const framework of language.frameworks) {
-                            if (framework.technologyName === frameworkOutput.technologyName) {
-                                if(frameworkOutput.linesOfCode > 0){
-                                    framework.linesOfCode += frameworkOutput.linesOfCode;
-                                }
-                                framework.numberOfCommits += frameworkOutput.numberOfCommits;
-                            }
-                        }
+                    // Adding Language Stats
+                    language.linesOfCode += targetLangStats.linesOfCode;
+                    language.numberOfCommits += targetLangStats.numberOfCommits;
+
+                    // Adding the Framework Stats
+                    for(const computedFrameworkStat of targetedFrameworksStats){
+                        const indexOfFramework : number = indexedFrameworkMap.get(computedFrameworkStat.technologyName);
+                        language.frameworks[indexOfFramework].linesOfCode += computedFrameworkStat.linesOfCode;
+                        language.frameworks[indexOfFramework].numberOfCommits += computedFrameworkStat.numberOfCommits;
                     }
                 }
             }
-
             languages.push(language);
         }
         const projectSummary: IGitProjectSummary = {
