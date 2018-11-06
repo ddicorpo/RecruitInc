@@ -1,11 +1,10 @@
 import {ITargetMatcher} from "../../matcher-model/ITargetMatcher";
 import {IMatcherConfig} from "../../matcher-model/IMatcherConfig";
 import {Technologies} from "../../output-model/Technologies";
-import {TechSourceFileEnum} from "../../input-model/TechSourceFileEnum";
 
 const matchingTargets: ITargetMatcher[] = [
     {
-        sourceFileToParse: TechSourceFileEnum.djangoRequirements,
+        sourceFileToParse: "requirements.txt",
         matchingPattern: "(Django|django)"
     }
 ];

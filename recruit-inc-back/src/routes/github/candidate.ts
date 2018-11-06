@@ -180,7 +180,7 @@ export class Candidate {
                 let githubDownloadedFilesPath: GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");
                 let githubRepoStructure: GithubRepoStructure = new GithubRepoStructure("5e6a78d61823ba36bbdff45649fde4481bb489b7");
                 user = await githubRepoStructure.getRepoStructureFromUser(user);
-                user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
+                user = await githubDownloadedFilesPath.downloadFileForUser(user);
                 res.status(200).send(user);
             });
 
@@ -211,7 +211,7 @@ export class Candidate {
 
                 //Search for package.json and download it if found
                 let githubDownloadedFilesPath: GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");
-                user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
+                user = await githubDownloadedFilesPath.downloadFileForUser(user);
 
                 res.status(200).send(user);
                 console.log(user);

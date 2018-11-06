@@ -3,5 +3,6 @@ export enum Technologies{
     React = "React",
     Typescript = "Typescript",
     Python = "Python",
-    Django = "Django"
+    Django = "Django",
+    Git = "Git",
 };

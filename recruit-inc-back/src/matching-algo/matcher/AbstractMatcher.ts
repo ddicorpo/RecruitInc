@@ -49,7 +49,7 @@ export abstract class AbstractMatcher {
         const sourceFiles: ISourceFiles[] = this.projectInput.downloadedSourceFile;
 
         const sourceFilesOutput: IProcessedSourceFile[] = [];
-
+        const localTechDulpicateHelper : string[] = [];
         for (const sourceFile of sourceFiles) {
             const filename: string = sourceFile.filename;
 
@@ -63,6 +63,7 @@ export abstract class AbstractMatcher {
                     try {
                         filetext = this.readTargetFile(sourceFile.localFilePath);
                         isMatchingTechnology = this.isTechnologyFound(filetext, matchingTarget.matchingPattern);
+                        console.log("REGEX => " + this.technology + "  " +  isMatchingTechnology);
                     } catch (exception) {
                         this.logger.error({
                                 class: this.technology + "Matcher", method: "processSourceFiles",

@@ -1,15 +1,25 @@
-import { GithubApiV4} from "./githubApiV4";
 import { GithubApiV3} from "./githubApiV3";
 import {IGithubUser} from "./api-entities/IGithubUser"
+import {techSourceFiles} from "../../matching-algo/data-model/input-model/TechSourceFiles";
+import {IntersectionArrayString} from "../../util/IntersectionArrayString";
 
 const fs = require('fs');
 const logger = require('../../logger.js');
 
 export class GithubDownloadedFilesPath {
     private readonly accessToken: string;
-    
+    private allSourcefileName : string[];
     public constructor(accessToken: string = "37780cb5a0cd8bbedda4c9537ebf348a6e402baf" ) {
       this.accessToken = accessToken;
+      this.allSourcefileName = this.setSourceFilesArray();
+  }
+
+  private setSourceFilesArray() : string[] {
+        const sourcefilesArr : string[] = [];
+        for(const tech of techSourceFiles){
+            sourcefilesArr.push(tech.sourceFileName);
+        }
+        return sourcefilesArr;
   }
 
     async downloadFile(owner: string, repoName: string, path: string): Promise<{name: string, path: string, content: string}> {
@@ -51,7 +61,7 @@ export class GithubDownloadedFilesPath {
         return `downloaded/${username}/github/${repoName}/${filePath}`;
     }
 
-    async downloadFileForUser(user: IGithubUser, filename: string): Promise<IGithubUser>{
+    async downloadFileForUser(user: IGithubUser): Promise<IGithubUser>{
         if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0){
             return user;
         }
@@ -62,8 +72,11 @@ export class GithubDownloadedFilesPath {
             if (repository.projectStructure == null || repository.projectStructure.length == 0){
                 continue;
             }
+
             for (let file of repository.projectStructure){
-                if (file.fileName == filename){
+                const tmpfileNameArr : string[] = [file.fileName];
+                const DoesFileIsSourceFile : boolean = IntersectionArrayString.intersection(this.allSourcefileName, tmpfileNameArr).length > 0;
+                if (DoesFileIsSourceFile){
                     let generatedPath : string = this.generatePath(user.login, repository.projectName, file.filePath);
                     let sourceFile : {name: string, path: string, content: string} = await this.downloadFile(repository.owner, repository.projectName, file.filePath);
                     this.writeToFile(sourceFile.content, generatedPath);
