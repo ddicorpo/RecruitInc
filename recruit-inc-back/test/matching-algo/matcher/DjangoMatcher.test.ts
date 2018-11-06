@@ -30,12 +30,12 @@ describe('Test Django matching algorithm', () => {
         // THEN
         let index: number = 0;
         for(const proj in computedOutput.projectsOutput){
-            const projectSum : IGitProjectOutput = computedOutput.projectsOutput[index];
-            const computedProjectSum : IGitProjectOutput = projectOutput.projectsOutput[index];
+            const projectSum :  IGitProjectOutput = projectOutput.projectsOutput[index];
+            const computedProjectSum :IGitProjectOutput = computedOutput.projectsOutput[index];
             index++;
             if(JSON.stringify(projectSum) !== JSON.stringify(computedProjectSum)){
-                console.log("expected: " + JSON.stringify(projectSum));
-                console.log("actural: " + JSON.stringify(computedProjectSum));
+                console.log("expected : " + JSON.stringify(projectSum));
+                console.log("actual: " + JSON.stringify(computedProjectSum));
                 expect.fail();
             }
         }

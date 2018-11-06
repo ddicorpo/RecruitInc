@@ -127,7 +127,10 @@ export abstract class AbstractMatcher {
                 IntersectionArrayString.intersection(commit.filePath.split("/"),
                     this.matchingConfig.excludedFolders);
             //TODO: Fix the Err try by .length ??? WTF
+
             const isItVendorFolder: boolean =  resultIntersection.length > 0;
+            console.log("STATUS => " + " basePath " + basePath + " filePath " + commit.filePath +
+            " isBasePath " + isOfBasePath +  " isExt: " + isOfExtension + " isVendor " + isItVendorFolder);
             if (isOfBasePath && isOfExtension && !isItVendorFolder) {
                 doesCommitCount = true;
                 linesOfCodes += commit.lineAdded;

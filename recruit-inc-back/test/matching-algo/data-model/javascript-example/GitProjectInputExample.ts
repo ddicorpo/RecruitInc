@@ -439,8 +439,8 @@ const commitInput5: ICommit = {
     files: [singleCommitIndexJs1, singleCommitAppJs2, singleCommitIndexHtml]
 };
 
-const pathToFakePackageJson : string = __dirname +  "/files-downloaded/package.downloaded.json";
-const pathToFakeGitIgnore : string = __dirname + "/files-downloaded/gitignore.downloaded";
+const pathToFakePackageJson : string = __dirname +  "/../files-downloaded/package.downloaded.json";
+const pathToFakeGitIgnore : string = __dirname + "/../files-downloaded/gitignore.downloaded";
 
 const packageJsonSourceFile: ISourceFiles = {
     filename: "package.json",
