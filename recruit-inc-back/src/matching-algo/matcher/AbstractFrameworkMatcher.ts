@@ -40,6 +40,7 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
 
                 codeOutput.linesOfCode += tempCodeOutput.linesOfCode;
                 codeOutput.numberOfCommits += tempCodeOutput.numberOfCommits;
+                break;
 
             }
         }
