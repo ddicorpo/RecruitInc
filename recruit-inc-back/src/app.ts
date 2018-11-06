@@ -6,6 +6,7 @@ import { StackOverflowRoute } from './routes/stackoverflow/stackOverflowRoute';
 import { GitlabApplicants } from "./routes/gitlab/GitlabApplicants"
 import { Candidate} from "./routes/github/candidate";
 import {ApplicantBitbucket} from "./routes/bitbucket/applicantBitbucket";
+import {OAuthCode} from "./routes/OAuth/OAuthCode";
 
 class App {
 
@@ -17,6 +18,7 @@ class App {
     public stackOverFlowRoute: StackOverflowRoute = new StackOverflowRoute();
     public gitlabApplicant: GitlabApplicants = new GitlabApplicants();
     public candidateDataRout: Candidate = new Candidate();
+    public oauthCodeRoute: OAuthCode = new OAuthCode();
 
     constructor() {
         this.app = express(); //run the express instance and store in app
@@ -28,6 +30,7 @@ class App {
         this.stackOverFlowRoute.routes(this.app);
         this.gitlabApplicant.routes(this.app);
         this.candidateDataRout.routes(this.app);
+        this.oauthCodeRoute.routes(this.app);
     }
 
     private config(): void {
