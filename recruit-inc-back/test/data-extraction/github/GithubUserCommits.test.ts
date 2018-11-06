@@ -20,7 +20,7 @@ let test : GithubUserCommits = new GithubUserCommits();
     });
 
     it('Gets user commit hash', () => {
-      return test.GetCommitsSpecificToUser('MinistocksRework', 'AyoubeAkaouch', 'mohamed_2_27@hotmail.com')
+      return test.GetCommitsSpecificToUser('MinistocksRework', 'AyoubeAkaouch', 'MDQ6VXNlcjI1MjUyMTIz')
         .then(response => {
 
         expect(response).to.be.a('string');
