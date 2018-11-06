@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import 'mocha';
-import {dataEntry} from "../data-model/GitProjectInputExample"
-import { projectOutput } from "../data-model/GitProjectOutputExample"
+import {dataEntry} from "../data-model/javascript-example/GitProjectInputExample"
+import { projectOutput } from "../data-model/javascript-example/GitProjectOutputExample"
 import {MatcherClient} from "../../../src/matching-algo/matcher-client/MatcherClient";
 import {AbstractLanguageMatcher} from "../../../src/matching-algo/matcher/AbstractLanguageMatcher";
 import {AbstractFrameworkMatcher} from "../../../src/matching-algo/matcher/AbstractFrameworkMatcher";

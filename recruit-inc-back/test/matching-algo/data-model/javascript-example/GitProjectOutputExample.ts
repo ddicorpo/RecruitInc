@@ -1,8 +1,8 @@
-import {IGitProjectSummary} from "../../../src/matching-algo/data-model/output-model/IGitProjectSummary";
-import { IGitProjectOutput } from "../../../src/matching-algo/data-model/output-model/IGitProjectOutput";
-import { ILanguageOutput } from "../../../src/matching-algo/data-model/output-model/ILanguageOutput";
-import { IFrameworkOutput } from "../../../src/matching-algo/data-model/output-model/IFrameworkOutput";
-import { Technologies } from "../../../src/matching-algo/data-model/output-model/Technologies";
+import {IGitProjectSummary} from "../../../../src/matching-algo/data-model/output-model/IGitProjectSummary";
+import { IGitProjectOutput } from "../../../../src/matching-algo/data-model/output-model/IGitProjectOutput";
+import { ILanguageOutput } from "../../../../src/matching-algo/data-model/output-model/ILanguageOutput";
+import { IFrameworkOutput } from "../../../../src/matching-algo/data-model/output-model/IFrameworkOutput";
+import { Technologies } from "../../../../src/matching-algo/data-model/output-model/Technologies";
 
 const frameworkOutputTypescript : IFrameworkOutput = {
     technologyName: Technologies.Typescript,

@@ -1,9 +1,9 @@
-import {ICommit} from "../../../src/matching-algo/data-model/input-model/ICommit";
-import {ISingleFileCommit} from "../../../src/matching-algo/data-model/input-model/ISingleFileCommit";
-import { IProjectStructure } from "../../../src/matching-algo/data-model/input-model/IProjectStructure";
-import {IDataEntry} from "../../../src/matching-algo/data-model/input-model/IDataEntry";
-import {IGitProjectInput} from "../../../src/matching-algo/data-model/input-model/IGitProjectInput";
-import {ISourceFiles} from "../../../src/matching-algo/data-model/input-model/ISourceFiles";
+import {ICommit} from "../../../../src/matching-algo/data-model/input-model/ICommit";
+import {ISingleFileCommit} from "../../../../src/matching-algo/data-model/input-model/ISingleFileCommit";
+import { IProjectStructure } from "../../../../src/matching-algo/data-model/input-model/IProjectStructure";
+import {IDataEntry} from "../../../../src/matching-algo/data-model/input-model/IDataEntry";
+import {IGitProjectInput} from "../../../../src/matching-algo/data-model/input-model/IGitProjectInput";
+import {ISourceFiles} from "../../../../src/matching-algo/data-model/input-model/ISourceFiles";
 
 const projectStructure: IProjectStructure[] = [
     {
