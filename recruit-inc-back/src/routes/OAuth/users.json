@@ -1,1 +1,1 @@
-{"access_token":"c6bdcc3c31493d468911be2d75ee02a5953ebbc6","token_type":"bearer","scope":""}
+{"error":"bad_verification_code","error_description":"The code passed is incorrect or expired.","error_uri":"https://developer.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code"}

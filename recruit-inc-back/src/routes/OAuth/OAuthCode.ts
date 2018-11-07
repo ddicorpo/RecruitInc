@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import {GithubToken} from "../../data-extraction/github/GithubToken";
 import {BitbucketToken} from "../../data-extraction/bitbucket/BitbucketToken";
-import {GitlabToken} from "../../data-extraction/gitlab/GitlabToken";
+//import {GitlabToken} from "../../data-extraction/gitlab/GitlabToken";
 import * as fs from 'fs';
 
 const logger = require('../../logger.js');
@@ -26,6 +26,8 @@ export class OAuthCode {
 
                 let returnResponse: string;
                 let token: string;
+
+                let returnCode: number = 200;
                 switch (platform) {
                     case "github" : {
                         token = await new GithubToken().getToken(code);
@@ -33,8 +35,10 @@ export class OAuthCode {
                         break;
                     }
                     case "gitlab" : {
-                        token = await new GitlabToken().getToken(code);
-                        returnResponse = "Access Token received from Github using code: " + code + " -> token: " + token;
+                        //when gitlab is being used the code is the token right now
+                        //token = await new GitlabToken().getToken(code);
+                        token = code;
+                        returnResponse = "Access Token received from Gitlab: -> token: " + token;
                         break;
                     }
                     case "bitbucket" : {
@@ -44,6 +48,7 @@ export class OAuthCode {
                     }
                     default : {
                         returnResponse = "Invalid platform, no access Token received using code: " + code;
+                        returnCode = 400;
                         break;
                     }
                 }
@@ -51,7 +56,7 @@ export class OAuthCode {
                     if (err) throw err;
                     console.log('The users file has been changed!');
                 });
-                response.status(200).send(returnResponse);
+                response.status(returnCode).send(returnResponse);
             });
     }
 }
