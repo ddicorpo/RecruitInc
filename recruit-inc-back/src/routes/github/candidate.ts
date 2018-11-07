@@ -208,21 +208,20 @@ export class Candidate {
                 logger.info({class: "Candidate", method: "routes", action: "/api/github/matchingalgo/:login/accessToken?", value: {req, res}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 let login : string = req.params.login;
                 let accessToken : string = req.params.accessToken;
-
+                let output: IGitProjectSummary;
                let githubDataExtractor : GithubDataExtraction;
-               let output: IGitProjectOutput[] = [];
+
                try{
                if (accessToken){
-               githubDataExtractor = new GithubDataExtraction(accessToken);
-               } else{
-               githubDataExtractor = new GithubDataExtraction();
-               }
-               output = await githubDataExtractor.matchGithubUser(login);
+                    githubDataExtractor = new GithubDataExtraction(accessToken);
+                   } else{
+                    githubDataExtractor = new GithubDataExtraction();
+                   }
+                    output = await githubDataExtractor.matchGithubUser(login);
                }catch(e){
                    res.status(500).json({error: e.toString()});
                }
               res.status(200).send(output);
-
             });
     }
 }

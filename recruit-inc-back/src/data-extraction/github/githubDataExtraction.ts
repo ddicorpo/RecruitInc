@@ -42,13 +42,12 @@ export class GithubDataExtraction {
   return user;
 }
 
-  async matchGithubUser(login: string, email: string = ""): Promise<IGitProjectOutput[]> {
+  async matchGithubUser(login: string, email: string = ""): Promise<IGitProjectSummary> {
   
   let user: IGithubUser = await this.extractData(login, email);
 
   let client: MatcherClient = new MatcherClient(user.dataEntry)
   let output: IGitProjectSummary = client.execute();
-
   return output;
 }
 
