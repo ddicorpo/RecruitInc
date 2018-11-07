@@ -9,5 +9,6 @@ const matchingTargets: ITargetMatcher[] = [
 export const pythonConfig: IMatcherConfig = {
     technology: Technologies.Python,
     extensions: ["py"],
-    matchingTargets
+    matchingTargets,
+    excludedFolders: ["migrations", "__pycache__"]
 };

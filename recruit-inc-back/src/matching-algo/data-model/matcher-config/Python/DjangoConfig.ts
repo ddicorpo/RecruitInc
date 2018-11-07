@@ -14,5 +14,5 @@ export const djangoConfig: IMatcherConfig = {
     extensions: ["py"],
     matchingTargets,
     sourceFolder: null,
-    excludedFolders: ["migrations"]
+    excludedFolders: ["migrations", "__pycache__"]
 };
