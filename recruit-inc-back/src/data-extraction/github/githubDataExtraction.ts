@@ -13,7 +13,8 @@ export class GithubDataExtraction {
       this.accessToken = accessToken;
   }
 
-  async extractData(login: string, email: string): Promise<IGitProjectSummary> {
+
+  async extractData(login: string, email: string = ""): Promise<IGithubUser> {
 
   let user : IGithubUser = 
   {login: login,
@@ -38,10 +39,18 @@ export class GithubDataExtraction {
   let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath(this.accessToken);
   user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
 
+  return user;
+}
+
+  async matchGithubUser(login: string, email: string = ""): Promise<IGitProjectOutput[]> {
+  
+  let user: IGithubUser = await this.extractData(login, email);
+
   let client: MatcherClient = new MatcherClient(user.dataEntry)
   let output: IGitProjectSummary = client.execute();
 
   return output;
 }
+
 }
 

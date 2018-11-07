@@ -53,7 +53,7 @@ export class GithubUserCommits {
       }
       return user;
 }
-    async GetCommitsSpecificToUser(RepoName: string, OwnerUsername: string, UserEmail: string): Promise<string> {
+    async GetCommitsSpecificToUser(RepoName: string, OwnerUsername: string, ID: string): Promise<string> {
        
 
         let query : string =
@@ -63,7 +63,7 @@ export class GithubUserCommits {
                   ref(qualifiedName: "master") {
                     target {
                       ... on Commit {
-                        history(author : {emails: "${UserEmail}"} first: 100) { 
+                        history(author : {id: "${ID}"} first: 100) { 
                           pageInfo{
                             hasNextPage
                             endCursor
@@ -85,7 +85,7 @@ export class GithubUserCommits {
               
     }     
 
-    async GetCommitsSpecificToUserNext(RepoName: string, OwnerUsername: string, UserEmail: string, endCursor: string): Promise<string> {
+    async GetCommitsSpecificToUserNext(RepoName: string, OwnerUsername: string, ID: string, endCursor: string): Promise<string> {
        
 
       let query : string =
@@ -94,7 +94,7 @@ export class GithubUserCommits {
                 ref(qualifiedName: "master") {
                   target {
                     ... on Commit {
-                      history(author : {emails: "${UserEmail}"} first: 100, after: ${endCursor}) { 
+                      history(author : {id: "${ID}"} first: 100, after: ${endCursor}) { 
                         pageInfo{
                           hasNextPage
                           endCursor
@@ -116,20 +116,52 @@ export class GithubUserCommits {
             
   }     
 
+    async queryUserID(Login: string): Promise<string> {
+
+      let query : string =
+          `query {
+            user(login: "${Login}"){
+             id
+             }
+            }`;
+
+      return await new GithubApiV4().queryData(this.accessToken, query);
+  }     
+
+    async getUserID(Login: string): Promise<string> {
+        let data : string;
+        let id : string;
+        let jsonData : any = {} ;
+        data = await this.queryUserID(Login);
+        try{
+        jsonData = JSON.parse(data);
+        if ((!jsonData.data) || (!jsonData.data.user))
+            throw new TypeError(`The User (${Login}) you are trying to query does not exist.`);
+        }catch(error){
+              logger.error({class: "GithubUserCommits", method: "getUserID", action: "Error while trying to obtain the id of a given github user.", value: error.toString()}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+            return "";
+        }
+
+        id = jsonData.data.user.id;
+        return id;
+  }     
   async getCommitsFromUser(user: IGithubUser): Promise<IGithubUser> {
       if (user.dataEntry.projectInputs == null || user.dataEntry.projectInputs.length == 0)
           return user;
+      if ((!user.id) || user.id === "")
+          user.id = await this.getUserID(user.login);
+      
       for (let repository of user.dataEntry.projectInputs){
-          repository.applicantCommits = await this.getCommits(repository.projectName, repository.owner, user.email)
+          repository.applicantCommits = await this.getCommits(repository.projectName, repository.owner, user.id)
       }
       return user;
 }
-  async getCommits(repository: string, owner: string, userEmail: string): Promise<{id: string, numberOfFileAffected: number, files: ISingleFileCommit[]}[]> {
+  async getCommits(repository: string, owner: string, userID: string): Promise<{id: string, numberOfFileAffected: number, files: ISingleFileCommit[]}[]> {
 
     let result : any[] = [];
     let data: string ;
     let jsonData : any = {} ;
-    data = await this.GetCommitsSpecificToUser(repository, owner, userEmail);
+    data = await this.GetCommitsSpecificToUser(repository, owner, userID);
     try{
     jsonData = JSON.parse(data);
     if (!jsonData.data.repository.ref)
@@ -149,7 +181,7 @@ export class GithubUserCommits {
     }
 
     while(hasNextPage){
-      let nextData : string = await this.GetCommitsSpecificToUserNext(repository, owner, userEmail, endCursor);
+      let nextData : string = await this.GetCommitsSpecificToUserNext(repository, owner, userID, endCursor);
       jsonData = JSON.parse(nextData);
       edges = jsonData.data.repository.ref.target.history.edges;
       pageInfo = jsonData.data.repository.ref.target.history.pageInfo;
