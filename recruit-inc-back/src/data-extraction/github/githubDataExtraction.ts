@@ -1,11 +1,10 @@
-import { GithubApiV4} from "./githubApiV4";
 import {IGithubUser} from "./api-entities/IGithubUser"
 import {GithubUserRepos} from "./githubUserRepos";
 import {GithubRepoStructure} from "./githubRepoStructure";
 import {GithubDownloadedFilesPath} from "./githubDownloadedFilesPath";
 import {GithubUserCommits} from "./githubUserCommits";
 import {MatcherClient} from "../../matching-algo/matcher-client/MatcherClient"
-import { IGitProjectOutput } from "../../matching-algo/data-model/output-model/IGitProjectOutput";
+import {IGitProjectSummary} from "../../matching-algo/data-model/output-model/IGitProjectSummary";
 
 export class GithubDataExtraction {
     private readonly accessToken: string;
@@ -13,6 +12,7 @@ export class GithubDataExtraction {
     public constructor(accessToken: string = "37780cb5a0cd8bbedda4c9537ebf348a6e402baf" ) {
       this.accessToken = accessToken;
   }
+
 
   async extractData(login: string, email: string = ""): Promise<IGithubUser> {
 
@@ -42,13 +42,12 @@ export class GithubDataExtraction {
   return user;
 }
 
-  async matchGithubUser(login: string, email: string = ""): Promise<IGitProjectOutput[]> {
+  async matchGithubUser(login: string, email: string = ""): Promise<IGitProjectSummary> {
   
   let user: IGithubUser = await this.extractData(login, email);
 
   let client: MatcherClient = new MatcherClient(user.dataEntry)
-  let output: IGitProjectOutput[] = client.execute();
-
+  let output: IGitProjectSummary = client.execute();
   return output;
 }
 

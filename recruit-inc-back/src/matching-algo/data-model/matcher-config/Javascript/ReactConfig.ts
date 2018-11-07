@@ -5,13 +5,15 @@ import {ITargetMatcher} from "../../matcher-model/ITargetMatcher";
 const matchingTargets: ITargetMatcher[] = [
     {
         sourceFileToParse: "package.json",
-        matchingPattern: "(\"react\"|\"@type\\/react\") {0,1}: {0,1}\""
+        matchingPattern: "(\"react\"|\"\@types\\/react\") {0,1}: {0,1}\""
+
     }
 ];
 
 export const reactConfig: IMatcherConfig = {
     technology: Technologies.React,
-    extensions: ["js", "ts"],
+    extensions: ["js", "tsx", "ts"],
     matchingTargets,
-    sourceFolder: "src/"
+    sourceFolder: "src/",
+    excludedFolders: ["node_modules"]
 };

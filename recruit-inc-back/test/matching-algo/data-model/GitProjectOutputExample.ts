@@ -1,3 +1,4 @@
+import {IGitProjectSummary} from "../../../src/matching-algo/data-model/output-model/IGitProjectSummary";
 import { IGitProjectOutput } from "../../../src/matching-algo/data-model/output-model/IGitProjectOutput";
 import { ILanguageOutput } from "../../../src/matching-algo/data-model/output-model/ILanguageOutput";
 import { IFrameworkOutput } from "../../../src/matching-algo/data-model/output-model/IFrameworkOutput";
@@ -12,7 +13,8 @@ const frameworkOutputTypescript : IFrameworkOutput = {
 const frameworkOutputReact : IFrameworkOutput = {
     technologyName: Technologies.React,
     linesOfCode: 570,
-    numberOfCommits: 5
+    numberOfCommits: 5,
+
 };
 
 const languagesOutput : ILanguageOutput = {
@@ -20,10 +22,14 @@ const languagesOutput : ILanguageOutput = {
     linesOfCode: 1749,
     numberOfCommits: 5,
     frameworks: [frameworkOutputTypescript, frameworkOutputReact]
-    
+
 };
 
-export const projectOutput : IGitProjectOutput = {
+const projectOutputGit : IGitProjectOutput = {
     projectName: "Django-React-04",
     languageOutput : [languagesOutput]
+}
+export const projectOutput : IGitProjectSummary = {
+    totalOutput: [languagesOutput],
+    projectsOutput: [projectOutputGit]
 };
