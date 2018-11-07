@@ -47,12 +47,12 @@ export class BitbucketApi2 {
                     // let testDownload = this.queryDownloadFiles(accessToken, user, body.values[iterator].slug);
                     // console.log(testDownload);
 
-                    // let gitProjectInput: IGitProjectInput = {
-                    //     projectName: body.values[iterator].slug,
-                    //     applicantCommits: this.queryCommitInfo(accessToken, user, body.values[iterator].slug),
-                    //     projectStructure: this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug),
-                    //     downloadedSourceFile: this.querySourceFileInfo(accessToken, user, body.values[iterator].slug)
-                    // };
+                    let gitProjectInput: IGitProjectInput = {
+                        projectName: body.values[iterator].slug,
+                        applicantCommits: this.queryCommitInfo(accessToken, user, body.values[iterator].slug),
+                        projectStructure: this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug),
+                        downloadedSourceFile: this.querySourceFileInfo(accessToken, user, body.values[iterator].slug)
+                    };
 
                     //allGitProjectInput.push(gitProjectInput);
 
@@ -407,4 +407,56 @@ export class BitbucketApi2 {
                 return error;
             });
     }
+
+    // public async queryUserInfo(accessToken: string, user: string): Promise<any> {
+    //     logger.info({
+    //         class: "bitbucketApi2",
+    //         method: "queryData",
+    //         action: "Querying bitbucket's api",
+    //         params: {accessToken, user}
+    //     }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+    //     try {
+    //         const res: Response = await fetch(`https://api.bitbucket.org/2.0/users/${user}/repositories`, {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Authorization': accessToken
+    //             }
+    //         });
+    //         const data = await res.json();
+    //
+    //         // loop through data.values
+    //         const projectInput = await Promise.all(data.map(async (item, index, array) => {
+    //             // write what you need to your file
+    //
+    //             try {
+    //                 console.log("THIS IS ARRAY: " + array);
+    //                 return {
+    //                     projectName: await data.values[index].slug,
+    //                     applicantCommits: await this.queryCommitInfo(accessToken, user, data.values[index].slug),
+    //                     projectStructure: await this.queryProjectStructInfo(accessToken, user, data.values[index].slug),
+    //                     downloadedSourceFile: await this.querySourceFileInfo(accessToken, user, data.values[index].slug)
+    //                     // projectInput will hold an array of objects structured like above
+    //                 };
+    //
+    //             } catch (error) {
+    //                 logger.error({
+    //                     class: "bitbucketApi2",
+    //                     method: "queryData",
+    //                     action: "Error from bitbucket's api: USER INFO",
+    //                     value: error
+    //                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+    //             }
+    //         }));
+    //
+    //         return projectInput;
+    //     } catch (error) {
+    //         logger.error({
+    //             class: "bitbucketApi2",
+    //             method: "queryData",
+    //             action: "Error from bitbucket's api: USER INFO",
+    //             value: error
+    //         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+    //     }
+    //
+    // }
 }
