@@ -20,7 +20,6 @@ export abstract class AbstractMatcher {
     logger = require('../../logger.js');
     protected technology: Technologies;
     protected projectInput: IGitProjectInput;
-    //TODO: Refactor get data out of config, for more readability
     protected matchingConfig: IMatcherConfig;
 
     public constructor(matcherConfig: IMatcherConfig) {
@@ -49,7 +48,6 @@ export abstract class AbstractMatcher {
         const sourceFiles: ISourceFiles[] = this.projectInput.downloadedSourceFile;
 
         const sourceFilesOutput: IProcessedSourceFile[] = [];
-        const localTechDulpicateHelper : string[] = [];
         for (const sourceFile of sourceFiles) {
             const filename: string = sourceFile.filename;
 
@@ -63,7 +61,6 @@ export abstract class AbstractMatcher {
                     try {
                         filetext = this.readTargetFile(sourceFile.localFilePath);
                         isMatchingTechnology = this.isTechnologyFound(filetext, matchingTarget.matchingPattern);
-                        console.log("REGEX => " + this.technology + "  " +  isMatchingTechnology);
                     } catch (exception) {
                         this.logger.error({
                                 class: this.technology + "Matcher", method: "processSourceFiles",
@@ -127,11 +124,7 @@ export abstract class AbstractMatcher {
             const resultIntersection : string[] =
                 IntersectionArrayString.intersection(commit.filePath.split("/"),
                     this.matchingConfig.excludedFolders);
-            //TODO: Fix the Err try by .length ??? WTF
-
             const isItVendorFolder: boolean =  resultIntersection.length > 0;
-            console.log("STATUS => " + " basePath " + basePath + " filePath " + commit.filePath +
-            " isBasePath " + isOfBasePath +  " isExt: " + isOfExtension + " isVendor " + isItVendorFolder);
             if (isOfBasePath && isOfExtension && !isItVendorFolder) {
                 doesCommitCount = true;
                 linesOfCodes += commit.lineAdded;

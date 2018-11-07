@@ -4,24 +4,17 @@ import { ILanguageOutput } from "../../../../src/matching-algo/data-model/output
 import { IFrameworkOutput } from "../../../../src/matching-algo/data-model/output-model/IFrameworkOutput";
 import { Technologies } from "../../../../src/matching-algo/data-model/output-model/Technologies";
 
-const frameworkOutputTypescript : IFrameworkOutput = {
-    technologyName: Technologies.Typescript,
-    linesOfCode: 313,
-    numberOfCommits: 2
-};
-
-const frameworkOutputReact : IFrameworkOutput = {
-    technologyName: Technologies.React,
-    linesOfCode: 570,
-    numberOfCommits: 5,
-
+const frameworkOutputDjango : IFrameworkOutput = {
+    technologyName: Technologies.Django,
+    linesOfCode: 212,
+    numberOfCommits: 3
 };
 
 const languagesOutput : ILanguageOutput = {
-    languageOrFramework: Technologies.Javascript,
-    linesOfCode: 1749,
-    numberOfCommits: 5,
-    frameworks: [frameworkOutputTypescript, frameworkOutputReact]
+    languageOrFramework: Technologies.Python,
+    linesOfCode: 212,
+    numberOfCommits: 3,
+    frameworks: [frameworkOutputDjango]
 
 };
 

@@ -7,7 +7,6 @@ import {allMatchers} from "./AllMatchers";
 import {Technologies} from "../data-model/output-model/Technologies";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {IGitProjectSummary} from "../data-model/output-model/IGitProjectSummary";
-import {ICodeOutput} from "../data-model/output-model/ICodeOutput";
 
 export class MatcherClient {
 
@@ -21,7 +20,6 @@ export class MatcherClient {
         this.languageMatchers = languageMatchers;
     }
 
-    //TODO: Refactor this Big Big(O) loop
     public execute(): IGitProjectSummary{
         const allProjects: IGitProjectInput[] = this.dataEntry.projectInputs;
 

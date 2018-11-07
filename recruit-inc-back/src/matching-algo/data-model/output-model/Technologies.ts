@@ -4,5 +4,5 @@ export enum Technologies{
     Typescript = "Typescript",
     Python = "Python",
     Django = "Django",
-    Git = "Git",
+    Git = "Git"
 };

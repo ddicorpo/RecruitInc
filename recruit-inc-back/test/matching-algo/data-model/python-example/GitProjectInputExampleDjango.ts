@@ -26,7 +26,7 @@ const projectStructure: IProjectStructure[] = [
     {
         "fileId": "007bc66d98537dae564c6b82a602f49474f434e3",
         "fileName": "requirements.txt",
-        "filePath": "requirements.txt",
+        "filePath": "backend/requirements.txt",
     },
     {
         "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
