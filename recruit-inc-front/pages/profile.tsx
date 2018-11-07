@@ -23,10 +23,22 @@ class App extends React.Component {
         let url: string = window.location.href;
         let platform :string = url.substring(url.indexOf("platform=") + 9,  url.indexOf("&"));
         let code: string = url.substring(url.indexOf("code=") + 5);
+        let token: string = url.substring(url.indexOf("access_token=") + 13, url.indexOf("&token_type="));
 
         console.log(platform);
         if(code != null) {
             return fetch(`http://localhost:6969/api/oauth/oauthcode/${platform}/${code}`)
+                .then((response) => {
+                    return Promise.resolve(response.text())
+                })
+                .then(data => {
+                    this.setState({data});
+                });
+        }
+
+        //for gitlab, since token is return directly here instead of code
+        if(token != null){
+            return fetch(`http://localhost:6969/api/oauth/oauthcode/${platform}/${token}`)
                 .then((response) => {
                     return Promise.resolve(response.text())
                 })
@@ -54,7 +66,7 @@ class App extends React.Component {
                     Github
                 </a>
                 <br/>
-                <a style={{display: "table-cell"}} href={"https://gitlab.com/oauth/authorize?client_id=cf78ad0e83e8c8f5e4cc8b60ef0250e1d1a299cd9f3ec91ec9d54399eb52e102&redirect_uri=http://localhost:3000/profile?username="+this.state.username+"?platform=gitlab&response_type=code"}>
+                <a style={{display: "table-cell"}} href={"https://gitlab.com/oauth/authorize?client_id=cf78ad0e83e8c8f5e4cc8b60ef0250e1d1a299cd9f3ec91ec9d54399eb52e102&redirect_uri=http://localhost:3000/profile?platform=gitlab&response_type=token"}>
                     Gitlab
                 </a>
                 <p>{JSON.stringify(this.state.data)}</p>
