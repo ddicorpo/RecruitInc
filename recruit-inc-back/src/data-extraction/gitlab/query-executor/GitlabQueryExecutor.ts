@@ -15,13 +15,13 @@ export class GitlabQueryExecutor<Response> implements IGitlabQueryExecutor<Respo
             .then(body => {
                 logger.info({class: "GitlabQueryExecutor", method: "executeQuery", action: "Result from gitlab's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-                console.log(body);
+                
                 return JSON.parse(body);
             })
             .catch(error => {
                 logger.error({class: "GitlabQueryExecutor", method: "executeQuery", action: "Error from gitlab's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-                console.error(error);
+                
                 return error;
             });
     }
@@ -35,13 +35,13 @@ export class GitlabQueryExecutor<Response> implements IGitlabQueryExecutor<Respo
             .then(body => {
                 logger.info({class: "GitlabQueryExecutor", method: "executeQuery", action: "Result from gitlab's api", value: body}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-                console.log(body);
+                
                 return {content: body}
             })
             .catch(error => {
                 logger.error({class: "GitlabQueryExecutor", method: "executeQuery", action: "Error from gitlab's api", value: error}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-                console.error(error);
+                
                 return error;
             });
     }

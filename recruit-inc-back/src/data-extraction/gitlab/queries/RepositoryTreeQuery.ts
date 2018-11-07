@@ -4,7 +4,7 @@ import {IGitlabRepositoryTree} from "../api-entities/IGitlabRepositoryTree";
 
 export class RepositoryTreeQuery extends AbstractGitlabQuery<IGitlabRepositoryTree[]>{
     private projectId: number;
-    //private numberOfpages: number;
+    
 
     public constructor(projectId: number, queryExecutor: IGitlabQueryExecutor<IGitlabRepositoryTree[]>){
         super(queryExecutor);
