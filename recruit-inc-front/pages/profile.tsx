@@ -9,14 +9,24 @@ class App extends React.Component {
 
     constructor(props: any) {
         super(props);
-        this.state = {
-            username: ``,
-            data: ''
+        try{
+            this.state = {
+                username: localStorage.getItem('username') || '',
+                data: ''
+            }
         }
+        catch(e){
+            this.state = {
+                username: '',
+                data: ''
+            }
+        }
+
     }
 
     handleChange(event: any) {
         this.setState({username: event.target.value});
+        localStorage.setItem('username', event.target.value);
     }
 
     componentDidMount() {

@@ -1,1 +1,1 @@
-{"error":"bad_verification_code","error_description":"The code passed is incorrect or expired.","error_uri":"https://developer.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#bad-verification-code"}
+{"access_token": "ltmDo5VYHWLMucXOKvCDjq-nfIzVXWpf8CmbWu2QdW4tADyLpGG8FFNqfAi_LlhRsADWo4k9L9xnTpfRLn4=", "scopes": "account snippet pipeline project wiki pullrequest team issue", "expires_in": 7200, "refresh_token": "52UtxYB5hKy6egPwPC", "token_type": "bearer"}
