@@ -44,8 +44,6 @@ export class BitbucketApi2 {
                     });
 
                     //this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug)
-
-
                     let gitProjectInput: IGitProjectInput = new class implements IGitProjectInput {
                         applicantCommits: ICommit[];
                         downloadedSourceFile: ISourceFiles[];
@@ -56,7 +54,6 @@ export class BitbucketApi2 {
                     gitProjectInput.applicantCommits = this.queryCommitInfo(accessToken, user, body.values[iterator].slug);
                     gitProjectInput.projectStructure = this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug);
                     gitProjectInput.downloadedSourceFile = this.querySourceFileInfo(accessToken, user, body.values[iterator].slug);
-
 
                     allGitProjectInput.push(gitProjectInput);
 
@@ -107,7 +104,8 @@ export class BitbucketApi2 {
 
                     if (body.values[iterator].author.user != undefined) {
                         if (JSON.stringify(body.values[iterator].author.user.username).match(user)) {
-                            let allSingleCommits = this.queryDiffStats(accessToken, user, repoName, body.values[iterator].hash);
+                            let allSingleCommits: Array<any> = new Array<any>();
+                            allSingleCommits = this.queryDiffStats(accessToken, user, repoName, body.values[iterator].hash);
                             let commit: ICommit = new class implements ICommit {
                                 files: ISingleFileCommit[];
                                 id: string;
@@ -120,7 +118,7 @@ export class BitbucketApi2 {
                             allCommits.push(commit);
                         }
                     }
-                    iterator += 1;
+                    iterator++;
                 }
                 return allCommits;
 
@@ -167,9 +165,14 @@ export class BitbucketApi2 {
                         lineAdded: number;
                         lineDeleted: number;
                     }
-                    singleFileCommit.filePath = body.values[singleCommitIndex].new.links.self.href;
-                    singleFileCommit.lineAdded = body.values[singleCommitIndex].lines_added;
-                    singleFileCommit.lineDeleted = body.values[singleCommitIndex].lines_removed;
+                    console.log("\n\n\n sfc path: " + body.values[singleCommitIndex].new.links.self.href.toString());
+                    console.log("\n\n\n sfc added: " + body.values[singleCommitIndex].lines_added);
+                    console.log("\n\n\n sfc added: " + body.values[singleCommitIndex].lines_removed);
+                    if(body.values[singleCommitIndex].new.links.self.href != undefined && body.values[singleCommitIndex].lines_added != undefined && body.values[singleCommitIndex].lines_removed != undefined) {
+                        singleFileCommit.filePath = body.values[singleCommitIndex].new.links.self.href.toString();
+                        singleFileCommit.lineAdded = body.values[singleCommitIndex].lines_added;
+                        singleFileCommit.lineDeleted = body.values[singleCommitIndex].lines_removed;
+                    }
 
                     allSingleCommits.push(singleFileCommit);
 
@@ -182,7 +185,7 @@ export class BitbucketApi2 {
                 logger.error({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Error from bitbucket's api: DIFF STATS",
+                    action: "Error from bitbucket's api: DIFF STATS: " + repoName,
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
@@ -342,10 +345,6 @@ export class BitbucketApi2 {
                     value: body
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
-                // console.log("\n\n\nTHIS IS BODY FOR FILE: " + body.values[7].path + "\n\n\n");
-                console.log("\n\n\nTHIS IS DIRECTORY FOR FILE: " + body + "\n\n\n");
-
-                //console.log("\n\n\nTHIS IS COMMIT HASH: " + body.values[0].commit.hash + "\n\n\n")
 
                 let fileIterator: number = 0;
                 let innerIterator: number = 0;
@@ -354,14 +353,11 @@ export class BitbucketApi2 {
                 let allProjectStruct: Array<any> = new Array<any>();
                 let bsCounter:number = 0;
 
-                console.log("\n\n\n length of the bodice " + body.values.length);
                 while (fileIterator < body.values.length){
 
                     if (body.values[fileIterator].type === ("commit_directory")){
-                        console.log("\n\n\n I have gone deeper ");
                         let tempProjectStructure:  Array<any> = new Array<any>();
                         tempProjectStructure = this.queryDirectoryInfo(accessToken, user, repoName, hash, body.values[fileIterator].path);
-                        console.log("\n\n\n return made with array length " + tempProjectStructure.length);
 
                         // for (let value of tempProjectStructure){
                         //     bsCounter++;
@@ -375,8 +371,7 @@ export class BitbucketApi2 {
                         innerIterator = 0;
                         tempProjectStructure = [];
                     }
-                    
-                    if (body.values[fileIterator].type === ("commit_file")){
+                    else if (body.values[fileIterator].type === ("commit_file")){
 
                         let projStruct: IProjectStructure = new class implements IProjectStructure {
                             fileId: string;
@@ -387,16 +382,19 @@ export class BitbucketApi2 {
                         projStruct.filePath = body.values[fileIterator].links.self.href.toString();
                         projStruct.fileName = body.values[fileIterator].path.toString();
 
-                        console.log("\n\n\n\n\n\n\n I CREATED A MONSTER");
-
                         allProjectStruct.push(projStruct);
-                        console.log("\n\n\ allprojectStruct length " + allProjectStruct.length);
                     }
-                    console.log("\n\n\n this is the fileIterator " + fileIterator);
+                    else{
+                        let emptyStruct: IProjectStructure = new class implements IProjectStructure {
+                            fileId: string;
+                            fileName: string;
+                            filePath: string;
+                        };
+                        allProjectStruct.push(emptyStruct);
+                    }
                     fileIterator++;
                 }
 
-                console.log("\n\n\n I BROKE FREE FROM THEM CHAINS");
                 return allProjectStruct;
             })
             .catch(error => {
