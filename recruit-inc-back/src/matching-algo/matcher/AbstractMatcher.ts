@@ -20,7 +20,6 @@ export abstract class AbstractMatcher {
     logger = require('../../logger.js');
     protected technology: Technologies;
     protected projectInput: IGitProjectInput;
-    //TODO: Refactor get data out of config, for more readability
     protected matchingConfig: IMatcherConfig;
 
     public constructor(matcherConfig: IMatcherConfig) {
@@ -49,7 +48,6 @@ export abstract class AbstractMatcher {
         const sourceFiles: ISourceFiles[] = this.projectInput.downloadedSourceFile;
 
         const sourceFilesOutput: IProcessedSourceFile[] = [];
-
         for (const sourceFile of sourceFiles) {
             const filename: string = sourceFile.filename;
 
@@ -126,7 +124,6 @@ export abstract class AbstractMatcher {
             const resultIntersection : string[] =
                 IntersectionArrayString.intersection(commit.filePath.split("/"),
                     this.matchingConfig.excludedFolders);
-
             const isItVendorFolder: boolean =  resultIntersection.length > 0;
             if (isOfBasePath && isOfExtension && !isItVendorFolder) {
                 doesCommitCount = true;

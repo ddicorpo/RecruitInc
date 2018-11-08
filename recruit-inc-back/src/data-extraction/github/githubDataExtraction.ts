@@ -5,6 +5,7 @@ import {GithubDownloadedFilesPath} from "./githubDownloadedFilesPath";
 import {GithubUserCommits} from "./githubUserCommits";
 import {MatcherClient} from "../../matching-algo/matcher-client/MatcherClient"
 import {IGitProjectSummary} from "../../matching-algo/data-model/output-model/IGitProjectSummary";
+import {techSourceFiles} from "../../matching-algo/data-model/input-model/TechSourceFiles";
 
 export class GithubDataExtraction {
     private readonly accessToken: string;
@@ -35,10 +36,10 @@ export class GithubDataExtraction {
   let githubUserCommits : GithubUserCommits = new GithubUserCommits(this.accessToken);
   user = await githubUserCommits.getCommitsFromUser(user);
   user = await githubUserCommits.getFilesAffectedByCommitFromUser(user);
-  //Search for package.json and download it if found
+  //Search for SourceFile and download it if found
   let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath(this.accessToken);
-  user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
-
+  user = await githubDownloadedFilesPath.downloadFileForUser(user);
+  let client: MatcherClient = new MatcherClient(user.dataEntry);
   return user;
 }
 
@@ -46,7 +47,8 @@ export class GithubDataExtraction {
   
   let user: IGithubUser = await this.extractData(login, email);
 
-  let client: MatcherClient = new MatcherClient(user.dataEntry)
+  let client: MatcherClient = new MatcherClient(user.dataEntry);
+
   let output: IGitProjectSummary = client.execute();
   return output;
 }

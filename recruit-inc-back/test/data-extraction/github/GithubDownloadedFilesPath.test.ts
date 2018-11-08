@@ -1,16 +1,13 @@
 import { expect} from 'chai';
 import { describe, it} from 'mocha';
 import {GithubDownloadedFilesPath} from "../../../src/data-extraction/github/githubDownloadedFilesPath";
-import {IGithubUser} from "../../../src/data-extraction/github/api-entities/IGithubUser";
-
-
 const fs = require('fs');
 const nock = require('nock');
 const downloadedFileResponse = require('./downloadedFileResponse.js');
 
-  describe('Write to file', () => {
+  describe('Write to file', async () => {
 
-    it('should write the contents of a downloaded file locally', function() {
+    it('should write the contents of a downloaded file locally', () => {
  
         //Create file to write to
         fs.closeSync(fs.openSync("test/data-extraction/github/writeToFileTest.txt", 'w'));
@@ -32,14 +29,15 @@ const downloadedFileResponse = require('./downloadedFileResponse.js');
 
   describe('Retrieve the contents of a file', () => {
 
-    it('should download a file', async function() {
+    it('should download a file', async () => {
 
         nock('https://api.github.com')
         .get('/repos/AyoubeAkaouch/MinistocksRework/contents/src/main/AndroidManifest.xml')
-        .reply(200, downloadedFileResponse)
+        .reply(200, downloadedFileResponse);
 
         let test = new GithubDownloadedFilesPath();
-        let result : {name: string, path: string, content: string} = await test.downloadFile('AyoubeAkaouch', 'MinistocksRework', 'src/main/AndroidManifest.xml');
+        const result : {name: string, path: string, content: string} =
+            await test.downloadFile('AyoubeAkaouch', 'MinistocksRework', 'src/main/AndroidManifest.xml');
         expect(result.name).to.equal('AndroidManifest.xml');
         expect(result.path).to.equal('src/main/AndroidManifest.xml');
         let contents : string = fs.readFileSync('test/data-extraction/github/AndroidManifest.xml', 'utf8');

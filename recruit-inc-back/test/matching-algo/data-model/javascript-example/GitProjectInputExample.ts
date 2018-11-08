@@ -1,9 +1,9 @@
-import {ICommit} from "../../../src/matching-algo/data-model/input-model/ICommit";
-import {ISingleFileCommit} from "../../../src/matching-algo/data-model/input-model/ISingleFileCommit";
-import { IProjectStructure } from "../../../src/matching-algo/data-model/input-model/IProjectStructure";
-import {IDataEntry} from "../../../src/matching-algo/data-model/input-model/IDataEntry";
-import {IGitProjectInput} from "../../../src/matching-algo/data-model/input-model/IGitProjectInput";
-import {ISourceFiles} from "../../../src/matching-algo/data-model/input-model/ISourceFiles";
+import {ICommit} from "../../../../src/matching-algo/data-model/input-model/ICommit";
+import {ISingleFileCommit} from "../../../../src/matching-algo/data-model/input-model/ISingleFileCommit";
+import { IProjectStructure } from "../../../../src/matching-algo/data-model/input-model/IProjectStructure";
+import {IDataEntry} from "../../../../src/matching-algo/data-model/input-model/IDataEntry";
+import {IGitProjectInput} from "../../../../src/matching-algo/data-model/input-model/IGitProjectInput";
+import {ISourceFiles} from "../../../../src/matching-algo/data-model/input-model/ISourceFiles";
 
 const projectStructure: IProjectStructure[] = [
     {
@@ -439,8 +439,8 @@ const commitInput5: ICommit = {
     files: [singleCommitIndexJs1, singleCommitAppJs2, singleCommitIndexHtml]
 };
 
-const pathToFakePackageJson : string = __dirname +  "/files-downloaded/package.downloaded.json";
-const pathToFakeGitIgnore : string = __dirname + "/files-downloaded/gitignore.downloaded";
+const pathToFakePackageJson : string = __dirname +  "/../files-downloaded/package.downloaded.json";
+const pathToFakeGitIgnore : string = __dirname + "/../files-downloaded/gitignore.downloaded";
 
 const packageJsonSourceFile: ISourceFiles = {
     filename: "package.json",

@@ -180,18 +180,18 @@ export class Candidate {
                 let githubDownloadedFilesPath: GithubDownloadedFilesPath = new GithubDownloadedFilesPath("5e6a78d61823ba36bbdff45649fde4481bb489b7");
                 let githubRepoStructure: GithubRepoStructure = new GithubRepoStructure("5e6a78d61823ba36bbdff45649fde4481bb489b7");
                 user = await githubRepoStructure.getRepoStructureFromUser(user);
-                user = await githubDownloadedFilesPath.downloadFileForUser(user, "package.json");
+                user = await githubDownloadedFilesPath.downloadFileForUser(user);
                 res.status(200).send(user);
             });
 
-        app.route('/api/github/testchainofevents/:login/:accessToken?')
+        app.route('/api/githubainofevents/:login/:accessToken?')
             .get(cors(), async (req: Request, res: Response) => {
                 let login : string = req.params.login;
                 let email : string = req.params.email;
                 let accessToken : string = req.params.accessToken;
 
                let githubDataExtractor : GithubDataExtraction;
-
+          
                if (accessToken){
                githubDataExtractor = new GithubDataExtraction(accessToken);
                } else{

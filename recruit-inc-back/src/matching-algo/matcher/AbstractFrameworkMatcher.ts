@@ -20,8 +20,6 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
         // Here we process all the downloaded files to see if they match our technology
         const sourceFiles: IProcessedSourceFile[] = this.processSourceFiles();
         for (const sourceFile of sourceFiles) {
-
-
             // Now we revisit the source files and see if they matched our technology
             const isTechnologyFound: boolean = sourceFile.isMatchingTechnology;
 
