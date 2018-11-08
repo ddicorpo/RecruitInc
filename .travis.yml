@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - '10.12.0'
+cache:
+  directories:
+  - '$HOME/.npm'
+  - '$TRAVIS_BUILD_DIR/recruit-inc-back/node_modules'
+  - '$TRAVIS_BUILD_DIR/recruit-inc-front/node_modules'
+before_install:
+- npm install -g npm@6.4.1
+stages:
+- install
+- compile
+- test
+jobs:
+  include:
+  - stage: install
+    name: install backend
+    script: cd $TRAVIS_BUILD_DIR/recruit-inc-back && npm install
+  - script: cd $TRAVIS_BUILD_DIR/recruit-inc-front && npm install
+    name: install frontend
+  - stage: compile
+    name: compile backend
+    script: cd $TRAVIS_BUILD_DIR/recruit-inc-back && npm run build
+  - script: cd $TRAVIS_BUILD_DIR/recruit-inc-front && npm run build
+    name: compile frontend
+  - stage: test
+    name: test backend
+    script: cd $TRAVIS_BUILD_DIR/recruit-inc-back && npm run test
+  - script: cd $TRAVIS_BUILD_DIR/recruit-inc-front && npm run test
+    name: test frontend
+notifications:
+    email: false

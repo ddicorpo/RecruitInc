@@ -9,11 +9,16 @@ import {IProcessedSourceFile} from "../data-model/matcher-model/IProcessedSource
 import {IMatcherConfig} from "../data-model/matcher-model/IMatcherConfig";
 import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
 import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
+import {IntersectionArrayString} from "../../util/IntersectionArrayString";
 
+interface ICommitAnalysis {
+    linesOfCodes: number,
+    doesCommitCount: boolean
+}
 
 export abstract class AbstractMatcher {
     logger = require('../../logger.js');
-    technology: Technologies;
+    protected technology: Technologies;
     protected projectInput: IGitProjectInput;
     //TODO: Refactor get data out of config, for more readability
     protected matchingConfig: IMatcherConfig;
@@ -30,6 +35,10 @@ export abstract class AbstractMatcher {
     public execute(): IFrameworkOutput | ILanguageOutput {
         const codeOutput = this.computeCodeOutput();
         return this.package(codeOutput);
+    }
+
+    public getTechnology(): Technologies {
+        return this.technology;
     }
 
     protected abstract computeCodeOutput(): ICodeOutput;
@@ -88,10 +97,10 @@ export abstract class AbstractMatcher {
         let numberOfLines: number = 0;
         for (const commit of commits) {
             const singleFileCommits: ISingleFileCommit[] = commit.files;
-            const numberOfLinesInCommit: number = this.countNumberOfLinesInSingleFileCommits(singleFileCommits, basePath);
-            numberOfLines += numberOfLinesInCommit;
-            if (numberOfLinesInCommit !== 0) {
-                codeOutput.numberOfCommits += 1;
+            let commitAnalysis: ICommitAnalysis = this.countNumberOfLinesInSingleFileCommits(singleFileCommits, basePath);
+            numberOfLines += commitAnalysis.linesOfCodes;
+            if (commitAnalysis.doesCommitCount) {
+                codeOutput.numberOfCommits ++;
             }
         }
         codeOutput.linesOfCode = numberOfLines;
@@ -107,21 +116,33 @@ export abstract class AbstractMatcher {
         return regularExpression.test(filetext);
     }
 
-    private countNumberOfLinesInSingleFileCommits(commits: ISingleFileCommit[], basePath: string): number {
-        let numberOfLines: number = 0;
+    private countNumberOfLinesInSingleFileCommits(commits: ISingleFileCommit[], basePath: string): ICommitAnalysis {
+        let linesOfCodes: number = 0;
+        let doesCommitCount: boolean = false;
         for (const commit of commits) {
             const filePath: string = commit.filePath;
-            const isOfBasePath: boolean = this.isFilePathContainingBasePath(filePath, basePath);
+            const isOfBasePath: boolean =  this.isFilePathContainingBasePath(filePath, basePath);
             const isOfExtension: boolean = this.isFilepathOfExtension(filePath);
-            if (isOfBasePath && isOfExtension) {
-                numberOfLines += commit.lineAdded;
-                numberOfLines -= commit.lineDeleted;
+            const resultIntersection : string[] =
+                IntersectionArrayString.intersection(commit.filePath.split("/"),
+                    this.matchingConfig.excludedFolders);
+
+            const isItVendorFolder: boolean =  resultIntersection.length > 0;
+            if (isOfBasePath && isOfExtension && !isItVendorFolder) {
+                doesCommitCount = true;
+                linesOfCodes += commit.lineAdded;
+                linesOfCodes -= commit.lineDeleted;
             }
         }
-        return numberOfLines;
+        return {linesOfCodes, doesCommitCount};
     }
 
     private isFilePathContainingBasePath(filePath: string, basePath: string): boolean {
+        // Corner Case: When we don't have any base path...
+        // Yes if you set something null that is later cast to a string is become "null"...
+        if(basePath.includes("null")){
+            return true;
+        }
         const basePathLength: number = basePath.length;
         return filePath.substring(0, basePathLength) === basePath;
     }
