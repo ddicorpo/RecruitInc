@@ -45,15 +45,15 @@ export class BitbucketApi2 {
 
                     this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug)
 
-
-                    let gitProjectInput: IGitProjectInput = {
-                        projectName: body.values[iterator].slug,
-                        applicantCommits: this.queryCommitInfo(accessToken, user, body.values[iterator].slug),
-                        projectStructure: this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug),
-                        downloadedSourceFile: this.querySourceFileInfo(accessToken, user, body.values[iterator].slug)
-                    };
-
-                    allGitProjectInput.push(gitProjectInput);
+                    //
+                    // let gitProjectInput: IGitProjectInput = {
+                    //     projectName: body.values[iterator].slug,
+                    //     applicantCommits: this.queryCommitInfo(accessToken, user, body.values[iterator].slug),
+                    //     projectStructure: this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug),
+                    //     downloadedSourceFile: this.querySourceFileInfo(accessToken, user, body.values[iterator].slug)
+                    // };
+                    //
+                    // allGitProjectInput.push(gitProjectInput);
 
                     iterator++;
                 }
@@ -228,7 +228,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryProjectStructInfo(accessToken: string, user: string, repoName: string): IProjectStructure[] {
+    public queryProjectStructInfo(accessToken: string, user: string, repoName: string): Array<any> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -251,13 +251,16 @@ export class BitbucketApi2 {
 
                 let fileIterator: number = 0;
                 let innerIterator: number = 0;
-                let allProjectStruct: IProjectStructure[];
+                let allProjectStruct: Array<any> = new Array<any>();
 
                 while (fileIterator < body.values.length){
                     if (body.values[fileIterator].type == "commit_directory"){
-                        let tempProjectStructure: IProjectStructure[] = this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
+                        let tempProjectStructure: Array<any> = new Array<any>();
+                        tempProjectStructure = this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
+                        console.log("returned dirrrr length " + tempProjectStructure.length);
 
                         for (let value of tempProjectStructure){
+                            console.log("\n\n\n\n struct for loop bsssssss");
                             allProjectStruct.push(value);
                         }
                         // while (innerIterator < tempProjectStructure.length){
@@ -269,11 +272,16 @@ export class BitbucketApi2 {
                     }
 
                     if (body.values[fileIterator].type == "commit_file"){
-                        let projStruct: IProjectStructure = {
-                            fileId: body.values[0].commit.hash,
-                            filePath: body.values[fileIterator].links.self.href,
-                            fileName: body.values[fileIterator].path
+                        let projStruct: IProjectStructure =  new class implements IProjectStructure {
+                            fileId: string;
+                            fileName: string;
+                            filePath: string;
                         }
+
+                        projStruct.fileId = body.values[0].commit.hash;
+                        projStruct.filePath = body.values[fileIterator].links.self.href;
+                        projStruct.fileName = body.values[fileIterator].path;
+
 
                         allProjectStruct.push(projStruct);
                     }
@@ -292,7 +300,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryDirectoryInfo(accessToken: string, user: string, repoName: string, hash: string, path: string): IProjectStructure[] {
+    public queryDirectoryInfo(accessToken: string, user: string, repoName: string, hash: string, path: string): Array<any> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -321,15 +329,18 @@ export class BitbucketApi2 {
                 let fileIterator: number = 0;
                 let innerIterator: number = 0;
 
-                let allProjectStruct: IProjectStructure[];
+                // let allProjectStruct: IProjectStructure[] = new Array();
+                let allProjectStruct: Array<any> = new Array<any>();
                 let bsCounter:number = 0;
 
+                console.log("\n\n\n length of the bodice " + body.values.length);
                 while (fileIterator < body.values.length){
-
 
                     if (body.values[fileIterator].type === ("commit_directory")){
                         console.log("\n\n\n I have gone deeper ");
-                        let tempProjectStructure: IProjectStructure[] = this.queryDirectoryInfo(accessToken, user, repoName, hash, body.values[fileIterator].path);
+                        let tempProjectStructure:  Array<any> = new Array<any>();
+                        tempProjectStructure = this.queryDirectoryInfo(accessToken, user, repoName, hash, body.values[fileIterator].path);
+                        console.log("\n\n\n return made with array length " + tempProjectStructure.length);
 
                         for (let value of tempProjectStructure){
                             bsCounter++;
@@ -346,35 +357,25 @@ export class BitbucketApi2 {
                     //TODO: FIX THIS, PROBLEM LIKELY IN THE IF BELOW
                     if (body.values[fileIterator].type === ("commit_file")){
 
-
                         let projStruct: IProjectStructure = new class implements IProjectStructure {
                             fileId: string;
                             fileName: string;
                             filePath: string;
                         };
-
-                        console.log("\n\n\n i made it " + projStruct);
                         projStruct.fileId = hash;
-                        console.log("\n\n\n\n this is the object " + projStruct.fileId);
                         projStruct.filePath = body.values[fileIterator].links.self.href.toString();
-                        console.log("\n\n\n\n this is the object " + projStruct.filePath);
                         projStruct.fileName = body.values[fileIterator].path.toString();
-                        console.log("\n\n\n\n this is the object " + projStruct.fileName);
 
-
-                        // let projStruct: IProjectStructure = {
-                        //     fileId: tempfileID,
-                        //     filePath: tempfilePath,
-                        //     fileName: tempfileName
-                        // }
                         console.log("\n\n\n\n\n\n\n I CREATED A MONSTER");
 
                         allProjectStruct.push(projStruct);
+                        console.log("\n\n\ allprojectStruct length " + allProjectStruct.length);
                     }
                     console.log("\n\n\n this is the fileIterator " + fileIterator);
                     fileIterator++;
                 }
 
+                console.log("\n\n\n I BROKE FREE FROM THEM CHAINS");
                 return allProjectStruct;
             })
             .catch(error => {
