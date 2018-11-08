@@ -35,9 +35,22 @@ export class GitlabApplicants {
                 userQuery.buildQuery();
                 let gitlabUserPromise: Promise<IGitlabUser[]> = userQuery.executeQuery();
                 let gitlabUsers: IGitlabUser[] = await gitlabUserPromise;
-                let userId: number = gitlabUsers[0].id;
+                
+                let userId: number;
+                try {
+                     userId = gitlabUsers[0].id;
+                     if(userId == undefined || userId == null){
+                        throw new SyntaxError('Error has occured');
+                     }
+                }
+                catch(err) {
+                    
+                      response.status(500).json({error: err.toString()});
+                      return;
+                  }
+               
                 let user: IGitlabUser = gitlabUsers[0];
-
+               
                  //To retrieve all the projects
                 let gitlabProjectQueryExecutor = new GitlabQueryExecutor<IGitlabProject[]>();
                 let projectQuery: ProjectQuery = new ProjectQuery(userId, gitlabProjectQueryExecutor);
