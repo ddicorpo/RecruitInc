@@ -28,17 +28,17 @@ export class ApplicantGithub {
 
 
             //Get all user commits on a given repo
-            app.route('/api/github/applicant/commits/:RepoName/:OwnerUsername/:UserEmail')
+            app.route('/api/github/applicant/commits/:RepoName/:OwnerUsername/:UserLogin')
             .get(cors(), async (req: Request, res: Response) => {
                 
 
                 let RepoName : string = req.params.RepoName;
                 let OwnerUsername: string = req.params.OwnerUsername;
-                let UserEmail: string = req.params.UserEmail;
-                let username: string = req.params.username;
-                let query6 : GithubUserCommits  = new GithubUserCommits();
+                let username: string = req.params.UserLogin;
+                let githubUserCommits : GithubUserCommits  = new GithubUserCommits();
+                let userID: string = await githubUserCommits.getUserID(username)
 
-                let data = await query6.getCommits(RepoName,OwnerUsername,UserEmail);
+                let data = await githubUserCommits.getCommits(RepoName,OwnerUsername,userID);
                 //let jsonData = JSON.parse(data)
 
                 res.status(200).send(data);
@@ -71,9 +71,9 @@ export class ApplicantGithub {
                  }
                 };
 
-                let query6 : GithubUserCommits  = new GithubUserCommits();
+                let githubUserCommits : GithubUserCommits  = new GithubUserCommits();
 
-                await query6.getCommitsFromUser(user);
+                await githubUserCommits.getCommitsFromUser(user);
                 //let jsonData = JSON.parse(data)
 
                 res.status(200).send(user);
@@ -121,12 +121,12 @@ export class ApplicantGithub {
                  ]
                  }
                 };
-                        let query7 : GithubUserCommits  = new GithubUserCommits();
+                        let githubUserCommits : GithubUserCommits  = new GithubUserCommits();
                         //First get all commits
-                        await query7.getCommitsFromUser(user);
+                        await githubUserCommits.getCommitsFromUser(user);
 
                         //Then get commit details
-                        await query7.getFilesAffectedByCommitFromUser(user);
+                        await githubUserCommits.getFilesAffectedByCommitFromUser(user);
                         //let jsonData = JSON.parse(datas);
         
                         res.status(200).send(user);

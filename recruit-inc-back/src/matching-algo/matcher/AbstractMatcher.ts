@@ -98,7 +98,7 @@ export abstract class AbstractMatcher {
             let commitAnalysis: ICommitAnalysis = this.countNumberOfLinesInSingleFileCommits(singleFileCommits, basePath);
             numberOfLines += commitAnalysis.linesOfCodes;
             if (commitAnalysis.doesCommitCount) {
-                codeOutput.numberOfCommits += 1;
+                codeOutput.numberOfCommits ++;
             }
         }
         codeOutput.linesOfCode = numberOfLines;

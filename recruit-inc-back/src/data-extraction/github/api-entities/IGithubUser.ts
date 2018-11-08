@@ -3,6 +3,7 @@ import { IGithubProjectInput } from "../../../matching-algo/data-model/input-mod
 
 export interface IGithubUser{
     login: string
+    id?: string, //Base64 obfuscated unique ID
     location?: string,
     languages?:{
         name: string

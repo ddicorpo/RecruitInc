@@ -14,7 +14,8 @@ export class GithubDataExtraction {
       this.accessToken = accessToken;
   }
 
-  async extractData(login: string, email: string): Promise<IGitProjectSummary> {
+
+  async extractData(login: string, email: string = ""): Promise<IGithubUser> {
 
   let user : IGithubUser = 
   {login: login,
@@ -36,13 +37,21 @@ export class GithubDataExtraction {
   user = await githubUserCommits.getCommitsFromUser(user);
   user = await githubUserCommits.getFilesAffectedByCommitFromUser(user);
   //Search for SourceFile and download it if found
-
-      let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath(this.accessToken);
-      user = await githubDownloadedFilesPath.downloadFileForUser(user);
+  let githubDownloadedFilesPath : GithubDownloadedFilesPath = new GithubDownloadedFilesPath(this.accessToken);
+  user = await githubDownloadedFilesPath.downloadFileForUser(user);
   let client: MatcherClient = new MatcherClient(user.dataEntry);
-  let output: IGitProjectSummary = client.execute();
+  return user;
+}
 
+  async matchGithubUser(login: string, email: string = ""): Promise<IGitProjectSummary> {
+  
+  let user: IGithubUser = await this.extractData(login, email);
+
+  let client: MatcherClient = new MatcherClient(user.dataEntry)
+
+  let output: IGitProjectSummary = client.execute();
   return output;
 }
+
 }
 
