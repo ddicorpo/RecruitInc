@@ -10,7 +10,7 @@ const fs = require('fs');
 
 export class BitbucketApi2 {
 
-    public queryUserInfo(accessToken: string, user: string): string {
+    public async queryUserInfo(accessToken: string, user: string): Promise <any> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -23,7 +23,7 @@ export class BitbucketApi2 {
                 'Authorization': `Bearer ${accessToken}`,
             },
         }).then(response => response.json())
-            .then(body => {
+            .then(async body => {
                 logger.info({
                     class: "bitbucketApi2",
                     method: "queryData",
@@ -50,10 +50,11 @@ export class BitbucketApi2 {
                         projectName: string;
                         projectStructure: IProjectStructure[];
                     }
+
                     gitProjectInput.projectName = body.values[iterator].slug;
-                    gitProjectInput.applicantCommits = this.queryCommitInfo(accessToken, user, body.values[iterator].slug);
-                    gitProjectInput.projectStructure = this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug);
-                    gitProjectInput.downloadedSourceFile = this.querySourceFileInfo(accessToken, user, body.values[iterator].slug);
+                    gitProjectInput.applicantCommits = await this.queryCommitInfo(accessToken, user, body.values[iterator].slug);
+                    gitProjectInput.projectStructure = await this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug);
+                    // gitProjectInput.downloadedSourceFile = this.querySourceFileInfo(accessToken, user, body.values[iterator].slug);
 
                     allGitProjectInput.push(gitProjectInput);
 
@@ -75,7 +76,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryCommitInfo(accessToken: string, user: string, repoName: string): Array<any> {
+    public async queryCommitInfo(accessToken: string, user: string, repoName: string): Promise <any[]> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData ",
@@ -89,7 +90,7 @@ export class BitbucketApi2 {
                 'Authorization': `Bearer ${accessToken}`,
             },
         }).then(response => response.json())
-            .then(body => {
+            .then(async body => {
                 logger.info({
                     class: "bitbucketApi2",
                     method: "queryData",
@@ -105,7 +106,7 @@ export class BitbucketApi2 {
                     if (body.values[iterator].author.user != undefined) {
                         if (JSON.stringify(body.values[iterator].author.user.username).match(user)) {
                             let allSingleCommits: Array<any> = new Array<any>();
-                            allSingleCommits = this.queryDiffStats(accessToken, user, repoName, body.values[iterator].hash);
+                            allSingleCommits = await this.queryDiffStats(accessToken, user, repoName, body.values[iterator].hash);
                             let commit: ICommit = new class implements ICommit {
                                 files: ISingleFileCommit[];
                                 id: string;
@@ -133,7 +134,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryDiffStats(accessToken: string, user: string, repoName: string, hash: string): Array<any> {
+    public async queryDiffStats(accessToken: string, user: string, repoName: string, hash: string): Promise <any[]> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData ",
@@ -151,7 +152,7 @@ export class BitbucketApi2 {
                 logger.info({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Result from bitbucket's api",
+                    action: "Result from bitbucket's api diffstats",
                     value: body
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
@@ -165,13 +166,14 @@ export class BitbucketApi2 {
                         lineAdded: number;
                         lineDeleted: number;
                     }
-                    console.log("\n\n\n sfc path: " + body.values[singleCommitIndex].new.links.self.href.toString());
-                    console.log("\n\n\n sfc added: " + body.values[singleCommitIndex].lines_added);
-                    console.log("\n\n\n sfc added: " + body.values[singleCommitIndex].lines_removed);
-                    if(body.values[singleCommitIndex].new.links.self.href != undefined && body.values[singleCommitIndex].lines_added != undefined && body.values[singleCommitIndex].lines_removed != undefined) {
+                    singleFileCommit.lineAdded = body.values[singleCommitIndex].lines_added;
+                    singleFileCommit.lineDeleted = body.values[singleCommitIndex].lines_removed;
+
+                    if (body.values[singleCommitIndex].new != undefined) {
                         singleFileCommit.filePath = body.values[singleCommitIndex].new.links.self.href.toString();
-                        singleFileCommit.lineAdded = body.values[singleCommitIndex].lines_added;
-                        singleFileCommit.lineDeleted = body.values[singleCommitIndex].lines_removed;
+                    }
+                    else {
+                        singleFileCommit.filePath = body.values[singleCommitIndex].old.links.self.href.toString();
                     }
 
                     allSingleCommits.push(singleFileCommit);
@@ -185,14 +187,14 @@ export class BitbucketApi2 {
                 logger.error({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Error from bitbucket's api: DIFF STATS: " + repoName,
+                    action: "Error from bitbucket's api: DIFF STATS: " + repoName + " hash " + hash + " token " + accessToken,
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
             });
     }
 
-    public querySourceFileInfo(accessToken: string, user: string, repoName: string): Array<any> {
+    public async querySourceFileInfo(accessToken: string, user: string, repoName: string): Promise <any> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -205,7 +207,7 @@ export class BitbucketApi2 {
                 'Authorization': `Bearer ${accessToken}`,
             },
         }).then(response => response.json())
-            .then(body => {
+            .then(async body => {
                 logger.info({
                     class: "bitbucketApi2",
                     method: "queryData",
@@ -251,7 +253,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryProjectStructInfo(accessToken: string, user: string, repoName: string): Array<any> {
+    public async queryProjectStructInfo(accessToken: string, user: string, repoName: string): Promise<any[]> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -264,7 +266,7 @@ export class BitbucketApi2 {
                 'Authorization': `Bearer ${accessToken}`,
             },
         }).then(response => response.json())
-            .then(body => {
+            .then(async body => {
                 logger.info({
                     class: "bitbucketApi2",
                     method: "queryData",
@@ -279,7 +281,7 @@ export class BitbucketApi2 {
                 while (fileIterator < body.values.length){
                     if (body.values[fileIterator].type == "commit_directory"){
                         let tempProjectStructure: Array<any> = new Array<any>();
-                        tempProjectStructure = this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
+                        tempProjectStructure = await this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
                         console.log("returned dirrrr length " + tempProjectStructure.length);
 
                         // for (let value of tempProjectStructure){
@@ -324,7 +326,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryDirectoryInfo(accessToken: string, user: string, repoName: string, hash: string, path: string): Array<any> {
+    public async queryDirectoryInfo(accessToken: string, user: string, repoName: string, hash: string, path: string): Promise<any[]> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -337,7 +339,7 @@ export class BitbucketApi2 {
                 'Authorization': `Bearer ${accessToken}`,
             },
         }).then(response => response.json())
-            .then(body => {
+            .then(async body => {
                 logger.info({
                     class: "bitbucketApi2",
                     method: "queryData",
@@ -351,27 +353,27 @@ export class BitbucketApi2 {
 
                 // let allProjectStruct: IProjectStructure[] = new Array();
                 let allProjectStruct: Array<any> = new Array<any>();
-                let bsCounter:number = 0;
+                let bsCounter: number = 0;
 
-                while (fileIterator < body.values.length){
+                while (fileIterator < body.values.length) {
 
-                    if (body.values[fileIterator].type === ("commit_directory")){
-                        let tempProjectStructure:  Array<any> = new Array<any>();
-                        tempProjectStructure = this.queryDirectoryInfo(accessToken, user, repoName, hash, body.values[fileIterator].path);
+                    if (body.values[fileIterator].type === ("commit_directory")) {
+                        let tempProjectStructure: Array<any> = new Array<any>();
+                        tempProjectStructure = await this.queryDirectoryInfo(accessToken, user, repoName, hash, body.values[fileIterator].path);
 
                         // for (let value of tempProjectStructure){
                         //     bsCounter++;
                         //     console.log("\n\n\n this is the bsCounter " + bsCounter);
                         //     allProjectStruct.push(value);
                         // }
-                        while (innerIterator < tempProjectStructure.length){
+                        while (innerIterator < tempProjectStructure.length) {
                             allProjectStruct.push(tempProjectStructure[innerIterator]);
                             innerIterator++;
                         }
                         innerIterator = 0;
                         tempProjectStructure = [];
                     }
-                    else if (body.values[fileIterator].type === ("commit_file")){
+                    else if (body.values[fileIterator].type === ("commit_file")) {
 
                         let projStruct: IProjectStructure = new class implements IProjectStructure {
                             fileId: string;
@@ -384,7 +386,7 @@ export class BitbucketApi2 {
 
                         allProjectStruct.push(projStruct);
                     }
-                    else{
+                    else {
                         let emptyStruct: IProjectStructure = new class implements IProjectStructure {
                             fileId: string;
                             fileName: string;
@@ -408,7 +410,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryDownloadFiles(accessToken: string, user: string, repoName: string, hash: string, path: string, fileName: string ): string {
+    public async queryDownloadFiles(accessToken: string, user: string, repoName: string, hash: string, path: string, fileName: string ): Promise<any> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
