@@ -4,7 +4,7 @@ import {BitbucketToken} from "../../data-extraction/bitbucket/BitbucketToken";
 import {GitlabToken} from "../../data-extraction/gitlab/GitlabToken";
 import * as fs from 'fs';
 
-const logger = require('../../logger.js');
+const logger = require('../../../src/logger.js');
 let cors = require('cors');
 let userFile: string = "src/routes/OAuth/users.json";
 

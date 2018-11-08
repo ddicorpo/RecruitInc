@@ -10,7 +10,7 @@ export class MatcherClient {
 
     private languageMatchers: AbstractLanguageMatcher[] = [];
     private dataEntry: IDataEntry;
-    private logger = require("../../logger.js");
+    private logger = require("../../../src/logger.js");
     public constructor(dataEntry: IDataEntry, languageMatchers: AbstractLanguageMatcher[] = allMatchers){
         this.dataEntry = dataEntry;
         this.languageMatchers = languageMatchers;

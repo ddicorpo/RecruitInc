@@ -3,7 +3,7 @@ import { IStackOverFlowNetwork } from './api-entities/IStackOverFlowNetwork';
 import { IStackOverFlowError } from './api-entities/IStackOverFlowError';
 import { IStackOverFlowBadges } from './api-entities/IStackOverFlowBadges';
 import { IStackOverFlowProfile } from './api-entities/IStackOverFlowProfile';
-var logger = require('../../logger.js');
+var logger = require('../../../src/logger.js');
 const API_ROOT_URL: string = 'https://api.stackexchange.com/2.2/users/'
 export class StackOverflowAPI {
 

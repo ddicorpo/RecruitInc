@@ -12,7 +12,7 @@ import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
 
 
 export abstract class AbstractMatcher {
-    logger = require('../../logger.js');
+    logger = require('../../../src/logger.js');
     technology: Technologies;
     protected projectInput: IGitProjectInput;
     //TODO: Refactor get data out of config, for more readability

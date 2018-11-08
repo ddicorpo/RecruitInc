@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-const logger = require('../../logger.js');
+const logger = require('../../../src/logger.js');
 
 const url: string = "https://github.com/login/oauth/access_token";
 const client_id: string = "1908c6dc58ef2187341f";

@@ -3,7 +3,7 @@ import { GithubApiV3} from "./githubApiV3";
 import {IGithubUser} from "./api-entities/IGithubUser"
 
 const fs = require('fs');
-const logger = require('../../logger.js');
+const logger = require('../../../src/logger.js');
 
 export class GithubDownloadedFilesPath {
     private readonly accessToken: string;

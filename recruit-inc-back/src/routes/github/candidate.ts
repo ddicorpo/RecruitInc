@@ -9,7 +9,7 @@ import {IGithubUser} from "../../data-extraction/github/api-entities/IGithubUser
 import {MatcherClient} from "../../matching-algo/matcher-client/MatcherClient"
 import { IGitProjectOutput } from "../../matching-algo/data-model/output-model/IGitProjectOutput";
 import { GithubDataExtraction } from "../../data-extraction/github/githubDataExtraction"
-var logger = require('../../logger.js');
+var logger = require('../../../src/logger.js');
 
 const cors = require('cors');
 

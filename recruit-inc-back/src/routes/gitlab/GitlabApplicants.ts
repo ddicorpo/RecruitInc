@@ -10,7 +10,7 @@ import {IGitlabCommit} from "../../data-extraction/gitlab/api-entities/IGitlabCo
 import {CommitQuery} from "../../data-extraction/gitlab/queries/CommitQuery";
 import {CommitDiffQuery} from "../../data-extraction/gitlab/queries/CommitDiffQuery";
 import {IGitlabCommitDiff} from "../../data-extraction/gitlab/api-entities/IGitlabCommitDiff";
-var logger = require('../../logger.js');
+var logger = require('../../../src/logger.js');
 
 var cors = require('cors');
 

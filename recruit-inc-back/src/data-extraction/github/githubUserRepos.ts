@@ -1,7 +1,7 @@
 import { GithubApiV4} from "./githubApiV4";
 import {IGithubUser} from "./api-entities/IGithubUser"
 
-const logger = require('../../logger.js');
+const logger = require('../../../src/logger.js');
 
 export class GithubUserRepos {
     private readonly accessToken: string;

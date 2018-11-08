@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-const logger = require('../../logger.js');
+const logger = require('../../../src/logger.js');
 
 const url: string = "http://gitlab.com/oauth/token";
 const client_id: string = "cf78ad0e83e8c8f5e4cc8b60ef0250e1d1a299cd9f3ec91ec9d54399eb52e102";

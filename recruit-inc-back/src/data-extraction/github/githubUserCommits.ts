@@ -3,7 +3,7 @@ import { GithubApiV3} from "./githubApiV3";
 import {IGithubUser} from "./api-entities/IGithubUser"
 import {ISingleFileCommit} from "../../matching-algo/data-model/input-model/ISingleFileCommit"
 
-const logger = require('../../logger.js');
+const logger = require('../../../src/logger.js');
 
 export class GithubUserCommits {
     private readonly accessToken: string;

@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import {IGitlabQueryExecutor} from "./IGitlabQueryExecutor";
 
-var logger = require('../../../logger.js');
+const logger = require('../../../../src/logger.js');
 
 export class GitlabQueryExecutor<Response> implements IGitlabQueryExecutor<Response> {
     private baseGitlabApi = "https://gitlab.com/api/v4/";

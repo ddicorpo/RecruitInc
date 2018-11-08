@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-const logger = require('../../logger.js');
+const logger = require('../../../src/logger.js');
 
 const url: string = "https://bitbucket.org/site/oauth2/access_token";
 const client_id: string = "thwTU3aUh8ZBQNXyXA";

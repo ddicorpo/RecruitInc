@@ -2,7 +2,7 @@ import { GithubApiV4} from "./githubApiV4";
 import { GithubApiV3} from "./githubApiV3";
 import {IGithubUser} from "./api-entities/IGithubUser"
 
-const logger = require('../../logger.js');
+const logger = require('../../../src/logger.js');
 const path = require('path');
 
 export class GithubRepoStructure {
