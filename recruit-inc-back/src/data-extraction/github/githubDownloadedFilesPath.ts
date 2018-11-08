@@ -75,8 +75,8 @@ export class GithubDownloadedFilesPath {
 
             for (let file of repository.projectStructure){
                 const tmpfileNameArr : string[] = [file.fileName];
-                const DoesFileIsSourceFile : boolean = IntersectionArrayString.intersection(this.allSourcefileName, tmpfileNameArr).length > 0;
-                if (DoesFileIsSourceFile){
+                const isSourceFile : boolean = IntersectionArrayString.intersection(this.allSourcefileName, tmpfileNameArr).length > 0;
+                if (isSourceFile){
                     let generatedPath : string = this.generatePath(user.login, repository.projectName, file.filePath);
                     let sourceFile : {name: string, path: string, content: string} = await this.downloadFile(repository.owner, repository.projectName, file.filePath);
                     this.writeToFile(sourceFile.content, generatedPath);
