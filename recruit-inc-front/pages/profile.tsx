@@ -36,7 +36,7 @@ class App extends React.Component {
         let token: string = url.substring(url.indexOf("access_token=") + 13, url.indexOf("&token_type="));
 
         if(url.indexOf("code=") != -1) {
-            return fetch(`http://localhost:6969/api/oauth/oauthcode/${platform}/${code}`)
+            return fetch(`http://localhost:6969/api/oauth/oauthcode/${platform}/${code}/${this.state.username}`)
                 .then((response) => {
                     return Promise.resolve(response.text())
                 })
@@ -45,9 +45,9 @@ class App extends React.Component {
                 });
         }
 
-        //for gitlab, since token is return directly here instead of code
+        //for GITLAB specifically, since token is return directly here instead of code
         if(url.indexOf("access_token=") != -1){
-            return fetch(`http://localhost:6969/api/oauth/oauthcode/gitlab/${token}`)
+            return fetch(`http://localhost:6969/api/oauth/oauthcode/gitlab/${token}/${this.state.username}`)
                 .then((response) => {
                     return Promise.resolve(response.text())
                 })

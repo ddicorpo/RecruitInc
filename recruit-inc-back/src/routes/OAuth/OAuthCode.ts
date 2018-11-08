@@ -12,7 +12,7 @@ export class OAuthCode {
 
     public routes(app): void {
 
-        app.route('/api/oauth/oauthcode/:platform/:code')
+        app.route('/api/oauth/oauthcode/:platform/:code/:username')
             .get(cors(), async (request: Request, response: Response) => {
                 logger.info({
                     class: "OAuthCode",
@@ -23,6 +23,9 @@ export class OAuthCode {
 
                 let code = request.params.code;
                 let platform = request.params.platform;
+                let username = request.params.username;
+
+                console.log("USERNAME: " + username);
 
                 let returnResponse: string;
                 let token: string;
