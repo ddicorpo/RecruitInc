@@ -47,7 +47,7 @@ export class GithubDataExtraction {
   
   let user: IGithubUser = await this.extractData(login, email);
 
-  let client: MatcherClient = new MatcherClient(user.dataEntry)
+  let client: MatcherClient = new MatcherClient(user.dataEntry);
 
   let output: IGitProjectSummary = client.execute();
   return output;
