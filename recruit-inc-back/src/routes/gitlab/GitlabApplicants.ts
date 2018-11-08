@@ -13,6 +13,7 @@ import { CommitDiffQuery } from "../../data-extraction/gitlab/queries/CommitDiff
 import {IGitlabCommitDiff} from "../../data-extraction/gitlab/api-entities/IGitlabCommitDiff";
 import {MatcherClient} from "../../matching-algo/matcher-client/MatcherClient"
 import { IGitProjectOutput } from "../../matching-algo/data-model/output-model/IGitProjectOutput";
+import { IGitProjectSummary } from "../../matching-algo/data-model/output-model/IGitProjectSummary";
 
 var logger = require('../../logger.js');
 
@@ -40,11 +41,10 @@ export class GitlabApplicants {
                 try {
                      userId = gitlabUsers[0].id;
                      if(userId == undefined || userId == null){
-                        throw new SyntaxError('Error has occured');
+                        throw new Error('Error has occured');
                      }
                 }
                 catch(err) {
-                    
                       response.status(500).json({error: err.toString()});
                       return;
                   }
@@ -205,7 +205,7 @@ export class GitlabApplicants {
                 
 
                 let client: MatcherClient = new MatcherClient(user.dataEntry)
-                let output: IGitProjectOutput[] = client.execute();
+                let output: IGitProjectSummary = client.execute();
               
                 let returnValue = {
                     userQuery: userQuery.getQuery(),
