@@ -259,16 +259,16 @@ export class BitbucketApi2 {
                         tempProjectStructure = this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
                         console.log("returned dirrrr length " + tempProjectStructure.length);
 
-                        for (let value of tempProjectStructure){
-                            console.log("\n\n\n\n struct for loop bsssssss");
-                            allProjectStruct.push(value);
-                        }
-                        // while (innerIterator < tempProjectStructure.length){
-                        //     allProjectStruct.push(tempProjectStructure[innerIterator]);
-                        //     innerIterator++;
+                        // for (let value of tempProjectStructure){
+                        //     console.log("\n\n\n\n struct for loop bsssssss");
+                        //     allProjectStruct.push(value);
                         // }
-                        // innerIterator = 0;
-                        tempProjectStructure = null;
+                        while (innerIterator < tempProjectStructure.length){
+                            allProjectStruct.push(tempProjectStructure[innerIterator]);
+                            innerIterator++;
+                        }
+                        innerIterator = 0;
+                        tempProjectStructure = [];
                     }
 
                     if (body.values[fileIterator].type == "commit_file"){
@@ -285,6 +285,7 @@ export class BitbucketApi2 {
 
                         allProjectStruct.push(projStruct);
                     }
+                    fileIterator++;
                 }
 
                 return allProjectStruct;
@@ -342,17 +343,17 @@ export class BitbucketApi2 {
                         tempProjectStructure = this.queryDirectoryInfo(accessToken, user, repoName, hash, body.values[fileIterator].path);
                         console.log("\n\n\n return made with array length " + tempProjectStructure.length);
 
-                        for (let value of tempProjectStructure){
-                            bsCounter++;
-                            console.log("\n\n\n this is the bsCounter " + bsCounter);
-                            allProjectStruct.push(value);
-                        }
-                        // while (innerIterator < tempProjectStructure.length){
-                        //     allProjectStruct.push(tempProjectStructure[innerIterator]);
-                        //     innerIterator++;
+                        // for (let value of tempProjectStructure){
+                        //     bsCounter++;
+                        //     console.log("\n\n\n this is the bsCounter " + bsCounter);
+                        //     allProjectStruct.push(value);
                         // }
-                        // innerIterator = 0;
-                        tempProjectStructure = null;
+                        while (innerIterator < tempProjectStructure.length){
+                            allProjectStruct.push(tempProjectStructure[innerIterator]);
+                            innerIterator++;
+                        }
+                        innerIterator = 0;
+                        tempProjectStructure = [];
                     }
                     //TODO: FIX THIS, PROBLEM LIKELY IN THE IF BELOW
                     if (body.values[fileIterator].type === ("commit_file")){
