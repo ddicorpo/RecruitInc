@@ -55,9 +55,24 @@ export class OAuthCode {
                         break;
                     }
                 }
-                fs.writeFile(userFile, token, (err) => {
-                    if (err) throw err;
-                    console.log('The users file has been changed!');
+                fs.writeFile(userFile, token, (error) => {
+                    if (error){
+                        logger.info({
+                            class: "OAuthCode",
+                            method: "route /api/oauth/oauthcode/:platform/:code/:username",
+                            action: "ERROR writing access token to user file",
+                            value: error
+                        }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                        returnCode = 400;
+                    }
+                    else{
+                        logger.info({
+                            class: "OAuthCode",
+                            method: "route /api/oauth/oauthcode/:platform/:code/:username",
+                            action: "Writing the access token to user file",
+                            value: "SUCCESS file changed"
+                        }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                    }
                 });
                 response.status(returnCode).send(returnResponse);
             });
