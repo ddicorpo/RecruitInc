@@ -10,7 +10,7 @@ const fs = require('fs');
 
 export class BitbucketApi2 {
 
-    public queryUserInfo(accessToken: string, user: string): IGitProjectInput[] {
+    public queryUserInfo(accessToken: string, user: string): string {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -44,8 +44,7 @@ export class BitbucketApi2 {
                     });
 
                     this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug)
-                    // let testDownload = this.queryDownloadFiles(accessToken, user, body.values[iterator].slug);
-                    // console.log(testDownload);
+
 
                     let gitProjectInput: IGitProjectInput = {
                         projectName: body.values[iterator].slug,
@@ -54,12 +53,12 @@ export class BitbucketApi2 {
                         downloadedSourceFile: this.querySourceFileInfo(accessToken, user, body.values[iterator].slug)
                     };
 
-                    //allGitProjectInput.push(gitProjectInput);
+                    allGitProjectInput.push(gitProjectInput);
 
                     iterator++;
                 }
 
-                return allGitProjectInput;
+                return body;
             })
             .catch(error => {
                 logger.error({
@@ -316,7 +315,6 @@ export class BitbucketApi2 {
 
                 // console.log("\n\n\nTHIS IS BODY FOR FILE: " + body.values[7].path + "\n\n\n");
                 console.log("\n\n\nTHIS IS DIRECTORY FOR FILE: " + body + "\n\n\n");
-                console.log(body);
 
                 //console.log("\n\n\nTHIS IS COMMIT HASH: " + body.values[0].commit.hash + "\n\n\n")
 
@@ -325,10 +323,9 @@ export class BitbucketApi2 {
 
                 let allProjectStruct: IProjectStructure[];
                 let bsCounter:number = 0;
-                console.log("\n\n\n this is the bsCounter " + bsCounter);
+
                 while (fileIterator < body.values.length){
-                    console.log("\n\n\n file type" + body.values[fileIterator].type);
-                    console.log("\n\n\n boolean " + body.values[fileIterator].type.match("commit_directory"));
+
 
                     if (body.values[fileIterator].type === ("commit_directory")){
                         console.log("\n\n\n I have gone deeper ");
@@ -349,11 +346,28 @@ export class BitbucketApi2 {
                     //TODO: FIX THIS, PROBLEM LIKELY IN THE IF BELOW
                     if (body.values[fileIterator].type === ("commit_file")){
 
-                        let projStruct: IProjectStructure = {
-                            fileId: hash,
-                            filePath: body.values[fileIterator].links.self.href,
-                            fileName: body.values[fileIterator].path
-                        }
+
+                        let projStruct: IProjectStructure = new class implements IProjectStructure {
+                            fileId: string;
+                            fileName: string;
+                            filePath: string;
+                        };
+
+                        console.log("\n\n\n i made it " + projStruct);
+                        projStruct.fileId = hash;
+                        console.log("\n\n\n\n this is the object " + projStruct.fileId);
+                        projStruct.filePath = body.values[fileIterator].links.self.href.toString();
+                        console.log("\n\n\n\n this is the object " + projStruct.filePath);
+                        projStruct.fileName = body.values[fileIterator].path.toString();
+                        console.log("\n\n\n\n this is the object " + projStruct.fileName);
+
+
+                        // let projStruct: IProjectStructure = {
+                        //     fileId: tempfileID,
+                        //     filePath: tempfilePath,
+                        //     fileName: tempfileName
+                        // }
+                        console.log("\n\n\n\n\n\n\n I CREATED A MONSTER");
 
                         allProjectStruct.push(projStruct);
                     }
@@ -374,14 +388,14 @@ export class BitbucketApi2 {
             });
     }
 
-    public queryDownloadFiles(accessToken: string, user: string, repoName: string): string {
+    public queryDownloadFiles(accessToken: string, user: string, repoName: string, hash: string, path: string, fileName: string ): string {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
             action: "Querying bitbucket's api to download files",
             params: {accessToken, user}
         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-        return fetch(`https://bitbucket.org/${user}/${repoName}/raw/HEAD/.gitignore`, {
+        return fetch(`https://bitbucket.org/${user}/${repoName}/src/${hash}/${path}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -390,18 +404,20 @@ export class BitbucketApi2 {
             .then(body => {
                 logger.info({
                     class: "bitbucketApi2",
-                    method: "queryData",
-                    action: "Result from bitbucket's api for repo slug",
+                    method: "queryDownload",
+                    action: "Result from bitbucket's api for downloading files",
                     value: body
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                //do stuff here
+                console.log(body);
 
                 return body;
             })
             .catch(error => {
                 logger.error({
                     class: "bitbucketApi2",
-                    method: "queryData",
-                    action: "Error from bitbucket's api: DIRECTORY INFO",
+                    method: "queryDownload",
+                    action: "Error from bitbucket's api: DOWNLOAD FILE",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
