@@ -4,15 +4,15 @@ import {Technologies} from "../../output-model/Technologies";
 
 const matchingTargets: ITargetMatcher[] = [
     {
-        sourceFileToParse: "package.json",
-        matchingPattern: "(\"typescript\"|\"\@types/node\") {0,1}: {0,1}\""
+        sourceFileToParse: "requirements.txt",
+        matchingPattern: "(Django|django)"
     }
 ];
 
-export const typescriptConfig: IMatcherConfig = {
-    technology: Technologies.Typescript,
-    extensions: ["ts", "tsx"],
+export const djangoConfig: IMatcherConfig = {
+    technology: Technologies.Django,
+    extensions: ["py"],
     matchingTargets,
     sourceFolder: null,
-    excludedFolders: ["node_modules"]
+    excludedFolders: ["migrations", "__pycache__"]
 };

@@ -6,9 +6,9 @@ const matchingTargets: ITargetMatcher[] = [
 
 ];
 
-export const javascriptConfig: IMatcherConfig = {
-    technology: Technologies.Javascript,
-    extensions: ["js", "ts", "tsx"],
+export const pythonConfig: IMatcherConfig = {
+    technology: Technologies.Python,
+    extensions: ["py"],
     matchingTargets,
-    excludedFolders: ["node_modules"]
+    excludedFolders: ["migrations", "__pycache__"]
 };
