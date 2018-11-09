@@ -37,18 +37,21 @@ export class GitlabApplicants {
                 let gitlabUserQueryExecutor = new GitlabQueryExecutor<IGitlabUser[]>();
                 let userQuery: UserQuery = new UserQuery(username,gitlabUserQueryExecutor);
                 userQuery.buildQuery();
-                let gitlabUserPromise: Promise<IGitlabUser[]> = userQuery.executeQuery();
-                let gitlabUsers: IGitlabUser[] = await gitlabUserPromise;
-                
+                let gitlabUserPromise: Promise<IGitlabUser[]> ;
+                let gitlabUsers: IGitlabUser[] ;
                 let userId: number;
+                
                 try {
+                     gitlabUserPromise = userQuery.executeQuery(); 
+                     gitlabUsers= await gitlabUserPromise;
                      userId = gitlabUsers[0].id;
                      if(userId == undefined || userId == null){
-                        throw new Error('Error has occured');
+                        throw new Error('Error has occured :)');
                      }
                 }
                 catch(err) {
-                      response.status(500).json({error: err.toString()});
+                    logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                    response.status(500).json({error: err.toString()});
                       return;
                   }
                
@@ -58,8 +61,23 @@ export class GitlabApplicants {
                 let gitlabProjectQueryExecutor = new GitlabQueryExecutor<IGitlabProject[]>();
                 let projectQuery: ProjectQuery = new ProjectQuery(userId, gitlabProjectQueryExecutor);
                 projectQuery.buildQuery(accessToken);
-                let gitlabProjectPromise: Promise<IGitlabProject[]> = projectQuery.executeQuery();
-                let gitlabProjects: IGitlabProject[] = await gitlabProjectPromise;
+                let gitlabProjectPromise: Promise<IGitlabProject[]> ;
+                let gitlabProjects: IGitlabProject[] ;
+                
+                try {
+                    gitlabProjectPromise = projectQuery.executeQuery(); 
+                    gitlabProjects= await gitlabProjectPromise;
+                    
+                    if(gitlabProjects == undefined || gitlabProjects == null || gitlabProjects.length == 0){
+                       throw new Error('This user has no projects ;)');
+                    }
+               }
+               catch(err) {
+                     logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                     response.status(500).json({error: err.toString()});
+                     return;
+                 }
+                
                 user.dataEntry = { projectInputs: gitlabProjects.map(project => {
                     return {projectName: project.name,projectId: project.id ,applicantCommits:[], projectStructure: [],downloadedSourceFile:[]}
                 })};
@@ -83,10 +101,23 @@ export class GitlabApplicants {
                     let gitlabTreeQueryExecutor = new GitlabQueryExecutor<IGitlabRepositoryTree[]>();
                     treeQuery = new RepositoryTreeQuery(projectId, gitlabTreeQueryExecutor);
                     treeQuery.buildQuery(numberOfpages,accessToken);
-                    let gitlabTreePromise: Promise<IGitlabRepositoryTree[]> = treeQuery.executeQuery();
-                    project = await gitlabTreePromise;
-                   
+                    let gitlabTreePromise: Promise<IGitlabRepositoryTree[]> ;
                     
+                   
+                    try {
+                        gitlabTreePromise = treeQuery.executeQuery(); 
+                        project= await gitlabTreePromise;
+                        
+                        if(project == undefined || project == null || project.length == 0){
+                           throw new Error('This is an empty project ;)');
+                        }
+                   }
+                   catch(err) {
+                         logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                         response.status(500).json({error: err.toString()});
+                         return;
+                     }
+
                     if(project.length >= 100){
                         while(project.length %100 == 0){
                             numberOfpages+=1
@@ -108,7 +139,7 @@ export class GitlabApplicants {
                     const project_with_blobs = project.filter(function( el ) {
                         return project_with_tree.indexOf( el ) < 0;
                       } );
-
+                    
 
                     gitlabProjects[i].projectStruture = [];
                     gitlabProjects[i].projectStruture = gitlabProjects[i].projectStruture.concat(project_with_blobs);
@@ -123,7 +154,23 @@ export class GitlabApplicants {
                     commitQuery= new CommitQuery(projectId, gitlabCommitQueryExecutor);
                     commitQuery.buildQuery(accessToken);
                     let gitlabCommitPromise: Promise<IGitlabCommit[]> = commitQuery.executeQuery();
-                    commits = await gitlabCommitPromise;
+                    
+
+                    try {
+                        gitlabCommitPromise = commitQuery.executeQuery(); 
+                        commits = await gitlabCommitPromise;
+                        
+                        if(commits == undefined || commits == null || commits.length == 0){
+                           throw new Error('There are no commits ;)');
+                        }
+                   }
+                   catch(err) {
+                         logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                         response.status(500).json({error: err.toString()});
+                         return;
+                     }
+
+
                     
                     let created_At : string = commits[0]["created_at"];
 
@@ -159,8 +206,25 @@ export class GitlabApplicants {
                         let commitSha1: string = user.dataEntry.projectInputs[i].applicantCommits[x].id;
                         let commitDiffQuery: CommitDiffQuery = new CommitDiffQuery(projectId, commitSha1, gitlabCommitDiffQueryExecutor);
                         commitDiffQuery.buildQuery(accessToken);
-                        let gitlabCommitDiffPromise: Promise<IGitlabCommitDiff[]> = commitDiffQuery.executeQuery();
-                        let gitlabDiffCommit: IGitlabCommitDiff[] = await gitlabCommitDiffPromise;
+                        let gitlabCommitDiffPromise: Promise<IGitlabCommitDiff[]> ;
+                        let gitlabDiffCommit: IGitlabCommitDiff[] ;
+                        
+                        try {
+                            gitlabCommitDiffPromise = commitDiffQuery.executeQuery(); 
+                            gitlabDiffCommit= await gitlabCommitDiffPromise;
+                            
+                            if(gitlabDiffCommit == undefined || gitlabDiffCommit == null || gitlabDiffCommit.length == 0){
+                               throw new Error('There are no commit diff X)');
+                            }
+                       }
+                       catch(err) {
+                             logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                             response.status(500).json({error: err.toString()});
+                             return;
+                         }
+                        
+                        
+                        
                         user.dataEntry.projectInputs[i].applicantCommits[x].numberOfFileAffected = gitlabDiffCommit.length;
                         
                         user.dataEntry.projectInputs[i].applicantCommits[x].files = []
@@ -195,8 +259,25 @@ export class GitlabApplicants {
                             let gitlabFileDownloadExecutor = new GitlabQueryExecutor<any>();
                             let fileDownloadQuery : FileDownloadQuery = new FileDownloadQuery(project_id,file.fileId,gitlabFileDownloadExecutor);
                             fileDownloadQuery.buildQuery(accessToken); 
-                            let gitlabFileDownloadPromise: Promise<any> = fileDownloadQuery.executeDownloadQuery();
-                            let gitlabFileDownload: {content: string} = await gitlabFileDownloadPromise;
+                            let gitlabFileDownloadPromise: Promise<any> ;
+                            let gitlabFileDownload: {content: string} ;
+
+                            try {
+                                gitlabFileDownloadPromise = fileDownloadQuery.executeDownloadQuery(); 
+                                gitlabFileDownload = await gitlabFileDownloadPromise;
+                                
+                                if(gitlabFileDownload == undefined || gitlabFileDownload == null){
+                                   throw new Error('There is no downlaod file :D');
+                                }
+                           }
+                           catch(err) {
+                                 logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                                 response.status(500).json({error: err.toString()});
+                                 return;
+                             }
+
+
+
                             let generatedPath : string = fileDownloadQuery.generatePath(user.username, repository.projectName, file.filePath);
                             fileDownloadQuery.writeToFile(gitlabFileDownload.content, generatedPath)
                             repository.downloadedSourceFile.push({filename: file.fileName, repoFilePath: file.filePath, localFilePath: generatedPath });
