@@ -43,7 +43,6 @@ export class BitbucketApi2 {
                         }
                     });
 
-                    //this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug)
                     let gitProjectInput: IGitProjectInput = new class implements IGitProjectInput {
                         applicantCommits: ICommit[];
                         downloadedSourceFile: ISourceFiles[] = [];
@@ -52,27 +51,25 @@ export class BitbucketApi2 {
                     }
 
 
-                    // gitProjectInput.projectName = body.values[iterator].slug;
-                    // gitProjectInput.applicantCommits = await this.queryCommitInfo(accessToken, user, body.values[iterator].slug);
+                    gitProjectInput.projectName = body.values[iterator].slug;
+                    gitProjectInput.applicantCommits = await this.queryCommitInfo(accessToken, user, body.values[iterator].slug);
                     gitProjectInput.projectStructure = await this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug);
 
                     for(let i = 0; i < gitProjectInput.projectStructure.length; i++){
 
-                        if(gitProjectInput.projectStructure[i].fileName == ".gitignore" || gitProjectInput.projectStructure[i].fileName == "ConsistencyChecker.java") {
+                        if(gitProjectInput.projectStructure[i].fileName == ".gitignore" || gitProjectInput.projectStructure[i].fileName == "package.json") {
                             let sourceFile: ISourceFiles =  new class implements ISourceFiles {
                                 filename: string;
                                 localFilePath: string;
                                 repoFilePath: string;
                             }
-                            // let tempPath = gitProjectInput.projectStructure[i].filePath;
-                            // let split = tempPath.split('/');
-                            // let slice = split.slice(9);
-                            // let finalPath = slice.join('/');
+
                             sourceFile.filename = gitProjectInput.projectStructure[i].fileName;
                             sourceFile.repoFilePath = gitProjectInput.projectStructure[i].filePath;
-                            sourceFile.localFilePath = "something something darkside";
+                            let generatedPath : string = this.generatePath(user, gitProjectInput.projectName, sourceFile.repoFilePath);
+                            sourceFile.localFilePath = generatedPath;
                             gitProjectInput.downloadedSourceFile.push(sourceFile);
-                            await this.queryDownloadFiles(accessToken, user, body.values[iterator].slug, gitProjectInput.projectStructure[i].fileId, gitProjectInput.projectStructure[i].filePath);
+                            await this.queryDownloadFiles(accessToken, user, body.values[iterator].slug, gitProjectInput.projectStructure[i].fileId, gitProjectInput.projectStructure[i].filePath, generatedPath);
                         }
                     }
 
@@ -80,8 +77,7 @@ export class BitbucketApi2 {
 
                     iterator++;
                 }
-
-                console.log("\n\n\n success");
+                
 
                 return body;
             })
@@ -208,65 +204,6 @@ export class BitbucketApi2 {
                     class: "bitbucketApi2",
                     method: "queryData",
                     action: "Error from bitbucket's api: DIFF STATS: " + repoName + " hash " + hash + " token " + accessToken,
-                    value: error
-                }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                return error;
-            });
-    }
-
-    public async querySourceFileInfo(accessToken: string, user: string, repoName: string): Promise <any> {
-        logger.info({
-            class: "bitbucketApi2",
-            method: "queryData",
-            action: "Querying bitbucket's api",
-            params: {accessToken, user}
-        }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-        return fetch(`https://api.bitbucket.org/2.0/repositories/${user}/${repoName}/src`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-            },
-        }).then(response => response.json())
-            .then(async body => {
-                logger.info({
-                    class: "bitbucketApi2",
-                    method: "queryData",
-                    action: "Result from bitbucket's api for repo slug",
-                    value: body
-                }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-
-                let fileIterator: number = 0;
-
-                let allSourceFiles: Array<any> = new Array<any>();
-
-                while (fileIterator < body.values.length) {
-                    if (body.values[fileIterator].path = ".gitignore") {
-                        let sourceFile: ISourceFiles =  new class implements ISourceFiles {
-                            filename: string;
-                            localFilePath: string;
-                            repoFilePath: string;
-                        }
-
-                        sourceFile.filename = body.values[fileIterator].path;
-                        sourceFile.repoFilePath = body.values[fileIterator].links.self.href;
-                        // TODO: Figure out how to download the raw file
-                        sourceFile.localFilePath = "https://bitbucket.org/" + user + "/" + repoName + "/" + body.values[fileIterator].path;
-                        console.log("\n\n\n\n hash is this " + body.values[fileIterator].commit.hash);
-                        await this.queryDownloadFiles(accessToken, user, repoName, body.values[fileIterator].commit.hash, body.values[fileIterator].path);
-
-                        allSourceFiles.push(sourceFile);
-                        break;
-                    }
-                    fileIterator++;
-                }
-
-                return allSourceFiles;
-            })
-            .catch(error => {
-                logger.error({
-                    class: "bitbucketApi2",
-                    method: "queryData",
-                    action: "Error from bitbucket's api: SOURCE FILE INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
@@ -435,7 +372,7 @@ export class BitbucketApi2 {
             });
     }
 
-    public async queryDownloadFiles(accessToken: string, user: string, repoName: string, hash: string, fileName: string ): Promise<any> {
+    public async queryDownloadFiles(accessToken: string, user: string, repoName: string, hash: string, fileName: string, generatedPath: string): Promise<any> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
@@ -455,9 +392,9 @@ export class BitbucketApi2 {
                     action: "Result from bitbucket's api for downloading files",
                     value: body
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                //do stuff here
-                console.log('\n\n\nthis is the query https://api.bitbucket.org/2.0/repositories/' + user + '/' + repoName + '/src/' + hash + '/' + fileName);
-                console.log(body);
+
+                this.writeToFile(body, generatedPath);
+
 
                 return body;
             })
@@ -471,56 +408,26 @@ export class BitbucketApi2 {
                 return error;
             });
     }
+    //This function creates directories as needed
+    //So that when we try to write to a file with fs it does not throw an error
+    writeToFile(content: string, path: string){
+        let notExist = path.split('/');
+        let exists : string = "";
+        for (let i = 0; i < notExist.length-1; i++){
+            exists+=`${notExist[i]}/`;
+            if (fs.existsSync(exists))
+                continue;
+            else
+                fs.mkdirSync(exists);
+        }
 
-    // public async queryUserInfo(accessToken: string, user: string): Promise<any> {
-    //     logger.info({
-    //         class: "bitbucketApi2",
-    //         method: "queryData",
-    //         action: "Querying bitbucket's api",
-    //         params: {accessToken, user}
-    //     }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-    //     try {
-    //         const res: Response = await fetch(`https://api.bitbucket.org/2.0/users/${user}/repositories`, {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Authorization': accessToken
-    //             }
-    //         });
-    //         const data = await res.json();
-    //
-    //         // loop through data.values
-    //         const projectInput = await Promise.all(data.map(async (item, index, array) => {
-    //             // write what you need to your file
-    //
-    //             try {
-    //                 console.log("THIS IS ARRAY: " + array);
-    //                 return {
-    //                     projectName: await data.values[index].slug,
-    //                     applicantCommits: await this.queryCommitInfo(accessToken, user, data.values[index].slug),
-    //                     projectStructure: await this.queryProjectStructInfo(accessToken, user, data.values[index].slug),
-    //                     downloadedSourceFile: await this.querySourceFileInfo(accessToken, user, data.values[index].slug)
-    //                     // projectInput will hold an array of objects structured like above
-    //                 };
-    //
-    //             } catch (error) {
-    //                 logger.error({
-    //                     class: "bitbucketApi2",
-    //                     method: "queryData",
-    //                     action: "Error from bitbucket's api: USER INFO",
-    //                     value: error
-    //                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-    //             }
-    //         }));
-    //
-    //         return projectInput;
-    //     } catch (error) {
-    //         logger.error({
-    //             class: "bitbucketApi2",
-    //             method: "queryData",
-    //             action: "Error from bitbucket's api: USER INFO",
-    //             value: error
-    //         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-    //     }
-    //
-    // }
+        fs.writeFile(path, content, (err)=>{
+            if (err) throw err;
+        });
+    }
+
+    generatePath(username: string, repoName: string, filePath: string) : string {
+        return `downloaded/${username}/bitbucket/${repoName}/${filePath}`;
+    }
+
 }
