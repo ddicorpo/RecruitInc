@@ -3,11 +3,25 @@ import { IGitProjectInput } from "../../matching-algo/data-model/input-model/IGi
 import { IProjectStructure } from "../../matching-algo/data-model/input-model/IProjectStructure";
 import { ICommit } from "../../matching-algo/data-model/input-model/ICommit";
 import { ISingleFileCommit } from "../../matching-algo/data-model/input-model/ISingleFileCommit";
-import {ISourceFiles} from "../../matching-algo/data-model/input-model/ISourceFiles";
+import { ISourceFiles } from "../../matching-algo/data-model/input-model/ISourceFiles";
+import { MatcherClient } from "../../matching-algo/matcher-client/MatcherClient";
+import { IDataEntry } from "../../matching-algo/data-model/input-model/IDataEntry";
+import { IGitProjectSummary } from "../../matching-algo/data-model/output-model/IGitProjectSummary";
+import {IntersectionArrayString} from "../../util/IntersectionArrayString";
+import {techSourceFiles} from "../../matching-algo/data-model/input-model/TechSourceFiles";
+
 const logger = require('../../logger.js');
 const fs = require('fs');
 
 export class BitbucketApi2 {
+
+    private setSourceFilesArray() : string[] {
+        const sourcefilesArr : string[] = [];
+        for(const tech of techSourceFiles){
+            sourcefilesArr.push(tech.sourceFileName);
+        }
+        return sourcefilesArr;
+    }
 
     //this is the initial entry point into the bitbucket api, once we have the users accesstoken and username, we find all user commits, get complete project structures and download key files for matching algo
     public async queryUserInfo(accessToken: string, user: string): Promise <any> {
@@ -52,7 +66,9 @@ export class BitbucketApi2 {
                     //once all files retrieved from given repo, we loop through its structure to find specific files that are needed for the matching algo
                     for(let i = 0; i < gitProjectInput.projectStructure.length; i++){
 
-                        if(gitProjectInput.projectStructure[i].fileName == ".gitignore" || gitProjectInput.projectStructure[i].fileName == "package.json") {
+                        const tmpfileNameArr : string[] = [gitProjectInput.projectStructure[i].fileName];
+                        const isSourceFile : boolean = IntersectionArrayString.intersection(this.setSourceFilesArray(), tmpfileNameArr).length > 0;
+                        if(isSourceFile) {
                             let sourceFile: ISourceFiles =  new class implements ISourceFiles {
                                 filename: string;
                                 localFilePath: string;
@@ -73,7 +89,25 @@ export class BitbucketApi2 {
                     iterator++;
                 }
 
-                return body;
+                //this packages our collected data and launches the matching algo
+                let dataEntry: IDataEntry = new class implements IDataEntry {
+                    projectInputs: IGitProjectInput[];
+                }
+
+                dataEntry.projectInputs = allGitProjectInput;
+                let client: MatcherClient = new MatcherClient(dataEntry);
+                let output: IGitProjectSummary = client.execute();
+
+                logger.info({
+                    class: "bitbucketApi2",
+                    method: "Matching Algo Output",
+                    action: "THIS IS THE MATCHING ALGO OUTPUT FOR BITBUCKET",
+                    value: output
+                }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+
+                console.log(JSON.stringify(output));
+
+                return output;
             })
             .catch(error => {
                 logger.error({
