@@ -139,9 +139,14 @@ export class GitlabApplicants {
                         };  
                     }
 
-                    const project_with_blobs = project.filter(function( el ) {
+                    let project_with_blobs ;
+                    try{
+                    project_with_blobs = project.filter(function( el ) {
                         return project_with_tree.indexOf( el ) < 0;
                       } );
+                    }catch(err){
+                        continue;
+                    }
                     
 
                     gitlabProjects[i].projectStruture = [];
