@@ -269,7 +269,7 @@ export class BitbucketApi2 {
 
                 while (fileIterator < body.values.length){
                     //if its a directory launch a query to get the files within the directory, otherwise if its a commit file, clean the commit file data and store it
-                    if (body.values[fileIterator].type == "commit_directory"){
+                    if (body.values[fileIterator].type === "commit_directory"){
                         let tempProjectStructure: Array<any> = new Array<any>();
                         tempProjectStructure = await this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
 
@@ -281,7 +281,7 @@ export class BitbucketApi2 {
                         tempProjectStructure = [];
                     }
 
-                    if (body.values[fileIterator].type == "commit_file"){
+                    if (body.values[fileIterator].type === "commit_file"){
                         let projStruct: IProjectStructure =  new class implements IProjectStructure {
                             fileId: string;
                             fileName: string;
