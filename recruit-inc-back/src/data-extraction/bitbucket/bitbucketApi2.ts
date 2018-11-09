@@ -9,11 +9,12 @@ const fs = require('fs');
 
 export class BitbucketApi2 {
 
+    //this is the initial entry point into the bitbucket api, once we have the users accesstoken and username, we find all user commits, get complete project structures and download key files for matching algo
     public async queryUserInfo(accessToken: string, user: string): Promise <any> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
-            action: "Querying bitbucket's api",
+            action: "Querying User Info",
             params: {accessToken, user}
         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
         return fetch(`https://api.bitbucket.org/2.0/users/${user}/repositories`, {
@@ -48,6 +49,7 @@ export class BitbucketApi2 {
                     gitProjectInput.applicantCommits = await this.queryCommitInfo(accessToken, user, body.values[iterator].slug);
                     gitProjectInput.projectStructure = await this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug);
 
+                    //once all files retrieved from given repo, we loop through its structure to find specific files that are needed for the matching algo
                     for(let i = 0; i < gitProjectInput.projectStructure.length; i++){
 
                         if(gitProjectInput.projectStructure[i].fileName == ".gitignore" || gitProjectInput.projectStructure[i].fileName == "package.json") {
@@ -77,18 +79,19 @@ export class BitbucketApi2 {
                 logger.error({
                     class: "bitbucketApi2",
                     method: "queryData",
-                    action: "Error from bitbucket's api: USER INFO",
+                    action: "Error from bitbucket's api: QUERY USER INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 return error;
             });
     }
 
+    //query to retrieve all commits related to the user for a specified repo
     public async queryCommitInfo(accessToken: string, user: string, repoName: string): Promise <any[]> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData ",
-            action: "Querying bitbucket's api for hash",
+            action: "Querying Commit Info",
             params: {accessToken, user: user}
         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
 
@@ -111,6 +114,7 @@ export class BitbucketApi2 {
 
                 while (iterator < body.values.length) {
 
+                    //if a commit is attributed to a user that does not have a bitbucket account, it will return undefined, the if statement protects from that edge case
                     if (body.values[iterator].author.user != undefined) {
                         if (JSON.stringify(body.values[iterator].author.user.username).match(user)) {
                             let allSingleCommits: Array<any> = new Array<any>();
@@ -142,6 +146,7 @@ export class BitbucketApi2 {
             });
     }
 
+    //queries to get the diffstats of each single file commit attributed to the user for a given repo
     public async queryDiffStats(accessToken: string, user: string, repoName: string, hash: string): Promise <any[]> {
         logger.info({
             class: "bitbucketApi2",
@@ -177,6 +182,7 @@ export class BitbucketApi2 {
                     singleFileCommit.lineAdded = body.values[singleCommitIndex].lines_added;
                     singleFileCommit.lineDeleted = body.values[singleCommitIndex].lines_removed;
 
+                    //if a commit contains a file that has status removed, the new file path does not exist, therefore the old path needs to be accessed instead
                     if (body.values[singleCommitIndex].new != undefined) {
                         singleFileCommit.filePath = body.values[singleCommitIndex].new.links.self.href.toString();
                     }
@@ -201,12 +207,12 @@ export class BitbucketApi2 {
                 return error;
             });
     }
-
+    //querying to gather the project structure, this gets the initial layer of files, and calls the directory query to gather inner layers
     public async queryProjectStructInfo(accessToken: string, user: string, repoName: string): Promise<any[]> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
-            action: "Querying bitbucket's api",
+            action: "Querying Project Struct Info",
             params: {accessToken, user}
         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
         return fetch(`https://api.bitbucket.org/2.0/repositories/${user}/${repoName}/src`, {
@@ -228,6 +234,7 @@ export class BitbucketApi2 {
                 let allProjectStruct: Array<any> = new Array<any>();
 
                 while (fileIterator < body.values.length){
+                    //if its a directory launch a query to get the files within the directory, otherwise if its a commit file, clean the commit file data and store it
                     if (body.values[fileIterator].type == "commit_directory"){
                         let tempProjectStructure: Array<any> = new Array<any>();
                         tempProjectStructure = await this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
@@ -249,6 +256,8 @@ export class BitbucketApi2 {
 
                         projStruct.fileId = body.values[0].commit.hash;
                         projStruct.filePath = body.values[fileIterator].path;
+                        //TODO: refactor the file name cleaner, also located in directory info query
+                        //needed to clean file name
                         let tempPath = body.values[fileIterator].path;
                         let split = tempPath.split('/');
                         let slice = split.slice(split.length-1);
@@ -273,11 +282,12 @@ export class BitbucketApi2 {
             });
     }
 
+    //recursive method that fetches the information from file directories and stores the files in the project structure
     public async queryDirectoryInfo(accessToken: string, user: string, repoName: string, hash: string, path: string): Promise<any[]> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
-            action: "Querying bitbucket's api",
+            action: "Querying Directory Info",
             params: {accessToken, user}
         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
         return fetch(`https://api.bitbucket.org/2.0/repositories/${user}/${repoName}/src/${hash}/${path}`, {
@@ -302,6 +312,9 @@ export class BitbucketApi2 {
 
                 while (fileIterator < body.values.length) {
 
+                    //if its a directory recursively call the same method to get all inner files
+                    //else if its a commit file, clean the data and store it appropriately
+                    //base case, return empty object
                     if (body.values[fileIterator].type === ("commit_directory")) {
                         let tempProjectStructure: Array<any> = new Array<any>();
                         tempProjectStructure = await this.queryDirectoryInfo(accessToken, user, repoName, hash, body.values[fileIterator].path);
@@ -322,6 +335,8 @@ export class BitbucketApi2 {
                         };
                         projStruct.fileId = hash;
                         projStruct.filePath = body.values[fileIterator].path;
+
+                        //cleans the file name to make it easier to handle
                         let tempPath = body.values[fileIterator].path;
                         let split = tempPath.split('/');
                         let slice = split.slice(split.length-1);
@@ -353,6 +368,7 @@ export class BitbucketApi2 {
             });
     }
 
+    //fetches the specified file from a repo and downloads and stores the file locally
     public async queryDownloadFiles(accessToken: string, user: string, repoName: string, hash: string, fileName: string, generatedPath: string): Promise<any> {
         logger.info({
             class: "bitbucketApi2",
@@ -373,6 +389,7 @@ export class BitbucketApi2 {
                     action: "Result from bitbucket's api for downloading files",
                     value: body
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+
 
                 this.writeToFile(body, generatedPath);
 
