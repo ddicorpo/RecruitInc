@@ -1,6 +1,7 @@
 import { IDataEntry } from "../../../matching-algo/data-model/input-model/IDataEntry"
 
 export interface IGitlabUser {
+
     id: number,
     name: string,
     username: string,
@@ -31,4 +32,5 @@ export interface IGitlabUser {
     private_profile?: boolean,
     shared_runners_minutes_limit?: any,
     dataEntry?: IDataEntry
+
 }

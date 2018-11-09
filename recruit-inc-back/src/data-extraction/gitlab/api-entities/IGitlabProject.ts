@@ -2,6 +2,7 @@ import {IGitlabRepositoryTree} from "./IGitlabRepositoryTree"
 import { IGitlabCommit } from "./IGitlabCommit";
 
 export interface IGitlabProject {
+
     id: number,
     description: string,
     name: string,

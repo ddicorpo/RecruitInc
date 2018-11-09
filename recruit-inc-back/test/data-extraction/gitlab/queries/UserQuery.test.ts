@@ -1,7 +1,8 @@
-import { expect} from 'chai';
-import {GitlabQueryExecutor} from "../../../../src/data-extraction/gitlab/query-executor/GitlabQueryExecutor";
-import {UserQuery} from "../../../../src/data-extraction/gitlab/queries/UserQuery";
-import {IGitlabUser} from "../../../../src/data-extraction/gitlab/api-entities/IGitlabUser";
+import { expect } from 'chai';
+import { GitlabQueryExecutor } from '../../../../src/data-extraction/gitlab/query-executor/GitlabQueryExecutor';
+import { UserQuery } from '../../../../src/data-extraction/gitlab/queries/UserQuery';
+import { IGitlabUser } from '../../../../src/data-extraction/gitlab/api-entities/IGitlabUser';
+
 
 
 const nock = require('nock');
@@ -43,3 +44,4 @@ describe('User query class', function () {
 
 
 });
+

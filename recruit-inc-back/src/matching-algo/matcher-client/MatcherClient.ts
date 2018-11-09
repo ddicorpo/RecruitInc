@@ -1,107 +1,130 @@
-import {AbstractLanguageMatcher} from "../matcher/AbstractLanguageMatcher";
-import {IGitProjectOutput} from "../data-model/output-model/IGitProjectOutput";
-import {IDataEntry} from "../data-model/input-model/IDataEntry";
-import {IGitProjectInput} from "../data-model/input-model/IGitProjectInput";
-import {ILanguageOutput} from "../data-model/output-model/ILanguageOutput";
-import {allMatchers} from "./AllMatchers";
-import {Technologies} from "../data-model/output-model/Technologies";
-import {IFrameworkOutput} from "../data-model/output-model/IFrameworkOutput";
-import {IGitProjectSummary} from "../data-model/output-model/IGitProjectSummary";
+import { AbstractLanguageMatcher } from '../matcher/AbstractLanguageMatcher';
+import { IGitProjectOutput } from '../data-model/output-model/IGitProjectOutput';
+import { IDataEntry } from '../data-model/input-model/IDataEntry';
+import { IGitProjectInput } from '../data-model/input-model/IGitProjectInput';
+import { ILanguageOutput } from '../data-model/output-model/ILanguageOutput';
+import { allMatchers } from './AllMatchers';
+import { Technologies } from '../data-model/output-model/Technologies';
+import { IFrameworkOutput } from '../data-model/output-model/IFrameworkOutput';
+import { IGitProjectSummary } from '../data-model/output-model/IGitProjectSummary';
 
 export class MatcherClient {
+  private languageMatchers: AbstractLanguageMatcher[] = [];
+  private dataEntry: IDataEntry;
+  private logger = require('../../logger.js');
 
+  public constructor(
+    dataEntry: IDataEntry,
+    languageMatchers: AbstractLanguageMatcher[] = allMatchers
+  ) {
+    this.dataEntry = dataEntry;
+    this.languageMatchers = languageMatchers;
+  }
 
-    private languageMatchers: AbstractLanguageMatcher[] = [];
-    private dataEntry: IDataEntry;
-    private logger = require("../../logger.js");
+  public execute(): IGitProjectSummary {
+    const allProjects: IGitProjectInput[] = this.dataEntry.projectInputs;
 
-    public constructor(dataEntry: IDataEntry, languageMatchers: AbstractLanguageMatcher[] = allMatchers) {
-        this.dataEntry = dataEntry;
-        this.languageMatchers = languageMatchers;
+    const projectOutputs: IGitProjectOutput[] = [];
+    for (const project of allProjects) {
+      this.logger.info(
+        {
+          class: 'MatcherClient',
+          method: 'execute',
+          action: 'Start Analysis with project ' + project.projectName,
+          params: {},
+        },
+        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
+      );
+      const languageOutputs: ILanguageOutput[] = [];
+
+      for (const matcher of this.languageMatchers) {
+        matcher.setProjectInput(project);
+        languageOutputs.push(matcher.execute() as ILanguageOutput);
+      }
+
+      const projectOutput: IGitProjectOutput = {
+        projectName: project.projectName,
+        languageOutput: languageOutputs,
+      };
+
+      projectOutputs.push(projectOutput);
+      this.logger.info(
+        {
+          class: 'MatcherClient',
+          method: 'execute',
+          action: 'End Analysis with projectOuput ' + projectOutput.projectName,
+          params: {},
+        },
+        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
+      );
     }
 
-    //TODO: Refactor this Big Big(O) loop
-    public execute(): IGitProjectSummary{
-        const allProjects: IGitProjectInput[] = this.dataEntry.projectInputs;
+    const languages: ILanguageOutput[] = [];
+    for (const languageMatcher of this.languageMatchers) {
+      const languageTech: Technologies = languageMatcher.getTechnology();
+      const frameworks: IFrameworkOutput[] = [];
+      let indexedFrameworkMap: Map<Technologies, number> = new Map<
+        Technologies,
+        number
+      >();
+      let indexHelper: number = 0;
+      for (const framework of languageMatcher.getFrameworks()) {
+        frameworks.push({
+          technologyName: framework.getTechnology(),
+          numberOfCommits: 0,
+          linesOfCode: 0,
+        });
+        indexedFrameworkMap.set(framework.getTechnology(), indexHelper);
+        indexHelper++;
+      }
+      const language: ILanguageOutput = {
+        languageOrFramework: languageTech,
+        linesOfCode: 0,
+        numberOfCommits: 0,
+        frameworks: frameworks,
+      };
 
-        const projectOutputs: IGitProjectOutput[] = [];
-        for (const project of allProjects) {
-            this.logger.info({
-                    class: "MatcherClient", method: "execute",
-                    action: "Start Analysis with project " + project.projectName, params: {}
-                },
-                {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-            const languageOutputs: ILanguageOutput[] = [];
-
-            for (const matcher of this.languageMatchers) {
-                matcher.setProjectInput(project);
-                languageOutputs.push(matcher.execute() as ILanguageOutput);
-
-            }
-
-            const projectOutput: IGitProjectOutput = {
-                projectName: project.projectName,
-                languageOutput: languageOutputs
-            };
-
-            projectOutputs.push(projectOutput);
-            this.logger.info({
-                    class: "MatcherClient", method: "execute",
-                    action: "End Analysis with projectOuput " + projectOutput.projectName, params: {}
-                },
-                {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-
+      for (const projectOutput of projectOutputs) {
+        //Select the right constant
+        const languageOutputs: ILanguageOutput[] = projectOutput.languageOutput;
+        let targetedFrameworksStats: IFrameworkOutput[] = [];
+        let targetLangStats: ILanguageOutput;
+        // Grab the frameworks and Language in list of Languages...
+        for (let languageOutput of languageOutputs) {
+          if (languageOutput.languageOrFramework === languageTech) {
+            targetLangStats = languageOutput;
+            targetedFrameworksStats = languageOutput.frameworks;
+            break;
+          }
         }
+        //Check if the current Language has line or commit before going further...
+        if (
+          targetLangStats.linesOfCode != 0 ||
+          targetLangStats.numberOfCommits !== 0
+        ) {
+          // Adding Language Stats
+          language.linesOfCode += targetLangStats.linesOfCode;
+          language.numberOfCommits += targetLangStats.numberOfCommits;
 
-        const languages: ILanguageOutput[] = [];
-        for (const languageMatcher of this.languageMatchers) {
-            const languageTech: Technologies = languageMatcher.getTechnology();
-            const frameworks: IFrameworkOutput[] = [];
-            for (const framework of languageMatcher.getFrameworks()) {
-                frameworks.push({
-                    technologyName: framework.getTechnology(),
-                    numberOfCommits: 0,
-                    linesOfCode: 0,
-                })
-            }
-            const language: ILanguageOutput = {
-                languageOrFramework: languageTech,
-                linesOfCode: 0,
-                numberOfCommits: 0,
-                frameworks: frameworks,
-            };
-
-            for (const projectOutput of projectOutputs) {
-
-
-                const languageOutputs: ILanguageOutput[] = projectOutput.languageOutput;
-
-                for (const languageOutput of languageOutputs) {
-                    if(languageOutput.linesOfCode > 0){
-                        language.linesOfCode += languageOutput.linesOfCode;
-                    }
-                    language.numberOfCommits += languageOutput.numberOfCommits;
-
-                    for (const frameworkOutput of languageOutput.frameworks) {
-                        for (const framework of language.frameworks) {
-                            if (framework.technologyName === frameworkOutput.technologyName) {
-                                if(frameworkOutput.linesOfCode > 0){
-                                    framework.linesOfCode += frameworkOutput.linesOfCode;
-                                }
-                                framework.numberOfCommits += frameworkOutput.numberOfCommits;
-                            }
-                        }
-                    }
-                }
-            }
-
-            languages.push(language);
+          // Adding the Framework Stats
+          for (const computedFrameworkStat of targetedFrameworksStats) {
+            const indexOfFramework: number = indexedFrameworkMap.get(
+              computedFrameworkStat.technologyName
+            );
+            language.frameworks[indexOfFramework].linesOfCode +=
+              computedFrameworkStat.linesOfCode;
+            language.frameworks[indexOfFramework].numberOfCommits +=
+              computedFrameworkStat.numberOfCommits;
+          }
         }
-        const projectSummary: IGitProjectSummary = {
-            totalOutput: languages,
-            projectsOutput: projectOutputs
-        };
-
-        return projectSummary;
+      }
+      languages.push(language);
     }
+    const projectSummary: IGitProjectSummary = {
+      totalOutput: languages,
+      projectsOutput: projectOutputs,
+    };
+
+    return projectSummary;
+  }
 }

@@ -1,6 +1,7 @@
-import {IGitlabQueryExecutor} from "../query-executor/IGitlabQueryExecutor";
-import {AbstractGitlabQuery} from "./AbstractGitlabQuery";
-import {IGitlabCommit} from "../api-entities/IGitlabCommit";
+import { IGitlabQueryExecutor } from '../query-executor/IGitlabQueryExecutor';
+import { AbstractGitlabQuery } from './AbstractGitlabQuery';
+import { IGitlabCommit } from '../api-entities/IGitlabCommit';
+
 
 export class CommitQuery extends AbstractGitlabQuery<IGitlabCommit[]>{
     private projectId: number;
@@ -22,5 +23,5 @@ export class CommitQuery extends AbstractGitlabQuery<IGitlabCommit[]>{
 
 
 
-}
 
+}

@@ -1,8 +1,8 @@
-import { IFrameworkOutput} from "./IFrameworkOutput"
-import { Technologies } from "./Technologies"
-import {ICodeOutput} from "./ICodeOutput";
+import { IFrameworkOutput } from './IFrameworkOutput';
+import { Technologies } from './Technologies';
+import { ICodeOutput } from './ICodeOutput';
 
 export interface ILanguageOutput extends ICodeOutput {
-    languageOrFramework: Technologies,
-    frameworks: IFrameworkOutput[]
+  languageOrFramework: Technologies;
+  frameworks: IFrameworkOutput[];
 }

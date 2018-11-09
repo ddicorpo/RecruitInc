@@ -1,3 +1,4 @@
+
 import { Request, Response } from "express";
 import {GitlabQueryExecutor} from "../../data-extraction/gitlab/query-executor/GitlabQueryExecutor";
 import {UserQuery} from "../../data-extraction/gitlab/queries/UserQuery";
@@ -14,13 +15,15 @@ import {IGitlabCommitDiff} from "../../data-extraction/gitlab/api-entities/IGitl
 import {MatcherClient} from "../../matching-algo/matcher-client/MatcherClient"
 import { IGitProjectSummary } from "../../matching-algo/data-model/output-model/IGitProjectSummary";
 
+
 var logger = require('../../logger.js');
 
 var cors = require('cors');
 
-let dataFile: string = "log/info.json";
+let dataFile: string = 'log/info.json';
 
 export class GitlabApplicants {
+
 
     public routes(app): void {
 
@@ -325,3 +328,4 @@ export class GitlabApplicants {
             
     }
 }
+

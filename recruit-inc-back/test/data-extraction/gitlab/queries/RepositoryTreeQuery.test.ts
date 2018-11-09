@@ -1,7 +1,8 @@
-import { expect} from 'chai';
-import {GitlabQueryExecutor} from "../../../../src/data-extraction/gitlab/query-executor/GitlabQueryExecutor";
-import {RepositoryTreeQuery} from "../../../../src/data-extraction/gitlab/queries/RepositoryTreeQuery";
-import {IGitlabRepositoryTree} from "../../../../src/data-extraction/gitlab/api-entities/IGitlabRepositoryTree";
+import { expect } from 'chai';
+import { GitlabQueryExecutor } from '../../../../src/data-extraction/gitlab/query-executor/GitlabQueryExecutor';
+import { RepositoryTreeQuery } from '../../../../src/data-extraction/gitlab/queries/RepositoryTreeQuery';
+import { IGitlabRepositoryTree } from '../../../../src/data-extraction/gitlab/api-entities/IGitlabRepositoryTree';
+
 
 describe('Repository tree query class', function () {
     it('should return the correct query after building it', function () {
@@ -16,3 +17,4 @@ describe('Repository tree query class', function () {
 
     });
 });
+

@@ -1,6 +1,7 @@
-import { expect} from 'chai';
-import {GitlabQueryExecutor} from "../../../../src/data-extraction/gitlab/query-executor/GitlabQueryExecutor";
-import {FileDownloadQuery} from "../../../../src/data-extraction/gitlab/queries/FileDownloadQuery";
+import { expect } from 'chai';
+import { GitlabQueryExecutor } from '../../../../src/data-extraction/gitlab/query-executor/GitlabQueryExecutor';
+import { FileDownloadQuery } from '../../../../src/data-extraction/gitlab/queries/FileDownloadQuery';
+
 
 
 

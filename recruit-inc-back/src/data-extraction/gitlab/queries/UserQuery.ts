@@ -1,9 +1,10 @@
-import {IGitlabUser} from "../api-entities/IGitlabUser";
-import {IGitlabQueryExecutor} from "../query-executor/IGitlabQueryExecutor";
-import {AbstractGitlabQuery} from "./AbstractGitlabQuery";
+import { IGitlabUser } from '../api-entities/IGitlabUser';
+import { IGitlabQueryExecutor } from '../query-executor/IGitlabQueryExecutor';
+import { AbstractGitlabQuery } from './AbstractGitlabQuery';
 
-export class UserQuery extends AbstractGitlabQuery<IGitlabUser[]>{
-    private username: string;
+export class UserQuery extends AbstractGitlabQuery<IGitlabUser[]> {
+  private username: string;
+
 
     public constructor(username: string,queryExecutor: IGitlabQueryExecutor<IGitlabUser[]>){
         super(queryExecutor);
@@ -11,7 +12,9 @@ export class UserQuery extends AbstractGitlabQuery<IGitlabUser[]>{
         
     }
 
-    public buildQuery(): void {
-        this.query = this.queryExecutor.getBaseGitlabApi() + "users?username=" + this.username;
-    }
+
+  public buildQuery(): void {
+    this.query =
+      this.queryExecutor.getBaseGitlabApi() + 'users?username=' + this.username;
+  }
 }
