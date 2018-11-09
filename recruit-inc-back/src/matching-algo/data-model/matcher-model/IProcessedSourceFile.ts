@@ -1,5 +1,5 @@
-import {ISourceFiles} from "../input-model/ISourceFiles";
+import { ISourceFiles } from '../input-model/ISourceFiles';
 
 export interface IProcessedSourceFile extends ISourceFiles {
-    "isMatchingTechnology": boolean,
+  isMatchingTechnology: boolean;
 }
