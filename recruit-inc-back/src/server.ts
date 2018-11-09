@@ -1,9 +1,9 @@
-import app from "./app";
+import app from './app';
 const PORT = process.env.PORT || 6969;
 
 var server = app.listen(PORT, () => {
-    console.log('listening on port ' + PORT);
-})
+  console.log('listening on port ' + PORT);
+});
 
 //Node js has a default timeout of 2 minutes for routes
 //Since our application tends to have routes that run several queries (and take a really long time)

@@ -1,7 +1,7 @@
-import {ILanguageOutput} from "./ILanguageOutput";
-import {IGitProjectOutput} from "./IGitProjectOutput";
+import { ILanguageOutput } from './ILanguageOutput';
+import { IGitProjectOutput } from './IGitProjectOutput';
 
 export interface IGitProjectSummary {
-    totalOutput: ILanguageOutput[],
-    projectsOutput: IGitProjectOutput[]
+  totalOutput: ILanguageOutput[];
+  projectsOutput: IGitProjectOutput[];
 }
