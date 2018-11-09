@@ -5,7 +5,7 @@ var logger = require('../../../logger.js');
 
 export class GitlabQueryExecutor<Response> implements IGitlabQueryExecutor<Response> {
     private baseGitlabApi = "https://gitlab.com/api/v4/";
-
+    
     public async executeQuery(query: string) : Promise<Response>{
 
         logger.info({class: "GitlabQueryExecutor", method: "executeQuery", action: "Querying gitlab's api", params: {query}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});

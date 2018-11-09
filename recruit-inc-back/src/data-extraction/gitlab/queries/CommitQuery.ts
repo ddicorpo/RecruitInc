@@ -12,8 +12,8 @@ export class CommitQuery extends AbstractGitlabQuery<IGitlabCommit[]>{
        
     }
 
-    public buildQuery(): void {
-        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/commits?all=true&with_stats=true";
+    public buildQuery(accessToken: string): void {
+        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/commits?all=true&with_stats=true" + "&private_token="+ accessToken;
     }
 
     public buildQueryTogetMoreData(projectId: number,created_At: string): void{

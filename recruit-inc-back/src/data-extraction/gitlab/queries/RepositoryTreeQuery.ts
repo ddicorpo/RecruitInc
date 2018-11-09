@@ -11,7 +11,7 @@ export class RepositoryTreeQuery extends AbstractGitlabQuery<IGitlabRepositoryTr
         this.projectId = projectId;
     }
 
-    public buildQuery(numberOfpages: number): void {
-        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/tree?recursive=true&per_page=100&page=" + numberOfpages;
+    public buildQuery(numberOfpages: number,accessToken: string): void {
+        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/tree?recursive=true&per_page=100&page=" + numberOfpages + "&private_token="+ accessToken;
     }
 }

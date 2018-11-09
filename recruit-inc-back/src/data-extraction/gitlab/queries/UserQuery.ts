@@ -5,9 +5,10 @@ import {AbstractGitlabQuery} from "./AbstractGitlabQuery";
 export class UserQuery extends AbstractGitlabQuery<IGitlabUser[]>{
     private username: string;
 
-    public constructor(username: string, queryExecutor: IGitlabQueryExecutor<IGitlabUser[]>){
+    public constructor(username: string,queryExecutor: IGitlabQueryExecutor<IGitlabUser[]>){
         super(queryExecutor);
         this.username = username;
+        
     }
 
     public buildQuery(): void {

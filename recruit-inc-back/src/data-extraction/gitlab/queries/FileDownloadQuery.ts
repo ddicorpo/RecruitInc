@@ -13,8 +13,8 @@ export class FileDownloadQuery extends AbstractGitlabQuery<any>{
         this.fileSha1 = fileSha1;
     }
 
-    public buildQuery(): void {
-        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/blobs/" + this.fileSha1 + "/raw";
+    public buildQuery(accessToken: string): void {
+        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/blobs/" + this.fileSha1 + "/raw?" + "&private_token="+ accessToken;
     }
 
     writeToFile(content: string, path: string){

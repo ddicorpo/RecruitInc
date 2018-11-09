@@ -9,7 +9,7 @@ export abstract class AbstractGitlabQuery<Response>{
         this.queryExecutor = queryExecutor;
     }
 
-    public abstract buildQuery(numberOfpages): void;
+    public abstract buildQuery(numberOfpages,accessToken): void;
 
     public getQuery(): string {
         return this.query;

@@ -12,7 +12,6 @@ import { FileDownloadQuery } from "../../data-extraction/gitlab/queries/FileDown
 import { CommitDiffQuery } from "../../data-extraction/gitlab/queries/CommitDiffQuery";
 import {IGitlabCommitDiff} from "../../data-extraction/gitlab/api-entities/IGitlabCommitDiff";
 import {MatcherClient} from "../../matching-algo/matcher-client/MatcherClient"
-import { IGitProjectOutput } from "../../matching-algo/data-model/output-model/IGitProjectOutput";
 import { IGitProjectSummary } from "../../matching-algo/data-model/output-model/IGitProjectSummary";
 
 var logger = require('../../logger.js');
@@ -25,14 +24,18 @@ export class GitlabApplicants {
 
     public routes(app): void {
 
-        app.route('/api/gitlab/matchingalgo/:username')
+        app.route('/api/gitlab/matchingalgo/:username/:accessToken?')
             .get(cors(), async (request: Request, response: Response) => {
                 logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/users/:username", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-
+                
                 //To retrieve user information
                 let username : string = request.params.username;
+                let accessToken : string = request.params.accessToken;
+                if(!accessToken){
+                    accessToken = "";
+                }
                 let gitlabUserQueryExecutor = new GitlabQueryExecutor<IGitlabUser[]>();
-                let userQuery: UserQuery = new UserQuery(username, gitlabUserQueryExecutor);
+                let userQuery: UserQuery = new UserQuery(username,gitlabUserQueryExecutor);
                 userQuery.buildQuery();
                 let gitlabUserPromise: Promise<IGitlabUser[]> = userQuery.executeQuery();
                 let gitlabUsers: IGitlabUser[] = await gitlabUserPromise;
@@ -54,10 +57,9 @@ export class GitlabApplicants {
                  //To retrieve all the projects
                 let gitlabProjectQueryExecutor = new GitlabQueryExecutor<IGitlabProject[]>();
                 let projectQuery: ProjectQuery = new ProjectQuery(userId, gitlabProjectQueryExecutor);
-                projectQuery.buildQuery();
+                projectQuery.buildQuery(accessToken);
                 let gitlabProjectPromise: Promise<IGitlabProject[]> = projectQuery.executeQuery();
                 let gitlabProjects: IGitlabProject[] = await gitlabProjectPromise;
-                
                 user.dataEntry = { projectInputs: gitlabProjects.map(project => {
                     return {projectName: project.name,projectId: project.id ,applicantCommits:[], projectStructure: [],downloadedSourceFile:[]}
                 })};
@@ -80,7 +82,7 @@ export class GitlabApplicants {
                     let numberOfpages: number = 1;
                     let gitlabTreeQueryExecutor = new GitlabQueryExecutor<IGitlabRepositoryTree[]>();
                     treeQuery = new RepositoryTreeQuery(projectId, gitlabTreeQueryExecutor);
-                    treeQuery.buildQuery(numberOfpages);
+                    treeQuery.buildQuery(numberOfpages,accessToken);
                     let gitlabTreePromise: Promise<IGitlabRepositoryTree[]> = treeQuery.executeQuery();
                     project = await gitlabTreePromise;
                    
@@ -88,7 +90,7 @@ export class GitlabApplicants {
                     if(project.length >= 100){
                         while(project.length %100 == 0){
                             numberOfpages+=1
-                            treeQuery.buildQuery(numberOfpages);
+                            treeQuery.buildQuery(numberOfpages,accessToken);
                             let new_data_gitlabTreePromise: Promise<IGitlabRepositoryTree[]> = treeQuery.executeQuery();
                             more_data_project = await new_data_gitlabTreePromise;
                             project= project.concat(more_data_project);
@@ -119,7 +121,7 @@ export class GitlabApplicants {
                     //to get all the commits of each project
                     let gitlabCommitQueryExecutor = new GitlabQueryExecutor<IGitlabCommit[]>();
                     commitQuery= new CommitQuery(projectId, gitlabCommitQueryExecutor);
-                    commitQuery.buildQuery();
+                    commitQuery.buildQuery(accessToken);
                     let gitlabCommitPromise: Promise<IGitlabCommit[]> = commitQuery.executeQuery();
                     commits = await gitlabCommitPromise;
                     
@@ -156,7 +158,7 @@ export class GitlabApplicants {
                         let gitlabCommitDiffQueryExecutor = new GitlabQueryExecutor<IGitlabCommitDiff[]>();
                         let commitSha1: string = user.dataEntry.projectInputs[i].applicantCommits[x].id;
                         let commitDiffQuery: CommitDiffQuery = new CommitDiffQuery(projectId, commitSha1, gitlabCommitDiffQueryExecutor);
-                        commitDiffQuery.buildQuery();
+                        commitDiffQuery.buildQuery(accessToken);
                         let gitlabCommitDiffPromise: Promise<IGitlabCommitDiff[]> = commitDiffQuery.executeQuery();
                         let gitlabDiffCommit: IGitlabCommitDiff[] = await gitlabCommitDiffPromise;
                         user.dataEntry.projectInputs[i].applicantCommits[x].numberOfFileAffected = gitlabDiffCommit.length;
@@ -192,7 +194,7 @@ export class GitlabApplicants {
                         if (file.fileName == "package.json"){
                             let gitlabFileDownloadExecutor = new GitlabQueryExecutor<any>();
                             let fileDownloadQuery : FileDownloadQuery = new FileDownloadQuery(project_id,file.fileId,gitlabFileDownloadExecutor);
-                            fileDownloadQuery.buildQuery(); 
+                            fileDownloadQuery.buildQuery(accessToken); 
                             let gitlabFileDownloadPromise: Promise<any> = fileDownloadQuery.executeDownloadQuery();
                             let gitlabFileDownload: {content: string} = await gitlabFileDownloadPromise;
                             let generatedPath : string = fileDownloadQuery.generatePath(user.username, repository.projectName, file.filePath);
@@ -219,14 +221,14 @@ export class GitlabApplicants {
 
             });
 
-        app.route('/api/gitlab/download/:projectId/:blobSha')
+        app.route('/api/gitlab/download/:projectId/:blobSha/accessToken?')
             .get(cors(), async (request: Request, response: Response) => {               
-              
+              const accessToken : string = request.params.accessToken;
               let projectId : number = request.params.projectId;
               let blobSha : string = request.params.blobSha;
               let gitlabFileDownloadExecutor = new GitlabQueryExecutor<any>();
               let fileDownloadQuery : FileDownloadQuery = new FileDownloadQuery(projectId,blobSha,gitlabFileDownloadExecutor);
-              fileDownloadQuery.buildQuery();
+              fileDownloadQuery.buildQuery(accessToken);
               let gitlabFileDownloadPromise: Promise<any> = fileDownloadQuery.executeDownloadQuery();
               let gitlabFileDownload = await gitlabFileDownloadPromise;
               
