@@ -10,7 +10,8 @@
     "dev": "ts-node ./src/server.ts",
     "start": "npm run dev",
     "prod": "npm run dev",
-    "demo": "npm run dev | lt --port 6969 --subdomain recruit-back "
+    "demo": "npm run dev | lt --port 6969 --subdomain recruit-back ",
+    "prettify": "prettier --single-quote --trailing-comma es5 --write \"*(src|test)/**/*.ts\""
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "nock": "^10.0.0",
     "nodemon": "^1.18.4",
     "nyc": "^13.0.1",
+    "prettier": "1.15.1",
     "ts-mockito": "^2.3.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.3"

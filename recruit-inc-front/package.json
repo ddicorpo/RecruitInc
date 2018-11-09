@@ -12,7 +12,8 @@
     "transpile": "tsc",
     "devwatch": "tsc -w",
     "export": "npm run build && next export",
-    "demo": "npm run dev | lt --port 3000 --subdomain recruit-front "
+    "demo": "npm run dev | lt --port 3000 --subdomain recruit-front ",
+    "prettify": "prettier --single-quote --trailing-comma es5 --write \"*(pages|test|components)/**/*.*(ts|tsx|js)\""
   },
   "keywords": [],
   "author": "",
@@ -33,6 +34,7 @@
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
+    "prettier": "1.15.1",
     "ts-mockito": "^2.3.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
