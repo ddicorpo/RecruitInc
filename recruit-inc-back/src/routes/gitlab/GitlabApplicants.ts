@@ -29,12 +29,12 @@ export class GitlabApplicants {
                 logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/users/:username", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 
                 //To retrieve user information
-                let username : string = request.params.username;
+                const username : string = request.params.username;
                 let accessToken : string = request.params.accessToken;
                 if(!accessToken){
                     accessToken = "";
                 }
-                let gitlabUserQueryExecutor = new GitlabQueryExecutor<IGitlabUser[]>();
+                const gitlabUserQueryExecutor = new GitlabQueryExecutor<IGitlabUser[]>();
                 let userQuery: UserQuery = new UserQuery(username,gitlabUserQueryExecutor);
                 userQuery.buildQuery();
                 let gitlabUserPromise: Promise<IGitlabUser[]> ;
@@ -58,7 +58,7 @@ export class GitlabApplicants {
                 let user: IGitlabUser = gitlabUsers[0];
                
                  //To retrieve all the projects
-                let gitlabProjectQueryExecutor = new GitlabQueryExecutor<IGitlabProject[]>();
+                const gitlabProjectQueryExecutor = new GitlabQueryExecutor<IGitlabProject[]>();
                 let projectQuery: ProjectQuery = new ProjectQuery(userId, gitlabProjectQueryExecutor);
                 projectQuery.buildQuery(accessToken);
                 let gitlabProjectPromise: Promise<IGitlabProject[]> ;
@@ -98,7 +98,7 @@ export class GitlabApplicants {
                     
                     //To retrieve the projectStruture of each project
                     let numberOfpages: number = 1;
-                    let gitlabTreeQueryExecutor = new GitlabQueryExecutor<IGitlabRepositoryTree[]>();
+                    const gitlabTreeQueryExecutor = new GitlabQueryExecutor<IGitlabRepositoryTree[]>();
                     treeQuery = new RepositoryTreeQuery(projectId, gitlabTreeQueryExecutor);
                     treeQuery.buildQuery(numberOfpages,accessToken);
                     let gitlabTreePromise: Promise<IGitlabRepositoryTree[]> ;
@@ -150,7 +150,7 @@ export class GitlabApplicants {
                     }));
 
                     //to get all the commits of each project
-                    let gitlabCommitQueryExecutor = new GitlabQueryExecutor<IGitlabCommit[]>();
+                    const gitlabCommitQueryExecutor = new GitlabQueryExecutor<IGitlabCommit[]>();
                     commitQuery= new CommitQuery(projectId, gitlabCommitQueryExecutor);
                     commitQuery.buildQuery(accessToken);
                     let gitlabCommitPromise: Promise<IGitlabCommit[]> = commitQuery.executeQuery();
@@ -202,7 +202,7 @@ export class GitlabApplicants {
                     
                     for(let x =0; x < user.dataEntry.projectInputs[i].applicantCommits.length; x++){
                         
-                        let gitlabCommitDiffQueryExecutor = new GitlabQueryExecutor<IGitlabCommitDiff[]>();
+                        const gitlabCommitDiffQueryExecutor = new GitlabQueryExecutor<IGitlabCommitDiff[]>();
                         let commitSha1: string = user.dataEntry.projectInputs[i].applicantCommits[x].id;
                         let commitDiffQuery: CommitDiffQuery = new CommitDiffQuery(projectId, commitSha1, gitlabCommitDiffQueryExecutor);
                         commitDiffQuery.buildQuery(accessToken);
@@ -256,7 +256,7 @@ export class GitlabApplicants {
                     } 
                     for (let file of repository.projectStructure){
                         if (file.fileName == "package.json"){
-                            let gitlabFileDownloadExecutor = new GitlabQueryExecutor<any>();
+                            const gitlabFileDownloadExecutor = new GitlabQueryExecutor<any>();
                             let fileDownloadQuery : FileDownloadQuery = new FileDownloadQuery(project_id,file.fileId,gitlabFileDownloadExecutor);
                             fileDownloadQuery.buildQuery(accessToken); 
                             let gitlabFileDownloadPromise: Promise<any> ;
