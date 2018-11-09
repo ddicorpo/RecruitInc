@@ -18,7 +18,7 @@ export class CommitDiffQuery extends AbstractGitlabQuery<IGitlabCommitDiff[]> {
 
 
     public buildQuery(accessToken: string): void {
-        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/commits/" + this.commitSha1 + "/diff" + "&private_token="+ accessToken;
+        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/commits/" + this.commitSha1 + "/diff?" + "&private_token="+ accessToken;
     }
 
 }

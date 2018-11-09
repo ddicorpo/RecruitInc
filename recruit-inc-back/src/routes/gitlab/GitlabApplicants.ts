@@ -54,7 +54,7 @@ export class GitlabApplicants {
                 }
                 catch(err) {
                     logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                    response.status(500).json({error: err.toString()});
+                    //response.status(500).json({error: err.toString()});
                       return;
                   }
                
@@ -77,7 +77,7 @@ export class GitlabApplicants {
                }
                catch(err) {
                      logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                     response.status(500).json({error: err.toString()});
+                     //response.status(500).json({error: err.toString()});
                      return;
                  }
                 
@@ -117,7 +117,7 @@ export class GitlabApplicants {
                    }
                    catch(err) {
                          logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                         response.status(500).json({error: err.toString()});
+                         //response.status(500).json({error: err.toString()});
                          return;
                      }
 
@@ -169,7 +169,7 @@ export class GitlabApplicants {
                    }
                    catch(err) {
                          logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                         response.status(500).json({error: err.toString()});
+                         //response.status(500).json({error: err.toString()});
                          return;
                      }
 
@@ -216,14 +216,14 @@ export class GitlabApplicants {
                             gitlabCommitDiffPromise = commitDiffQuery.executeQuery(); 
                             gitlabDiffCommit= await gitlabCommitDiffPromise;
                             
-                            if(gitlabDiffCommit == undefined || gitlabDiffCommit == null || gitlabDiffCommit.length == 0){
+                            if(gitlabDiffCommit == undefined || gitlabDiffCommit == null ){
                                throw new Error('There are no commit diff X)');
                             }
                        }
                        catch(err) {
                              logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                             response.status(500).json({error: err.toString()});
-                             return;
+                             //response.status(500).json({error: err.toString()});
+                             continue;
                          }
                         
                         
@@ -275,7 +275,7 @@ export class GitlabApplicants {
                            }
                            catch(err) {
                                  logger.info({class: "GitlabApplicants", method: "routes", action: "/api/gitlab/matchingalgo/:username/accessToken?", value: {request, response}}, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                                 response.status(500).json({error: err.toString()});
+                                 //response.status(500).json({error: err.toString()});
                                  return;
                              }
 
