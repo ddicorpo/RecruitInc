@@ -36,12 +36,15 @@ class App extends React.Component {
 
         let url: string = "http://localhost:6969" + platform + username + "/" + accessToken;
 
-        console.log(url);
+        return fetch(url)
+            .then((response) => {
+                return Promise.resolve(response.text())
+            })
+            .then(data => {
+                this.setState({data});
+            });
     };
 
-    // "/api/github/matchingalgo/:login/:accessToken?"
-    // "/api/gitlab/matchingalgo/:username"
-    // "/api/bitbucket/applicant/:accessToken/:username"
     render(){
         return (
             <div>
@@ -59,6 +62,7 @@ class App extends React.Component {
                 <br/><br/>
                 Access Token: <input type="text" name="accessToken" onChange={this.handleAccessTokenChange.bind(this)}/>
                 <br/><br/>
+                <p>{"http://localhost:6969" + this.state.platform + this.state.username + "/" + this.state.accessToken}</p>
                 <button onClick={this.onClick}>Run matching</button>
                 <h2>Results from the query: </h2>
                 <p>{JSON.stringify(this.state.data)}</p>
