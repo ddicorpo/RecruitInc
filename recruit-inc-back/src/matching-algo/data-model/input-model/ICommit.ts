@@ -1,4 +1,4 @@
-import { ISingleFileCommit } from './ISingleFileCommit'
+import { ISingleFileCommit } from "./ISingleFileCommit"
 export interface ICommit {
     // The ID here corresponds to the commit hash
     id: string,

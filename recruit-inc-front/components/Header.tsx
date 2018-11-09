@@ -10,17 +10,17 @@ const Header = () => (
     <Link href="/">
       <a style={linkStyle}>Home</a>
     </Link>
-    <Link href="/about">
+      <Link href={"/profile"}>
+          <a style={linkStyle}>Profile</a>
+      </Link>
+    <Link href={"/about"}>
       <a style={linkStyle}>About</a>
     </Link>
-    <Link href="/admin">
+    <Link href={"/admin"}>
       <a style={linkStyle}>Admin</a>
     </Link>
-      <Link href="/hr">
+      <Link href={"/hr"}>
           <a style={linkStyle}>hr</a>
-      </Link>
-      <Link href="/bitbucket">
-          <a style={linkStyle}>bitbucket</a>
       </Link>
   </div>
 );
