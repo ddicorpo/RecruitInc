@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import bodyParser from "./bodyParser";
 import { IGitProjectInput } from "../../matching-algo/data-model/input-model/IGitProjectInput";
 import { IProjectStructure } from "../../matching-algo/data-model/input-model/IProjectStructure";
 import { ICommit } from "../../matching-algo/data-model/input-model/ICommit";
@@ -36,12 +35,6 @@ export class BitbucketApi2 {
                 let allGitProjectInput: Array<any> = new Array<any>();;
 
                 while (iterator < body.values.length) {
-                    fs.writeFile('bitbucketRepoList.json', body.values[iterator].slug, function (err) {
-                        if (err) {
-                            throw err;
-                            ;
-                        }
-                    });
 
                     let gitProjectInput: IGitProjectInput = new class implements IGitProjectInput {
                         applicantCommits: ICommit[];
@@ -77,7 +70,6 @@ export class BitbucketApi2 {
 
                     iterator++;
                 }
-                
 
                 return body;
             })
@@ -240,10 +232,6 @@ export class BitbucketApi2 {
                         let tempProjectStructure: Array<any> = new Array<any>();
                         tempProjectStructure = await this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
 
-                        // for (let value of tempProjectStructure){
-                        //     console.log("\n\n\n\n struct for loop bsssssss");
-                        //     allProjectStruct.push(value);
-                        // }
                         while (innerIterator < tempProjectStructure.length){
                             allProjectStruct.push(tempProjectStructure[innerIterator]);
                             innerIterator++;
@@ -310,9 +298,7 @@ export class BitbucketApi2 {
                 let fileIterator: number = 0;
                 let innerIterator: number = 0;
 
-                // let allProjectStruct: IProjectStructure[] = new Array();
                 let allProjectStruct: Array<any> = new Array<any>();
-                let bsCounter: number = 0;
 
                 while (fileIterator < body.values.length) {
 
@@ -320,11 +306,6 @@ export class BitbucketApi2 {
                         let tempProjectStructure: Array<any> = new Array<any>();
                         tempProjectStructure = await this.queryDirectoryInfo(accessToken, user, repoName, hash, body.values[fileIterator].path);
 
-                        // for (let value of tempProjectStructure){
-                        //     bsCounter++;
-                        //     console.log("\n\n\n this is the bsCounter " + bsCounter);
-                        //     allProjectStruct.push(value);
-                        // }
                         while (innerIterator < tempProjectStructure.length) {
                             allProjectStruct.push(tempProjectStructure[innerIterator]);
                             innerIterator++;
@@ -408,6 +389,7 @@ export class BitbucketApi2 {
                 return error;
             });
     }
+
     //This function creates directories as needed
     //So that when we try to write to a file with fs it does not throw an error
     writeToFile(content: string, path: string){
