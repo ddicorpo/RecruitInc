@@ -9,14 +9,23 @@ export class ApplicantBitbucket {
         //received the express instance from app.ts file
         app.route('/api/bitbucket/applicant/:username/:accessToken')
             .get(cors(), async (req: Request, res: Response) => {
-                if(req.params.accessToken == undefined){
+                if(req.params.accessToken == undefined || req.params.accessToken === ""){
                     logger.error({
                         class: "ApplicantBitbucket",
                         method: "route",
-                        action: "403 Error from bitbucket's route",
+                        action: "400 Error from bitbucket's route",
                         value: "AccessToken undefined"
                     }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                   res.status(403);
+                   res.status(400);
+                }
+                if(req.params.username == undefined || req.params.username === ""){
+                    logger.error({
+                        class: "ApplicantBitbucket",
+                        method: "route",
+                        action: "400 Error from bitbucket's route",
+                        value: "Username undefined"
+                    }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
+                    res.status(400);
                 }
                 try {
                     let username: string = req.params.username;

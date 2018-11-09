@@ -116,7 +116,7 @@ export class BitbucketApi2 {
                     action: "Error from bitbucket's api: QUERY USER INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                return error;
+                throw error;
             });
     }
 
@@ -176,7 +176,7 @@ export class BitbucketApi2 {
                     action: "Error from bitbucket's api: COMMIT INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                return error;
+                throw error;
             });
     }
 
@@ -238,7 +238,7 @@ export class BitbucketApi2 {
                     action: "Error from bitbucket's api: DIFF STATS: " + repoName + " hash " + hash + " token " + accessToken,
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                return error;
+                throw error;
             });
     }
     //querying to gather the project structure, this gets the initial layer of files, and calls the directory query to gather inner layers
@@ -312,7 +312,7 @@ export class BitbucketApi2 {
                     action: "Error from bitbucket's api: PROJECT STRUCT INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                return error;
+                throw error;
             });
     }
 
@@ -398,7 +398,7 @@ export class BitbucketApi2 {
                     action: "Error from bitbucket's api: DIRECTORY INFO",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                return error;
+                throw error;
             });
     }
 
@@ -437,7 +437,7 @@ export class BitbucketApi2 {
                     action: "Error from bitbucket's api: DOWNLOAD FILE",
                     value: error
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-                return error;
+                throw error;
             });
     }
 
