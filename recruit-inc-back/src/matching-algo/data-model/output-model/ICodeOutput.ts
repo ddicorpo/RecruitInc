@@ -1,4 +1,4 @@
 export interface ICodeOutput {
-    linesOfCode: number,
-    numberOfCommits: number
+  linesOfCode: number;
+  numberOfCommits: number;
 }
