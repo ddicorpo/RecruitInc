@@ -46,15 +46,35 @@ export class BitbucketApi2 {
                     //this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug)
                     let gitProjectInput: IGitProjectInput = new class implements IGitProjectInput {
                         applicantCommits: ICommit[];
-                        downloadedSourceFile: ISourceFiles[];
+                        downloadedSourceFile: ISourceFiles[] = [];
                         projectName: string;
                         projectStructure: IProjectStructure[];
                     }
 
-                    gitProjectInput.projectName = body.values[iterator].slug;
-                    gitProjectInput.applicantCommits = await this.queryCommitInfo(accessToken, user, body.values[iterator].slug);
+
+                    // gitProjectInput.projectName = body.values[iterator].slug;
+                    // gitProjectInput.applicantCommits = await this.queryCommitInfo(accessToken, user, body.values[iterator].slug);
                     gitProjectInput.projectStructure = await this.queryProjectStructInfo(accessToken, user, body.values[iterator].slug);
-                    // gitProjectInput.downloadedSourceFile = this.querySourceFileInfo(accessToken, user, body.values[iterator].slug);
+
+                    for(let i = 0; i < gitProjectInput.projectStructure.length; i++){
+
+                        if(gitProjectInput.projectStructure[i].fileName == ".gitignore" || gitProjectInput.projectStructure[i].fileName == "ConsistencyChecker.java") {
+                            let sourceFile: ISourceFiles =  new class implements ISourceFiles {
+                                filename: string;
+                                localFilePath: string;
+                                repoFilePath: string;
+                            }
+                            // let tempPath = gitProjectInput.projectStructure[i].filePath;
+                            // let split = tempPath.split('/');
+                            // let slice = split.slice(9);
+                            // let finalPath = slice.join('/');
+                            sourceFile.filename = gitProjectInput.projectStructure[i].fileName;
+                            sourceFile.repoFilePath = gitProjectInput.projectStructure[i].filePath;
+                            sourceFile.localFilePath = "something something darkside";
+                            gitProjectInput.downloadedSourceFile.push(sourceFile);
+                            await this.queryDownloadFiles(accessToken, user, body.values[iterator].slug, gitProjectInput.projectStructure[i].fileId, gitProjectInput.projectStructure[i].filePath);
+                        }
+                    }
 
                     allGitProjectInput.push(gitProjectInput);
 
@@ -230,9 +250,9 @@ export class BitbucketApi2 {
                         sourceFile.filename = body.values[fileIterator].path;
                         sourceFile.repoFilePath = body.values[fileIterator].links.self.href;
                         // TODO: Figure out how to download the raw file
-                        //"https://bitbucket.org/" + user + "/" + repoName + "/get/master.zip"
-                        sourceFile.localFilePath = "https://bitbucket.org/" + user + "/" + repoName + "/get/master.zip";
-
+                        sourceFile.localFilePath = "https://bitbucket.org/" + user + "/" + repoName + "/" + body.values[fileIterator].path;
+                        console.log("\n\n\n\n hash is this " + body.values[fileIterator].commit.hash);
+                        await this.queryDownloadFiles(accessToken, user, repoName, body.values[fileIterator].commit.hash, body.values[fileIterator].path);
 
                         allSourceFiles.push(sourceFile);
                         break;
@@ -282,7 +302,6 @@ export class BitbucketApi2 {
                     if (body.values[fileIterator].type == "commit_directory"){
                         let tempProjectStructure: Array<any> = new Array<any>();
                         tempProjectStructure = await this.queryDirectoryInfo(accessToken, user, repoName, body.values[0].commit.hash, body.values[fileIterator].path);
-                        console.log("returned dirrrr length " + tempProjectStructure.length);
 
                         // for (let value of tempProjectStructure){
                         //     console.log("\n\n\n\n struct for loop bsssssss");
@@ -304,8 +323,11 @@ export class BitbucketApi2 {
                         }
 
                         projStruct.fileId = body.values[0].commit.hash;
-                        projStruct.filePath = body.values[fileIterator].links.self.href;
-                        projStruct.fileName = body.values[fileIterator].path;
+                        projStruct.filePath = body.values[fileIterator].path;
+                        let tempPath = body.values[fileIterator].path;
+                        let split = tempPath.split('/');
+                        let slice = split.slice(split.length-1);
+                        projStruct.fileName = slice;
 
 
                         allProjectStruct.push(projStruct);
@@ -381,8 +403,11 @@ export class BitbucketApi2 {
                             filePath: string;
                         };
                         projStruct.fileId = hash;
-                        projStruct.filePath = body.values[fileIterator].links.self.href.toString();
-                        projStruct.fileName = body.values[fileIterator].path.toString();
+                        projStruct.filePath = body.values[fileIterator].path;
+                        let tempPath = body.values[fileIterator].path;
+                        let split = tempPath.split('/');
+                        let slice = split.slice(split.length-1);
+                        projStruct.fileName = slice;
 
                         allProjectStruct.push(projStruct);
                     }
@@ -410,14 +435,14 @@ export class BitbucketApi2 {
             });
     }
 
-    public async queryDownloadFiles(accessToken: string, user: string, repoName: string, hash: string, path: string, fileName: string ): Promise<any> {
+    public async queryDownloadFiles(accessToken: string, user: string, repoName: string, hash: string, fileName: string ): Promise<any> {
         logger.info({
             class: "bitbucketApi2",
             method: "queryData",
             action: "Querying bitbucket's api to download files",
             params: {accessToken, user}
         }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
-        return fetch(`https://bitbucket.org/${user}/${repoName}/src/${hash}/${path}`, {
+        return fetch(`https://api.bitbucket.org/2.0/repositories/${user}/${repoName}/src/${hash}/${fileName}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -431,6 +456,7 @@ export class BitbucketApi2 {
                     value: body
                 }, {timestamp: (new Date()).toLocaleTimeString(), processID: process.pid});
                 //do stuff here
+                console.log('\n\n\nthis is the query https://api.bitbucket.org/2.0/repositories/' + user + '/' + repoName + '/src/' + hash + '/' + fileName);
                 console.log(body);
 
                 return body;
