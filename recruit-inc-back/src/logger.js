@@ -16,10 +16,10 @@ const logger = logConfig.createLogger({
     //each transport is a different directory to display or store a log
     //log levels follows npm format (error, warn, info, verbose, debug, silly)
     transports: [
-        // new (logConfig.transports.Console)({
-        //     colorize: true,
-        //     level: 'silly'
-        // }),
+        new (logConfig.transports.Console)({
+            colorize: true,
+            level: 'silly'
+        }),
         new (logConfig.transports.File)({
             filename: `${logDirectory}/error.json`,
             level: 'error'
