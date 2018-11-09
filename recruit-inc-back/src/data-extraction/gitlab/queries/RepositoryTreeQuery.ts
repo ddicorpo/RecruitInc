@@ -2,10 +2,11 @@ import { IGitlabQueryExecutor } from '../query-executor/IGitlabQueryExecutor';
 import { AbstractGitlabQuery } from './AbstractGitlabQuery';
 import { IGitlabRepositoryTree } from '../api-entities/IGitlabRepositoryTree';
 
-export class RepositoryTreeQuery extends AbstractGitlabQuery<
-  IGitlabRepositoryTree[]
-> {
-  private projectId: number;
+
+export class RepositoryTreeQuery extends AbstractGitlabQuery<IGitlabRepositoryTree[]>{
+    private projectId: number;
+    
+
 
   public constructor(
     projectId: number,
@@ -15,11 +16,9 @@ export class RepositoryTreeQuery extends AbstractGitlabQuery<
     this.projectId = projectId;
   }
 
-  public buildQuery(): void {
-    this.query =
-      this.queryExecutor.getBaseGitlabApi() +
-      'projects/' +
-      this.projectId +
-      '/repository/tree?recursive=true';
-  }
+
+    public buildQuery(numberOfpages: number,accessToken: string): void {
+        this.query = this.queryExecutor.getBaseGitlabApi() + "projects/" + this.projectId + "/repository/tree?recursive=true&per_page=100&page=" + numberOfpages + "&private_token="+ accessToken;
+    }
+
 }

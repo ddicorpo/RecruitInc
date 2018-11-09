@@ -9,14 +9,24 @@ export abstract class AbstractGitlabQuery<Response> {
     this.queryExecutor = queryExecutor;
   }
 
-  public abstract buildQuery(): void;
+
+ public abstract buildQuery(numberOfpages,accessToken): void;
+
 
   public getQuery(): string {
     return this.query;
   }
 
-  public async executeQuery(): Promise<Response> {
-    this.response = await this.queryExecutor.executeQuery(this.query);
-    return await this.response;
-  }
+
+    public async executeQuery(): Promise<Response> {
+        this.response = await this.queryExecutor.executeQuery(this.query);
+        return await this.response;
+    }
+
+    public async executeDownloadQuery(): Promise<Response> {
+        this.response = await this.queryExecutor.executeDownloadQuery(this.query);
+        return await this.response;
+    }
+
+
 }

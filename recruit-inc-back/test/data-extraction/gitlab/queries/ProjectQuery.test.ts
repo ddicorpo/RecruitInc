@@ -13,11 +13,11 @@ describe('Project query class', function() {
       userId,
       gitlabProjectQueryExecutor
     );
-
-    projectQuery.buildQuery();
+    const accessToken: string = 'dsadfefd56fd';
+    projectQuery.buildQuery(accessToken);
     let expected: string = projectQuery.getQuery();
     let actual: string =
-      'https://gitlab.com/api/v4/users/1234/projects?statistics=true';
+      'https://gitlab.com/api/v4/users/1234/projects?statistics=true&private_token=dsadfefd56fd';
     expect(expected).to.equal(actual);
   });
 });
