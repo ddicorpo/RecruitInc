@@ -1,5 +1,5 @@
-import { ILanguageOutput } from "./ILanguageOutput"
-export interface IGitProjectOutput{
-    projectName: string,
-    languageOutput: ILanguageOutput[]
+import { ILanguageOutput } from './ILanguageOutput';
+export interface IGitProjectOutput {
+  projectName: string;
+  languageOutput: ILanguageOutput[];
 }

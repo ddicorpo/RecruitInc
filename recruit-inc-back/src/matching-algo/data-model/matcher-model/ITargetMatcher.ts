@@ -1,4 +1,4 @@
 export interface ITargetMatcher {
-    sourceFileToParse: string,
-    matchingPattern: string
+  sourceFileToParse: string;
+  matchingPattern: string;
 }
