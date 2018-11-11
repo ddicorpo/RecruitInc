@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import {BitbucketUserInfo} from "../../data-extraction/bitbucket/bitbucketUserInfo";
-const logger = require('../../logger.js');
+const logger = require('../../../src/logger.js');
 var cors = require('cors');
 
 export class ApplicantBitbucket {
