@@ -16,10 +16,11 @@ describe('Commit diff query class', function() {
       gitlabCommitDiffQueryExecutor
     );
 
-    commitDiffQuery.buildQuery();
+    const accessToken: string = 'dsadfefd56fd';
+    commitDiffQuery.buildQuery(accessToken);
     let expected: string = commitDiffQuery.getQuery();
     let actual: string =
-      'https://gitlab.com/api/v4/projects/1234/repository/commits/abcde/diff';
+      'https://gitlab.com/api/v4/projects/1234/repository/commits/abcde/diff?&private_token=dsadfefd56fd';
     expect(expected).to.equal(actual);
   });
 });

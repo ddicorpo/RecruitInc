@@ -13,11 +13,9 @@ export class ProjectQuery extends AbstractGitlabQuery<IGitlabProject[]> {
     this.userId = userId;
   }
 
-  public buildQuery(): void {
-    this.query =
-      this.queryExecutor.getBaseGitlabApi() +
-      'users/' +
-      this.userId +
-      '/projects?statistics=true';
-  }
+
+    public buildQuery(accessToken: string): void {
+        this.query = this.queryExecutor.getBaseGitlabApi() + "users/" + this.userId + "/projects?statistics=true&private_token="+ accessToken;
+    }
+
 }
