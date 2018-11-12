@@ -232,11 +232,15 @@ export class GitlabApplicants {
           try {
             gitlabCommitPromise = commitQuery.executeQuery();
             commits = await gitlabCommitPromise;
-
+            console.log(
+              'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH'
+            );
+            console.log(commits);
             if (
-              commits == undefined ||
+              !commits.length
+              /* commits == undefined ||
               commits == null ||
-              commits.length == 0
+              commits.length == 0 */
             ) {
               throw new Error('There are no commits ;)');
             }
@@ -261,7 +265,11 @@ export class GitlabApplicants {
 
           if (commits.length >= 20) {
             while (created_At.length != 0 && commits.length % 20 == 0) {
-              commitQuery.buildQueryTogetMoreData(projectId, created_At);
+              commitQuery.buildQueryTogetMoreData(
+                projectId,
+                created_At,
+                accessToken
+              );
               let newdata: Promise<
                 IGitlabCommit[]
               > = commitQuery.executeQuery();
@@ -274,6 +282,8 @@ export class GitlabApplicants {
           let commits_specific_user: IGitlabCommit[] = [];
           for (let w = 0; w < commits.length; w++) {
             if (commits[w]['author_name'] == propername) {
+              console.log(propername);
+              console.log(commits[w]['author_name']);
               commits_specific_user.push(commits[w]);
             }
           }
