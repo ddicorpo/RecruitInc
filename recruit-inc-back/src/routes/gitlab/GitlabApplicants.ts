@@ -236,12 +236,7 @@ export class GitlabApplicants {
               'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH'
             );
             console.log(commits);
-            if (
-              !commits.length
-              /* commits == undefined ||
-              commits == null ||
-              commits.length == 0 */
-            ) {
+            if (!commits.length) {
               throw new Error('There are no commits ;)');
             }
           } catch (err) {
@@ -282,8 +277,6 @@ export class GitlabApplicants {
           let commits_specific_user: IGitlabCommit[] = [];
           for (let w = 0; w < commits.length; w++) {
             if (commits[w]['author_name'] == propername) {
-              console.log(propername);
-              console.log(commits[w]['author_name']);
               commits_specific_user.push(commits[w]);
             }
           }
@@ -321,8 +314,11 @@ export class GitlabApplicants {
             try {
               gitlabCommitDiffPromise = commitDiffQuery.executeQuery();
               gitlabDiffCommit = await gitlabCommitDiffPromise;
-
-              if (gitlabDiffCommit == undefined || gitlabDiffCommit == null) {
+              console.log(
+                'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB'
+              );
+              console.log(gitlabDiffCommit);
+              if (!gitlabDiffCommit.length) {
                 throw new Error('There are no commit diff X)');
               }
             } catch (err) {
