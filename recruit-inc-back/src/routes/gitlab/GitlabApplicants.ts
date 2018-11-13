@@ -232,10 +232,6 @@ export class GitlabApplicants {
           try {
             gitlabCommitPromise = commitQuery.executeQuery();
             commits = await gitlabCommitPromise;
-            console.log(
-              'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH'
-            );
-            console.log(commits);
             if (!commits.length) {
               throw new Error('There are no commits ;)');
             }
@@ -314,10 +310,6 @@ export class GitlabApplicants {
             try {
               gitlabCommitDiffPromise = commitDiffQuery.executeQuery();
               gitlabDiffCommit = await gitlabCommitDiffPromise;
-              console.log(
-                'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB'
-              );
-              console.log(gitlabDiffCommit);
               if (!gitlabDiffCommit.length) {
                 throw new Error('There are no commit diff X)');
               }
