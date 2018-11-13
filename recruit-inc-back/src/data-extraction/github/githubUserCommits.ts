@@ -2,16 +2,22 @@ import { GithubApiV4 } from './githubApiV4';
 import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { ISingleFileCommit } from '../../matching-algo/data-model/input-model/ISingleFileCommit';
-
-const logger = require('../../logger.js');
+import { Logger } from '../../Logger';
 
 export class GithubUserCommits {
   private readonly accessToken: string;
+  private logger: Logger;
 
   public constructor(
-    accessToken: string = '37780cb5a0cd8bbedda4c9537ebf348a6e402baf'
+    accessToken: string = '37780cb5a0cd8bbedda4c9537ebf348a6e402baf',
+    logger?: Logger
   ) {
     this.accessToken = accessToken;
+    if (logger) {
+      this.logger = logger;
+    } else {
+      this.logger = new Logger();
+    }
   }
 
   async getFilesAffectedByCommit(
@@ -40,16 +46,14 @@ export class GithubUserCommits {
           "You probably triggered the api's abuse detecting mechanism."
         );
     } catch (error) {
-      logger.error(
-        {
-          class: 'GithubUserCommits',
-          method: 'getFilesAffectedByCommit',
-          action:
-            'Error while trying to obtain the files affected by a given commit.',
-          value: error.toString(),
-        },
-        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-      );
+      this.logger.error({
+        class: 'GithubUserCommits',
+        method: 'getFilesAffectedByCommit',
+        action:
+          'Error while trying to obtain the files affected by a given commit.',
+        params: {},
+        value: error.toString(),
+      });
       return result;
     }
 
@@ -180,15 +184,13 @@ export class GithubUserCommits {
           `The User (${Login}) you are trying to query does not exist.`
         );
     } catch (error) {
-      logger.error(
-        {
-          class: 'GithubUserCommits',
-          method: 'getUserID',
-          action: 'Error while trying to obtain the id of a given github user.',
-          value: error.toString(),
-        },
-        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-      );
+      this.logger.error({
+        class: 'GithubUserCommits',
+        method: 'getUserID',
+        action: 'Error while trying to obtain the id of a given github user.',
+        params: {},
+        value: error.toString(),
+      });
       return '';
     }
 
@@ -230,16 +232,14 @@ export class GithubUserCommits {
           `The Repository (${repository}) you are trying to query is empty.`
         );
     } catch (error) {
-      logger.error(
-        {
-          class: 'GithubUserCommits',
-          method: 'getCommits',
-          action:
-            'Error while trying to obtain the commits from a given github user.',
-          value: error.toString(),
-        },
-        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-      );
+      this.logger.error({
+        class: 'GithubUserCommits',
+        method: 'getCommits',
+        action:
+          'Error while trying to obtain the commits from a given github user.',
+        params: {},
+        value: error.toString(),
+      });
       return [];
     }
 

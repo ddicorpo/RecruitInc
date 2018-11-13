@@ -1,8 +1,10 @@
 import { GithubApiV4 } from './githubApiV4';
 import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
+import { Logger } from '../../Logger';
 
-const logger = require('../../logger.js');
+const logger = new Logger();
+
 const path = require('path');
 
 export class GithubRepoStructure {
@@ -64,15 +66,13 @@ export class GithubRepoStructure {
           `The Repository (${repoName}) you are trying to query is empty.`
         ); //Can't read oid of null error
     } catch (error) {
-      logger.error(
-        {
-          class: 'GithubRepoStructure',
-          method: 'getRepoStructure',
-          action: "Error while trying to obtain the repo's root tree sha.",
-          value: error.toString(),
-        },
-        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-      );
+      logger.error({
+        class: 'GithubRepoStructure',
+        method: 'getRepoStructure',
+        action: "Error while trying to obtain the repo's root tree sha.",
+        params: {},
+        value: error.toString(),
+      });
       return [];
     }
 
@@ -90,15 +90,13 @@ export class GithubRepoStructure {
           'Either you do not have access to the repository you are trying to query or it does not exist'
         );
     } catch (error) {
-      logger.error(
-        {
-          class: 'GithubRepoStructure',
-          method: 'getRepoStructure',
-          action: "Error while trying to obtain the repo's root tree sha.",
-          value: error.toString(),
-        },
-        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-      );
+      logger.error({
+        class: 'GithubRepoStructure',
+        method: 'getRepoStructure',
+        action: "Error while trying to obtain the repo's root tree sha.",
+        params: {},
+        value: error.toString(),
+      });
       return [];
     }
 

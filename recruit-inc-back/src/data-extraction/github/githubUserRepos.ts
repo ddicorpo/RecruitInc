@@ -1,15 +1,21 @@
 import { GithubApiV4 } from './githubApiV4';
 import { IGithubUser } from './api-entities/IGithubUser';
-
-const logger = require('../../logger.js');
+import { Logger } from '../../Logger';
 
 export class GithubUserRepos {
   private readonly accessToken: string;
+  private logger;
 
   public constructor(
-    accessToken: string = '37780cb5a0cd8bbedda4c9537ebf348a6e402baf'
+    accessToken: string = '37780cb5a0cd8bbedda4c9537ebf348a6e402baf',
+    logger?: Logger
   ) {
     this.accessToken = accessToken;
+    if (logger) {
+      this.logger = logger;
+    } else {
+      this.logger = new Logger();
+    }
   }
 
   async firstQuery(username: string): Promise<string> {
@@ -68,16 +74,14 @@ export class GithubUserRepos {
       if (jsonData.data == null || jsonData.data.user == null)
         throw new TypeError('The user you are trying to query does not exist');
     } catch (error) {
-      logger.error(
-        {
-          class: 'GithubUserRepos',
-          method: 'getUserRepos',
-          action:
-            'Error while trying to obtain a list of repos from a given user. (Initial Query)',
-          value: error.toString(),
-        },
-        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-      );
+      this.logger.error({
+        class: 'GithubUserRepos',
+        method: 'getUserRepos',
+        action:
+          'Error while trying to obtain a list of repos from a given user. (Initial Query)',
+        params: {},
+        value: error.toString(),
+      });
       return user;
     }
     let pageInfo = jsonData.data.user.repositories.pageInfo;
@@ -122,16 +126,14 @@ export class GithubUserRepos {
         );
         data += nextData;
       } catch (error) {
-        logger.error(
-          {
-            class: 'GithubUserRepos',
-            method: 'getUserRepos',
-            action:
-              'Error while trying to obtain a list of repos from a given user.(Subsequent Queries with endCursor)',
-            value: error.toString(),
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        this.logger.error({
+          class: 'GithubUserRepos',
+          method: 'getUserRepos',
+          action:
+            'Error while trying to obtain a list of repos from a given user.(Subsequent Queries with endCursor)',
+          params: {},
+          value: error.toString(),
+        });
         return user;
       }
     }

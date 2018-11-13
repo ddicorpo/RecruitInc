@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
-const logger = require('../../logger.js');
+import { Logger } from '../../Logger';
+
+const logger = new Logger();
 
 export class GithubApiV3 {
   public queryUserCommits(
@@ -8,15 +10,12 @@ export class GithubApiV3 {
     repo: string,
     sha: string
   ): string {
-    logger.info(
-      {
-        class: 'githubApiV3',
-        method: 'queryUserCommits',
-        action: "Querying github's api",
-        params: { owner, repo, sha },
-      },
-      { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-    );
+    logger.info({
+      class: 'githubApiV3',
+      method: 'queryUserCommits',
+      action: "Querying github's api",
+      params: { owner, repo, sha },
+    });
     return fetch(
       `https://api.github.com/repos/${owner}/${repo}/commits/${sha}`,
       {
@@ -28,28 +27,24 @@ export class GithubApiV3 {
     )
       .then(response => response.text())
       .then(body => {
-        logger.info(
-          {
-            class: 'githubApiV3',
-            method: 'queryUserCommits',
-            action: "Result from github's api",
-            value: body,
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.info({
+          class: 'githubApiV3',
+          method: 'queryUserCommits',
+          action: "Result from github's api",
+          params: {},
+          value: body,
+        });
         console.log(body);
         return body;
       })
       .catch(error => {
-        logger.error(
-          {
-            class: 'githubApiV3',
-            method: 'queryUserCommits',
-            action: "Error from github's api",
-            value: error,
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.error({
+          class: 'githubApiV3',
+          method: 'queryUserCommits',
+          action: "Error from github's api",
+          params: {},
+          value: error,
+        });
         return error;
       });
   }
@@ -60,15 +55,12 @@ export class GithubApiV3 {
     repo: string,
     sha: string
   ): string {
-    logger.info(
-      {
-        class: 'githubApiV3',
-        method: 'getGitTree',
-        action: "Querying github's api",
-        params: { owner, repo, sha },
-      },
-      { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-    );
+    logger.info({
+      class: 'githubApiV3',
+      method: 'getGitTree',
+      action: "Querying github's api",
+      params: { owner, repo, sha },
+    });
     return fetch(
       `https://api.github.com/repos/${owner}/${repo}/git/trees/${sha}?recursive=1`,
       {
@@ -80,28 +72,24 @@ export class GithubApiV3 {
     )
       .then(response => response.text())
       .then(body => {
-        logger.info(
-          {
-            class: 'githubApiV3',
-            method: 'getGitTree',
-            action: "Result from github's api",
-            value: body,
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.info({
+          class: 'githubApiV3',
+          method: 'getGitTree',
+          action: "Result from github's api",
+          params: {},
+          value: body,
+        });
         console.log(body);
         return body;
       })
       .catch(error => {
-        logger.error(
-          {
-            class: 'githubApiV3',
-            method: 'getGitTree',
-            action: "Error from github's api",
-            value: error,
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.error({
+          class: 'githubApiV3',
+          method: 'getGitTree',
+          action: "Error from github's api",
+          params: {},
+          value: error,
+        });
         return error;
       });
   }
@@ -112,15 +100,12 @@ export class GithubApiV3 {
     repo: string,
     path: string
   ): string {
-    logger.info(
-      {
-        class: 'githubApiV3',
-        method: 'downloadFile',
-        action: "Querying github's api",
-        params: { owner, repo, path },
-      },
-      { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-    );
+    logger.info({
+      class: 'githubApiV3',
+      method: 'downloadFile',
+      action: "Querying github's api",
+      params: { owner, repo, path },
+    });
     return fetch(
       `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
       {
@@ -132,28 +117,24 @@ export class GithubApiV3 {
     )
       .then(response => response.text())
       .then(body => {
-        logger.info(
-          {
-            class: 'githubApiV3',
-            method: 'downloadFile',
-            action: "Result from github's api",
-            value: body,
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.info({
+          class: 'githubApiV3',
+          method: 'downloadFile',
+          action: "Result from github's api",
+          params: {},
+          value: body,
+        });
         console.log(body);
         return body;
       })
       .catch(error => {
-        logger.error(
-          {
-            class: 'githubApiV3',
-            method: 'downloadFile',
-            action: "Error from github's api",
-            value: error,
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.error({
+          class: 'githubApiV3',
+          method: 'downloadFile',
+          action: "Error from github's api",
+          params: {},
+          value: error,
+        });
         return error;
       });
   }
