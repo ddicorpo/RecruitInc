@@ -77,11 +77,10 @@ export class BitbucketApi2 {
             const tmpfileNameArr: string[] = [
               gitProjectInput.projectStructure[i].fileName,
             ];
+
             const isSourceFile: boolean =
-              IntersectionArrayString.intersection(
-                this.setSourceFilesArray(),
-                tmpfileNameArr
-              ).length > 0;
+              IntersectionArrayString.intersection(sourceArray, tmpfileNameArr)
+                .length > 0;
             if (isSourceFile) {
               let sourceFile: ISourceFiles = new class implements ISourceFiles {
                 filename: string;
@@ -277,13 +276,21 @@ export class BitbucketApi2 {
 
           //if a commit contains a file that has status removed, the new file path does not exist, therefore the old path needs to be accessed instead
           if (body.values[singleCommitIndex].new != undefined) {
-            singleFileCommit.filePath = body.values[
+            let tempPath = body.values[
               singleCommitIndex
             ].new.links.self.href.toString();
+            let split = tempPath.split('/');
+            let slice = split.slice(9);
+            let joined = slice.join('/');
+            singleFileCommit.filePath = joined;
           } else {
-            singleFileCommit.filePath = body.values[
+            let tempPath = body.values[
               singleCommitIndex
             ].old.links.self.href.toString();
+            let split = tempPath.split('/');
+            let slice = split.slice(9);
+            let joined = slice.join('/');
+            singleFileCommit.filePath = joined;
           }
 
           allSingleCommits.push(singleFileCommit);
@@ -358,7 +365,22 @@ export class BitbucketApi2 {
             );
 
             while (innerIterator < tempProjectStructure.length) {
-              allProjectStruct.push(tempProjectStructure[innerIterator]);
+              let projStruct: IProjectStructure = new class
+                implements IProjectStructure {
+                fileId: string;
+                fileName: string;
+                filePath: string;
+              }();
+              projStruct.fileId = tempProjectStructure[
+                innerIterator
+              ].fileId.toString();
+              projStruct.fileName = tempProjectStructure[
+                innerIterator
+              ].fileName.toString();
+              projStruct.filePath = tempProjectStructure[
+                innerIterator
+              ].filePath.toString();
+              allProjectStruct.push(projStruct);
               innerIterator++;
             }
             innerIterator = 0;
@@ -378,7 +400,7 @@ export class BitbucketApi2 {
             let tempPath = body.values[fileIterator].path;
             let split = tempPath.split('/');
             let slice = split.slice(split.length - 1);
-            projStruct.fileName = slice;
+            projStruct.fileName = slice.toString();
 
             allProjectStruct.push(projStruct);
           } else {
@@ -460,7 +482,22 @@ export class BitbucketApi2 {
             );
 
             while (innerIterator < tempProjectStructure.length) {
-              allProjectStruct.push(tempProjectStructure[innerIterator]);
+              let projStruct: IProjectStructure = new class
+                implements IProjectStructure {
+                fileId: string;
+                fileName: string;
+                filePath: string;
+              }();
+              projStruct.fileId = tempProjectStructure[
+                innerIterator
+              ].fileId.toString();
+              projStruct.fileName = tempProjectStructure[
+                innerIterator
+              ].fileName.toString();
+              projStruct.filePath = tempProjectStructure[
+                innerIterator
+              ].filePath.toString();
+              allProjectStruct.push(projStruct);
               innerIterator++;
             }
             innerIterator = 0;
@@ -473,7 +510,7 @@ export class BitbucketApi2 {
               filePath: string;
             }();
             projStruct.fileId = hash;
-            projStruct.filePath = body.values[fileIterator].path;
+            projStruct.filePath = body.values[fileIterator].path.toString();
 
             //cleans the file name to make it easier to handle
             let tempPath = body.values[fileIterator].path;
