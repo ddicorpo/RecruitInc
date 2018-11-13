@@ -78,6 +78,8 @@ export class BitbucketApi2 {
               gitProjectInput.projectStructure[i].fileName,
             ];
 
+            const sourceArray = this.setSourceFilesArray();
+
             const isSourceFile: boolean =
               IntersectionArrayString.intersection(sourceArray, tmpfileNameArr)
                 .length > 0;
