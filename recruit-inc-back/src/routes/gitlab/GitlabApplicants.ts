@@ -13,9 +13,9 @@ import { CommitDiffQuery } from '../../data-extraction/gitlab/queries/CommitDiff
 import { IGitlabCommitDiff } from '../../data-extraction/gitlab/api-entities/IGitlabCommitDiff';
 import { MatcherClient } from '../../matching-algo/matcher-client/MatcherClient';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
-import { Logger } from '../../Logger';
 
-const logger = new Logger();
+var logger = require('../../logger.js');
+
 var cors = require('cors');
 
 let dataFile: string = 'log/info.json';
@@ -25,13 +25,15 @@ export class GitlabApplicants {
     app
       .route('/api/gitlab/matchingalgo/:username/:accessToken?')
       .get(cors(), async (request: Request, response: Response) => {
-        logger.info({
-          class: 'GitlabApplicants',
-          method: 'routes',
-          action: '/api/gitlab/users/:username',
-          params: {},
-          value: { request, response },
-        });
+        logger.info(
+          {
+            class: 'GitlabApplicants',
+            method: 'routes',
+            action: '/api/gitlab/users/:username',
+            value: { request, response },
+          },
+          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
+        );
 
         //To retrieve user information
         const username: string = request.params.username;
@@ -55,18 +57,23 @@ export class GitlabApplicants {
           gitlabUserPromise = userQuery.executeQuery();
           gitlabUsers = await gitlabUserPromise;
           userId = gitlabUsers[0].id;
-          if (userId == undefined || userId == null) {
-            throw new Error('Error has occured :)');
+          if (!userId) {
+            throw new Error('Error: User does not exist :S ');
           }
         } catch (err) {
-          logger.info({
-            class: 'GitlabApplicants',
-            method: 'routes',
-            action: '/api/gitlab/matchingalgo/:username/accessToken?',
-            params: {},
-            value: { request, response },
-          });
-          //response.status(500).json({error: err.toString()});
+          logger.info(
+            {
+              class: 'GitlabApplicants',
+              method: 'routes',
+              action: 'User does not exist',
+              value: { request, response },
+            },
+            {
+              timestamp: new Date().toLocaleTimeString(),
+              processID: process.pid,
+            }
+          );
+          response.status(500).json({ error: err.toString() });
           return;
         }
 
@@ -88,22 +95,23 @@ export class GitlabApplicants {
           gitlabProjectPromise = projectQuery.executeQuery();
           gitlabProjects = await gitlabProjectPromise;
 
-          if (
-            gitlabProjects == undefined ||
-            gitlabProjects == null ||
-            gitlabProjects.length == 0
-          ) {
-            throw new Error('This user has no projects ;)');
+          if (!gitlabProjects.length) {
+            throw new Error('This user has no projects :( ');
           }
         } catch (err) {
-          logger.info({
-            class: 'GitlabApplicants',
-            method: 'routes',
-            action: '/api/gitlab/matchingalgo/:username/accessToken?',
-            params: {},
-            value: { request, response },
-          });
-          //response.status(500).json({error: err.toString()});
+          logger.info(
+            {
+              class: 'GitlabApplicants',
+              method: 'routes',
+              action: 'This user has no projects :(',
+              value: { request, response },
+            },
+            {
+              timestamp: new Date().toLocaleTimeString(),
+              processID: process.pid,
+            }
+          );
+          response.status(500).json({ error: err.toString() });
           return;
         }
 
@@ -146,24 +154,22 @@ export class GitlabApplicants {
           try {
             gitlabTreePromise = treeQuery.executeQuery();
             project = await gitlabTreePromise;
-
-            if (
-              project == undefined ||
-              project == null ||
-              project.length == 0
-            ) {
+            if (!project.length) {
               throw new Error('This is an empty project ;)');
             }
           } catch (err) {
-            logger.info({
-              class: 'GitlabApplicants',
-              method: 'routes',
-              action: '/api/gitlab/matchingalgo/:username/accessToken?',
-              params: {},
-              value: { request, response },
-            });
-            //response.status(500).json({error: err.toString()});
-            return;
+            logger.info(
+              {
+                class: 'GitlabApplicants',
+                method: 'routes',
+                action: 'This is an empty project :/',
+                value: { request, response },
+              },
+              {
+                timestamp: new Date().toLocaleTimeString(),
+                processID: process.pid,
+              }
+            );
           }
 
           if (project.length >= 100) {
@@ -185,9 +191,14 @@ export class GitlabApplicants {
             }
           }
 
-          const project_with_blobs = project.filter(function(el) {
-            return project_with_tree.indexOf(el) < 0;
-          });
+          let project_with_blobs;
+          try {
+            project_with_blobs = project.filter(function(el) {
+              return project_with_tree.indexOf(el) < 0;
+            });
+          } catch (err) {
+            continue;
+          }
 
           gitlabProjects[i].projectStruture = [];
           gitlabProjects[i].projectStruture = gitlabProjects[
@@ -221,23 +232,23 @@ export class GitlabApplicants {
           try {
             gitlabCommitPromise = commitQuery.executeQuery();
             commits = await gitlabCommitPromise;
-
-            if (
-              commits == undefined ||
-              commits == null ||
-              commits.length == 0
-            ) {
+            if (!commits.length) {
               throw new Error('There are no commits ;)');
             }
           } catch (err) {
-            logger.info({
-              class: 'GitlabApplicants',
-              method: 'routes',
-              action: '/api/gitlab/matchingalgo/:username/accessToken?',
-              params: {},
-              value: { request, response },
-            });
-            //response.status(500).json({error: err.toString()});
+            logger.info(
+              {
+                class: 'GitlabApplicants',
+                method: 'routes',
+                action: 'there are no commits',
+                value: { request, response },
+              },
+              {
+                timestamp: new Date().toLocaleTimeString(),
+                processID: process.pid,
+              }
+            );
+            response.status(500).json({ error: err.toString() });
             return;
           }
 
@@ -245,7 +256,11 @@ export class GitlabApplicants {
 
           if (commits.length >= 20) {
             while (created_At.length != 0 && commits.length % 20 == 0) {
-              commitQuery.buildQueryTogetMoreData(projectId, created_At);
+              commitQuery.buildQueryTogetMoreData(
+                projectId,
+                created_At,
+                accessToken
+              );
               let newdata: Promise<
                 IGitlabCommit[]
               > = commitQuery.executeQuery();
@@ -295,19 +310,22 @@ export class GitlabApplicants {
             try {
               gitlabCommitDiffPromise = commitDiffQuery.executeQuery();
               gitlabDiffCommit = await gitlabCommitDiffPromise;
-
-              if (gitlabDiffCommit == undefined || gitlabDiffCommit == null) {
+              if (!gitlabDiffCommit.length) {
                 throw new Error('There are no commit diff X)');
               }
             } catch (err) {
-              logger.info({
-                class: 'GitlabApplicants',
-                method: 'routes',
-                action: '/api/gitlab/matchingalgo/:username/accessToken?',
-                params: {},
-                value: { request, response },
-              });
-              //response.status(500).json({error: err.toString()});
+              logger.info(
+                {
+                  class: 'GitlabApplicants',
+                  method: 'routes',
+                  action: 'There are no commit diff',
+                  value: { request, response },
+                },
+                {
+                  timestamp: new Date().toLocaleTimeString(),
+                  processID: process.pid,
+                }
+              );
               continue;
             }
 
@@ -372,14 +390,19 @@ export class GitlabApplicants {
                   throw new Error('There is no downlaod file :D');
                 }
               } catch (err) {
-                logger.info({
-                  class: 'GitlabApplicants',
-                  method: 'routes',
-                  action: '/api/gitlab/matchingalgo/:username/accessToken?',
-                  params: {},
-                  value: { request, response },
-                });
-                //response.status(500).json({error: err.toString()});
+                logger.info(
+                  {
+                    class: 'GitlabApplicants',
+                    method: 'routes',
+                    action: 'There is no download file',
+                    value: { request, response },
+                  },
+                  {
+                    timestamp: new Date().toLocaleTimeString(),
+                    processID: process.pid,
+                  }
+                );
+                response.status(500).json({ error: err.toString() });
                 return;
               }
 
