@@ -1,5 +1,6 @@
 import * as fileSystem from 'fs';
 import * as logConfig from 'winston';
+import * as util from 'util';
 
 interface ILoggerParam {
   class: string;
@@ -117,7 +118,7 @@ export class Logger implements ILogger {
     param: ILoggerParam,
     context: ILoggerContextInfo
   ): string {
-    return JSON.stringify({
+    return util.inspect({
       param,
       context,
     });
