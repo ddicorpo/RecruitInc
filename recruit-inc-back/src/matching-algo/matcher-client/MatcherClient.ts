@@ -7,18 +7,25 @@ import { allMatchers } from './AllMatchers';
 import { Technologies } from '../data-model/output-model/Technologies';
 import { IFrameworkOutput } from '../data-model/output-model/IFrameworkOutput';
 import { IGitProjectSummary } from '../data-model/output-model/IGitProjectSummary';
+import { Logger } from '../../Logger';
 
 export class MatcherClient {
   private languageMatchers: AbstractLanguageMatcher[] = [];
   private dataEntry: IDataEntry;
-  private logger = require('../../logger.js');
+  private logger: Logger;
 
   public constructor(
     dataEntry: IDataEntry,
-    languageMatchers: AbstractLanguageMatcher[] = allMatchers
+    languageMatchers: AbstractLanguageMatcher[] = allMatchers,
+    logger?: Logger
   ) {
     this.dataEntry = dataEntry;
     this.languageMatchers = languageMatchers;
+    if (logger) {
+      this.logger = logger;
+    } else {
+      this.logger = new Logger();
+    }
   }
 
   public execute(): IGitProjectSummary {
@@ -26,15 +33,12 @@ export class MatcherClient {
 
     const projectOutputs: IGitProjectOutput[] = [];
     for (const project of allProjects) {
-      this.logger.info(
-        {
-          class: 'MatcherClient',
-          method: 'execute',
-          action: 'Start Analysis with project ' + project.projectName,
-          params: {},
-        },
-        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-      );
+      this.logger.info({
+        class: 'MatcherClient',
+        method: 'execute',
+        action: 'Start Analysis with project ' + project.projectName,
+        params: {},
+      });
       const languageOutputs: ILanguageOutput[] = [];
 
       for (const matcher of this.languageMatchers) {
@@ -48,15 +52,12 @@ export class MatcherClient {
       };
 
       projectOutputs.push(projectOutput);
-      this.logger.info(
-        {
-          class: 'MatcherClient',
-          method: 'execute',
-          action: 'End Analysis with projectOuput ' + projectOutput.projectName,
-          params: {},
-        },
-        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-      );
+      this.logger.info({
+        class: 'MatcherClient',
+        method: 'execute',
+        action: 'End Analysis with projectOuput ' + projectOutput.projectName,
+        params: {},
+      });
     }
 
     const languages: ILanguageOutput[] = [];

@@ -10,8 +10,9 @@ import { MatcherClient } from '../../matching-algo/matcher-client/MatcherClient'
 import { IGitProjectOutput } from '../../matching-algo/data-model/output-model/IGitProjectOutput';
 import { GithubDataExtraction } from '../../data-extraction/github/githubDataExtraction';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
+import { Logger } from '../../Logger';
 
-var logger = require('../../logger.js');
+const logger = new Logger();
 
 const cors = require('cors');
 
@@ -214,15 +215,13 @@ export class Candidate {
     app
       .route('/api/github/matchingalgo/:login/:accessToken?')
       .get(cors(), async (req: Request, res: Response) => {
-        logger.info(
-          {
-            class: 'Candidate',
-            method: 'routes',
-            action: '/api/github/matchingalgo/:login/accessToken?',
-            value: { req, res },
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.info({
+          class: 'Candidate',
+          method: 'routes',
+          action: '/api/github/matchingalgo/:login/accessToken?',
+          params: {},
+          value: { req, res },
+        });
         let login: string = req.params.login;
         let accessToken: string = req.params.accessToken;
         let output: IGitProjectSummary;

@@ -2,9 +2,10 @@ import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { techSourceFiles } from '../../matching-algo/data-model/input-model/TechSourceFiles';
 import { IntersectionArrayString } from '../../util/IntersectionArrayString';
+import { Logger } from '../../Logger';
 
 const fs = require('fs');
-const logger = require('../../logger.js');
+const logger = new Logger();
 
 export class GithubDownloadedFilesPath {
   private readonly accessToken: string;
@@ -44,15 +45,13 @@ export class GithubDownloadedFilesPath {
           'The file you are trying to download does not exist.'
         );
     } catch (error) {
-      logger.error(
-        {
-          class: 'GithubDownloadedFilesPath',
-          method: 'downloadFile',
-          action: 'Error while trying to obtain the contents of a file.',
-          value: error.toString(),
-        },
-        { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-      );
+      logger.error({
+        class: 'GithubDownloadedFilesPath',
+        method: 'downloadFile',
+        action: 'Error while trying to obtain the contents of a file.',
+        params: {},
+        value: error.toString(),
+      });
       return data;
     }
     let content = Buffer.from(jsonData.content, 'base64').toString();

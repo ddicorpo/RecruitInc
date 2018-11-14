@@ -3,7 +3,9 @@ import { IStackOverFlowNetwork } from './api-entities/IStackOverFlowNetwork';
 import { IStackOverFlowError } from './api-entities/IStackOverFlowError';
 import { IStackOverFlowBadges } from './api-entities/IStackOverFlowBadges';
 import { IStackOverFlowProfile } from './api-entities/IStackOverFlowProfile';
-var logger = require('../../logger.js');
+import { Logger } from '../../Logger';
+
+const logger = new Logger();
 const API_ROOT_URL: string = 'https://api.stackexchange.com/2.2/users/';
 export class StackOverflowAPI {
   public queryProfileData(
@@ -38,43 +40,34 @@ export class StackOverflowAPI {
     fetchUrl: string,
     methodInvok: string
   ): any {
-    logger.info(
-      {
-        class: 'StackOverflowAPI',
-        method: methodInvok,
-        action: 'Query StackOverFlow API for a user Profile',
-        params: { userId },
-      },
-      { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-    );
+    logger.info({
+      class: 'StackOverflowAPI',
+      method: methodInvok,
+      action: 'Query StackOverFlow API for a user Profile',
+      params: { userId },
+    });
     return fetch(fetchUrl, {
       method: 'GET',
     })
       .then(response => response.text())
       .then(body => {
-        logger.info(
-          {
-            class: 'StackOverflowAPI',
-            method: methodInvok,
-            action: 'Query StackOverFlow API for a user Profile',
-            params: { userId },
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.info({
+          class: 'StackOverflowAPI',
+          method: methodInvok,
+          action: 'Query StackOverFlow API for a user Profile',
+          params: { userId },
+        });
 
         console.log('...Successful Query...');
         return JSON.parse(body);
       })
       .catch(error => {
-        logger.error(
-          {
-            class: 'StackOverflowAPI',
-            method: methodInvok,
-            action: 'Query StackOverFlow API for a user Profile',
-            params: { userId },
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.error({
+          class: 'StackOverflowAPI',
+          method: methodInvok,
+          action: 'Query StackOverFlow API for a user Profile',
+          params: { userId },
+        });
         console.log('Error with the Query...');
         console.error(error);
         return error;

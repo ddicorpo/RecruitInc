@@ -10,6 +10,7 @@ import { IMatcherConfig } from '../data-model/matcher-model/IMatcherConfig';
 import { IFrameworkOutput } from '../data-model/output-model/IFrameworkOutput';
 import { ILanguageOutput } from '../data-model/output-model/ILanguageOutput';
 import { IntersectionArrayString } from '../../util/IntersectionArrayString';
+import { Logger } from '../../Logger';
 
 interface ICommitAnalysis {
   linesOfCodes: number;
@@ -17,14 +18,19 @@ interface ICommitAnalysis {
 }
 
 export abstract class AbstractMatcher {
-  logger = require('../../logger.js');
   protected technology: Technologies;
   protected projectInput: IGitProjectInput;
   protected matchingConfig: IMatcherConfig;
+  protected logger: Logger;
 
-  public constructor(matcherConfig: IMatcherConfig) {
+  public constructor(matcherConfig: IMatcherConfig, logger?: Logger) {
     this.technology = matcherConfig.technology;
     this.matchingConfig = matcherConfig;
+    if (logger) {
+      this.logger = logger;
+    } else {
+      this.logger = new Logger();
+    }
   }
 
   public setProjectInput(projectInput: IGitProjectInput) {
@@ -67,18 +73,12 @@ export abstract class AbstractMatcher {
               matchingTarget.matchingPattern
             );
           } catch (exception) {
-            this.logger.error(
-              {
-                class: this.technology + 'Matcher',
-                method: 'processSourceFiles',
-                action: exception,
-                params: { filename },
-              },
-              {
-                timestamp: new Date().toLocaleTimeString(),
-                processID: process.pid,
-              }
-            );
+            this.logger.error({
+              class: this.technology + 'Matcher',
+              method: 'processSourceFiles',
+              action: exception,
+              params: { filename },
+            });
             continue;
           } finally {
             const processedSourceFile: IProcessedSourceFile = {

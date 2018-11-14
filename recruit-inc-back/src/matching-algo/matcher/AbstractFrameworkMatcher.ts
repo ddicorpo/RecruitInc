@@ -41,17 +41,14 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
         break;
       }
     }
-    this.logger.info(
-      {
-        class: this.technology + 'Matcher',
-        method: 'computeCodeOutput',
-        action:
-          '"returning code output with " + codeOutput.linesOfCode + ", "\n' +
-          '        + codeOutput.numberOfCommits',
-        params: {},
-      },
-      { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-    );
+    this.logger.info({
+      class: this.technology + 'Matcher',
+      method: 'computeCodeOutput',
+      action:
+        '"returning code output with " + codeOutput.linesOfCode + ", "\n' +
+        '        + codeOutput.numberOfCommits',
+      params: {},
+    });
     return codeOutput;
   }
 

@@ -3,8 +3,10 @@ import { GithubToken } from '../../data-extraction/github/GithubToken';
 import { BitbucketToken } from '../../data-extraction/bitbucket/BitbucketToken';
 //import {GitlabToken} from "../../data-extraction/gitlab/GitlabToken";
 import * as fs from 'fs';
+import { Logger } from '../../Logger';
 
-const logger = require('../../logger.js');
+const logger = new Logger();
+
 let cors = require('cors');
 let userFileName: string = 'src/routes/OAuth/users.json';
 
@@ -13,15 +15,13 @@ export class OAuthCode {
     app
       .route('/api/oauth/oauthcode/:platform/:code/:username')
       .get(cors(), async (request: Request, response: Response) => {
-        logger.info(
-          {
-            class: 'OAuthCode',
-            method: 'routes',
-            action: '/api/OAuth/OAuthCode/:code',
-            value: { request, response },
-          },
-          { timestamp: new Date().toLocaleTimeString(), processID: process.pid }
-        );
+        logger.info({
+          class: 'OAuthCode',
+          method: 'routes',
+          action: '/api/OAuth/OAuthCode/:code',
+          params: {},
+          value: { request, response },
+        });
 
         let code = request.params.code;
         let platform = request.params.platform;
@@ -81,34 +81,22 @@ export class OAuthCode {
 
           fs.writeFile(userFileName, JSON.stringify(user, null, 2), error => {
             if (error) {
-              logger.info(
-                {
-                  class: 'OAuthCode',
-                  method:
-                    'route /api/oauth/oauthcode/:platform/:code/:username',
-                  action: 'ERROR writing access token to user file',
-                  value: error,
-                },
-                {
-                  timestamp: new Date().toLocaleTimeString(),
-                  processID: process.pid,
-                }
-              );
+              logger.info({
+                class: 'OAuthCode',
+                method: 'route /api/oauth/oauthcode/:platform/:code/:username',
+                action: 'ERROR writing access token to user file',
+                params: {},
+                value: error,
+              });
               returnCode = 400;
             } else {
-              logger.info(
-                {
-                  class: 'OAuthCode',
-                  method:
-                    'route /api/oauth/oauthcode/:platform/:code/:username',
-                  action: 'Writing the access token to user file',
-                  value: 'SUCCESS file changed: added token: ' + token,
-                },
-                {
-                  timestamp: new Date().toLocaleTimeString(),
-                  processID: process.pid,
-                }
-              );
+              logger.info({
+                class: 'OAuthCode',
+                method: 'route /api/oauth/oauthcode/:platform/:code/:username',
+                action: 'Writing the access token to user file',
+                params: {},
+                value: { token: 'SUCCESS file changed: added token: ' + token },
+              });
             }
           });
         }
