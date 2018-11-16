@@ -17,8 +17,6 @@ import { Logger } from '../../Logger';
 
 const logger = new Logger();
 
-let dataFile: string = 'log/info.json';
-
 export class GitlabApplicants {
   public routes(app): void {
     app

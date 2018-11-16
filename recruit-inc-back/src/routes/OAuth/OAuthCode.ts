@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { GithubToken } from '../../data-extraction/github/GithubToken';
 import { BitbucketToken } from '../../data-extraction/bitbucket/BitbucketToken';
-//import {GitlabToken} from "../../data-extraction/gitlab/GitlabToken";
 import * as fs from 'fs';
 import { Logger } from '../../Logger';
 

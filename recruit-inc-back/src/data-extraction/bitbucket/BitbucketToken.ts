@@ -3,8 +3,8 @@ import { Logger } from '../../Logger';
 
 const logger = new Logger();
 const url: string = 'https://bitbucket.org/site/oauth2/access_token';
-const client_id: string = 'thwTU3aUh8ZBQNXyXA';
-const client_secret: string = 'QpHyd9z5PfxUSW4m9j46vtQccXLTDZvQ';
+const client_id: string = process.env.BITBUCKET_CLIENT_ID;
+const client_secret: string = process.env.BITBUCKET_CLIENT_SECRET;
 
 export class BitbucketToken {
   async getToken(code: string) {
