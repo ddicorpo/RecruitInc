@@ -2,28 +2,16 @@
  * This class is a demo, how we can implement the CRUD operation
  */
 import { Request, Response } from 'express';
-import myData = require('../fakeStorage.json');
-var cors = require('cors');
-//load our local database file
-export class Examples implements SampleInterface {
+
+export class Examples {
   public routes(app): void {
-    //received the express instance from app.ts file
-    app.route('/api/hi').get(cors(), (req: Request, res: Response) => {
-      res.status(200).send(myData);
-    });
-
-    app.route('/api/:id').get((req: Request, res: Response) => {
-      let id = req.params.id;
-      res.status(200).send(myData[id]);
+    app.route('/api/hi').get((req: Request, res: Response) => {
+      // Sample ENV toggle... do not use for feature toggle
+      if (process.env.NODE_ENV === 'production') {
+        res.status(404).send('Disabled in Production');
+      } else {
+        res.status(200).send('Bonjour/Hi');
+      }
     });
   }
-
-  // Sample function testable with unit test
-  sum(var1: number, var2: number): number {
-    return var1 + var2;
-  }
-}
-// Sample interface
-interface SampleInterface {
-  sum(var1: number, var2: number): number;
 }

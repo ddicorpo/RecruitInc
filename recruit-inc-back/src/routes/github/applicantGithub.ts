@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-import { Query } from '../../data-extraction/github/query';
-import * as fs from 'fs';
+import { readFile, writeFile, existsSync } from 'fs';
 import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
 import { GithubUserCommits } from '../../data-extraction/github/githubUserCommits';
 
@@ -14,7 +13,7 @@ export class ApplicantGithub {
       .route('/api/github/applicant/admin')
       .get(cors(), (req: Request, res: Response) => {
         this.buildFakeStorage();
-        fs.readFile(dataFile, (err, data) => {
+        readFile(dataFile, (err, data) => {
           if (err) {
             res.status(200).send(err);
             throw err;
@@ -139,8 +138,8 @@ export class ApplicantGithub {
   }
 
   private buildFakeStorage(): void {
-    if (!fs.existsSync(dataFile)) {
-      fs.writeFile(dataFile, '', err => {
+    if (!existsSync(dataFile)) {
+      writeFile(dataFile, '', err => {
         if (err) throw err;
         console.log('The file has been created!');
       });

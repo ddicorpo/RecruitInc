@@ -7,6 +7,7 @@ import { GitlabApplicants } from './routes/gitlab/GitlabApplicants';
 import { Candidate } from './routes/github/candidate';
 import { ApplicantBitbucket } from './routes/bitbucket/applicantBitbucket';
 import { OAuthCode } from './routes/OAuth/OAuthCode';
+var cors = require('cors');
 
 class App {
   public app: express.Application;
@@ -20,7 +21,24 @@ class App {
   public oauthCodeRoute: OAuthCode = new OAuthCode();
 
   constructor() {
-    this.app = express(); //run the express instance and store in app
+    // Import all env. variable
+    require('dotenv').config();
+
+    let whitelistDomain: string[] = [process.env.DOMAIN_FONT_END];
+    var corsOptionsDelegate = function(req, callback) {
+      var corsOptions;
+      if (whitelistDomain.indexOf(req.header('Origin')) !== -1) {
+        corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+      } else if (process.env.NODE_ENV === 'dev') {
+        corsOptions = { origin: false }; // disable CORS for this request
+      } else {
+        corsOptions = { origin: callback(new Error("Can't process request")) };
+      }
+      callback(null, corsOptions); // callback expects two parameters: error and options
+    };
+
+    this.app = express();
+    this.app.use(cors(corsOptionsDelegate));
     this.config();
     this.myDataRoute.routes(this.app);
     this.candidateDataRoute.routes(this.app);
@@ -31,7 +49,6 @@ class App {
     this.candidateDataRout.routes(this.app);
     this.oauthCodeRoute.routes(this.app);
   }
-
   private config(): void {
     // support application/json type post data
     this.app.use(bodyParser.json());
