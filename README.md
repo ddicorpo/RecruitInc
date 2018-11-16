@@ -19,6 +19,7 @@
 - Open Two terminal windows 
 
 ### Start the Back-End Node 
+ - Create your `.env` file based on `.env.example`
  - The back-end is inspired from the boiler plate: https://github.com/priyesh18/typescript-node-api
  - Navigate to the folder `recruit-inc-back`
  - You always need to install the node_modules folder
@@ -77,3 +78,12 @@ These data are from the other node. There are contained in `./src/fakeStorage.js
 - This is a tunnel from the internet to your computer, don't forget to close it when your done, your terminal needs to run
 
 ### DevOps Pipeline Step
+
+
+### Back-End Deploy Production
+- Make sure to set the `NODE_END` variable to `production` in `.env`
+- Set all `token` and `credential` 
+- Add Front-End domain name to `DOMAIN_FRONT_END` variable in `.env` folder
+- Run the command `npm run prod`
+
+
