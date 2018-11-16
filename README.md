@@ -73,7 +73,7 @@ These data are from the other node. There are contained in `./src/fakeStorage.js
 ## Deployement Instructions
 
 You need to deploy the back-end node and the front-end node. You also need to set two `.env`
-files for each node.
+files (one for each node).
 
 ### Back-End Node Deployement
 - Make sure to set the `NODE_END` variable to `production` in `.env`
@@ -98,12 +98,12 @@ files for each node.
 
 
  
-#### Run Unit Test (Front-End)
+### Run Unit Test (Front-End)
  - The test are written in `test` folder
  - You can run all unit test by entering the command `npm run test`
  - You should receive results in your terminal
 
-#### Run Unit Test Coverage (Front-End)
+### Run Unit Test Coverage (Front-End)
  - You can get a unit test coverage report using the script writtien in `pakage.json`
  - Run the command: `npm run testWithCoverage` to run the test coverage
  - The command will create a folder: `coverage` with all results inside
