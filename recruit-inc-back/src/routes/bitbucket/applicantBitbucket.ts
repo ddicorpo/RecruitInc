@@ -1,14 +1,13 @@
 import { Request, Response } from 'express';
 import { BitbucketUserInfo } from '../../data-extraction/bitbucket/bitbucketUserInfo';
 import { Logger } from '../../Logger';
-var cors = require('cors');
 const logger = new Logger();
 export class ApplicantBitbucket {
   public routes(app): void {
     //received the express instance from app.ts file
     app
       .route('/api/bitbucket/applicant/:username/:accessToken')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         if (
           req.params.accessToken == undefined ||
           req.params.accessToken === ''

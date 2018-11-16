@@ -5,7 +5,6 @@ import { IStackOverFlowProfile } from '../../data-extraction/stackoverflow/api-e
 import { IStackOverFlowError } from '../../data-extraction/stackoverflow/api-entities/IStackOverFlowError';
 import { IStackOverFlowNetwork } from '../../data-extraction/stackoverflow/api-entities/IStackOverFlowNetwork';
 import { IStackOverFlowBadges } from '../../data-extraction/stackoverflow/api-entities/IStackOverFlowBadges';
-var cors = require('cors');
 let pathToFakeStorage = 'log/StackOverFlowFakeStorage.json';
 let queryProfile: StackOverflowQueries;
 
@@ -17,7 +16,7 @@ export class StackOverflowRoute {
     //received the express instance from app.ts file
     app
       .route('/api/soverflow/applicant/profile/:userId')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         this.buildStorage();
         let userId: string = req.params.userId;
         let profileData:
@@ -28,7 +27,7 @@ export class StackOverflowRoute {
       });
     app
       .route('/api/soverflow/applicant/network/:userId')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         this.buildStorage();
         let userId: string = req.params.userId;
         let networkData:
@@ -39,7 +38,7 @@ export class StackOverflowRoute {
       });
     app
       .route('/api/soverflow/applicant/badges/:userId')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         this.buildStorage();
         let userId: string = req.params.userId;
         let badgesData:

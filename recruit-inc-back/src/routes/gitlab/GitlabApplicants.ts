@@ -17,15 +17,13 @@ import { Logger } from '../../Logger';
 
 const logger = new Logger();
 
-var cors = require('cors');
-
 let dataFile: string = 'log/info.json';
 
 export class GitlabApplicants {
   public routes(app): void {
     app
       .route('/api/gitlab/matchingalgo/:username/:accessToken?')
-      .get(cors(), async (request: Request, response: Response) => {
+      .get(async (request: Request, response: Response) => {
         logger.info({
           class: 'GitlabApplicants',
           method: 'routes',
@@ -415,7 +413,7 @@ export class GitlabApplicants {
 
     app
       .route('/api/gitlab/download/:projectId/:blobSha/accessToken?')
-      .get(cors(), async (request: Request, response: Response) => {
+      .get(async (request: Request, response: Response) => {
         const accessToken: string = request.params.accessToken;
         let projectId: number = request.params.projectId;
         let blobSha: string = request.params.blobSha;

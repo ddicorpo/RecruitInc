@@ -3,24 +3,17 @@ import { GithubUserInfo } from '../../data-extraction/github/githubUserInfo';
 import { GithubUserRepos } from '../../data-extraction/github/githubUserRepos';
 import { GithubRepoStructure } from '../../data-extraction/github/githubRepoStructure';
 import { GithubDownloadedFilesPath } from '../../data-extraction/github/githubDownloadedFilesPath';
-import { GithubUserCommits } from '../../data-extraction/github/githubUserCommits';
-//import { Query } from "../../data-extraction/github/query";
 import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
-import { MatcherClient } from '../../matching-algo/matcher-client/MatcherClient';
-import { IGitProjectOutput } from '../../matching-algo/data-model/output-model/IGitProjectOutput';
 import { GithubDataExtraction } from '../../data-extraction/github/githubDataExtraction';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { Logger } from '../../Logger';
-
 const logger = new Logger();
-
-const cors = require('cors');
 
 export class Candidate {
   public routes(app): void {
     app
       .route('/api/github/candidate/hr/:location')
-      .get(cors(), async (request: Request, response: Response) => {
+      .get(async (request: Request, response: Response) => {
         let githubUser: IGithubUser[];
 
         let location: string = request.params.location;
@@ -86,7 +79,7 @@ export class Candidate {
 
     app
       .route('/api/github/candidate/repo/:username')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         let username: string = req.params.username;
         let user: IGithubUser = { login: username, url: '', createdAt: '' };
         let query: GithubUserRepos = new GithubUserRepos();
@@ -97,7 +90,7 @@ export class Candidate {
 
     app
       .route('/api/github/candidate/struct/:owner/:repoName')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         let owner: string = req.params.owner;
         let repoName: string = req.params.repoName;
 
@@ -108,7 +101,7 @@ export class Candidate {
 
     app
       .route('/api/github/candidate/structt')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         let user: IGithubUser = {
           login: 'MewtR',
           createdAt: '',
@@ -140,7 +133,7 @@ export class Candidate {
 
     app
       .route('/api/github/candidate/download/:owner/:repoName/*')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         console.log(req.params);
         let owner: string = req.params.owner;
         let repoName: string = req.params.repoName;
@@ -155,7 +148,7 @@ export class Candidate {
       });
     app
       .route('/api/github/candidate/downloadforuser')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         let user: IGithubUser = {
           login: 'MewtR',
           createdAt: '',
@@ -194,7 +187,7 @@ export class Candidate {
 
     app
       .route('/api/githubainofevents/:login/:accessToken?')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         let login: string = req.params.login;
         let email: string = req.params.email;
         let accessToken: string = req.params.accessToken;
@@ -214,7 +207,7 @@ export class Candidate {
 
     app
       .route('/api/github/matchingalgo/:login/:accessToken?')
-      .get(cors(), async (req: Request, res: Response) => {
+      .get(async (req: Request, res: Response) => {
         logger.info({
           class: 'Candidate',
           method: 'routes',
