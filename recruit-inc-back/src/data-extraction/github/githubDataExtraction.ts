@@ -11,7 +11,7 @@ export class GithubDataExtraction {
   private readonly accessToken: string;
 
   public constructor(
-    accessToken: string = '37780cb5a0cd8bbedda4c9537ebf348a6e402baf'
+    accessToken: string = process.env.GITHUB_DEFAULT_AUTH_TOKEN
   ) {
     this.accessToken = accessToken;
   }

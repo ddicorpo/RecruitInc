@@ -9,7 +9,7 @@ export class GithubUserCommits {
   private logger: Logger;
 
   public constructor(
-    accessToken: string = '37780cb5a0cd8bbedda4c9537ebf348a6e402baf',
+    accessToken: string = process.env.GITHUB_DEFAULT_AUTH_TOKEN,
     logger?: Logger
   ) {
     this.accessToken = accessToken;
