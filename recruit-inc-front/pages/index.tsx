@@ -1,9 +1,11 @@
 import * as React from 'react';
 import Header from '../components/Header';
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 
 class App extends React.Component {
   componentDidMount() {
-    fetch('http://localhost:6969/api/hi')
+    fetch(`${publicRuntimeConfig.BACK_END_URL}/api/hi`)
       .then(response => {
         return Promise.resolve(response.json());
       })

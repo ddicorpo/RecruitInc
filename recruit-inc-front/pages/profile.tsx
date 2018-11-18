@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Header from '../components/Header';
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 
 class App extends React.Component {
   state = {
@@ -41,9 +43,9 @@ class App extends React.Component {
 
     if (url.indexOf('code=') != -1) {
       return fetch(
-        `http://localhost:6969/api/oauth/oauthcode/${platform}/${code}/${
-          this.state.username
-        }`
+        `${
+          publicRuntimeConfig.BACK_END_URL
+        }/api/oauth/oauthcode/${platform}/${code}/${this.state.username}`
       )
         .then(response => {
           return Promise.resolve(response.text());
@@ -56,9 +58,9 @@ class App extends React.Component {
     //for GITLAB specifically, since token is return directly here instead of code
     if (url.indexOf('access_token=') != -1) {
       return fetch(
-        `http://localhost:6969/api/oauth/oauthcode/gitlab/${token}/${
-          this.state.username
-        }`
+        `${
+          publicRuntimeConfig.BACK_END_URL
+        }/api/oauth/oauthcode/gitlab/${token}/${this.state.username}`
       )
         .then(response => {
           return Promise.resolve(response.text());

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Header from '../components/Header';
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 
 class App extends React.Component {
   state = {
@@ -34,8 +36,9 @@ class App extends React.Component {
     let username: string = this.state.username;
     let accessToken: string = this.state.accessToken;
 
-    let url: string =
-      'http://localhost:6969' + platform + username + '/' + accessToken;
+    let url: string = `${
+      publicRuntimeConfig.BACK_END_URL
+    }${platform}${username}/${accessToken}`;
 
     return fetch(url)
       .then(response => {
@@ -77,11 +80,9 @@ class App extends React.Component {
         <br />
         <br />
         <p>
-          {'http://localhost:6969' +
-            this.state.platform +
-            this.state.username +
-            '/' +
-            this.state.accessToken}
+          {`${publicRuntimeConfig.BACK_END_URL}${this.state.platform}${
+            this.state.username
+          }/${this.state.accessToken}`}
         </p>
         <button onClick={this.onClick}>Run matching</button>
         <h2>Results from the query: </h2>

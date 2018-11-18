@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Header from '../components/Header';
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 
 interface IHRState {
   data: String | {};
@@ -9,12 +11,14 @@ class App extends React.Component<any, IHRState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      data: 'looking... (please wait a coupe of seconds)',
+      data: 'looking... (please wait a couple of seconds)',
     };
   }
 
   componentDidMount() {
-    return fetch('http://localhost:6969/api/github/candidate/hr/montreal')
+    return fetch(
+      `${publicRuntimeConfig.BACK_END_URL}/api/github/candidate/hr/montreal`
+    )
       .then(response => {
         return Promise.resolve(response.text());
       })
