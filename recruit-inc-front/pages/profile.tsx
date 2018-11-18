@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Header from '../components/Header';
 import getConfig from 'next/config';
-const { publicRuntimeConfig } = getConfig();
 
 class App extends React.Component {
   state = {
@@ -30,6 +29,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    const { publicRuntimeConfig } = getConfig();
     let url: string = window.location.href;
     let platform: string = url.substring(
       url.indexOf('platform=') + 9,

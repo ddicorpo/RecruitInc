@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Header from '../components/Header';
 import getConfig from 'next/config';
-const { publicRuntimeConfig } = getConfig();
 
 interface IAdminState {
   data: String | {};
@@ -16,6 +15,7 @@ class App extends React.Component<any, IAdminState> {
   }
 
   componentDidMount() {
+    const { publicRuntimeConfig } = getConfig();
     return fetch(
       `${publicRuntimeConfig.BACK_END_URL}/api/github/applicant/admin`
     )

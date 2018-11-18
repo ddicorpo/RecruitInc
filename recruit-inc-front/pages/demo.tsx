@@ -9,6 +9,7 @@ class App extends React.Component {
     username: '',
     accessToken: '',
     platform: '',
+    //  BACK_END_URL: publicRuntimeConfig.BACK_END_URL,
   };
 
   constructor(props: any) {
@@ -18,9 +19,14 @@ class App extends React.Component {
       username: '',
       accessToken: '',
       platform: '',
+      // BACK_END_URL: publicRuntimeConfig.BACK_END_URL,
     };
   }
-
+  // componentDidUpdate() {
+  //     //const { publicRuntimeConfig } = getConfig();
+  //     //his.setState({ BACK_END_URL: publicRuntimeConfig.BACK_END_URL})
+  // this.setState({ BACK_END_URL: this.state.BACK_END_URL})
+  // }
   handlePlatformChange(event: any) {
     this.setState({ platform: event.target.value });
   }
