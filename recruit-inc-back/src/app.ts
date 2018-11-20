@@ -29,12 +29,18 @@ class App {
       var corsOptions;
       if (whitelistDomain.indexOf(req.header('Origin')) !== -1) {
         console.log('CORS Enabled for => PROD');
+        console.log(whitelistDomain);
+        console.log(req.header('Origin'));
+        console.log(req.headers);
         corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
       } else if (process.env.NODE_ENV === 'dev') {
         console.log('CORS Enabled for => DEV');
         corsOptions = { origin: false }; // disable CORS for this request
       } else {
         console.log('CORS Disabled for => UNKNOWN');
+        console.log(whitelistDomain);
+        console.log(req.header('Origin'));
+        console.log(req.headers);
         corsOptions = { origin: callback(new Error("Can't process request")) };
       }
       callback(null, corsOptions); // callback expects two parameters: error and options
