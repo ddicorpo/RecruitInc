@@ -1,0 +1,1 @@
+class MongoConnection extends Connection {}
