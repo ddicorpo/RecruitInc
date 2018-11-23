@@ -4,7 +4,8 @@
     "target": "es6", //default is es5
     "module": "commonjs", //CommonJs style module in output
     "outDir": "dist", //change the output directory
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "src/**/*.ts" //which kind of files to compile
