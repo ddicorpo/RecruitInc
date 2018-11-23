@@ -18,30 +18,24 @@ export class MongoConnectionFactory {
       reconnectTries: Number.MAX_VALUE,
       poolSize: 10,
     };
-    const Schema = mongoose.Schema;
-    const randomThings = new Schema({
-      aThing: {
-        type: String,
-        required: true,
-      },
-    });
-    mongoose.model('thing', randomThings);
-
-    mongoose
-      .connect(
-        urlOnly,
-        options
-      )
-      .then(
-        () => {
-          console.log('Database connection established!');
-
-          return;
-        },
-        err => {
-          console.log('Error connecting Database instance due to: ', err);
-          return;
-        }
-      );
+    try {
+      mongoose
+        .connect(
+          urlOnly,
+          options
+        )
+        .then(
+          () => {
+            console.log('Database connection established!');
+            mongoose.close();
+          },
+          err => {
+            console.log('Error connecting Database instance due to: ', err);
+            mongoose.close();
+          }
+        );
+    } catch (e) {
+      mongoose.close();
+    }
   }
 }

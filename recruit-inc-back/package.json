@@ -53,7 +53,6 @@
     "express": "^4.16.3",
     "fs": "0.0.1-security",
     "localtunnel": "^1.9.1",
-    "mongodb": "^3.1.10",
     "mongoose": "^5.1.7",
     "node-fetch": "^2.2.0",
     "reflect-metadata": "^0.1.12",
