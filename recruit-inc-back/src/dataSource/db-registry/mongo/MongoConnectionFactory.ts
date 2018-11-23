@@ -27,15 +27,15 @@ export class MongoConnectionFactory {
         .then(
           () => {
             console.log('Database connection established!');
-            mongoose.close();
+            mongoose.connection.close();
           },
           err => {
             console.log('Error connecting Database instance due to: ', err);
-            mongoose.close();
+            mongoose.connection.close();
           }
         );
     } catch (e) {
-      mongoose.close();
+      mongoose.connection.close();
     }
   }
 }
