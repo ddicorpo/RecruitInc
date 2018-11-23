@@ -1,24 +1,40 @@
 
 # RecruitInc
 
-### API Endpoints
+
+## How install the Project with JetBrain IntelliJ ?
+
+### Initialize Project
+- Download and install intellij Ultimate
+- Import or Create a project from the git folder
+
+### Debug Configuration for back-end
+
+- Install `nodejs` plugin is they are not installed
+- Choose **add configuration** in **Run/Debug Configurations** panel
+- In the configuration tab, set the `Node Interpreter:` to `usr/local/bin/node`
+- In the configuration tab, set the  `Node parameter` to `--inspect-brk`
+- In the configuration tab, set the `working directory:` to `YOUR_PATH.../recruit-inc-back`
+- In the configuration tab, set the `JavaScript File:` to `dist/server.js`
+- Give a name to the configuration and save.
+- You should be able to debug from normal runtime (not from a test)
+
+
+## API Endpoints
 
 #### Back-end calls
 
 - GET: http://localhost:6969/api/github/applicant/{accessToken}/{userName}
 - GET: http://localhost:6969/api/github/applicant/admin
 
-### How install the Project with JetBrain IntelliJ ?
-
-#### MAC OS and Linux
-
-#### Windows 
 
 
-### How to run the project from terminal ?
+## How to run the project from terminal ?
 - Open Two terminal windows 
 
 ### Start the Back-End Node 
+ - Create your `.env` file based on `.env.example`
+ - Set the `NODE_ENV` variable to `dev`
  - The back-end is inspired from the boiler plate: https://github.com/priyesh18/typescript-node-api
  - Navigate to the folder `recruit-inc-back`
  - You always need to install the node_modules folder
@@ -26,38 +42,16 @@
  - You can run the project using terminal with: `npm run dev`
  - You should receive a message: `listening on port 6969`
  - You can check the result at: **http://localhost:6969/api/hi**
-
-#### Run Unit Test (Back-End)
- - The test are written in `test` folder
- - You can run all unit test by entering the command `npm run test`
- - You should receive results in your terminal
-
-#### Run Unit Test Coverage (Back-End)
- - You can get a unit test coverage report using the script writtien in `pakage.json`
- - Run the command: `npm run testWithCoverage` to run the test coverage
- - The command will create a folder:  `coverage` with all results inside
- - Sample Result:
  
-![alt text](https://github.com/ddicorpo/RecruitInc/blob/master/CourseAdmin/assets/SampleTestCoverage.png "Sample Test Coverage")
-
- ### Start the Front-End Node
-  - Navigate to the folder `recruit-inc-front`
+### Start the Front-End Node
+ - Navigate to the folder `recruit-inc-front`
  - You always need to install the node_modules folder
  run:  `npm install`
  - You can run the project using terminal with: `npm run dev`
  - You can build the project with `npm run build`
  - You should receive a message: `You can now view recruit-inc-front in the browser.`
  - You can check the result at: **http://localhost:3000/**
- 
-#### Run Unit Test (Front-End)
- - The test are written in `test` folder
- - You can run all unit test by entering the command `npm run test`
- - You should receive results in your terminal
 
-#### Run Unit Test Coverage (Front-End)
- - You can get a unit test coverage report using the script writtien in `pakage.json`
- - Run the command: `npm run testWithCoverage` to run the test coverage
- - The command will create a folder: `coverage` with all results inside
  
 ### Communication Between NodeJS application
 You can try the system by sending a message to the Back-End from the Front-End
@@ -76,4 +70,40 @@ These data are from the other node. There are contained in `./src/fakeStorage.js
 - Run the command `npm run demo` , a localtunel url address usually `https://recruit-back.localtunnel.me/` or `https://recruit-front.localtunnel.me/` will be available on the internet
 - This is a tunnel from the internet to your computer, don't forget to close it when your done, your terminal needs to run
 
-### DevOps Pipeline Step
+## Deployement Instructions
+
+You need to deploy the back-end node and the front-end node. You also need to set two `.env`
+files (one for each node).
+
+### Back-End Node Deployement
+- Make sure to set the `NODE_END` variable to `production` in `.env`
+- Set all `token` and `credential` 
+- Add Front-End domain name to `DOMAIN_FRONT_END` variable in `.env` folder
+- Run the command `npm run prod`
+
+## Run Tests
+
+### Run Unit Test (Back-End)
+ - The test are written in `test` folder
+ - You can run all unit test by entering the command `npm run test`
+ - You should receive results in your terminal
+
+### Run Unit Test Coverage (Back-End)
+ - You can get a unit test coverage report using the script writtien in `pakage.json`
+ - Run the command: `npm run testWithCoverage` to run the test coverage
+ - The command will create a folder:  `coverage` with all results inside
+ - Sample Result:
+ 
+![alt text](https://github.com/ddicorpo/RecruitInc/blob/master/CourseAdmin/assets/SampleTestCoverage.png "Sample Test Coverage")
+
+
+ 
+### Run Unit Test (Front-End)
+ - The test are written in `test` folder
+ - You can run all unit test by entering the command `npm run test`
+ - You should receive results in your terminal
+
+### Run Unit Test Coverage (Front-End)
+ - You can get a unit test coverage report using the script writtien in `pakage.json`
+ - Run the command: `npm run testWithCoverage` to run the test coverage
+ - The command will create a folder: `coverage` with all results inside
