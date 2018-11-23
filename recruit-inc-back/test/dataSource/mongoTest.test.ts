@@ -5,13 +5,11 @@ import { MongoConnection } from '../../src/dataSource/db-registry/mongo/MongoCon
 
 describe('Test mongo connection', () => {
   it('Test mongo connection', () => {
+    // YOU CAN"T TEST THE OPERATIONS OF MONGOOSE IN TEST...
     // GIVEN
-
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-
+    // let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    // myFactory.defaultInitialization();
     // WHEN
-
     // THEN
   });
 });

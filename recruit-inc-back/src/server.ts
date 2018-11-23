@@ -1,9 +1,12 @@
 import app from './app';
+import { MongoConnectionFactory } from './dataSource/db-registry/mongo/MongoConnectionFactory';
 const PORT = process.env.PORT || 6969;
 const DEFAULT_TIMEOUT: number = parseInt(process.env.DEFAULT_TIMEOUT);
 
 var server = app.listen(PORT, () => {
   console.log('Listening on PORT => ' + PORT);
+  let r: MongoConnectionFactory = new MongoConnectionFactory();
+  r.defaultInitialization();
 });
 
 //

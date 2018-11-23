@@ -1,6 +1,7 @@
 import { MongoConnection } from './MongoConnection';
 import * as mongoose from 'mongoose';
 import { User } from '../../schema/User';
+import { Schema } from 'inspector';
 
 export class MongoConnectionFactory {
   public getConnection(): MongoConnection {
@@ -10,26 +11,37 @@ export class MongoConnectionFactory {
   }
 
   public defaultInitialization(): void {
-    try {
-      const mongoConnection: MongoConnection = new MongoConnection();
+    // const mongoConnection: MongoConnection = new MongoConnection();
+    const urlOnly =
+      'mongodb://bob:admin@cluster0-shard-00-00-celgm.mongodb.net:27017,cluster0-shard-00-01-celgm.mongodb.net:27017,cluster0-shard-00-02-celgm.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true';
+    const options = {
+      reconnectTries: Number.MAX_VALUE,
+      poolSize: 10,
+    };
+    const Schema = mongoose.Schema;
+    const randomThings = new Schema({
+      aThing: {
+        type: String,
+        required: true,
+      },
+    });
+    mongoose.model('thing', randomThings);
 
-      let tempConnection =
-        'mongodb+srv://admin:admin@cluster0.mongodb.net/RecruitIncDB';
+    mongoose
+      .connect(
+        urlOnly,
+        options
+      )
+      .then(
+        () => {
+          console.log('Database connection established!');
 
-      mongoose.connect(tempConnection);
-
-      const UserModel = new User().getModelForClass(User);
-
-      // UserModel is a regular Mongoose Model with correct types
-      (async () => {
-        const u = new UserModel({ username: 'JohnDoe' });
-        await u.save();
-        const user = await UserModel.findOne();
-        // prints { _id: 59218f686409d670a97e53e0, name: 'JohnDoe', __v: 0 }
-        console.log(user);
-      })();
-    } catch (e) {
-      console.log('This is mongo connection error: ' + e);
-    }
+          return;
+        },
+        err => {
+          console.log('Error connecting Database instance due to: ', err);
+          return;
+        }
+      );
   }
 }
