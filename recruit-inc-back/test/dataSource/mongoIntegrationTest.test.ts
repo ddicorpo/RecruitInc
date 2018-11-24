@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import { MongoConnectionFactory } from '../../src/dataSource/db-registry/mongo/MongoConnectionFactory';
+import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/MongoConnectionFactory';
 
 /**
  * This is an integration test for MongoConnectionFactory, it will be skipped by 'npm run test'

@@ -1,4 +1,4 @@
-interface IConnection {
+export interface IConnection {
   databaseURL: String;
   databasePassword: String;
   databasePort: String;

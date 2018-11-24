@@ -1,3 +1,5 @@
+import { IConnection } from './IConnection';
+
 export abstract class Connection implements IConnection {
   databaseURL = process.env.DB_HOST;
   databasePassword = process.env.DB_PWD;
