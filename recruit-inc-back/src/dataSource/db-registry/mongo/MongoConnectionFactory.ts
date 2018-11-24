@@ -1,41 +1,52 @@
 import { MongoConnection } from './MongoConnection';
-import * as mongoose from 'mongoose';
-import { User } from '../../schema/User';
-import { Schema } from 'inspector';
+import { ConnectionFactory } from '../ConnectionFactory';
 
-export class MongoConnectionFactory {
-  public getConnection(): MongoConnection {
-    //TODO: Return a Mongo Connection
-    // mongodb+srv://admin:<PASSWORD>@cluster0-urrz3.mongodb.net/test?retryWrites=true
-    return new MongoConnection();
+export class MongoConnectionFactory extends ConnectionFactory {
+  private conn: MongoConnection;
+  private testingContext: boolean;
+  constructor(
+    databaseURL: string = null,
+    databasePassword: string = null,
+    databasePort: string = null,
+    databaseUser: string = null,
+    databaseName: string = null,
+    databaseOption: string = null,
+    testingContext: boolean = false
+  ) {
+    super();
+    this.conn = new MongoConnection();
+    this.testingContext = testingContext;
+
+    if (databaseURL != null) {
+      this.conn.setDatabaseURL(databaseURL);
+    }
+    if (databasePassword != null) {
+      this.conn.setDatabasePassword(databasePassword);
+    }
+    if (databasePort != null) {
+      this.conn.setDatabasePort(databasePort);
+    }
+    if (databaseUser != null) {
+      this.conn.setDatabaseUser(databaseUser);
+    }
+    if (databaseName != null) {
+      this.conn.setDatabaseName(databaseName);
+    }
+    if (databaseOption != null) {
+      this.conn.setDatabaseOption(databaseOption);
+    }
+  }
+  public getConnection(): any {
+    if (this.testingContext) {
+      return this.conn.buildConnectionTest();
+    } else {
+      return this.conn.buildConnection();
+    }
   }
 
-  public defaultInitialization(): void {
-    // const mongoConnection: MongoConnection = new MongoConnection();
-    const urlOnly =
-      'mongodb://bob:admin@cluster0-shard-00-00-celgm.mongodb.net:27017,cluster0-shard-00-01-celgm.mongodb.net:27017,cluster0-shard-00-02-celgm.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true';
-    const options = {
-      reconnectTries: Number.MAX_VALUE,
-      poolSize: 10,
-    };
-    try {
-      mongoose
-        .connect(
-          urlOnly,
-          options
-        )
-        .then(
-          () => {
-            console.log('Database connection established!');
-            mongoose.connection.close();
-          },
-          err => {
-            console.log('Error connecting Database instance due to: ', err);
-            mongoose.connection.close();
-          }
-        );
-    } catch (e) {
-      mongoose.connection.close();
-    }
+  public defaultInitialization(): MongoConnection {
+    this.conn = null;
+    this.conn = new MongoConnection();
+    return this.conn;
   }
 }

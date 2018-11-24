@@ -3,17 +3,20 @@ import { MongoConnectionFactory } from './dataSource/db-registry/mongo/MongoConn
 const PORT = process.env.PORT || 6969;
 const DEFAULT_TIMEOUT: number = parseInt(process.env.DEFAULT_TIMEOUT);
 
-var server = app.listen(PORT, () => {
-  console.log('Listening on PORT => ' + PORT);
+/**
+ * Connecting to database using default .env setting
+ */
+function connectToDatabase(): void {
+  console.log('Connecting to database ');
   let r: MongoConnectionFactory = new MongoConnectionFactory();
   r.defaultInitialization();
-});
+  r.getConnection();
+}
 
-//
-//
-//t
-//
-//
+var server = app.listen(PORT, () => {
+  console.log('Listening on PORT => ' + PORT);
+  connectToDatabase();
+});
 
 /**
  * Node js has a default timeout of 2 minutes for routes
