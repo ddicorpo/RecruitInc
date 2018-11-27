@@ -33,6 +33,9 @@ export class MongoConnection extends Connection {
   }
 
   protected getConnectionString(): string {
+      //Production database does not have user or password
+      if (process.env.NODE_ENV === 'production')
+          return `${process.env.DB_HOST}/${process.env.DB_NAME}`
     const connectUrl: string =
       this.databaseURL +
       this.databaseUser +
