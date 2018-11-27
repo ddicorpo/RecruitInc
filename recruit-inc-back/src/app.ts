@@ -24,7 +24,7 @@ class App {
     // Import all env. variable
     require('dotenv').config();
 
-    let whitelistDomain: string[] = [process.env.DOMAIN_FRONT_END];
+    let whitelistDomain: string[] = [process.env.DOMAIN_FRONT_END, process.env.DOMAIN_BACK_END];
     var corsOptionsDelegate = function(req, callback) {
       var corsOptions;
       if (whitelistDomain.indexOf(req.header('Origin')) !== -1) {
