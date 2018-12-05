@@ -1,2 +1,7 @@
 node_modules
 dist
+demo/**/*
+src/**/**/*.js
+src/**/**/*.map
+/demo/demo/app/assets/vendor/PACE/.bower.json
+/demo/

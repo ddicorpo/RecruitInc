@@ -56,7 +56,6 @@ class Header extends React.Component<any, any> {
 
     return (
       <div>
-
         <div>
           <div className="header navbar">
             <div className="header-container">
