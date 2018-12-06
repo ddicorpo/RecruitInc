@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-const logoPNG = require("../assets/images/logo/logo.png");
-const logoWhitePNG = require("../assets/images/logo/logo-white.png");
+import logoPNG from "../assets/images/logo/logo.png";
+import logoWhitePNG from "../assets/images/logo/logo-white.png";
 
 
 class Header extends React.Component<any, any> {
