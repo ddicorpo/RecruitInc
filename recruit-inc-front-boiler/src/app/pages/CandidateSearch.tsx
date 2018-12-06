@@ -1,6 +1,7 @@
 import * as React from 'react';
 import CandidateCard, {ICardProps, IGithubUserInformation} from "../components/CandidateCard";
 import {IGitProjectSummary} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary";
+import Pagination from "react-js-pagination";
 
 const GitProjectSummary = require("../../../GitProjectSummary.json");
 class CandidateSearch extends React.Component<any, any> {
@@ -16,6 +17,10 @@ class CandidateSearch extends React.Component<any, any> {
 
     constructor(props: any) {
         super(props);
+        this.handlePageChange = this.handlePageChange.bind(this);
+        this.state = {
+            activePage: 1
+        };
         this.gitProjectSummary = GitProjectSummary;
 
         this.gitUserInfo = {
@@ -92,7 +97,15 @@ class CandidateSearch extends React.Component<any, any> {
                 />
             );
         }
+        if (this.cardProps.length < 1) {
+            array.push(<div>No result</div>);
+        }
         return array;
+    }
+
+    handlePageChange(pageNumber: number) {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({activePage: pageNumber});
     }
 
     render() {
@@ -126,6 +139,7 @@ class CandidateSearch extends React.Component<any, any> {
                                 <div className="col-md-4">
                                     <div className="p-h-10">
                                         <div className="form-group">
+                                            <label className="control-label">&nbsp;</label>
                                             <button id="save" className="btn btn-success form-control"
                                                     type="button">Search
                                             </button>
@@ -134,9 +148,28 @@ class CandidateSearch extends React.Component<any, any> {
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
-                    {this.renderCards()}
+                    <div className="card">
+                        <div className="card-header border bottom">
+                            <h4 className="card-title">Results</h4>
+                        </div>
+                        <div className="card-body">
+                            {this.renderCards()}
+                        </div>
+
+                        <Pagination
+                            activePage={this.state.activePage}
+                            itemClass="page-item"
+                            linkClass="page-link"
+                            itemsCountPerPage={10}
+                            totalItemsCount={450}
+                            pageRangeDisplayed={5}
+                            onChange={this.handlePageChange}
+                        />
+                    </div>
+
 
                 </div>
 

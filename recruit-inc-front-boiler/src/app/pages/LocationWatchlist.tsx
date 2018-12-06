@@ -30,6 +30,7 @@ class LocationWatchList extends React.Component<any, any> {
                                 <div className="col-md-4">
                                     <div className="p-h-10">
                                         <div className="form-group">
+                                            <label className="control-label">&nbsp;</label>
                                             <button id="save" className="btn btn-success form-control"
                                                     type="button">Add
                                             </button>
