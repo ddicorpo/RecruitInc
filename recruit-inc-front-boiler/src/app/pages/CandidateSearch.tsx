@@ -2,8 +2,17 @@ import * as React from 'react';
 import CandidateCard, {ICardProps, IGithubUserInformation} from "../components/CandidateCard";
 import {IGitProjectSummary} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary";
 import Pagination from "react-js-pagination";
+import Select from "react-select";
+import {Technologies} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/Technologies";
+import {ActionMeta, ValueType} from "react-select/lib/types";
 
 const GitProjectSummary = require("../../../GitProjectSummary.json");
+
+interface IOptions {
+    value: string,
+    label: string
+}
+
 class CandidateSearch extends React.Component<any, any> {
     private gitProjectSummary: IGitProjectSummary;
     private gitUserInfo: IGithubUserInformation;
@@ -14,12 +23,18 @@ class CandidateSearch extends React.Component<any, any> {
     private gitUserInfo5: IGithubUserInformation;
 
     private cardProps: ICardProps[];
+    private techSelect: IOptions[] = [];
+    private cities: IOptions[] = [];
 
     constructor(props: any) {
         super(props);
         this.handlePageChange = this.handlePageChange.bind(this);
+        this.handleLanguageChange = this.handleLanguageChange.bind(this);
+        this.handleCityChange = this.handleCityChange.bind(this);
         this.state = {
-            activePage: 1
+            activePage: 1,
+            selectedTechOptions: [],
+            cityOption: ""
         };
         this.gitProjectSummary = GitProjectSummary;
 
@@ -84,7 +99,38 @@ class CandidateSearch extends React.Component<any, any> {
                 userInfo: this.gitUserInfo5,
                 projectInfo: this.gitProjectSummary
             }
+        ];
+
+        const technologies: string[] = Object.keys(Technologies).map(key => Technologies[key]);
+
+
+        for (const technology of technologies) {
+            this.techSelect.push(
+                { value: technology, label: technology }
+            );
+        }
+
+        this.cities = [
+            {
+                value: "Montreal",
+                label: "Montreal"
+            },
+            {
+                value: "Quebec",
+                label: "Quebec"
+            },
+            {
+                value: "Laval",
+                label: "Laval"
+            },
+            {
+                value: "Montmagny",
+                label: "Montmagny"
+            }
         ]
+
+
+
     }
 
     private renderCards(): JSX.Element[] {
@@ -108,6 +154,18 @@ class CandidateSearch extends React.Component<any, any> {
         this.setState({activePage: pageNumber});
     }
 
+    handleLanguageChange(value: ValueType<IOptions>, action: ActionMeta): void {
+        this.setState({
+            selectedTechOptions: value
+        })
+    }
+
+    handleCityChange(value: ValueType<IOptions>, action: ActionMeta): void {
+        this.setState({
+            cityOption: value
+        })
+    }
+
     render() {
         return (
                 <div className="container-fluid">
@@ -124,7 +182,15 @@ class CandidateSearch extends React.Component<any, any> {
                                     <div className="p-h-10">
                                         <div className="form-group">
                                             <label className="control-label">Language Search</label>
-                                            <input type="text" className="form-control" placeholder="Language"/>
+                                            <Select
+                                                value={this.state.selectedTechOptions}
+                                                onChange={this.handleLanguageChange}
+                                                isMulti={true}
+                                                isSearchable={true}
+                                                placeholder="Language"
+                                                options={this.techSelect}
+                                                className="form-control"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +198,14 @@ class CandidateSearch extends React.Component<any, any> {
                                     <div className="p-h-10">
                                         <div className="form-group">
                                             <label className="control-label">City Search</label>
-                                            <input type="text" className="form-control" placeholder="City"/>
+                                            <Select
+                                                value={this.state.cityOption}
+                                                onChange={this.handleCityChange}
+                                                isSearchable={true}
+                                                placeholder="City"
+                                                options={this.cities}
+                                                className="form-control"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +242,6 @@ class CandidateSearch extends React.Component<any, any> {
                             onChange={this.handlePageChange}
                         />
                     </div>
-
 
                 </div>
 
