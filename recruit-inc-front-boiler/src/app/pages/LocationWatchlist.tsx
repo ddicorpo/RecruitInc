@@ -9,7 +9,6 @@ class LocationWatchList extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="main-content">
                 <div className="container-fluid">
                     <div className="page-header">
                         <h2 className="header-title">Location Watchlist</h2>
@@ -41,7 +40,6 @@ class LocationWatchList extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-            </div>
         );
     }
 }

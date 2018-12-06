@@ -1,13 +1,27 @@
 import * as React from 'react';
+import CandidateCard, {IGithubUserInformation} from "../components/CandidateCard";
+import {IGitProjectSummary} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary";
 
+const GitProjectSummary = require("../../../GitProjectSummary.json");
 class CandidateSearch extends React.Component<any, any> {
+    private gitProjectSummary: IGitProjectSummary;
+    private gitUserInfo: IGithubUserInformation;
+
     constructor(props: any) {
         super(props);
+        this.gitProjectSummary = GitProjectSummary;
+
+        this.gitUserInfo = {
+            username: "lydiahallie",
+            email: "lydiajuliettehallie@gmail.com",
+            profileLink: "https://github.com/lydiahallie"
+        };
+
+
     }
 
     render() {
         return (
-            <div className="main-content">
                 <div className="container-fluid">
                     <div className="page-header">
                         <h2 className="header-title">Candidate Search</h2>
@@ -46,8 +60,14 @@ class CandidateSearch extends React.Component<any, any> {
                             </div>
                         </div>
                     </div>
+
+                    <CandidateCard
+                        userInfo = {this.gitUserInfo}
+                        projectInfo = {this.gitProjectSummary}
+                    />
+
                 </div>
-            </div>
+
         );
     }
 }
