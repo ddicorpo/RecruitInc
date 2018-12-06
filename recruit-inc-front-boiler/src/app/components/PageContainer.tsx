@@ -10,7 +10,7 @@ class PageContainer extends React.Component<any, any> {
     }
 
     renderSwitch(page: string) {
-        switch(page) {
+        switch (page) {
             case Pages.CANDIDATE_SEARCH: {
                 return <CandidateSearch/>
 
@@ -29,8 +29,9 @@ class PageContainer extends React.Component<any, any> {
     render() {
         return (
             <div className="page-container">
-                {/*// SHIT GOES HERE!!!*/}
-                {this.renderSwitch(this.props.page)}
+                <div className="main-content">
+                    {this.renderSwitch(this.props.page)}
+                </div>
                 <footer className="content-footer">
                     <div className="footer">
                         <div className="copyright">
