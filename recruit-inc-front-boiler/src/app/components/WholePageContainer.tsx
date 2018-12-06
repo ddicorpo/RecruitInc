@@ -9,9 +9,11 @@ import "../assets/css/bootstrap.css"
 import "../assets/css/pace-theme-minimal.css"
 import "../assets/css/perfect-scrollbar.css"
 import SideNavigationBar from "./SideNavigationBar";
+import {Pages} from "../pages/Pages";
+import PageContainer from "./PageContainer";
 
 
-class MainWrapper extends React.Component<any, any> {
+class WholePageContainer extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.handleSidebarToggleClick = this.handleSidebarToggleClick.bind(this);
@@ -20,7 +22,7 @@ class MainWrapper extends React.Component<any, any> {
         this.state = {
             sidebarCollapse: false,
             profileCollapse: true,
-            pageToShow: "Candidate search",
+            pageToShow: Pages.CANDIDATE_SEARCH,
         };
     }
 
@@ -57,10 +59,13 @@ class MainWrapper extends React.Component<any, any> {
                     <SideNavigationBar
                         handleSidebarClick={this.handleSidebarClick}
                     />
+                    <PageContainer
+                        page = {this.state.pageToShow}
+                    />
                 </div>
             </div>
         );
     }
 }
 
-export default MainWrapper;
+export default WholePageContainer;

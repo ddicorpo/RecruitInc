@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import MainWrapper from "./components/MainWrapper";
+import WholePageContainer from "./components/WholePageContainer";
 declare let module: any
 
-ReactDOM.render(<MainWrapper />,
+ReactDOM.render(<WholePageContainer />,
 document.getElementById('root'));
 
 if (module.hot) {
