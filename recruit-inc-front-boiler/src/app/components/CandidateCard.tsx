@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {IGitProjectSummary} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary";
 
-interface ICardProps {
+export interface ICardProps {
     userInfo: IGithubUserInformation
     projectInfo: IGitProjectSummary
 }

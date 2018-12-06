@@ -1,11 +1,18 @@
 import * as React from 'react';
-import CandidateCard, {IGithubUserInformation} from "../components/CandidateCard";
+import CandidateCard, {ICardProps, IGithubUserInformation} from "../components/CandidateCard";
 import {IGitProjectSummary} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary";
 
 const GitProjectSummary = require("../../../GitProjectSummary.json");
 class CandidateSearch extends React.Component<any, any> {
     private gitProjectSummary: IGitProjectSummary;
     private gitUserInfo: IGithubUserInformation;
+    private gitUserInfo1: IGithubUserInformation;
+    private gitUserInfo2: IGithubUserInformation;
+    private gitUserInfo3: IGithubUserInformation;
+    private gitUserInfo4: IGithubUserInformation;
+    private gitUserInfo5: IGithubUserInformation;
+
+    private cardProps: ICardProps[];
 
     constructor(props: any) {
         super(props);
@@ -17,7 +24,76 @@ class CandidateSearch extends React.Component<any, any> {
             profileLink: "https://github.com/lydiahallie"
         };
 
+        this.gitUserInfo1 = {
+            username: "lydiahallie1",
+            email: "lydiajuliettehallie@gmail.com",
+            profileLink: "https://github.com/lydiahallie"
+        };
 
+        this.gitUserInfo2 = {
+            username: "lydiahallie2",
+            email: "lydiajuliettehallie@gmail.com",
+            profileLink: "https://github.com/lydiahallie"
+        };
+
+        this.gitUserInfo3 = {
+            username: "lydiahallie3",
+            email: "lydiajuliettehallie@gmail.com",
+            profileLink: "https://github.com/lydiahallie"
+        };
+
+        this.gitUserInfo4 = {
+            username: "lydiahallie4",
+            email: "lydiajuliettehallie@gmail.com",
+            profileLink: "https://github.com/lydiahallie"
+        };
+
+        this.gitUserInfo5 = {
+            username: "lydiahallie5",
+            email: "lydiajuliettehallie@gmail.com",
+            profileLink: "https://github.com/lydiahallie"
+        };
+
+        this.cardProps = [
+            {
+                userInfo: this.gitUserInfo,
+                projectInfo: this.gitProjectSummary
+            },
+            {
+                userInfo: this.gitUserInfo1,
+                projectInfo: this.gitProjectSummary
+            },
+            {
+                userInfo: this.gitUserInfo2,
+                projectInfo: this.gitProjectSummary
+            },
+            {
+                userInfo: this.gitUserInfo3,
+                projectInfo: this.gitProjectSummary
+            },
+            {
+                userInfo: this.gitUserInfo4,
+                projectInfo: this.gitProjectSummary
+            },
+            {
+                userInfo: this.gitUserInfo5,
+                projectInfo: this.gitProjectSummary
+            }
+        ]
+    }
+
+    renderCards(): JSX.Element[] {
+        const array: JSX.Element[] = [];
+        for (let cardProp of this.cardProps) {
+            console.log(cardProp.userInfo);
+            array.push(
+                <CandidateCard
+                    userInfo = {cardProp.userInfo}
+                    projectInfo = {cardProp.projectInfo}
+                />
+            );
+        }
+        return array;
     }
 
     render() {
@@ -61,10 +137,7 @@ class CandidateSearch extends React.Component<any, any> {
                         </div>
                     </div>
 
-                    <CandidateCard
-                        userInfo = {this.gitUserInfo}
-                        projectInfo = {this.gitProjectSummary}
-                    />
+                    {this.renderCards()}
 
                 </div>
 
