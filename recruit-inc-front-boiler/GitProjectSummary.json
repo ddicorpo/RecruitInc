@@ -33,6 +33,7 @@
   "projectsOutput": [
     {
       "projectName": "apollo-client",
+      "projectUrl": "https://github.com/lydiahallie/apollo-client",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -67,6 +68,7 @@
     },
     {
       "projectName": "aws-serverless",
+      "projectUrl": "https://github.com/lydiahallie/aws-serverless",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -101,6 +103,7 @@
     },
     {
       "projectName": "graphql-language-service",
+      "projectUrl": "https://github.com/lydiahallie/graphql-language-service",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -135,6 +138,7 @@
     },
     {
       "projectName": "graphql-config",
+      "projectUrl": "https://github.com/lydiahallie/graphql-config",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -169,6 +173,7 @@
     },
     {
       "projectName": "react-graphql",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -203,6 +208,7 @@
     },
     {
       "projectName": "CircleCIPrisma",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -237,6 +243,7 @@
     },
     {
       "projectName": "pc",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -271,6 +278,7 @@
     },
     {
       "projectName": "DefinitelyTyped",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -305,6 +313,7 @@
     },
     {
       "projectName": "webpack",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -339,6 +348,7 @@
     },
     {
       "projectName": "redux",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -373,6 +383,7 @@
     },
     {
       "projectName": "awesome-react",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -407,6 +418,7 @@
     },
     {
       "projectName": "algo-data-structures",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -441,6 +453,7 @@
     },
     {
       "projectName": "droplr-clone",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -475,6 +488,7 @@
     },
     {
       "projectName": "firebase-react-example",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -509,6 +523,7 @@
     },
     {
       "projectName": "smart-meter-graph",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -543,6 +558,7 @@
     },
     {
       "projectName": "codebuddy-fs",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -577,6 +593,7 @@
     },
     {
       "projectName": "asm",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -611,6 +628,7 @@
     },
     {
       "projectName": "lang-detect-brainjs",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -645,6 +663,7 @@
     },
     {
       "projectName": "graphql-list",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -679,6 +698,7 @@
     },
     {
       "projectName": "django-tutorial",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -713,6 +733,7 @@
     },
     {
       "projectName": "js-resources",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -747,6 +768,7 @@
     },
     {
       "projectName": "node-raspberrypi",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -781,6 +803,7 @@
     },
     {
       "projectName": "MLc",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -815,6 +838,7 @@
     },
     {
       "projectName": "react-quiz",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -849,6 +873,7 @@
     },
     {
       "projectName": "react-virtualized",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -883,6 +908,7 @@
     },
     {
       "projectName": "first-cpp",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -917,6 +943,7 @@
     },
     {
       "projectName": "ui-theme-template",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -951,6 +978,7 @@
     },
     {
       "projectName": "react-boilerplate",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -985,6 +1013,7 @@
     },
     {
       "projectName": "react-threejs-3d",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1019,6 +1048,7 @@
     },
     {
       "projectName": "dodge-game-react",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1053,6 +1083,7 @@
     },
     {
       "projectName": "javascript-guide",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1087,6 +1118,7 @@
     },
     {
       "projectName": "form-react-redux",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1121,6 +1153,7 @@
     },
     {
       "projectName": "react-3d-carousel",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1155,6 +1188,7 @@
     },
     {
       "projectName": "scandinaviancoders",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1189,6 +1223,7 @@
     },
     {
       "projectName": "React-Ecommerce",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1223,6 +1258,7 @@
     },
     {
       "projectName": "cruise-manager",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1257,6 +1293,7 @@
     },
     {
       "projectName": "daily-login",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1291,6 +1328,7 @@
     },
     {
       "projectName": "mystery-word",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1325,6 +1363,7 @@
     },
     {
       "projectName": "form-project",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1359,6 +1398,7 @@
     },
     {
       "projectName": "user-directory",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1393,6 +1433,7 @@
     },
     {
       "projectName": "date-facts",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1427,6 +1468,7 @@
     },
     {
       "projectName": "itunes-weekly-project",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",
@@ -1461,6 +1503,7 @@
     },
     {
       "projectName": "ruby-course",
+      "projectUrl": "https://github.com/lydiahallie/react-graphql",
       "languageOutput": [
         {
           "languageOrFramework": "Javascript",

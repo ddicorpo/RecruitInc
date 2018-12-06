@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Header from './Header';
-import "../assets/css/app.css"
-import "../assets/css/materialdesignicons.min.css"
-import "../assets/css/font-awesome.min.css"
-import "../assets/css/themify-icons.css"
-import "../assets/css/animate.min.css"
 import "../assets/css/bootstrap.css"
 import "../assets/css/pace-theme-minimal.css"
 import "../assets/css/perfect-scrollbar.css"
+import "../assets/css/font-awesome.min.css"
+import "../assets/css/themify-icons.css"
+import "../assets/css/materialdesignicons.min.css"
+import "../assets/css/animate.min.css"
+import "../assets/css/app.css"
 import SideNavigationBar from "./SideNavigationBar";
 import {Pages} from "../pages/Pages";
 import PageContainer from "./PageContainer";

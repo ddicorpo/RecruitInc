@@ -82,10 +82,9 @@ class CandidateSearch extends React.Component<any, any> {
         ]
     }
 
-    renderCards(): JSX.Element[] {
+    private renderCards(): JSX.Element[] {
         const array: JSX.Element[] = [];
         for (let cardProp of this.cardProps) {
-            console.log(cardProp.userInfo);
             array.push(
                 <CandidateCard
                     userInfo = {cardProp.userInfo}

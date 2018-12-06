@@ -2748,7 +2748,7 @@ button.disabled, button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .card.card-shadow { -webkit-box-shadow: 0 7px 20px 2px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 7px 20px 2px rgba(0, 0, 0, 0.2); box-shadow: 0 7px 20px 2px rgba(0, 0, 0, 0.2); }
 
-.card-header { padding: 15px 25px; position: relative; background-color: transparent; border-bottom: 0px; min-height: 55px; }
+.card-header { padding: 15px 25px; position: relative; background-color: transparent; border-bottom: 0px; min-height: 30px; }
 
 .card-header .card-title { margin-bottom: 0px; display: inline-block; }
 
