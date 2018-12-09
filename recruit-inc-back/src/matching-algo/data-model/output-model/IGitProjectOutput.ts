@@ -1,6 +1,6 @@
 import { ILanguageOutput } from './ILanguageOutput';
 export interface IGitProjectOutput {
   projectName: string;
-  projectUrl: string;
+  projectUrlÉ?: string;
   languageOutput: ILanguageOutput[];
 }

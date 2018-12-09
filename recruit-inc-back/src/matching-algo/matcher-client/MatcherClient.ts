@@ -110,7 +110,7 @@ export class MatcherClient {
           // Adding the Framework Stats
           for (const computedFrameworkStat of targetedFrameworksStats) {
             const indexOfFramework: number = indexedFrameworkMap.get(
-              computedFrameworkStat.technologyName
+              computedFrameworkStat.technologyName as Technologies
             );
             language.frameworks[indexOfFramework].linesOfCode +=
               computedFrameworkStat.linesOfCode;

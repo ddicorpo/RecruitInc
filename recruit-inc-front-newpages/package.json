@@ -18,6 +18,7 @@
     "@types/react-select": "^2.0.10",
     "express": "^4.16.3",
     "react": "^16.3.2",
+    "winston": "^3.1.0",
     "react-autosuggest": "^9.4.2",
     "react-dom": "^16.3.2",
     "react-js-pagination": "^3.0.2",
