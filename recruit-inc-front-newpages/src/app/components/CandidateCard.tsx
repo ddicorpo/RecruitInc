@@ -2,6 +2,7 @@ import * as React from 'react';
 import {IGitProjectSummary} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary";
 import {IGitProjectOutput} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectOutput";
 import {ILanguageOutput} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/ILanguageOutput";
+import {Logger} from "../Logger";
 
 export interface ICardProps {
     userInfo: IGithubUserInformation
@@ -30,6 +31,7 @@ class CandidateCard extends React.Component<ICardProps, any> {
 
     private flatProjectsOutput: IGithubProjectFlattenedInfo[];
     private flatTotal: IGithubFlattenedInfo[];
+    private logger: Logger;
 
     constructor(props: any) {
         super(props);
@@ -43,6 +45,7 @@ class CandidateCard extends React.Component<ICardProps, any> {
             isSummary: true,
             isProjectCollapsed: this.initializeProjectCollapsed()
         };
+        this.logger = new Logger();
     }
 
     private initializeProjectCollapsed(): boolean[] {
@@ -53,20 +56,43 @@ class CandidateCard extends React.Component<ICardProps, any> {
     private handleProjectCollapse(index: number) {
         const newArray: boolean[] = this.state.isProjectCollapsed.slice();
         newArray[index] = !newArray[index];
+        // When we have real loaded data that comes from the backend, we should also log which user and which repo
+        // were involved
+        this.logger.info({
+            class: 'CandidateCard',
+            method: 'handleProjectCollapse',
+            action: 'Collapsing the project corresponding to the index value.',
+            params: { index },
+        });
         this.setState({
             isProjectCollapsed: newArray,
         });
     }
 
     private handleCollapse() {
+        // When we have real loaded data that comes from the backend, we should also log which user was involved
+        this.logger.info({
+            class: 'CandidateCard',
+            method: 'handleCollapse',
+            action: 'Collapsing the card corresponding to a user.',
+            params: {},
+        });
         this.setState({
             isCollapsed: !this.state.isCollapsed,
-            isProjectCollapsed: this.initializeProjectCollapsed()
+            isProjectCollapsed: this.initializeProjectCollapsed(),
+            isRepository: false,
+            isSummary: true,
         });
-        this.handleSummaryClick();
     }
 
     private handleRepositoryClick() {
+        // When we have real loaded data that comes from the backend, we should also log which user was involved
+        this.logger.info({
+            class: 'CandidateCard',
+            method: 'handleRepositoryClick',
+            action: 'Clicked on the repository button for a user',
+            params: {},
+        });
         this.setState({
             isRepository: true,
             isSummary: false,
@@ -74,6 +100,13 @@ class CandidateCard extends React.Component<ICardProps, any> {
     }
 
     private handleSummaryClick() {
+        // When we have real loaded data that comes from the backend, we should also log which user was involved
+        this.logger.info({
+            class: 'CandidateCard',
+            method: 'handleSummaryClick',
+            action: 'Clicked on the summary button for a user',
+            params: {},
+        });
         this.setState({
             isRepository: false,
             isSummary: true,
@@ -93,7 +126,7 @@ class CandidateCard extends React.Component<ICardProps, any> {
                 {
                     project: project.projectName,
                     info: this.flattenGithubLanguages(project.languageOutput),
-                    projectUrl: project.projectUrl
+                    projectUrl: project.projectUrl as string
                 }
             );
         }

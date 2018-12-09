@@ -7,9 +7,6 @@ import {Pages} from "../pages/Pages";
 class SideNavigationBar extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = {
-            data: 'looking..',
-        };
     }
 
 

@@ -7,9 +7,6 @@ import logoWhitePNG from "../assets/images/logo/logo-white.png";
 class Header extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = {
-            data: 'looking..',
-        };
     }
 
 

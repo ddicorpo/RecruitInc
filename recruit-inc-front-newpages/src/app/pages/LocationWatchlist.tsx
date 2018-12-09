@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Logger} from "../Logger";
 
 interface IWatchlistInfo {
    location: string,
@@ -10,10 +11,12 @@ interface IWatchlistInfo {
 class LocationWatchList extends React.Component<any, {watchlistInfo: IWatchlistInfo[], textValue: string}> {
     
     private watchlist : IWatchlistInfo[];
+    private logger: Logger;
     
     
     constructor(props: any) {
         super(props);
+        this.logger = new Logger();
         this.handleTextInput = this.handleTextInput.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
 
@@ -40,6 +43,12 @@ class LocationWatchList extends React.Component<any, {watchlistInfo: IWatchlistI
 
        ];
 
+         this.logger.info({
+             class: 'LocationWatchlist',
+             method: 'componentDidMount',
+             action: 'Loaded the watchlist to the component state',
+             params: { watchlist: this.watchlist },
+         });
        this.setState({
          watchlistInfo : this.watchlist
        });
@@ -50,6 +59,12 @@ class LocationWatchList extends React.Component<any, {watchlistInfo: IWatchlistI
     private handleAdd(): void{
         const location: string = this.state.textValue;
         const arrayClone: IWatchlistInfo[] = this.state.watchlistInfo.slice();
+        this.logger.info({
+            class: 'LocationWatchlist',
+            method: 'handleAdd',
+            action: 'Calling the backend to add a new location on the watchlist',
+            params: { location },
+        });
         arrayClone.push({
             location,
             scanned: 0,
@@ -63,12 +78,24 @@ class LocationWatchList extends React.Component<any, {watchlistInfo: IWatchlistI
 
     private handlePause(location:string): void{
       //call backend
+        this.logger.info({
+            class: 'LocationWatchlist',
+            method: 'handlePause',
+            action: 'Calling the backend to pause a location on the watchlist',
+            params: { location },
+        });
       console.log("handlePause",location);
        
     }
     
     private handleDelete(location:string): void{
         //call backend
+        this.logger.info({
+            class: 'LocationWatchlist',
+            method: 'handleDelete',
+            action: 'Calling the backend to remove a location from the watchlist',
+            params: { location },
+        });
         console.log("handleDelete",location);
     }
 

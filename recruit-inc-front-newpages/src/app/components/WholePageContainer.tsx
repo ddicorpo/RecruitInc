@@ -11,11 +11,16 @@ import "../assets/css/app.css"
 import SideNavigationBar from "./SideNavigationBar";
 import {Pages} from "../pages/Pages";
 import PageContainer from "./PageContainer";
+import {Logger} from "../Logger";
 
 
 class WholePageContainer extends React.Component<any, any> {
+
+    private logger: Logger;
+
     constructor(props: any) {
         super(props);
+        this.logger = new Logger();
         this.handleSidebarToggleClick = this.handleSidebarToggleClick.bind(this);
         this.handleProfileClick = this.handleProfileClick.bind(this);
         this.handleSidebarClick = this.handleSidebarClick.bind(this);
@@ -27,18 +32,36 @@ class WholePageContainer extends React.Component<any, any> {
     }
 
     handleSidebarToggleClick() {
+        this.logger.info({
+            class: 'WholePageContainer',
+            method: 'handleSidebarToggleClick',
+            action: 'User clicked to toggle the sidebar collapse.',
+            params: { sidebarCollapse: this.state.sidebarCollapse },
+        });
         this.setState({
             sidebarCollapse: !this.state.sidebarCollapse,
         });
     }
 
     handleSidebarClick(page: string) {
+        this.logger.info({
+            class: 'WholePageContainer',
+            method: 'handleSidebarClick',
+            action: 'User clicked on a page on the sidebar',
+            params: { page },
+        });
         this.setState({
             pageToShow: page,
         });
     }
 
     handleProfileClick() {
+        this.logger.info({
+            class: 'WholePageContainer',
+            method: 'handleProfileClick',
+            action: 'User clicked to open/close the profile button on the header',
+            params: { profileCollapse: !this.state.profileCollapse },
+        });
         this.setState({
             profileCollapse: !this.state.profileCollapse,
         });

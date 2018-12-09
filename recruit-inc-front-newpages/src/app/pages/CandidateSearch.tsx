@@ -5,6 +5,7 @@ import Pagination from "react-js-pagination";
 import Select from "react-select";
 import {Technologies} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/Technologies";
 import {ActionMeta, ValueType} from "react-select/lib/types";
+import {Logger} from "../Logger";
 
 const GitProjectSummary = require("../../../GitProjectSummary.json");
 
@@ -25,9 +26,11 @@ class CandidateSearch extends React.Component<any, any> {
     private cardProps: ICardProps[];
     private techSelect: IOptions[] = [];
     private cities: IOptions[] = [];
+    private logger: Logger;
 
     constructor(props: any) {
         super(props);
+        this.logger = new Logger();
         this.handlePageChange = this.handlePageChange.bind(this);
         this.handleLanguageChange = this.handleLanguageChange.bind(this);
         this.handleCityChange = this.handleCityChange.bind(this);
@@ -150,17 +153,24 @@ class CandidateSearch extends React.Component<any, any> {
     }
 
     handlePageChange(pageNumber: number) {
-        console.log(`active page is ${pageNumber}`);
+        this.logger.info({
+            class: 'CandidateSearch',
+            method: 'handlePageChange',
+            action: 'Changing the page to ' + pageNumber,
+            params: { pageNumber },
+        });
         this.setState({activePage: pageNumber});
     }
 
     handleLanguageChange(value: ValueType<IOptions>, action: ActionMeta): void {
+        // Once we have a call to the backend, we'll capture this through the button press
         this.setState({
             selectedTechOptions: value
         })
     }
 
     handleCityChange(value: ValueType<IOptions>, action: ActionMeta): void {
+        // Once we have a call to the backend, we'll capture this through the button press
         this.setState({
             cityOption: value
         })
