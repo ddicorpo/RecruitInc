@@ -3,6 +3,6 @@ import { Technologies } from './Technologies';
 import { ICodeOutput } from './ICodeOutput';
 
 export interface ILanguageOutput extends ICodeOutput {
-  languageOrFramework: Technologies;
+  languageOrFramework: Technologies | string;
   frameworks: IFrameworkOutput[];
 }
