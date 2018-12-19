@@ -8,7 +8,8 @@
     "emitDecoratorMetadata": true
   },
   "include": [
-    "src/**/*.ts" //which kind of files to compile
+    "src/**/*.ts",
+    "test/data-source/mongoIntegration.test.ts" //which kind of files to compile
   ],
   "exclude": [
     "node_modules", //which files or directories to ignore

@@ -1,13 +1,12 @@
-import { expect } from 'chai';
 import 'mocha';
 import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/MongoConnectionFactory';
 
 /**
- * This is an integration test for MongoConnectionFactory, it will be skipped by 'npm run test'
+ * This is an integration test user
  */
 xdescribe('Test mongo connection', () => {
   xit('Test mongo connection', () => {
-    //The factory allowing to manually set the constant without .env enabled
+    // GIVEN , Open a connection
     const dbOption =
       '-shard-00-00-celgm.mongodb.net:27017,cluster0-shard-00-01-celgm.mongodb.net:27017,' +
       "'cluster0-shard-00-02-celgm.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true ";
@@ -20,6 +19,9 @@ xdescribe('Test mongo connection', () => {
       dbOption,
       true
     );
+    //When
+
+    //Then
 
     myFactory.getConnection();
   });

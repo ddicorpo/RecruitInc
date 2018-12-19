@@ -107,3 +107,17 @@ files (one for each node).
  - You can get a unit test coverage report using the script writtien in `pakage.json`
  - Run the command: `npm run testWithCoverage` to run the test coverage
  - The command will create a folder: `coverage` with all results inside
+
+
+## Database
+
+### Connect to Mongo DB from Intellij IDE
+- Download and install Mongo plugin from David
+- Restart the IDE
+- Search for the tool: 'Mongo Explorer'
+- Create a new connection with the '[+]' button
+- Enter the URL to the database e.g. `cluster0-shard-00-00-celgm.mongodb.net:27017,cluster0-shard-00-01-celgm.mongodb.net:27017,cluster0-shard-00-02-celgm.mongodb.net:27017`
+- Check the SSL box
+- Enter your username and password in the 'Authentication' tab and check the 'SCRAM-SHA-1' box
+- Give a name to your connection in the 'label' box
+- Save it !!!
