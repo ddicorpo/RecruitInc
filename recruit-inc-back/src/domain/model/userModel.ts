@@ -1,3 +1,6 @@
+/**
+ * Typegoose is including schema and model in one class
+ */
 import { prop, Typegoose } from 'typegoose';
 
 export class User extends Typegoose {
@@ -19,3 +22,6 @@ export class User extends Typegoose {
   @prop({ required: true, unique: true, minlength: 5, maxlength: 300 })
   email: string;
 }
+
+// Can pass schema option in statement below
+export const UserModel = new User().getModelForClass(User);

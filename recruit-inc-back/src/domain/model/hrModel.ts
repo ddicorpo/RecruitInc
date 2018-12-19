@@ -1,5 +1,8 @@
+/**
+ * Typegoose is including schema and model in one class
+ */
 import { prop, Ref, Typegoose } from 'typegoose';
-import { User } from './User.model';
+import { User } from './userModel';
 
 export class HR extends Typegoose {
   @prop({ index: true, required: true, unique: true })
