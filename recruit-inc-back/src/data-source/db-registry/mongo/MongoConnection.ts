@@ -33,9 +33,9 @@ export class MongoConnection extends Connection {
   }
 
   protected getConnectionString(): string {
-      //Production database does not have user or password
-      if (process.env.NODE_ENV === 'production')
-          return `${process.env.DB_HOST}/${process.env.DB_NAME}`
+    //Production database does not have user or password
+    if (process.env.NODE_ENV === 'production')
+      return `${process.env.DB_HOST}/${process.env.DB_NAME}`;
     const connectUrl: string =
       this.databaseURL +
       this.databaseUser +
@@ -90,8 +90,25 @@ export class MongoConnection extends Connection {
    * Always use this method for testing, otherwise connection are not close...
    */
   public buildConnectionTest(): any {
-    //Var db is part of MongoClient requirement
-    var db = mongoose
+    //if connection is ready/not open
+    if (mongoose.connection.readyState === 0) {
+      return this.buildConnectionObj();
+    } else {
+      // Close connection
+      this.closeConnection();
+      return this.buildConnectionObj();
+    }
+  }
+
+  public closeConnection(): any {
+    try {
+      mongoose.disconnect();
+    } catch (Exception) {
+      console.log("Can't close connection");
+    }
+  }
+  private buildConnectionObj(): any {
+    var tmpConn = mongoose
       .connect(
         this.getConnectionString(),
         this.options
@@ -112,6 +129,6 @@ export class MongoConnection extends Connection {
         mongoose.connection.close();
       });
 
-    return db;
+    return tmpConn;
   }
 }

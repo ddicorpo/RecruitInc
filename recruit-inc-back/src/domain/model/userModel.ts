@@ -4,9 +4,6 @@
 import { prop, Typegoose } from 'typegoose';
 
 export class User extends Typegoose {
-  @prop({ index: true })
-  userId: number;
-
   @prop({ required: true, unique: true, minlength: 3, maxlength: 150 })
   username: string;
 
@@ -24,4 +21,6 @@ export class User extends Typegoose {
 }
 
 // Can pass schema option in statement below
-export const UserModel = new User().getModelForClass(User);
+export const UserModel = new User().getModelForClass(User, {
+  schemaOptions: { collection: 'users' },
+});

@@ -6,7 +6,7 @@ import { UserModel } from '../../domain/model/userModel';
  * The class is using BaseTDG to do transaction allowing uniform transaction handling
  * and logging
  */
-export class userTDG {
+export class UserTDG {
   private baseTDG: BaseTDG;
 
   constructor() {
