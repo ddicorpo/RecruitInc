@@ -3,7 +3,7 @@
  */
 import { prop, Ref, Typegoose } from 'typegoose';
 import { UserSchema } from './userSchema';
-import { HRModel } from '../../domain/model/hrModel';
+import { HRModel } from '../../domain/model/IHRModel';
 
 export class HRSchema extends Typegoose implements HRModel {
   @prop({ index: true, required: true, unique: true })

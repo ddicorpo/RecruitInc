@@ -2,9 +2,9 @@
  * Typegoose is including schema and model in one class
  */
 import { prop, Typegoose } from 'typegoose';
-import { UserModel } from '../../domain/model/userModel';
+import { IUserModel } from '../../domain/model/IUserModel';
 
-export class UserSchema extends Typegoose implements UserModel {
+export class UserSchema extends Typegoose implements IUserModel {
   @prop({ required: true, unique: true, minlength: 3, maxlength: 150 })
   username: string;
 
@@ -22,6 +22,6 @@ export class UserSchema extends Typegoose implements UserModel {
 }
 
 // Can pass schema option in statement below
-export const formalUsermodel = new UserSchema().getModelForClass(UserSchema, {
+export const UserModel = new UserSchema().getModelForClass(UserSchema, {
   schemaOptions: { collection: 'users' },
 });

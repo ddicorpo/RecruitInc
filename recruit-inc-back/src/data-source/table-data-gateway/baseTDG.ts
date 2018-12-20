@@ -3,6 +3,9 @@ import { Logger } from '../../Logger';
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/repositories/base/base-repository.ts\
  * This is a base TDG, to handle generic action, our TDG will use it to complete action
  * It will reduce size of our TDGs
+ *  *************************************************************
+ * NOTE: This class doesn't include logic it's only transaction
+ * *************************************************************
  */
 export class BaseTDG {
   private schema: any;
@@ -16,72 +19,24 @@ export class BaseTDG {
     }
   }
   /**
-   * Prevents Duplicate, override if you want to allow duplicate use createDuplicate
+   * Create a user
    * @param item
    * @param attrValidate
    */
   public create(item: any, attrValidate: any): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
-      console.log('start');
-      this.schema.findOne(attrValidate, (error: any, obj: any) => {
-        if (error) {
-          // Can't execute the query
-          this.logActionFailure(this.create.name, error.name, error.message);
-          reject(error.name + ': ' + error.message);
-          console.log('error on find');
+      console.log('try to save');
+      item.save((err: any, new_obj: any) => {
+        if (err) {
+          console.log('error saving');
+          this.logActionFailure(this.create.name, err.name, err.message);
+          reject(err.name + ': ' + err.message);
         }
-        if (obj) {
-          console.log('already exists');
-          // obj already exists
-          reject(
-            'Object with "' +
-              JSON.stringify(attrValidate) +
-              '" is already exists'
-          );
-          this.logActionFailure(this.create.name, error.name, error.message);
-        } else {
-          item.save((error: any, new_obj: any) => {
-            if (error) {
-              this.logActionFailure(
-                this.create.name,
-                error.name,
-                error.message
-              );
-              reject(error.name + ': ' + error.message);
-            } else {
-              this.logActionCompleted(this.create.name);
-            }
-            console.log('end create user...');
-            resolve();
-          });
-        }
-      });
-    });
-  }
-
-  /**
-   * Will create your object with duplicate, use carefully
-   * @param item
-   * @param attrValidate
-   */
-  public createDuplicate(item: any, attrValidate: any): Promise<any> {
-    return new Promise((resolve: any, reject: any) => {
-      item.save((error: any, newObj: any) => {
-        if (error) {
-          this.logActionFailure(
-            this.createDuplicate.name,
-            error.name,
-            error.message
-          );
-          reject(error.name + ': ' + error.message);
-        } else {
-          this.logActionCompleted(this.createDuplicate.name);
-        }
+        this.logActionCompleted(this.create.name);
         resolve();
       });
     });
   }
-
   /**
    * Id is the id of the object you want to update in Mongo it's always _id
    * which is a random string e.g. 4A34jD393jse

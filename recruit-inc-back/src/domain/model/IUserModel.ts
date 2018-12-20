@@ -1,7 +1,7 @@
 /**
  * Typegoose is including schema and model in one class
  */
-export interface UserModel {
+export interface IUserModel {
   username: string;
   firstName: string;
   lastName: string;
