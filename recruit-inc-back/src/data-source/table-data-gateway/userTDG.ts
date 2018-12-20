@@ -31,9 +31,10 @@ export class UserTDG {
     }
   }
 
-  public update(_id: string, updatedValue: any): Promise<boolean> {
+  public update(_id: string, updatedValue: IUserModel): Promise<boolean> {
     try {
-      return this.baseTDG.update(_id, updatedValue);
+      const UserModelToUpdate = new UserModel(updatedValue);
+      return this.baseTDG.update(Types.ObjectId(_id), UserModelToUpdate);
     } catch (Exception) {
       throw new Error('Error while creating User');
     }
@@ -41,7 +42,7 @@ export class UserTDG {
 
   public delete(_id: string): Promise<boolean> {
     try {
-      return this.baseTDG.delete(_id);
+      return this.baseTDG.delete(Types.ObjectId(_id));
     } catch (Exception) {
       throw new Error('Error while creating User');
     }

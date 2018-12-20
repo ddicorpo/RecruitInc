@@ -1,4 +1,5 @@
 import { Logger } from '../../Logger';
+import { Types } from 'mongoose';
 /**
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/repositories/base/base-repository.ts\
  * This is a base TDG, to handle generic action, our TDG will use it to complete action
@@ -40,19 +41,19 @@ export class BaseTDG {
   /**
    * Id is the id of the object you want to update in Mongo it's always _id
    * which is a random string e.g. 4A34jD393jse
-   * @param _id
+   * @param id
    * @param item
    */
-  public update(_id: string, item: any): Promise<boolean> {
+  public update(id: Types.ObjectId, item: any): Promise<boolean> {
     return new Promise((resolve: any, reject: any) => {
-      this.schema.findByIdAndUpdate(_id, item, (error: any, obj: any) => {
-        if (error) {
-          this.logActionFailure(this.update.name, error.name, error.message);
-          reject(error.name + ': ' + error.message);
+      item.isNew = false;
+      item.save((err: any, new_obj: any) => {
+        if (err) {
+          this.logActionFailure(this.create.name, err.name, err.message);
+          resolve(false);
         } else {
-          this.logActionCompleted(this.update.name);
+          resolve(true);
         }
-        resolve();
       });
     });
   }
@@ -61,9 +62,9 @@ export class BaseTDG {
    * The id of the object you want to delete
    * @param _id
    */
-  public delete(_id: string): Promise<boolean> {
+  public delete(id: Types.ObjectId): Promise<boolean> {
     return new Promise((resolve: any, reject: any) => {
-      this.schema.findById(_id, (error: any, obj: any) => {
+      this.schema.findOne(id, (error: any, obj: any) => {
         if (error) {
           this.logActionFailure(this.delete.name, error.name, error.message);
           reject(error.name + ': ' + error.message);
@@ -72,9 +73,10 @@ export class BaseTDG {
           if (error) {
             this.logActionFailure(this.delete.name, error.name, error.message);
             reject(error.name + ': ' + error.message);
+            resolve(false);
           }
           this.logActionCompleted(this.delete.name);
-          resolve();
+          resolve(true);
         });
       });
     });

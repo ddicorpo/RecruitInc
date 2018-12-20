@@ -4,13 +4,14 @@ import { UserTDG } from '../../src/data-source/table-data-gateway/userTDG';
 import { IUserModel } from '../../src/domain/model/IUserModel';
 import { UserFinder } from '../../src/data-source/finder/userFinder';
 import { expect, assert } from 'chai';
-import { UserModel } from '../../src/data-source/schema/userSchema';
 import { Types } from 'mongoose';
 /**
  * This is an integration test user
  */
 
-describe('Test mongo User', () => {
+xdescribe('Test mongo User', () => {
+  //Replace this Id by a known user Id
+  const userId: string = '5c1b2f79becbc9672038e63c';
   const newUser: IUserModel = {
     username: 'Gilbert49',
     firstName: 'Gil',
@@ -40,54 +41,36 @@ describe('Test mongo User', () => {
     // Reset database
   });
 
-  it('Test mongo create user, verify if created', async () => {
+  it('Test mongo create user', async () => {
     //Given: database clean and user data set
     //When
-    // let createdUser: IUserModel = await userTDG.create(newUser);
-
-    //Then
-    //let userFound: IUserModel = await userFinder.findById("5c1b2f79becbc9672038e63c");
-
-    await UserModel.findOne({ _id: Types.ObjectId('5c1b10791e82272c899ec15a') })
-      .then(doc => {
-        let d: IUserModel = doc;
-        console.log('EMAIL ' + d.email);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    // let foundEmail : string;
-    // userFound.then((user) =>{
-    //   foundEmail = user.email;
-    // });
-    //console.log("Original Email: " + createdUser.email)
-    // console.log("Return Email: " + userFound.email);
-
-    // expect(foundEmail).to.equal(createdUser.email);
-  });
-
-  xit('Test mongo Update User: create user, verify if created, update user', async () => {
-    // GIVEN
     let createdUser: IUserModel = await userTDG.create(newUser);
 
     //Then
-    let foundUser: IUserModel = await userFinder.findByUsername(
-      createdUser.username
-    );
-    assert(newUser.email === foundUser.email);
-    foundUser.firstName = 'Victor';
-    let updatedUser: boolean = await userTDG.update(foundUser._id, foundUser);
+    expect(newUser.email).to.equal(createdUser.email);
+  });
+
+  it('Test mongo Find By Id', async () => {
+    await userFinder.findById(userId).then(doc => {
+      let userFound: IUserModel = doc;
+      console.log('Return Email: ' + userFound.email);
+      expect(newUser.email).to.equal(userFound.email);
+    });
+  });
+  it('Test mongo Update User: update user', async () => {
+    // GIVEN
+
+    //Then
+    newUser._id = Types.ObjectId(userId);
+    newUser.firstName = 'Victor';
+    let updatedUser: boolean = await userTDG.update(userId, newUser);
     expect(updatedUser).to.be.equal(true);
   });
 
-  xit('Test mongo delete User: create user, verify if created, delete user', async () => {
+  it('Test mongo delete User: delete user', async () => {
     // GIVEN
-    let createdUser: IUserModel = await userTDG.create(newUser);
+    let deleteSuccess: boolean = await userTDG.delete(userId);
     //Then
-    let foundUser: IUserModel = await userFinder.findByUsername(
-      createdUser.username
-    );
-    expect(newUser.email).to.be.equal(foundUser.email);
+    expect(deleteSuccess).to.be.equal(true);
   });
 });
