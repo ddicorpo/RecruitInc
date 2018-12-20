@@ -23,17 +23,16 @@ describe('Test mongo User', () => {
     //When
     // Start connection
     myFactory.getConnection();
-
-    const userTDG: UserTDG = new UserTDG();
-    const u = new UserModel({
-      username: 'gilbert69',
-      firstName: 'gilbert',
+    const newUser: UserModel = {
+      username: 'Gilbert49',
+      firstName: 'Gil',
       lastName: 'Foobar',
       hashedPassword: 'blablabla',
-      email: 'ptiGil@gmail.com',
-    });
-    u.save();
+      email: 'megaGil@gmail.com',
+    };
+    const userTDG: UserTDG = new UserTDG();
+
     //Then
-    // userTDG.create(u)
+    userTDG.create(newUser);
   });
 });

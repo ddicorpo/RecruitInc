@@ -1,5 +1,6 @@
 import { BaseTDG } from './baseTDG';
 import { UserModel } from '../../domain/model/userModel';
+import { formalUsermodel } from '../schema/userSchema';
 /**
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/services/province.service.ts
  * This class will be used to update/delete/create User object
@@ -10,17 +11,12 @@ export class UserTDG {
   private baseTDG: BaseTDG;
 
   constructor() {
-    this.baseTDG = new BaseTDG(UserModel);
+    this.baseTDG = new BaseTDG(formalUsermodel);
   }
 
-  public create(userValue: any) {
-    const attr = { code: userValue.code };
-    const newUser = {
-      code: userValue.code,
-      name: userValue.name,
-    };
-    const user = new UserModel(newUser);
-    return this.baseTDG.create(user, attr);
+  public create(newUser: UserModel) {
+    const newModelIn = new formalUsermodel(newUser);
+    this.baseTDG.create(newModelIn, newUser);
   }
 
   public update(_id: string, updatedValue: any) {

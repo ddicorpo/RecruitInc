@@ -1,5 +1,5 @@
 import { BaseFinder } from './baseFinder';
-import { UserModel } from '../../domain/model/userModel';
+import { formalUsermodel } from '../schema/userSchema';
 /**
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/services/province.service.ts
  * This class will be used to find/find all and other find User object
@@ -11,7 +11,7 @@ export class UserFinder {
   private baseFinder: BaseFinder;
 
   constructor() {
-    this.baseFinder = new BaseFinder(UserModel);
+    this.baseFinder = new BaseFinder(formalUsermodel);
   }
 
   /**
