@@ -33,6 +33,12 @@ describe('Test mongo User', () => {
     const userTDG: UserTDG = new UserTDG();
 
     //Then
-    userTDG.create(newUser);
+    async () => {
+      try {
+        await userTDG.create(newUser);
+      } catch (Exception) {
+        console.log(Exception);
+      }
+    };
   });
 });

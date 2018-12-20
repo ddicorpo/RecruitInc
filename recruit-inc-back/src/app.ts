@@ -24,10 +24,16 @@ class App {
     // Import all env. variable
     require('dotenv').config();
 
-    let whitelistDomain: string[] = [process.env.DOMAIN_FRONT_END, process.env.DOMAIN_BACK_END];
+    let whitelistDomain: string[] = [
+      process.env.DOMAIN_FRONT_END,
+      process.env.DOMAIN_BACK_END,
+    ];
     var corsOptionsDelegate = function(req, callback) {
       var corsOptions;
-      if (whitelistDomain.indexOf(req.header('Origin')) !== -1) {
+      if (
+        whitelistDomain.indexOf(req.header('Origin')) !== -1 &&
+        process.env.NODE_ENV === 'production'
+      ) {
         console.log('CORS Enabled for => PROD');
         corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
       } else if (process.env.NODE_ENV === 'dev') {

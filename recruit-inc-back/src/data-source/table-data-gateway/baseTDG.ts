@@ -22,13 +22,16 @@ export class BaseTDG {
    */
   public create(item: any, attrValidate: any): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
+      console.log('start');
       this.schema.findOne(attrValidate, (error: any, obj: any) => {
         if (error) {
           // Can't execute the query
           this.logActionFailure(this.create.name, error.name, error.message);
           reject(error.name + ': ' + error.message);
+          console.log('error on find');
         }
         if (obj) {
+          console.log('already exists');
           // obj already exists
           reject(
             'Object with "' +
@@ -48,6 +51,7 @@ export class BaseTDG {
             } else {
               this.logActionCompleted(this.create.name);
             }
+            console.log('end create user...');
             resolve();
           });
         }

@@ -15,6 +15,7 @@ export class UserTDG {
   }
 
   public create(newUser: UserModel) {
+    console.log('creating user...');
     const newModelIn = new formalUsermodel(newUser);
     this.baseTDG.create(newModelIn, newUser);
   }
