@@ -3,8 +3,12 @@
  */
 import { prop, Typegoose } from 'typegoose';
 import { IUserModel } from '../../domain/model/IUserModel';
+import { mongoose } from 'mongoose';
 
 export class UserSchema extends Typegoose implements IUserModel {
+  @prop()
+  _id?: mongoose.Types.ObjectId;
+
   @prop({ required: true, unique: true, minlength: 3, maxlength: 150 })
   username: string;
 

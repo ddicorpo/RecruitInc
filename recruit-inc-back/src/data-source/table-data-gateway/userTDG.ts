@@ -1,6 +1,8 @@
 import { BaseTDG } from './baseTDG';
 import { IUserModel } from '../../domain/model/IUserModel';
 import { UserModel } from '../schema/userSchema';
+import { Types } from 'mongoose';
+
 /**
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/services/province.service.ts
  * This class will be used to update/delete/create User object
@@ -18,8 +20,10 @@ export class UserTDG {
     this.baseTDG = new BaseTDG(UserModel);
   }
 
-  public create(userAttr: IUserModel): Promise<any> {
+  public create(userAttr: IUserModel): Promise<IUserModel> {
+    userAttr._id = Types.ObjectId();
     const newUserModel = new UserModel(userAttr);
+
     try {
       return this.baseTDG.create(newUserModel, userAttr);
     } catch (Exception) {

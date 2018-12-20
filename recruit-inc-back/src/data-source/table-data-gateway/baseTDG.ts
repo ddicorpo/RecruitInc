@@ -25,15 +25,15 @@ export class BaseTDG {
    */
   public create(item: any, attrValidate: any): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
-      console.log('try to save');
       item.save((err: any, new_obj: any) => {
+        console.log('item id: ' + item._id);
         if (err) {
-          console.log('error saving');
           this.logActionFailure(this.create.name, err.name, err.message);
           reject(err.name + ': ' + err.message);
+          throw new Error("Can't save");
         }
         this.logActionCompleted(this.create.name);
-        resolve();
+        resolve(attrValidate);
       });
     });
   }
