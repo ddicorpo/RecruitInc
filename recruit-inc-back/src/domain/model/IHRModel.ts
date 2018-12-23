@@ -1,9 +1,10 @@
-import { UserSchema } from '../../data-source/schema/userSchema';
-
 /**
  * Typegoose is including schema and model in one class
  */
+import { mongoose } from 'mongoose';
+import { IUserModel } from './IUserModel';
+
 export interface IHRModel {
-  hrId: number;
-  userRef: UserSchema;
+  _id?: mongoose.Type.ObjectId;
+  userRef: IUserModel;
 }

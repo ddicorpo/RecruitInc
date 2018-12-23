@@ -3,13 +3,13 @@ import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/
 import { UserTDG } from '../../src/data-source/table-data-gateway/userTDG';
 import { IUserModel } from '../../src/domain/model/IUserModel';
 import { UserFinder } from '../../src/data-source/finder/userFinder';
-import { expect, assert } from 'chai';
+import { expect } from 'chai';
 import { Types } from 'mongoose';
 /**
  * This is an integration test user
  */
 
-xdescribe('Test mongo User', () => {
+xdescribe('Integration Test => User', () => {
   //Replace this Id by a known user Id
   const userId: string = '5c1b2f79becbc9672038e63c';
   const newUser: IUserModel = {
@@ -35,7 +35,6 @@ xdescribe('Test mongo User', () => {
       dbOption,
       true
     );
-    //When
     // Start connection
     myFactory.getConnection();
     // Reset database

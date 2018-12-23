@@ -1,8 +1,3 @@
-import { BaseTDG } from './baseTDG';
-import { IUserModel } from '../../domain/model/IUserModel';
-import { UserModel } from '../schema/userSchema';
-import { Types } from 'mongoose';
-
 /**
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/services/province.service.ts
  * This class will be used to update/delete/create User object
@@ -13,6 +8,12 @@ import { Types } from 'mongoose';
  * NOTE: This class doesn't include logic it's only transaction
  * *************************************************************
  */
+
+import { BaseTDG } from './baseTDG';
+import { IUserModel } from '../../domain/model/IUserModel';
+import { UserModel } from '../schema/userSchema';
+import { Types } from 'mongoose';
+
 export class UserTDG {
   private baseTDG: BaseTDG;
 
@@ -33,8 +34,8 @@ export class UserTDG {
 
   public update(_id: string, updatedValue: IUserModel): Promise<boolean> {
     try {
-      const UserModelToUpdate = new UserModel(updatedValue);
-      return this.baseTDG.update(Types.ObjectId(_id), UserModelToUpdate);
+      const userModelToUpdate = new UserModel(updatedValue);
+      return this.baseTDG.update(Types.ObjectId(_id), userModelToUpdate);
     } catch (Exception) {
       throw new Error('Error while creating User');
     }

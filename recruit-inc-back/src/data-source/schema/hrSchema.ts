@@ -4,10 +4,11 @@
 import { prop, Ref, Typegoose } from 'typegoose';
 import { UserSchema } from './userSchema';
 import { IHRModel } from '../../domain/model/IHRModel';
+import { mongoose } from 'mongoose';
 
 export class HRSchema extends Typegoose implements IHRModel {
-  @prop({ index: true, required: true, unique: true })
-  hrId: number;
+  @prop()
+  _id?: mongoose.Types.ObjectId;
 
   @prop({ ref: UserSchema, required: true, unique: true })
   userRef: Ref<UserSchema>;
