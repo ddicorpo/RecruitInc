@@ -121,3 +121,10 @@ files (one for each node).
 - Enter your username and password in the 'Authentication' tab and check the 'SCRAM-SHA-1' box
 - Give a name to your connection in the 'label' box
 - Save it !!!
+
+### Connect to the database on our server
+- ssh into the server
+- Enter the shell of your database docker container by typing `docker exec -it <your db container> bash` (you can type `docker ps` to list all containers, the one with your last name followed by '-db' is yours )
+- Inside the docker container, type `mongo` to get a mongodb shell
+- Type `use <db>` and replace '<db>' with the database you wish to use. For example: `use test` for the 'test' database or `use recruitinc` for our production database
+- At this point you can use mongo shell commands. You can autocomplete commands by typing the beginning of a command and hitting <TAB> twice. For example, to view the names of collections in the database, type `db.getCollectionNames()`. To view all entries in the 'applicants' collection, type `db.applicants.find()` etc. 
