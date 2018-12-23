@@ -9,7 +9,7 @@ import { HRFinder } from '../../src/data-source/finder/hrFinder';
  * This is a integration test for HR,
  * the HR data is a User saved in a special table
  */
-describe('Integration Test => HR ', () => {
+xdescribe('Integration Test => HR ', () => {
   const newUser: IUserModel = {
     username: 'PaulPaul69',
     firstName: 'Paul',
