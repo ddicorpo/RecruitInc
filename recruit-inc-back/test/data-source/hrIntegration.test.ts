@@ -5,17 +5,26 @@ import { Types } from 'mongoose';
 import { IUserModel } from '../../src/domain/model/IUserModel';
 import { HRTDG } from '../../src/data-source/table-data-gateway/hrTDG';
 import { HRFinder } from '../../src/data-source/finder/hrFinder';
+import { IHRModel } from '../../src/domain/model/IHRModel';
 /**
  * This is a integration test for HR,
  * the HR data is a User saved in a special table
  */
 xdescribe('Integration Test => HR ', () => {
+  const userId: string = '2a1eljja3911nsiunainaaw';
+  const hrId: string = '1had8j3eacgh82j8aaiij';
   const newUser: IUserModel = {
+    _id: userId,
     username: 'PaulPaul69',
     firstName: 'Paul',
     lastName: 'Loop',
     hashedPassword: 'eion20939230k2309k209ke2309e3902ke0k2e09k',
     email: 'superPaul@gmail.com',
+  };
+
+  const newHR: IHRModel = {
+    _id: hrId,
+    userRef: newUser,
   };
 
   const hrTDG: HRTDG = new HRTDG();
@@ -39,5 +48,36 @@ xdescribe('Integration Test => HR ', () => {
     myFactory.getConnection();
   });
 
-  //To CONTINUE
+  it('Test mongo create HR user', async () => {
+    //Given: database clean and user data set
+    //When
+    const createdHR: IHRModel = await hrTDG.create(newHR);
+
+    //Then
+    expect(newUser.email).to.equal(createdHR.userRef.email);
+  });
+
+  it('Test mongo Find HR By Id', async () => {
+    await hrFinder.findById(userId).then(doc => {
+      let HRFound: IHRModel = doc;
+      console.log('Return Email: ' + HRFound.userRef.email);
+      expect(newUser.email).to.equal(HRFound.userRef.email);
+    });
+  });
+  it('Test mongo update HR', async () => {
+    // GIVEN
+
+    //Then
+    newUser._id = Types.ObjectId(userId);
+    newUser.firstName = 'Victor';
+    let updatedUser: boolean = await hrTDG.update(userId, newUser);
+    expect(updatedUser).to.be.equal(true);
+  });
+
+  it('Test mongo delete User: HR delete user', async () => {
+    // GIVEN
+    let deleteSuccess: boolean = await hrTDG.delete(userId);
+    //Then
+    expect(deleteSuccess).to.be.equal(true);
+  });
 });

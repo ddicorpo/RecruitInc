@@ -21,8 +21,14 @@ export class UserTDG {
     this.baseTDG = new BaseTDG(UserModel);
   }
 
-  public create(userAttr: IUserModel): Promise<IUserModel> {
-    userAttr._id = Types.ObjectId();
+  public create(userAttr: IUserModel, id?: string): Promise<IUserModel> {
+    userAttr._id = null;
+    if (id != null) {
+      userAttr._id = Types.ObjectId(id);
+    } else {
+      userAttr._id = Types.ObjectId();
+    }
+
     const newUserModel = new UserModel(userAttr);
 
     try {
