@@ -9,16 +9,18 @@ import { IGitProjectSummary } from '../../../src/matching-algo/data-model/output
 import { IGitProjectOutput } from '../../../src/matching-algo/data-model/output-model/IGitProjectOutput';
 import { DjangoMatcher } from '../../../src/matching-algo/matcher/Python/DjangoMatcher';
 import { PythonMatcher } from '../../../src/matching-algo/matcher/Python/PythonMatcher';
+
+// Setup Language Matcher with Python and django
+const djangoMatcher: AbstractFrameworkMatcher = new DjangoMatcher();
+const pythonMatcher: AbstractLanguageMatcher = new PythonMatcher();
+
+pythonMatcher.addFramework(djangoMatcher);
+
+const customLanguageMatchers: AbstractLanguageMatcher[] = [pythonMatcher];
+
 describe('Test Django matching algorithm', () => {
   it('Should return the correct output object', () => {
     // GIVEN
-    // Setup Language Matcher with Python and django
-    const djangoMatcher: AbstractFrameworkMatcher = new DjangoMatcher();
-    const pythonMatcher: AbstractLanguageMatcher = new PythonMatcher();
-
-    pythonMatcher.addFramework(djangoMatcher);
-
-    const customLanguageMatchers: AbstractLanguageMatcher[] = [pythonMatcher];
     const client: MatcherClient = new MatcherClient(
       dataEntry,
       customLanguageMatchers

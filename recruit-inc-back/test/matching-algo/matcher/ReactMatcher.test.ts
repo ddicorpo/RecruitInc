@@ -10,19 +10,17 @@ import { TypescriptMatcher } from '../../../src/matching-algo/matcher/Javascript
 import { JavascriptMatcher } from '../../../src/matching-algo/matcher/Javascript/JavascriptMatcher';
 import { IGitProjectSummary } from '../../../src/matching-algo/data-model/output-model/IGitProjectSummary';
 import { IGitProjectOutput } from '../../../src/matching-algo/data-model/output-model/IGitProjectOutput';
+
+// Setup Language Matcher with only Typescript, Javascript and React
+const reactMatcher: AbstractFrameworkMatcher = new ReactMatcher();
+const typescriptMatcher: AbstractFrameworkMatcher = new TypescriptMatcher();
+const javascriptMatcher: AbstractLanguageMatcher = new JavascriptMatcher();
+javascriptMatcher.addFramework(typescriptMatcher).addFramework(reactMatcher);
+const customLanguageMatchers: AbstractLanguageMatcher[] = [javascriptMatcher];
+
 describe('Test react matching algorithm', () => {
-  it('Should return the correct output object', () => {
+  it('Should return the correct output object with a generic repository', () => {
     // GIVEN
-    // Setup Language Matcher with only Typescript, Javascript and React
-    const reactMatcher: AbstractFrameworkMatcher = new ReactMatcher();
-    const typescriptMatcher: AbstractFrameworkMatcher = new TypescriptMatcher();
-    const javascriptMatcher: AbstractLanguageMatcher = new JavascriptMatcher();
-    javascriptMatcher
-      .addFramework(typescriptMatcher)
-      .addFramework(reactMatcher);
-    const customLanguageMatchers: AbstractLanguageMatcher[] = [
-      javascriptMatcher,
-    ];
     const client: MatcherClient = new MatcherClient(
       dataEntry,
       customLanguageMatchers
@@ -40,6 +38,32 @@ describe('Test react matching algorithm', () => {
       index++;
       if (JSON.stringify(projectSum) !== JSON.stringify(computedProjectSum)) {
         console.log('expected: ' + JSON.stringify(projectSum));
+        console.log('actual: ' + JSON.stringify(computedProjectSum));
+        expect.fail();
+      }
+    }
+  });
+
+  it('Should return the correct output object with algo-data-structures repository', () => {
+    // GIVEN
+    const input = require('./input/algo-data-structures.json');
+    const expected = require('./expected-output/algo-data-structures.out.json');
+    const client: MatcherClient = new MatcherClient(
+      input,
+      customLanguageMatchers
+    );
+
+    // WHEN
+    const computedOutput: IGitProjectSummary = client.execute();
+
+    // THEN
+    let index: number = 0;
+    for (const proj in computedOutput.projectsOutput) {
+      const computedProjectSum: IGitProjectOutput =
+        computedOutput.projectsOutput[index];
+      index++;
+      if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
+        console.log('expected: ' + JSON.stringify(expected));
         console.log('actual: ' + JSON.stringify(computedProjectSum));
         expect.fail();
       }
