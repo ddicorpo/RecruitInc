@@ -49,9 +49,10 @@ export class BaseTDG {
       item.isNew = false;
       item.save((err: any, new_obj: any) => {
         if (err) {
-          this.logActionFailure(this.create.name, err.name, err.message);
+          this.logActionFailure(this.update.name, err.name, err.message);
           resolve(false);
         } else {
+          this.logActionCompleted(this.update.name);
           resolve(true);
         }
       });
@@ -64,20 +65,14 @@ export class BaseTDG {
    */
   public delete(id: Types.ObjectId): Promise<boolean> {
     return new Promise((resolve: any, reject: any) => {
-      this.schema.findOne(id, (error: any, obj: any) => {
+      this.schema.findByIdAndRemove(id, (error, doc) => {
         if (error) {
           this.logActionFailure(this.delete.name, error.name, error.message);
-          reject(error.name + ': ' + error.message);
-        }
-        obj.remove((error: any) => {
-          if (error) {
-            this.logActionFailure(this.delete.name, error.name, error.message);
-            reject(error.name + ': ' + error.message);
-            resolve(false);
-          }
+          resolve(false);
+        } else {
           this.logActionCompleted(this.delete.name);
           resolve(true);
-        });
+        }
       });
     });
   }

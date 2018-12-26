@@ -21,8 +21,12 @@ export class HRTDG {
     this.baseTDG = new BaseTDG(HRModel);
   }
 
-  public create(hrAttr: IHRModel): Promise<IHRModel> {
-    hrAttr._id = Types.ObjectId();
+  public create(hrAttr: IHRModel, id?: string): Promise<IHRModel> {
+    if (id != null) {
+      hrAttr._id = Types.ObjectId(id);
+    } else {
+      hrAttr._id = Types.ObjectId();
+    }
     const newHrModel = new HRModel(hrAttr);
     try {
       return this.baseTDG.create(newHrModel, hrAttr);
@@ -34,7 +38,7 @@ export class HRTDG {
   public update(_id: string, updatedVal: IHRModel) {
     try {
       const hrModelToUpdate = new HRModel(updatedVal);
-      return this.baseTDG.update(Types.ObjectId(_id), updatedVal);
+      return this.baseTDG.update(Types.ObjectId(_id), hrModelToUpdate);
     } catch (Exception) {
       throw new Error('Problem while updating HR');
     }

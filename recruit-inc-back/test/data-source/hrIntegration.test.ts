@@ -10,7 +10,7 @@ import { IHRModel } from '../../src/domain/model/IHRModel';
  * This is a integration test for HR,
  * the HR data is a User saved in a special table
  */
-xdescribe('Integration Test => HR ', () => {
+describe('Integration Test => HR ', () => {
   const userId: string = '2a1eljja3911nsiunainaaw';
   const hrId: string = '1had8j3eacgh82j8aaiij';
   const newUser: IUserModel = {
@@ -65,12 +65,9 @@ xdescribe('Integration Test => HR ', () => {
     });
   });
   it('Test mongo update HR', async () => {
-    // GIVEN
-
-    //Then
-    newUser._id = Types.ObjectId(userId);
-    newUser.firstName = 'Victor';
-    let updatedUser: boolean = await hrTDG.update(userId, newUser);
+    // Then
+    newHR.userRef.firstName = 'BigRob';
+    let updatedUser: boolean = await hrTDG.update(userId, newHR);
     expect(updatedUser).to.be.equal(true);
   });
 

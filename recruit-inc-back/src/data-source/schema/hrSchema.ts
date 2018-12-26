@@ -10,7 +10,7 @@ export class HRSchema extends Typegoose implements IHRModel {
   @prop()
   _id?: mongoose.Types.ObjectId;
 
-  @prop({ ref: UserSchema, required: true, unique: true })
+  @prop({ ref: UserSchema, required: true })
   userRef: Ref<UserSchema>;
 }
 // Can pass schema option in statement below
