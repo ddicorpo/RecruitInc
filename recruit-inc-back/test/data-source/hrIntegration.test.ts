@@ -1,34 +1,36 @@
 import 'mocha';
 import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/MongoConnectionFactory';
 import { expect } from 'chai';
-import { Types } from 'mongoose';
 import { IUserModel } from '../../src/domain/model/IUserModel';
 import { HRTDG } from '../../src/data-source/table-data-gateway/hrTDG';
 import { HRFinder } from '../../src/data-source/finder/hrFinder';
 import { IHRModel } from '../../src/domain/model/IHRModel';
+import { UserTDG } from '../../src/data-source/table-data-gateway/userTDG';
+import { Types } from 'mongoose';
+import { UserModel } from '../../src/data-source/schema/userSchema';
 /**
  * This is a integration test for HR,
  * the HR data is a User saved in a special table
  */
 describe('Integration Test => HR ', () => {
-  const userId: string = '2a1eljja3911nsiunainaaw';
-  const hrId: string = '1had8j3eacgh82j8aaiij';
+  const userId: string = '5c1fb0fd4cb3ae14288028d9';
+  const hrId: string = '5c1fb0fd4cb3ae14244028d3';
   const newUser: IUserModel = {
-    _id: userId,
     username: 'PaulPaul69',
     firstName: 'Paul',
     lastName: 'Loop',
-    hashedPassword: 'eion20939230k2309k209ke2309e3902ke0k2e09k',
+    hashedPassword: 'eion20939230k2309k209ke2309e3902keS',
     email: 'superPaul@gmail.com',
   };
 
   const newHR: IHRModel = {
-    _id: hrId,
+    _id: Types.ObjectId(hrId),
     userRef: newUser,
   };
 
   const hrTDG: HRTDG = new HRTDG();
   const hrFinder: HRFinder = new HRFinder();
+  const userTDG: UserTDG = new UserTDG();
 
   beforeEach(() => {
     // Establish connection
@@ -48,23 +50,34 @@ describe('Integration Test => HR ', () => {
     myFactory.getConnection();
   });
 
+  // afterEach(() => {
+  //   try{
+  //      userTDG.delete(hrId);
+  //   }catch(Exception){
+  //     throw new Error("Problem while remvoing user")
+  //   }
+
+  // });
+
   it('Test mongo create HR user', async () => {
     //Given: database clean and user data set
     //When
-    const createdHR: IHRModel = await hrTDG.create(newHR);
+    const createdUser: IUserModel = await userTDG.create(newUser);
+    newHR.userRef = createdUser;
+    let createdHR: IHRModel = await hrTDG.create(newHR, hrId);
 
     //Then
     expect(newUser.email).to.equal(createdHR.userRef.email);
   });
 
-  it('Test mongo Find HR By Id', async () => {
+  xit('Test mongo Find HR By Id', async () => {
     await hrFinder.findById(userId).then(doc => {
       let HRFound: IHRModel = doc;
       console.log('Return Email: ' + HRFound.userRef.email);
       expect(newUser.email).to.equal(HRFound.userRef.email);
     });
   });
-  it('Test mongo update HR', async () => {
+  xit('Test mongo update HR', async () => {
     // Then
     newHR.userRef.firstName = 'BigRob';
     let updatedUser: boolean = await hrTDG.update(userId, newHR);

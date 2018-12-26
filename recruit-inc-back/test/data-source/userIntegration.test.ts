@@ -43,7 +43,7 @@ xdescribe('Integration Test => User', () => {
   it('Test mongo create user', async () => {
     //Given: database clean and user data set
     //When
-    let createdUser: IUserModel = await userTDG.create(newUser);
+    let createdUser: IUserModel = await userTDG.create(newUser, userId);
 
     //Then
     expect(newUser.email).to.equal(createdUser.email);
