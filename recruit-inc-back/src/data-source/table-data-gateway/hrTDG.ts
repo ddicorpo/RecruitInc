@@ -28,6 +28,7 @@ export class HRTDG {
       hrAttr._id = Types.ObjectId();
     }
     const newHrModel = new HRModel(hrAttr);
+
     try {
       return this.baseTDG.create(newHrModel, hrAttr);
     } catch (Exception) {
