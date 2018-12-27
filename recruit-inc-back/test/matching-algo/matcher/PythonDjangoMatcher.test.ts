@@ -19,7 +19,7 @@ pythonMatcher.addFramework(djangoMatcher);
 const customLanguageMatchers: AbstractLanguageMatcher[] = [pythonMatcher];
 
 describe('Test Django matching algorithm', () => {
-  it('Should return the correct output object', () => {
+  it('The Django-Python matcher should return the correct output object', () => {
     // GIVEN
     const client: MatcherClient = new MatcherClient(
       dataEntry,
@@ -44,7 +44,7 @@ describe('Test Django matching algorithm', () => {
     }
   });
 
-  it('Should return the correct output object with django-rest-todo repository', () => {
+  it('The Django-Python matcher should return the correct output object with django-rest-todo repository', () => {
     // GIVEN
     const input = require('./input/django-rest-todo.json');
     const expected = require('./expected-output/django-rest-todo.out.json');
@@ -70,7 +70,7 @@ describe('Test Django matching algorithm', () => {
     }
   });
 
-  it('Should return the correct output object with django-sample.app repository', () => {
+  it('The Django-Python matcher should return the correct output object with django-sample.app repository', () => {
     // GIVEN
     const input = require('./input/django-sample.app.json');
     const expected = require('./expected-output/django-sample.app.out.json');
@@ -96,7 +96,7 @@ describe('Test Django matching algorithm', () => {
     }
   });
 
-  it('Should return the correct output object with django-to-do repository', () => {
+  it('The Django-Python matcher should return the correct output object with django-to-do repository', () => {
     // GIVEN
     const input = require('./input/django-to-do.json');
     const expected = require('./expected-output/django-to-do.out.json');
@@ -122,7 +122,7 @@ describe('Test Django matching algorithm', () => {
     }
   });
 
-  it('Should return the correct output object with django-tutorial repository', () => {
+  it('The Django-Python matcher should return the correct output object with django-tutorial repository', () => {
     // GIVEN
     const input = require('./input/django-tutorial.json');
     const expected = require('./expected-output/django-tutorial.out.json');
@@ -148,7 +148,7 @@ describe('Test Django matching algorithm', () => {
     }
   });
 
-  it('Should return the correct output object with mlc repository', () => {
+  it('The Django-Python matcher should return the correct output object with mlc repository', () => {
     // GIVEN
     const input = require('./input/mlc.json');
     const expected = require('./expected-output/mlc.out.json');
@@ -174,10 +174,10 @@ describe('Test Django matching algorithm', () => {
     }
   });
 
-  it('Should return the correct output object with smart-meter-graph repository', () => {
+  it('The Django-Python matcher should return the correct output object with smart-meter-graph repository', () => {
     // GIVEN
     const input = require('./input/smart-meter-graph.json');
-    const expected = require('./expected-output/smart-meter-graph.out.json');
+    const expected = require('./expected-output/smart-meter-graph-python.out.json');
     const client: MatcherClient = new MatcherClient(
       input,
       customLanguageMatchers
@@ -200,7 +200,7 @@ describe('Test Django matching algorithm', () => {
     }
   });
 
-  it('Should return the correct output object with tic-tac-toe repository', () => {
+  it('The Django-Python matcher should return the correct output object with tic-tac-toe repository', () => {
     // GIVEN
     const input = require('./input/tic-tac-toe.json');
     const expected = require('./expected-output/tic-tac-toe.out.json');
