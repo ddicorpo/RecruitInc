@@ -4,6 +4,8 @@ import { GitDataTDG } from '../../src/data-source/table-data-gateway/gitDataTDG'
 import { IGitDataModel } from '../../src/domain/model/IGitDataModel';
 import { Platform } from '../../src/domain/model/IGitDataModel';
 import { GitDataFinder } from '../../src/data-source/finder/gitDataFinder';
+import { IGitProjectInput } from '../../src/matching-algo/data-model/input-model/IGitProjectInput';
+import { DataEntrySchema } from '../../src/data-source/schema/dataEntrySchema';
 import { expect, assert } from 'chai';
 import { Types } from 'mongoose';
 import * as mongoose from 'mongoose';
@@ -11,12 +13,9 @@ import * as mongoose from 'mongoose';
 require('dotenv').config(); //Get environment variables
 
 
-xdescribe('Test mongo GitData', () => {
+describe.only('Test mongo GitData', () => {
     const newGitData: IGitDataModel = {
-        iDataEntry: {
-            projectInputs: []
-        
-        },
+        dataEntry: new DataEntrySchema(),
         iGitProjectSummary: {
             totalOutput: [],
             projectsOutput: []
@@ -24,11 +23,10 @@ xdescribe('Test mongo GitData', () => {
         lastKnownInfoDate: new Date(2018, 12, 23).toString() ,
         platform: Platform.Github,
     }
+    newGitData.dataEntry.projectInputs = [];
+    //newGitData.dataEntry._id = mongoose.Types.ObjectId;
     const newGitData2: IGitDataModel = {
-        iDataEntry: {
-            projectInputs: []
-        
-        },
+        dataEntry: new DataEntrySchema(),
         iGitProjectSummary: {
             totalOutput: [],
             projectsOutput: []
@@ -36,10 +34,10 @@ xdescribe('Test mongo GitData', () => {
         lastKnownInfoDate: new Date(2018, 10, 13).toString() ,
         platform: Platform.Github,
     }
+    newGitData2.dataEntry.projectInputs = [];
+    //newGitData.dataEntry._id = mongoose.Types.ObjectId;
     const newGitData3: IGitDataModel = {
-        iDataEntry: { 
-            projectInputs: []
-        },
+        dataEntry: new DataEntrySchema(),
         iGitProjectSummary: {
             totalOutput: [],
             projectsOutput: []
@@ -47,6 +45,8 @@ xdescribe('Test mongo GitData', () => {
         lastKnownInfoDate: new Date(2018, 11, 17).toString() ,
         platform: Platform.Gitlab,
     }
+    newGitData3.dataEntry.projectInputs = [];
+    //newGitData.dataEntry._id = mongoose.Types.ObjectId;
     const gitDataTDG: GitDataTDG = new GitDataTDG();
     const gitDataFinder: GitDataFinder = new GitDataFinder();
 
@@ -78,7 +78,7 @@ xdescribe('Test mongo GitData', () => {
     await gitDataTDG.create(newGitData3);
     });
 
-  it('Test mongo Find By Last Known Info Date', async () => {
+  xit('Test mongo Find By Last Known Info Date', async () => {
     await gitDataFinder.findByLastKnownInfoDate(newGitData.lastKnownInfoDate).then(doc => {
       let gitDataFound: IGitDataModel = doc;
       console.log(gitDataFound);
@@ -87,7 +87,7 @@ xdescribe('Test mongo GitData', () => {
     });
   });
 
-  it('Test mongo Find By Platform', async () => {
+  xit('Test mongo Find By Platform', async () => {
     await gitDataFinder.findByPlatform(newGitData3.platform).then(doc => {
       let gitDataFound: IGitDataModel = doc;
       console.log(gitDataFound);
@@ -98,7 +98,7 @@ xdescribe('Test mongo GitData', () => {
   });
 
 
-  it('Test mongo findAll and delete', async () => {
+  xit('Test mongo findAll and delete', async () => {
       let gitDatasFound: IGitDataModel;
       //Find all gitDatas
     await gitDataFinder.findAll().then(doc => {
