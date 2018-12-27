@@ -8,7 +8,7 @@ import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/
 export interface IGitDataModel {
   _id?: mongoose.Types.ObjectId;
   //iDataEntry: IDataEntry;
-  dataEntry: DataEntrySchema;
+  dataEntry: IDataEntry;
   iGitProjectSummary: IGitProjectSummary;
   lastKnownInfoDate: string; 
   platform: Platform;
