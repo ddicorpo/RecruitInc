@@ -80,9 +80,9 @@ describe.only('Test mongo GitData', () => {
 
 
   it('Test mongo create gitData', async () => {
-    await dataEntryTDG.create(newDataEntry);
-    await dataEntryTDG.create(newDataEntry2);
-    await dataEntryTDG.create(newDataEntry3);
+    await dataEntryTDG.create(newDataEntry, "5c25533e11ad520c5f2a13d4");
+    await dataEntryTDG.create(newDataEntry2, "5c25533e11ad520c5f2a13d5");
+    await dataEntryTDG.create(newDataEntry3, "5c25533e11ad520c5f2a13d6");
     let createdGitData: IGitDataModel = await gitDataTDG.create(newGitData);
     expect(newGitData.lastKnownInfoDate).to.equal(createdGitData.lastKnownInfoDate);
     //Insert other gitDatas
@@ -112,6 +112,7 @@ describe.only('Test mongo GitData', () => {
 
   it('Test mongo findAll and delete', async () => {
       let gitDatasFound: IGitDataModel;
+      let deleteSuccess: boolean;
       //Find all gitDatas
     await gitDataFinder.findAll().then(doc => {
       gitDatasFound = doc;
@@ -119,8 +120,12 @@ describe.only('Test mongo GitData', () => {
     });
     //Delete the gitDatas that were found
       for (let i: number = 0; i < 3; i++){
-        let deleteSuccess: boolean = await gitDataTDG.delete(gitDatasFound[i]._id);
+        deleteSuccess = await gitDataTDG.delete(gitDatasFound[i]._id);
         expect(deleteSuccess).to.be.equal(true);
       }
+      //Delete the dataEntry entries
+        deleteSuccess = await dataEntryTDG.delete("5c25533e11ad520c5f2a13d4");
+        deleteSuccess = await dataEntryTDG.delete("5c25533e11ad520c5f2a13d5");
+        deleteSuccess = await dataEntryTDG.delete("5c25533e11ad520c5f2a13d6");
   });
 });
