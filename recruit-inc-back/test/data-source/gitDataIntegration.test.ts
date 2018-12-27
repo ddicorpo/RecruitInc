@@ -1,6 +1,7 @@
 import 'mocha';
 import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/MongoConnectionFactory';
 import { GitDataTDG } from '../../src/data-source/table-data-gateway/gitDataTDG';
+import { DataEntryTDG } from '../../src/data-source/table-data-gateway/dataEntryTDG';
 import { IGitDataModel } from '../../src/domain/model/IGitDataModel';
 import { Platform } from '../../src/domain/model/IGitDataModel';
 import { GitDataFinder } from '../../src/data-source/finder/gitDataFinder';
@@ -33,7 +34,7 @@ describe.only('Test mongo GitData', () => {
         lastKnownInfoDate: new Date(2018, 12, 23).toString() ,
         platform: Platform.Github,
     }
-    //newGitData.dataEntry._id = mongoose.Types.ObjectId;
+
     const newGitData2: IGitDataModel = {
         dataEntry: newDataEntry2,
         iGitProjectSummary: {
@@ -43,8 +44,7 @@ describe.only('Test mongo GitData', () => {
         lastKnownInfoDate: new Date(2018, 10, 13).toString() ,
         platform: Platform.Github,
     }
-    //newGitData2.dataEntry.projectInputs = [];
-    //newGitData.dataEntry._id = mongoose.Types.ObjectId;
+
     const newGitData3: IGitDataModel = {
         dataEntry: newDataEntry3,
         iGitProjectSummary: {
@@ -54,8 +54,8 @@ describe.only('Test mongo GitData', () => {
         lastKnownInfoDate: new Date(2018, 11, 17).toString() ,
         platform: Platform.Gitlab,
     }
-    //newGitData3.dataEntry.projectInputs = [];
-    //newGitData.dataEntry._id = mongoose.Types.ObjectId;
+
+    const dataEntryTDG: DataEntryTDG = new DataEntryTDG();
     const gitDataTDG: GitDataTDG = new GitDataTDG();
     const gitDataFinder: GitDataFinder = new GitDataFinder();
 
@@ -80,6 +80,9 @@ describe.only('Test mongo GitData', () => {
 
 
   it('Test mongo create gitData', async () => {
+    await dataEntryTDG.create(newDataEntry);
+    await dataEntryTDG.create(newDataEntry2);
+    await dataEntryTDG.create(newDataEntry3);
     let createdGitData: IGitDataModel = await gitDataTDG.create(newGitData);
     expect(newGitData.lastKnownInfoDate).to.equal(createdGitData.lastKnownInfoDate);
     //Insert other gitDatas
@@ -87,7 +90,7 @@ describe.only('Test mongo GitData', () => {
     await gitDataTDG.create(newGitData3);
     });
 
-  xit('Test mongo Find By Last Known Info Date', async () => {
+  it('Test mongo Find By Last Known Info Date', async () => {
     await gitDataFinder.findByLastKnownInfoDate(newGitData.lastKnownInfoDate).then(doc => {
       let gitDataFound: IGitDataModel = doc;
       console.log(gitDataFound);
@@ -96,7 +99,7 @@ describe.only('Test mongo GitData', () => {
     });
   });
 
-  xit('Test mongo Find By Platform', async () => {
+  it('Test mongo Find By Platform', async () => {
     await gitDataFinder.findByPlatform(newGitData3.platform).then(doc => {
       let gitDataFound: IGitDataModel = doc;
       console.log(gitDataFound);
@@ -107,7 +110,7 @@ describe.only('Test mongo GitData', () => {
   });
 
 
-  xit('Test mongo findAll and delete', async () => {
+  it('Test mongo findAll and delete', async () => {
       let gitDatasFound: IGitDataModel;
       //Find all gitDatas
     await gitDataFinder.findAll().then(doc => {
