@@ -1,0 +1,22 @@
+{
+  "projectName": "algo-data-structures",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 1054,
+      "numberOfCommits": 13,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}
