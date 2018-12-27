@@ -6,109 +6,78 @@ import { Platform } from '../../src/domain/model/IGitDataModel';
 import { GitDataFinder } from '../../src/data-source/finder/gitDataFinder';
 import { expect, assert } from 'chai';
 import { Types } from 'mongoose';
-import * as mongoose from 'mongoose';
+import { dataEntry } from '../matching-algo/data-model/javascript-example/GitProjectInputExample';
+import { projectOutput } from '../matching-algo/data-model/javascript-example/GitProjectOutputExample';
 
 require('dotenv').config(); //Get environment variables
 
+describe('Test mongo GitData', () => {
+  const newGitData: IGitDataModel = {
+    iDataEntry: dataEntry,
+    iGitProjectSummary: projectOutput,
+    lastKnownInfoDate: new Date(2018, 12, 23).toString(),
+    platform: Platform.Github,
+  };
+  let targetIdToDelete: Types.ObjectId = null;
+  const gitDataTDG: GitDataTDG = new GitDataTDG();
+  const gitDataFinder: GitDataFinder = new GitDataFinder();
 
-xdescribe('Test mongo GitData', () => {
-    const newGitData: IGitDataModel = {
-        iDataEntry: {
-            projectInputs: []
-        
-        },
-        iGitProjectSummary: {
-            totalOutput: [],
-            projectsOutput: []
-        },
-        lastKnownInfoDate: new Date(2018, 12, 23).toString() ,
-        platform: Platform.Github,
-    }
-    const newGitData2: IGitDataModel = {
-        iDataEntry: {
-            projectInputs: []
-        
-        },
-        iGitProjectSummary: {
-            totalOutput: [],
-            projectsOutput: []
-        },
-        lastKnownInfoDate: new Date(2018, 10, 13).toString() ,
-        platform: Platform.Github,
-    }
-    const newGitData3: IGitDataModel = {
-        iDataEntry: { 
-            projectInputs: []
-        },
-        iGitProjectSummary: {
-            totalOutput: [],
-            projectsOutput: []
-        },
-        lastKnownInfoDate: new Date(2018, 11, 17).toString() ,
-        platform: Platform.Gitlab,
-    }
-    const gitDataTDG: GitDataTDG = new GitDataTDG();
-    const gitDataFinder: GitDataFinder = new GitDataFinder();
-
-  before(function (done){
-  mongoose.connect(`${process.env.DB_HOST}/${process.env.DB_NAME}`, {useNewUrlParser: true}); //Connect to database
-  const db = mongoose.connection;
-
-  db.on('error', console.error.bind(console, 'connection error'));
-
-  db.once('open', function(){
-      console.log('We are connected to the database');
-      done();
+  beforeEach(() => {
+    // Establish connection
+    const dbOption =
+      '-shard-00-00-celgm.mongodb.net:27017,cluster0-shard-00-01-celgm.mongodb.net:27017,' +
+      "'cluster0-shard-00-02-celgm.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true ";
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory(
+      'mongodb://',
+      'admin',
+      null,
+      'bob',
+      'cluster0',
+      dbOption,
+      true
+    );
+    // Start connection
+    myFactory.getConnection();
   });
 
-  });
-    
-
-  after(() => {
-  mongoose.connection.close();
-  console.log(mongoose.connection.readyState);
-  });
-
+  //   after(() => {
+  //   mongoose.connection.close();
+  //   console.log(mongoose.connection.readyState);
+  //   });
 
   it('Test mongo create gitData', async () => {
     let createdGitData: IGitDataModel = await gitDataTDG.create(newGitData);
-    expect(newGitData.lastKnownInfoDate).to.equal(createdGitData.lastKnownInfoDate);
-    //Insert other gitDatas
-    await gitDataTDG.create(newGitData2);
-    await gitDataTDG.create(newGitData3);
-    });
+    expect(newGitData.lastKnownInfoDate).to.equal(
+      createdGitData.lastKnownInfoDate
+    );
+  });
 
   it('Test mongo Find By Last Known Info Date', async () => {
-    await gitDataFinder.findByLastKnownInfoDate(newGitData.lastKnownInfoDate).then(doc => {
+    await gitDataFinder
+      .findByLastKnownInfoDate(newGitData.lastKnownInfoDate)
+      .then(doc => {
+        let gitDataFound: IGitDataModel = doc;
+        console.log(gitDataFound);
+        expect(newGitData.lastKnownInfoDate).to.equal(
+          gitDataFound[0].lastKnownInfoDate
+        );
+        expect(newGitData.platform).to.equal(gitDataFound[0].platform);
+      });
+  });
+
+  it('Test mongo Find By Platform', async () => {
+    await gitDataFinder.findByPlatform(newGitData.platform).then(doc => {
       let gitDataFound: IGitDataModel = doc;
+      targetIdToDelete = gitDataFound._id;
       console.log(gitDataFound);
-      expect(newGitData.lastKnownInfoDate).to.equal(gitDataFound[0].lastKnownInfoDate);
+      console.log(new Date(gitDataFound[0].lastKnownInfoDate));
       expect(newGitData.platform).to.equal(gitDataFound[0].platform);
     });
   });
 
-  it('Test mongo Find By Platform', async () => {
-    await gitDataFinder.findByPlatform(newGitData3.platform).then(doc => {
-      let gitDataFound: IGitDataModel = doc;
-      console.log(gitDataFound);
-      expect(newGitData3.platform).to.equal(gitDataFound[0].platform);
-      expect(newGitData3.lastKnownInfoDate).to.equal(gitDataFound[0].lastKnownInfoDate);
-      console.log(new Date(gitDataFound[0].lastKnownInfoDate));
-    });
-  });
-
-
   it('Test mongo findAll and delete', async () => {
-      let gitDatasFound: IGitDataModel;
-      //Find all gitDatas
-    await gitDataFinder.findAll().then(doc => {
-      gitDatasFound = doc;
-      
-    });
     //Delete the gitDatas that were found
-      for (let i: number = 0; i < 3; i++){
-        let deleteSuccess: boolean = await gitDataTDG.delete(gitDatasFound[i]._id);
-        expect(deleteSuccess).to.be.equal(true);
-      }
+    let deleteSuccess: boolean = await gitDataTDG.delete(targetIdToDelete);
+    expect(deleteSuccess).to.be.equal(true);
   });
 });
