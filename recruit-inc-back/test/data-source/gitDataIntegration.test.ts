@@ -14,10 +14,10 @@ import { dataEntry } from '../matching-algo/data-model/javascript-example/GitPro
 import { projectOutput } from '../matching-algo/data-model/javascript-example/GitProjectOutputExample';
 import { expect, assert } from 'chai';
 import { Types } from 'mongoose';
-import * as mongoose from 'mongoose';
+import { dataEntry } from '../matching-algo/data-model/javascript-example/GitProjectInputExample';
+import { projectOutput } from '../matching-algo/data-model/javascript-example/GitProjectOutputExample';
 
 require('dotenv').config(); //Get environment variables
-
 
 xdescribe('Test mongo GitData', () => {
     const newDataEntry: IDataEntry = {
@@ -80,6 +80,10 @@ xdescribe('Test mongo GitData', () => {
   console.log(mongoose.connection.readyState);
   });
 
+  //   after(() => {
+  //   mongoose.connection.close();
+  //   console.log(mongoose.connection.readyState);
+  //   });
 
   it('Test mongo create gitData', async () => {
     await dataEntryTDG.create(newDataEntry, "5c25533e11ad520c5f2a13d4");
@@ -89,33 +93,36 @@ xdescribe('Test mongo GitData', () => {
     await gitProjectSummaryTDG.create(newGitProjectSummary2, "5c2570a175692a0944090431");
     await gitProjectSummaryTDG.create(newGitProjectSummary3, "5c2570a175692a0944090432");
     let createdGitData: IGitDataModel = await gitDataTDG.create(newGitData);
-    expect(newGitData.lastKnownInfoDate).to.equal(createdGitData.lastKnownInfoDate);
-    //Insert other gitDatas
-    await gitDataTDG.create(newGitData2);
-    await gitDataTDG.create(newGitData3);
-    });
+    expect(newGitData.lastKnownInfoDate).to.equal(
+      createdGitData.lastKnownInfoDate
+    );
+  });
 
   it('Test mongo Find By Last Known Info Date', async () => {
-    await gitDataFinder.findByLastKnownInfoDate(newGitData.lastKnownInfoDate).then(doc => {
+    await gitDataFinder
+      .findByLastKnownInfoDate(newGitData.lastKnownInfoDate)
+      .then(doc => {
+        let gitDataFound: IGitDataModel = doc;
+        console.log(gitDataFound);
+        expect(newGitData.lastKnownInfoDate).to.equal(
+          gitDataFound[0].lastKnownInfoDate
+        );
+        expect(newGitData.platform).to.equal(gitDataFound[0].platform);
+      });
+  });
+
+  it('Test mongo Find By Platform', async () => {
+    await gitDataFinder.findByPlatform(newGitData.platform).then(doc => {
       let gitDataFound: IGitDataModel = doc;
+      targetIdToDelete = gitDataFound._id;
       console.log(gitDataFound);
-      expect(newGitData.lastKnownInfoDate).to.equal(gitDataFound[0].lastKnownInfoDate);
+      console.log(new Date(gitDataFound[0].lastKnownInfoDate));
       expect(newGitData.platform).to.equal(gitDataFound[0].platform);
     });
   });
 
-  it('Test mongo Find By Platform', async () => {
-    await gitDataFinder.findByPlatform(newGitData3.platform).then(doc => {
-      let gitDataFound: IGitDataModel = doc;
-      console.log(gitDataFound);
-      expect(newGitData3.platform).to.equal(gitDataFound[0].platform);
-      expect(newGitData3.lastKnownInfoDate).to.equal(gitDataFound[0].lastKnownInfoDate);
-      console.log(new Date(gitDataFound[0].lastKnownInfoDate));
-    });
-  });
-
-
   it('Test mongo findAll and delete', async () => {
+
       let gitDatasFound: IGitDataModel;
       let deleteSuccess: boolean;
       //Find all gitDatas
@@ -135,5 +142,6 @@ xdescribe('Test mongo GitData', () => {
         await gitProjectSummaryTDG.delete("5c2570a175692a0944090430");
         await gitProjectSummaryTDG.delete("5c2570a175692a0944090431");
         await gitProjectSummaryTDG.delete("5c2570a175692a0944090432");
+
   });
 });
