@@ -19,7 +19,7 @@ import * as mongoose from 'mongoose';
 require('dotenv').config(); //Get environment variables
 
 
-describe.only('Test mongo GitData', () => {
+xdescribe('Test mongo GitData', () => {
     const newDataEntry: IDataEntry = {
         projectInputs: []
     }
@@ -67,19 +67,6 @@ describe.only('Test mongo GitData', () => {
     const gitDataTDG: GitDataTDG = new GitDataTDG();
     const gitDataFinder: GitDataFinder = new GitDataFinder();
 
-  //before(function (done){
-  //mongoose.connect(`${process.env.DB_HOST}/${process.env.DB_NAME}`, {useNewUrlParser: true}); //Connect to database
-  //const db = mongoose.connection;
-
-  //db.on('error', console.error.bind(console, 'connection error'));
-
-  //db.once('open', function(){
-  //    console.log('We are connected to the database');
-  //    done();
-  //});
-
-  //});
-    
   before(() => {
     // Establish connection
     let myFactory: MongoConnectionFactory = new MongoConnectionFactory(
