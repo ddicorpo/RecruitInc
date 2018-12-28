@@ -3,6 +3,7 @@ import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/
 
 /**
  * This is an integration test for MongoConnectionFactory, it will be skipped by 'npm run test'
+ * Demonstration of the custom connection factory
  */
 xdescribe('Test mongo connection', () => {
   xit('Test mongo connection', () => {

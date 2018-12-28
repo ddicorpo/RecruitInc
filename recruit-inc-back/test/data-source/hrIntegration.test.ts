@@ -7,7 +7,6 @@ import { HRFinder } from '../../src/data-source/finder/hrFinder';
 import { IHRModel } from '../../src/domain/model/IHRModel';
 import { UserTDG } from '../../src/data-source/table-data-gateway/userTDG';
 import { Types } from 'mongoose';
-import { UserModel } from '../../src/data-source/schema/userSchema';
 /**
  * This is a integration test for HR,
  * the HR data is a User saved in a special table
@@ -34,32 +33,12 @@ xdescribe('Integration Test => HR ', () => {
 
   beforeEach(() => {
     // Establish connection
-    const dbOption =
-      '-shard-00-00-celgm.mongodb.net:27017,cluster0-shard-00-01-celgm.mongodb.net:27017,' +
-      "'cluster0-shard-00-02-celgm.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true ";
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory(
-      'mongodb://',
-      'admin',
-      null,
-      'bob',
-      'cluster0',
-      dbOption,
-      true
-    );
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
     // Start connection
     myFactory.getConnection();
-
+    //Create user
     userTDG.create(newUser);
   });
-
-  // afterEach(() => {
-  //   try{
-  //      userTDG.delete(hrId);
-  //   }catch(Exception){
-  //     throw new Error("Problem while remvoing user")
-  //   }
-
-  // });
 
   it('Test mongo create HR user', async () => {
     //Given: database clean and user data set
