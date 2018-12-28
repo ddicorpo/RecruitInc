@@ -18,7 +18,7 @@ To get this test to work:
 3) add NODE_ENV=production to .env
 4) Remove 'x' from in front of the 'describe'
 */
-xdescribe.only('Test mongo Applicant', () => {
+xdescribe('Test mongo Applicant', () => {
   const newApplicant: IApplicantModel = {
     platformUsername: 'testUser',
     platformEmail: 'testUser@blah.com',
