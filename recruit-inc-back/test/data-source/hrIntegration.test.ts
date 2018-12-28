@@ -12,7 +12,7 @@ import { UserModel } from '../../src/data-source/schema/userSchema';
  * This is a integration test for HR,
  * the HR data is a User saved in a special table
  */
-describe('Integration Test => HR ', () => {
+xdescribe('Integration Test => HR ', () => {
   const userId: string = '5c1fb0fd4cb3ae14288028d9';
   const hrId: string = '5c1fb0fd4cb3ae14244028d3';
   const newUser: IUserModel = {
