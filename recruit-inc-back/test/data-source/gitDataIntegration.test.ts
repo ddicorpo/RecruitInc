@@ -70,6 +70,7 @@ xdescribe('Test mongo GitData', () => {
   before(() => {
     // Establish connection
     let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
     // Start connection
     myFactory.getConnection();
   });
