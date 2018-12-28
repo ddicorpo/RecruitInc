@@ -10,12 +10,11 @@ import { IGitProjectInput } from '../../src/matching-algo/data-model/input-model
 import { DataEntrySchema } from '../../src/data-source/schema/dataEntrySchema';
 import { IDataEntry } from '../../src/matching-algo/data-model/input-model/IDataEntry';
 import { IGitProjectSummary } from '../../src/matching-algo/data-model/output-model/IGitProjectSummary';
-import { dataEntry } from '../matching-algo/data-model/javascript-example/GitProjectInputExample';
 import { projectOutput } from '../matching-algo/data-model/javascript-example/GitProjectOutputExample';
 import { expect, assert } from 'chai';
 import { Types } from 'mongoose';
 import { dataEntry } from '../matching-algo/data-model/javascript-example/GitProjectInputExample';
-import { projectOutput } from '../matching-algo/data-model/javascript-example/GitProjectOutputExample';
+import * as mongoose from 'mongoose';
 
 require('dotenv').config(); //Get environment variables
 
@@ -80,11 +79,6 @@ xdescribe('Test mongo GitData', () => {
   console.log(mongoose.connection.readyState);
   });
 
-  //   after(() => {
-  //   mongoose.connection.close();
-  //   console.log(mongoose.connection.readyState);
-  //   });
-
   it('Test mongo create gitData', async () => {
     await dataEntryTDG.create(newDataEntry, "5c25533e11ad520c5f2a13d4");
     await dataEntryTDG.create(newDataEntry2, "5c25533e11ad520c5f2a13d5");
@@ -96,6 +90,9 @@ xdescribe('Test mongo GitData', () => {
     expect(newGitData.lastKnownInfoDate).to.equal(
       createdGitData.lastKnownInfoDate
     );
+    //Insert other gitDatas
+    await gitDataTDG.create(newGitData2);
+    await gitDataTDG.create(newGitData3);
   });
 
   it('Test mongo Find By Last Known Info Date', async () => {
@@ -114,7 +111,6 @@ xdescribe('Test mongo GitData', () => {
   it('Test mongo Find By Platform', async () => {
     await gitDataFinder.findByPlatform(newGitData.platform).then(doc => {
       let gitDataFound: IGitDataModel = doc;
-      targetIdToDelete = gitDataFound._id;
       console.log(gitDataFound);
       console.log(new Date(gitDataFound[0].lastKnownInfoDate));
       expect(newGitData.platform).to.equal(gitDataFound[0].platform);
