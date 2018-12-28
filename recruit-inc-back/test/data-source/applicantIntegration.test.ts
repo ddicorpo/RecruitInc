@@ -43,15 +43,8 @@ xdescribe('Test mongo Applicant', () => {
 
   before(() => {
     // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory(
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      false
-    );
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
     // Start connection
     myFactory.getConnection();
   });
