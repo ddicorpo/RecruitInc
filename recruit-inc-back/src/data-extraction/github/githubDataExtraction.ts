@@ -6,6 +6,9 @@ import { GithubUserCommits } from './githubUserCommits';
 import { MatcherClient } from '../../matching-algo/matcher-client/MatcherClient';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { techSourceFiles } from '../../matching-algo/data-model/input-model/TechSourceFiles';
+import { IDataEntry } from '../../matching-algo/data-model/input-model/IDataEntry';
+import { DataEntryTDG } from '../../data-source/table-data-gateway/dataEntryTDG';
+import { GitProjectSummaryTDG } from '../../data-source/table-data-gateway/gitProjectSummaryTDG';
 
 export class GithubDataExtraction {
   private readonly accessToken: string;
@@ -55,12 +58,17 @@ export class GithubDataExtraction {
     login: string,
     email: string = ''
   ): Promise<IGitProjectSummary> {
+
+    const dataEntryTDG: DataEntryTDG = new DataEntryTDG();
+    const gitProjectSummaryTDG: GitProjectSummaryTDG = new GitProjectSummaryTDG();
     let user: IGithubUser = await this.extractData(login, email);
 
     let client: MatcherClient = new MatcherClient(user.dataEntry);
-    //TODO: Save Data Entry
+    // Save Data Entry
+    await dataEntryTDG.create(user.dataEntry);
     let output: IGitProjectSummary = client.execute();
-    //TODO: Save output of matching
+    await gitProjectSummaryTDG.create(output);
+    // Save output of matching
     return output;
   }
 }
