@@ -6,12 +6,9 @@ import { GitProjectSummaryTDG } from '../../src/data-source/table-data-gateway/g
 import { IGitDataModel } from '../../src/domain/model/IGitDataModel';
 import { Platform } from '../../src/domain/model/IGitDataModel';
 import { GitDataFinder } from '../../src/data-source/finder/gitDataFinder';
-import { IGitProjectInput } from '../../src/matching-algo/data-model/input-model/IGitProjectInput';
-import { DataEntrySchema } from '../../src/data-source/schema/dataEntrySchema';
 import { IDataEntry } from '../../src/matching-algo/data-model/input-model/IDataEntry';
 import { IGitProjectSummary } from '../../src/matching-algo/data-model/output-model/IGitProjectSummary';
-import { projectOutput } from '../matching-algo/data-model/javascript-example/GitProjectOutputExample';
-import { expect, assert } from 'chai';
+import { expect } from 'chai';
 import * as mongoose from 'mongoose';
 
 require('dotenv').config(); //Get environment variables
