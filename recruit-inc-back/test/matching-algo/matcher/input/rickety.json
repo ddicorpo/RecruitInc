@@ -1,0 +1,18 @@
+"downloadedSourceFile": [
+       {
+         "filename": ".gitignore",
+         "repoFilePath": ".gitignore",
+         "localFilePath": "downloaded/g-harel/github/rickety/.gitignore"
+       },
+       
+       {
+         "filename": "package.json",
+         "repoFilePath": "package.json",
+         "localFilePath": "test/matching-algo/matcher/dependencies/package.typescript.json"
+       },
+       {
+         "filename": "package.json",
+         "repoFilePath": "example/package.json",
+         "localFilePath": "test/matching-algo/matcher/dependencies/package.typescript.json"
+       }
+     ]
