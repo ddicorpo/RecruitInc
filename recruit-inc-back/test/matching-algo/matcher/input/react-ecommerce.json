@@ -1,0 +1,18 @@
+"downloadedSourceFile": [
+       {
+         "filename": ".gitignore",
+         "repoFilePath": ".gitignore",
+         "localFilePath": "downloaded/lydiahallie/github/React-Ecommerce/.gitignore"
+       },
+       
+       {
+         "filename": "package.json",
+         "repoFilePath": "package.json",
+         "localFilePath": "test/matching-algo/matcher/dependencies/package.react-javascript.json"
+       },
+       {
+         "filename": "package-lock.json",
+         "repoFilePath": "package-lock.json",
+         "localFilePath": "test/matching-algo/matcher/dependencies/package.javascript.json"
+       }
+     ]
