@@ -31,7 +31,7 @@ class App {
     var corsOptionsDelegate = function(req, callback) {
       var corsOptions;
       if (
-        whitelistDomain.indexOf(req.header('Origin')) !== -1 &&
+        (whitelistDomain.indexOf(req.header('Origin')) !== -1 || whitelistDomain.indexOf(req.header('host')) !== -1) &&
         process.env.NODE_ENV === 'production'
       ) {
         console.log('CORS Enabled for => PROD');
