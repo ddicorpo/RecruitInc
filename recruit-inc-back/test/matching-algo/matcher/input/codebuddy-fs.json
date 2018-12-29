@@ -1,0 +1,32 @@
+"downloadedSourceFile": [
+       {
+         "filename": ".gitignore",
+         "repoFilePath": ".gitignore",
+         "localFilePath": "downloaded/lydiahallie/github/codebuddy-fs/.gitignore"
+       },
+       {
+         "filename": ".gitignore",
+         "repoFilePath": "client/.gitignore",
+         "localFilePath": "downloaded/lydiahallie/github/codebuddy-fs/client/.gitignore"
+       },
+       {
+         "filename": "package.json",
+         "repoFilePath": "package.json",
+         "localFilePath": "test/matching-algo/matcher/dependencies/package.javascript.json"
+       },
+       {
+         "filename": "package.json",
+         "repoFilePath": "client/package.json",
+         "localFilePath": "test/matching-algo/matcher/dependencies/package.react-javascript.json"
+       },
+       {
+         "filename": ".gitignore",
+         "repoFilePath": "server/.gitignore",
+         "localFilePath": "downloaded/lydiahallie/github/codebuddy-fs/server/.gitignore"
+       },
+       {
+         "filename": "package.json",
+         "repoFilePath": "server/package.json",
+         "localFilePath": "test/matching-algo/matcher/dependencies/package.javascript.json"
+       }
+     ]
