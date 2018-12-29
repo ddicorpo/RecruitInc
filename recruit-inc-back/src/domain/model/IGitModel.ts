@@ -1,6 +1,11 @@
 /**
  * Typegoose is including schema and model in one class
  */
+import mongoose from 'mongoose';
+import { IGitDataModel } from './IGitDataModel';
+
 export interface IGitModel {
-  //TODO: Add field based on diagram
+  _id?: mongoose.Types.ObjectId;
+  IGitData: IGitDataModel[];
+  IToken: string;
 }
