@@ -58,8 +58,9 @@ export class GithubDataExtraction {
     let user: IGithubUser = await this.extractData(login, email);
 
     let client: MatcherClient = new MatcherClient(user.dataEntry);
-
+    //TODO: Save Data Entry
     let output: IGitProjectSummary = client.execute();
+    //TODO: Save output of matching
     return output;
   }
 }
