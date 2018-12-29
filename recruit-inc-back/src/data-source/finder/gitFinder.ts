@@ -3,7 +3,7 @@ import { GitModel } from '../schema/gitSchema';
 import { IGitModel } from '../../domain/model/IGitModel';
 import { Types } from 'mongoose';
 
-export class ApplicantFinder {
+export class GitFinder {
   private baseFinder: BaseFinder;
 
   constructor() {

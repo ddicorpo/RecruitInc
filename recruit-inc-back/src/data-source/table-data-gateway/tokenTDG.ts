@@ -3,7 +3,7 @@ import { ITokenModel } from '../../domain/model/ITokenModel';
 import { TokenModel } from '../schema/tokenSchema';
 import { Types } from 'mongoose';
 
-export class GitDataTDG {
+export class TokenTDG {
   private baseTDG: BaseTDG;
 
   constructor() {

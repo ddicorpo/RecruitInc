@@ -3,7 +3,7 @@ import { IGitModel } from '../../domain/model/IGitModel';
 import { GitModel } from '../schema/gitSchema';
 import { Types } from 'mongoose';
 
-export class GitDataTDG {
+export class GitTDG {
   private baseTDG: BaseTDG;
 
   constructor() {

@@ -4,7 +4,7 @@ import { ITokenModel } from '../../domain/model/ITokenModel';
 import { Types } from 'mongoose';
 import { Platform } from '../../domain/model/ITokenModel';
 
-export class ApplicantFinder {
+export class TokenFinder {
   private baseFinder: BaseFinder;
 
   constructor() {
