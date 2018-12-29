@@ -4,8 +4,7 @@ import { ApplicantTDG } from '../../src/data-source/table-data-gateway/applicant
 import { IApplicantModel } from '../../src/domain/model/IApplicantModel';
 import { UserType } from '../../src/domain/model/IApplicantModel';
 import { ApplicantFinder } from '../../src/data-source/finder/applicantFinder';
-import { expect, assert } from 'chai';
-import { Types } from 'mongoose';
+import { expect } from 'chai';
 import * as mongoose from 'mongoose';
 
 require('dotenv').config(); //Get environment variables
@@ -39,7 +38,6 @@ xdescribe('Test mongo Applicant', () => {
   };
   const applicantTDG: ApplicantTDG = new ApplicantTDG();
   const applicantFinder: ApplicantFinder = new ApplicantFinder();
-
 
   before(() => {
     // Establish connection

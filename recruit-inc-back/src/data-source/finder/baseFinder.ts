@@ -1,5 +1,4 @@
 import { Logger } from '../../Logger';
-import { rejects } from 'assert';
 /**
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/repositories/base/base-repository.ts\
  * This is a base Finder, to handle generic action

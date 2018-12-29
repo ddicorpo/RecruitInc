@@ -12,7 +12,6 @@ import { Types } from 'mongoose';
  * the HR data is a User saved in a special table
  */
 xdescribe('Integration Test => HR ', () => {
-  const userId: string = '5c1fb0fd4cb3ae14288028d9';
   const hrId: string = '5c1fb0fd4cb3ae14244028d3';
   const newUser: IUserModel = {
     username: 'PaulPaul69',
