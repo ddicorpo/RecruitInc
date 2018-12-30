@@ -1,1 +1,22 @@
-{}
+{
+  "projectName": "sekstant",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 97,
+      "numberOfCommits": 10,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 97,
+          "numberOfCommits": 10
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}
