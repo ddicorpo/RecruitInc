@@ -14,6 +14,6 @@ export class HRSchema extends Typegoose implements IHRModel {
   userRef: Ref<UserSchema>;
 }
 // Can pass schema option in statement below
-export const HRModel = new UserSchema().getModelForClass(UserSchema, {
-  schemaOptions: { collection: 'users' },
+export const HRModel = new HRSchema().getModelForClass(UserSchema, {
+  schemaOptions: { collection: 'hrs' },
 });

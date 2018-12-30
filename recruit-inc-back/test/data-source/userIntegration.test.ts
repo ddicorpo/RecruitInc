@@ -23,18 +23,7 @@ xdescribe('Integration Test => User', () => {
   const userFinder: UserFinder = new UserFinder();
   beforeEach(() => {
     // Establish connection
-    const dbOption =
-      '-shard-00-00-celgm.mongodb.net:27017,cluster0-shard-00-01-celgm.mongodb.net:27017,' +
-      "'cluster0-shard-00-02-celgm.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true ";
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory(
-      'mongodb://',
-      'admin',
-      null,
-      'bob',
-      'cluster0',
-      dbOption,
-      true
-    );
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
     // Start connection
     myFactory.getConnection();
     // Reset database

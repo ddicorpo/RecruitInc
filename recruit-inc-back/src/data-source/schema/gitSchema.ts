@@ -1,6 +1,7 @@
 /**
  * Typegoose is including schema and model in one class
  */
+
 import { prop, Typegoose } from 'typegoose';
 import { IGitModel } from '../../domain/model/IGitModel';
 import { IGitDataModel } from '../../domain/model/IGitDataModel';

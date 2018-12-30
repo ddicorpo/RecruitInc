@@ -4,8 +4,7 @@ import { ApplicantTDG } from '../../src/data-source/table-data-gateway/applicant
 import { IApplicantModel } from '../../src/domain/model/IApplicantModel';
 import { UserType } from '../../src/domain/model/IApplicantModel';
 import { ApplicantFinder } from '../../src/data-source/finder/applicantFinder';
-import { expect, assert } from 'chai';
-import { Types } from 'mongoose';
+import { expect } from 'chai';
 import * as mongoose from 'mongoose';
 import { Platform } from '../../src/domain/model/IGitDataModel';
 
@@ -65,19 +64,12 @@ xdescribe('Test mongo Applicant', () => {
   const applicantTDG: ApplicantTDG = new ApplicantTDG();
   const applicantFinder: ApplicantFinder = new ApplicantFinder();
 
-  before(function(done) {
-    mongoose.connect(
-      `${process.env.DB_HOST}/${process.env.DB_NAME}`,
-      { useNewUrlParser: true }
-    ); //Connect to database
-    const db = mongoose.connection;
-    //on function takes callback as second parameter
-    db.on('error', console.error.bind(console, 'connection error'));
-
-    db.once('open', function() {
-      console.log('We are connected to the database');
-      done();
-    });
+  before(() => {
+    // Establish connection
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
+    // Start connection
+    myFactory.getConnection();
   });
 
   after(() => {
