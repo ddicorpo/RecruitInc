@@ -1,236 +1,228 @@
 {
   "projectInputs": [
-    
-{  
-   "projectName":"rickety",
-   "owner":"g-harel",
-   "applicantCommits":[  
-
-   ],
-   "projectStructure":[  
-      {  
-         "fileId":"b987509ed3ee3a235940ca3f60ecf1d9c8a2405e",
-         "fileName":".gitignore",
-         "filePath":".gitignore"
-      },
-      {  
-         "fileId":"e45b559b0c9e3454f656f0c6d634e115be113bb0",
-         "fileName":".npmignore",
-         "filePath":".npmignore"
-      },
-      {  
-         "fileId":"f9dd2e19f01b446c3f29756fc4c0a4577c1a354f",
-         "fileName":".travis.yml",
-         "filePath":".travis.yml"
-      },
-      {  
-         "fileId":"aa6b46d74f4c3c27a24547990f0fb4798f42cc66",
-         "fileName":"CHANGELOG.md",
-         "filePath":"CHANGELOG.md"
-      },
-      {  
-         "fileId":"5fea7ddb50165482863c390cf48b3f6c5626b0a0",
-         "fileName":"LICENSE",
-         "filePath":"LICENSE"
-      },
-      {  
-         "fileId":"043e383b7c2ee2c332fdb8c32739c9fcf0def2ee",
-         "fileName":"README.md",
-         "filePath":"README.md"
-      },
-      {  
-         "fileId":"07e8b7bc63ebcd1df32a5b16a7f43e050d178b95",
-         "fileName":"axios.ts",
-         "filePath":"client/axios.ts"
-      },
-      {  
-         "fileId":"254475e16b42de26373d090c06eb413234932b21",
-         "fileName":"fetch.ts",
-         "filePath":"client/fetch.ts"
-      },
-      {  
-         "fileId":"cd117dcca2716adb27a4c4deec364579f21027b9",
-         "fileName":"index.ts",
-         "filePath":"client/index.ts"
-      },
-      {  
-         "fileId":"a3dfabe669d141c11cf7a3dc880d1089f509cc48",
-         "fileName":"node.ts",
-         "filePath":"client/node.ts"
-      },
-      {  
-         "fileId":"521f09a14a147940bf6e9d6a5c1e17d992ed40c6",
-         "fileName":"request.ts",
-         "filePath":"client/request.ts"
-      },
-      {  
-         "fileId":"0c5d31d66d063dc036dd8331df395fd6d3e2704c",
-         "fileName":"supertest.ts",
-         "filePath":"client/supertest.ts"
-      },
-      {  
-         "fileId":"bf0de6f56aa23d4d0cbeb9ff9d46242c371c9544",
-         "fileName":"xhr.ts",
-         "filePath":"client/xhr.ts"
-      },
-      {  
-         "fileId":"d02eb2ee2502a88d74998c4bd8d4abf0a2e903ae",
-         "fileName":"README.md",
-         "filePath":"example/README.md"
-      },
-      {  
-         "fileId":"c02027d8d23975f0433f827f0ed6b6021c477280",
-         "fileName":"app.ts",
-         "filePath":"example/backend/app.ts"
-      },
-      {  
-         "fileId":"85e8d8180573bf90e5c3a5938feafec146a10fca",
-         "fileName":"database.ts",
-         "filePath":"example/backend/database.ts"
-      },
-      {  
-         "fileId":"cd97b1271eeda7a6a833e7da0aa6cedcfba8b417",
-         "fileName":"index.ts",
-         "filePath":"example/backend/index.ts"
-      },
-      {  
-         "fileId":"6903b66c14dd97098c26071bd61690ab4eb796d4",
-         "fileName":"endpoints.ts",
-         "filePath":"example/common/endpoints.ts"
-      },
-      {  
-         "fileId":"634d2683ef3a45c117e0a4f547a94a9562e0d0dc",
-         "fileName":"types.ts",
-         "filePath":"example/common/types.ts"
-      },
-      {  
-         "fileId":"4e773b3f2d37b21353e74bc2682a8eb129570cbf",
-         "fileName":"app.tsx",
-         "filePath":"example/frontend/app.tsx"
-      },
-      {  
-         "fileId":"65d18efa2155c6f2f00ee46e4af4243639e9d538",
-         "fileName":"index.html",
-         "filePath":"example/frontend/index.html"
-      },
-      {  
-         "fileId":"917e47b7abf685599a8c7744019e62f4873578cc",
-         "fileName":"index.tsx",
-         "filePath":"example/frontend/index.tsx"
-      },
-      {  
-         "fileId":"5855551731222743b9d588b4d09a5e048929cd59",
-         "fileName":"package.json",
-         "filePath":"example/package.json"
-      },
-      {  
-         "fileId":"21c31d8a47a2958eda6e73b07b5a176ab3e41e41",
-         "fileName":"backend.test.ts",
-         "filePath":"example/testing/backend.test.ts"
-      },
-      {  
-         "fileId":"ee297eba62b937bb694c600ed09da9a064319d5c",
-         "fileName":"frontend.test.tsx",
-         "filePath":"example/testing/frontend.test.tsx"
-      },
-      {  
-         "fileId":"8d44e1b3601200e85486949a479e6fe6a4d4c95b",
-         "fileName":"integration.test.tsx",
-         "filePath":"example/testing/integration.test.tsx"
-      },
-      {  
-         "fileId":"37f790d63a7385d9d6c8dc2bb2e7fb9c31d935b0",
-         "fileName":"setup.ts",
-         "filePath":"example/testing/setup.ts"
-      },
-      {  
-         "fileId":"9f74a4846a332a0f18b761e3c797867539462edc",
-         "fileName":"tsconfig.json",
-         "filePath":"example/tsconfig.json"
-      },
-      {  
-         "fileId":"636cc5f9646409ad3494fc1b1738712c7380e7a5",
-         "fileName":"webpack.config.ts",
-         "filePath":"example/webpack.config.ts"
-      },
-      {  
-         "fileId":"45d05328ebc4a3fa1565bf063002321cbe03ed30",
-         "fileName":"index.ts",
-         "filePath":"index.ts"
-      },
-      {  
-         "fileId":"47d21b8da6f6150af040de0d5aa8e98107be4a27",
-         "fileName":"package.json",
-         "filePath":"package.json"
-      },
-      {  
-         "fileId":"5961bc14baf7734c05f7b14a91197625a46ae473",
-         "fileName":"callable.ts",
-         "filePath":"source/callable.ts"
-      },
-      {  
-         "fileId":"9ae926a1a6cdcfc15b24c93674aa7d67065ff3de",
-         "fileName":"endpoint.ts",
-         "filePath":"source/endpoint.ts"
-      },
-      {  
-         "fileId":"3eaa9a4189d2ca4015da885f6fc397d72a6b3968",
-         "fileName":"group.ts",
-         "filePath":"source/group.ts"
-      },
-      {  
-         "fileId":"cf3f9af4708b1bdead98d901a92c2d0d6523d80b",
-         "fileName":"callable.ts",
-         "filePath":"test/callable.ts"
-      },
-      {  
-         "fileId":"ea3be7c88c3d099e770a7ea9c0893275581da04a",
-         "fileName":"fetch.ts",
-         "filePath":"test/client/fetch.ts"
-      },
-      {  
-         "fileId":"2b969e221ad946e174f58bcf6a2a491abd866a6d",
-         "fileName":"supertest.ts",
-         "filePath":"test/client/supertest.ts"
-      },
-      {  
-         "fileId":"e303e90b97c40cedac726f517103a8497c91a32c",
-         "fileName":"endpoint.ts",
-         "filePath":"test/endpoint.ts"
-      },
-      {  
-         "fileId":"67c22ea7000a29366ce4b8d2a0321198672e2b7e",
-         "fileName":"group.ts",
-         "filePath":"test/group.ts"
-      },
-      {  
-         "fileId":"fc939c7cff39886e36149168eef939e0607aa4e9",
-         "fileName":"tsconfig.json",
-         "filePath":"tsconfig.json"
-      }
-   ],
-
-
-
-
-"downloadedSourceFile": [
-       {
-         "filename": ".gitignore",
-         "repoFilePath": ".gitignore",
-         "localFilePath": "downloaded/g-harel/github/rickety/.gitignore"
-       },
-       
-       {
-         "filename": "package.json",
-         "repoFilePath": "package.json",
-         "localFilePath": "test/matching-algo/matcher/dependencies/package.typescript.json"
-       },
-       {
-         "filename": "package.json",
-         "repoFilePath": "example/package.json",
-         "localFilePath": "test/matching-algo/matcher/dependencies/package.typescript.json"
-       }
-     ]
+    {
+      "projectName": "rickety",
+      "owner": "g-harel",
+      "applicantCommits": [],
+      "projectStructure": [
+        {
+          "fileId": "b987509ed3ee3a235940ca3f60ecf1d9c8a2405e",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "e45b559b0c9e3454f656f0c6d634e115be113bb0",
+          "fileName": ".npmignore",
+          "filePath": ".npmignore"
+        },
+        {
+          "fileId": "f9dd2e19f01b446c3f29756fc4c0a4577c1a354f",
+          "fileName": ".travis.yml",
+          "filePath": ".travis.yml"
+        },
+        {
+          "fileId": "aa6b46d74f4c3c27a24547990f0fb4798f42cc66",
+          "fileName": "CHANGELOG.md",
+          "filePath": "CHANGELOG.md"
+        },
+        {
+          "fileId": "5fea7ddb50165482863c390cf48b3f6c5626b0a0",
+          "fileName": "LICENSE",
+          "filePath": "LICENSE"
+        },
+        {
+          "fileId": "043e383b7c2ee2c332fdb8c32739c9fcf0def2ee",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "07e8b7bc63ebcd1df32a5b16a7f43e050d178b95",
+          "fileName": "axios.ts",
+          "filePath": "client/axios.ts"
+        },
+        {
+          "fileId": "254475e16b42de26373d090c06eb413234932b21",
+          "fileName": "fetch.ts",
+          "filePath": "client/fetch.ts"
+        },
+        {
+          "fileId": "cd117dcca2716adb27a4c4deec364579f21027b9",
+          "fileName": "index.ts",
+          "filePath": "client/index.ts"
+        },
+        {
+          "fileId": "a3dfabe669d141c11cf7a3dc880d1089f509cc48",
+          "fileName": "node.ts",
+          "filePath": "client/node.ts"
+        },
+        {
+          "fileId": "521f09a14a147940bf6e9d6a5c1e17d992ed40c6",
+          "fileName": "request.ts",
+          "filePath": "client/request.ts"
+        },
+        {
+          "fileId": "0c5d31d66d063dc036dd8331df395fd6d3e2704c",
+          "fileName": "supertest.ts",
+          "filePath": "client/supertest.ts"
+        },
+        {
+          "fileId": "bf0de6f56aa23d4d0cbeb9ff9d46242c371c9544",
+          "fileName": "xhr.ts",
+          "filePath": "client/xhr.ts"
+        },
+        {
+          "fileId": "d02eb2ee2502a88d74998c4bd8d4abf0a2e903ae",
+          "fileName": "README.md",
+          "filePath": "example/README.md"
+        },
+        {
+          "fileId": "c02027d8d23975f0433f827f0ed6b6021c477280",
+          "fileName": "app.ts",
+          "filePath": "example/backend/app.ts"
+        },
+        {
+          "fileId": "85e8d8180573bf90e5c3a5938feafec146a10fca",
+          "fileName": "database.ts",
+          "filePath": "example/backend/database.ts"
+        },
+        {
+          "fileId": "cd97b1271eeda7a6a833e7da0aa6cedcfba8b417",
+          "fileName": "index.ts",
+          "filePath": "example/backend/index.ts"
+        },
+        {
+          "fileId": "6903b66c14dd97098c26071bd61690ab4eb796d4",
+          "fileName": "endpoints.ts",
+          "filePath": "example/common/endpoints.ts"
+        },
+        {
+          "fileId": "634d2683ef3a45c117e0a4f547a94a9562e0d0dc",
+          "fileName": "types.ts",
+          "filePath": "example/common/types.ts"
+        },
+        {
+          "fileId": "4e773b3f2d37b21353e74bc2682a8eb129570cbf",
+          "fileName": "app.tsx",
+          "filePath": "example/frontend/app.tsx"
+        },
+        {
+          "fileId": "65d18efa2155c6f2f00ee46e4af4243639e9d538",
+          "fileName": "index.html",
+          "filePath": "example/frontend/index.html"
+        },
+        {
+          "fileId": "917e47b7abf685599a8c7744019e62f4873578cc",
+          "fileName": "index.tsx",
+          "filePath": "example/frontend/index.tsx"
+        },
+        {
+          "fileId": "5855551731222743b9d588b4d09a5e048929cd59",
+          "fileName": "package.json",
+          "filePath": "example/package.json"
+        },
+        {
+          "fileId": "21c31d8a47a2958eda6e73b07b5a176ab3e41e41",
+          "fileName": "backend.test.ts",
+          "filePath": "example/testing/backend.test.ts"
+        },
+        {
+          "fileId": "ee297eba62b937bb694c600ed09da9a064319d5c",
+          "fileName": "frontend.test.tsx",
+          "filePath": "example/testing/frontend.test.tsx"
+        },
+        {
+          "fileId": "8d44e1b3601200e85486949a479e6fe6a4d4c95b",
+          "fileName": "integration.test.tsx",
+          "filePath": "example/testing/integration.test.tsx"
+        },
+        {
+          "fileId": "37f790d63a7385d9d6c8dc2bb2e7fb9c31d935b0",
+          "fileName": "setup.ts",
+          "filePath": "example/testing/setup.ts"
+        },
+        {
+          "fileId": "9f74a4846a332a0f18b761e3c797867539462edc",
+          "fileName": "tsconfig.json",
+          "filePath": "example/tsconfig.json"
+        },
+        {
+          "fileId": "636cc5f9646409ad3494fc1b1738712c7380e7a5",
+          "fileName": "webpack.config.ts",
+          "filePath": "example/webpack.config.ts"
+        },
+        {
+          "fileId": "45d05328ebc4a3fa1565bf063002321cbe03ed30",
+          "fileName": "index.ts",
+          "filePath": "index.ts"
+        },
+        {
+          "fileId": "47d21b8da6f6150af040de0d5aa8e98107be4a27",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "5961bc14baf7734c05f7b14a91197625a46ae473",
+          "fileName": "callable.ts",
+          "filePath": "source/callable.ts"
+        },
+        {
+          "fileId": "9ae926a1a6cdcfc15b24c93674aa7d67065ff3de",
+          "fileName": "endpoint.ts",
+          "filePath": "source/endpoint.ts"
+        },
+        {
+          "fileId": "3eaa9a4189d2ca4015da885f6fc397d72a6b3968",
+          "fileName": "group.ts",
+          "filePath": "source/group.ts"
+        },
+        {
+          "fileId": "cf3f9af4708b1bdead98d901a92c2d0d6523d80b",
+          "fileName": "callable.ts",
+          "filePath": "test/callable.ts"
+        },
+        {
+          "fileId": "ea3be7c88c3d099e770a7ea9c0893275581da04a",
+          "fileName": "fetch.ts",
+          "filePath": "test/client/fetch.ts"
+        },
+        {
+          "fileId": "2b969e221ad946e174f58bcf6a2a491abd866a6d",
+          "fileName": "supertest.ts",
+          "filePath": "test/client/supertest.ts"
+        },
+        {
+          "fileId": "e303e90b97c40cedac726f517103a8497c91a32c",
+          "fileName": "endpoint.ts",
+          "filePath": "test/endpoint.ts"
+        },
+        {
+          "fileId": "67c22ea7000a29366ce4b8d2a0321198672e2b7e",
+          "fileName": "group.ts",
+          "filePath": "test/group.ts"
+        },
+        {
+          "fileId": "fc939c7cff39886e36149168eef939e0607aa4e9",
+          "fileName": "tsconfig.json",
+          "filePath": "tsconfig.json"
         }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/g-harel/github/rickety/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.react-typescript.json"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "example/package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.react-typescript.json"
+        }
+      ]
+    }
   ]
 }
