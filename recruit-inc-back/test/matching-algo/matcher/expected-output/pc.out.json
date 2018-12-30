@@ -1,1 +1,22 @@
-{}
+{
+  "projectName": "pc",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 607,
+      "numberOfCommits": 9,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 575,
+          "numberOfCommits": 8
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}
