@@ -1,612 +1,609 @@
 {
   "projectInputs": [
     {
-             
-   "projectName":"kankan",
-   "owner":"g-harel",
-   "applicantCommits":[  
-      {  
-         "id":"f764b5af096baf805c664ea1db18c9350876fe8b",
-         "numberOfFileAffected":5,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":1,
-               "lineDeleted":1
+      "projectName": "kankan",
+      "owner": "g-harel",
+      "applicantCommits": [
+        {
+          "id": "f764b5af096baf805c664ea1db18c9350876fe8b",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/components/Form.js",
-               "lineAdded":21,
-               "lineDeleted":5
+            {
+              "filePath": "src/components/Form.js",
+              "lineAdded": 21,
+              "lineDeleted": 5
             },
-            {  
-               "filePath":"src/components/task/Focus.js",
-               "lineAdded":4,
-               "lineDeleted":5
+            {
+              "filePath": "src/components/task/Focus.js",
+              "lineAdded": 4,
+              "lineDeleted": 5
             },
-            {  
-               "filePath":"src/config.js",
-               "lineAdded":46,
-               "lineDeleted":19
+            {
+              "filePath": "src/config.js",
+              "lineAdded": 46,
+              "lineDeleted": 19
             },
-            {  
-               "filePath":"src/index.js",
-               "lineAdded":2,
-               "lineDeleted":1
+            {
+              "filePath": "src/index.js",
+              "lineAdded": 2,
+              "lineDeleted": 1
             }
-         ]
-      },
-      {  
-         "id":"c98451689c2206b54fbea5700b47e0ff1668d958",
-         "numberOfFileAffected":4,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":1,
-               "lineDeleted":1
+          ]
+        },
+        {
+          "id": "c98451689c2206b54fbea5700b47e0ff1668d958",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/State.js",
-               "lineAdded":41,
-               "lineDeleted":2
+            {
+              "filePath": "src/State.js",
+              "lineAdded": 41,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"src/components/Step.js",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "src/components/Step.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/components/task/Focus.js",
-               "lineAdded":2,
-               "lineDeleted":4
+            {
+              "filePath": "src/components/task/Focus.js",
+              "lineAdded": 2,
+              "lineDeleted": 4
             }
-         ]
-      },
-      {  
-         "id":"a4e9b82f59c7752578ba395bc0683d2bf5f4b55b",
-         "numberOfFileAffected":3,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":2,
-               "lineDeleted":2
+          ]
+        },
+        {
+          "id": "a4e9b82f59c7752578ba395bc0683d2bf5f4b55b",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"src/State.js",
-               "lineAdded":9,
-               "lineDeleted":1
+            {
+              "filePath": "src/State.js",
+              "lineAdded": 9,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/components/task/Focus.js",
-               "lineAdded":2,
-               "lineDeleted":2
+            {
+              "filePath": "src/components/task/Focus.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
             }
-         ]
-      },
-      {  
-         "id":"4713bc24456084ee16f8666ea22ceea1b9701bd3",
-         "numberOfFileAffected":9,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":2,
-               "lineDeleted":2
+          ]
+        },
+        {
+          "id": "4713bc24456084ee16f8666ea22ceea1b9701bd3",
+          "numberOfFileAffected": 9,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"src/State.js",
-               "lineAdded":3,
-               "lineDeleted":0
+            {
+              "filePath": "src/State.js",
+              "lineAdded": 3,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/components/Form.js",
-               "lineAdded":13,
-               "lineDeleted":0
+            {
+              "filePath": "src/components/Form.js",
+              "lineAdded": 13,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/components/task/Focus.js",
-               "lineAdded":9,
-               "lineDeleted":4
+            {
+              "filePath": "src/components/task/Focus.js",
+              "lineAdded": 9,
+              "lineDeleted": 4
             },
-            {  
-               "filePath":"src/components/task/Tile.js",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "src/components/task/Tile.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/config.js",
-               "lineAdded":7,
-               "lineDeleted":10
+            {
+              "filePath": "src/config.js",
+              "lineAdded": 7,
+              "lineDeleted": 10
             },
-            {  
-               "filePath":"src/db.js",
-               "lineAdded":0,
-               "lineDeleted":68
+            {
+              "filePath": "src/db.js",
+              "lineAdded": 0,
+              "lineDeleted": 68
             },
-            {  
-               "filePath":"src/db.json",
-               "lineAdded":68,
-               "lineDeleted":0
+            {
+              "filePath": "src/db.json",
+              "lineAdded": 68,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/index.css",
-               "lineAdded":2,
-               "lineDeleted":0
+            {
+              "filePath": "src/index.css",
+              "lineAdded": 2,
+              "lineDeleted": 0
             }
-         ]
-      },
-      {  
-         "id":"4e590be93cc0b107ee51c9b8c64e9f929e76c450",
-         "numberOfFileAffected":2,
-         "files":[  
-            {  
-               "filePath":"src/components/task/Focus.js",
-               "lineAdded":1,
-               "lineDeleted":1
+          ]
+        },
+        {
+          "id": "4e590be93cc0b107ee51c9b8c64e9f929e76c450",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "src/components/task/Focus.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/index.css",
-               "lineAdded":14,
-               "lineDeleted":12
+            {
+              "filePath": "src/index.css",
+              "lineAdded": 14,
+              "lineDeleted": 12
             }
-         ]
-      },
-      {  
-         "id":"2d1326bbf0f0866ad78113123e8116a476c0adb9",
-         "numberOfFileAffected":7,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":3,
-               "lineDeleted":1
+          ]
+        },
+        {
+          "id": "2d1326bbf0f0866ad78113123e8116a476c0adb9",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 3,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/components/Step.js",
-               "lineAdded":2,
-               "lineDeleted":2
+            {
+              "filePath": "src/components/Step.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"src/components/task/Focus.js",
-               "lineAdded":23,
-               "lineDeleted":0
+            {
+              "filePath": "src/components/task/Focus.js",
+              "lineAdded": 23,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/components/task/Tile.js",
-               "lineAdded":3,
-               "lineDeleted":3
+            {
+              "filePath": "src/components/task/Tile.js",
+              "lineAdded": 3,
+              "lineDeleted": 3
             },
-            {  
-               "filePath":"src/db.js",
-               "lineAdded":8,
-               "lineDeleted":0
+            {
+              "filePath": "src/db.js",
+              "lineAdded": 8,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/index.css",
-               "lineAdded":32,
-               "lineDeleted":7
+            {
+              "filePath": "src/index.css",
+              "lineAdded": 32,
+              "lineDeleted": 7
             },
-            {  
-               "filePath":"src/index.js",
-               "lineAdded":4,
-               "lineDeleted":0
+            {
+              "filePath": "src/index.js",
+              "lineAdded": 4,
+              "lineDeleted": 0
             }
-         ]
-      },
-      {  
-         "id":"1b3c97c47e99131503be99cb11914707ec622f27",
-         "numberOfFileAffected":7,
-         "files":[  
-            {  
-               "filePath":"package.json",
-               "lineAdded":2,
-               "lineDeleted":1
+          ]
+        },
+        {
+          "id": "1b3c97c47e99131503be99cb11914707ec622f27",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":6,
-               "lineDeleted":0
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 6,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/components/Task.js",
-               "lineAdded":11,
-               "lineDeleted":8
+            {
+              "filePath": "src/components/Task.js",
+              "lineAdded": 11,
+              "lineDeleted": 8
             },
-            {  
-               "filePath":"src/db.js",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "src/db.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/index.css",
-               "lineAdded":5,
-               "lineDeleted":0
+            {
+              "filePath": "src/index.css",
+              "lineAdded": 5,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/index.js",
-               "lineAdded":6,
-               "lineDeleted":4
+            {
+              "filePath": "src/index.js",
+              "lineAdded": 6,
+              "lineDeleted": 4
             },
-            {  
-               "filePath":"yarn.lock",
-               "lineAdded":5378,
-               "lineDeleted":0
+            {
+              "filePath": "yarn.lock",
+              "lineAdded": 5378,
+              "lineDeleted": 0
             }
-         ]
-      },
-      {  
-         "id":"bc21f146378256e75165b5e6fa9de6729ddd83ff",
-         "numberOfFileAffected":6,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":25,
-               "lineDeleted":23
+          ]
+        },
+        {
+          "id": "bc21f146378256e75165b5e6fa9de6729ddd83ff",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 25,
+              "lineDeleted": 23
             },
-            {  
-               "filePath":"src/components/Step.js",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "src/components/Step.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"src/components/Task.js",
-               "lineAdded":7,
-               "lineDeleted":4
+            {
+              "filePath": "src/components/Task.js",
+              "lineAdded": 7,
+              "lineDeleted": 4
             },
-            {  
-               "filePath":"src/config.js",
-               "lineAdded":4,
-               "lineDeleted":4
+            {
+              "filePath": "src/config.js",
+              "lineAdded": 4,
+              "lineDeleted": 4
             },
-            {  
-               "filePath":"src/db.js",
-               "lineAdded":28,
-               "lineDeleted":7
+            {
+              "filePath": "src/db.js",
+              "lineAdded": 28,
+              "lineDeleted": 7
             },
-            {  
-               "filePath":"src/index.css",
-               "lineAdded":27,
-               "lineDeleted":13
+            {
+              "filePath": "src/index.css",
+              "lineAdded": 27,
+              "lineDeleted": 13
             }
-         ]
-      },
-      {  
-         "id":"6adb1602c0e8f29e202e82fa763f6e065f7ca34f",
-         "numberOfFileAffected":4,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":7,
-               "lineDeleted":56
+          ]
+        },
+        {
+          "id": "6adb1602c0e8f29e202e82fa763f6e065f7ca34f",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 7,
+              "lineDeleted": 56
             },
-            {  
-               "filePath":"src/components/Step.js",
-               "lineAdded":1,
-               "lineDeleted":8
+            {
+              "filePath": "src/components/Step.js",
+              "lineAdded": 1,
+              "lineDeleted": 8
             },
-            {  
-               "filePath":"src/components/Task.js",
-               "lineAdded":3,
-               "lineDeleted":10
+            {
+              "filePath": "src/components/Task.js",
+              "lineAdded": 3,
+              "lineDeleted": 10
             },
-            {  
-               "filePath":"src/index.css",
-               "lineAdded":70,
-               "lineDeleted":0
+            {
+              "filePath": "src/index.css",
+              "lineAdded": 70,
+              "lineDeleted": 0
             }
-         ]
-      },
-      {  
-         "id":"b16ab463e5d6bd5fafebc462ad0094c1e9cb4bfe",
-         "numberOfFileAffected":6,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":85,
-               "lineDeleted":53
+          ]
+        },
+        {
+          "id": "b16ab463e5d6bd5fafebc462ad0094c1e9cb4bfe",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 85,
+              "lineDeleted": 53
             },
-            {  
-               "filePath":"src/App.test.js",
-               "lineAdded":0,
-               "lineDeleted":8
+            {
+              "filePath": "src/App.test.js",
+              "lineAdded": 0,
+              "lineDeleted": 8
             },
-            {  
-               "filePath":"src/components/Step.js",
-               "lineAdded":13,
-               "lineDeleted":14
+            {
+              "filePath": "src/components/Step.js",
+              "lineAdded": 13,
+              "lineDeleted": 14
             },
-            {  
-               "filePath":"src/components/Task.js",
-               "lineAdded":15,
-               "lineDeleted":15
+            {
+              "filePath": "src/components/Task.js",
+              "lineAdded": 15,
+              "lineDeleted": 15
             },
-            {  
-               "filePath":"src/config.js",
-               "lineAdded":12,
-               "lineDeleted":4
+            {
+              "filePath": "src/config.js",
+              "lineAdded": 12,
+              "lineDeleted": 4
             },
-            {  
-               "filePath":"src/db.js",
-               "lineAdded":8,
-               "lineDeleted":3
+            {
+              "filePath": "src/db.js",
+              "lineAdded": 8,
+              "lineDeleted": 3
             }
-         ]
-      },
-      {  
-         "id":"66a25d6d9ba2e19f8e3c9b3674e9410fa0f62435",
-         "numberOfFileAffected":8,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":55,
-               "lineDeleted":52
+          ]
+        },
+        {
+          "id": "66a25d6d9ba2e19f8e3c9b3674e9410fa0f62435",
+          "numberOfFileAffected": 8,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 55,
+              "lineDeleted": 52
             },
-            {  
-               "filePath":"src/components/Board.js",
-               "lineAdded":0,
-               "lineDeleted":31
+            {
+              "filePath": "src/components/Board.js",
+              "lineAdded": 0,
+              "lineDeleted": 31
             },
-            {  
-               "filePath":"src/components/Item.js",
-               "lineAdded":0,
-               "lineDeleted":18
+            {
+              "filePath": "src/components/Item.js",
+              "lineAdded": 0,
+              "lineDeleted": 18
             },
-            {  
-               "filePath":"src/components/Step.js",
-               "lineAdded":22,
-               "lineDeleted":0
+            {
+              "filePath": "src/components/Step.js",
+              "lineAdded": 22,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/components/Task.js",
-               "lineAdded":23,
-               "lineDeleted":0
+            {
+              "filePath": "src/components/Task.js",
+              "lineAdded": 23,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/config.js",
-               "lineAdded":50,
-               "lineDeleted":0
+            {
+              "filePath": "src/config.js",
+              "lineAdded": 50,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/db.js",
-               "lineAdded":34,
-               "lineDeleted":0
+            {
+              "filePath": "src/db.js",
+              "lineAdded": 34,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/index.css",
-               "lineAdded":4,
-               "lineDeleted":0
+            {
+              "filePath": "src/index.css",
+              "lineAdded": 4,
+              "lineDeleted": 0
             }
-         ]
-      },
-      {  
-         "id":"82db24da018867926662943d82e8e2470073c84d",
-         "numberOfFileAffected":3,
-         "files":[  
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":32,
-               "lineDeleted":21
+          ]
+        },
+        {
+          "id": "82db24da018867926662943d82e8e2470073c84d",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 32,
+              "lineDeleted": 21
             },
-            {  
-               "filePath":"src/components/Board.js",
-               "lineAdded":4,
-               "lineDeleted":2
+            {
+              "filePath": "src/components/Board.js",
+              "lineAdded": 4,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"src/components/Item.js",
-               "lineAdded":3,
-               "lineDeleted":1
+            {
+              "filePath": "src/components/Item.js",
+              "lineAdded": 3,
+              "lineDeleted": 1
             }
-         ]
-      },
-      {  
-         "id":"886dd56db322dcd1d9fbd9f3db6cdbf770e04425",
-         "numberOfFileAffected":6,
-         "files":[  
-            {  
-               "filePath":"jsconfig.json",
-               "lineAdded":16,
-               "lineDeleted":0
+          ]
+        },
+        {
+          "id": "886dd56db322dcd1d9fbd9f3db6cdbf770e04425",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "jsconfig.json",
+              "lineAdded": 16,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/App.css",
-               "lineAdded":0,
-               "lineDeleted":3
+            {
+              "filePath": "src/App.css",
+              "lineAdded": 0,
+              "lineDeleted": 3
             },
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":51,
-               "lineDeleted":2
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 51,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"src/components/Board.js",
-               "lineAdded":29,
-               "lineDeleted":0
+            {
+              "filePath": "src/components/Board.js",
+              "lineAdded": 29,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/components/Item.js",
-               "lineAdded":16,
-               "lineDeleted":0
+            {
+              "filePath": "src/components/Item.js",
+              "lineAdded": 16,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/index.css",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "src/index.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
             }
-         ]
-      },
-      {  
-         "id":"2645a656e51c5779b714268c43ef9f335dbc7bbe",
-         "numberOfFileAffected":10,
-         "files":[  
-            {  
-               "filePath":".gitignore",
-               "lineAdded":15,
-               "lineDeleted":0
+          ]
+        },
+        {
+          "id": "2645a656e51c5779b714268c43ef9f335dbc7bbe",
+          "numberOfFileAffected": 10,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 15,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"README.md",
-               "lineAdded":943,
-               "lineDeleted":1
+            {
+              "filePath": "README.md",
+              "lineAdded": 943,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"package.json",
-               "lineAdded":18,
-               "lineDeleted":0
+            {
+              "filePath": "package.json",
+              "lineAdded": 18,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"public/favicon.ico",
-               "lineAdded":0,
-               "lineDeleted":0
+            {
+              "filePath": "public/favicon.ico",
+              "lineAdded": 0,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"public/index.html",
-               "lineAdded":22,
-               "lineDeleted":0
+            {
+              "filePath": "public/index.html",
+              "lineAdded": 22,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/App.css",
-               "lineAdded":3,
-               "lineDeleted":0
+            {
+              "filePath": "src/App.css",
+              "lineAdded": 3,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/App.js",
-               "lineAdded":12,
-               "lineDeleted":0
+            {
+              "filePath": "src/App.js",
+              "lineAdded": 12,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/App.test.js",
-               "lineAdded":8,
-               "lineDeleted":0
+            {
+              "filePath": "src/App.test.js",
+              "lineAdded": 8,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/index.css",
-               "lineAdded":5,
-               "lineDeleted":0
+            {
+              "filePath": "src/index.css",
+              "lineAdded": 5,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"src/index.js",
-               "lineAdded":9,
-               "lineDeleted":0
+            {
+              "filePath": "src/index.js",
+              "lineAdded": 9,
+              "lineDeleted": 0
             }
-         ]
-      },
-      {  
-         "id":"243026751d87d42cf090f14ebf4351062c729433",
-         "numberOfFileAffected":1,
-         "files":[  
-            {  
-               "filePath":"README.md",
-               "lineAdded":1,
-               "lineDeleted":0
+          ]
+        },
+        {
+          "id": "243026751d87d42cf090f14ebf4351062c729433",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 0
             }
-         ]
-      }
-   ],
-   "projectStructure":[  
-      {  
-         "fileId":"6c96c5cff124271309d717aa6a74c99fa3cdd455",
-         "fileName":".gitignore",
-         "filePath":".gitignore"
-      },
-      {  
-         "fileId":"478580810f4f71b8e3c5188b371a3b4ba3586fee",
-         "fileName":"README.md",
-         "filePath":"README.md"
-      },
-      {  
-         "fileId":"0136d6f20dddc4d5bcd152e1b4b84900e687c4ee",
-         "fileName":"jsconfig.json",
-         "filePath":"jsconfig.json"
-      },
-      {  
-         "fileId":"59f2f22020a3f9cfcd496bacdc8e1ed9b92dc255",
-         "fileName":"package.json",
-         "filePath":"package.json"
-      },
-      {  
-         "fileId":"5c125de5d897c1ff5692a656485b3216123dcd89",
-         "fileName":"favicon.ico",
-         "filePath":"public/favicon.ico"
-      },
-      {  
-         "fileId":"19a131fb619b622365fa2c7af9ca9b7a34496900",
-         "fileName":"index.html",
-         "filePath":"public/index.html"
-      },
-      {  
-         "fileId":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-         "fileName":"App.css",
-         "filePath":"src/App.css"
-      },
-      {  
-         "fileId":"728211c89d721eefeb20287ff7584a4640ae154a",
-         "fileName":"App.js",
-         "filePath":"src/App.js"
-      },
-      {  
-         "fileId":"4e7c391ac831a54e8fdb1ab73fe85cab2551dd61",
-         "fileName":"State.js",
-         "filePath":"src/State.js"
-      },
-      {  
-         "fileId":"93247776aeb6b4bc3727f6c28ac0a459eda150db",
-         "fileName":"Form.js",
-         "filePath":"src/components/Form.js"
-      },
-      {  
-         "fileId":"2a7fd7e4abbc164e0d902ea04f4a7ba98d521e87",
-         "fileName":"Step.js",
-         "filePath":"src/components/Step.js"
-      },
-      {  
-         "fileId":"ddda85cdb0b4ef2326927dbb990255f5f8e3ce19",
-         "fileName":"Focus.js",
-         "filePath":"src/components/task/Focus.js"
-      },
-      {  
-         "fileId":"2c42eca0f76e449c4492c36f876110feb5673c0f",
-         "fileName":"Tile.js",
-         "filePath":"src/components/task/Tile.js"
-      },
-      {  
-         "fileId":"5208d99b955119a8d5d62510908017a847755033",
-         "fileName":"config.js",
-         "filePath":"src/config.js"
-      },
-      {  
-         "fileId":"b225a70605fb9b2a74cccccbdfbad580bd24657b",
-         "fileName":"db.json",
-         "filePath":"src/db.json"
-      },
-      {  
-         "fileId":"9438757a60cc8cb73e68103374cc869cac659898",
-         "fileName":"index.css",
-         "filePath":"src/index.css"
-      },
-      {  
-         "fileId":"6334c3bbf4c3a87cda12abb1f41a43c72ae31d39",
-         "fileName":"index.js",
-         "filePath":"src/index.js"
-      },
-      {  
-         "fileId":"f1cf73ef3ec4feb5a9aadc7f182cea9f0f4f48a2",
-         "fileName":"yarn.lock",
-         "filePath":"yarn.lock"
-      }
-   ],
-
-
-"downloadedSourceFile": [
-       {
-         "filename": ".gitignore",
-         "repoFilePath": ".gitignore",
-         "localFilePath": "downloaded/g-harel/github/kankan/.gitignore"
-       },
-       {
-         "filename": "package.json",
-         "repoFilePath": "package.json",
-         "localFilePath": "test/matching-algo/matcher/dependencies/package.react-javascript.json"
-       }
-     ]
-       }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "6c96c5cff124271309d717aa6a74c99fa3cdd455",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "478580810f4f71b8e3c5188b371a3b4ba3586fee",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "0136d6f20dddc4d5bcd152e1b4b84900e687c4ee",
+          "fileName": "jsconfig.json",
+          "filePath": "jsconfig.json"
+        },
+        {
+          "fileId": "59f2f22020a3f9cfcd496bacdc8e1ed9b92dc255",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "5c125de5d897c1ff5692a656485b3216123dcd89",
+          "fileName": "favicon.ico",
+          "filePath": "public/favicon.ico"
+        },
+        {
+          "fileId": "19a131fb619b622365fa2c7af9ca9b7a34496900",
+          "fileName": "index.html",
+          "filePath": "public/index.html"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "App.css",
+          "filePath": "src/App.css"
+        },
+        {
+          "fileId": "728211c89d721eefeb20287ff7584a4640ae154a",
+          "fileName": "App.js",
+          "filePath": "src/App.js"
+        },
+        {
+          "fileId": "4e7c391ac831a54e8fdb1ab73fe85cab2551dd61",
+          "fileName": "State.js",
+          "filePath": "src/State.js"
+        },
+        {
+          "fileId": "93247776aeb6b4bc3727f6c28ac0a459eda150db",
+          "fileName": "Form.js",
+          "filePath": "src/components/Form.js"
+        },
+        {
+          "fileId": "2a7fd7e4abbc164e0d902ea04f4a7ba98d521e87",
+          "fileName": "Step.js",
+          "filePath": "src/components/Step.js"
+        },
+        {
+          "fileId": "ddda85cdb0b4ef2326927dbb990255f5f8e3ce19",
+          "fileName": "Focus.js",
+          "filePath": "src/components/task/Focus.js"
+        },
+        {
+          "fileId": "2c42eca0f76e449c4492c36f876110feb5673c0f",
+          "fileName": "Tile.js",
+          "filePath": "src/components/task/Tile.js"
+        },
+        {
+          "fileId": "5208d99b955119a8d5d62510908017a847755033",
+          "fileName": "config.js",
+          "filePath": "src/config.js"
+        },
+        {
+          "fileId": "b225a70605fb9b2a74cccccbdfbad580bd24657b",
+          "fileName": "db.json",
+          "filePath": "src/db.json"
+        },
+        {
+          "fileId": "9438757a60cc8cb73e68103374cc869cac659898",
+          "fileName": "index.css",
+          "filePath": "src/index.css"
+        },
+        {
+          "fileId": "6334c3bbf4c3a87cda12abb1f41a43c72ae31d39",
+          "fileName": "index.js",
+          "filePath": "src/index.js"
+        },
+        {
+          "fileId": "f1cf73ef3ec4feb5a9aadc7f182cea9f0f4f48a2",
+          "fileName": "yarn.lock",
+          "filePath": "yarn.lock"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/g-harel/github/kankan/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.react-javascript.json"
+        }
+      ]
+    }
   ]
 }
