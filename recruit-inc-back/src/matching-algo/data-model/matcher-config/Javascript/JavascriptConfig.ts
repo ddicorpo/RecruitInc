@@ -6,7 +6,7 @@ const matchingTargets: ITargetMatcher[] = [];
 
 export const javascriptConfig: IMatcherConfig = {
   technology: Technologies.Javascript,
-  extensions: ['js', 'ts', 'tsx'],
+  extensions: ['js', 'ts', 'tsx', 'vue'],
   matchingTargets,
   excludedFolders: ['node_modules'],
 };
