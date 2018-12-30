@@ -70,32 +70,6 @@ describe('Test react matching algorithm', () => {
     }
   });
 
-  it('The React-Typescript-Javascript matcher should return  the correct output object with bug-test repository', () => {
-    // GIVEN
-    const input = require('./input/bug-test.json');
-    const expected = require('./expected-output/bug-test.out.json');
-    const client: MatcherClient = new MatcherClient(
-      input,
-      customLanguageMatchers
-    );
-
-    // WHEN
-    const computedOutput: IGitProjectSummary = client.execute();
-
-    // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
-      const computedProjectSum: IGitProjectOutput =
-        computedOutput.projectsOutput[index];
-      index++;
-      if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected: ' + JSON.stringify(expected));
-        console.log('actual: ' + JSON.stringify(computedProjectSum));
-        expect.fail();
-      }
-    }
-  });
-
   it('The React-Typescript-Javascript matcher should return  the correct output object with circleciprisma repository', () => {
     // GIVEN
     const input = require('./input/circleciprisma.json');
@@ -178,32 +152,6 @@ describe('Test react matching algorithm', () => {
     // GIVEN
     const input = require('./input/droplr-clone.json');
     const expected = require('./expected-output/droplr-clone.out.json');
-    const client: MatcherClient = new MatcherClient(
-      input,
-      customLanguageMatchers
-    );
-
-    // WHEN
-    const computedOutput: IGitProjectSummary = client.execute();
-
-    // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
-      const computedProjectSum: IGitProjectOutput =
-        computedOutput.projectsOutput[index];
-      index++;
-      if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected: ' + JSON.stringify(expected));
-        console.log('actual: ' + JSON.stringify(computedProjectSum));
-        expect.fail();
-      }
-    }
-  });
-
-  it('The React-Typescript-Javascript matcher should return  the correct output object with g-harel-github repository', () => {
-    // GIVEN
-    const input = require('./input/g-harel-github.json');
-    const expected = require('./expected-output/g-harel-github.out.json');
     const client: MatcherClient = new MatcherClient(
       input,
       customLanguageMatchers
