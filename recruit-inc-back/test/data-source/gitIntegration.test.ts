@@ -10,10 +10,10 @@ require('dotenv').config(); //Get environment variables
 
 xdescribe('Test mongo GitObj', () => {
   const newGitData: IGitDataModel = {
-    iDataEntry: {
+    dataEntry: {
       projectInputs: [],
     },
-    iGitProjectSummary: {
+    gitProjectSummary: {
       totalOutput: [],
       projectsOutput: [],
     },
@@ -21,10 +21,10 @@ xdescribe('Test mongo GitObj', () => {
     platform: Platform.Github,
   };
   const newGitData2: IGitDataModel = {
-    iDataEntry: {
+    dataEntry: {
       projectInputs: [],
     },
-    iGitProjectSummary: {
+    gitProjectSummary: {
       totalOutput: [],
       projectsOutput: [],
     },
@@ -32,10 +32,10 @@ xdescribe('Test mongo GitObj', () => {
     platform: Platform.Github,
   };
   const newGitData3: IGitDataModel = {
-    iDataEntry: {
+    dataEntry: {
       projectInputs: [],
     },
-    iGitProjectSummary: {
+    gitProjectSummary: {
       totalOutput: [],
       projectsOutput: [],
     },
