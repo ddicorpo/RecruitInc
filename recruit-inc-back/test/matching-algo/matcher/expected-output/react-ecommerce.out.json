@@ -1,1 +1,22 @@
-{}
+{
+  "projectName": "React-Ecommerce",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 884,
+      "numberOfCommits": 18,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 884,
+          "numberOfCommits": 18
+        }
+      ]
+    }
+  ]
+}
