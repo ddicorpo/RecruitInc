@@ -8,7 +8,9 @@ import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/
 import { techSourceFiles } from '../../matching-algo/data-model/input-model/TechSourceFiles';
 import { IDataEntry } from '../../matching-algo/data-model/input-model/IDataEntry';
 import { DataEntryTDG } from '../../data-source/table-data-gateway/dataEntryTDG';
+import { ApplicantTDG} from "../../data-source/table-data-gateway/applicantTDG";
 import { GitProjectSummaryTDG } from '../../data-source/table-data-gateway/gitProjectSummaryTDG';
+import {IApplicantModel, UserType} from "../../domain/model/IApplicantModel";
 
 export class GithubDataExtraction {
   private readonly accessToken: string;
@@ -62,6 +64,16 @@ export class GithubDataExtraction {
     const dataEntryTDG: DataEntryTDG = new DataEntryTDG();
     const gitProjectSummaryTDG: GitProjectSummaryTDG = new GitProjectSummaryTDG();
     let user: IGithubUser = await this.extractData(login, email);
+
+    //where applicant is made for now, will have to be moved when front end is better established. Mostly to show that applicant works
+    const applicantTDG: ApplicantTDG = new ApplicantTDG();
+    const newApplicant: IApplicantModel = {
+      platformUsername: user.login,
+      platformEmail: user.email,
+      iGit: {},
+      userType: UserType.Applicant,
+    };
+    await applicantTDG.create(newApplicant);
 
     let client: MatcherClient = new MatcherClient(user.dataEntry);
     // Save Data Entry
