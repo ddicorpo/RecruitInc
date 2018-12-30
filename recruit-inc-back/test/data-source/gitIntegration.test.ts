@@ -6,6 +6,8 @@ import { GitFinder } from '../../src/data-source/finder/gitFinder';
 import { expect } from 'chai';
 import * as mongoose from 'mongoose';
 import { IGitDataModel } from '../../src/domain/model/IGitDataModel';
+import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/MongoConnectionFactory';
+
 require('dotenv').config(); //Get environment variables
 
 xdescribe('Test mongo GitObj', () => {
@@ -73,19 +75,12 @@ xdescribe('Test mongo GitObj', () => {
   const gitTDG: GitTDG = new GitTDG();
   const gitFinder: GitFinder = new GitFinder();
 
-  before(function(done) {
-    mongoose.connect(
-      `${process.env.DB_HOST}/${process.env.DB_NAME}`,
-      { useNewUrlParser: true }
-    ); //Connect to database
-    const db = mongoose.connection;
-
-    db.on('error', console.error.bind(console, 'connection error'));
-
-    db.once('open', function() {
-      console.log('We are connected to the database');
-      done();
-    });
+  before(() => {
+    // Establish connection
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
+    // Start connection
+    myFactory.getConnection();
   });
 
   after(() => {
