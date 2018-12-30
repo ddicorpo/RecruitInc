@@ -6,6 +6,7 @@ import { UserType } from '../../src/domain/model/IApplicantModel';
 import { ApplicantFinder } from '../../src/data-source/finder/applicantFinder';
 import { expect } from 'chai';
 import * as mongoose from 'mongoose';
+import { Platform } from '../../src/domain/model/IGitDataModel';
 
 require('dotenv').config(); //Get environment variables
 
@@ -21,19 +22,43 @@ xdescribe('Test mongo Applicant', () => {
   const newApplicant: IApplicantModel = {
     platformUsername: 'testUser',
     platformEmail: 'testUser@blah.com',
-    iGit: {},
+    iGit: {
+      IGitData: [],
+      IToken: {
+        platform: Platform.Github,
+        AccessToken: '',
+        RefreshToken: '',
+        ExpiryDate: '',
+      },
+    },
     userType: UserType.Applicant,
   };
   const newApplicant2: IApplicantModel = {
     platformUsername: 'testUser2',
     platformEmail: 'testUser2@blah.com',
-    iGit: {},
+    iGit: {
+      IGitData: [],
+      IToken: {
+        platform: Platform.Github,
+        AccessToken: '',
+        RefreshToken: '',
+        ExpiryDate: '',
+      },
+    },
     userType: UserType.Applicant,
   };
   const newApplicant3: IApplicantModel = {
     platformUsername: 'testUser3',
     platformEmail: 'testUser3@blah.com',
-    iGit: {},
+    iGit: {
+      IGitData: [],
+      IToken: {
+        platform: Platform.Github,
+        AccessToken: '',
+        RefreshToken: '',
+        ExpiryDate: '',
+      },
+    },
     userType: UserType.Candidate,
   };
   const applicantTDG: ApplicantTDG = new ApplicantTDG();
