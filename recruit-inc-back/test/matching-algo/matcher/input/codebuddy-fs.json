@@ -1,1301 +1,1296 @@
 {
   "projectInputs": [
-         {  
-   "projectName":"codebuddy-fs",
-   "owner":"lydiahallie",
-   "applicantCommits":[  
-      {  
-         "id":"5c4a9619af981de7636bad000317acc662d6bec0",
-         "numberOfFileAffected":1,
-         "files":[  
-            {  
-               "filePath":"README.md",
-               "lineAdded":13,
-               "lineDeleted":4
+    {
+      "projectName": "codebuddy-fs",
+      "owner": "lydiahallie",
+      "applicantCommits": [
+        {
+          "id": "5c4a9619af981de7636bad000317acc662d6bec0",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 13,
+              "lineDeleted": 4
             }
-         ]
-      },
-      {  
-         "id":"f7b5b0a745747dd1875127ccab4c85313f643acb",
-         "numberOfFileAffected":2,
-         "files":[  
-            {  
-               "filePath":"README.md",
-               "lineAdded":5,
-               "lineDeleted":0
+          ]
+        },
+        {
+          "id": "f7b5b0a745747dd1875127ccab4c85313f643acb",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 5,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"preview1.gif",
-               "lineAdded":0,
-               "lineDeleted":0
+            {
+              "filePath": "preview1.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
             }
-         ]
-      },
-      {  
-         "id":"0c873018443866bf150c002ecd3c356420f0cee7",
-         "numberOfFileAffected":6,
-         "files":[  
-            {  
-               "filePath":"client/src/assets/README.md",
-               "lineAdded":0,
-               "lineDeleted":0
+          ]
+        },
+        {
+          "id": "0c873018443866bf150c002ecd3c356420f0cee7",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "client/src/assets/README.md",
+              "lineAdded": 0,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/assets/preview1.gif",
-               "lineAdded":0,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/assets/preview1.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_cards.sass",
-               "lineAdded":1,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/Dashboard/_cards.sass",
+              "lineAdded": 1,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_dashboard.sass",
-               "lineAdded":2,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/Dashboard/_dashboard.sass",
+              "lineAdded": 2,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_dashheader.sass",
-               "lineAdded":1,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/Dashboard/_dashheader.sass",
+              "lineAdded": 1,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_messages.sass",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/styles/Dashboard/_messages.sass",
+              "lineAdded": 1,
+              "lineDeleted": 1
             }
-         ]
-      },
-      {  
-         "id":"5779141c203c9d65304c5a83cc3451e66951bac2",
-         "numberOfFileAffected":27,
-         "files":[  
-            {  
-               "filePath":".gitignore",
-               "lineAdded":3,
-               "lineDeleted":1
+          ]
+        },
+        {
+          "id": "5779141c203c9d65304c5a83cc3451e66951bac2",
+          "numberOfFileAffected": 27,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 3,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/assets/fakepic1.png",
-               "lineAdded":0,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/assets/fakepic1.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/assets/fakepic2.png",
-               "lineAdded":0,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/assets/fakepic2.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/assets/fakepic3.png",
-               "lineAdded":0,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/assets/fakepic3.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/DashboardView/InfoBoxes.js",
-               "lineAdded":1,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/DashboardView/InfoBoxes.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/DashboardView/MessageTable.js",
-               "lineAdded":9,
-               "lineDeleted":22
+            {
+              "filePath": "client/src/components/Dashboard/DashboardView/MessageTable.js",
+              "lineAdded": 9,
+              "lineDeleted": 22
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Find/CardContact.js",
-               "lineAdded":3,
-               "lineDeleted":4
+            {
+              "filePath": "client/src/components/Dashboard/Find/CardContact.js",
+              "lineAdded": 3,
+              "lineDeleted": 4
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Messages/MessageReply.js",
-               "lineAdded":14,
-               "lineDeleted":14
+            {
+              "filePath": "client/src/components/Dashboard/Messages/MessageReply.js",
+              "lineAdded": 14,
+              "lineDeleted": 14
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Messages/Messages.js",
-               "lineAdded":52,
-               "lineDeleted":36
+            {
+              "filePath": "client/src/components/Dashboard/Messages/Messages.js",
+              "lineAdded": 52,
+              "lineDeleted": 36
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Messages/mockMessages.js",
-               "lineAdded":0,
-               "lineDeleted":37
+            {
+              "filePath": "client/src/components/Dashboard/Messages/mockMessages.js",
+              "lineAdded": 0,
+              "lineDeleted": 37
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/Header/index.js",
-               "lineAdded":0,
-               "lineDeleted":3
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/Header/index.js",
+              "lineAdded": 0,
+              "lineDeleted": 3
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/Header/searchbar.js",
-               "lineAdded":0,
-               "lineDeleted":8
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/Header/searchbar.js",
+              "lineAdded": 0,
+              "lineDeleted": 8
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/Menu/index.js",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/Menu/index.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/UserProfile/index.js",
-               "lineAdded":0,
-               "lineDeleted":30
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/UserProfile/index.js",
+              "lineAdded": 0,
+              "lineDeleted": 30
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/index.js",
-               "lineAdded":5,
-               "lineDeleted":25
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/index.js",
+              "lineAdded": 5,
+              "lineDeleted": 25
             },
-            {  
-               "filePath":"client/src/components/Dashboard/index.js",
-               "lineAdded":1,
-               "lineDeleted":3
+            {
+              "filePath": "client/src/components/Dashboard/index.js",
+              "lineAdded": 1,
+              "lineDeleted": 3
             },
-            {  
-               "filePath":"client/src/components/LandingPage/App/title.js",
-               "lineAdded":6,
-               "lineDeleted":12
+            {
+              "filePath": "client/src/components/LandingPage/App/title.js",
+              "lineAdded": 6,
+              "lineDeleted": 12
             },
-            {  
-               "filePath":"client/src/components/LandingPage/Form/index.js",
-               "lineAdded":13,
-               "lineDeleted":14
+            {
+              "filePath": "client/src/components/LandingPage/Form/index.js",
+              "lineAdded": 13,
+              "lineDeleted": 14
             },
-            {  
-               "filePath":"client/src/components/LandingPage/Form/inputField.js",
-               "lineAdded":1,
-               "lineDeleted":6
+            {
+              "filePath": "client/src/components/LandingPage/Form/inputField.js",
+              "lineAdded": 1,
+              "lineDeleted": 6
             },
-            {  
-               "filePath":"client/src/components/LandingPage/Header/index.js",
-               "lineAdded":13,
-               "lineDeleted":14
+            {
+              "filePath": "client/src/components/LandingPage/Header/index.js",
+              "lineAdded": 13,
+              "lineDeleted": 14
             },
-            {  
-               "filePath":"client/src/components/LandingPage/Preview/index.js",
-               "lineAdded":6,
-               "lineDeleted":18
+            {
+              "filePath": "client/src/components/LandingPage/Preview/index.js",
+              "lineAdded": 6,
+              "lineDeleted": 18
             },
-            {  
-               "filePath":"client/src/components/LandingPage/Preview/previewData.js",
-               "lineAdded":10,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/LandingPage/Preview/previewData.js",
+              "lineAdded": 10,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/fake_backend/posts.js",
-               "lineAdded":42,
-               "lineDeleted":42
+            {
+              "filePath": "client/src/fake_backend/posts.js",
+              "lineAdded": 42,
+              "lineDeleted": 42
             },
-            {  
-               "filePath":"client/src/fake_backend/users.js",
-               "lineAdded":2,
-               "lineDeleted":2
+            {
+              "filePath": "client/src/fake_backend/users.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_dashboard.sass",
-               "lineAdded":5,
-               "lineDeleted":4
+            {
+              "filePath": "client/src/styles/Dashboard/_dashboard.sass",
+              "lineAdded": 5,
+              "lineDeleted": 4
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_messages.sass",
-               "lineAdded":0,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/styles/Dashboard/_messages.sass",
+              "lineAdded": 0,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/styles/LandingPage/_preview.sass",
-               "lineAdded":38,
-               "lineDeleted":37
+            {
+              "filePath": "client/src/styles/LandingPage/_preview.sass",
+              "lineAdded": 38,
+              "lineDeleted": 37
             }
-         ]
-      },
-      {  
-         "id":"a7e519fa33f4e964b349a0b915bafd8ed0cef194",
-         "numberOfFileAffected":1,
-         "files":[  
-            {  
-               "filePath":"client/config/webpack.config.prod.js",
-               "lineAdded":1,
-               "lineDeleted":1
+          ]
+        },
+        {
+          "id": "a7e519fa33f4e964b349a0b915bafd8ed0cef194",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "client/config/webpack.config.prod.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             }
-         ]
-      },
-      {  
-         "id":"8e3db3f0d651c5bdd20c2a8ee00911ab5763b5d9",
-         "numberOfFileAffected":1,
-         "files":[  
-            {  
-               "filePath":"client/package.json",
-               "lineAdded":0,
-               "lineDeleted":11
+          ]
+        },
+        {
+          "id": "8e3db3f0d651c5bdd20c2a8ee00911ab5763b5d9",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "client/package.json",
+              "lineAdded": 0,
+              "lineDeleted": 11
             }
-         ]
-      },
-      {  
-         "id":"27fc252ce482b14565518b4a9099b864ff7d1c0e",
-         "numberOfFileAffected":18,
-         "files":[  
-            {  
-               "filePath":"client/src/actions/index.js",
-               "lineAdded":23,
-               "lineDeleted":10
+          ]
+        },
+        {
+          "id": "27fc252ce482b14565518b4a9099b864ff7d1c0e",
+          "numberOfFileAffected": 18,
+          "files": [
+            {
+              "filePath": "client/src/actions/index.js",
+              "lineAdded": 23,
+              "lineDeleted": 10
             },
-            {  
-               "filePath":"client/src/components/Dashboard/DashboardView/DashProfile.js",
-               "lineAdded":2,
-               "lineDeleted":2
+            {
+              "filePath": "client/src/components/Dashboard/DashboardView/DashProfile.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Find/Find.js",
-               "lineAdded":5,
-               "lineDeleted":6
+            {
+              "filePath": "client/src/components/Dashboard/Find/Find.js",
+              "lineAdded": 5,
+              "lineDeleted": 6
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Profile/Profile.js",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/components/Dashboard/Profile/Profile.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Profile/ProfileInfo.js",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/components/Dashboard/Profile/ProfileInfo.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/Header/index.js",
-               "lineAdded":2,
-               "lineDeleted":2
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/Header/index.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/Menu/index.js",
-               "lineAdded":0,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/Menu/index.js",
+              "lineAdded": 0,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/data/mockdata.js",
-               "lineAdded":0,
-               "lineDeleted":84
+            {
+              "filePath": "client/src/data/mockdata.js",
+              "lineAdded": 0,
+              "lineDeleted": 84
             },
-            {  
-               "filePath":"client/src/fake_backend/messages.js",
-               "lineAdded":52,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/fake_backend/messages.js",
+              "lineAdded": 52,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/fake_backend/posts.js",
-               "lineAdded":132,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/fake_backend/posts.js",
+              "lineAdded": 132,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/fake_backend/users.js",
-               "lineAdded":345,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/fake_backend/users.js",
+              "lineAdded": 345,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/index.js",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/index.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_cards.sass",
-               "lineAdded":2,
-               "lineDeleted":4
+            {
+              "filePath": "client/src/styles/Dashboard/_cards.sass",
+              "lineAdded": 2,
+              "lineDeleted": 4
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_messages.sass",
-               "lineAdded":4,
-               "lineDeleted":3
+            {
+              "filePath": "client/src/styles/Dashboard/_messages.sass",
+              "lineAdded": 4,
+              "lineDeleted": 3
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_sidepane.sass",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/styles/Dashboard/_sidepane.sass",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/styles/LandingPage/_app.sass",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/styles/LandingPage/_app.sass",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/styles/LandingPage/_form.sass",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/styles/LandingPage/_form.sass",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/styles/main.sass",
-               "lineAdded":0,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/styles/main.sass",
+              "lineAdded": 0,
+              "lineDeleted": 1
             }
-         ]
-      },
-      {  
-         "id":"a66eb0e62f7eabb4d63d0a7eed9a298e788f98aa",
-         "numberOfFileAffected":38,
-         "files":[  
-            {  
-               "filePath":"client/package.json",
-               "lineAdded":3,
-               "lineDeleted":4
+          ]
+        },
+        {
+          "id": "a66eb0e62f7eabb4d63d0a7eed9a298e788f98aa",
+          "numberOfFileAffected": 38,
+          "files": [
+            {
+              "filePath": "client/package.json",
+              "lineAdded": 3,
+              "lineDeleted": 4
             },
-            {  
-               "filePath":"client/src/App.css",
-               "lineAdded":0,
-               "lineDeleted":28
+            {
+              "filePath": "client/src/App.css",
+              "lineAdded": 0,
+              "lineDeleted": 28
             },
-            {  
-               "filePath":"client/src/App.js",
-               "lineAdded":0,
-               "lineDeleted":21
+            {
+              "filePath": "client/src/App.js",
+              "lineAdded": 0,
+              "lineDeleted": 21
             },
-            {  
-               "filePath":"client/src/App.test.js",
-               "lineAdded":0,
-               "lineDeleted":9
+            {
+              "filePath": "client/src/App.test.js",
+              "lineAdded": 0,
+              "lineDeleted": 9
             },
-            {  
-               "filePath":"client/src/assets/spinners.js",
-               "lineAdded":43,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/assets/spinners.js",
+              "lineAdded": 43,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/DashboardView/ActivityGraph.js",
-               "lineAdded":12,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/DashboardView/ActivityGraph.js",
+              "lineAdded": 12,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/DashboardView/DashProfile.js",
-               "lineAdded":46,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/DashboardView/DashProfile.js",
+              "lineAdded": 46,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/DashboardView/Dashboard.js",
-               "lineAdded":22,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/DashboardView/Dashboard.js",
+              "lineAdded": 22,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/DashboardView/InfoBoxes.js",
-               "lineAdded":68,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/DashboardView/InfoBoxes.js",
+              "lineAdded": 68,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/DashboardView/MessageTable.js",
-               "lineAdded":93,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/DashboardView/MessageTable.js",
+              "lineAdded": 93,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/DashboardView/dashMockData.js",
-               "lineAdded":102,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/DashboardView/dashMockData.js",
+              "lineAdded": 102,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Find/CardContact.js",
-               "lineAdded":23,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/Find/CardContact.js",
+              "lineAdded": 23,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Find/Find.js",
-               "lineAdded":194,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/Find/Find.js",
+              "lineAdded": 194,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Messages/MessageReply.js",
-               "lineAdded":36,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/Messages/MessageReply.js",
+              "lineAdded": 36,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Messages/Messages.js",
-               "lineAdded":75,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/Messages/Messages.js",
+              "lineAdded": 75,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Messages/mockMessages.js",
-               "lineAdded":37,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/Messages/mockMessages.js",
+              "lineAdded": 37,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Profile/Profile.js",
-               "lineAdded":56,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/Profile/Profile.js",
+              "lineAdded": 56,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Profile/ProfileInfo.js",
-               "lineAdded":77,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/Profile/ProfileInfo.js",
+              "lineAdded": 77,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Profile/Skills.js",
-               "lineAdded":51,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/Profile/Skills.js",
+              "lineAdded": 51,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/Profile/formInfo.js",
-               "lineAdded":11,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/Profile/formInfo.js",
+              "lineAdded": 11,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/Header/index.js",
-               "lineAdded":27,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/Header/index.js",
+              "lineAdded": 27,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/Header/searchbar.js",
-               "lineAdded":8,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/Header/searchbar.js",
+              "lineAdded": 8,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/Menu/index.js",
-               "lineAdded":31,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/Menu/index.js",
+              "lineAdded": 31,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/Menu/menuBtns.js",
-               "lineAdded":9,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/Menu/menuBtns.js",
+              "lineAdded": 9,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/UserProfile/index.js",
-               "lineAdded":30,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/UserProfile/index.js",
+              "lineAdded": 30,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/SidePane/index.js",
-               "lineAdded":28,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/SidePane/index.js",
+              "lineAdded": 28,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/Dashboard/index.js",
-               "lineAdded":81,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/components/Dashboard/index.js",
+              "lineAdded": 81,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/data/mockdata.js",
-               "lineAdded":84,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/data/mockdata.js",
+              "lineAdded": 84,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/index.js",
-               "lineAdded":2,
-               "lineDeleted":2
+            {
+              "filePath": "client/src/index.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
             },
-            {  
-               "filePath":"client/src/logo.svg",
-               "lineAdded":0,
-               "lineDeleted":7
+            {
+              "filePath": "client/src/logo.svg",
+              "lineAdded": 0,
+              "lineDeleted": 7
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_cards.sass",
-               "lineAdded":365,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/Dashboard/_cards.sass",
+              "lineAdded": 365,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_dashboard.sass",
-               "lineAdded":216,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/Dashboard/_dashboard.sass",
+              "lineAdded": 216,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_dashheader.sass",
-               "lineAdded":60,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/Dashboard/_dashheader.sass",
+              "lineAdded": 60,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_messages.sass",
-               "lineAdded":180,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/Dashboard/_messages.sass",
+              "lineAdded": 180,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_profile.sass",
-               "lineAdded":216,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/Dashboard/_profile.sass",
+              "lineAdded": 216,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/Dashboard/_sidepane.sass",
-               "lineAdded":66,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/Dashboard/_sidepane.sass",
+              "lineAdded": 66,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/main.sass",
-               "lineAdded":6,
-               "lineDeleted":6
+            {
+              "filePath": "client/src/styles/main.sass",
+              "lineAdded": 6,
+              "lineDeleted": 6
             },
-            {  
-               "filePath":"client/yarn.lock",
-               "lineAdded":23,
-               "lineDeleted":1
+            {
+              "filePath": "client/yarn.lock",
+              "lineAdded": 23,
+              "lineDeleted": 1
             }
-         ]
-      },
-      {  
-         "id":"f703da7fde50e9568a58db38f6cb240c20480baf",
-         "numberOfFileAffected":2,
-         "files":[  
-            {  
-               "filePath":".gitignore",
-               "lineAdded":2,
-               "lineDeleted":0
+          ]
+        },
+        {
+          "id": "f703da7fde50e9568a58db38f6cb240c20480baf",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 2,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"package.json",
-               "lineAdded":17,
-               "lineDeleted":0
+            {
+              "filePath": "package.json",
+              "lineAdded": 17,
+              "lineDeleted": 0
             }
-         ]
-      },
-      {  
-         "id":"c88de4d3b0cd4c13b2580ff1c2281d374fc02865",
-         "numberOfFileAffected":17,
-         "files":[  
-            {  
-               "filePath":"client/package.json",
-               "lineAdded":15,
-               "lineDeleted":0
+          ]
+        },
+        {
+          "id": "c88de4d3b0cd4c13b2580ff1c2281d374fc02865",
+          "numberOfFileAffected": 17,
+          "files": [
+            {
+              "filePath": "client/package.json",
+              "lineAdded": 15,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/.gitignore",
-               "lineAdded":2,
-               "lineDeleted":0
+            {
+              "filePath": "server/.gitignore",
+              "lineAdded": 2,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/config/keys.js",
-               "lineAdded":5,
-               "lineDeleted":0
+            {
+              "filePath": "server/config/keys.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/config/prod.js",
-               "lineAdded":6,
-               "lineDeleted":0
+            {
+              "filePath": "server/config/prod.js",
+              "lineAdded": 6,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/middlewares/requireLogin.js",
-               "lineAdded":4,
-               "lineDeleted":0
+            {
+              "filePath": "server/middlewares/requireLogin.js",
+              "lineAdded": 4,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/models/Message.js",
-               "lineAdded":15,
-               "lineDeleted":0
+            {
+              "filePath": "server/models/Message.js",
+              "lineAdded": 15,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/models/Posts.js",
-               "lineAdded":16,
-               "lineDeleted":0
+            {
+              "filePath": "server/models/Posts.js",
+              "lineAdded": 16,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/models/User.js",
-               "lineAdded":26,
-               "lineDeleted":0
+            {
+              "filePath": "server/models/User.js",
+              "lineAdded": 26,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/models/defaultModel.js",
-               "lineAdded":14,
-               "lineDeleted":0
+            {
+              "filePath": "server/models/defaultModel.js",
+              "lineAdded": 14,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/package.json",
-               "lineAdded":13,
-               "lineDeleted":0
+            {
+              "filePath": "server/package.json",
+              "lineAdded": 13,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/routes/authRoutes.js",
-               "lineAdded":41,
-               "lineDeleted":0
+            {
+              "filePath": "server/routes/authRoutes.js",
+              "lineAdded": 41,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/routes/messageRoutes.js",
-               "lineAdded":45,
-               "lineDeleted":0
+            {
+              "filePath": "server/routes/messageRoutes.js",
+              "lineAdded": 45,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/routes/postsRoutes.js",
-               "lineAdded":39,
-               "lineDeleted":0
+            {
+              "filePath": "server/routes/postsRoutes.js",
+              "lineAdded": 39,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/routes/usersRoutes.js",
-               "lineAdded":63,
-               "lineDeleted":0
+            {
+              "filePath": "server/routes/usersRoutes.js",
+              "lineAdded": 63,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/server.js",
-               "lineAdded":37,
-               "lineDeleted":0
+            {
+              "filePath": "server/server.js",
+              "lineAdded": 37,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/services/passport.js",
-               "lineAdded":65,
-               "lineDeleted":0
+            {
+              "filePath": "server/services/passport.js",
+              "lineAdded": 65,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"server/yarn.lock",
-               "lineAdded":2069,
-               "lineDeleted":0
+            {
+              "filePath": "server/yarn.lock",
+              "lineAdded": 2069,
+              "lineDeleted": 0
             }
-         ]
-      },
-      {  
-         "id":"f827d44380f64b9016d13f342605d21a2904c682",
-         "numberOfFileAffected":1,
-         "files":[  
-            {  
-               "filePath":"client/package-lock.json",
-               "lineAdded":0,
-               "lineDeleted":11266
+          ]
+        },
+        {
+          "id": "f827d44380f64b9016d13f342605d21a2904c682",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "client/package-lock.json",
+              "lineAdded": 0,
+              "lineDeleted": 11266
             }
-         ]
-      },
-      {  
-         "id":"92a2361f4c1e3b17ff85c914bd996e72eee0c9e6",
-         "numberOfFileAffected":21,
-         "files":[  
-            {  
-               "filePath":"client/config/env.js",
-               "lineAdded":93,
-               "lineDeleted":0
+          ]
+        },
+        {
+          "id": "92a2361f4c1e3b17ff85c914bd996e72eee0c9e6",
+          "numberOfFileAffected": 21,
+          "files": [
+            {
+              "filePath": "client/config/env.js",
+              "lineAdded": 93,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/config/jest/cssTransform.js",
-               "lineAdded":14,
-               "lineDeleted":0
+            {
+              "filePath": "client/config/jest/cssTransform.js",
+              "lineAdded": 14,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/config/jest/fileTransform.js",
-               "lineAdded":12,
-               "lineDeleted":0
+            {
+              "filePath": "client/config/jest/fileTransform.js",
+              "lineAdded": 12,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/config/paths.js",
-               "lineAdded":55,
-               "lineDeleted":0
+            {
+              "filePath": "client/config/paths.js",
+              "lineAdded": 55,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/config/polyfills.js",
-               "lineAdded":22,
-               "lineDeleted":0
+            {
+              "filePath": "client/config/polyfills.js",
+              "lineAdded": 22,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/config/webpack.config.dev.js",
-               "lineAdded":270,
-               "lineDeleted":0
+            {
+              "filePath": "client/config/webpack.config.dev.js",
+              "lineAdded": 270,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/config/webpack.config.prod.js",
-               "lineAdded":346,
-               "lineDeleted":0
+            {
+              "filePath": "client/config/webpack.config.prod.js",
+              "lineAdded": 346,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/config/webpackDevServer.config.js",
-               "lineAdded":95,
-               "lineDeleted":0
+            {
+              "filePath": "client/config/webpackDevServer.config.js",
+              "lineAdded": 95,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/package.json",
-               "lineAdded":94,
-               "lineDeleted":6
+            {
+              "filePath": "client/package.json",
+              "lineAdded": 94,
+              "lineDeleted": 6
             },
-            {  
-               "filePath":"client/public/index.html",
-               "lineAdded":6,
-               "lineDeleted":24
+            {
+              "filePath": "client/public/index.html",
+              "lineAdded": 6,
+              "lineDeleted": 24
             },
-            {  
-               "filePath":"client/scripts/build.js",
-               "lineAdded":150,
-               "lineDeleted":0
+            {
+              "filePath": "client/scripts/build.js",
+              "lineAdded": 150,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/scripts/start.js",
-               "lineAdded":107,
-               "lineDeleted":0
+            {
+              "filePath": "client/scripts/start.js",
+              "lineAdded": 107,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/scripts/test.js",
-               "lineAdded":27,
-               "lineDeleted":0
+            {
+              "filePath": "client/scripts/test.js",
+              "lineAdded": 27,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/components/LandingPage/Form/index.js",
-               "lineAdded":1,
-               "lineDeleted":1
+            {
+              "filePath": "client/src/components/LandingPage/Form/index.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
             },
-            {  
-               "filePath":"client/src/styles/LandingPage/_app.sass",
-               "lineAdded":90,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/LandingPage/_app.sass",
+              "lineAdded": 90,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/LandingPage/_form.sass",
-               "lineAdded":129,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/LandingPage/_form.sass",
+              "lineAdded": 129,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/LandingPage/_header.sass",
-               "lineAdded":36,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/LandingPage/_header.sass",
+              "lineAdded": 36,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/LandingPage/_preview.sass",
-               "lineAdded":43,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/LandingPage/_preview.sass",
+              "lineAdded": 43,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/main.sass",
-               "lineAdded":22,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/main.sass",
+              "lineAdded": 22,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/src/styles/mixins.sass",
-               "lineAdded":12,
-               "lineDeleted":0
+            {
+              "filePath": "client/src/styles/mixins.sass",
+              "lineAdded": 12,
+              "lineDeleted": 0
             },
-            {  
-               "filePath":"client/yarn.lock",
-               "lineAdded":222,
-               "lineDeleted":60
+            {
+              "filePath": "client/yarn.lock",
+              "lineAdded": 222,
+              "lineDeleted": 60
             }
-         ]
-      }
-   ],
-   "projectStructure":[  
-      {  
-         "fileId":"c7bd190bb25c5d8762fe05cb193bc0232806cee0",
-         "fileName":".gitignore",
-         "filePath":".gitignore"
-      },
-      {  
-         "fileId":"6c26ef44266a38abe0b85af9b14f89937560ee4d",
-         "fileName":"README.md",
-         "filePath":"README.md"
-      },
-      {  
-         "fileId":"d30f40ef4422ff27041df9dba83e4bd26849dc48",
-         "fileName":".gitignore",
-         "filePath":"client/.gitignore"
-      },
-      {  
-         "fileId":"479d632a5f0d9312b673eb31d8f13b8d72333347",
-         "fileName":"README.md",
-         "filePath":"client/README.md"
-      },
-      {  
-         "fileId":"30a6c7f1b6dae5f390575e490a085d5a8c496429",
-         "fileName":"env.js",
-         "filePath":"client/config/env.js"
-      },
-      {  
-         "fileId":"8f65114812a4e5726d2e4148cd15481c33e1cfec",
-         "fileName":"cssTransform.js",
-         "filePath":"client/config/jest/cssTransform.js"
-      },
-      {  
-         "fileId":"9e4047d358ded7f5ed067f1f2fa7c9b178f7ae18",
-         "fileName":"fileTransform.js",
-         "filePath":"client/config/jest/fileTransform.js"
-      },
-      {  
-         "fileId":"6d16efc99eb817885026dcc70e4467a1276ffd53",
-         "fileName":"paths.js",
-         "filePath":"client/config/paths.js"
-      },
-      {  
-         "fileId":"66dff0a8b1419497fc2be6b9eb3ba88bf37f335c",
-         "fileName":"polyfills.js",
-         "filePath":"client/config/polyfills.js"
-      },
-      {  
-         "fileId":"a2ae21a7e6a6f9467cd097319b4c5a9a0791ed47",
-         "fileName":"webpack.config.dev.js",
-         "filePath":"client/config/webpack.config.dev.js"
-      },
-      {  
-         "fileId":"d752064f50f001872f61af8a1a49326ef4b2d277",
-         "fileName":"webpack.config.prod.js",
-         "filePath":"client/config/webpack.config.prod.js"
-      },
-      {  
-         "fileId":"f12d315944e02672f634389b15f745bc1761d09b",
-         "fileName":"webpackDevServer.config.js",
-         "filePath":"client/config/webpackDevServer.config.js"
-      },
-      {  
-         "fileId":"7f0947c0b80a0f3b74b2ae72706bf911e1709fa4",
-         "fileName":"package.json",
-         "filePath":"client/package.json"
-      },
-      {  
-         "fileId":"a11777cc471a4344702741ab1c8a588998b1311a",
-         "fileName":"favicon.ico",
-         "filePath":"client/public/favicon.ico"
-      },
-      {  
-         "fileId":"abe5ad3ba87966434e48a588ee330b417ec93b12",
-         "fileName":"index.html",
-         "filePath":"client/public/index.html"
-      },
-      {  
-         "fileId":"ef19ec243e739479802a5553d0b38a18ed845307",
-         "fileName":"manifest.json",
-         "filePath":"client/public/manifest.json"
-      },
-      {  
-         "fileId":"5709f48cfcbdc0f76509ff9e40e4756f741acaa1",
-         "fileName":"build.js",
-         "filePath":"client/scripts/build.js"
-      },
-      {  
-         "fileId":"c5acbe5773106a095ff8550e55368477f74f9f88",
-         "fileName":"start.js",
-         "filePath":"client/scripts/start.js"
-      },
-      {  
-         "fileId":"45a643ac05d218262f10a951ebc85e1d75fe8929",
-         "fileName":"test.js",
-         "filePath":"client/scripts/test.js"
-      },
-      {  
-         "fileId":"d2b6fc306471055d9ad1e096af2c952a27961ba5",
-         "fileName":"index.js",
-         "filePath":"client/src/actions/index.js"
-      },
-      {  
-         "fileId":"d34f5d28c5b9a166c0a1ebf58c296c3075a1128b",
-         "fileName":"types.js",
-         "filePath":"client/src/actions/types.js"
-      },
-      {  
-         "fileId":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-         "fileName":"README.md",
-         "filePath":"client/src/assets/README.md"
-      },
-      {  
-         "fileId":"1ca9c58df755d93bcf2e0bc0aa086b86e60147f0",
-         "fileName":"fakepic1.png",
-         "filePath":"client/src/assets/fakepic1.png"
-      },
-      {  
-         "fileId":"1d0028b7ab0a152b71c1c2ce953e341814b14dd8",
-         "fileName":"fakepic2.png",
-         "filePath":"client/src/assets/fakepic2.png"
-      },
-      {  
-         "fileId":"c65b968605992ff12cf3e355468e052be4624259",
-         "fileName":"fakepic3.png",
-         "filePath":"client/src/assets/fakepic3.png"
-      },
-      {  
-         "fileId":"2ba1add39676d884fed0038ddab1b31982f43a9a",
-         "fileName":"icons.js",
-         "filePath":"client/src/assets/icons.js"
-      },
-      {  
-         "fileId":"506f7547504262fe796c4f6b0a28e443c81b7f84",
-         "fileName":"preview1.gif",
-         "filePath":"client/src/assets/preview1.gif"
-      },
-      {  
-         "fileId":"91a52875d3ea80a8a7c127d0017201606cffea2a",
-         "fileName":"spinners.js",
-         "filePath":"client/src/assets/spinners.js"
-      },
-      {  
-         "fileId":"001b48ace80a7adddebdcc9b3d1c22013a452158",
-         "fileName":"ActivityGraph.js",
-         "filePath":"client/src/components/Dashboard/DashboardView/ActivityGraph.js"
-      },
-      {  
-         "fileId":"5609570f72be4b6c0c626e6d39cb574c70761b56",
-         "fileName":"DashProfile.js",
-         "filePath":"client/src/components/Dashboard/DashboardView/DashProfile.js"
-      },
-      {  
-         "fileId":"055a026e3fec980cecfeb0f5c98863e30aab0f89",
-         "fileName":"Dashboard.js",
-         "filePath":"client/src/components/Dashboard/DashboardView/Dashboard.js"
-      },
-      {  
-         "fileId":"63d6f8bc527a82606a67503e16c9dbfa78c76d26",
-         "fileName":"InfoBoxes.js",
-         "filePath":"client/src/components/Dashboard/DashboardView/InfoBoxes.js"
-      },
-      {  
-         "fileId":"65ab259db73575182c54fa0db24c2938ec9c2728",
-         "fileName":"MessageTable.js",
-         "filePath":"client/src/components/Dashboard/DashboardView/MessageTable.js"
-      },
-      {  
-         "fileId":"73c49b8a7d6f18fdf172f60d41200f712b547a8f",
-         "fileName":"dashMockData.js",
-         "filePath":"client/src/components/Dashboard/DashboardView/dashMockData.js"
-      },
-      {  
-         "fileId":"f6c911b25ecb2040dbfe3d61d26e1ee201a72dc4",
-         "fileName":"CardContact.js",
-         "filePath":"client/src/components/Dashboard/Find/CardContact.js"
-      },
-      {  
-         "fileId":"39a6878209a875134a85bed760c2b2a3b1c50c57",
-         "fileName":"Find.js",
-         "filePath":"client/src/components/Dashboard/Find/Find.js"
-      },
-      {  
-         "fileId":"6628a9485d1e935f2dbd84dd888b9cfe03ac7803",
-         "fileName":"MessageReply.js",
-         "filePath":"client/src/components/Dashboard/Messages/MessageReply.js"
-      },
-      {  
-         "fileId":"5d85a3f8dd17af0129aa6ae4415f57f6fa32e184",
-         "fileName":"Messages.js",
-         "filePath":"client/src/components/Dashboard/Messages/Messages.js"
-      },
-      {  
-         "fileId":"854b19c2f38b1c2fc2cb51613fb106f5f53400b4",
-         "fileName":"Profile.js",
-         "filePath":"client/src/components/Dashboard/Profile/Profile.js"
-      },
-      {  
-         "fileId":"2072ebf3ed3861f65a334d20b0254acc977e1c8d",
-         "fileName":"ProfileInfo.js",
-         "filePath":"client/src/components/Dashboard/Profile/ProfileInfo.js"
-      },
-      {  
-         "fileId":"7d05cacc6c6a4df85b7fcdec1ab9cf7b649d7538",
-         "fileName":"Skills.js",
-         "filePath":"client/src/components/Dashboard/Profile/Skills.js"
-      },
-      {  
-         "fileId":"041ce71b68b345f1a6959eb43c96a3bb67c8d050",
-         "fileName":"formInfo.js",
-         "filePath":"client/src/components/Dashboard/Profile/formInfo.js"
-      },
-      {  
-         "fileId":"73abe8ba75040addf61e641918196d390576bc53",
-         "fileName":"index.js",
-         "filePath":"client/src/components/Dashboard/SidePane/Header/index.js"
-      },
-      {  
-         "fileId":"70bb94cb58bc01e4353ce1a7e17dc189e1e7b3c2",
-         "fileName":"index.js",
-         "filePath":"client/src/components/Dashboard/SidePane/Menu/index.js"
-      },
-      {  
-         "fileId":"9270d5c312a0f3f60233dae12410c85570d4f904",
-         "fileName":"menuBtns.js",
-         "filePath":"client/src/components/Dashboard/SidePane/Menu/menuBtns.js"
-      },
-      {  
-         "fileId":"8c9e8d872bed7fd9d1e922d3b0a29284139c9258",
-         "fileName":"index.js",
-         "filePath":"client/src/components/Dashboard/SidePane/index.js"
-      },
-      {  
-         "fileId":"a676710414b29eabf00f5c295d7459c6b222d3de",
-         "fileName":"index.js",
-         "filePath":"client/src/components/Dashboard/index.js"
-      },
-      {  
-         "fileId":"7562def0058e5e47be721590729b4715a0dbaf74",
-         "fileName":"index.js",
-         "filePath":"client/src/components/LandingPage/App/index.js"
-      },
-      {  
-         "fileId":"952d1283ec50d71cb353f216977b9edd188e335a",
-         "fileName":"title.js",
-         "filePath":"client/src/components/LandingPage/App/title.js"
-      },
-      {  
-         "fileId":"320932ef0703548ed2e9c02e8e2489ff5454fc4f",
-         "fileName":"footerContent.js",
-         "filePath":"client/src/components/LandingPage/Footer/footerContent.js"
-      },
-      {  
-         "fileId":"ff92ff61d32c1ce97318c89ce28a1bd514cc8444",
-         "fileName":"index.js",
-         "filePath":"client/src/components/LandingPage/Footer/index.js"
-      },
-      {  
-         "fileId":"dd156813dced7a23ef3ae242c3cbf9edc0771472",
-         "fileName":"formFields.js",
-         "filePath":"client/src/components/LandingPage/Form/formFields.js"
-      },
-      {  
-         "fileId":"783aa6c93c379fb5c0f8c960eb0c6a6f3fd879a4",
-         "fileName":"index.js",
-         "filePath":"client/src/components/LandingPage/Form/index.js"
-      },
-      {  
-         "fileId":"74232e6d931df310e2c2f89f6f34355859850f66",
-         "fileName":"inputField.js",
-         "filePath":"client/src/components/LandingPage/Form/inputField.js"
-      },
-      {  
-         "fileId":"f21ccd06f9a4fc185b5464ff4347a332c55ecf08",
-         "fileName":"index.js",
-         "filePath":"client/src/components/LandingPage/Header/index.js"
-      },
-      {  
-         "fileId":"59a2289c98a118fa856c8db549359b9b3a43ef0e",
-         "fileName":"index.js",
-         "filePath":"client/src/components/LandingPage/Info/index.js"
-      },
-      {  
-         "fileId":"bafd3804e6a7aaeb559e74d44ad61819e8ce8422",
-         "fileName":"cubics.js",
-         "filePath":"client/src/components/LandingPage/Particles/cubics.js"
-      },
-      {  
-         "fileId":"95363b1297656cc8047359794d3ab7d016cca748",
-         "fileName":"index.js",
-         "filePath":"client/src/components/LandingPage/Particles/index.js"
-      },
-      {  
-         "fileId":"4ea19240bce3a134755e99ec4c9720ee05443baa",
-         "fileName":"index.js",
-         "filePath":"client/src/components/LandingPage/Preview/index.js"
-      },
-      {  
-         "fileId":"cd8e0910720239319370511a1d0e8fe2bd2ad40e",
-         "fileName":"previewData.js",
-         "filePath":"client/src/components/LandingPage/Preview/previewData.js"
-      },
-      {  
-         "fileId":"be95a223d480d611a3a626ec6deed0d3d3eeccbe",
-         "fileName":"messages.js",
-         "filePath":"client/src/fake_backend/messages.js"
-      },
-      {  
-         "fileId":"2b746df3419d0250cd6961a394934822c18f8c86",
-         "fileName":"posts.js",
-         "filePath":"client/src/fake_backend/posts.js"
-      },
-      {  
-         "fileId":"4eef8427e8e96ad9b8bc69ac5637d1a5d7ea515d",
-         "fileName":"users.js",
-         "filePath":"client/src/fake_backend/users.js"
-      },
-      {  
-         "fileId":"b4cc7250b98cb3f1a2dd5bec134296c6942344d9",
-         "fileName":"index.css",
-         "filePath":"client/src/index.css"
-      },
-      {  
-         "fileId":"87af473cc781700fa7bc8b4b29e1686bfdfb83d8",
-         "fileName":"index.js",
-         "filePath":"client/src/index.js"
-      },
-      {  
-         "fileId":"f02887593981509e488adb31a2c877a340b37b8f",
-         "fileName":"authReducer.js",
-         "filePath":"client/src/reducers/authReducer.js"
-      },
-      {  
-         "fileId":"a01d7ca4797abd06442c53d6976e4c390f824c3e",
-         "fileName":"index.js",
-         "filePath":"client/src/reducers/index.js"
-      },
-      {  
-         "fileId":"8bcf21559e2b7dd91eff449de2fec3f75c063749",
-         "fileName":"messagesReducer.js",
-         "filePath":"client/src/reducers/messagesReducer.js"
-      },
-      {  
-         "fileId":"643ae4e17014b00439fd76844ca0f662bb4353c5",
-         "fileName":"postsReducer.js",
-         "filePath":"client/src/reducers/postsReducer.js"
-      },
-      {  
-         "fileId":"a3e6c0cfc10de36d6bcb38c52e00c012e985d68e",
-         "fileName":"registerServiceWorker.js",
-         "filePath":"client/src/registerServiceWorker.js"
-      },
-      {  
-         "fileId":"0c7affba00841e386cc9e5b8f4087809ea418963",
-         "fileName":"_cards.sass",
-         "filePath":"client/src/styles/Dashboard/_cards.sass"
-      },
-      {  
-         "fileId":"84e810ab633da02b6139cc55ec949b8061ae7625",
-         "fileName":"_dashboard.sass",
-         "filePath":"client/src/styles/Dashboard/_dashboard.sass"
-      },
-      {  
-         "fileId":"721bc3b30d4cf69bd57792c660059d60c93888df",
-         "fileName":"_dashheader.sass",
-         "filePath":"client/src/styles/Dashboard/_dashheader.sass"
-      },
-      {  
-         "fileId":"2097608bac680a7be5d928dd5da5591d9f4f446c",
-         "fileName":"_messages.sass",
-         "filePath":"client/src/styles/Dashboard/_messages.sass"
-      },
-      {  
-         "fileId":"7323c89e184d2315a6b735a28d6382fbebeae7d7",
-         "fileName":"_profile.sass",
-         "filePath":"client/src/styles/Dashboard/_profile.sass"
-      },
-      {  
-         "fileId":"45b472c37e2a9d5114ba741fb978d1764eae4858",
-         "fileName":"_sidepane.sass",
-         "filePath":"client/src/styles/Dashboard/_sidepane.sass"
-      },
-      {  
-         "fileId":"482fd3b4c53d6191771054d14ac57147d6c75ff6",
-         "fileName":"_app.sass",
-         "filePath":"client/src/styles/LandingPage/_app.sass"
-      },
-      {  
-         "fileId":"5688b1281dc7d26e93a4919004892dfb4bb36e8a",
-         "fileName":"_form.sass",
-         "filePath":"client/src/styles/LandingPage/_form.sass"
-      },
-      {  
-         "fileId":"1c098b569522643459cd43a9133d2060ddfe90d0",
-         "fileName":"_header.sass",
-         "filePath":"client/src/styles/LandingPage/_header.sass"
-      },
-      {  
-         "fileId":"86c55bdddbb1b0b6cfbb17b4adf6ffe77548577a",
-         "fileName":"_preview.sass",
-         "filePath":"client/src/styles/LandingPage/_preview.sass"
-      },
-      {  
-         "fileId":"fcf2307a327860625c87d543e77c9377d2dc10a8",
-         "fileName":"main.sass",
-         "filePath":"client/src/styles/main.sass"
-      },
-      {  
-         "fileId":"0c94a8688edc03b112e7185b220e6347a72e4450",
-         "fileName":"mixins.sass",
-         "filePath":"client/src/styles/mixins.sass"
-      },
-      {  
-         "fileId":"2dfafadf27d6987d2fdee4b87dfe3442221d4434",
-         "fileName":"yarn.lock",
-         "filePath":"client/yarn.lock"
-      },
-      {  
-         "fileId":"91c5eb87a934aa4c828da5e98f5cbaaeba720fe9",
-         "fileName":"package.json",
-         "filePath":"package.json"
-      },
-      {  
-         "fileId":"506f7547504262fe796c4f6b0a28e443c81b7f84",
-         "fileName":"preview1.gif",
-         "filePath":"preview1.gif"
-      },
-      {  
-         "fileId":"9ec9b7e86e4715d8a7016e350c5b7f484c17b38e",
-         "fileName":".gitignore",
-         "filePath":"server/.gitignore"
-      },
-      {  
-         "fileId":"9c5f1b5b67c20b40dc19196fd33c2a9c5143beaf",
-         "fileName":"keys.js",
-         "filePath":"server/config/keys.js"
-      },
-      {  
-         "fileId":"246fce297349169005256196621e4f41cb437b22",
-         "fileName":"prod.js",
-         "filePath":"server/config/prod.js"
-      },
-      {  
-         "fileId":"8e41dd4c1d4b843d232d7a3c863d3b8f7ce7aeba",
-         "fileName":"requireLogin.js",
-         "filePath":"server/middlewares/requireLogin.js"
-      },
-      {  
-         "fileId":"3b4531281807938e657b255cfc7316918fb36194",
-         "fileName":"Message.js",
-         "filePath":"server/models/Message.js"
-      },
-      {  
-         "fileId":"80d919879e80c8905e7eb7e4799a23659739e09d",
-         "fileName":"Posts.js",
-         "filePath":"server/models/Posts.js"
-      },
-      {  
-         "fileId":"745e047d6c5bf63fa5ef20fc852710c87367ebf7",
-         "fileName":"User.js",
-         "filePath":"server/models/User.js"
-      },
-      {  
-         "fileId":"fbabdef99b098fcca884805275d52680bea5b50a",
-         "fileName":"defaultModel.js",
-         "filePath":"server/models/defaultModel.js"
-      },
-      {  
-         "fileId":"371b1543b819daa0d8e72179109c10ceca5af7f8",
-         "fileName":"package.json",
-         "filePath":"server/package.json"
-      },
-      {  
-         "fileId":"54f5707676ffe5be641faa4263115ea1cc3dee1a",
-         "fileName":"authRoutes.js",
-         "filePath":"server/routes/authRoutes.js"
-      },
-      {  
-         "fileId":"051b29dab5d8ab39611a9394fc8d9b071f80005c",
-         "fileName":"messageRoutes.js",
-         "filePath":"server/routes/messageRoutes.js"
-      },
-      {  
-         "fileId":"18ef06c33626fc98fb3a9d9e26acf101dab3f0bd",
-         "fileName":"postsRoutes.js",
-         "filePath":"server/routes/postsRoutes.js"
-      },
-      {  
-         "fileId":"911da867dd42bf7c609b18229c7bf36f72c16beb",
-         "fileName":"usersRoutes.js",
-         "filePath":"server/routes/usersRoutes.js"
-      },
-      {  
-         "fileId":"0878f2453cee99f4479c5608480b3b092b7ed4a8",
-         "fileName":"server.js",
-         "filePath":"server/server.js"
-      },
-      {  
-         "fileId":"070e3a3a6e0015cb31750fe11924e79aafb0aa66",
-         "fileName":"passport.js",
-         "filePath":"server/services/passport.js"
-      },
-      {  
-         "fileId":"ae92ddd4615fce966c4490c667e389bc57609efa",
-         "fileName":"yarn.lock",
-         "filePath":"server/yarn.lock"
-      }
-   ],
-  
-
-
-
-
-"downloadedSourceFile": [
-       {
-         "filename": ".gitignore",
-         "repoFilePath": ".gitignore",
-         "localFilePath": "downloaded/lydiahallie/github/codebuddy-fs/.gitignore"
-       },
-       {
-         "filename": ".gitignore",
-         "repoFilePath": "client/.gitignore",
-         "localFilePath": "downloaded/lydiahallie/github/codebuddy-fs/client/.gitignore"
-       },
-       {
-         "filename": "package.json",
-         "repoFilePath": "package.json",
-         "localFilePath": "test/matching-algo/matcher/dependencies/package.javascript.json"
-       },
-       {
-         "filename": "package.json",
-         "repoFilePath": "client/package.json",
-         "localFilePath": "test/matching-algo/matcher/dependencies/package.react-javascript.json"
-       },
-       {
-         "filename": ".gitignore",
-         "repoFilePath": "server/.gitignore",
-         "localFilePath": "downloaded/lydiahallie/github/codebuddy-fs/server/.gitignore"
-       },
-       {
-         "filename": "package.json",
-         "repoFilePath": "server/package.json",
-         "localFilePath": "test/matching-algo/matcher/dependencies/package.javascript.json"
-       }
-     ]
-       }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "c7bd190bb25c5d8762fe05cb193bc0232806cee0",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "6c26ef44266a38abe0b85af9b14f89937560ee4d",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "d30f40ef4422ff27041df9dba83e4bd26849dc48",
+          "fileName": ".gitignore",
+          "filePath": "client/.gitignore"
+        },
+        {
+          "fileId": "479d632a5f0d9312b673eb31d8f13b8d72333347",
+          "fileName": "README.md",
+          "filePath": "client/README.md"
+        },
+        {
+          "fileId": "30a6c7f1b6dae5f390575e490a085d5a8c496429",
+          "fileName": "env.js",
+          "filePath": "client/config/env.js"
+        },
+        {
+          "fileId": "8f65114812a4e5726d2e4148cd15481c33e1cfec",
+          "fileName": "cssTransform.js",
+          "filePath": "client/config/jest/cssTransform.js"
+        },
+        {
+          "fileId": "9e4047d358ded7f5ed067f1f2fa7c9b178f7ae18",
+          "fileName": "fileTransform.js",
+          "filePath": "client/config/jest/fileTransform.js"
+        },
+        {
+          "fileId": "6d16efc99eb817885026dcc70e4467a1276ffd53",
+          "fileName": "paths.js",
+          "filePath": "client/config/paths.js"
+        },
+        {
+          "fileId": "66dff0a8b1419497fc2be6b9eb3ba88bf37f335c",
+          "fileName": "polyfills.js",
+          "filePath": "client/config/polyfills.js"
+        },
+        {
+          "fileId": "a2ae21a7e6a6f9467cd097319b4c5a9a0791ed47",
+          "fileName": "webpack.config.dev.js",
+          "filePath": "client/config/webpack.config.dev.js"
+        },
+        {
+          "fileId": "d752064f50f001872f61af8a1a49326ef4b2d277",
+          "fileName": "webpack.config.prod.js",
+          "filePath": "client/config/webpack.config.prod.js"
+        },
+        {
+          "fileId": "f12d315944e02672f634389b15f745bc1761d09b",
+          "fileName": "webpackDevServer.config.js",
+          "filePath": "client/config/webpackDevServer.config.js"
+        },
+        {
+          "fileId": "7f0947c0b80a0f3b74b2ae72706bf911e1709fa4",
+          "fileName": "package.json",
+          "filePath": "client/package.json"
+        },
+        {
+          "fileId": "a11777cc471a4344702741ab1c8a588998b1311a",
+          "fileName": "favicon.ico",
+          "filePath": "client/public/favicon.ico"
+        },
+        {
+          "fileId": "abe5ad3ba87966434e48a588ee330b417ec93b12",
+          "fileName": "index.html",
+          "filePath": "client/public/index.html"
+        },
+        {
+          "fileId": "ef19ec243e739479802a5553d0b38a18ed845307",
+          "fileName": "manifest.json",
+          "filePath": "client/public/manifest.json"
+        },
+        {
+          "fileId": "5709f48cfcbdc0f76509ff9e40e4756f741acaa1",
+          "fileName": "build.js",
+          "filePath": "client/scripts/build.js"
+        },
+        {
+          "fileId": "c5acbe5773106a095ff8550e55368477f74f9f88",
+          "fileName": "start.js",
+          "filePath": "client/scripts/start.js"
+        },
+        {
+          "fileId": "45a643ac05d218262f10a951ebc85e1d75fe8929",
+          "fileName": "test.js",
+          "filePath": "client/scripts/test.js"
+        },
+        {
+          "fileId": "d2b6fc306471055d9ad1e096af2c952a27961ba5",
+          "fileName": "index.js",
+          "filePath": "client/src/actions/index.js"
+        },
+        {
+          "fileId": "d34f5d28c5b9a166c0a1ebf58c296c3075a1128b",
+          "fileName": "types.js",
+          "filePath": "client/src/actions/types.js"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "README.md",
+          "filePath": "client/src/assets/README.md"
+        },
+        {
+          "fileId": "1ca9c58df755d93bcf2e0bc0aa086b86e60147f0",
+          "fileName": "fakepic1.png",
+          "filePath": "client/src/assets/fakepic1.png"
+        },
+        {
+          "fileId": "1d0028b7ab0a152b71c1c2ce953e341814b14dd8",
+          "fileName": "fakepic2.png",
+          "filePath": "client/src/assets/fakepic2.png"
+        },
+        {
+          "fileId": "c65b968605992ff12cf3e355468e052be4624259",
+          "fileName": "fakepic3.png",
+          "filePath": "client/src/assets/fakepic3.png"
+        },
+        {
+          "fileId": "2ba1add39676d884fed0038ddab1b31982f43a9a",
+          "fileName": "icons.js",
+          "filePath": "client/src/assets/icons.js"
+        },
+        {
+          "fileId": "506f7547504262fe796c4f6b0a28e443c81b7f84",
+          "fileName": "preview1.gif",
+          "filePath": "client/src/assets/preview1.gif"
+        },
+        {
+          "fileId": "91a52875d3ea80a8a7c127d0017201606cffea2a",
+          "fileName": "spinners.js",
+          "filePath": "client/src/assets/spinners.js"
+        },
+        {
+          "fileId": "001b48ace80a7adddebdcc9b3d1c22013a452158",
+          "fileName": "ActivityGraph.js",
+          "filePath": "client/src/components/Dashboard/DashboardView/ActivityGraph.js"
+        },
+        {
+          "fileId": "5609570f72be4b6c0c626e6d39cb574c70761b56",
+          "fileName": "DashProfile.js",
+          "filePath": "client/src/components/Dashboard/DashboardView/DashProfile.js"
+        },
+        {
+          "fileId": "055a026e3fec980cecfeb0f5c98863e30aab0f89",
+          "fileName": "Dashboard.js",
+          "filePath": "client/src/components/Dashboard/DashboardView/Dashboard.js"
+        },
+        {
+          "fileId": "63d6f8bc527a82606a67503e16c9dbfa78c76d26",
+          "fileName": "InfoBoxes.js",
+          "filePath": "client/src/components/Dashboard/DashboardView/InfoBoxes.js"
+        },
+        {
+          "fileId": "65ab259db73575182c54fa0db24c2938ec9c2728",
+          "fileName": "MessageTable.js",
+          "filePath": "client/src/components/Dashboard/DashboardView/MessageTable.js"
+        },
+        {
+          "fileId": "73c49b8a7d6f18fdf172f60d41200f712b547a8f",
+          "fileName": "dashMockData.js",
+          "filePath": "client/src/components/Dashboard/DashboardView/dashMockData.js"
+        },
+        {
+          "fileId": "f6c911b25ecb2040dbfe3d61d26e1ee201a72dc4",
+          "fileName": "CardContact.js",
+          "filePath": "client/src/components/Dashboard/Find/CardContact.js"
+        },
+        {
+          "fileId": "39a6878209a875134a85bed760c2b2a3b1c50c57",
+          "fileName": "Find.js",
+          "filePath": "client/src/components/Dashboard/Find/Find.js"
+        },
+        {
+          "fileId": "6628a9485d1e935f2dbd84dd888b9cfe03ac7803",
+          "fileName": "MessageReply.js",
+          "filePath": "client/src/components/Dashboard/Messages/MessageReply.js"
+        },
+        {
+          "fileId": "5d85a3f8dd17af0129aa6ae4415f57f6fa32e184",
+          "fileName": "Messages.js",
+          "filePath": "client/src/components/Dashboard/Messages/Messages.js"
+        },
+        {
+          "fileId": "854b19c2f38b1c2fc2cb51613fb106f5f53400b4",
+          "fileName": "Profile.js",
+          "filePath": "client/src/components/Dashboard/Profile/Profile.js"
+        },
+        {
+          "fileId": "2072ebf3ed3861f65a334d20b0254acc977e1c8d",
+          "fileName": "ProfileInfo.js",
+          "filePath": "client/src/components/Dashboard/Profile/ProfileInfo.js"
+        },
+        {
+          "fileId": "7d05cacc6c6a4df85b7fcdec1ab9cf7b649d7538",
+          "fileName": "Skills.js",
+          "filePath": "client/src/components/Dashboard/Profile/Skills.js"
+        },
+        {
+          "fileId": "041ce71b68b345f1a6959eb43c96a3bb67c8d050",
+          "fileName": "formInfo.js",
+          "filePath": "client/src/components/Dashboard/Profile/formInfo.js"
+        },
+        {
+          "fileId": "73abe8ba75040addf61e641918196d390576bc53",
+          "fileName": "index.js",
+          "filePath": "client/src/components/Dashboard/SidePane/Header/index.js"
+        },
+        {
+          "fileId": "70bb94cb58bc01e4353ce1a7e17dc189e1e7b3c2",
+          "fileName": "index.js",
+          "filePath": "client/src/components/Dashboard/SidePane/Menu/index.js"
+        },
+        {
+          "fileId": "9270d5c312a0f3f60233dae12410c85570d4f904",
+          "fileName": "menuBtns.js",
+          "filePath": "client/src/components/Dashboard/SidePane/Menu/menuBtns.js"
+        },
+        {
+          "fileId": "8c9e8d872bed7fd9d1e922d3b0a29284139c9258",
+          "fileName": "index.js",
+          "filePath": "client/src/components/Dashboard/SidePane/index.js"
+        },
+        {
+          "fileId": "a676710414b29eabf00f5c295d7459c6b222d3de",
+          "fileName": "index.js",
+          "filePath": "client/src/components/Dashboard/index.js"
+        },
+        {
+          "fileId": "7562def0058e5e47be721590729b4715a0dbaf74",
+          "fileName": "index.js",
+          "filePath": "client/src/components/LandingPage/App/index.js"
+        },
+        {
+          "fileId": "952d1283ec50d71cb353f216977b9edd188e335a",
+          "fileName": "title.js",
+          "filePath": "client/src/components/LandingPage/App/title.js"
+        },
+        {
+          "fileId": "320932ef0703548ed2e9c02e8e2489ff5454fc4f",
+          "fileName": "footerContent.js",
+          "filePath": "client/src/components/LandingPage/Footer/footerContent.js"
+        },
+        {
+          "fileId": "ff92ff61d32c1ce97318c89ce28a1bd514cc8444",
+          "fileName": "index.js",
+          "filePath": "client/src/components/LandingPage/Footer/index.js"
+        },
+        {
+          "fileId": "dd156813dced7a23ef3ae242c3cbf9edc0771472",
+          "fileName": "formFields.js",
+          "filePath": "client/src/components/LandingPage/Form/formFields.js"
+        },
+        {
+          "fileId": "783aa6c93c379fb5c0f8c960eb0c6a6f3fd879a4",
+          "fileName": "index.js",
+          "filePath": "client/src/components/LandingPage/Form/index.js"
+        },
+        {
+          "fileId": "74232e6d931df310e2c2f89f6f34355859850f66",
+          "fileName": "inputField.js",
+          "filePath": "client/src/components/LandingPage/Form/inputField.js"
+        },
+        {
+          "fileId": "f21ccd06f9a4fc185b5464ff4347a332c55ecf08",
+          "fileName": "index.js",
+          "filePath": "client/src/components/LandingPage/Header/index.js"
+        },
+        {
+          "fileId": "59a2289c98a118fa856c8db549359b9b3a43ef0e",
+          "fileName": "index.js",
+          "filePath": "client/src/components/LandingPage/Info/index.js"
+        },
+        {
+          "fileId": "bafd3804e6a7aaeb559e74d44ad61819e8ce8422",
+          "fileName": "cubics.js",
+          "filePath": "client/src/components/LandingPage/Particles/cubics.js"
+        },
+        {
+          "fileId": "95363b1297656cc8047359794d3ab7d016cca748",
+          "fileName": "index.js",
+          "filePath": "client/src/components/LandingPage/Particles/index.js"
+        },
+        {
+          "fileId": "4ea19240bce3a134755e99ec4c9720ee05443baa",
+          "fileName": "index.js",
+          "filePath": "client/src/components/LandingPage/Preview/index.js"
+        },
+        {
+          "fileId": "cd8e0910720239319370511a1d0e8fe2bd2ad40e",
+          "fileName": "previewData.js",
+          "filePath": "client/src/components/LandingPage/Preview/previewData.js"
+        },
+        {
+          "fileId": "be95a223d480d611a3a626ec6deed0d3d3eeccbe",
+          "fileName": "messages.js",
+          "filePath": "client/src/fake_backend/messages.js"
+        },
+        {
+          "fileId": "2b746df3419d0250cd6961a394934822c18f8c86",
+          "fileName": "posts.js",
+          "filePath": "client/src/fake_backend/posts.js"
+        },
+        {
+          "fileId": "4eef8427e8e96ad9b8bc69ac5637d1a5d7ea515d",
+          "fileName": "users.js",
+          "filePath": "client/src/fake_backend/users.js"
+        },
+        {
+          "fileId": "b4cc7250b98cb3f1a2dd5bec134296c6942344d9",
+          "fileName": "index.css",
+          "filePath": "client/src/index.css"
+        },
+        {
+          "fileId": "87af473cc781700fa7bc8b4b29e1686bfdfb83d8",
+          "fileName": "index.js",
+          "filePath": "client/src/index.js"
+        },
+        {
+          "fileId": "f02887593981509e488adb31a2c877a340b37b8f",
+          "fileName": "authReducer.js",
+          "filePath": "client/src/reducers/authReducer.js"
+        },
+        {
+          "fileId": "a01d7ca4797abd06442c53d6976e4c390f824c3e",
+          "fileName": "index.js",
+          "filePath": "client/src/reducers/index.js"
+        },
+        {
+          "fileId": "8bcf21559e2b7dd91eff449de2fec3f75c063749",
+          "fileName": "messagesReducer.js",
+          "filePath": "client/src/reducers/messagesReducer.js"
+        },
+        {
+          "fileId": "643ae4e17014b00439fd76844ca0f662bb4353c5",
+          "fileName": "postsReducer.js",
+          "filePath": "client/src/reducers/postsReducer.js"
+        },
+        {
+          "fileId": "a3e6c0cfc10de36d6bcb38c52e00c012e985d68e",
+          "fileName": "registerServiceWorker.js",
+          "filePath": "client/src/registerServiceWorker.js"
+        },
+        {
+          "fileId": "0c7affba00841e386cc9e5b8f4087809ea418963",
+          "fileName": "_cards.sass",
+          "filePath": "client/src/styles/Dashboard/_cards.sass"
+        },
+        {
+          "fileId": "84e810ab633da02b6139cc55ec949b8061ae7625",
+          "fileName": "_dashboard.sass",
+          "filePath": "client/src/styles/Dashboard/_dashboard.sass"
+        },
+        {
+          "fileId": "721bc3b30d4cf69bd57792c660059d60c93888df",
+          "fileName": "_dashheader.sass",
+          "filePath": "client/src/styles/Dashboard/_dashheader.sass"
+        },
+        {
+          "fileId": "2097608bac680a7be5d928dd5da5591d9f4f446c",
+          "fileName": "_messages.sass",
+          "filePath": "client/src/styles/Dashboard/_messages.sass"
+        },
+        {
+          "fileId": "7323c89e184d2315a6b735a28d6382fbebeae7d7",
+          "fileName": "_profile.sass",
+          "filePath": "client/src/styles/Dashboard/_profile.sass"
+        },
+        {
+          "fileId": "45b472c37e2a9d5114ba741fb978d1764eae4858",
+          "fileName": "_sidepane.sass",
+          "filePath": "client/src/styles/Dashboard/_sidepane.sass"
+        },
+        {
+          "fileId": "482fd3b4c53d6191771054d14ac57147d6c75ff6",
+          "fileName": "_app.sass",
+          "filePath": "client/src/styles/LandingPage/_app.sass"
+        },
+        {
+          "fileId": "5688b1281dc7d26e93a4919004892dfb4bb36e8a",
+          "fileName": "_form.sass",
+          "filePath": "client/src/styles/LandingPage/_form.sass"
+        },
+        {
+          "fileId": "1c098b569522643459cd43a9133d2060ddfe90d0",
+          "fileName": "_header.sass",
+          "filePath": "client/src/styles/LandingPage/_header.sass"
+        },
+        {
+          "fileId": "86c55bdddbb1b0b6cfbb17b4adf6ffe77548577a",
+          "fileName": "_preview.sass",
+          "filePath": "client/src/styles/LandingPage/_preview.sass"
+        },
+        {
+          "fileId": "fcf2307a327860625c87d543e77c9377d2dc10a8",
+          "fileName": "main.sass",
+          "filePath": "client/src/styles/main.sass"
+        },
+        {
+          "fileId": "0c94a8688edc03b112e7185b220e6347a72e4450",
+          "fileName": "mixins.sass",
+          "filePath": "client/src/styles/mixins.sass"
+        },
+        {
+          "fileId": "2dfafadf27d6987d2fdee4b87dfe3442221d4434",
+          "fileName": "yarn.lock",
+          "filePath": "client/yarn.lock"
+        },
+        {
+          "fileId": "91c5eb87a934aa4c828da5e98f5cbaaeba720fe9",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "506f7547504262fe796c4f6b0a28e443c81b7f84",
+          "fileName": "preview1.gif",
+          "filePath": "preview1.gif"
+        },
+        {
+          "fileId": "9ec9b7e86e4715d8a7016e350c5b7f484c17b38e",
+          "fileName": ".gitignore",
+          "filePath": "server/.gitignore"
+        },
+        {
+          "fileId": "9c5f1b5b67c20b40dc19196fd33c2a9c5143beaf",
+          "fileName": "keys.js",
+          "filePath": "server/config/keys.js"
+        },
+        {
+          "fileId": "246fce297349169005256196621e4f41cb437b22",
+          "fileName": "prod.js",
+          "filePath": "server/config/prod.js"
+        },
+        {
+          "fileId": "8e41dd4c1d4b843d232d7a3c863d3b8f7ce7aeba",
+          "fileName": "requireLogin.js",
+          "filePath": "server/middlewares/requireLogin.js"
+        },
+        {
+          "fileId": "3b4531281807938e657b255cfc7316918fb36194",
+          "fileName": "Message.js",
+          "filePath": "server/models/Message.js"
+        },
+        {
+          "fileId": "80d919879e80c8905e7eb7e4799a23659739e09d",
+          "fileName": "Posts.js",
+          "filePath": "server/models/Posts.js"
+        },
+        {
+          "fileId": "745e047d6c5bf63fa5ef20fc852710c87367ebf7",
+          "fileName": "User.js",
+          "filePath": "server/models/User.js"
+        },
+        {
+          "fileId": "fbabdef99b098fcca884805275d52680bea5b50a",
+          "fileName": "defaultModel.js",
+          "filePath": "server/models/defaultModel.js"
+        },
+        {
+          "fileId": "371b1543b819daa0d8e72179109c10ceca5af7f8",
+          "fileName": "package.json",
+          "filePath": "server/package.json"
+        },
+        {
+          "fileId": "54f5707676ffe5be641faa4263115ea1cc3dee1a",
+          "fileName": "authRoutes.js",
+          "filePath": "server/routes/authRoutes.js"
+        },
+        {
+          "fileId": "051b29dab5d8ab39611a9394fc8d9b071f80005c",
+          "fileName": "messageRoutes.js",
+          "filePath": "server/routes/messageRoutes.js"
+        },
+        {
+          "fileId": "18ef06c33626fc98fb3a9d9e26acf101dab3f0bd",
+          "fileName": "postsRoutes.js",
+          "filePath": "server/routes/postsRoutes.js"
+        },
+        {
+          "fileId": "911da867dd42bf7c609b18229c7bf36f72c16beb",
+          "fileName": "usersRoutes.js",
+          "filePath": "server/routes/usersRoutes.js"
+        },
+        {
+          "fileId": "0878f2453cee99f4479c5608480b3b092b7ed4a8",
+          "fileName": "server.js",
+          "filePath": "server/server.js"
+        },
+        {
+          "fileId": "070e3a3a6e0015cb31750fe11924e79aafb0aa66",
+          "fileName": "passport.js",
+          "filePath": "server/services/passport.js"
+        },
+        {
+          "fileId": "ae92ddd4615fce966c4490c667e389bc57609efa",
+          "fileName": "yarn.lock",
+          "filePath": "server/yarn.lock"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/lydiahallie/github/codebuddy-fs/.gitignore"
+        },
+        {
+          "filename": ".gitignore",
+          "repoFilePath": "client/.gitignore",
+          "localFilePath": "downloaded/lydiahallie/github/codebuddy-fs/client/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.typescript.json"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "client/package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.react-typescript.json"
+        },
+        {
+          "filename": ".gitignore",
+          "repoFilePath": "server/.gitignore",
+          "localFilePath": "downloaded/lydiahallie/github/codebuddy-fs/server/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "server/package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.typescript.json"
+        }
+      ]
+    }
   ]
 }
