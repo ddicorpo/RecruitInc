@@ -1,0 +1,1551 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "vuejs-portfolio",
+      "owner": "arca223",
+      "applicantCommits": [
+        {
+          "id": "2d81dd90a13d972670cce93dddc04077cbd8fbf3",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "public/index.html",
+              "lineAdded": 6,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/ViewSwitcher.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/shared/Header.vue",
+              "lineAdded": 118,
+              "lineDeleted": 49
+            },
+            {
+              "filePath": "src/stores/store.js",
+              "lineAdded": 41,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "5da5a67eba6ef2395a6c25265d321cc041e025d5",
+          "numberOfFileAffected": 12,
+          "files": [
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/ViewSwitcher.vue",
+              "lineAdded": 6,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 5,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/components/jobs/JobBlocks.vue",
+              "lineAdded": 5,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/components/jobs/Timeline.vue",
+              "lineAdded": 5,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/event-bus.js",
+              "lineAdded": 0,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/stores/modules/experiences.js",
+              "lineAdded": 13,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/views/Contact.vue",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/views/Experiences.vue",
+              "lineAdded": 6,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "src/views/Home.vue",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "6fcc7b981378b384b11d25cac2f6aafb491e39a3",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 4,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "src/stores/store.js",
+              "lineAdded": 13,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 4,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "src/views/Contact.vue",
+              "lineAdded": 5,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/views/Experiences.vue",
+              "lineAdded": 6,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/views/Home.vue",
+              "lineAdded": 6,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 4,
+              "lineDeleted": 6
+            }
+          ]
+        },
+        {
+          "id": "b9eb579721fc320a51bd28a2fef3fb6d868e6f1c",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 27,
+              "lineDeleted": 24
+            }
+          ]
+        },
+        {
+          "id": "63078f530ba23a89e76d16ac06b0615de2e970e1",
+          "numberOfFileAffected": 11,
+          "files": [
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/jobs/JobBlocks.vue",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/components/jobs/JobTile.vue",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/jobs/Timeline.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/skills/Skills.vue",
+              "lineAdded": 3,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/stores/modules/experiences.js",
+              "lineAdded": 6,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/stores/modules/skills.js",
+              "lineAdded": 8,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/stores/modules/stories.js",
+              "lineAdded": 6,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/stores/store.js",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 5,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 4,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "3debd6fb79995b6f9840ad6256b07f68aee86597",
+          "numberOfFileAffected": 16,
+          "files": [
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/jobs/JobBlocks.vue",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/jobs/Timeline.vue",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/skills/Skills.vue",
+              "lineAdded": 5,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/main.js",
+              "lineAdded": 5,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/stores/experiences.js",
+              "lineAdded": 0,
+              "lineDeleted": 135
+            },
+            {
+              "filePath": "src/stores/modules/experiences.js",
+              "lineAdded": 148,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/stores/modules/skills.js",
+              "lineAdded": 161,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/stores/modules/stories.js",
+              "lineAdded": 92,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/stores/skills.js",
+              "lineAdded": 0,
+              "lineDeleted": 146
+            },
+            {
+              "filePath": "src/stores/store.js",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/stores/stories.js",
+              "lineAdded": 0,
+              "lineDeleted": 78
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/views/Experiences.vue",
+              "lineAdded": 3,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 6,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "9ba6fd51fcbd606a5d0188016ae705b2c95a48ab",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 27,
+              "lineDeleted": 24
+            }
+          ]
+        },
+        {
+          "id": "706e662defc2a97dd0b88c3022c494bb199a320c",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "src/components/jobs/Timeline.vue",
+              "lineAdded": 33,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/stores/experiences.js",
+              "lineAdded": 56,
+              "lineDeleted": 23
+            }
+          ]
+        },
+        {
+          "id": "0bba7e8da39925aa9d4e2ec64ff10c36e95a6068",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "public/assets/img/companies/logo-cnrs.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/jobs/JobTile.vue",
+              "lineAdded": 20,
+              "lineDeleted": 11
+            },
+            {
+              "filePath": "src/components/jobs/Timeline.vue",
+              "lineAdded": 177,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/stores/experiences.js",
+              "lineAdded": 38,
+              "lineDeleted": 9
+            }
+          ]
+        },
+        {
+          "id": "176ab6e6fc37100a1a336ad23820dbb766dea0f6",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 21,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "bab409689b0a4c5e9d6553c3b43f46b4b81aad0f",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "src/stores/stories.js",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 0,
+              "lineDeleted": 9
+            }
+          ]
+        },
+        {
+          "id": "1baf769b5dc2d897580d948a42683de3c37fd717",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 13,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "66a56bda63c7416f40f19d051d96afd19910c7e8",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "f6ca96d1f6b752049906584d99d776aa64564fc8",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 45,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/components/shared/Footer.vue",
+              "lineAdded": 2,
+              "lineDeleted": 10
+            }
+          ]
+        },
+        {
+          "id": "97c70a06cdc1bacbc1895ea5405d22b37879872e",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 25,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "f43865b180762ddb549e33d07423ad50754256bf",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "public/index.html",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 47,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "cc8b7b820f52114767f21b1ae16711f3cbec43a4",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "src/stores/experiences.js",
+              "lineAdded": 73,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/stores/skills.js",
+              "lineAdded": 146,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/stores/stories.js",
+              "lineAdded": 70,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 2,
+              "lineDeleted": 71
+            },
+            {
+              "filePath": "src/views/Experiences.vue",
+              "lineAdded": 8,
+              "lineDeleted": 79
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 2,
+              "lineDeleted": 146
+            }
+          ]
+        },
+        {
+          "id": "3bdccc08f869d34126789d8457e3dbdab1a36efe",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "public/assets/img/skills/logo-bootstrap.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-css.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-fontawesome.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-semantic-ui.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/skills/Skill.vue",
+              "lineAdded": 7,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "14482982f108f22b56b1da85b893cf3fe53ee82b",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/components/shared/Header.vue",
+              "lineAdded": 29,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "e39f5eafbb3191246c9b3a05cda04b32a8507310",
+          "numberOfFileAffected": 8,
+          "files": [
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/shared/Header.vue",
+              "lineAdded": 10,
+              "lineDeleted": 10
+            },
+            {
+              "filePath": "src/components/skills/Skills.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 15,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "src/views/Contact.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/views/Experiences.vue",
+              "lineAdded": 35,
+              "lineDeleted": 35
+            },
+            {
+              "filePath": "src/views/Home.vue",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 72,
+              "lineDeleted": 72
+            }
+          ]
+        },
+        {
+          "id": "997504eb1267f240a76f963ca67961236696c225",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "src/components/skills/Skill.vue",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/components/skills/Skills.vue",
+              "lineAdded": 33,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 122,
+              "lineDeleted": 131
+            }
+          ]
+        },
+        {
+          "id": "e9eec87cf23e9cb3afb7c48adbf121b977859da6",
+          "numberOfFileAffected": 13,
+          "files": [
+            {
+              "filePath": "public/assets/img/skills/logo-agility.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-circleci.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-datadog.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-git.svg",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-jenkins.svg",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-jira.svg",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-sentry.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-symfony.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-teamwork.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/skills/Hobby.vue",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/skills/Skill.vue",
+              "lineAdded": 11,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "src/views/Experiences.vue",
+              "lineAdded": 8,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 98,
+              "lineDeleted": 13
+            }
+          ]
+        },
+        {
+          "id": "aa79b674db0e6a7b997dd05b20dc0a9f041073a2",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 107,
+              "lineDeleted": 13
+            }
+          ]
+        },
+        {
+          "id": "e8a70f621a38f1d810e2120e3c69544b538a6eb0",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "public/assets/img/skills/logo-sf.svg",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-symfony.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/ViewSwitcher.vue",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/components/skills/Skill.vue",
+              "lineAdded": 47,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 65,
+              "lineDeleted": 33
+            }
+          ]
+        },
+        {
+          "id": "50444db1d11b348c289459e499f9934301656e7a",
+          "numberOfFileAffected": 18,
+          "files": [
+            {
+              "filePath": "public/assets/img/companies/logo-abbeal.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/companies/logo-ldlc.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/companies/logo-ma.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/companies/logo-sqli.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/companies/logo-st.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/companies/logo-xotelia.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-angularjs.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-docker.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-js.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-nginx.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-nodejs.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-php.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-symfony.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/skills/logo-vuejs.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/shared/Header.vue",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/router.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 11,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/views/Skills.vue",
+              "lineAdded": 85,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "2db6b87669dfece6bb277ae2eadad4bbd3714dcb",
+          "numberOfFileAffected": 17,
+          "files": [
+            {
+              "filePath": "public/assets/img/logo-abbeal.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/logo-ldlc.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/logo-ma.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/logo-sqli.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/logo-st.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/logo-xotelia.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/no-pict.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/img/profile-pict-logo.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/logo.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/jobs/JobBlocks.vue",
+              "lineAdded": 2,
+              "lineDeleted": 70
+            },
+            {
+              "filePath": "src/components/jobs/JobTile.vue",
+              "lineAdded": 12,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "src/components/shared/Header.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/main.js",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/scripts/functions.js",
+              "lineAdded": 0,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 22,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/views/Contact.vue",
+              "lineAdded": 8,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/views/Experiences.vue",
+              "lineAdded": 79,
+              "lineDeleted": 5
+            }
+          ]
+        },
+        {
+          "id": "6ec2cc011817efa9b57f96847548a5d8984392dd",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 10,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 1,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/components/jobs/Timeline.vue",
+              "lineAdded": 1,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/components/shared/Footer.vue",
+              "lineAdded": 11,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/views/Experiences.vue",
+              "lineAdded": 0,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/views/Home.vue",
+              "lineAdded": 14,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "a24497e3bcec0d85f33645dae2cd30a9f8ff2af8",
+          "numberOfFileAffected": 12,
+          "files": [
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/jobs/Carousel.vue",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/components/jobs/JobBlocks.vue",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/components/jobs/JobTile.vue",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/jobs/Timeline.vue",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/components/shared/Footer.vue",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/shared/Header.vue",
+              "lineAdded": 11,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/router.js",
+              "lineAdded": 8,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 5,
+              "lineDeleted": 10
+            },
+            {
+              "filePath": "src/views/Contact.vue",
+              "lineAdded": 8,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "src/views/Experiences.vue",
+              "lineAdded": 45,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/Home.vue",
+              "lineAdded": 5,
+              "lineDeleted": 34
+            }
+          ]
+        },
+        {
+          "id": "5496544d791a9af262791fc74df1ff689e6cfb32",
+          "numberOfFileAffected": 9,
+          "files": [
+            {
+              "filePath": "src/components/Carousel.vue",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/CarouselContent.vue",
+              "lineAdded": 0,
+              "lineDeleted": 23
+            },
+            {
+              "filePath": "src/components/Experiences.vue",
+              "lineAdded": 7,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/Footer.vue",
+              "lineAdded": 5,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/components/SectionTitle.vue",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/Timeline.vue",
+              "lineAdded": 32,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/ViewSwitcher.vue",
+              "lineAdded": 30,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "src/filters/capitalize.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/Home.vue",
+              "lineAdded": 20,
+              "lineDeleted": 8
+            }
+          ]
+        },
+        {
+          "id": "59a371b2b35197f70a72d4743857dc4bc3b69984",
+          "numberOfFileAffected": 14,
+          "files": [
+            {
+              "filePath": "public/assets/logo.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/assets/no-pict.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 3,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/components/CarouselContent.vue",
+              "lineAdded": 4,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "src/components/Content.vue",
+              "lineAdded": 0,
+              "lineDeleted": 86
+            },
+            {
+              "filePath": "src/components/Experiences.vue",
+              "lineAdded": 113,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/Footer.vue",
+              "lineAdded": 1,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/components/Header.vue",
+              "lineAdded": 17,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "src/components/JobTile.vue",
+              "lineAdded": 53,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/ViewSwitcher.vue",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/event-bus.js",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/main.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/scripts/functions.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/Home.vue",
+              "lineAdded": 9,
+              "lineDeleted": 7
+            }
+          ]
+        },
+        {
+          "id": "dcfd899f9b1abc6af98feaff95de4a7aeddcc651",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/Content.vue",
+              "lineAdded": 18,
+              "lineDeleted": 10
+            },
+            {
+              "filePath": "src/main.js",
+              "lineAdded": 6,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/views/Home.vue",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "0c18f7c7c59bd14ec63e556a9e8667f9e8a79c53",
+          "numberOfFileAffected": 16,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "babel.config.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 48,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/index.html",
+              "lineAdded": 24,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/logo.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/CarouselContent.vue",
+              "lineAdded": 31,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/Content.vue",
+              "lineAdded": 78,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/Footer.vue",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/Header.vue",
+              "lineAdded": 66,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/main.js",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/router.js",
+              "lineAdded": 32,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/About.vue",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/Contact.vue",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/views/Home.vue",
+              "lineAdded": 38,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "185e6631928dca2f51224e61a3861cc88fa2b74e",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "552f53926466e9b0d41bcd4a838da5d7ec8cbe2a",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "ba179669a123909a9728283fd9c004c65adb90c5",
+          "fileName": "babel.config.js",
+          "filePath": "babel.config.js"
+        },
+        {
+          "fileId": "80aa0b6591eb79deb9bcad0b24291f21cda25953",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "4a2b3c83ba239fdb1b504c4cf988e0aeb9d4ff27",
+          "fileName": "logo-abbeal.png",
+          "filePath": "public/assets/img/companies/logo-abbeal.png"
+        },
+        {
+          "fileId": "ed203e9ca040f55a3ccdc003b9aba956aedfd49e",
+          "fileName": "logo-cnrs.png",
+          "filePath": "public/assets/img/companies/logo-cnrs.png"
+        },
+        {
+          "fileId": "62f0501fc5040c2645da8c43afb23e48ab2848f1",
+          "fileName": "logo-ldlc.png",
+          "filePath": "public/assets/img/companies/logo-ldlc.png"
+        },
+        {
+          "fileId": "8cc62087f70fd373424ce8781affc078b2721b09",
+          "fileName": "logo-ma.png",
+          "filePath": "public/assets/img/companies/logo-ma.png"
+        },
+        {
+          "fileId": "0b1588cec88bba7064ba2d12bae7bd3022b69450",
+          "fileName": "logo-sqli.png",
+          "filePath": "public/assets/img/companies/logo-sqli.png"
+        },
+        {
+          "fileId": "0751a12f7c1cf9bd4ad607458fe00b18c6aeb1b9",
+          "fileName": "logo-st.png",
+          "filePath": "public/assets/img/companies/logo-st.png"
+        },
+        {
+          "fileId": "282db9e5c5b005c02d08db5c7e72aec94374e92d",
+          "fileName": "logo-xotelia.png",
+          "filePath": "public/assets/img/companies/logo-xotelia.png"
+        },
+        {
+          "fileId": "dfd3c5113aa8bd2c399b0ef4738b8e389ba370ff",
+          "fileName": "no-pict.png",
+          "filePath": "public/assets/img/no-pict.png"
+        },
+        {
+          "fileId": "e6d3917efad20b821be47e81f857a2d6845b8d02",
+          "fileName": "profile-pict-logo.png",
+          "filePath": "public/assets/img/profile-pict-logo.png"
+        },
+        {
+          "fileId": "366cb402b7699ae45e1c47ed5de224b0bf477543",
+          "fileName": "logo-agility.png",
+          "filePath": "public/assets/img/skills/logo-agility.png"
+        },
+        {
+          "fileId": "3c8830299354a560dcd72ae0d9b577f24abd5bfd",
+          "fileName": "logo-angularjs.png",
+          "filePath": "public/assets/img/skills/logo-angularjs.png"
+        },
+        {
+          "fileId": "d3798f69f936247fd6b78f0b1b09930de62d2951",
+          "fileName": "logo-bootstrap.png",
+          "filePath": "public/assets/img/skills/logo-bootstrap.png"
+        },
+        {
+          "fileId": "c0093e872598c3e29e22f4d49aa4e1f41e5cc4fe",
+          "fileName": "logo-circleci.jpg",
+          "filePath": "public/assets/img/skills/logo-circleci.jpg"
+        },
+        {
+          "fileId": "10b918b83ea16a366e2daf1038d4d01591578f69",
+          "fileName": "logo-css.png",
+          "filePath": "public/assets/img/skills/logo-css.png"
+        },
+        {
+          "fileId": "fe0371b6e8dc90ef2e07d3fecd09229d221b2cbc",
+          "fileName": "logo-datadog.png",
+          "filePath": "public/assets/img/skills/logo-datadog.png"
+        },
+        {
+          "fileId": "58784637e338e5e182f9e073045cbdb8f9ed1245",
+          "fileName": "logo-docker.png",
+          "filePath": "public/assets/img/skills/logo-docker.png"
+        },
+        {
+          "fileId": "0472865b3eeff80cf469dcfcfc4e5537c07b7b59",
+          "fileName": "logo-fontawesome.png",
+          "filePath": "public/assets/img/skills/logo-fontawesome.png"
+        },
+        {
+          "fileId": "8c8ab06c8cc3dd3b694f3224514bd8fe9728ca74",
+          "fileName": "logo-git.svg",
+          "filePath": "public/assets/img/skills/logo-git.svg"
+        },
+        {
+          "fileId": "ba8ccd1db294cd75af36a6bf9728252218b29599",
+          "fileName": "logo-jenkins.svg",
+          "filePath": "public/assets/img/skills/logo-jenkins.svg"
+        },
+        {
+          "fileId": "1aa74a8d394dc406c53704b3dd80f349901eb990",
+          "fileName": "logo-jira.svg",
+          "filePath": "public/assets/img/skills/logo-jira.svg"
+        },
+        {
+          "fileId": "6e41bf5c759063be75d203c0140b95a2af7f51a5",
+          "fileName": "logo-js.png",
+          "filePath": "public/assets/img/skills/logo-js.png"
+        },
+        {
+          "fileId": "ddce5e2e14dd2e1d4424ffbf4217a86d6006f091",
+          "fileName": "logo-nginx.png",
+          "filePath": "public/assets/img/skills/logo-nginx.png"
+        },
+        {
+          "fileId": "c984edc546369c25be9fa566f423460e62bf244b",
+          "fileName": "logo-nodejs.png",
+          "filePath": "public/assets/img/skills/logo-nodejs.png"
+        },
+        {
+          "fileId": "bd09b2692e0cc58b7addb34c5b9678a0ee3fceff",
+          "fileName": "logo-php.png",
+          "filePath": "public/assets/img/skills/logo-php.png"
+        },
+        {
+          "fileId": "b3957a9389c7cdc992759c4a9d894199b05a55d1",
+          "fileName": "logo-semantic-ui.png",
+          "filePath": "public/assets/img/skills/logo-semantic-ui.png"
+        },
+        {
+          "fileId": "29b637d52649e96e3b551edd7723f2b0bfc41d93",
+          "fileName": "logo-sentry.png",
+          "filePath": "public/assets/img/skills/logo-sentry.png"
+        },
+        {
+          "fileId": "96fb55d22c991e86d84f216e6e5db8cebb58d429",
+          "fileName": "logo-sf.svg",
+          "filePath": "public/assets/img/skills/logo-sf.svg"
+        },
+        {
+          "fileId": "07b655c05b1ae06d5aad12a4dc319ee0277aee1d",
+          "fileName": "logo-symfony.png",
+          "filePath": "public/assets/img/skills/logo-symfony.png"
+        },
+        {
+          "fileId": "941ea346b9edc44d8ea48aa078cf5bfc29e035a8",
+          "fileName": "logo-teamwork.jpg",
+          "filePath": "public/assets/img/skills/logo-teamwork.jpg"
+        },
+        {
+          "fileId": "377f31b825ff64aae3ed2a02e67de1217ae6be16",
+          "fileName": "logo-vuejs.png",
+          "filePath": "public/assets/img/skills/logo-vuejs.png"
+        },
+        {
+          "fileId": "3b693c38da3cac47d22c66601d7b412be0b835ef",
+          "fileName": "index.html",
+          "filePath": "public/index.html"
+        },
+        {
+          "fileId": "80d25c33136ead20faea535c4bbfca27f1c905c3",
+          "fileName": "App.vue",
+          "filePath": "src/App.vue"
+        },
+        {
+          "fileId": "b4e0b50e1b241a60c3a4df5d0e31ba92f2bc7be1",
+          "fileName": "SectionTitle.vue",
+          "filePath": "src/components/SectionTitle.vue"
+        },
+        {
+          "fileId": "58b47d5edf64095b15f6f6d2bef97e38eae29b87",
+          "fileName": "ViewSwitcher.vue",
+          "filePath": "src/components/ViewSwitcher.vue"
+        },
+        {
+          "fileId": "88db889393d6a8f5ca08e17f8ac5336761678260",
+          "fileName": "Carousel.vue",
+          "filePath": "src/components/jobs/Carousel.vue"
+        },
+        {
+          "fileId": "0fbd16503ab793fde1a3aa88f93c1325cc200f86",
+          "fileName": "JobBlocks.vue",
+          "filePath": "src/components/jobs/JobBlocks.vue"
+        },
+        {
+          "fileId": "dba61cf2a3e6dcf02b166be1a57824b1acfdf2aa",
+          "fileName": "JobTile.vue",
+          "filePath": "src/components/jobs/JobTile.vue"
+        },
+        {
+          "fileId": "12607962c452895f8d5912b0044fb673bd88a047",
+          "fileName": "Timeline.vue",
+          "filePath": "src/components/jobs/Timeline.vue"
+        },
+        {
+          "fileId": "b512bd7a0562e572f35132bad94f08184170bd34",
+          "fileName": "Footer.vue",
+          "filePath": "src/components/shared/Footer.vue"
+        },
+        {
+          "fileId": "7ed1b41fec8c405b2f23fc416caf5c0450600ca9",
+          "fileName": "Header.vue",
+          "filePath": "src/components/shared/Header.vue"
+        },
+        {
+          "fileId": "f692d63086ea7d496e3194c865a4b4c7e2432a2d",
+          "fileName": "Hobby.vue",
+          "filePath": "src/components/skills/Hobby.vue"
+        },
+        {
+          "fileId": "e60df47321c11dd9740cf586df5e25be46a8dbcb",
+          "fileName": "Skill.vue",
+          "filePath": "src/components/skills/Skill.vue"
+        },
+        {
+          "fileId": "8133d7e665230d406d68bd859757e5699c373127",
+          "fileName": "Skills.vue",
+          "filePath": "src/components/skills/Skills.vue"
+        },
+        {
+          "fileId": "1110430096dabdecf527b3f4348d169df67fbd9c",
+          "fileName": "capitalize.js",
+          "filePath": "src/filters/capitalize.js"
+        },
+        {
+          "fileId": "7877c2a8bd4256f4bd1539ab55465511857d4c4b",
+          "fileName": "main.js",
+          "filePath": "src/main.js"
+        },
+        {
+          "fileId": "73105a78a957f58bbaa439bf2547a9086bc92413",
+          "fileName": "router.js",
+          "filePath": "src/router.js"
+        },
+        {
+          "fileId": "7ee92b06c824f588a6995752f333a27b589ca22d",
+          "fileName": "experiences.js",
+          "filePath": "src/stores/modules/experiences.js"
+        },
+        {
+          "fileId": "72b7c1c41bbf1e2c808a18318e49278f4d091d01",
+          "fileName": "skills.js",
+          "filePath": "src/stores/modules/skills.js"
+        },
+        {
+          "fileId": "d5941da81d5c32982003652a615b700feb3ce1be",
+          "fileName": "stories.js",
+          "filePath": "src/stores/modules/stories.js"
+        },
+        {
+          "fileId": "4604b8091d775b963345cc5e2198ffb2af55b7f3",
+          "fileName": "store.js",
+          "filePath": "src/stores/store.js"
+        },
+        {
+          "fileId": "bdfe86806f5c6d2a02d86a9f12662391c1e951e4",
+          "fileName": "About.vue",
+          "filePath": "src/views/About.vue"
+        },
+        {
+          "fileId": "96a29f1768ec16a08cf1197b85843aa86760d1a7",
+          "fileName": "Contact.vue",
+          "filePath": "src/views/Contact.vue"
+        },
+        {
+          "fileId": "d1cef9278007cd62e00ec4ea92cc615313375232",
+          "fileName": "Experiences.vue",
+          "filePath": "src/views/Experiences.vue"
+        },
+        {
+          "fileId": "29f40ea91bf734a448f1eb5f944d151d8b9e00e4",
+          "fileName": "Home.vue",
+          "filePath": "src/views/Home.vue"
+        },
+        {
+          "fileId": "9870a52ea7d28c9fbdd3dd438f72ee0ff694e35a",
+          "fileName": "Skills.vue",
+          "filePath": "src/views/Skills.vue"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/arca223/github/vuejs-portfolio/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.vue-javascript.json"
+        }
+      ]
+    }
+  ]
+}

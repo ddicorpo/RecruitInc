@@ -1,0 +1,22 @@
+{
+  "projectName": "Vue.js-Fundamentals",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 1296,
+      "numberOfCommits": 6,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "Vue",
+          "linesOfCode": 1257,
+          "numberOfCommits": 6
+        }
+      ]
+    }
+  ]
+}
