@@ -1,1 +1,22 @@
-{}
+{
+  "projectName": "pineapplol",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 228,
+      "numberOfCommits": 1,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 129,
+          "numberOfCommits": 1
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}
