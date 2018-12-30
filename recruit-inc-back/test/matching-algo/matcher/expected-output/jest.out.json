@@ -1,1 +1,22 @@
-{}
+{
+  "projectName": "jest-7165",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 11,
+      "numberOfCommits": 1,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}
