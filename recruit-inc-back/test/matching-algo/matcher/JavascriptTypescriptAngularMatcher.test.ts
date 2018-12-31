@@ -7,20 +7,20 @@ import { TypescriptMatcher } from '../../../src/matching-algo/matcher/Javascript
 import { JavascriptMatcher } from '../../../src/matching-algo/matcher/Javascript/JavascriptMatcher';
 import { IGitProjectSummary } from '../../../src/matching-algo/data-model/output-model/IGitProjectSummary';
 import { IGitProjectOutput } from '../../../src/matching-algo/data-model/output-model/IGitProjectOutput';
-import { VueMatcher } from '../../../src/matching-algo/matcher/Javascript/VueMatcher';
+import { AngularMatcher } from '../../../src/matching-algo/matcher/Javascript/AngularMatcher';
 
-// Setup Language Matcher with only Typescript, Javascript and Vue
-const vueMatcher: AbstractFrameworkMatcher = new VueMatcher();
+// Setup Language Matcher with only Typescript, Javascript and Angular
+const angularMatcher: AbstractFrameworkMatcher = new AngularMatcher();
 const typescriptMatcher: AbstractFrameworkMatcher = new TypescriptMatcher();
 const javascriptMatcher: AbstractLanguageMatcher = new JavascriptMatcher();
-javascriptMatcher.addFramework(typescriptMatcher).addFramework(vueMatcher);
+javascriptMatcher.addFramework(typescriptMatcher).addFramework(angularMatcher);
 const customLanguageMatchers: AbstractLanguageMatcher[] = [javascriptMatcher];
 
-describe('Test vue matching algorithm', () => {
-  it('The Vue-Typescript-Javascript matcher should return  the correct output object with vuejs-portfolio repository', () => {
+describe('Test angular matching algorithm', () => {
+  it('The Angular-Typescript-Javascript matcher should return the correct output object with kama-angularjs-module repository', () => {
     // GIVEN
-    const input = require('./input/vuejs-portfolio.json');
-    const expected = require('./expected-output/vuejs-portfolio.out.json');
+    const input = require('./input/kama-angularjs-module.json');
+    const expected = require('./expected-output/kama-angularjs-module.out.json');
     const client: MatcherClient = new MatcherClient(
       input,
       customLanguageMatchers
@@ -43,10 +43,10 @@ describe('Test vue matching algorithm', () => {
     }
   });
 
-  it('The Vue-Typescript-Javascript matcher should return  the correct output object with vue-js-fundamentals repository', () => {
+  it('The Angular-Typescript-Javascript matcher should return  the correct output object with portfolio repository', () => {
     // GIVEN
-    const input = require('./input/vue-js-fundamentals.json');
-    const expected = require('./expected-output/vue-js-fundamentals.out.json');
+    const input = require('./input/portfolio.json');
+    const expected = require('./expected-output/portfolio.out.json');
     const client: MatcherClient = new MatcherClient(
       input,
       customLanguageMatchers
@@ -69,10 +69,10 @@ describe('Test vue matching algorithm', () => {
     }
   });
 
-  it('The Vue-Typescript-Javascript matcher should return  the correct output object with office-ui-fabric-vue repository', () => {
+  it('The Angular-Typescript-Javascript matcher should return  the correct output object with instagram-angular repository', () => {
     // GIVEN
-    const input = require('./input/office-ui-fabric-vue.json');
-    const expected = require('./expected-output/office-ui-fabric-vue.out.json');
+    const input = require('./input/instagram-angular.json');
+    const expected = require('./expected-output/instagram-angular.out.json');
     const client: MatcherClient = new MatcherClient(
       input,
       customLanguageMatchers
