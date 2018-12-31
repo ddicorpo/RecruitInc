@@ -1,0 +1,172 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "MLc",
+      "owner": "lydiahallie",
+      "applicantCommits": [
+        {
+          "id": "35aa1b1d8a0ac0893f160b3d94e747cca0a16bdc",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "08ac4f0bf06e94fb4a2e1261c1e8717e12e1d36e",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "regression/multiple_linear_regression.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "regression/polynomical_regression.py",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "regression/simple_linear_regression.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "63f253f88ad6eff9163a68d28a3e27fbfb67ea57",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "multiple_linear_regression/multiple_linear_regression.py",
+              "lineAdded": 24,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "simple_linear_regression/simple_linear_regression.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "77b0387198d56dfaa4efc42859cac05371a9c93f",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "Ldata_preprocessing.r",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "data_preprocessing/Ldata_preprocessing.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "data_preprocessing/catagorial_data.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "simple_linear_regression/simple_linear_regression.py",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "551783f5b59ca83b4979f9678022e0511e50310a",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "catagorial_data.py",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "41279a193e3a06f3bdf769cf24df017baa8f4bdf",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "Ldata_preprocessing.r",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "432b2d5a1bf88088ace61d592d60f233d90e407b",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "Ldata_preprocessing.py",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "d835b29d77f3dabf780b75b90f5f8f7a70a3ffaa",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "Ldata_preprocessing.r",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "c85b0beae7829e4cad942e8edb32bc65bc2dc2ee",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "Ldata_preprocessing.py",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "5835881ac0a672f7cb5489b66a0135658b5f05db",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "eef770e8a29b569a92c08034bb5a5e10a7fccc7c",
+          "fileName": "Ldata_preprocessing.py",
+          "filePath": "data_preprocessing/Ldata_preprocessing.py"
+        },
+        {
+          "fileId": "1f5315681acc23592837f465d55c5372790b724f",
+          "fileName": "catagorial_data.py",
+          "filePath": "data_preprocessing/catagorial_data.py"
+        },
+        {
+          "fileId": "ebc6befc54f5a4fb769d627931ca0e1f804ddc37",
+          "fileName": "multiple_linear_regression.py",
+          "filePath": "regression/multiple_linear_regression.py"
+        },
+        {
+          "fileId": "51a9d810a192635d77cf73c7f881270d278dc529",
+          "fileName": "polynomical_regression.py",
+          "filePath": "regression/polynomical_regression.py"
+        },
+        {
+          "fileId": "c7342b2fe21f6cb09d7729239bf6a821a479322a",
+          "fileName": "simple_linear_regression.py",
+          "filePath": "regression/simple_linear_regression.py"
+        }
+      ],
+      "downloadedSourceFile": []
+    }
+  ]
+}
