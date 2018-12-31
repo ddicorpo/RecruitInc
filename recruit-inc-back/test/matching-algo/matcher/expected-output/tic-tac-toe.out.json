@@ -1,1 +1,17 @@
-{}
+{
+  "projectName": "Tic-Tac-Toe-Using-Minimax",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Python",
+      "linesOfCode": 182,
+      "numberOfCommits": 1,
+      "frameworks": [
+        {
+          "technologyName": "Django",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}
