@@ -12,10 +12,10 @@ export class GitSchema extends Typegoose implements IGitModel {
   @prop()
   _id?: mongoose.Types.ObjectId;
 
-  @prop({ required: true, unique: true })
+  @prop({ required: true })
   IGitData: IGitDataModel[];
 
-  @prop({ required: true, unique: true })
+  @prop({ required: true })
   IToken: ITokenModel;
 }
 

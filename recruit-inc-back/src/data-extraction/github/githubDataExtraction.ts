@@ -83,7 +83,7 @@ export class GithubDataExtraction {
       platform: Platform.Github,
     };
 
-    const arrayIGitDataModel: Array<any> = new Array<any>();
+    const arrayIGitDataModel: Array<IGitDataModel> = new Array<IGitDataModel>();
     arrayIGitDataModel.push(newIGitDataModel);
 
     const newITokenModel: ITokenModel = {
@@ -97,14 +97,19 @@ export class GithubDataExtraction {
       IGitData: arrayIGitDataModel,
       IToken: newITokenModel,
     };
+    let newplatformEmail: string = null;
+    if(user.email.length != 0) {
+    newplatformEmail = user.email;
+    }
 
     const newApplicant: IApplicantModel = {
       platformUsername: user.login,
-      platformEmail: user.email,
+      platformEmail: newplatformEmail,
       iGit: newIGitModel,
       userType: UserType.Applicant,
     };
 
+    console.log("this is the applicant   " + newApplicant);
     await applicantTDG.create(newApplicant);
 
     return output;
