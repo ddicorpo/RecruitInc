@@ -45,7 +45,6 @@ export class MongoConnectionFactory extends ConnectionFactory {
   }
 
   public defaultInitialization(): MongoConnection {
-    this.conn = null;
     this.conn = new MongoConnection();
     return this.conn;
   }

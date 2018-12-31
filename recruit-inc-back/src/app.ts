@@ -7,6 +7,7 @@ import { GitlabApplicants } from './routes/gitlab/GitlabApplicants';
 import { Candidate } from './routes/github/candidate';
 import { ApplicantBitbucket } from './routes/bitbucket/applicantBitbucket';
 import { OAuthCode } from './routes/OAuth/OAuthCode';
+import { Logger } from '../src/Logger';
 var cors = require('cors');
 
 class App {
@@ -19,8 +20,9 @@ class App {
   public gitlabApplicant: GitlabApplicants = new GitlabApplicants();
   public candidateDataRout: Candidate = new Candidate();
   public oauthCodeRoute: OAuthCode = new OAuthCode();
-
+  private logger: Logger;
   constructor() {
+    this.logger = new Logger();
     // Import all env. variable
     require('dotenv').config();
 
@@ -31,16 +33,17 @@ class App {
     var corsOptionsDelegate = function(req, callback) {
       var corsOptions;
       if (
-        (whitelistDomain.indexOf(req.header('Origin')) !== -1 || whitelistDomain.indexOf(req.header('host')) !== -1) &&
+        (whitelistDomain.indexOf(req.header('Origin')) !== -1 ||
+          whitelistDomain.indexOf(req.header('host')) !== -1) &&
         process.env.NODE_ENV === 'production'
       ) {
-        console.log('CORS Enabled for => PROD');
+        this.logAction('constructor', 'CORS Enabled for PROD');
         corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
       } else if (process.env.NODE_ENV === 'dev') {
-        console.log('CORS Enabled for => DEV');
+        this.logAction('constructor', 'CORS Enabled for DEV');
         corsOptions = { origin: false }; // disable CORS for this request
       } else {
-        console.log('CORS Disabled for => UNKNOWN');
+        this.logAction('constructor', 'CORS disabled for unknown');
         corsOptions = { origin: callback(new Error("Can't process request")) };
       }
       callback(null, corsOptions); // callback expects two parameters: error and options
@@ -58,6 +61,7 @@ class App {
     this.candidateDataRout.routes(this.app);
     this.oauthCodeRoute.routes(this.app);
   }
+
   private config(): void {
     // support application/json type post data
     this.app.use(bodyParser.json());
@@ -67,6 +71,15 @@ class App {
         extended: false,
       })
     );
+  }
+
+  private logAction(methodName: string, message: string): void {
+    this.logger.info({
+      class: 'app.ts',
+      method: methodName,
+      action: message,
+      params: {},
+    });
   }
 }
 
