@@ -1,1 +1,17 @@
-{}
+{
+  "projectName": "smart-meter-graph",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Python",
+      "linesOfCode": 66,
+      "numberOfCommits": 2,
+      "frameworks": [
+        {
+          "technologyName": "Django",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}
