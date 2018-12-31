@@ -1,0 +1,828 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "portfolio",
+      "owner": "drew-thompson",
+      "applicantCommits": [
+        {
+          "id": "e1d7e9d99c439ecc3a8ad95a662aec96ea22a888",
+          "numberOfFileAffected": 10,
+          "files": [
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app-routing.module.ts",
+              "lineAdded": 13,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/app/app.component.ts",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 15,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/app/app.preloading-strategy.ts",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/core/header/header.component.html",
+              "lineAdded": 5,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/app/core/header/header.module.ts",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/shared/factories/httpLoader.factory.ts",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/i18n/en.json",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "7b7c45ca6ebab4979e59407fec19e9c5058e68c9",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "src/app/routes/angular/angular-routing.module.ts",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/routes/angular/angular.component.html",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/routes/angular/angular.component.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/routes/angular/angular.component.spec.ts",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/routes/angular/angular.component.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/routes/angular/angular.module.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "ffce59e2b981c5c876fef4ffcc58a89abec1f036",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "97513946c822f38948eabc71355ed348e85077a6",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "src/app/app.component.html",
+              "lineAdded": 1,
+              "lineDeleted": 35
+            },
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/core/header/header.component.html",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/core/header/header.component.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/core/header/header.component.spec.ts",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/core/header/header.component.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "d07ada66e35b7e55974d32256b98b8da5a1f07e9",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "f6a95f5c74f2cd0459e151e20a9ce9ea1f88dc7a",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "azure-pipelines.yml",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "1447e0eb54a3d5b2fa6ac090a02ff1938ebc9775",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/styles.scss",
+              "lineAdded": 11,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "18b8a9839ecb4e9656657306daf33c5e044d078e",
+          "numberOfFileAffected": 54,
+          "files": [
+            {
+              "filePath": ".editorconfig",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 41,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": ".prettierrc",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 27,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "angular.json",
+              "lineAdded": 154,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "e2e/protractor.conf.js",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "e2e/src/app.e2e-spec.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "e2e/src/app.po.ts",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "e2e/tsconfig.e2e.json",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "ngsw-config.json",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 11199,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 76,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "server.ts",
+              "lineAdded": 50,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/+state/reducers/index.ts",
+              "lineAdded": 32,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app-routing.module.ts",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.html",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.spec.ts",
+              "lineAdded": 33,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.ts",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.effects.spec.ts",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.effects.ts",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 39,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.server.module.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/shared/modules/material.module.ts",
+              "lineAdded": 96,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/shared/utils.ts",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/.gitkeep",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/icons/icon-128x128.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/icons/icon-144x144.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/icons/icon-152x152.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/icons/icon-192x192.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/icons/icon-384x384.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/icons/icon-512x512.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/icons/icon-72x72.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/icons/icon-96x96.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/browserslist",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/environments/environment.prod.ts",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/environments/environment.ts",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/favicon.ico",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/index.html",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/karma.conf.js",
+              "lineAdded": 31,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/main.server.ts",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/main.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/manifest.json",
+              "lineAdded": 51,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/polyfills.ts",
+              "lineAdded": 80,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/scss/material/_themes.scss",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles.scss",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/test.ts",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/tsconfig.app.json",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/tsconfig.server.json",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/tsconfig.spec.json",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/tslint.json",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "tsconfig.json",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "tslint.json",
+              "lineAdded": 131,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "webpack.server.config.js",
+              "lineAdded": 47,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "b252991c0cb01deb842516d7eedc954cd3c175bf",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "6e87a003da89defd554080af5af93600cc9f91fe",
+          "fileName": ".editorconfig",
+          "filePath": ".editorconfig"
+        },
+        {
+          "fileId": "1ba5cbe237a2ca08efe24f6a02d4d33960a536ec",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "544138be45652abc7bc3873341deacd3f4f90c61",
+          "fileName": ".prettierrc",
+          "filePath": ".prettierrc"
+        },
+        {
+          "fileId": "3548f3e2470c54edb5e74c7238fb2fad25bca182",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "0c2b20d36a0bd26ff890648783b83c4eec0c1887",
+          "fileName": "angular.json",
+          "filePath": "angular.json"
+        },
+        {
+          "fileId": "346e826df3f8e1bb197bf0349afb6f958a80cdd5",
+          "fileName": "azure-pipelines.yml",
+          "filePath": "azure-pipelines.yml"
+        },
+        {
+          "fileId": "86776a391a5b48b32506eb0fa62b15ed6c926b69",
+          "fileName": "protractor.conf.js",
+          "filePath": "e2e/protractor.conf.js"
+        },
+        {
+          "fileId": "41456a9a2fe973e5b751444caabee195121cbd36",
+          "fileName": "app.e2e-spec.ts",
+          "filePath": "e2e/src/app.e2e-spec.ts"
+        },
+        {
+          "fileId": "82ea75ba504ab2726e4bd08d89e69e99b7a711ba",
+          "fileName": "app.po.ts",
+          "filePath": "e2e/src/app.po.ts"
+        },
+        {
+          "fileId": "a6dd6220282460dae17d69fc030b94ab1e81d960",
+          "fileName": "tsconfig.e2e.json",
+          "filePath": "e2e/tsconfig.e2e.json"
+        },
+        {
+          "fileId": "fa9410f347f620ee86a69d5c12b6ed4f3a07968d",
+          "fileName": "ngsw-config.json",
+          "filePath": "ngsw-config.json"
+        },
+        {
+          "fileId": "eccc7d84fcb8fc40b76b3a803e6757d11b96769f",
+          "fileName": "package-lock.json",
+          "filePath": "package-lock.json"
+        },
+        {
+          "fileId": "5340a0efc637f8ef676a5b8eb796727071e80482",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "676838c14cccc484742cded7a2f71f298d6712ff",
+          "fileName": "server.ts",
+          "filePath": "server.ts"
+        },
+        {
+          "fileId": "1bacff450cd7b6e0766f0e9974fe6b1817f676e9",
+          "fileName": "index.ts",
+          "filePath": "src/app/+state/reducers/index.ts"
+        },
+        {
+          "fileId": "a01df840c0b6fcaf5eceb4e0c16cc86fdd5e8181",
+          "fileName": "app-routing.module.ts",
+          "filePath": "src/app/app-routing.module.ts"
+        },
+        {
+          "fileId": "1e157542a676000642a2a0d17eda16eb0c85cc41",
+          "fileName": "app.component.html",
+          "filePath": "src/app/app.component.html"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "app.component.scss",
+          "filePath": "src/app/app.component.scss"
+        },
+        {
+          "fileId": "7fe48f1ee30bf7901aa88bcbcf66a4a29c4b9f4a",
+          "fileName": "app.component.spec.ts",
+          "filePath": "src/app/app.component.spec.ts"
+        },
+        {
+          "fileId": "f41ba00c73a0df2544e06afa6d73b3f1ea677fe5",
+          "fileName": "app.component.ts",
+          "filePath": "src/app/app.component.ts"
+        },
+        {
+          "fileId": "4f1e5680e375b10fc1fb6cf91d0d289273c96752",
+          "fileName": "app.effects.spec.ts",
+          "filePath": "src/app/app.effects.spec.ts"
+        },
+        {
+          "fileId": "d4e057dae3d9a088cdcef07784a7655f00f76178",
+          "fileName": "app.effects.ts",
+          "filePath": "src/app/app.effects.ts"
+        },
+        {
+          "fileId": "194204384f167fa4325ec01674bbca1cb45b4fc4",
+          "fileName": "app.module.ts",
+          "filePath": "src/app/app.module.ts"
+        },
+        {
+          "fileId": "6e72cd294a45ec6da2d11b9c4e734cf8982820f2",
+          "fileName": "app.preloading-strategy.ts",
+          "filePath": "src/app/app.preloading-strategy.ts"
+        },
+        {
+          "fileId": "795380cd229465cf77e7b9aa1b7f7cb02c2ad905",
+          "fileName": "app.server.module.ts",
+          "filePath": "src/app/app.server.module.ts"
+        },
+        {
+          "fileId": "5dfc219442f88f0e0bff3d1507f511ab1201fb83",
+          "fileName": "header.component.html",
+          "filePath": "src/app/core/header/header.component.html"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "header.component.scss",
+          "filePath": "src/app/core/header/header.component.scss"
+        },
+        {
+          "fileId": "2d0479d7d071a5e6d19a74d195ff34b2edeb5616",
+          "fileName": "header.component.spec.ts",
+          "filePath": "src/app/core/header/header.component.spec.ts"
+        },
+        {
+          "fileId": "591e148a7dc2965fb26c07394dd0ae005930bca8",
+          "fileName": "header.component.ts",
+          "filePath": "src/app/core/header/header.component.ts"
+        },
+        {
+          "fileId": "d59b6a37fe5955a28efe17f98f3eda1653cba2b3",
+          "fileName": "header.module.ts",
+          "filePath": "src/app/core/header/header.module.ts"
+        },
+        {
+          "fileId": "968584fa3e32e8efa691ed0908c343a41d5257cb",
+          "fileName": "angular-routing.module.ts",
+          "filePath": "src/app/routes/angular/angular-routing.module.ts"
+        },
+        {
+          "fileId": "a9f859247d7273afefc465d46fcdd11373e5fb1b",
+          "fileName": "angular.component.html",
+          "filePath": "src/app/routes/angular/angular.component.html"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "angular.component.scss",
+          "filePath": "src/app/routes/angular/angular.component.scss"
+        },
+        {
+          "fileId": "6d0ca2343212b6512ef7dd058384eb9aa2e5c0b7",
+          "fileName": "angular.component.spec.ts",
+          "filePath": "src/app/routes/angular/angular.component.spec.ts"
+        },
+        {
+          "fileId": "211d9bdd3232253528629d5cc59ec0ccb1e0b21b",
+          "fileName": "angular.component.ts",
+          "filePath": "src/app/routes/angular/angular.component.ts"
+        },
+        {
+          "fileId": "58631dae02994a863489bf0e5b6a5da6079274f9",
+          "fileName": "angular.module.ts",
+          "filePath": "src/app/routes/angular/angular.module.ts"
+        },
+        {
+          "fileId": "97a9c4574c93bfad45e8a7eea28ca0368743278c",
+          "fileName": "httpLoader.factory.ts",
+          "filePath": "src/app/shared/factories/httpLoader.factory.ts"
+        },
+        {
+          "fileId": "ad6667867ce8bce0a98b8523440bfef5a4a288f8",
+          "fileName": "material.module.ts",
+          "filePath": "src/app/shared/modules/material.module.ts"
+        },
+        {
+          "fileId": "c292c847808e43e0888d5c8a415169b066cb7c2a",
+          "fileName": "utils.ts",
+          "filePath": "src/app/shared/utils.ts"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": ".gitkeep",
+          "filePath": "src/assets/.gitkeep"
+        },
+        {
+          "fileId": "a02f4f284eb550c5f49033dc55782eab0f15cee7",
+          "fileName": "en.json",
+          "filePath": "src/assets/i18n/en.json"
+        },
+        {
+          "fileId": "9f9241f0be40661db1eed29384231e76d33b6e7c",
+          "fileName": "icon-128x128.png",
+          "filePath": "src/assets/icons/icon-128x128.png"
+        },
+        {
+          "fileId": "4a5f8c16389c261b3291ef34a9ef8b2222f76d69",
+          "fileName": "icon-144x144.png",
+          "filePath": "src/assets/icons/icon-144x144.png"
+        },
+        {
+          "fileId": "34a1a8d645872c776c9425de45c3fcfba12c271e",
+          "fileName": "icon-152x152.png",
+          "filePath": "src/assets/icons/icon-152x152.png"
+        },
+        {
+          "fileId": "9172e5dd29e4b2c35cbf4da874e778934fa27e77",
+          "fileName": "icon-192x192.png",
+          "filePath": "src/assets/icons/icon-192x192.png"
+        },
+        {
+          "fileId": "e54e8d3eafe56a617b9de13c361ed68657371e84",
+          "fileName": "icon-384x384.png",
+          "filePath": "src/assets/icons/icon-384x384.png"
+        },
+        {
+          "fileId": "51ee297df1cbeb0354814ffe95afa6e4bc86ea23",
+          "fileName": "icon-512x512.png",
+          "filePath": "src/assets/icons/icon-512x512.png"
+        },
+        {
+          "fileId": "2814a3f30caf3abf4de2ac85082ef83888b4b479",
+          "fileName": "icon-72x72.png",
+          "filePath": "src/assets/icons/icon-72x72.png"
+        },
+        {
+          "fileId": "d271025c4f22c7ba3c5f43ccfcab0e52ebbe80ca",
+          "fileName": "icon-96x96.png",
+          "filePath": "src/assets/icons/icon-96x96.png"
+        },
+        {
+          "fileId": "37371cb04b9f1986d952499cdf9613c9d5d8ca8c",
+          "fileName": "browserslist",
+          "filePath": "src/browserslist"
+        },
+        {
+          "fileId": "3612073bc31cd4c1f5d6cbb00318521e9a61bd8a",
+          "fileName": "environment.prod.ts",
+          "filePath": "src/environments/environment.prod.ts"
+        },
+        {
+          "fileId": "7b4f817adb754769ca126a939d48ac4b0850489d",
+          "fileName": "environment.ts",
+          "filePath": "src/environments/environment.ts"
+        },
+        {
+          "fileId": "8081c7ceaf2be08bf59010158c586170d9d2d517",
+          "fileName": "favicon.ico",
+          "filePath": "src/favicon.ico"
+        },
+        {
+          "fileId": "7d59edd5a3035bb5fd20a1cd901820e2c7ded3af",
+          "fileName": "index.html",
+          "filePath": "src/index.html"
+        },
+        {
+          "fileId": "b6e00421c95f925352ccf765b942a8e94c0cdc74",
+          "fileName": "karma.conf.js",
+          "filePath": "src/karma.conf.js"
+        },
+        {
+          "fileId": "b9ca5050c27e7c8604c5d104d71b7f0695f01972",
+          "fileName": "main.server.ts",
+          "filePath": "src/main.server.ts"
+        },
+        {
+          "fileId": "39bd2b76e48b2417e3a9f83881e7044ed9cd5d5e",
+          "fileName": "main.ts",
+          "filePath": "src/main.ts"
+        },
+        {
+          "fileId": "d7c951afe7468769395b38804389597163da86c4",
+          "fileName": "manifest.json",
+          "filePath": "src/manifest.json"
+        },
+        {
+          "fileId": "ee8b84da807cbbc7892be6c8086e01a9591e076a",
+          "fileName": "polyfills.ts",
+          "filePath": "src/polyfills.ts"
+        },
+        {
+          "fileId": "091426684a9e2cdf3dd733461810005503ae94b6",
+          "fileName": "_themes.scss",
+          "filePath": "src/scss/material/_themes.scss"
+        },
+        {
+          "fileId": "291731b5e03ebc8fc75860fc1cdfee5df5c2dcd0",
+          "fileName": "styles.scss",
+          "filePath": "src/styles.scss"
+        },
+        {
+          "fileId": "16317897b1c50a3a71bc775a8d6429f2b4c6cf98",
+          "fileName": "test.ts",
+          "filePath": "src/test.ts"
+        },
+        {
+          "fileId": "190fd300b601e168a3d185dbfa2758ab73257479",
+          "fileName": "tsconfig.app.json",
+          "filePath": "src/tsconfig.app.json"
+        },
+        {
+          "fileId": "5dbf481872108ffd7898ef50d51e2407ec47d1d1",
+          "fileName": "tsconfig.server.json",
+          "filePath": "src/tsconfig.server.json"
+        },
+        {
+          "fileId": "de7733630eb224b246854a20934f792051926e8f",
+          "fileName": "tsconfig.spec.json",
+          "filePath": "src/tsconfig.spec.json"
+        },
+        {
+          "fileId": "52e2c1a5a74ce268bec92d34cd3bca751624adb3",
+          "fileName": "tslint.json",
+          "filePath": "src/tslint.json"
+        },
+        {
+          "fileId": "46aeded1b278b3fd720233810be535ce0a456561",
+          "fileName": "tsconfig.json",
+          "filePath": "tsconfig.json"
+        },
+        {
+          "fileId": "6ddb6b2931511b11e5d5938f76076fb37e70363e",
+          "fileName": "tslint.json",
+          "filePath": "tslint.json"
+        },
+        {
+          "fileId": "6c98a99af27dab4f2114391c261affaf5c5913c3",
+          "fileName": "webpack.server.config.js",
+          "filePath": "webpack.server.config.js"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/drew-thompson/github/portfolio/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.angular-typescript.json"
+        }
+      ]
+    }
+  ]
+}
