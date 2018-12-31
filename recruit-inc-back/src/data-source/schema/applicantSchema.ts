@@ -14,8 +14,8 @@ export class ApplicantSchema extends Typegoose implements IApplicantModel {
   @prop({ required: true, unique: true, minlength: 2, maxlength: 150 })
   platformUsername: string;
 
-  @prop({ required: true, unique: true, minlength: 2, maxlength: 150 })
-  platformEmail: string;
+  @prop({ unique: true, minlength: 2, maxlength: 150 })
+  platformEmail?: string;
 
   @prop()
   iGit: IGitModel;

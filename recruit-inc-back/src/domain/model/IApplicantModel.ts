@@ -6,7 +6,7 @@ import { IGitModel } from './IGitModel';
 export interface IApplicantModel {
   _id?: mongoose.Types.ObjectId;
   platformUsername: string;
-  platformEmail: string;
+  platformEmail?: string;
   iGit: IGitModel;
   userType: UserType;
 }

@@ -1,14 +1,17 @@
-import { IGithubUser } from './api-entities/IGithubUser';
-import { GithubUserRepos } from './githubUserRepos';
-import { GithubRepoStructure } from './githubRepoStructure';
-import { GithubDownloadedFilesPath } from './githubDownloadedFilesPath';
-import { GithubUserCommits } from './githubUserCommits';
-import { MatcherClient } from '../../matching-algo/matcher-client/MatcherClient';
-import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
-import { techSourceFiles } from '../../matching-algo/data-model/input-model/TechSourceFiles';
-import { IDataEntry } from '../../matching-algo/data-model/input-model/IDataEntry';
-import { DataEntryTDG } from '../../data-source/table-data-gateway/dataEntryTDG';
-import { GitProjectSummaryTDG } from '../../data-source/table-data-gateway/gitProjectSummaryTDG';
+import {IGithubUser} from './api-entities/IGithubUser';
+import {GithubUserRepos} from './githubUserRepos';
+import {GithubRepoStructure} from './githubRepoStructure';
+import {GithubDownloadedFilesPath} from './githubDownloadedFilesPath';
+import {GithubUserCommits} from './githubUserCommits';
+import {MatcherClient} from '../../matching-algo/matcher-client/MatcherClient';
+import {IGitProjectSummary} from '../../matching-algo/data-model/output-model/IGitProjectSummary';
+import {DataEntryTDG} from '../../data-source/table-data-gateway/dataEntryTDG';
+import {ApplicantTDG} from "../../data-source/table-data-gateway/applicantTDG";
+import {GitProjectSummaryTDG} from '../../data-source/table-data-gateway/gitProjectSummaryTDG';
+import {IApplicantModel, UserType} from "../../domain/model/IApplicantModel";
+import {IGitDataModel} from "../../domain/model/IGitDataModel";
+import {ITokenModel, Platform} from "../../domain/model/ITokenModel";
+import {IGitModel} from "../../domain/model/IGitModel";
 
 export class GithubDataExtraction {
   private readonly accessToken: string;
@@ -69,6 +72,46 @@ export class GithubDataExtraction {
     let output: IGitProjectSummary = client.execute();
     await gitProjectSummaryTDG.create(output);
     // Save output of matching
+
+    // where applicant is made for now, will have to be moved when front end is better established. Mostly to show that applicant works
+    const applicantTDG: ApplicantTDG = new ApplicantTDG();
+
+    const newIGitDataModel: IGitDataModel = {
+      dataEntry: user.dataEntry,
+      gitProjectSummary: output,
+      lastKnownInfoDate: "",
+      platform: Platform.Github,
+    };
+
+    const arrayIGitDataModel: Array<IGitDataModel> = new Array<IGitDataModel>();
+    arrayIGitDataModel.push(newIGitDataModel);
+
+    const newITokenModel: ITokenModel = {
+      platform: Platform.Github,
+      AccessToken: "",
+      RefreshToken: "",
+      ExpiryDate: "",
+    };
+
+    const newIGitModel: IGitModel = {
+      IGitData: arrayIGitDataModel,
+      IToken: newITokenModel,
+    };
+    let newplatformEmail: string = null;
+    if(user.email.length != 0) {
+    newplatformEmail = user.email;
+    }
+
+    const newApplicant: IApplicantModel = {
+      platformUsername: user.login,
+      platformEmail: newplatformEmail,
+      iGit: newIGitModel,
+      userType: UserType.Applicant,
+    };
+
+    console.log("this is the applicant   " + newApplicant);
+    await applicantTDG.create(newApplicant);
+
     return output;
   }
 }
