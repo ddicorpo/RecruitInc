@@ -1,1 +1,17 @@
-{}
+{
+  "projectName": "django-tutorial",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Python",
+      "linesOfCode": 246,
+      "numberOfCommits": 10,
+      "frameworks": [
+        {
+          "technologyName": "Django",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}
