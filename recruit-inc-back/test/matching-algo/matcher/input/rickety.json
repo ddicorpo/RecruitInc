@@ -3,7 +3,2010 @@
     {
       "projectName": "rickety",
       "owner": "g-harel",
-      "applicantCommits": [],
+      "applicantCommits": [
+        {
+          "id": "daf83919ceb2b6511479b114d85f86e92d3f1c25",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 85,
+              "lineDeleted": 32
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 5,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 4,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "e334f6b6f8bdd044a398f14d4a7db00ccf90b524",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 8,
+              "lineDeleted": 6
+            }
+          ]
+        },
+        {
+          "id": "546b28b2645be761f2c1ffb946e88ab2368d160a",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 54,
+              "lineDeleted": 14
+            }
+          ]
+        },
+        {
+          "id": "3e6fc652a4393ade92d3c46a7c75315991fbde26",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 45,
+              "lineDeleted": 46
+            }
+          ]
+        },
+        {
+          "id": "8d99a6fc54d65da3491a753a0c8379bae52135cd",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "client/node.ts",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "3a9797cf689d41cc17664be301e58684e50ed5d6",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 81,
+              "lineDeleted": 26
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 4,
+              "lineDeleted": 5
+            }
+          ]
+        },
+        {
+          "id": "1f048af93919537b13b166c5e76965499f885edd",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "example/common/endpoints.ts",
+              "lineAdded": 12,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "example/package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/testing/backend.test.ts",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "example/testing/integration.test.tsx",
+              "lineAdded": 3,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "52ada0e067098847b3600210620ccdf88f5383f8",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "client/supertest.ts",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "tsconfig.json",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "1410c4557c2835e0d5bc6c0145371087a89e3f24",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "client/axios.ts",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/fetch.ts",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/request.ts",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/supertest.ts",
+              "lineAdded": 5,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "client/xhr.ts",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 6,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "6dfe026cf251edd9c5aa99bdc6f92664ebf456b5",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 1,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "source/group.ts",
+              "lineAdded": 37,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "test/client/fetch.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test/endpoint.ts",
+              "lineAdded": 5,
+              "lineDeleted": 5
+            }
+          ]
+        },
+        {
+          "id": "de37a9de1c2890a9867bf350303f6c816b38e837",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "source/group.ts",
+              "lineAdded": 6,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "test/endpoint.ts",
+              "lineAdded": 13,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "test/group.ts",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "012fc800449ba5650af824410efefefdc62b1142",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "test/endpoint.ts",
+              "lineAdded": 43,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "06f01400bdab5b5c5c80795d24b8efb7fa2fd431",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "client/supertest.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "source/callable.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test/endpoint.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test/group.ts",
+              "lineAdded": 136,
+              "lineDeleted": 35
+            }
+          ]
+        },
+        {
+          "id": "8657414f36322fc90ec34fba9153afab423e57eb",
+          "numberOfFileAffected": 8,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test/callable.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test/client/fetch.ts",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "test/client/supertest.ts",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "test/endpoint.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test/group.ts",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "044c5e3006df00f50476fe116a1c6326c5ec007f",
+          "numberOfFileAffected": 9,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "client/fetch.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "client/index.ts",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/supertest.test.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "client/supertest.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "source/endpoint.test.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 51,
+              "lineDeleted": 10
+            },
+            {
+              "filePath": "source/group.test.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "4d362833222fc54501bb90f17658142ace0f7a0e",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "source/endpoint.test.ts",
+              "lineAdded": 71,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "20c7133d022729fc6762359c629255d331ff377f",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "source/group.ts",
+              "lineAdded": 10,
+              "lineDeleted": 6
+            }
+          ]
+        },
+        {
+          "id": "dfbbbabf9e819d5603b087d97a20ed04695414a7",
+          "numberOfFileAffected": 14,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "client/fetch.ts",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/supertest.test.ts",
+              "lineAdded": 8,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "client/supertest.ts",
+              "lineAdded": 32,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "link/default.ts",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "link/index.ts",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "link/supertest.ts",
+              "lineAdded": 0,
+              "lineDeleted": 24
+            },
+            {
+              "filePath": "source/client.test.ts",
+              "lineAdded": 0,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "source/client.ts",
+              "lineAdded": 4,
+              "lineDeleted": 35
+            },
+            {
+              "filePath": "source/endpoint.test.ts",
+              "lineAdded": 6,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 3,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "source/group.test.ts",
+              "lineAdded": 10,
+              "lineDeleted": 10
+            }
+          ]
+        },
+        {
+          "id": "fdf4578b04f3c862dcffd8aaea99458b173fc2fd",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "source/callable.test.ts",
+              "lineAdded": 4,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "source/callable.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "2855fb68586d62b1afd18bcd53f58318f00df218",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 7,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "link/supertest.test.ts",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "link/supertest.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "747918a49ae5d449842f5470a354609e6b6e2618",
+          "numberOfFileAffected": 15,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 0,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "link/default.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "link/express.test.ts",
+              "lineAdded": 72,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "link/express.ts",
+              "lineAdded": 1,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "link/index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "source/callable.test.ts",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "source/callable.ts",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "source/client.test.ts",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "source/client.ts",
+              "lineAdded": 2,
+              "lineDeleted": 13
+            },
+            {
+              "filePath": "source/endpoint.test.ts",
+              "lineAdded": 5,
+              "lineDeleted": 142
+            },
+            {
+              "filePath": "source/endpoint.ts",
+              "lineAdded": 7,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "source/group.test.ts",
+              "lineAdded": 54,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "source/group.ts",
+              "lineAdded": 9,
+              "lineDeleted": 9
+            }
+          ]
+        },
+        {
+          "id": "a1455aa77442d1880116eefbf74be1524f08bc7a",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 12,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "callable.ts",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "endpoint.ts",
+              "lineAdded": 4,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "group.ts",
+              "lineAdded": 9,
+              "lineDeleted": 17
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "9c7e04018b28e4931c77ecd12d9cf55086aefaf4",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "client.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "endpoint.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "group.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 3,
+              "lineDeleted": 11
+            }
+          ]
+        },
+        {
+          "id": "c32b7185a7caf9d612a83d14933d6518cd30dd53",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 8,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "client.ts",
+              "lineAdded": 2,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "endpoint.ts",
+              "lineAdded": 7,
+              "lineDeleted": 13
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 7
+            }
+          ]
+        },
+        {
+          "id": "d1b9b10c79e6c90a5db6371a72b331e46d65b78a",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 4,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "client.ts",
+              "lineAdded": 20,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "endpoint.ts",
+              "lineAdded": 33,
+              "lineDeleted": 60
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 46,
+              "lineDeleted": 47
+            }
+          ]
+        },
+        {
+          "id": "787a4e9ec4248a59ed01929b593e6efdbb31317a",
+          "numberOfFileAffected": 10,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 9,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "client.ts",
+              "lineAdded": 48,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "endpoint.ts",
+              "lineAdded": 203,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "group.ts",
+              "lineAdded": 97,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 19,
+              "lineDeleted": 273
+            },
+            {
+              "filePath": "link.ts",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "rickety.d.ts",
+              "lineAdded": 0,
+              "lineDeleted": 81
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 1,
+              "lineDeleted": 26
+            },
+            {
+              "filePath": "tsconfig.json",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "6b4ca8e48938a60d03f7b7db46173eadea21b42a",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 65,
+              "lineDeleted": 35
+            },
+            {
+              "filePath": "rickety.d.ts",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 49,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "06ac34548387dc1a283ede3d87919477587e0414",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "index.ts",
+              "lineAdded": 15,
+              "lineDeleted": 18
+            }
+          ]
+        },
+        {
+          "id": "12fd52d67dfb6f31bb3a522667388d969d03ac3c",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "index.ts",
+              "lineAdded": 49,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "74ee0dbc88c369aabfcd947ce4307079f4d5f31a",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "link.ts",
+              "lineAdded": 14,
+              "lineDeleted": 43
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "rickety.d.ts",
+              "lineAdded": 65,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 39,
+              "lineDeleted": 41
+            }
+          ]
+        },
+        {
+          "id": "178b6290864fcab74ae4c2bcfbe52481ed7ff8e7",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "index.ts",
+              "lineAdded": 22,
+              "lineDeleted": 77
+            }
+          ]
+        },
+        {
+          "id": "40df2686763d99dec384eadab8185be4201c30a3",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "index.ts",
+              "lineAdded": 77,
+              "lineDeleted": 45
+            },
+            {
+              "filePath": "link.ts",
+              "lineAdded": 7,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "e66ec284e6e781c46829ef2d2212ea9b8f9a926a",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "df830ad961e61f9efba7624c7c9edc2d39970afa",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "CHANGELOG.md",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 13,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "a705fe0eabdeeac0e1d2d47719564eecd37ed227",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 8,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "example/README.md",
+              "lineAdded": 39,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/backend/app.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/backend/index.ts",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/common/endpoints.ts",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/package.json",
+              "lineAdded": 4,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "868252371587d402ed6028f98cbe9f1730c08ca0",
+          "numberOfFileAffected": 10,
+          "files": [
+            {
+              "filePath": "example/README.md",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/backend/app.ts",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/frontend/app.tsx",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "example/frontend/test.ts",
+              "lineAdded": 0,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "example/package.json",
+              "lineAdded": 14,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "example/testing/backend.test.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/testing/frontend.test.tsx",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/testing/integration.test.tsx",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/testing/setup.ts",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "d3d0b629408e967142542b511cab157445ba3ef5",
+          "numberOfFileAffected": 12,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/backend/app.ts",
+              "lineAdded": 1,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "example/backend/index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/common/endpoints.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/frontend/app.tsx",
+              "lineAdded": 49,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/frontend/index.html",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/frontend/index.ts",
+              "lineAdded": 0,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "example/frontend/index.tsx",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/frontend/test.ts",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/package.json",
+              "lineAdded": 13,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "example/tsconfig.json",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/webpack.config.ts",
+              "lineAdded": 7,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "2f86063e9e0e577a65d48c5ba467e04c830e9786",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "index.ts",
+              "lineAdded": 4,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "link.ts",
+              "lineAdded": 1,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "0a3a8ac3d9037727ebd969e4ef01153f996a7f3a",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 26,
+              "lineDeleted": 18
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "b3652b748ed6d919554c33959804ec14630116c5",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 57,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 19,
+              "lineDeleted": 26
+            }
+          ]
+        },
+        {
+          "id": "26378ccdf05c4bd83a81869a6efb9c76e9c00361",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": ".travis.yml",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "ba3e519a56c77485b229df1633af56ae9f454e58",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 83,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "936abf16290b36f5aa506abfed47c3d343172295",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 45,
+              "lineDeleted": 22
+            },
+            {
+              "filePath": "example/frontend/test.ts",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "link.ts",
+              "lineAdded": 56,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sender.ts",
+              "lineAdded": 0,
+              "lineDeleted": 17
+            },
+            {
+              "filePath": "supertest.ts",
+              "lineAdded": 0,
+              "lineDeleted": 25
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "bc87c46884a996e3b199ef644eef7821f6974885",
+          "numberOfFileAffected": 8,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "example/frontend/test.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/package.json",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 20,
+              "lineDeleted": 33
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "sender.ts",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "supertest.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 5,
+              "lineDeleted": 7
+            }
+          ]
+        },
+        {
+          "id": "d2288e2e15df2a6ba7180e4a56b1bb53e1f758b6",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/common/endpoints.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "3b7f63e7c66422b39358799f90c870a1beb33686",
+          "numberOfFileAffected": 16,
+          "files": [
+            {
+              "filePath": ".npmignore",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/backend/app.ts",
+              "lineAdded": 34,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/backend/database.ts",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/backend/index.ts",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/client.ts",
+              "lineAdded": 0,
+              "lineDeleted": 21
+            },
+            {
+              "filePath": "example/common/endpoints.ts",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/common/types.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/frontend/index.html",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/frontend/index.ts",
+              "lineAdded": 12,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/index.ts",
+              "lineAdded": 0,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "example/package.json",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/server.ts",
+              "lineAdded": 0,
+              "lineDeleted": 45
+            },
+            {
+              "filePath": "example/shared.ts",
+              "lineAdded": 0,
+              "lineDeleted": 36
+            },
+            {
+              "filePath": "example/tsconfig.json",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/webpack.config.ts",
+              "lineAdded": 35,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "faf739f44df9bf906e5078ec0a5a4e7272772810",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 4,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 5,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "supertest.ts",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 47,
+              "lineDeleted": 24
+            }
+          ]
+        },
+        {
+          "id": "bcfdea2d6d7c8b1352c0ef2146096f27080f1b08",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 8,
+              "lineDeleted": 7
+            }
+          ]
+        },
+        {
+          "id": "f4471a55bfaa0ee09255c47f4f85980f83428534",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "supertest.ts",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 136,
+              "lineDeleted": 114
+            }
+          ]
+        },
+        {
+          "id": "80fb17b2f22db9c9873708b131df5651ba24cc1c",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "example/index.ts",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 4,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 69,
+              "lineDeleted": 13
+            }
+          ]
+        },
+        {
+          "id": "1b5927c67735bf816c1e698709245c3c04652474",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 9,
+              "lineDeleted": 58
+            }
+          ]
+        },
+        {
+          "id": "c8f4598bd83a5f76e934759037fd643898a4059d",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 79,
+              "lineDeleted": 78
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 36,
+              "lineDeleted": 23
+            }
+          ]
+        },
+        {
+          "id": "ad33e66f2e5d4cf83124085025bc98be6a4fc507",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "package.json",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "test.ts",
+              "lineAdded": 72,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "5bfef162ef686246eed9a28327e3298d681cf778",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 60,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "1e17d28269a4fab3fd3303f4b67c8379ca1d1bf9",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "index.ts",
+              "lineAdded": 123,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "request.ts",
+              "lineAdded": 0,
+              "lineDeleted": 75
+            },
+            {
+              "filePath": "respond.ts",
+              "lineAdded": 0,
+              "lineDeleted": 57
+            }
+          ]
+        },
+        {
+          "id": "2ad43175f541db7f9a7630786a1b9302e82eeade",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "60fbec5870e224c42b00fbd737cd6450f3b67581",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 6,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "7efe5fe6c35d51df65810127a2cf95c49f6c6016",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "example/index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/shared.ts",
+              "lineAdded": 4,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 41,
+              "lineDeleted": 19
+            },
+            {
+              "filePath": "request.ts",
+              "lineAdded": 41,
+              "lineDeleted": 39
+            }
+          ]
+        },
+        {
+          "id": "b67a30bccb040fbeba6d678d48b03f2d28acd745",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "example/client.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "example/server.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "example/shared.ts",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 25,
+              "lineDeleted": 38
+            }
+          ]
+        },
+        {
+          "id": "6c4c621f617132a7462b66eb78fd226ffc9898a9",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "package.json",
+              "lineAdded": 4,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "tsconfig.json",
+              "lineAdded": 11,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "1bafa1b42b376a4a8374a1be5c5de36ac33a7432",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "example/client.ts",
+              "lineAdded": 8,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "example/server.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 8,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "request.ts",
+              "lineAdded": 28,
+              "lineDeleted": 17
+            }
+          ]
+        },
+        {
+          "id": "6c598bc789977464e5e34bcbd5e8e81bc99f8207",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 9,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "example/shared.ts",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 4,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "request.ts",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "23880ed8c197d7e456ca3f47ded736873a8ac663",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "package.json",
+              "lineAdded": 18,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "ca49f09dc454fcb10bca9df3aa28d03421811af6",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 39,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/client.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/server.ts",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "example/shared.ts",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "1aa57ef0a7e16014c7592662f378c8d0d7a59023",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "example/client.ts",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/common.ts",
+              "lineAdded": 9,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/server.ts",
+              "lineAdded": 15,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 51,
+              "lineDeleted": 85
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "request.ts",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "respond.ts",
+              "lineAdded": 57,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "0be17c161c3a69766fbb99b2c4ebd0c27284f70f",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "example/client.ts",
+              "lineAdded": 3,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "example/common.ts",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "example/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "example/index.ts",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/server.ts",
+              "lineAdded": 1,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 48,
+              "lineDeleted": 13
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "dc57da8584cbf90160db42afd152d4fda70acc70",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "example/client.ts",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/common.ts",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/index.html",
+              "lineAdded": 12,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "example/server.ts",
+              "lineAdded": 39,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "aafa5eeb9c63b602999343e0e51e78bb5a69eaa8",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 86,
+              "lineDeleted": 77
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 7,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "tsconfig.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "eb1d0e9a30c0ad967bb63a1ff83c1bfc2bdac22f",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 11,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "2a9827d180f56105e87eca49669d4f8664c768f8",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "index.js",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "index.ts",
+              "lineAdded": 94,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 23,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "tsconfig.json",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "fc1204089d5a2c3a64bf6f3696dbae526f276120",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "index.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "fe438501f62e8b2478c0e763e3d32c04fefd000c",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "LICENSE",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
       "projectStructure": [
         {
           "fileId": "b987509ed3ee3a235940ca3f60ecf1d9c8a2405e",
@@ -215,7 +2218,7 @@
         {
           "filename": "package.json",
           "repoFilePath": "package.json",
-          "localFilePath": "test/matching-algo/matcher/dependencies/package.react-typescript.json"
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.typescript.json"
         },
         {
           "filename": "package.json",

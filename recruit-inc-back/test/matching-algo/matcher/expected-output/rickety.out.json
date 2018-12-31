@@ -1,1 +1,22 @@
-{}
+{
+  "projectName": "rickety",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 1432,
+      "numberOfCommits": 61,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 1432,
+          "numberOfCommits": 60
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}
