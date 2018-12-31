@@ -1,4 +1,3 @@
-import { BaseFinder } from './baseFinder';
 import { UserModel } from '../schema/userSchema';
 import { IUserModel } from '../../domain/model/IUserModel';
 import { Types } from 'mongoose';
@@ -13,12 +12,6 @@ import { Types } from 'mongoose';
  */
 
 export class UserFinder {
-  private baseFinder: BaseFinder;
-
-  constructor() {
-    this.baseFinder = new BaseFinder(UserModel);
-  }
-
   /**
    * Find the user with the _id (string)
    * In mongo all object have a _id

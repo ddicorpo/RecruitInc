@@ -1,16 +1,9 @@
-import { BaseFinder } from './baseFinder';
 import { TokenModel } from '../schema/tokenSchema';
 import { ITokenModel } from '../../domain/model/ITokenModel';
 import { Types } from 'mongoose';
 import { Platform } from '../../domain/model/ITokenModel';
 
 export class TokenFinder {
-  private baseFinder: BaseFinder;
-
-  constructor() {
-    this.baseFinder = new BaseFinder(TokenModel);
-  }
-
   public findById(_id: string): Promise<ITokenModel> {
     return new Promise((resolve: any, reject: any) => {
       TokenModel.findOne(Types.ObjectId(_id), (error: any, obj: any) => {

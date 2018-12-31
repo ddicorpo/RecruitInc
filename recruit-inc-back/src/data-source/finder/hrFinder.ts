@@ -1,4 +1,3 @@
-import { BaseFinder } from './baseFinder';
 import { HRModel } from '../schema/hrSchema';
 import { IHRModel } from '../../domain/model/IHRModel';
 import { Types } from 'mongoose';
@@ -13,11 +12,6 @@ import { Types } from 'mongoose';
  * *************************************************************
  */
 export class HRFinder {
-  private baseFinder: BaseFinder;
-
-  constructor() {
-    this.baseFinder = new BaseFinder(HRModel);
-  }
   /**
    * Finding HR by Id
    * @param _id

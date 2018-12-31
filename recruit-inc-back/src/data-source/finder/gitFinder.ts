@@ -1,15 +1,8 @@
-import { BaseFinder } from './baseFinder';
 import { GitModel } from '../schema/gitSchema';
 import { IGitModel } from '../../domain/model/IGitModel';
 import { Types } from 'mongoose';
 
 export class GitFinder {
-  private baseFinder: BaseFinder;
-
-  constructor() {
-    this.baseFinder = new BaseFinder(GitModel);
-  }
-
   public findById(_id: string): Promise<IGitModel> {
     return new Promise((resolve: any, reject: any) => {
       GitModel.findOne(Types.ObjectId(_id), (error: any, obj: any) => {
