@@ -1,0 +1,1050 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "Django-to-do",
+      "owner": "OmkarPathak",
+      "applicantCommits": [
+        {
+          "id": "3acbb8d91e375fb18fbc0b53931d76a5ca5a7b06",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "a21ee76542e002bb5fd19e6c3d78b2b6f3465f9e",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "azure-pipelines.yml",
+              "lineAdded": 55,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "2fe93cfbc963dabbaadd3fe53c757c2f1d22e66c",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 3,
+              "lineDeleted": 6
+            }
+          ]
+        },
+        {
+          "id": "ad87d89a1073a6c5caec9e631d08804329499213",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 36,
+              "lineDeleted": 9
+            }
+          ]
+        },
+        {
+          "id": "dd64bd5033d75c1c49c67c83c34ccd01c64c5e9c",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "8536e707ad0fb7c5082e78c9b4a9f443260bde8d",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "todo/tasks/models.py",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 0,
+              "lineDeleted": 53
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 13,
+              "lineDeleted": 33
+            },
+            {
+              "filePath": "todo/todo/urls.py",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "f2d507bd90aa52e96585f7e45e16bdf04f67a86f",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "a674eaf9a258d88b5b37f5b8b493da4072c6e015",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "results/django-to-do.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "7e803528f7c1641e05276221a6f2fae6207ba7c8",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 12,
+              "lineDeleted": 19
+            }
+          ]
+        },
+        {
+          "id": "3a9cf74a28d182126b1697c1aaef7739090d1bb6",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "todo/static/images/tasker.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templates/base.html",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "64b7d6a54f24eade384b8292339cfe450b2c2c66",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "todo/tasks/migrations/0008_auto_20180507_0326.py",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/0009_auto_20180507_0328.py",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/models.py",
+              "lineAdded": 4,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 3,
+              "lineDeleted": 5
+            }
+          ]
+        },
+        {
+          "id": "f9c62ff2bcf8c6539c75839629bfae1dafda1be0",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 11,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "0ae705d3ce2b3941b24337d70f8590e5d4d489cd",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "a2f9ea864ffa0ec751eebad66a11a652f360ea4d",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "aebd8d84b40d8a89eafea4654a9ecab451b97b1f",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "185e00dab2378d93595a0482577f48574f5daef1",
+          "numberOfFileAffected": 12,
+          "files": [
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/admin.py",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "todo/tasks/migrations/0004_auto_20180506_0853.py",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/0005_auto_20180506_0932.py",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/0006_auto_20180506_0940.py",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/0007_auto_20180506_0946.py",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/models.py",
+              "lineAdded": 22,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 158,
+              "lineDeleted": 71
+            },
+            {
+              "filePath": "todo/tasks/urls.py",
+              "lineAdded": 1,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 50,
+              "lineDeleted": 13
+            },
+            {
+              "filePath": "todo/todo/settings.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "todo/todo/urls.py",
+              "lineAdded": 4,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "9e54927d4324e7c2dfca1fd45c2f0e40d8993810",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 39,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "f53f50beb0dd259d52a4331c49f4cfa2ce248948",
+          "numberOfFileAffected": 29,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/__init__.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/__init__.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/admin.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/admin.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/models.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/models.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/urls.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/urls.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/views.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/views.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/0001_initial.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/0001_initial.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/0002_task_priority.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/0002_task_priority.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/0003_task_complete.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/0003_task_complete.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/__init__.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/__init__.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templatetags/__pycache__/tags.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templatetags/__pycache__/tags.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/__init__.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/__init__.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/settings.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/settings.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/urls.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/urls.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/wsgi.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/wsgi.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "d93b9bab28d328962ad79b3bf0270e832f5e021f",
+          "numberOfFileAffected": 13,
+          "files": [
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/static/css/custom.css",
+              "lineAdded": 8,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "todo/static/images/dexter.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/static/images/dexter.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/models.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/urls.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/views.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/0003_task_complete.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/models.py",
+              "lineAdded": 6,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 20,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 11,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "todo/todo/__pycache__/urls.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/urls.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "cd6641d41acd4cf1a42db0f8d05dbf55ec5ff8b8",
+          "numberOfFileAffected": 13,
+          "files": [
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/static/css/custom.css",
+              "lineAdded": 31,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/static/images/wa.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/models.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/urls.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/views.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/0002_task_priority.py",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/0002_task_priority.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/models.py",
+              "lineAdded": 14,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "todo/tasks/templates/base.html",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 68,
+              "lineDeleted": 26
+            },
+            {
+              "filePath": "todo/tasks/urls.py",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "8f429e849bc28e2f934e51af644f6a06bc8bac51",
+          "numberOfFileAffected": 8,
+          "files": [
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/admin.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/views.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/admin.py",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 17,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "todo/tasks/templatetags/__pycache__/tags.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templatetags/tags.py",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 10,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "2a7c0d05e4340ae8683ef7fcfa95d6d7b911d733",
+          "numberOfFileAffected": 10,
+          "files": [
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/models.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/urls.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/views.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/0001_initial.py",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/0001_initial.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/models.py",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 19,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "todo/tasks/urls.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 7,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "e1211f6786953aba10269445443d23661b8ca365",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "todo/tasks/__pycache__/views.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templates/base.html",
+              "lineAdded": 29,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "4d26a89004e8a392b3637a6f8c715e194ec97a66",
+          "numberOfFileAffected": 17,
+          "files": [
+            {
+              "filePath": "todo/db.sqlite3",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/__init__.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/admin.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/models.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/urls.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/__pycache__/views.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/migrations/__pycache__/__init__.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templates/base.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/templates/tasks.html",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/urls.py",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/tasks/views.py",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/__init__.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/settings.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/urls.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/__pycache__/wsgi.cpython-35.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "todo/todo/settings.py",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "todo/todo/urls.py",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "75ce1ccecf67980026e20882fbd37801b3dc62c1",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "4b3c65749e905ff8a12c6db7114c9c07d3ba98c1",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "LICENSE",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "ced05e5464195df8cd5351f0ac33be759d94c678",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "0d61c0d18002ccc61651c5717eb010e60af65615",
+          "fileName": "LICENSE",
+          "filePath": "LICENSE"
+        },
+        {
+          "fileId": "3367140bae22219b3206a841e1e63438c84f167d",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "0e890d01d1552ae148fd2c6d0bbc1201ce08f48e",
+          "fileName": "azure-pipelines.yml",
+          "filePath": "azure-pipelines.yml"
+        },
+        {
+          "fileId": "0b4deb372039db184c9f71c720a63a330304411f",
+          "fileName": "requirements.txt",
+          "filePath": "requirements.txt"
+        },
+        {
+          "fileId": "8f4c754ae4d9608475b37d7dc5911698a77a5628",
+          "fileName": "django-to-do.gif",
+          "filePath": "results/django-to-do.gif"
+        },
+        {
+          "fileId": "487aeea036a2810d7d28e40e4e2b19d6a098fe92",
+          "fileName": "manage.py",
+          "filePath": "todo/manage.py"
+        },
+        {
+          "fileId": "ced650c07e23c6b38e374f2fc6e925ffea9be7ae",
+          "fileName": "custom.css",
+          "filePath": "todo/static/css/custom.css"
+        },
+        {
+          "fileId": "c544327ccf7428b97f4ff0cdf658b1d68d4bfe89",
+          "fileName": "dexter.gif",
+          "filePath": "todo/static/images/dexter.gif"
+        },
+        {
+          "fileId": "9ce5becf8f48dbc472e8cd8bf351b5856d14625e",
+          "fileName": "dexter.png",
+          "filePath": "todo/static/images/dexter.png"
+        },
+        {
+          "fileId": "6a73fe61974e1262604f7cfcd1fd971d737deaba",
+          "fileName": "tasker.png",
+          "filePath": "todo/static/images/tasker.png"
+        },
+        {
+          "fileId": "cd5b45cbb5cb42157ab6c95db51054ed7d2af87e",
+          "fileName": "wa.png",
+          "filePath": "todo/static/images/wa.png"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "__init__.py",
+          "filePath": "todo/tasks/__init__.py"
+        },
+        {
+          "fileId": "d2a1bee9c8fd1421504554511c1149f83b087f03",
+          "fileName": "admin.py",
+          "filePath": "todo/tasks/admin.py"
+        },
+        {
+          "fileId": "205472247a824f588a2d8ece2b6ab5fc5be41b10",
+          "fileName": "apps.py",
+          "filePath": "todo/tasks/apps.py"
+        },
+        {
+          "fileId": "bd41067cb6a933243e1e790a2240860a4cd8c226",
+          "fileName": "0001_initial.py",
+          "filePath": "todo/tasks/migrations/0001_initial.py"
+        },
+        {
+          "fileId": "bc05ef18daddd9a7aefb73dd55531305f595b069",
+          "fileName": "0002_task_priority.py",
+          "filePath": "todo/tasks/migrations/0002_task_priority.py"
+        },
+        {
+          "fileId": "b3aa1e9fea1291d497d36839947b9cbacbfef5cf",
+          "fileName": "0003_task_complete.py",
+          "filePath": "todo/tasks/migrations/0003_task_complete.py"
+        },
+        {
+          "fileId": "53a2b5259ee201c2433a65b6610533043bb2e187",
+          "fileName": "0004_auto_20180506_0853.py",
+          "filePath": "todo/tasks/migrations/0004_auto_20180506_0853.py"
+        },
+        {
+          "fileId": "01030e015244de2962140a5c1708d7a535f4fedd",
+          "fileName": "0005_auto_20180506_0932.py",
+          "filePath": "todo/tasks/migrations/0005_auto_20180506_0932.py"
+        },
+        {
+          "fileId": "56ff3b8f0851cc9004deba6249048634da895421",
+          "fileName": "0006_auto_20180506_0940.py",
+          "filePath": "todo/tasks/migrations/0006_auto_20180506_0940.py"
+        },
+        {
+          "fileId": "a28ee15dc96da8070a1eb51129307023e8a8ec4a",
+          "fileName": "0007_auto_20180506_0946.py",
+          "filePath": "todo/tasks/migrations/0007_auto_20180506_0946.py"
+        },
+        {
+          "fileId": "8a26024c600972f81304cf151163a78292e45533",
+          "fileName": "0008_auto_20180507_0326.py",
+          "filePath": "todo/tasks/migrations/0008_auto_20180507_0326.py"
+        },
+        {
+          "fileId": "4c655b806ca9cd0cdaa0ff4cb7ce59e697ca16fb",
+          "fileName": "0009_auto_20180507_0328.py",
+          "filePath": "todo/tasks/migrations/0009_auto_20180507_0328.py"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "__init__.py",
+          "filePath": "todo/tasks/migrations/__init__.py"
+        },
+        {
+          "fileId": "849936af4580a6b6ee8d7828e384282e04351887",
+          "fileName": "models.py",
+          "filePath": "todo/tasks/models.py"
+        },
+        {
+          "fileId": "aee349282fdf709e18082f05cd7146fb284b7c78",
+          "fileName": "base.html",
+          "filePath": "todo/tasks/templates/base.html"
+        },
+        {
+          "fileId": "d481e7179c2618982a5fde7bc4c9e7efd93db039",
+          "fileName": "tasks.html",
+          "filePath": "todo/tasks/templates/tasks.html"
+        },
+        {
+          "fileId": "da304b72c99eb6a48176a943007e1126cd42af58",
+          "fileName": "tags.py",
+          "filePath": "todo/tasks/templatetags/tags.py"
+        },
+        {
+          "fileId": "7ce503c2dd97ba78597f6ff6e4393132753573f6",
+          "fileName": "tests.py",
+          "filePath": "todo/tasks/tests.py"
+        },
+        {
+          "fileId": "56032dfa6760e66561bbf771f8b3aa4068bb0f48",
+          "fileName": "urls.py",
+          "filePath": "todo/tasks/urls.py"
+        },
+        {
+          "fileId": "b4011dec6a5f07f28cf71cf617d68cb7cf918a3a",
+          "fileName": "views.py",
+          "filePath": "todo/tasks/views.py"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "__init__.py",
+          "filePath": "todo/todo/__init__.py"
+        },
+        {
+          "fileId": "d1f9f99feaa90f86eddc4f42050a01cfc93a3632",
+          "fileName": "settings.py",
+          "filePath": "todo/todo/settings.py"
+        },
+        {
+          "fileId": "324ce49229202d4130881bd93daab47c128ece32",
+          "fileName": "urls.py",
+          "filePath": "todo/todo/urls.py"
+        },
+        {
+          "fileId": "4f9f25c07d0e0def954b328ca79aae1a7de82fbe",
+          "fileName": "wsgi.py",
+          "filePath": "todo/todo/wsgi.py"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/OmkarPathak/github/Django-to-do/.gitignore"
+        },
+        {
+          "filename": "requirements.txt",
+          "repoFilePath": "requirements.txt",
+          "localFilePath": "test/matching-algo/matcher/dependencies/requirements.django.txt"
+        }
+      ]
+    }
+  ]
+}
