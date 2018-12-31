@@ -30,12 +30,11 @@ describe('Test Django matching algorithm', () => {
     const computedOutput: IGitProjectSummary = client.execute();
 
     // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
+    const length: number = computedOutput.projectsOutput.length;
+    for (let index = 0; index < length; ++index) {
       const projectSum: IGitProjectOutput = projectOutput.projectsOutput[index];
       const computedProjectSum: IGitProjectOutput =
         computedOutput.projectsOutput[index];
-      index++;
       if (JSON.stringify(projectSum) !== JSON.stringify(computedProjectSum)) {
         console.log('expected : ' + JSON.stringify(projectSum));
         console.log('actual: ' + JSON.stringify(computedProjectSum));
@@ -57,13 +56,12 @@ describe('Test Django matching algorithm', () => {
     const computedOutput: IGitProjectSummary = client.execute();
 
     // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
+    const length: number = computedOutput.projectsOutput.length;
+    for (let index = 0; index < length; ++index) {
       const computedProjectSum: IGitProjectOutput =
         computedOutput.projectsOutput[index];
-      index++;
       if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected: ' + JSON.stringify(expected));
+        console.log('expected : ' + JSON.stringify(expected));
         console.log('actual: ' + JSON.stringify(computedProjectSum));
         expect.fail();
       }
@@ -83,13 +81,12 @@ describe('Test Django matching algorithm', () => {
     const computedOutput: IGitProjectSummary = client.execute();
 
     // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
+    const length: number = computedOutput.projectsOutput.length;
+    for (let index = 0; index < length; ++index) {
       const computedProjectSum: IGitProjectOutput =
         computedOutput.projectsOutput[index];
-      index++;
       if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected: ' + JSON.stringify(expected));
+        console.log('expected : ' + JSON.stringify(expected));
         console.log('actual: ' + JSON.stringify(computedProjectSum));
         expect.fail();
       }
@@ -109,13 +106,12 @@ describe('Test Django matching algorithm', () => {
     const computedOutput: IGitProjectSummary = client.execute();
 
     // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
+    const length: number = computedOutput.projectsOutput.length;
+    for (let index = 0; index < length; ++index) {
       const computedProjectSum: IGitProjectOutput =
         computedOutput.projectsOutput[index];
-      index++;
       if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected: ' + JSON.stringify(expected));
+        console.log('expected : ' + JSON.stringify(expected));
         console.log('actual: ' + JSON.stringify(computedProjectSum));
         expect.fail();
       }
@@ -135,13 +131,12 @@ describe('Test Django matching algorithm', () => {
     const computedOutput: IGitProjectSummary = client.execute();
 
     // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
+    const length: number = computedOutput.projectsOutput.length;
+    for (let index = 0; index < length; ++index) {
       const computedProjectSum: IGitProjectOutput =
         computedOutput.projectsOutput[index];
-      index++;
       if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected: ' + JSON.stringify(expected));
+        console.log('expected : ' + JSON.stringify(expected));
         console.log('actual: ' + JSON.stringify(computedProjectSum));
         expect.fail();
       }
@@ -161,13 +156,12 @@ describe('Test Django matching algorithm', () => {
     const computedOutput: IGitProjectSummary = client.execute();
 
     // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
+    const length: number = computedOutput.projectsOutput.length;
+    for (let index = 0; index < length; ++index) {
       const computedProjectSum: IGitProjectOutput =
         computedOutput.projectsOutput[index];
-      index++;
       if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected: ' + JSON.stringify(expected));
+        console.log('expected : ' + JSON.stringify(expected));
         console.log('actual: ' + JSON.stringify(computedProjectSum));
         expect.fail();
       }
@@ -187,13 +181,12 @@ describe('Test Django matching algorithm', () => {
     const computedOutput: IGitProjectSummary = client.execute();
 
     // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
+    const length: number = computedOutput.projectsOutput.length;
+    for (let index = 0; index < length; ++index) {
       const computedProjectSum: IGitProjectOutput =
         computedOutput.projectsOutput[index];
-      index++;
       if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected: ' + JSON.stringify(expected));
+        console.log('expected : ' + JSON.stringify(expected));
         console.log('actual: ' + JSON.stringify(computedProjectSum));
         expect.fail();
       }
@@ -213,13 +206,12 @@ describe('Test Django matching algorithm', () => {
     const computedOutput: IGitProjectSummary = client.execute();
 
     // THEN
-    let index: number = 0;
-    for (const proj in computedOutput.projectsOutput) {
+    const length: number = computedOutput.projectsOutput.length;
+    for (let index = 0; index < length; ++index) {
       const computedProjectSum: IGitProjectOutput =
         computedOutput.projectsOutput[index];
-      index++;
       if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected: ' + JSON.stringify(expected));
+        console.log('expected : ' + JSON.stringify(expected));
         console.log('actual: ' + JSON.stringify(computedProjectSum));
         expect.fail();
       }
