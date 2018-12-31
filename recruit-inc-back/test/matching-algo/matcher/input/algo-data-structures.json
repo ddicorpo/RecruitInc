@@ -1,0 +1,221 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "algo-data-structures",
+      "owner": "lydiahallie",
+      "applicantCommits": [
+        {
+          "id": "9509f8581cbe8c3d72a8db05c0db0def82a5b3e2",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "algorithms/bubble_sort.js",
+              "lineAdded": 1,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "algorithms/merge_sort.js",
+              "lineAdded": 34,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "2672158fb7d0bc492d0901634e438dc764627831",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "algorithms/quicksort.js",
+              "lineAdded": 45,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "d95de9134c9bf45e51feada7e957a673c778e289",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "algorithms/selection_sort.js",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "5ec27d4d012b8df689bcf537d445c4b9cf6afc01",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "algorithms/insertion_sort.js",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "ac9e2ebcf4c48cd75a3adacdc43359f2b581ea75",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "algorithms/bubble_sort.js",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "75d885dd3bc11cd1987932e830dbcf86d146e8ec",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data_structures/graph.js",
+              "lineAdded": 122,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "33beb4e2f80c975852afa2fccdb9ae6ce567abe6",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data_structures/tree.js",
+              "lineAdded": 176,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "60c69a7ecdf9f5cc6b3c5de5d1f6156de94d043f",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data_structures/binary_search_tree.js",
+              "lineAdded": 13,
+              "lineDeleted": 5
+            }
+          ]
+        },
+        {
+          "id": "d298436aa6d884557ee4564d8ba9cd1d1c894dc8",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data_structures/binary_search_tree.js",
+              "lineAdded": 297,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "ac801172cf01f2559d224e6721230a29e74b8186",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data_structures/hash_table.js",
+              "lineAdded": 66,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "bd7fa83a76c48d7917528cd73b5a78879465b6cf",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data_structures/doubly_linked_list.js",
+              "lineAdded": 118,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "cc8ad485fd537950e21e7db8781498bf9175162a",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data_structures/queue.js",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "7c6fd46461e00371ec7c140ca1375df6eeb3de7f",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data_structures/singly_linked_list.js",
+              "lineAdded": 89,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "c4b94c796aa11830e02f49b81d75be01a8c215ba",
+          "fileName": "bubble_sort.js",
+          "filePath": "algorithms/bubble_sort.js"
+        },
+        {
+          "fileId": "3f4a3c9e5ece8e1e929e0033cee95e7aae57ffeb",
+          "fileName": "insertion_sort.js",
+          "filePath": "algorithms/insertion_sort.js"
+        },
+        {
+          "fileId": "7700283303e100dda21d250c2f80c252d560da27",
+          "fileName": "merge_sort.js",
+          "filePath": "algorithms/merge_sort.js"
+        },
+        {
+          "fileId": "6861d82e67010e9a6694e891ec9a6731da7b7472",
+          "fileName": "quicksort.js",
+          "filePath": "algorithms/quicksort.js"
+        },
+        {
+          "fileId": "832116326d0a90adc8c9e2f7eb662871ac8206af",
+          "fileName": "selection_sort.js",
+          "filePath": "algorithms/selection_sort.js"
+        },
+        {
+          "fileId": "796dba16a4f964154b237e13c83f9385921bdf01",
+          "fileName": "binary_search_tree.js",
+          "filePath": "data_structures/binary_search_tree.js"
+        },
+        {
+          "fileId": "aa4230a89aafb37ed2079d556f100cc052df4517",
+          "fileName": "doubly_linked_list.js",
+          "filePath": "data_structures/doubly_linked_list.js"
+        },
+        {
+          "fileId": "c720212b6adb1111ad0ee8346bff798cbf7000a1",
+          "fileName": "graph.js",
+          "filePath": "data_structures/graph.js"
+        },
+        {
+          "fileId": "0f4eb337a831a333a53cd6caeb4d62491b2b8ff4",
+          "fileName": "hash_table.js",
+          "filePath": "data_structures/hash_table.js"
+        },
+        {
+          "fileId": "6d6dcd7c2b7ef424a731b3367e8479689bfa87a2",
+          "fileName": "queue.js",
+          "filePath": "data_structures/queue.js"
+        },
+        {
+          "fileId": "5fb89709d14ba9dbbb76ee7b2a1d536c9b90888c",
+          "fileName": "singly_linked_list.js",
+          "filePath": "data_structures/singly_linked_list.js"
+        },
+        {
+          "fileId": "b3401eff587430d38da328679dc80998df734405",
+          "fileName": "tree.js",
+          "filePath": "data_structures/tree.js"
+        }
+      ],
+      "downloadedSourceFile": []
+    }
+  ]
+}

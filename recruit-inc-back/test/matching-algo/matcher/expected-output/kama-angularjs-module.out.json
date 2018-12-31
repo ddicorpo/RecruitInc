@@ -1,0 +1,22 @@
+{
+  "projectName": "kama-angularjs-module",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 3094,
+      "numberOfCommits": 74,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "Angular",
+          "linesOfCode": 2459,
+          "numberOfCommits": 69
+        }
+      ]
+    }
+  ]
+}

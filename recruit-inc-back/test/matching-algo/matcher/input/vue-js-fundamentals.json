@@ -1,0 +1,840 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "Vue.js-Fundamentals",
+      "owner": "DrWrzipx",
+      "applicantCommits": [
+        {
+          "id": "e55576ef9e0d7d47800e2fdd862a720337a046b0",
+          "numberOfFileAffected": 17,
+          "files": [
+            {
+              "filePath": ".eslintrc.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 16,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/RobotBuilder.vue",
+              "lineAdded": 13,
+              "lineDeleted": 30
+            },
+            {
+              "filePath": "src/cart/ShoppingCart.vue",
+              "lineAdded": 82,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/main.js",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/parts/RobotArms.vue",
+              "lineAdded": 6,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "src/parts/RobotBases.vue",
+              "lineAdded": 6,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "src/parts/RobotHeads.vue",
+              "lineAdded": 6,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "src/parts/RobotTorsos.vue",
+              "lineAdded": 6,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "src/parts/get-parts-mixin.js",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/router/index.js",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/store/index.js",
+              "lineAdded": 12,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/store/modules/robots.js",
+              "lineAdded": 35,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/store/modules/users.js",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "vue.config.js",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "5cff0c6d151ea1e5887585684956c39582fe3a4a",
+          "numberOfFileAffected": 16,
+          "files": [
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 9,
+              "lineDeleted": 10
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 40,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "src/build/PartSelector.vue",
+              "lineAdded": 9,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/build/RobotBuilder.vue",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/home/HomePage.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/main.js",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/parts/BrowseParts.vue",
+              "lineAdded": 52,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/parts/PartInfo.vue",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/parts/RobotArms.vue",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/parts/RobotBases.vue",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/parts/RobotHeads.vue",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/parts/RobotTorsos.vue",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/router/index.js",
+              "lineAdded": 65,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/sidebar/SideBarBuild.vue",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/sidebar/SidebarStandard.vue",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "400ceb728988246c16e0dbbd19c0f8eec5d60d6c",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "src/build/PartSelector.vue",
+              "lineAdded": 39,
+              "lineDeleted": 17
+            },
+            {
+              "filePath": "src/build/RobotBuilder.vue",
+              "lineAdded": 76,
+              "lineDeleted": 116
+            },
+            {
+              "filePath": "src/shared/CollapsibleSection.vue",
+              "lineAdded": 31,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "bc8649d42ea5e2c7cbb1d97585e2baf792fa2fc7",
+          "numberOfFileAffected": 25,
+          "files": [
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 923,
+              "lineDeleted": 16
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/build/PartSelector.vue",
+              "lineAdded": 158,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/RobotBuilder.vue",
+              "lineAdded": 274,
+              "lineDeleted": 106
+            },
+            {
+              "filePath": "src/build/created-hook-mixin.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/arm-articulated-claw.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/arm-dual-claw.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/arm-grabber.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/arm-propeller.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/arm-stubby-claw.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/base-double-wheel.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/base-rocket.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/base-single-wheel.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/base-spring.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/base-triple-wheel.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/head-big-eye.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/head-friendly.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/head-shredder.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/head-single-eye.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/head-surveillance.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/torso-flexible-gauged.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/torso-gauged.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/images/torso-pouch.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/data/parts.js",
+              "lineAdded": 164,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "17d8231c892371142eb0a1ec0748e37b53d20a53",
+          "numberOfFileAffected": 25,
+          "files": [
+            {
+              "filePath": ".eslintrc.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 47,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "src/assets/build-a-bot-logo.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/robot-home.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/RobotBuilder.vue",
+              "lineAdded": 132,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/arm-articulated-claw.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/arm-dual-claw.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/arm-grabber.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/arm-propeller.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/arm-stubby-claw.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/base-double-wheel.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/base-rocket.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/base-single-wheel.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/base-spring.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/base-triple-wheel.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/head-big-eye.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/head-friendly.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/head-shredder.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/head-single-eye.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/head-surveillance.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/torso-flexible-gauged.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/torso-gauged.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/build/images/torso-pouch.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/HelloWorld.vue",
+              "lineAdded": 0,
+              "lineDeleted": 58
+            },
+            {
+              "filePath": "src/home/HomePage.vue",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "db803409e6a2150aedb3e2ebeb80a4f1986cd066",
+          "numberOfFileAffected": 15,
+          "files": [
+            {
+              "filePath": ".browserslistrc",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": ".editorconfig",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": ".eslintrc.js",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "babel.config.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 11277,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "postcss.config.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/favicon.ico",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "public/index.html",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/App.vue",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/logo.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/HelloWorld.vue",
+              "lineAdded": 58,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/main.js",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "9dee6464636efdc40e54434302615a0315d3fd14",
+          "fileName": ".browserslistrc",
+          "filePath": ".browserslistrc"
+        },
+        {
+          "fileId": "c24743d0068343ea39ae3ea07317ff14cb52106d",
+          "fileName": ".editorconfig",
+          "filePath": ".editorconfig"
+        },
+        {
+          "fileId": "790dfb208f4a05e76b62ae4fe7d1bab1ce438aa0",
+          "fileName": ".eslintrc.js",
+          "filePath": ".eslintrc.js"
+        },
+        {
+          "fileId": "185e6631928dca2f51224e61a3861cc88fa2b74e",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "9a2f72c26aebd8342fc5d596cf8b445a49000b82",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "91be2448dd95961d59139e62c93028d9edff2fb7",
+          "fileName": "babel.config.js",
+          "filePath": "babel.config.js"
+        },
+        {
+          "fileId": "6c02af71b3141b68cb030dbaf5a991960a8a93f1",
+          "fileName": "package-lock.json",
+          "filePath": "package-lock.json"
+        },
+        {
+          "fileId": "a2709fca8bd8d1f6e9ed074b1ebd8a863498fbb0",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "a47ef4f95284d3103dd43c01eb27677a3ef833fd",
+          "fileName": "postcss.config.js",
+          "filePath": "postcss.config.js"
+        },
+        {
+          "fileId": "c7b9a43c8cd16d0b434adaf513fcacb340809a11",
+          "fileName": "favicon.ico",
+          "filePath": "public/favicon.ico"
+        },
+        {
+          "fileId": "39069f3dd8bbfd0b5e0d4b419307b1f44645087d",
+          "fileName": "index.html",
+          "filePath": "public/index.html"
+        },
+        {
+          "fileId": "24fd0e6ff8c9395e2fbceb1093fad9b597add5c9",
+          "fileName": "App.vue",
+          "filePath": "src/App.vue"
+        },
+        {
+          "fileId": "7e5db8bf802f3a9a10ad230ee4db428d8af118ad",
+          "fileName": "build-a-bot-logo.png",
+          "filePath": "src/assets/build-a-bot-logo.png"
+        },
+        {
+          "fileId": "f3d2503fc2a44b5053b0837ebea6e87a2d339a43",
+          "fileName": "logo.png",
+          "filePath": "src/assets/logo.png"
+        },
+        {
+          "fileId": "05a5db21b9ba85596cbc05df4046071673753783",
+          "fileName": "robot-home.png",
+          "filePath": "src/assets/robot-home.png"
+        },
+        {
+          "fileId": "ab0afd796863560325f090a47e719cd2ca1cb0fb",
+          "fileName": "PartSelector.vue",
+          "filePath": "src/build/PartSelector.vue"
+        },
+        {
+          "fileId": "57de715eb86612468cb5cc5ae8fead4d1ea15d19",
+          "fileName": "RobotBuilder.vue",
+          "filePath": "src/build/RobotBuilder.vue"
+        },
+        {
+          "fileId": "80fcbe57e0cbb8f24645786872998d1b427244fc",
+          "fileName": "created-hook-mixin.js",
+          "filePath": "src/build/created-hook-mixin.js"
+        },
+        {
+          "fileId": "e239d4b3a7c91d349a3c324d55652f21c7064bae",
+          "fileName": "ShoppingCart.vue",
+          "filePath": "src/cart/ShoppingCart.vue"
+        },
+        {
+          "fileId": "b673275893e2439b64395ba8428e02fc777fd28e",
+          "fileName": "arm-articulated-claw.png",
+          "filePath": "src/data/images/arm-articulated-claw.png"
+        },
+        {
+          "fileId": "acf6c9388e3431f7b54a64d570b07a06bb5f9b10",
+          "fileName": "arm-dual-claw.png",
+          "filePath": "src/data/images/arm-dual-claw.png"
+        },
+        {
+          "fileId": "e231613f992fb6e2b3ffbe805cad658a6d33566c",
+          "fileName": "arm-grabber.png",
+          "filePath": "src/data/images/arm-grabber.png"
+        },
+        {
+          "fileId": "47b50285c9d6eb0b239d9501b5b47ade3a32f23b",
+          "fileName": "arm-propeller.png",
+          "filePath": "src/data/images/arm-propeller.png"
+        },
+        {
+          "fileId": "31f979a8a7a90fec4ff58a7936bd39ac0813d961",
+          "fileName": "arm-stubby-claw.png",
+          "filePath": "src/data/images/arm-stubby-claw.png"
+        },
+        {
+          "fileId": "b5048b0d14bd8ce9c161dba6a345f13da9d77a4c",
+          "fileName": "base-double-wheel.png",
+          "filePath": "src/data/images/base-double-wheel.png"
+        },
+        {
+          "fileId": "8d83504f12f66b6b151521c76388766f34c8e505",
+          "fileName": "base-rocket.png",
+          "filePath": "src/data/images/base-rocket.png"
+        },
+        {
+          "fileId": "d190af86f6d117e8f61136421328466cdeff612a",
+          "fileName": "base-single-wheel.png",
+          "filePath": "src/data/images/base-single-wheel.png"
+        },
+        {
+          "fileId": "6f21a0da6debca89ef989a33fe438ddf15f81acf",
+          "fileName": "base-spring.png",
+          "filePath": "src/data/images/base-spring.png"
+        },
+        {
+          "fileId": "6ee278660a690fa91e65515f6ec6fbd176af9a27",
+          "fileName": "base-triple-wheel.png",
+          "filePath": "src/data/images/base-triple-wheel.png"
+        },
+        {
+          "fileId": "7949388a2af7157b976505cad4d9f09cce17fdf3",
+          "fileName": "head-big-eye.png",
+          "filePath": "src/data/images/head-big-eye.png"
+        },
+        {
+          "fileId": "f168378726b0a72e37e6f933464d1cbe94a62026",
+          "fileName": "head-friendly.png",
+          "filePath": "src/data/images/head-friendly.png"
+        },
+        {
+          "fileId": "b4bf0e0a405d3b37782e63e7726c3c3e2d6bd85c",
+          "fileName": "head-shredder.png",
+          "filePath": "src/data/images/head-shredder.png"
+        },
+        {
+          "fileId": "9bc4d0bd911f27e9a3c04d6a77f308cf638c5ded",
+          "fileName": "head-single-eye.png",
+          "filePath": "src/data/images/head-single-eye.png"
+        },
+        {
+          "fileId": "c359605af4f4a250569ca00bb6e7e94a571ad85f",
+          "fileName": "head-surveillance.png",
+          "filePath": "src/data/images/head-surveillance.png"
+        },
+        {
+          "fileId": "ba6e065e473d7cdef6114f43857a96ffa996caef",
+          "fileName": "torso-flexible-gauged.png",
+          "filePath": "src/data/images/torso-flexible-gauged.png"
+        },
+        {
+          "fileId": "bd048df8fc75574c954e7eef366be8463aad19bd",
+          "fileName": "torso-gauged.png",
+          "filePath": "src/data/images/torso-gauged.png"
+        },
+        {
+          "fileId": "678c30d478553373dc5b92819f1d35b667f076f3",
+          "fileName": "torso-pouch.png",
+          "filePath": "src/data/images/torso-pouch.png"
+        },
+        {
+          "fileId": "489a24b4b9f4c654b7cb5069f37695bcd9e1d6a1",
+          "fileName": "parts.js",
+          "filePath": "src/data/parts.js"
+        },
+        {
+          "fileId": "56a7bcb28b70ab887e5319b35802df6ba9467357",
+          "fileName": "HomePage.vue",
+          "filePath": "src/home/HomePage.vue"
+        },
+        {
+          "fileId": "7061902289fb87d9ddfbd47bc031d2ff1fd6bbdf",
+          "fileName": "main.js",
+          "filePath": "src/main.js"
+        },
+        {
+          "fileId": "315be599215540750d92a1d17927fe46dd7de1eb",
+          "fileName": "BrowseParts.vue",
+          "filePath": "src/parts/BrowseParts.vue"
+        },
+        {
+          "fileId": "3194cd2e4ffe10bab621b99b79657edecf19db96",
+          "fileName": "PartInfo.vue",
+          "filePath": "src/parts/PartInfo.vue"
+        },
+        {
+          "fileId": "c55ade0bb2052b239733ee8c7273dad713f4e5df",
+          "fileName": "RobotArms.vue",
+          "filePath": "src/parts/RobotArms.vue"
+        },
+        {
+          "fileId": "b4defeb3293624a0c54b717b2f0aa1c6eab41eef",
+          "fileName": "RobotBases.vue",
+          "filePath": "src/parts/RobotBases.vue"
+        },
+        {
+          "fileId": "cbc4e02e1a97c8a530726737bab9482147ae7003",
+          "fileName": "RobotHeads.vue",
+          "filePath": "src/parts/RobotHeads.vue"
+        },
+        {
+          "fileId": "2f1c45fbf48ebe3d53d4e87d4432ef1d92f1717a",
+          "fileName": "RobotTorsos.vue",
+          "filePath": "src/parts/RobotTorsos.vue"
+        },
+        {
+          "fileId": "1d8defe2980457daadb96589db8831ead5b03d53",
+          "fileName": "get-parts-mixin.js",
+          "filePath": "src/parts/get-parts-mixin.js"
+        },
+        {
+          "fileId": "33669a90d063e6da3d3257d27e8d0c6baf921107",
+          "fileName": "index.js",
+          "filePath": "src/router/index.js"
+        },
+        {
+          "fileId": "203fe23180992d76561fd17d4b3947aaa15616bb",
+          "fileName": "CollapsibleSection.vue",
+          "filePath": "src/shared/CollapsibleSection.vue"
+        },
+        {
+          "fileId": "0452d6eb7b2ea9ced5b21f6da3593018b4ec410f",
+          "fileName": "SideBarBuild.vue",
+          "filePath": "src/sidebar/SideBarBuild.vue"
+        },
+        {
+          "fileId": "5bdb04304d471ed43652ee96796b4fd8dea60143",
+          "fileName": "SidebarStandard.vue",
+          "filePath": "src/sidebar/SidebarStandard.vue"
+        },
+        {
+          "fileId": "bd8c4617520d3ee16f75bc893b09d608ed71e87b",
+          "fileName": "index.js",
+          "filePath": "src/store/index.js"
+        },
+        {
+          "fileId": "1495eb11a76a55098e0968bfe1c0adaaab90a730",
+          "fileName": "robots.js",
+          "filePath": "src/store/modules/robots.js"
+        },
+        {
+          "fileId": "75e6e76890f37682bfdb24b9a57a497e172ffed0",
+          "fileName": "users.js",
+          "filePath": "src/store/modules/users.js"
+        },
+        {
+          "fileId": "9c7dd42da37e2950199a8161565ed8eb85c0bd6d",
+          "fileName": "vue.config.js",
+          "filePath": "vue.config.js"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/DrWrzipx/github/Vue.js-Fundamentals/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.vue-javascript.json"
+        }
+      ]
+    }
+  ]
+}

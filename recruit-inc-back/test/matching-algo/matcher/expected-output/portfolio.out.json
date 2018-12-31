@@ -1,0 +1,22 @@
+{
+  "projectName": "portfolio",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 776,
+      "numberOfCommits": 4,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 670,
+          "numberOfCommits": 4
+        },
+        {
+          "technologyName": "Angular",
+          "linesOfCode": 626,
+          "numberOfCommits": 4
+        }
+      ]
+    }
+  ]
+}

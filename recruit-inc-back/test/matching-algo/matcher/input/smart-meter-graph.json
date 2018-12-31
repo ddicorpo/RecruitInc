@@ -1,0 +1,305 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "smart-meter-graph",
+      "owner": "lydiahallie",
+      "applicantCommits": [
+        {
+          "id": "d1abd8448302844af2e4ccb43d38e38d8f9654b6",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data/data.py",
+              "lineAdded": 23,
+              "lineDeleted": 19
+            }
+          ]
+        },
+        {
+          "id": "edc8b61e62f1dd8fb095d19e29e84ecb2c6b4c07",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "pic.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "c2c5ffe3c283d81608bf4c5066a0cb51ddaa7961",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "yarn.lock",
+              "lineAdded": 35,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "22f4603b118998dfdf578b71e526e88344144a2b",
+          "numberOfFileAffected": 12,
+          "files": [
+            {
+              "filePath": "client/.gitignore",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/README.md",
+              "lineAdded": 2444,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/package.json",
+              "lineAdded": 27,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/public/favicon.ico",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/public/index.html",
+              "lineAdded": 40,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/public/manifest.json",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/src/App.js",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/src/chart.js",
+              "lineAdded": 189,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/src/graph.js",
+              "lineAdded": 32,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/src/index.js",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/src/registerServiceWorker.js",
+              "lineAdded": 117,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "client/yarn.lock",
+              "lineAdded": 7215,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "0a6589835c18029e240e83abe7abf66d1f25507f",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "server/.gitignore",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "server/package.json",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "server/server.js",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "server/yarn.lock",
+              "lineAdded": 405,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "167c05849c137c94f44931fd6e3aa2e078a85b04",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "data/data.py",
+              "lineAdded": 62,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "4a4fd9c51d4ee486ec0ff12724dfc233bc8d2a53",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "5905ff9531414d5fb04056b05112ab1937cc4c00",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "d30f40ef4422ff27041df9dba83e4bd26849dc48",
+          "fileName": ".gitignore",
+          "filePath": "client/.gitignore"
+        },
+        {
+          "fileId": "479d632a5f0d9312b673eb31d8f13b8d72333347",
+          "fileName": "README.md",
+          "filePath": "client/README.md"
+        },
+        {
+          "fileId": "c4cfbdfd56ce384ec1706e80500aea24fb8704c1",
+          "fileName": "package.json",
+          "filePath": "client/package.json"
+        },
+        {
+          "fileId": "a11777cc471a4344702741ab1c8a588998b1311a",
+          "fileName": "favicon.ico",
+          "filePath": "client/public/favicon.ico"
+        },
+        {
+          "fileId": "ed0ebafa1b7c3057e5fc3eddbdf9e4c2c46de805",
+          "fileName": "index.html",
+          "filePath": "client/public/index.html"
+        },
+        {
+          "fileId": "ef19ec243e739479802a5553d0b38a18ed845307",
+          "fileName": "manifest.json",
+          "filePath": "client/public/manifest.json"
+        },
+        {
+          "fileId": "90f53a5633598b5a2e014f5c77b06433edaa1c2d",
+          "fileName": "App.js",
+          "filePath": "client/src/App.js"
+        },
+        {
+          "fileId": "b22a7ba93dfd532a23cb51e5372b89c84e764816",
+          "fileName": "chart.js",
+          "filePath": "client/src/chart.js"
+        },
+        {
+          "fileId": "31b7c774b6808ff42afafac5f27095c8cac0d83b",
+          "fileName": "graph.js",
+          "filePath": "client/src/graph.js"
+        },
+        {
+          "fileId": "917d6518360437e720d0a23f6ffdeb05981a7c13",
+          "fileName": "index.js",
+          "filePath": "client/src/index.js"
+        },
+        {
+          "fileId": "a3e6c0cfc10de36d6bcb38c52e00c012e985d68e",
+          "fileName": "registerServiceWorker.js",
+          "filePath": "client/src/registerServiceWorker.js"
+        },
+        {
+          "fileId": "0a88a651b217feaca8260688ab068900e347a054",
+          "fileName": "yarn.lock",
+          "filePath": "client/yarn.lock"
+        },
+        {
+          "fileId": "26da0890f4518b60f7ff5cef8f5cf899b34119da",
+          "fileName": "data.py",
+          "filePath": "data/data.py"
+        },
+        {
+          "fileId": "f09d6b23b40d1bd331aec809639d38636eaddf64",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "95507e9fdb6677f85d8287c6800eb4c01e07de2b",
+          "fileName": "pic.png",
+          "filePath": "pic.png"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": ".gitignore",
+          "filePath": "server/.gitignore"
+        },
+        {
+          "fileId": "a21837a2f13d6c067a97aabf3f444927318bf11c",
+          "fileName": "package.json",
+          "filePath": "server/package.json"
+        },
+        {
+          "fileId": "f93c031aea26013fe4c855a71f7b36f79d982070",
+          "fileName": "server.js",
+          "filePath": "server/server.js"
+        },
+        {
+          "fileId": "6adfc3794b91e7fc0a70799569f4bbfe5adff0b5",
+          "fileName": "yarn.lock",
+          "filePath": "server/yarn.lock"
+        },
+        {
+          "fileId": "ec34fd2d8ae28001b8e6d5ab287b34315ddf8698",
+          "fileName": "yarn.lock",
+          "filePath": "yarn.lock"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/lydiahallie/github/smart-meter-graph/.gitignore"
+        },
+        {
+          "filename": ".gitignore",
+          "repoFilePath": "client/.gitignore",
+          "localFilePath": "downloaded/lydiahallie/github/smart-meter-graph/client/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "client/package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.react-javascript.json"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.javascript.json"
+        },
+        {
+          "filename": ".gitignore",
+          "repoFilePath": "server/.gitignore",
+          "localFilePath": "downloaded/lydiahallie/github/smart-meter-graph/server/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "server/package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.javascript.json"
+        }
+      ]
+    }
+  ]
+}

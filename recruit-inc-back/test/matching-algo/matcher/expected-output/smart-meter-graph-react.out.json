@@ -1,0 +1,22 @@
+{
+  "projectName": "smart-meter-graph",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 366,
+      "numberOfCommits": 2,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 351,
+          "numberOfCommits": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "projectName": "office-ui-fabric-vue",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 473,
+      "numberOfCommits": 1,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 391,
+          "numberOfCommits": 1
+        },
+        {
+          "technologyName": "Vue",
+          "linesOfCode": 473,
+          "numberOfCommits": 1
+        }
+      ]
+    }
+  ]
+}

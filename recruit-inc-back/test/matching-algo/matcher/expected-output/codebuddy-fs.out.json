@@ -1,0 +1,22 @@
+{
+  "projectName": "codebuddy-fs",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 3125,
+      "numberOfCommits": 6,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 1558,
+          "numberOfCommits": 4
+        }
+      ]
+    }
+  ]
+}

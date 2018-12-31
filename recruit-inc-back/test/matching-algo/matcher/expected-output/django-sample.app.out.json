@@ -1,0 +1,17 @@
+{
+  "projectName": "django-sample-app",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Python",
+      "linesOfCode": 378,
+      "numberOfCommits": 17,
+      "frameworks": [
+        {
+          "technologyName": "Django",
+          "linesOfCode": 378,
+          "numberOfCommits": 17
+        }
+      ]
+    }
+  ]
+}

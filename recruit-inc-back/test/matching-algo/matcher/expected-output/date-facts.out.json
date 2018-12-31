@@ -1,0 +1,22 @@
+{
+  "projectName": "date-facts",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 21,
+      "numberOfCommits": 3,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}

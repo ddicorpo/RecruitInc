@@ -1,0 +1,22 @@
+{
+  "projectName": "instagram-angular",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 778,
+      "numberOfCommits": 10,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 719,
+          "numberOfCommits": 10
+        },
+        {
+          "technologyName": "Angular",
+          "linesOfCode": 725,
+          "numberOfCommits": 10
+        }
+      ]
+    }
+  ]
+}

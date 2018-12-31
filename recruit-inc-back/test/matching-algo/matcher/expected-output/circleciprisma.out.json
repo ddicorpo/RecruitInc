@@ -1,0 +1,22 @@
+{
+  "projectName": "CircleCIPrisma",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 3987,
+      "numberOfCommits": 2,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 3575,
+          "numberOfCommits": 2
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    }
+  ]
+}

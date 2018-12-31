@@ -1,0 +1,22 @@
+{
+  "projectName": "kankan",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 306,
+      "numberOfCommits": 14,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 306,
+          "numberOfCommits": 14
+        }
+      ]
+    }
+  ]
+}

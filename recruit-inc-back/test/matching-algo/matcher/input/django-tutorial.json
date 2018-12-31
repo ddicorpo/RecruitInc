@@ -1,0 +1,820 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "django-tutorial",
+      "owner": "lydiahallie",
+      "applicantCommits": [
+        {
+          "id": "0fce6744e7de2d25e1a2bfc43e934718a55a0cce",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "polls/static/polls/style.css",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/templates/polls/detail.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "polls/templates/polls/index.html",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "8e7de156721952c4c08c6e36bb6c739a418f0db4",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "firstsite/__pycache__/settings.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/settings.py",
+              "lineAdded": 97,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/urls.py",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "c103e8db1711d014e35ebc3f4da2551822eda2a6",
+          "numberOfFileAffected": 20,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/settings.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/settings_secret.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/wsgi.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/urls.py",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/wsgi.py",
+              "lineAdded": 0,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "polls/__pycache__/admin.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/apps.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/models.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/views.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/admin.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "polls/models.py",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/static/polls/style.css",
+              "lineAdded": 21,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "polls/templates/polls/detail.html",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/templates/polls/results.html",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/tests.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "polls/urls.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "polls/views.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "0b4e2d420051b5f390cad865c5e973cfe2bd449e",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "polls/__pycache__/admin.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/admin.py",
+              "lineAdded": 15,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "dd43c718b59aef209c41b399aa52cf2c02df557a",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "firstsite/__pycache__/settings.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/urls.py",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "polls/__pycache__/views.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/static/polls/style.css",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/templates/polls/index.html",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "72d926b7a24bf855c7d379a5a791c543940abf61",
+          "numberOfFileAffected": 10,
+          "files": [
+            {
+              "filePath": "firstsite/__pycache__/urls.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/models.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/models.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/tests.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/urls.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/views.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/views.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/models.py",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/tests.py",
+              "lineAdded": 20,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "polls/views.py",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "ebf410f01570730dd5ab87d8090c5f3b63f621e6",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "polls/__pycache__/admin.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/views.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/templates/polls/detail.html",
+              "lineAdded": 12,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/templates/polls/results.html",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/urls.py",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "polls/views.py",
+              "lineAdded": 29,
+              "lineDeleted": 13
+            }
+          ]
+        },
+        {
+          "id": "cc635a2e2d4cea2c160e9d8c332437251c9747b8",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "firstsite/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/views.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/templates/polls/index.html",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/urls.py",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/views.py",
+              "lineAdded": 15,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "87832015f7ce370f0262ba8e89f14d8b9193dade",
+          "numberOfFileAffected": 16,
+          "files": [
+            {
+              "filePath": "firstsite/__pycache__/__init__.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/settings.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/urls.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/wsgi.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/__init__.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/admin.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/admin.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/apps.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/models.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/models.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/urls.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/views.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/admin.py",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "polls/migrations/__pycache__/0001_initial.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/migrations/__pycache__/__init__.cpython-36.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/models.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "add1e72de7855e6e344c0eebdbd1d154c162aad0",
+          "numberOfFileAffected": 8,
+          "files": [
+            {
+              "filePath": "firstsite/__pycache__/settings.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/admin.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/apps.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/models.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/migrations/0001_initial.py",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/migrations/__pycache__/0001_initial.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/migrations/__pycache__/__init__.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/models.py",
+              "lineAdded": 18,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "871a3c0f8a1138b7bd0b348ae8426b210d347685",
+          "numberOfFileAffected": 19,
+          "files": [
+            {
+              "filePath": "firstsite/__init__.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/__init__.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/settings.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/__pycache__/wsgi.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/urls.py",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "firstsite/wsgi.py",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "manage.py",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__init__.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/__init__.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/urls.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/__pycache__/views.cpython-37.pyc",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/admin.py",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/apps.py",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/migrations/__init__.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/models.py",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/tests.py",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/urls.py",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "polls/views.py",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "1de244bea2651f250a7306519b4a55d3a4276e91",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "__init__.py",
+          "filePath": "firstsite/__init__.py"
+        },
+        {
+          "fileId": "ffa2002e7b389390dcdbb14436f95be0a0565c1d",
+          "fileName": "__init__.cpython-36.pyc",
+          "filePath": "firstsite/__pycache__/__init__.cpython-36.pyc"
+        },
+        {
+          "fileId": "2a327c03548a8fcdb9a824f764794c5dd2be5fb1",
+          "fileName": "__init__.cpython-37.pyc",
+          "filePath": "firstsite/__pycache__/__init__.cpython-37.pyc"
+        },
+        {
+          "fileId": "3be14b8fb0b4d930566a8a7e6c1beaec3cec3f52",
+          "fileName": "settings.cpython-36.pyc",
+          "filePath": "firstsite/__pycache__/settings.cpython-36.pyc"
+        },
+        {
+          "fileId": "f1b77ef123d5ca2f444d5884fb4e926762264725",
+          "fileName": "settings.cpython-37.pyc",
+          "filePath": "firstsite/__pycache__/settings.cpython-37.pyc"
+        },
+        {
+          "fileId": "7d9e3c339dde1397421bdbf9c4627404969ac818",
+          "fileName": "settings_secret.cpython-37.pyc",
+          "filePath": "firstsite/__pycache__/settings_secret.cpython-37.pyc"
+        },
+        {
+          "fileId": "23fd4f3f08df7f6dfafeaf56acd75fc855aa0240",
+          "fileName": "urls.cpython-36.pyc",
+          "filePath": "firstsite/__pycache__/urls.cpython-36.pyc"
+        },
+        {
+          "fileId": "157c0094e0da1f008e084f18a9b648d808794752",
+          "fileName": "urls.cpython-37.pyc",
+          "filePath": "firstsite/__pycache__/urls.cpython-37.pyc"
+        },
+        {
+          "fileId": "d20382c807f481f8457489c6c0163963132dea7c",
+          "fileName": "wsgi.cpython-36.pyc",
+          "filePath": "firstsite/__pycache__/wsgi.cpython-36.pyc"
+        },
+        {
+          "fileId": "7047bd8b2500adb7b9453381c9c17535414dfb77",
+          "fileName": "wsgi.cpython-37.pyc",
+          "filePath": "firstsite/__pycache__/wsgi.cpython-37.pyc"
+        },
+        {
+          "fileId": "c6516343f89edb532ee7160409111c02749c3c7d",
+          "fileName": "settings.py",
+          "filePath": "firstsite/settings.py"
+        },
+        {
+          "fileId": "1ea24b3922661585ece426ee8d22292ced2a3a46",
+          "fileName": "urls.py",
+          "filePath": "firstsite/urls.py"
+        },
+        {
+          "fileId": "f751654b7b022f2250178641d9817abbee1e4a4d",
+          "fileName": "wsgi.py",
+          "filePath": "firstsite/wsgi.py"
+        },
+        {
+          "fileId": "c129dfebf72968e39cf13b02eaef2dda8811e928",
+          "fileName": "manage.py",
+          "filePath": "manage.py"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "__init__.py",
+          "filePath": "polls/__init__.py"
+        },
+        {
+          "fileId": "1d542ff325d966cf555f3e11e274848568196654",
+          "fileName": "__init__.cpython-36.pyc",
+          "filePath": "polls/__pycache__/__init__.cpython-36.pyc"
+        },
+        {
+          "fileId": "425a9a98331a365c190cf71e7dcedbcf4c677e84",
+          "fileName": "__init__.cpython-37.pyc",
+          "filePath": "polls/__pycache__/__init__.cpython-37.pyc"
+        },
+        {
+          "fileId": "2287a288f3a492d49324ef0ae9c72113ea55b1a1",
+          "fileName": "admin.cpython-36.pyc",
+          "filePath": "polls/__pycache__/admin.cpython-36.pyc"
+        },
+        {
+          "fileId": "8fa07051ac6408a7af8bcdda07d146b5e804b42d",
+          "fileName": "admin.cpython-37.pyc",
+          "filePath": "polls/__pycache__/admin.cpython-37.pyc"
+        },
+        {
+          "fileId": "da154e1e4133ae401a0477466348cd57aa3961fd",
+          "fileName": "apps.cpython-36.pyc",
+          "filePath": "polls/__pycache__/apps.cpython-36.pyc"
+        },
+        {
+          "fileId": "95bd01f2752bb0922bc966d11ef55a1f64a93e9c",
+          "fileName": "apps.cpython-37.pyc",
+          "filePath": "polls/__pycache__/apps.cpython-37.pyc"
+        },
+        {
+          "fileId": "9637e8aabbb047b98a3b4ece45f6ad9f12e1f2a9",
+          "fileName": "models.cpython-36.pyc",
+          "filePath": "polls/__pycache__/models.cpython-36.pyc"
+        },
+        {
+          "fileId": "9f6deb372e1782c4f450c64df6a9694d7322a8f8",
+          "fileName": "models.cpython-37.pyc",
+          "filePath": "polls/__pycache__/models.cpython-37.pyc"
+        },
+        {
+          "fileId": "c97d08e03076f597671051b4ec3b9b3f7481621f",
+          "fileName": "tests.cpython-36.pyc",
+          "filePath": "polls/__pycache__/tests.cpython-36.pyc"
+        },
+        {
+          "fileId": "07e8b85669ad82612a445441a243d18f135a5d69",
+          "fileName": "urls.cpython-36.pyc",
+          "filePath": "polls/__pycache__/urls.cpython-36.pyc"
+        },
+        {
+          "fileId": "dd81c4fb645e0ee362a27e57e66293dcb88c3d76",
+          "fileName": "urls.cpython-37.pyc",
+          "filePath": "polls/__pycache__/urls.cpython-37.pyc"
+        },
+        {
+          "fileId": "a22dc3f7ac165f15c400202b596202c0dd868653",
+          "fileName": "views.cpython-36.pyc",
+          "filePath": "polls/__pycache__/views.cpython-36.pyc"
+        },
+        {
+          "fileId": "2e0f262e004b88f7bfc2ede622701f9678f76855",
+          "fileName": "views.cpython-37.pyc",
+          "filePath": "polls/__pycache__/views.cpython-37.pyc"
+        },
+        {
+          "fileId": "92c786f0de111725b9862d004811e7676aff1297",
+          "fileName": "admin.py",
+          "filePath": "polls/admin.py"
+        },
+        {
+          "fileId": "d0f109e60e45b58bb52a9b638d0847a32f9c5313",
+          "fileName": "apps.py",
+          "filePath": "polls/apps.py"
+        },
+        {
+          "fileId": "079396be01225bc44f57e853f154004d0eaf38d6",
+          "fileName": "0001_initial.py",
+          "filePath": "polls/migrations/0001_initial.py"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "__init__.py",
+          "filePath": "polls/migrations/__init__.py"
+        },
+        {
+          "fileId": "ae628e147658694100d6ca1750ac9ea75eecc782",
+          "fileName": "0001_initial.cpython-36.pyc",
+          "filePath": "polls/migrations/__pycache__/0001_initial.cpython-36.pyc"
+        },
+        {
+          "fileId": "130c914fa256fdc5832e62901ec2f90ea9081028",
+          "fileName": "0001_initial.cpython-37.pyc",
+          "filePath": "polls/migrations/__pycache__/0001_initial.cpython-37.pyc"
+        },
+        {
+          "fileId": "c94e0835c1fc4999f12af484a6f6bbfaa9623696",
+          "fileName": "__init__.cpython-36.pyc",
+          "filePath": "polls/migrations/__pycache__/__init__.cpython-36.pyc"
+        },
+        {
+          "fileId": "04f8e1e0380132cbafbed576081069ca6b150613",
+          "fileName": "__init__.cpython-37.pyc",
+          "filePath": "polls/migrations/__pycache__/__init__.cpython-37.pyc"
+        },
+        {
+          "fileId": "ce4c8720a921e11a175cc598e68dcf1a07b18e17",
+          "fileName": "models.py",
+          "filePath": "polls/models.py"
+        },
+        {
+          "fileId": "c40cb9075cd7348c8fb5a0f9628896bc2f6572da",
+          "fileName": "style.css",
+          "filePath": "polls/static/polls/style.css"
+        },
+        {
+          "fileId": "938abea065832fd84d02486822e3bff3c008b4fb",
+          "fileName": "detail.html",
+          "filePath": "polls/templates/polls/detail.html"
+        },
+        {
+          "fileId": "f3d45591264811c29f75d3c4ec0616b45f92dfb2",
+          "fileName": "index.html",
+          "filePath": "polls/templates/polls/index.html"
+        },
+        {
+          "fileId": "b566809942d5b2444bdcb02b27dc2b7c6e0dd8f6",
+          "fileName": "results.html",
+          "filePath": "polls/templates/polls/results.html"
+        },
+        {
+          "fileId": "9793690b4ca433612ec6c136ddaee10019656b09",
+          "fileName": "tests.py",
+          "filePath": "polls/tests.py"
+        },
+        {
+          "fileId": "82a0f56de602fe08a0a5ee78db8dbfcc1a73ab4d",
+          "fileName": "urls.py",
+          "filePath": "polls/urls.py"
+        },
+        {
+          "fileId": "2d16956eb20262f273ae591e89b02ac309cd8b8d",
+          "fileName": "views.py",
+          "filePath": "polls/views.py"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/lydiahallie/github/django-tutorial/.gitignore"
+        }
+      ]
+    }
+  ]
+}
