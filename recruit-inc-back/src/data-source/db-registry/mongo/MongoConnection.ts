@@ -4,6 +4,7 @@ import { Logger } from '../../../Logger';
 
 const logger = new Logger();
 export class MongoConnection extends Connection {
+  private logger: Logger;
   private options = {
     useNewUrlParser: true,
     reconnectTries: Number.MAX_VALUE,
@@ -11,6 +12,7 @@ export class MongoConnection extends Connection {
   };
   constructor() {
     super();
+    this.logger = new Logger();
   }
 
   public setDatabaseURL(databaseURL: string): void {
@@ -71,6 +73,7 @@ export class MongoConnection extends Connection {
       )
       .then(() => {
         console.log('Connection to database established');
+        this.logAction(this.buildConnection.name, 'Connection Established');
       })
       .catch(error => {
         console.log("Can't connect to database");
@@ -103,8 +106,16 @@ export class MongoConnection extends Connection {
   public closeConnection(): any {
     try {
       mongoose.disconnect();
+      this.logAction(this.closeConnection.name, 'Disconnection successful');
     } catch (Exception) {
       console.log("Can't close connection");
+      logger.error({
+        class: 'MongoConnection',
+        method: this.closeConnection.name,
+        action: 'Attempt to disconnect',
+        params: {},
+        value: Exception,
+      });
     }
   }
   private buildConnectionObj(): any {
@@ -114,7 +125,7 @@ export class MongoConnection extends Connection {
         this.options
       )
       .then(() => {
-        console.log('Connection to database established');
+        this.logAction(this.buildConnectionObj.name, 'Connection Established');
         mongoose.connection.close();
       })
       .catch(error => {
@@ -130,5 +141,14 @@ export class MongoConnection extends Connection {
       });
 
     return tmpConn;
+  }
+
+  private logAction(methodName: string, message: string): void {
+    this.logger.info({
+      class: 'MongoConnections',
+      method: methodName,
+      action: message,
+      params: {},
+    });
   }
 }
