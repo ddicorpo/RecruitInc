@@ -18,7 +18,7 @@ To get this test to work:
 3) add NODE_ENV=production to .env
 4) Remove 'x' from in front of the 'describe'
 */
-xdescribe('Test mongo Applicant', () => {
+describe.only('Test mongo Applicant', () => {
   const newApplicant: IApplicantModel = {
     platformUsername: 'testUser',
     platformEmail: 'testUser@blah.com',
@@ -119,7 +119,7 @@ xdescribe('Test mongo Applicant', () => {
       });
   });
 
-  it('Test mongo Find all Applicant By Usertype', async () => {
+  it('Test mongo Find Applicant By Usertype', async () => {
     await applicantFinder.findByUserType(UserType.Candidate).then(doc => {
       let applicantsFound: IApplicantModel = doc;
       console.log(applicantsFound);
