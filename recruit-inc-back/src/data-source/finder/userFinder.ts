@@ -1,5 +1,6 @@
 import { UserModel } from '../schema/userSchema';
 import { IUserModel } from '../../domain/model/IUserModel';
+import { BaseFinder } from './BaseFinder';
 import { Types } from 'mongoose';
 /**
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/services/province.service.ts
@@ -12,42 +13,29 @@ import { Types } from 'mongoose';
  */
 
 export class UserFinder {
+
+    private baseFinder: BaseFinder = new BaseFinder(UserModel);
   /**
    * Find the user with the _id (string)
    * In mongo all object have a _id
    * @param _id
    */
   public findById(_id: string): Promise<IUserModel> {
-    return new Promise((resolve: any, reject: any) => {
-      UserModel.findOne(Types.ObjectId(_id), (error: any, obj: any) => {
-        if (error) reject(error.name + ': ' + error.message);
-        obj ? resolve(obj) : resolve();
-      });
-    });
+      return this.baseFinder.findById(_id);
   }
   /**
    * Search by Username
    * @param username
    */
   public findByUsername(username: string): Promise<IUserModel> {
-    return new Promise((resolve: any, reject: any) => {
-      UserModel.findOne({ username: username }, (error: any, obj: any) => {
-        if (error) reject(error.name + ': ' + error.message);
-        obj ? resolve(obj) : resolve();
-      });
-    });
+      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("username", username));
   }
   /**
    * Search by Email
    * @param email
    */
   public findByEmail(email: string): Promise<IUserModel> {
-    return new Promise((resolve: any, reject: any) => {
-      UserModel.findOne({ email: email }, (error: any, obj: any) => {
-        if (error) reject(error.name + ': ' + error.message);
-        obj ? resolve(obj) : resolve();
-      });
-    });
+      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("email", email));
   }
 
   /**
@@ -70,11 +58,6 @@ export class UserFinder {
    * Return all the table
    */
   public findAll(): Promise<IUserModel> {
-    return new Promise((resolve: any, reject: any) => {
-      UserModel.find({}, (error: any, obj: any) => {
-        if (error) reject(error.name + ': ' + error.message);
-        obj ? resolve(obj) : resolve();
-      });
-    });
+      return this.baseFinder.findAll();
   }
 }
