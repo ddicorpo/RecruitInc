@@ -3,7 +3,7 @@ import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/
 import { expect } from 'chai';
 import { IUserModel } from '../../src/domain/model/IUserModel';
 import { HRTDG } from '../../src/data-source/table-data-gateway/hrTDG';
-import { HRFinder } from '../../src/data-source/finder/hrFinder';
+import { HRFinder } from '../../src/data-source/finder/HRFinder';
 import { IHRModel } from '../../src/domain/model/IHRModel';
 import { UserTDG } from '../../src/data-source/table-data-gateway/userTDG';
 import { Types } from 'mongoose';
