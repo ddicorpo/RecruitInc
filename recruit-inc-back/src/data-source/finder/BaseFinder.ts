@@ -1,20 +1,25 @@
 import { Types } from 'mongoose';
 
 export class BaseFinder {
-    constructor() {}
 
-  public findById(item : any, _id: string): Promise<any> {
+    private model: any;
+
+    constructor(model: any) {
+        this.model = model;
+    }
+
+  public findById(_id: string): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
-      item.findOne(Types.ObjectId(_id), (error: any, obj: any) => {
+      this.model.findOne(Types.ObjectId(_id), (error: any, obj: any) => {
         if (error) reject(error.name + ': ' + error.message);
         obj ? resolve(obj) : resolve();
       });
     });
   }
 
-  public findOneBy(item: any, query: any): Promise<any>{
+  public findOneBy(query: any): Promise<any>{
     return new Promise((resolve: any, reject: any) => {
-      item.findOne(
+      this.model.findOne(
         query,
         (error: any, obj: any) => {
           if (error) reject(error.name + ': ' + error.message);
@@ -24,9 +29,9 @@ export class BaseFinder {
     });
   }
 
-  public findBy(item: any, query: any): Promise<any>{
+  public findBy(query: any): Promise<any>{
     return new Promise((resolve: any, reject: any) => {
-      item.find(
+      this.model.find(
         query,
         (error: any, obj: any) => {
           if (error) reject(error.name + ': ' + error.message);
@@ -36,12 +41,19 @@ export class BaseFinder {
     });
   }
 
-  public findAll(item: any): Promise<any> {
+  public findAll(): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
-      item.find({}, (error: any, obj: any) => {
+      this.model.find({}, (error: any, obj: any) => {
         if (error) reject(error.name + ': ' + error.message);
         obj ? resolve(obj) : resolve();
       });
     });
   }
+
+  public buildQuery(condition: string, value: any): any {
+      var query = {};
+      query[condition] = value;
+      return query;
+  }
+
 }
