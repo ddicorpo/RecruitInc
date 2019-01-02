@@ -3,7 +3,7 @@ import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/
 import { ApplicantTDG } from '../../src/data-source/table-data-gateway/applicantTDG';
 import { IApplicantModel } from '../../src/domain/model/IApplicantModel';
 import { UserType } from '../../src/domain/model/IApplicantModel';
-import { ApplicantFinder } from '../../src/data-source/finder/applicantFinder';
+import { ApplicantFinder } from '../../src/data-source/finder/ApplicantFinder';
 import { expect } from 'chai';
 import * as mongoose from 'mongoose';
 import { Platform } from '../../src/domain/model/IGitDataModel';
@@ -119,7 +119,7 @@ xdescribe('Test mongo Applicant', () => {
       });
   });
 
-  it('Test mongo Find all Applicant By Usertype', async () => {
+  it('Test mongo Find Applicant By Usertype', async () => {
     await applicantFinder.findByUserType(UserType.Candidate).then(doc => {
       let applicantsFound: IApplicantModel = doc;
       console.log(applicantsFound);

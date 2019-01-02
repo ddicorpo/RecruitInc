@@ -3,10 +3,11 @@ import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/
 import { expect } from 'chai';
 import { IUserModel } from '../../src/domain/model/IUserModel';
 import { HRTDG } from '../../src/data-source/table-data-gateway/hrTDG';
-import { HRFinder } from '../../src/data-source/finder/hrFinder';
+import { HRFinder } from '../../src/data-source/finder/HRFinder';
 import { IHRModel } from '../../src/domain/model/IHRModel';
 import { UserTDG } from '../../src/data-source/table-data-gateway/userTDG';
 import { Types } from 'mongoose';
+import * as mongoose from 'mongoose';
 /**
  * This is a integration test for HR,
  * the HR data is a User saved in a special table
@@ -30,13 +31,18 @@ xdescribe('Integration Test => HR ', () => {
   const hrFinder: HRFinder = new HRFinder();
   const userTDG: UserTDG = new UserTDG();
 
-  beforeEach(() => {
+  before(() => {
     // Establish connection
     let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
     // Start connection
     myFactory.getConnection();
     //Create user
-    userTDG.create(newUser);
+    userTDG.create(newUser, '5c2cbde77e11261104935eb7');
+  });
+
+  after(() => {
+    mongoose.connection.close();
   });
 
   it('Test mongo create HR user', async () => {
@@ -51,8 +57,10 @@ xdescribe('Integration Test => HR ', () => {
   it('Test mongo Find HR By Id', async () => {
     await hrFinder.findById(hrId).then(doc => {
       let HRFound: IHRModel = doc;
-      console.log('Return Email: ' + HRFound.userRef.email);
-      expect(newUser.email).to.equal(HRFound.userRef.email);
+      console.log(HRFound);
+      expect('5c2cbde77e11261104935eb7').to.equal(HRFound.userRef.toString());
+      //HRFound.userRef does not have an email property
+      //expect(newUser.email).to.equal(HRFound.userRef.email);
     });
   });
   it('Test mongo update HR', async () => {
@@ -67,5 +75,6 @@ xdescribe('Integration Test => HR ', () => {
     let deleteSuccess: boolean = await hrTDG.delete(hrId);
     //Then
     expect(deleteSuccess).to.be.equal(true);
+    await userTDG.delete('5c2cbde77e11261104935eb7');
   });
 });

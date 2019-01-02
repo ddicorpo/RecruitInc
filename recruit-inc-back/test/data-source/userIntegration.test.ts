@@ -2,9 +2,10 @@ import 'mocha';
 import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/MongoConnectionFactory';
 import { UserTDG } from '../../src/data-source/table-data-gateway/userTDG';
 import { IUserModel } from '../../src/domain/model/IUserModel';
-import { UserFinder } from '../../src/data-source/finder/userFinder';
+import { UserFinder } from '../../src/data-source/finder/UserFinder';
 import { expect } from 'chai';
 import { Types } from 'mongoose';
+import * as mongoose from 'mongoose';
 /**
  * This is an integration test user
  */
@@ -21,12 +22,17 @@ xdescribe('Integration Test => User', () => {
   };
   const userTDG: UserTDG = new UserTDG();
   const userFinder: UserFinder = new UserFinder();
-  beforeEach(() => {
+  before(() => {
     // Establish connection
     let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
     // Start connection
     myFactory.getConnection();
     // Reset database
+  });
+
+  after(() => {
+    mongoose.connection.close();
   });
 
   it('Test mongo create user', async () => {
