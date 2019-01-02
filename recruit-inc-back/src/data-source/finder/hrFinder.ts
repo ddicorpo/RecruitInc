@@ -1,5 +1,6 @@
 import { HRModel } from '../schema/hrSchema';
 import { IHRModel } from '../../domain/model/IHRModel';
+import { BaseFinder } from './BaseFinder';
 import { Types } from 'mongoose';
 
 /**
@@ -12,29 +13,20 @@ import { Types } from 'mongoose';
  * *************************************************************
  */
 export class HRFinder {
+    private baseFinder: BaseFinder = new BaseFinder(HRModel);
   /**
    * Finding HR by Id
    * @param _id
    */
   public findById(_id: string): Promise<IHRModel> {
-    return new Promise((resolve: any, reject: any) => {
-      HRModel.findOne(Types.ObjectId(_id), (error: any, obj: any) => {
-        if (error) reject(error.name + ': ' + error.message);
-        obj ? resolve(obj) : resolve();
-      });
-    });
+      return this.baseFinder.findById(_id);
   }
 
   /**
    * Getting all HR user
    */
   public findAll(): Promise<IHRModel> {
-    return new Promise((resolve: any, reject: any) => {
-      HRModel.find({}, (error: any, obj: any) => {
-        if (error) reject(error.name + ': ' + error.message);
-        obj ? resolve(obj) : resolve();
-      });
-    });
+      return this.baseFinder.findAll();
   }
 
   //TODO: Add needed method in a close future, e.g. FindByUsername
