@@ -49,7 +49,7 @@ export class HRTDG {
     try {
       return this.baseTDG.delete(Types.ObjectId(_id));
     } catch (Exception) {
-      throw new Error('Error while deleting user');
+      throw new Error('Error while deleting HR');
     }
   }
 }

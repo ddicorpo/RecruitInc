@@ -32,7 +32,7 @@ export class DataEntryTDG {
       const dataEntryModelToUpdate = new DataEntryModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), dataEntryModelToUpdate);
     } catch (Exception) {
-      throw new Error('Error while creating DataEntry');
+      throw new Error('Error while updating DataEntry');
     }
   }
 
@@ -40,7 +40,7 @@ export class DataEntryTDG {
     try {
       return this.baseTDG.delete(Types.ObjectId(_id));
     } catch (Exception) {
-      throw new Error('Error while creating DataEntry');
+      throw new Error('Error while deleting DataEntry');
     }
   }
 }

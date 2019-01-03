@@ -26,7 +26,7 @@ export class GitTDG {
       const GitModelToUpdate = new GitModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), GitModelToUpdate);
     } catch (Exception) {
-      throw new Error('Error while creating Git object');
+      throw new Error('Error while updating Git object');
     }
   }
 
@@ -34,7 +34,7 @@ export class GitTDG {
     try {
       return this.baseTDG.delete(Types.ObjectId(_id));
     } catch (Exception) {
-      throw new Error('Error while creating Git object');
+      throw new Error('Error while deleting Git object');
     }
   }
 }

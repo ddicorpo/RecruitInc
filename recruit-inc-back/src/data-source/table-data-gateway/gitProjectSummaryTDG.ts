@@ -10,7 +10,10 @@ export class GitProjectSummaryTDG {
     this.baseTDG = new BaseTDG(GitProjectSummaryModel);
   }
 
-  public create(gitProjectSummaryAttr: IGitProjectSummary, id?: string): Promise<IGitProjectSummary> {
+  public create(
+    gitProjectSummaryAttr: IGitProjectSummary,
+    id?: string
+  ): Promise<IGitProjectSummary> {
     gitProjectSummaryAttr._id = null;
     if (id != null) {
       gitProjectSummaryAttr._id = Types.ObjectId(id);
@@ -18,21 +21,34 @@ export class GitProjectSummaryTDG {
       gitProjectSummaryAttr._id = Types.ObjectId();
     }
 
-    const newGitProjectSummaryModel = new GitProjectSummaryModel(gitProjectSummaryAttr);
+    const newGitProjectSummaryModel = new GitProjectSummaryModel(
+      gitProjectSummaryAttr
+    );
 
     try {
-      return this.baseTDG.create(newGitProjectSummaryModel, gitProjectSummaryAttr);
+      return this.baseTDG.create(
+        newGitProjectSummaryModel,
+        gitProjectSummaryAttr
+      );
     } catch (Exception) {
       throw new Error('Error while creating GitProjectSummary');
     }
   }
 
-  public update(_id: string, updatedValue: IGitProjectSummary): Promise<boolean> {
+  public update(
+    _id: string,
+    updatedValue: IGitProjectSummary
+  ): Promise<boolean> {
     try {
-      const gitProjectSummaryModelToUpdate = new GitProjectSummaryModel(updatedValue);
-      return this.baseTDG.update(Types.ObjectId(_id), gitProjectSummaryModelToUpdate);
+      const gitProjectSummaryModelToUpdate = new GitProjectSummaryModel(
+        updatedValue
+      );
+      return this.baseTDG.update(
+        Types.ObjectId(_id),
+        gitProjectSummaryModelToUpdate
+      );
     } catch (Exception) {
-      throw new Error('Error while creating GitProjectSummary');
+      throw new Error('Error while updating GitProjectSummary');
     }
   }
 

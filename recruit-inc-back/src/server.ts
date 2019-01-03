@@ -8,9 +8,9 @@ const DEFAULT_TIMEOUT: number = parseInt(process.env.DEFAULT_TIMEOUT);
  */
 function connectToDatabase(): void {
   console.log('Connecting to database ');
-  let r: MongoConnectionFactory = new MongoConnectionFactory();
-  r.defaultInitialization();
-  r.getConnection();
+  let mongoConn: MongoConnectionFactory = new MongoConnectionFactory();
+  mongoConn.defaultInitialization();
+  mongoConn.getConnection();
 }
 
 var server = app.listen(PORT, () => {

@@ -43,7 +43,7 @@ export class UserTDG {
       const userModelToUpdate = new UserModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), userModelToUpdate);
     } catch (Exception) {
-      throw new Error('Error while creating User');
+      throw new Error('Error while updating User');
     }
   }
 
@@ -51,7 +51,7 @@ export class UserTDG {
     try {
       return this.baseTDG.delete(Types.ObjectId(_id));
     } catch (Exception) {
-      throw new Error('Error while creating User');
+      throw new Error('Error while deleting User');
     }
   }
 }

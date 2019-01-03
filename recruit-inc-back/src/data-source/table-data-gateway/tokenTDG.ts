@@ -26,7 +26,7 @@ export class TokenTDG {
       const TokenModelToUpdate = new TokenModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), TokenModelToUpdate);
     } catch (Exception) {
-      throw new Error('Error while creating token object');
+      throw new Error('Error while updating token object');
     }
   }
 
@@ -34,7 +34,7 @@ export class TokenTDG {
     try {
       return this.baseTDG.delete(Types.ObjectId(_id));
     } catch (Exception) {
-      throw new Error('Error while creating token object');
+      throw new Error('Error while deleting token object');
     }
   }
 }

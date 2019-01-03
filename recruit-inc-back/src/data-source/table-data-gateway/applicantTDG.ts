@@ -26,7 +26,7 @@ export class ApplicantTDG {
       const ApplicantModelToUpdate = new ApplicantModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), ApplicantModelToUpdate);
     } catch (Exception) {
-      throw new Error('Error while creating Applicant');
+      throw new Error('Error while updating Applicant');
     }
   }
 
@@ -34,7 +34,7 @@ export class ApplicantTDG {
     try {
       return this.baseTDG.delete(Types.ObjectId(_id));
     } catch (Exception) {
-      throw new Error('Error while creating Applicant');
+      throw new Error('Error while delete Applicant');
     }
   }
 }

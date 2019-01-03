@@ -26,7 +26,7 @@ export class GitDataTDG {
       const GitDataModelToUpdate = new GitDataModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), GitDataModelToUpdate);
     } catch (Exception) {
-      throw new Error('Error while creating GitData');
+      throw new Error('Error while updating GitData');
     }
   }
 
@@ -34,7 +34,7 @@ export class GitDataTDG {
     try {
       return this.baseTDG.delete(Types.ObjectId(_id));
     } catch (Exception) {
-      throw new Error('Error while creating GitData');
+      throw new Error('Error while deleting GitData');
     }
   }
 }
