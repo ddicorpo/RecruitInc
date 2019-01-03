@@ -5,7 +5,7 @@ import { DataEntryTDG } from '../../src/data-source/table-data-gateway/dataEntry
 import { GitProjectSummaryTDG } from '../../src/data-source/table-data-gateway/gitProjectSummaryTDG';
 import { IGitDataModel } from '../../src/domain/model/IGitDataModel';
 import { Platform } from '../../src/domain/model/IGitDataModel';
-import { GitDataFinder } from '../../src/data-source/finder/gitDataFinder';
+import { GitDataFinder } from '../../src/data-source/finder/GitDataFinder';
 import { IDataEntry } from '../../src/matching-algo/data-model/input-model/IDataEntry';
 import { IGitProjectSummary } from '../../src/matching-algo/data-model/output-model/IGitProjectSummary';
 import { expect } from 'chai';
