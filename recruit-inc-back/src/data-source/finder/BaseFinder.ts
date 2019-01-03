@@ -1,95 +1,79 @@
-import { Logger } from '../../Logger';
-import { Types } from 'mongoose';
+import {Logger} from '../../Logger';
+import {Types} from 'mongoose';
 
 export class BaseFinder {
-  private model: any;
-  private logger: Logger;
-  constructor(model: any) {
-    this.model = model;
-    this.logger = new Logger();
-  }
+    private model: any;
+    private logger: Logger;
 
-  public findById(_id: string): Promise<any> {
-    return new Promise((resolve: any, reject: any) => {
-      this.model.findOne(Types.ObjectId(_id), (error: any, obj: any) => {
+    constructor(model: any) {
+        this.model = model;
+        this.logger = new Logger();
+        this.errorHandler = this.errorHandler.bind(this);
+    }
+
+    private errorHandler(error: any, obj: any, name: string, resolve: any, reject: any) {
         if (error) {
-          this.logActionFailure(this.findById.name, error.name, error.message);
-          reject(error.name + ': ' + error.message);
+            this.logActionFailure(name, error.name, error.message);
+            reject(error.name + ': ' + error.message);
         } else {
-          this.logActionCompleted(this.findBy.name);
-          obj ? resolve(obj) : resolve();
+            this.logActionCompleted(name);
+            obj ? resolve(obj) : resolve();
         }
-      });
-    });
-  }
+    }
 
-  public findOneBy(query: any): Promise<any> {
-    return new Promise((resolve: any, reject: any) => {
-      this.model.findOne(query, (error: any, obj: any) => {
-        if (error) {
-          this.logActionFailure(this.findOneBy.name, error.name, error.message);
-          reject(error.name + ': ' + error.message);
-        } else {
-          this.logActionCompleted(this.findOneBy.name);
-          obj ? resolve(obj) : resolve();
-        }
-      });
-    });
-  }
+    public findById(_id: string): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            const findByIdErrorHandler: any = (error: any, obj: any) => this.errorHandler(error, obj, this.findById.name, resolve, reject);
+            this.model.findOne(Types.ObjectId(_id), findByIdErrorHandler);
+        });
+    }
 
-  public findBy(query: any): Promise<any> {
-    return new Promise((resolve: any, reject: any) => {
-      this.model.find(query, (error: any, obj: any) => {
-        if (error) {
-          this.logActionFailure(this.findBy.name, error.name, error.message);
-          reject(error.name + ': ' + error.message);
-        } else {
-          this.logActionCompleted(this.findBy.name);
-          obj ? resolve(obj) : resolve();
-        }
-      });
-    });
-  }
+    public findOneBy(query: any): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            const findOneByErrorHandler: any = (error: any, obj: any) => this.errorHandler(error, obj, this.findOneBy.name, resolve, reject);
+            this.model.findOne(query, findOneByErrorHandler);
+        });
+    }
 
-  public findAll(): Promise<any> {
-    return new Promise((resolve: any, reject: any) => {
-      this.model.find({}, (error: any, obj: any) => {
-        if (error) {
-          this.logActionFailure(this.findAll.name, error.name, error.message);
-          reject(error.name + ': ' + error.message);
-        } else {
-          this.logActionCompleted(this.findAll.name);
-          obj ? resolve(obj) : resolve();
-        }
-      });
-    });
-  }
+    public findBy(query: any): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            const findByErrorHandler: any = (error: any, obj: any) => this.errorHandler(error, obj, this.findBy.name, resolve, reject);
+            this.model.find(query, findByErrorHandler);
+        });
+    }
 
-  public buildQuery(condition: string, value: any): any {
-    var query = {};
-    query[condition] = value;
-    return query;
-  }
+    public findAll(): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            const findAllErrorHandler: any = (error: any, obj: any) => this.errorHandler(error, obj, this.findAll.name, resolve, reject);
+            this.model.find({}, findAllErrorHandler);
+        });
+    }
 
-  private logActionCompleted(methodName: string): void {
-    this.logger.info({
-      class: this.model.name + ' Model',
-      method: methodName,
-      action: 'Transaction Completed',
-      params: {},
-    });
-  }
+    public buildQuery(condition: string, value: any): any {
+        var query = {};
+        query[condition] = value;
+        return query;
+    }
 
-  private logActionFailure(
-    methodName: string,
-    errorName: string,
-    errorDesc: string
-  ): void {
-    this.logger.info({
-      class: this.model.name + ' Model',
-      method: methodName,
-      action: 'Transaction Fails reason: ' + errorName + ' desc: ' + errorDesc,
-      params: {},
-    });
-  }
+    private logActionCompleted(methodName: string): void {
+        this.logger.info({
+            class: this.model.name + ' Model',
+            method: methodName,
+            action: 'Transaction Completed',
+            params: {},
+        });
+    }
+
+    private logActionFailure(
+        methodName: string,
+        errorName: string,
+        errorDesc: string
+    ): void {
+        this.logger.info({
+            class: this.model.name + ' Model',
+            method: methodName,
+            action: 'Transaction Fails reason: ' + errorName + ' desc: ' + errorDesc,
+            params: {},
+        });
+    }
 }
