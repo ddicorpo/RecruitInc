@@ -1,0 +1,2860 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "kama-angularjs-module",
+      "owner": "Hadi290",
+      "applicantCommits": [
+        {
+          "id": "dab3e5aebac2fe1639ad7b604bebe669badae365",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.html",
+              "lineAdded": 7,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "4a832e366aaafbeaee1e7fde687dd5349e4e8e96",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/services/tools.service.js",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "6a883442d5bcc57539f7ee9b959b09e84294330b",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "examples/pages/directives/prevent/prevent.html",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/prevent/prevent.directive.js",
+              "lineAdded": 11,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "d12eb90de5518835cf364b958c934e21bade4140",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/prevent/prevent.directive.js",
+              "lineAdded": 7,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "6b2f42f7d48620324043bce5654bc47315194a0a",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/services/authentication.service.js",
+              "lineAdded": 4,
+              "lineDeleted": 13
+            }
+          ]
+        },
+        {
+          "id": "2ea282be1dc64f19f0b3d9b66c19a29f7623e8e8",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "60d6b165da46af1cd8b5b51db8d0336c58cb27f3",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "examples/pages/directives/grid/grid.controller.js",
+              "lineAdded": 64,
+              "lineDeleted": 51
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 19,
+              "lineDeleted": 7
+            }
+          ]
+        },
+        {
+          "id": "5e65ca5ee594248022b222271abcd617d9a6e60d",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 4,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "c3ea75e8052b507853d5136857e734001873c981",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/pages/directives/checkboxes/checkboxes.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/checkboxes/checkboxes.directive.html",
+              "lineAdded": 7,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/directives/checkboxes/checkboxes.directive.js",
+              "lineAdded": 4,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "047ae8d8230f137a350ba56b2449332ec344f693",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/checkboxes/checkboxes.directive.js",
+              "lineAdded": 4,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "42f421f80a5ae1b404926cc8c8a6a0b9aaf19a0f",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/pages/directives/display-jalali/display-jalali.controller.js",
+              "lineAdded": 12,
+              "lineDeleted": 11
+            },
+            {
+              "filePath": "examples/pages/directives/display-jalali/display-jalali.html",
+              "lineAdded": 25,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/services/tools.service.js",
+              "lineAdded": 12,
+              "lineDeleted": 5
+            }
+          ]
+        },
+        {
+          "id": "cbc0cc1913b6dfad00406b41b274f3547a39058d",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "src/directives/checkboxes/checkboxes.directive.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid-sort/grid-sort.directive.html",
+              "lineAdded": 7,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/styles/grid.scss",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "5d1b3b3cc012664bbcbcadf5f332f26a4988698b",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "src/kama-angularjs.module.js",
+              "lineAdded": 0,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/services/ajax-multi.service.js",
+              "lineAdded": 0,
+              "lineDeleted": 63
+            },
+            {
+              "filePath": "src/services/ajax.service.js",
+              "lineAdded": 0,
+              "lineDeleted": 60
+            }
+          ]
+        },
+        {
+          "id": "2f39e47b39de827a9a76585b1422a0c7fdacd82b",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "examples/pages/directives/grid/grid.html",
+              "lineAdded": 28,
+              "lineDeleted": 29
+            },
+            {
+              "filePath": "src/directives/grid-sort/grid-sort.directive.html",
+              "lineAdded": 78,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/grid-sort/grid-sort.directive.js",
+              "lineAdded": 66,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/kama-angularjs.module.js",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "c698934a667296caa37951ea96148a94a858b561",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/checkboxes/checkboxes.directive.js",
+              "lineAdded": 9,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "c7c9e2915504f06a00a6afc04af86a5f18160420",
+          "numberOfFileAffected": 12,
+          "files": [
+            {
+              "filePath": "examples/app.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/index.html",
+              "lineAdded": 159,
+              "lineDeleted": 90
+            },
+            {
+              "filePath": "examples/pages/directives/checkboxes/checkboxes.controller.js",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/checkboxes/checkboxes.html",
+              "lineAdded": 57,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 1285,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 5,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/directives/checkboxes/checkboxes.directive.html",
+              "lineAdded": 80,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/checkboxes/checkboxes.directive.js",
+              "lineAdded": 55,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/kama-angularjs.module.js",
+              "lineAdded": 62,
+              "lineDeleted": 60
+            },
+            {
+              "filePath": "src/styles/checkboxes.scss",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/style.scss",
+              "lineAdded": 8,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "webpack.config.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "e67791418ce57c59e721aff23a8f2e3c5f231ed6",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/authorization/permission.directive.js",
+              "lineAdded": 0,
+              "lineDeleted": 22
+            },
+            {
+              "filePath": "src/directives/permission/permission.directive.js",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/kama-angularjs.module.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "b9016d6d96264989aedc60396f185698e777ae96",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/services/tools.service.js",
+              "lineAdded": 508,
+              "lineDeleted": 317
+            }
+          ]
+        },
+        {
+          "id": "779fe419fbb9abea8982808ab5443ad42a315674",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/multi-select/multi-select.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "130f04e504f8b23efe49d57ad98077013dbbdf75",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "src/directives/grid/grid.directive.html",
+              "lineAdded": 10,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 19,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "src/styles/grid.scss",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "9aa2d57ac5a6d60b808fa929afe1c114230ea42a",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.html",
+              "lineAdded": 163,
+              "lineDeleted": 78
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 47,
+              "lineDeleted": 23
+            }
+          ]
+        },
+        {
+          "id": "ef33e2de9e863731cd712c9b7de6c5674b23ba6d",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "examples/pages/directives/select/select.controller.js",
+              "lineAdded": 1,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "a05c3d2e054f28bf2d4966e41e69fd73d97b7f1e",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/services/auth-interceptor.service.js",
+              "lineAdded": 32,
+              "lineDeleted": 61
+            }
+          ]
+        },
+        {
+          "id": "fb7700361628506ffacc52d6f9fd1ba377b28254",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/pages/directives/grid/grid.controller.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 12,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "7b4b575e5ba60297370db188b3b8acb57b504db3",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "examples/pages/directives/multi-select/multi-select.controller.js",
+              "lineAdded": 5,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "examples/pages/directives/multi-select/multi-select.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/multi-select/multi-select.directive.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/multi-select/multi-select.directive.js",
+              "lineAdded": 12,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "e61ba60bd84505c1ae8a74f6ab9f837ccf39bda3",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/pages/directives/select/select.controller.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/select/select.directive.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 12,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "1a3a696998144bd75701c172ffc54637b0ae7724",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/read-more/read-more.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "b29145d9ff325c1d9568612db83f401d19ecccdc",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "5051675ce9ae691db02bcd7bc24df53a08b4e5b4",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 154,
+              "lineDeleted": 271
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "0e23527a3c2ff9a4d8fd6592eec5a9487aec5bdd",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/pages/directives/grid/grid.controller.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "webpack.config.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "3319b15ee9ec3e54aaf99c1983a3d6b63d1d6fce",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 4,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "5f212bd01895ab97b5a7c22e8aa3f3d1fc6db9b7",
+          "numberOfFileAffected": 24,
+          "files": [
+            {
+              "filePath": "src/directives/authorization/permission.directive.js",
+              "lineAdded": 17,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "src/directives/autofocus/autofocus.directive.js",
+              "lineAdded": 12,
+              "lineDeleted": 10
+            },
+            {
+              "filePath": "src/directives/display-enum/display-enum.directive.html",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/display-enum/display-enum.directive.js",
+              "lineAdded": 15,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "src/directives/display-jalali/display-jalali.directive.html",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/display-jalali/display-jalali.directive.js",
+              "lineAdded": 14,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "src/directives/error/erro.directive.html",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/error/error.directive.js",
+              "lineAdded": 8,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "src/directives/format-view/format-view.directive.js",
+              "lineAdded": 43,
+              "lineDeleted": 57
+            },
+            {
+              "filePath": "src/directives/global/global.directive.html",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/global/global.directive.js",
+              "lineAdded": 0,
+              "lineDeleted": 36
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.html",
+              "lineAdded": 20,
+              "lineDeleted": 18
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 244,
+              "lineDeleted": 285
+            },
+            {
+              "filePath": "src/directives/input-number/input-number.directive.js",
+              "lineAdded": 36,
+              "lineDeleted": 42
+            },
+            {
+              "filePath": "src/directives/input/input.directive.html",
+              "lineAdded": 6,
+              "lineDeleted": 18
+            },
+            {
+              "filePath": "src/directives/input/input.directive.js",
+              "lineAdded": 65,
+              "lineDeleted": 86
+            },
+            {
+              "filePath": "src/directives/multi-select/multi-select.directive.html",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/multi-select/multi-select.directive.js",
+              "lineAdded": 104,
+              "lineDeleted": 100
+            },
+            {
+              "filePath": "src/directives/prevent/prevent.directive.js",
+              "lineAdded": 55,
+              "lineDeleted": 46
+            },
+            {
+              "filePath": "src/directives/read-more/read-more.directive.html",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/read-more/read-more.directive.js",
+              "lineAdded": 29,
+              "lineDeleted": 23
+            },
+            {
+              "filePath": "src/directives/select/select.directive.html",
+              "lineAdded": 3,
+              "lineDeleted": 27
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 254,
+              "lineDeleted": 238
+            },
+            {
+              "filePath": "src/kama-angularjs.module.js",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "de5e210cc34065f093b05d85dfe4797585b37ae1",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 1555,
+              "lineDeleted": 1392
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/attachment/attachment.directive.html",
+              "lineAdded": 44,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 152,
+              "lineDeleted": 148
+            },
+            {
+              "filePath": "webpack.config.js",
+              "lineAdded": 58,
+              "lineDeleted": 47
+            }
+          ]
+        },
+        {
+          "id": "b5dc1f9bdaea947ee35c468a90072bb8fad29948",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "examples/pages/directives/select/select.controller.js",
+              "lineAdded": 45,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "examples/pages/directives/select/select.html",
+              "lineAdded": 14,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 112,
+              "lineDeleted": 27
+            },
+            {
+              "filePath": "src/styles/select.scss",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "daa3ecd20fbfe5f61c93ecfb0b86ce7df09b94f6",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 5,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "407e89f1ea198fdcc54ecacde5bf5b4ebc951311",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/services/alert.service.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "98dbc7f2a31c6fa84d931f59c849d93e7a96e0c8",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/services/http.service.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "b116d41334316b998639f86a628fcd0304d923d6",
+          "numberOfFileAffected": 11,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/app.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/index.html",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/multi-select/multi-select.controller.js",
+              "lineAdded": 49,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/multi-select/multi-select.html",
+              "lineAdded": 38,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/multi-select/multi-select.directive.html",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/multi-select/multi-select.directive.js",
+              "lineAdded": 113,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/kama-angularjs.module.js",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/object.service.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "b46bd4ec645452af57f8002b06abf23bce27bdc2",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "examples/index.html",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/select/select.controller.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 20,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 18,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "936198fd12c251618202fbfd116b3b5d91d8b266",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/filters/display-money.filter.js",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/kama-angularjs.module.js",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "ae26eb4d313492f56d943fe2046b3f121042d58c",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 4,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "550092fce502730e0f6b01d0ad14adb70faaceb4",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/services/tools.service.js",
+              "lineAdded": 4,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "09c0e910d193aba15e354051398c9c1eb828dc67",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 6,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "74b9ed298a84765429fa78f4f1b5f938eabffc9c",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "9ee15705cacfcd3d003d30acad16ef312fdddaf7",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/services/tools.service.js",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "c8b515067435cf79a82706ffdd072d9445e24489",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 4,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "602c260aaa8e33330538cd262dd3404fd0bd1063",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/services/loading.service.js",
+              "lineAdded": 4,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "e2e72fe3bb2e771d15ff2d1802ae24089591a761",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "6a93b2a20dca15493de21c1006071c83ff53652a",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/pages/directives/grid/grid.controller.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 5,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "b508500cc7f2bb7ff3441f89c64d8a59e967b1fb",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 7,
+              "lineDeleted": 5
+            }
+          ]
+        },
+        {
+          "id": "c9a7bbe158e909358dc2c8ce249cb95b2ac4f176",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 7,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/styles/attachment.scss",
+              "lineAdded": 18,
+              "lineDeleted": 12
+            }
+          ]
+        },
+        {
+          "id": "673b9f01f6a5202135e819577c97380b68fe51e0",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "5d7e6a74a79f8053f20a17bc9d6047def0843184",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "908ca3541292cbef8078ace29a5cac5872e53f1a",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 6,
+              "lineDeleted": 6
+            }
+          ]
+        },
+        {
+          "id": "c8485adc449a866f943a86ffbeab1ea88d3033b4",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "a0b01dd1ea33fbe99f985724629acc65fd3c8549",
+          "numberOfFileAffected": 7,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/pages/directives/grid/grid.controller.js",
+              "lineAdded": 27,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "examples/pages/directives/grid/grid.html",
+              "lineAdded": 12,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.html",
+              "lineAdded": 2,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 27,
+              "lineDeleted": 8
+            }
+          ]
+        },
+        {
+          "id": "62fb1f582af382df1f28d649c889bdf054df17c8",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/services/tools.service.js",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "9a8387ba7b1a57175d2da5940376743c1e5ec20b",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "1cbe61494f3368c1c4c80fda7c2cdd34873db64a",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/display-enum/display-enum.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "7defbbab0bdec11bbb56b8d9f982573ecff49cdf",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "248b8d81803fc7df5835d678817a0b31c85f4ab6",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "58fa68a04c2d41d5e7effccf15f33808f5d2b313",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 7,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "6af35c04d4893b48eb732f4076700c5bc965de0e",
+          "numberOfFileAffected": 9,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/app.js",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/index.html",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/filters/trust-as-html/trust-as-html.html",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/filters/trust-as-html.filter.js",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/kama-angularjs.module.js",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "f7928e30f36956500ee43165391a4b1e70df25d2",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/styles/grid.scss",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "d5ad4f46601ac6e38dfd007a0bbf783f6f95e660",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/services/object.service.js",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "63aa5d7cb73f5ed55dd8f46624e94550936dfd43",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "examples/pages/directives/attachment/attachment.controller.js",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "examples/pages/directives/attachment/attachment.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "b177aef4be37bdcec97fa11ac416bdf6d2246554",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "examples/pages/directives/attachment/attachment.controller.js",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "69feaa9678e4e925b14d98689f9a90d4f97942aa",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "c180e045cfab2f9d735ca41a9f2fe98bf45e1980",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "examples/pages/directives/attachment/attachment.controller.js",
+              "lineAdded": 17,
+              "lineDeleted": 17
+            },
+            {
+              "filePath": "examples/pages/directives/attachment/attachment.html",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "0b8dfb73bd0b196863ee6693bff0bf4d276555cf",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 10,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "801330bec04c95d032df4074646033b26e4dfc98",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "8fd0a1f1f373d27ac664026509c5b54c394d2101",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "b1c758434379502583cf08744947bd23b2f6ccb6",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "c3ff9ea155c3f86113c216264bd5ae6a80e38e2d",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "src/services/auth-interceptor.service.js",
+              "lineAdded": 9,
+              "lineDeleted": 8
+            }
+          ]
+        },
+        {
+          "id": "fe9e7ad31a42394f2fd2ee492b24cac45c78c9e7",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "package-lock.json",
+              "lineAdded": 7617,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/services/authentication.service.js",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "webpack.config.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "586f766328e8b509cf1cc183b7a77dde59f0cad6",
+          "numberOfFileAffected": 85,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 70,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "LICENSE",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.css",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "dist/kama-angularjs.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples.js",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/app.js",
+              "lineAdded": 33,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/index.html",
+              "lineAdded": 117,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/attachment/attachment.controller.js",
+              "lineAdded": 89,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/attachment/attachment.html",
+              "lineAdded": 27,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/autofocus/autofocus.html",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/display-jalali/display-jalali.controller.js",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/display-jalali/display-jalali.html",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/error/error.controller.js",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/error/error.html",
+              "lineAdded": 54,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/format-view/format-view.controller.js",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/format-view/format-view.html",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/grid/grid.controller.js",
+              "lineAdded": 34,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/grid/grid.html",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/input/input.controller.js",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/input/input.html",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/prevent/prevent.html",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/read-more/read-more.html",
+              "lineAdded": 24,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/select/select.controller.js",
+              "lineAdded": 41,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/directives/select/select.html",
+              "lineAdded": 38,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/home.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/no-example.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/obsolete.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/alert/alert.controller.js",
+              "lineAdded": 62,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/alert/alert.html",
+              "lineAdded": 125,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/enum/custom-enum.service.js",
+              "lineAdded": 12,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/enum/enum.controller.js",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/enum/enum.html",
+              "lineAdded": 77,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/http/custom-http.service.js",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/http/http.controller.js",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/http/http.html",
+              "lineAdded": 120,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/loading/loading.controller.js",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "examples/pages/services/loading/loading.html",
+              "lineAdded": 66,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 43,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/attachment/attachment.directive.js",
+              "lineAdded": 140,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/authorization/permission.directive.js",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/autofocus/autofocus.directive.js",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/display-enum/display-enum.directive.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/display-enum/display-enum.directive.js",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/display-jalali/display-jalali.directive.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/display-jalali/display-jalali.directive.js",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/error/error.directive.js",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/format-view/format-view.directive.js",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/global/global.directive.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/global/global.directive.js",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.html",
+              "lineAdded": 89,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/grid/grid.directive.js",
+              "lineAdded": 282,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/input-number/input-number.directive.html",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/input-number/input-number.directive.js",
+              "lineAdded": 50,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/input/input.directive.html",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/input/input.directive.js",
+              "lineAdded": 96,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/prevent/prevent.directive.js",
+              "lineAdded": 52,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/read-more/read-more.directive.html",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/read-more/read-more.directive.js",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/select/select.directive.html",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/directives/select/select.directive.js",
+              "lineAdded": 151,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/kama-angularjs.module.js",
+              "lineAdded": 62,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/ajax-multi.service.js",
+              "lineAdded": 63,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/ajax.service.js",
+              "lineAdded": 60,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/alert.service.js",
+              "lineAdded": 94,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/auth-interceptor.service.js",
+              "lineAdded": 62,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/auth.service.js",
+              "lineAdded": 99,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/authentication.service.js",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/enum.service.js",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/global.service.js",
+              "lineAdded": 63,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/http.service.js",
+              "lineAdded": 31,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/loading.service.js",
+              "lineAdded": 35,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/model.service.js",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/object.service.js",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/services/tools.service.js",
+              "lineAdded": 348,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/attachment.scss",
+              "lineAdded": 62,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/error.scss",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/grid.scss",
+              "lineAdded": 146,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/input-number.scss",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/input.scss",
+              "lineAdded": 78,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/loading.scss",
+              "lineAdded": 132,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/select.scss",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/style.scss",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles/variables.scss",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "webpack.config.js",
+              "lineAdded": 56,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "2355e14e6a0ab747ab1b5e7635ea2a48834c3577",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "27e46526f48381e19e6e8bb989e374d78131a575",
+          "fileName": "LICENSE",
+          "filePath": "LICENSE"
+        },
+        {
+          "fileId": "bad2705eff6603cd188d516cc2c3ce7d149efbc5",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "261df5736854766b4b1adc69488e29e58cfae52a",
+          "fileName": "kama-angularjs.min.css",
+          "filePath": "dist/kama-angularjs.min.css"
+        },
+        {
+          "fileId": "298038c2175f41e364fac9804e5ba58dacde90bc",
+          "fileName": "kama-angularjs.min.js",
+          "filePath": "dist/kama-angularjs.min.js"
+        },
+        {
+          "fileId": "39919756947a90f5b4015ffcf755009edf6d4b91",
+          "fileName": "examples.js",
+          "filePath": "examples.js"
+        },
+        {
+          "fileId": "02be2c0f87b02c2f6eaa4c2d91064252fc41ce62",
+          "fileName": "app.js",
+          "filePath": "examples/app.js"
+        },
+        {
+          "fileId": "435e48e7ce57eba30859d3f608eb3b766226021c",
+          "fileName": "index.html",
+          "filePath": "examples/index.html"
+        },
+        {
+          "fileId": "c20152a5dbb4f2e33ef17876e3bdbbacf89571f5",
+          "fileName": "attachment.controller.js",
+          "filePath": "examples/pages/directives/attachment/attachment.controller.js"
+        },
+        {
+          "fileId": "e0dad1b1aae653c7dec0974d0e18778ba0bdb68b",
+          "fileName": "attachment.html",
+          "filePath": "examples/pages/directives/attachment/attachment.html"
+        },
+        {
+          "fileId": "76b79390bf8ed4616a7f0aa922ab40d5a0eaf9be",
+          "fileName": "autofocus.html",
+          "filePath": "examples/pages/directives/autofocus/autofocus.html"
+        },
+        {
+          "fileId": "3f6687af14ba07c1c62a250a17f230fae373aece",
+          "fileName": "checkboxes.controller.js",
+          "filePath": "examples/pages/directives/checkboxes/checkboxes.controller.js"
+        },
+        {
+          "fileId": "ca539e826fab839d9ac394af5dbfb8eb82314403",
+          "fileName": "checkboxes.html",
+          "filePath": "examples/pages/directives/checkboxes/checkboxes.html"
+        },
+        {
+          "fileId": "716254b4a80b3f6fbdf12631e9cf65f2e5296a23",
+          "fileName": "display-jalali.controller.js",
+          "filePath": "examples/pages/directives/display-jalali/display-jalali.controller.js"
+        },
+        {
+          "fileId": "19b6ad7041c47d966196f4a4f3eabefc66199f70",
+          "fileName": "display-jalali.html",
+          "filePath": "examples/pages/directives/display-jalali/display-jalali.html"
+        },
+        {
+          "fileId": "2418b356a984df6314e5e6119c7625d556e52ece",
+          "fileName": "error.controller.js",
+          "filePath": "examples/pages/directives/error/error.controller.js"
+        },
+        {
+          "fileId": "c7f3e8ebee0d2b522aa4de0423a0b8414acaa6cc",
+          "fileName": "error.html",
+          "filePath": "examples/pages/directives/error/error.html"
+        },
+        {
+          "fileId": "364236625ebb933d7aa94d60ffee670fbf03007b",
+          "fileName": "format-view.controller.js",
+          "filePath": "examples/pages/directives/format-view/format-view.controller.js"
+        },
+        {
+          "fileId": "7e0c537d74ea24a96c69dc18ff9e6d73f3884ddf",
+          "fileName": "format-view.html",
+          "filePath": "examples/pages/directives/format-view/format-view.html"
+        },
+        {
+          "fileId": "45128c140944e40cb9c7105f21776b0b97448f16",
+          "fileName": "grid.controller.js",
+          "filePath": "examples/pages/directives/grid/grid.controller.js"
+        },
+        {
+          "fileId": "3b82f0b1dcdcf689498851b4cbed9b8579d490bc",
+          "fileName": "grid.html",
+          "filePath": "examples/pages/directives/grid/grid.html"
+        },
+        {
+          "fileId": "ddb06346d2cf54750de80e1c50a7bfeea24a314a",
+          "fileName": "input.controller.js",
+          "filePath": "examples/pages/directives/input/input.controller.js"
+        },
+        {
+          "fileId": "488da4b5bd37eb34fed67dc299a5d6cf6a5bfca0",
+          "fileName": "input.html",
+          "filePath": "examples/pages/directives/input/input.html"
+        },
+        {
+          "fileId": "b30b0ea4184cdfe3177bc9ce3a95cefba1b5728e",
+          "fileName": "multi-select.controller.js",
+          "filePath": "examples/pages/directives/multi-select/multi-select.controller.js"
+        },
+        {
+          "fileId": "1e0a7e3dad81070df69fce6b9f2fa397c445d482",
+          "fileName": "multi-select.html",
+          "filePath": "examples/pages/directives/multi-select/multi-select.html"
+        },
+        {
+          "fileId": "861c961b3d4dbae2d686f01718b0c51d546624df",
+          "fileName": "prevent.html",
+          "filePath": "examples/pages/directives/prevent/prevent.html"
+        },
+        {
+          "fileId": "936ea4da2c0b5f2a0afb6f2edd63839f962f1868",
+          "fileName": "read-more.html",
+          "filePath": "examples/pages/directives/read-more/read-more.html"
+        },
+        {
+          "fileId": "e4b0d9d0eae6716da86111fa8688bc319b064d3b",
+          "fileName": "select.controller.js",
+          "filePath": "examples/pages/directives/select/select.controller.js"
+        },
+        {
+          "fileId": "ea42542d05c133a3e87885f06de959761807a304",
+          "fileName": "select.html",
+          "filePath": "examples/pages/directives/select/select.html"
+        },
+        {
+          "fileId": "9cf2ee39bd3e6146ef47444b43f9b5fad548d183",
+          "fileName": "trust-as-html.html",
+          "filePath": "examples/pages/filters/trust-as-html/trust-as-html.html"
+        },
+        {
+          "fileId": "afa466699bc23eb9d3a8b4c98bce2da95965fedb",
+          "fileName": "home.html",
+          "filePath": "examples/pages/home.html"
+        },
+        {
+          "fileId": "1f6f7277d9b0dda4f47bbdc2497c61b89874c40d",
+          "fileName": "no-example.html",
+          "filePath": "examples/pages/no-example.html"
+        },
+        {
+          "fileId": "25af6736e094f3e9e1840f4fbc3e4e2493e31bcf",
+          "fileName": "obsolete.html",
+          "filePath": "examples/pages/obsolete.html"
+        },
+        {
+          "fileId": "2a7edecf4f35b37305696825b910a3312fe0f271",
+          "fileName": "alert.controller.js",
+          "filePath": "examples/pages/services/alert/alert.controller.js"
+        },
+        {
+          "fileId": "a2c90fd147fe54450611f33d987e6676f012d9f3",
+          "fileName": "alert.html",
+          "filePath": "examples/pages/services/alert/alert.html"
+        },
+        {
+          "fileId": "88337a11a9378b4bfd6636d79618b8ae284299ad",
+          "fileName": "custom-enum.service.js",
+          "filePath": "examples/pages/services/enum/custom-enum.service.js"
+        },
+        {
+          "fileId": "a7d3d4e7d797488e99da0840dbc7ed2b2028ccda",
+          "fileName": "enum.controller.js",
+          "filePath": "examples/pages/services/enum/enum.controller.js"
+        },
+        {
+          "fileId": "a27e2c9f6fdecafb2372389eb95c51c5f8df5b13",
+          "fileName": "enum.html",
+          "filePath": "examples/pages/services/enum/enum.html"
+        },
+        {
+          "fileId": "098f14b67ece417efd66726253eb30447a8e639d",
+          "fileName": "custom-http.service.js",
+          "filePath": "examples/pages/services/http/custom-http.service.js"
+        },
+        {
+          "fileId": "88f4b3711669913950c71f6bac4b72e3ee6b6ed0",
+          "fileName": "http.controller.js",
+          "filePath": "examples/pages/services/http/http.controller.js"
+        },
+        {
+          "fileId": "d68c01abd36cf609e14627b13138949f9bd389c3",
+          "fileName": "http.html",
+          "filePath": "examples/pages/services/http/http.html"
+        },
+        {
+          "fileId": "124308f35526593641ee42b2f7ae6c4372f51cf9",
+          "fileName": "loading.controller.js",
+          "filePath": "examples/pages/services/loading/loading.controller.js"
+        },
+        {
+          "fileId": "a6cc62178b89f61b3b5c5c0a77b553b84549f18f",
+          "fileName": "loading.html",
+          "filePath": "examples/pages/services/loading/loading.html"
+        },
+        {
+          "fileId": "4be40f5ea6a1a51db9bafceb9040f1f5bb228aec",
+          "fileName": "package-lock.json",
+          "filePath": "package-lock.json"
+        },
+        {
+          "fileId": "44b95d7dbfcfac0b2710a03212e28ffdf0098770",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "735f02fb918cee03ee067341b4cb878b3bbbaa9f",
+          "fileName": "attachment.directive.html",
+          "filePath": "src/directives/attachment/attachment.directive.html"
+        },
+        {
+          "fileId": "7c641831235532237bb11d99d5b1e295fd2848e1",
+          "fileName": "attachment.directive.js",
+          "filePath": "src/directives/attachment/attachment.directive.js"
+        },
+        {
+          "fileId": "ad6bb28bfdcc7b7fe30e2057d87142874de52986",
+          "fileName": "autofocus.directive.js",
+          "filePath": "src/directives/autofocus/autofocus.directive.js"
+        },
+        {
+          "fileId": "a3dd2674b98712a2bea097f06733c132549f17f9",
+          "fileName": "checkboxes.directive.html",
+          "filePath": "src/directives/checkboxes/checkboxes.directive.html"
+        },
+        {
+          "fileId": "00bc8fbcc79c66678bf6e108aa3ac46d7a235f79",
+          "fileName": "checkboxes.directive.js",
+          "filePath": "src/directives/checkboxes/checkboxes.directive.js"
+        },
+        {
+          "fileId": "16371c6c91f695fbcd901195cf579bd25cbe0b1f",
+          "fileName": "display-enum.directive.js",
+          "filePath": "src/directives/display-enum/display-enum.directive.js"
+        },
+        {
+          "fileId": "75d70afee7147db0cbe575e281b8435fda9a2c79",
+          "fileName": "display-jalali.directive.js",
+          "filePath": "src/directives/display-jalali/display-jalali.directive.js"
+        },
+        {
+          "fileId": "eedefe97cfc8231fee25f317a9a94c5cf3d4a659",
+          "fileName": "erro.directive.html",
+          "filePath": "src/directives/error/erro.directive.html"
+        },
+        {
+          "fileId": "d142adc05529440d61c9340b54f78005744b2c30",
+          "fileName": "error.directive.js",
+          "filePath": "src/directives/error/error.directive.js"
+        },
+        {
+          "fileId": "c15738e77d6c3bc642c1b2167184bc98a777941f",
+          "fileName": "format-view.directive.js",
+          "filePath": "src/directives/format-view/format-view.directive.js"
+        },
+        {
+          "fileId": "8dac4da33c3a92de454118e96d1459e749c5de97",
+          "fileName": "grid-sort.directive.html",
+          "filePath": "src/directives/grid-sort/grid-sort.directive.html"
+        },
+        {
+          "fileId": "9a736657f08dd961ab35de4a4453f2dade7e7f42",
+          "fileName": "grid-sort.directive.js",
+          "filePath": "src/directives/grid-sort/grid-sort.directive.js"
+        },
+        {
+          "fileId": "4be233011a376b3da6700dd33495dfbc1fa440a1",
+          "fileName": "grid.directive.html",
+          "filePath": "src/directives/grid/grid.directive.html"
+        },
+        {
+          "fileId": "2a92a60021bdcb3c1b175171fe341f05cda9a114",
+          "fileName": "grid.directive.js",
+          "filePath": "src/directives/grid/grid.directive.js"
+        },
+        {
+          "fileId": "dc5ce2e7186d8fd391d51076370c14c0e1ee3f1f",
+          "fileName": "input-number.directive.html",
+          "filePath": "src/directives/input-number/input-number.directive.html"
+        },
+        {
+          "fileId": "4176cdd75f5f01c0b9ef5cdf8c9c78fa39f9a5e1",
+          "fileName": "input-number.directive.js",
+          "filePath": "src/directives/input-number/input-number.directive.js"
+        },
+        {
+          "fileId": "4ff967d746d953707c6f3cd1b061515234c53d47",
+          "fileName": "input.directive.html",
+          "filePath": "src/directives/input/input.directive.html"
+        },
+        {
+          "fileId": "5e8571be693bf7ee3809ac9b8ad649a626cff9d1",
+          "fileName": "input.directive.js",
+          "filePath": "src/directives/input/input.directive.js"
+        },
+        {
+          "fileId": "90816e83d1c835534306a31e315d84121315e7ed",
+          "fileName": "multi-select.directive.html",
+          "filePath": "src/directives/multi-select/multi-select.directive.html"
+        },
+        {
+          "fileId": "0c9c8a1a1eb3d26fac249ac7e258c2c715719528",
+          "fileName": "multi-select.directive.js",
+          "filePath": "src/directives/multi-select/multi-select.directive.js"
+        },
+        {
+          "fileId": "06e45111c319b0994df678ed9b73df3293c2c388",
+          "fileName": "permission.directive.js",
+          "filePath": "src/directives/permission/permission.directive.js"
+        },
+        {
+          "fileId": "5ce9010c81fdfbf5c8a4a29380ed16c769f03a10",
+          "fileName": "prevent.directive.js",
+          "filePath": "src/directives/prevent/prevent.directive.js"
+        },
+        {
+          "fileId": "53cd48571e9c0859d6a9e468e0f0367b43a4fc23",
+          "fileName": "read-more.directive.html",
+          "filePath": "src/directives/read-more/read-more.directive.html"
+        },
+        {
+          "fileId": "f5c1e0206126553a97077066fbdff8b16c23e2bb",
+          "fileName": "read-more.directive.js",
+          "filePath": "src/directives/read-more/read-more.directive.js"
+        },
+        {
+          "fileId": "acf718f1e542d61c37e56b6e83c78e39662d69f7",
+          "fileName": "select.directive.html",
+          "filePath": "src/directives/select/select.directive.html"
+        },
+        {
+          "fileId": "264ab42d433b81790bc85eb2c7bffcae607cc32d",
+          "fileName": "select.directive.js",
+          "filePath": "src/directives/select/select.directive.js"
+        },
+        {
+          "fileId": "c918a252640de4ed4785f7e027906bb1d311fed1",
+          "fileName": "display-money.filter.js",
+          "filePath": "src/filters/display-money.filter.js"
+        },
+        {
+          "fileId": "ac184798c89ef45401f1c7e559acb399a5acb469",
+          "fileName": "trust-as-html.filter.js",
+          "filePath": "src/filters/trust-as-html.filter.js"
+        },
+        {
+          "fileId": "d93f857beef443fe2a5f763b154b1da5843352f8",
+          "fileName": "kama-angularjs.module.js",
+          "filePath": "src/kama-angularjs.module.js"
+        },
+        {
+          "fileId": "10099281dbee5d2baad7edb078fd3a8b02232b01",
+          "fileName": "alert.service.js",
+          "filePath": "src/services/alert.service.js"
+        },
+        {
+          "fileId": "0a24f8eca6fa85d1bfb91c471ce566f645eec5c2",
+          "fileName": "auth-interceptor.service.js",
+          "filePath": "src/services/auth-interceptor.service.js"
+        },
+        {
+          "fileId": "d0b44c2dda8743b63ade8f672f76541b52c5a425",
+          "fileName": "auth.service.js",
+          "filePath": "src/services/auth.service.js"
+        },
+        {
+          "fileId": "753284e311bfe43b15e9e30ad3e460054c6314f5",
+          "fileName": "authentication.service.js",
+          "filePath": "src/services/authentication.service.js"
+        },
+        {
+          "fileId": "96b31530520f821a054653a085ba1441e2e5718a",
+          "fileName": "enum.service.js",
+          "filePath": "src/services/enum.service.js"
+        },
+        {
+          "fileId": "69db312e160dcb37a4ba8db77eb19bcf32a053b6",
+          "fileName": "global.service.js",
+          "filePath": "src/services/global.service.js"
+        },
+        {
+          "fileId": "0bd8197790862bb699c362f3ce9c0e388c2a7768",
+          "fileName": "http.service.js",
+          "filePath": "src/services/http.service.js"
+        },
+        {
+          "fileId": "91f0ade013bc699c497b59785fbf783c6c5bf057",
+          "fileName": "loading.service.js",
+          "filePath": "src/services/loading.service.js"
+        },
+        {
+          "fileId": "82ba82fa0e3f9c6cce156e43df6c68e745044654",
+          "fileName": "model.service.js",
+          "filePath": "src/services/model.service.js"
+        },
+        {
+          "fileId": "cb24478ba0a85c895a9967e42ca44309e6a2ce35",
+          "fileName": "object.service.js",
+          "filePath": "src/services/object.service.js"
+        },
+        {
+          "fileId": "02c746243950da9537d3cee1e86a9cea1ee001e8",
+          "fileName": "tools.service.js",
+          "filePath": "src/services/tools.service.js"
+        },
+        {
+          "fileId": "18f420770d8bf6a0cf081ded60870424f25e38fd",
+          "fileName": "attachment.scss",
+          "filePath": "src/styles/attachment.scss"
+        },
+        {
+          "fileId": "c42d64c25fa02e27a5cab0d062d7a1afcaa83845",
+          "fileName": "checkboxes.scss",
+          "filePath": "src/styles/checkboxes.scss"
+        },
+        {
+          "fileId": "af336f8c784ac762b1d7c7063027853d251352d5",
+          "fileName": "error.scss",
+          "filePath": "src/styles/error.scss"
+        },
+        {
+          "fileId": "bef90accb049341787eedaccdc6627717364c5b5",
+          "fileName": "grid.scss",
+          "filePath": "src/styles/grid.scss"
+        },
+        {
+          "fileId": "ae509301b8ec0f4cd3ad289ce29137a98b568751",
+          "fileName": "input-number.scss",
+          "filePath": "src/styles/input-number.scss"
+        },
+        {
+          "fileId": "623bae13a241a52796f438c1458ac27c68bcd4dc",
+          "fileName": "input.scss",
+          "filePath": "src/styles/input.scss"
+        },
+        {
+          "fileId": "7a3f07d929a9778447e4f3edd94ebac30c1c1fc3",
+          "fileName": "loading.scss",
+          "filePath": "src/styles/loading.scss"
+        },
+        {
+          "fileId": "b2f4418067ef2115b089c72e4d2a488558ce92fa",
+          "fileName": "select.scss",
+          "filePath": "src/styles/select.scss"
+        },
+        {
+          "fileId": "54f1f47eb9b187c96eb9356ccdbfb27c920d040a",
+          "fileName": "style.scss",
+          "filePath": "src/styles/style.scss"
+        },
+        {
+          "fileId": "e79cd0ee87bad64f67d37a14afe1e457cf4a7e7d",
+          "fileName": "variables.scss",
+          "filePath": "src/styles/variables.scss"
+        },
+        {
+          "fileId": "fa6add7a5a7bc97ceb96db46b6640f475cfdc2cb",
+          "fileName": "webpack.config.js",
+          "filePath": "webpack.config.js"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/Hadi290/github/kama-angularjs-module/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.angular-javascript.json"
+        }
+      ]
+    }
+  ]
+}

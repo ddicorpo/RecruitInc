@@ -1,0 +1,598 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "office-ui-fabric-vue",
+      "owner": "s-bauer",
+      "applicantCommits": [
+        {
+          "id": "abe8ed29691cf54b18d004d07d988f385306492a",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 4,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/components/Overview.vue",
+              "lineAdded": 7,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/components/TextField/OfficeTextField.style.ts",
+              "lineAdded": 391,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/components/TextField/OfficeTextField.vue",
+              "lineAdded": 76,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "a32c4df0b3cf3b1e80b11c793d2e670d415f2d77",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "LICENSE",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "ea0934cf144e67c70a7c28ac7909fe9188243633",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "a4d45e83258b55f6629f0f5c2efec98e939c303d",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 8,
+              "lineDeleted": 27
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "9dee6464636efdc40e54434302615a0315d3fd14",
+          "fileName": ".browserslistrc",
+          "filePath": ".browserslistrc"
+        },
+        {
+          "fileId": "185e6631928dca2f51224e61a3861cc88fa2b74e",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "714ca832cffc7d65788359a4beef4f26828db599",
+          "fileName": "LICENSE",
+          "filePath": "LICENSE"
+        },
+        {
+          "fileId": "bfeaf8c22d9c25a2c28d19e2b5f2ebbf878db177",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "ba179669a123909a9728283fd9c004c65adb90c5",
+          "fileName": "babel.config.js",
+          "filePath": "babel.config.js"
+        },
+        {
+          "fileId": "2f5843b7854d822f4cc0e1be0022d062b4899ff1",
+          "fileName": "jest.config.js",
+          "filePath": "jest.config.js"
+        },
+        {
+          "fileId": "51cc6b300fde258ef1de5bce0ebc6735ce2763e8",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "961986e2b11eeebe1d4ddabdf2e6c85e2a2562e0",
+          "fileName": "postcss.config.js",
+          "filePath": "postcss.config.js"
+        },
+        {
+          "fileId": "94fe40dabbdbe20ad597f296364b34961b345913",
+          "fileName": "index.html",
+          "filePath": "public/index.html"
+        },
+        {
+          "fileId": "dd7ae50919e4f54122cad1bd4c8d0b3c553f158d",
+          "fileName": "App.vue",
+          "filePath": "src/App.vue"
+        },
+        {
+          "fileId": "9b0007c79eba1b4ca41ffcf6eb525933fee775f3",
+          "fileName": "OfficeButton.classNames.ts",
+          "filePath": "src/components/Button/OfficeButton.classNames.ts"
+        },
+        {
+          "fileId": "0c265627ff46d458406974bbc99d8b0fb523c0c3",
+          "fileName": "OfficeButton.style.ts",
+          "filePath": "src/components/Button/OfficeButton.style.ts"
+        },
+        {
+          "fileId": "d00fd3dfa46cefd8666589f6d2a95e97dae554a2",
+          "fileName": "OfficeButton.types.ts",
+          "filePath": "src/components/Button/OfficeButton.types.ts"
+        },
+        {
+          "fileId": "563af7e6b14dcd734520597668965aafb72a7111",
+          "fileName": "OfficeButton.vue",
+          "filePath": "src/components/Button/OfficeButton.vue"
+        },
+        {
+          "fileId": "ca24d437c194340c268763b350bf27fecd3c1026",
+          "fileName": "OfficeCheckbox.style.ts",
+          "filePath": "src/components/Checkbox/OfficeCheckbox.style.ts"
+        },
+        {
+          "fileId": "d00a15eff3d255ad7cf9e062277ee4ba2dfe10db",
+          "fileName": "OfficeCheckbox.vue",
+          "filePath": "src/components/Checkbox/OfficeCheckbox.vue"
+        },
+        {
+          "fileId": "156ec480ebbf6c7d0b69c5f0036fc42d32596f02",
+          "fileName": "OfficeIcon.styles.ts",
+          "filePath": "src/components/Icon/OfficeIcon.styles.ts"
+        },
+        {
+          "fileId": "8ebc689ba5e13d0c4c5ea1ac7980f1ceac9b398c",
+          "fileName": "OfficeIcon.types.ts",
+          "filePath": "src/components/Icon/OfficeIcon.types.ts"
+        },
+        {
+          "fileId": "66d1743ec03dafa408fb33d6d9bef57715190936",
+          "fileName": "OfficeIcon.vue",
+          "filePath": "src/components/Icon/OfficeIcon.vue"
+        },
+        {
+          "fileId": "587e4f628bab2ed6d1250d549ecfabbbe9202927",
+          "fileName": "OfficeImage.styles.ts",
+          "filePath": "src/components/Image/OfficeImage.styles.ts"
+        },
+        {
+          "fileId": "8e46060dc1ed2ec39b7bcab0974c8c688b82f216",
+          "fileName": "OfficeImage.types.ts",
+          "filePath": "src/components/Image/OfficeImage.types.ts"
+        },
+        {
+          "fileId": "c0ab97d18ab3432327afb0e4c37dd931056d46e4",
+          "fileName": "OfficeImage.vue",
+          "filePath": "src/components/Image/OfficeImage.vue"
+        },
+        {
+          "fileId": "3341d252a0269a3ea2f738b2af151392e071edcc",
+          "fileName": "OfficeLabel.styles.ts",
+          "filePath": "src/components/Label/OfficeLabel.styles.ts"
+        },
+        {
+          "fileId": "9aecb1e6042ae839c2987bc18dcba1046f912263",
+          "fileName": "OfficeLabel.types.ts",
+          "filePath": "src/components/Label/OfficeLabel.types.ts"
+        },
+        {
+          "fileId": "b3b81219409add653e4d8eb6d2956a9729da9224",
+          "fileName": "OfficeLabel.vue",
+          "filePath": "src/components/Label/OfficeLabel.vue"
+        },
+        {
+          "fileId": "511f508cb379ed6fdd058f1f0de90553f0ea0354",
+          "fileName": "Overview.vue",
+          "filePath": "src/components/Overview.vue"
+        },
+        {
+          "fileId": "ae6881ef55610737be3311a2fdce740179f25afc",
+          "fileName": "OfficeTextField.style.ts",
+          "filePath": "src/components/TextField/OfficeTextField.style.ts"
+        },
+        {
+          "fileId": "6b802fd21b01d267ab8d55696d0c455fbe1a72e8",
+          "fileName": "OfficeTextField.vue",
+          "filePath": "src/components/TextField/OfficeTextField.vue"
+        },
+        {
+          "fileId": "e8622b15eb7f2416729b3a31a316aded75858677",
+          "fileName": "IconNames.ts",
+          "filePath": "src/icons/IconNames.ts"
+        },
+        {
+          "fileId": "9b29bfb61679347067223626866c1ad640a6cea6",
+          "fileName": "LICENSE",
+          "filePath": "src/icons/LICENSE"
+        },
+        {
+          "fileId": "93026eb1ed152882c8f3cfb0a439ca8682ce1a11",
+          "fileName": "fabric-icons-0.ts",
+          "filePath": "src/icons/fabric-icons-0.ts"
+        },
+        {
+          "fileId": "984f25784552e0604c868149ed7fcb7c7d4465f8",
+          "fileName": "fabric-icons-1.ts",
+          "filePath": "src/icons/fabric-icons-1.ts"
+        },
+        {
+          "fileId": "b79a4c039170a33c0048b6e18f26bce2d00c0047",
+          "fileName": "fabric-icons-10.ts",
+          "filePath": "src/icons/fabric-icons-10.ts"
+        },
+        {
+          "fileId": "95e9cb2082abf6280d9eae8bcadbab958fbfaebf",
+          "fileName": "fabric-icons-11.ts",
+          "filePath": "src/icons/fabric-icons-11.ts"
+        },
+        {
+          "fileId": "bb8c33d92c46b168dda8e40ba93784c4ad12378d",
+          "fileName": "fabric-icons-12.ts",
+          "filePath": "src/icons/fabric-icons-12.ts"
+        },
+        {
+          "fileId": "c2d55553a3664a50ce9ee40633a79d2a3041b631",
+          "fileName": "fabric-icons-13.ts",
+          "filePath": "src/icons/fabric-icons-13.ts"
+        },
+        {
+          "fileId": "6d4ab2aaa5bac5125482b38353238bc688e70212",
+          "fileName": "fabric-icons-14.ts",
+          "filePath": "src/icons/fabric-icons-14.ts"
+        },
+        {
+          "fileId": "7ca3e1100db2912110da1cbf45d6980c50934eef",
+          "fileName": "fabric-icons-15.ts",
+          "filePath": "src/icons/fabric-icons-15.ts"
+        },
+        {
+          "fileId": "1f494bc1cb6b4cf435598126f1e614ca1e33d8da",
+          "fileName": "fabric-icons-16.ts",
+          "filePath": "src/icons/fabric-icons-16.ts"
+        },
+        {
+          "fileId": "e530a22580ac504240f74de02d835ecc87096cb7",
+          "fileName": "fabric-icons-2.ts",
+          "filePath": "src/icons/fabric-icons-2.ts"
+        },
+        {
+          "fileId": "f2d94edffb225fbaafb67fb6a5ca50e7b5d6cf4b",
+          "fileName": "fabric-icons-3.ts",
+          "filePath": "src/icons/fabric-icons-3.ts"
+        },
+        {
+          "fileId": "94260374cb05314796314ac72d33c30a9ffa5b91",
+          "fileName": "fabric-icons-4.ts",
+          "filePath": "src/icons/fabric-icons-4.ts"
+        },
+        {
+          "fileId": "ebba233ac700c0a84a434c19020a7f40df4baf28",
+          "fileName": "fabric-icons-5.ts",
+          "filePath": "src/icons/fabric-icons-5.ts"
+        },
+        {
+          "fileId": "b73e8dfb9e7ad98d6dc6b972d1755d40901f0417",
+          "fileName": "fabric-icons-6.ts",
+          "filePath": "src/icons/fabric-icons-6.ts"
+        },
+        {
+          "fileId": "46fe3097610f906b50fe8ea3b958728c2f5508b5",
+          "fileName": "fabric-icons-7.ts",
+          "filePath": "src/icons/fabric-icons-7.ts"
+        },
+        {
+          "fileId": "faf724fc39d682e10a86e10c956708eca360a057",
+          "fileName": "fabric-icons-8.ts",
+          "filePath": "src/icons/fabric-icons-8.ts"
+        },
+        {
+          "fileId": "ffb18b7a8c6519f1351caaad87ad9e4966561552",
+          "fileName": "fabric-icons-9.ts",
+          "filePath": "src/icons/fabric-icons-9.ts"
+        },
+        {
+          "fileId": "bd874c170c9fcbc6bd25f81c8d73c3c05426c1ad",
+          "fileName": "fabric-icons.ts",
+          "filePath": "src/icons/fabric-icons.ts"
+        },
+        {
+          "fileId": "32a02fb2d6d7034bf63f74d3a5367b460305ce6f",
+          "fileName": "iconAliases.ts",
+          "filePath": "src/icons/iconAliases.ts"
+        },
+        {
+          "fileId": "1bdd15ec1d2414daa3bcbfd8d93fbcd14855a7cd",
+          "fileName": "iconNames.test.ts",
+          "filePath": "src/icons/iconNames.test.ts"
+        },
+        {
+          "fileId": "5f853b1edf2a7fb4260a97936eb17e5ed6d5ecb8",
+          "fileName": "index.ts",
+          "filePath": "src/icons/index.ts"
+        },
+        {
+          "fileId": "74f1ec5d64048b6104670b468314521f11b98415",
+          "fileName": "main.ts",
+          "filePath": "src/main.ts"
+        },
+        {
+          "fileId": "3b88b58292fa668f5f84089a7960dc9a826d96ff",
+          "fileName": "shims-tsx.d.ts",
+          "filePath": "src/shims-tsx.d.ts"
+        },
+        {
+          "fileId": "8f6f4102637123d7e5696be9ff5776d810334a90",
+          "fileName": "shims-vue.d.ts",
+          "filePath": "src/shims-vue.d.ts"
+        },
+        {
+          "fileId": "d29ec4fa050ac97b39c5b514a8d467d790ddb542",
+          "fileName": "LICENSE",
+          "filePath": "src/styling/LICENSE"
+        },
+        {
+          "fileId": "6601b77bf77967ee0e1b07551532166f8bbe976e",
+          "fileName": "AnimationClassNames.ts",
+          "filePath": "src/styling/classNames/AnimationClassNames.ts"
+        },
+        {
+          "fileId": "7fbe4cc9845a6821bd0802826d7bdefc42522d9a",
+          "fileName": "ColorClassNames.ts",
+          "filePath": "src/styling/classNames/ColorClassNames.ts"
+        },
+        {
+          "fileId": "e344d6735d91b4dc10883b8b32921f11b7e3c195",
+          "fileName": "FontClassNames.ts",
+          "filePath": "src/styling/classNames/FontClassNames.ts"
+        },
+        {
+          "fileId": "2857c04c92226c03f75f5a23b47a932d915dd2e5",
+          "fileName": "index.ts",
+          "filePath": "src/styling/classNames/index.ts"
+        },
+        {
+          "fileId": "1b7298332d7714ab7bea1bb89fd0f74863d6b776",
+          "fileName": "index.ts",
+          "filePath": "src/styling/index.ts"
+        },
+        {
+          "fileId": "b3f951e239c930dd091a3ab3231ceb26c3faa936",
+          "fileName": "IAnimationStyles.ts",
+          "filePath": "src/styling/interfaces/IAnimationStyles.ts"
+        },
+        {
+          "fileId": "f6eaaacd75f9c47f65ec08cf736cbccaf8e619fa",
+          "fileName": "IEffects.ts",
+          "filePath": "src/styling/interfaces/IEffects.ts"
+        },
+        {
+          "fileId": "004d708d9698ef06cf7b64f158e24a52aa0992c8",
+          "fileName": "IFabricConfig.ts",
+          "filePath": "src/styling/interfaces/IFabricConfig.ts"
+        },
+        {
+          "fileId": "00bcceb15376850ed7c0354d4c21047e5918e032",
+          "fileName": "IFontStyles.ts",
+          "filePath": "src/styling/interfaces/IFontStyles.ts"
+        },
+        {
+          "fileId": "c384da2a21dd3318f1bcb48bdb30601ae1d87c51",
+          "fileName": "IPalette.ts",
+          "filePath": "src/styling/interfaces/IPalette.ts"
+        },
+        {
+          "fileId": "9db87837fda3f2139a05efe3a8c9c2261bb3eb67",
+          "fileName": "ISemanticColors.ts",
+          "filePath": "src/styling/interfaces/ISemanticColors.ts"
+        },
+        {
+          "fileId": "faf687490f7dc017a9fa210f2c075755f650e5fc",
+          "fileName": "ISemanticTextColors.ts",
+          "filePath": "src/styling/interfaces/ISemanticTextColors.ts"
+        },
+        {
+          "fileId": "919ab7b2c3272f01b2cc9779b17e9fe9ba76f218",
+          "fileName": "ISpacing.ts",
+          "filePath": "src/styling/interfaces/ISpacing.ts"
+        },
+        {
+          "fileId": "5051235482f331096887e29e2af59cc83cd5eea7",
+          "fileName": "ITheme.ts",
+          "filePath": "src/styling/interfaces/ITheme.ts"
+        },
+        {
+          "fileId": "eb223cf1a3e69a74fdb2d6c677e14c2879c015fb",
+          "fileName": "index.ts",
+          "filePath": "src/styling/interfaces/index.ts"
+        },
+        {
+          "fileId": "41bafdf36bf87c4a8f3a7bb6fe96fd0e9bc0f8a0",
+          "fileName": "AnimationStyles.ts",
+          "filePath": "src/styling/styles/AnimationStyles.ts"
+        },
+        {
+          "fileId": "dec1a4338f92618f25df80cafa36114ff3c6e1fc",
+          "fileName": "CommonStyles.ts",
+          "filePath": "src/styling/styles/CommonStyles.ts"
+        },
+        {
+          "fileId": "5b45249bb22e59e872e37454da39017413303c7b",
+          "fileName": "DefaultEffects.ts",
+          "filePath": "src/styling/styles/DefaultEffects.ts"
+        },
+        {
+          "fileId": "48812cfc7b40f88778996f38159dcf7f4cb6ca78",
+          "fileName": "DefaultFontStyles.ts",
+          "filePath": "src/styling/styles/DefaultFontStyles.ts"
+        },
+        {
+          "fileId": "307c2cf9fefc2967ae4ed66317a8c7e0f3675911",
+          "fileName": "DefaultPalette.ts",
+          "filePath": "src/styling/styles/DefaultPalette.ts"
+        },
+        {
+          "fileId": "cb1009adf0f9a2c5f51660022bc3f033258cc6e8",
+          "fileName": "DefaultSpacing.ts",
+          "filePath": "src/styling/styles/DefaultSpacing.ts"
+        },
+        {
+          "fileId": "6ce2ef07427da0b31272319385fc09bafe5ab642",
+          "fileName": "GeneralStyles.ts",
+          "filePath": "src/styling/styles/GeneralStyles.ts"
+        },
+        {
+          "fileId": "0225743c08adbd9f97dde18aaa398913ad4ddf7e",
+          "fileName": "PulsingBeaconAnimationStyles.ts",
+          "filePath": "src/styling/styles/PulsingBeaconAnimationStyles.ts"
+        },
+        {
+          "fileId": "71ca8bdd009105e6ef96fb97f38d717bfd683f20",
+          "fileName": "fonts.ts",
+          "filePath": "src/styling/styles/fonts.ts"
+        },
+        {
+          "fileId": "91d7efd8eb8398816fe244b249eff1bd2a5fec56",
+          "fileName": "getFadedOverflowStyle.ts",
+          "filePath": "src/styling/styles/getFadedOverflowStyle.ts"
+        },
+        {
+          "fileId": "197666f8c204458f75bf9023dc12c8bb0a1caff9",
+          "fileName": "getFocusStyle.ts",
+          "filePath": "src/styling/styles/getFocusStyle.ts"
+        },
+        {
+          "fileId": "5e9099522e644fc806a3e2a797294270aa586fa6",
+          "fileName": "getGlobalClassNames.ts",
+          "filePath": "src/styling/styles/getGlobalClassNames.ts"
+        },
+        {
+          "fileId": "dc351810688bf898087020b4c992eb2fbfd03868",
+          "fileName": "hiddenContentStyle.ts",
+          "filePath": "src/styling/styles/hiddenContentStyle.ts"
+        },
+        {
+          "fileId": "1dccb37598582710affa8e488056142d090154d2",
+          "fileName": "index.ts",
+          "filePath": "src/styling/styles/index.ts"
+        },
+        {
+          "fileId": "dee4fcf4d4010000de5970edabf27a7dee390a11",
+          "fileName": "theme.ts",
+          "filePath": "src/styling/styles/theme.ts"
+        },
+        {
+          "fileId": "c2b4495facd53563cc76f09e06042ef7cde21d2d",
+          "fileName": "zIndexes.ts",
+          "filePath": "src/styling/styles/zIndexes.ts"
+        },
+        {
+          "fileId": "34aacf89d02e0c42e7ae6db8750b171a362c41cf",
+          "fileName": "buildClassMap.ts",
+          "filePath": "src/styling/utilities/buildClassMap.ts"
+        },
+        {
+          "fileId": "9d98f65471a441e8bfd289d3919f7e27a101ae83",
+          "fileName": "icons.ts",
+          "filePath": "src/styling/utilities/icons.ts"
+        },
+        {
+          "fileId": "f426de173e9736bf3317d3f8c02f1e6af1c397fc",
+          "fileName": "Customizations.ts",
+          "filePath": "src/utility/Customizations.ts"
+        },
+        {
+          "fileId": "6938859909c14eaef4d756b69c1778c8e13bfd1a",
+          "fileName": "EventGroup.ts",
+          "filePath": "src/utility/EventGroup.ts"
+        },
+        {
+          "fileId": "32656f5cb623734c0c37fb38d58d31819f0b99d2",
+          "fileName": "GlobalSettings.ts",
+          "filePath": "src/utility/GlobalSettings.ts"
+        },
+        {
+          "fileId": "19b0dbb4c98f1f4e4835342e274d97f0f3596068",
+          "fileName": "IRectangle.ts",
+          "filePath": "src/utility/IRectangle.ts"
+        },
+        {
+          "fileId": "6981c887f0dc847bee9dc27ec25dec8d45bafa52",
+          "fileName": "LICENSE",
+          "filePath": "src/utility/LICENSE"
+        },
+        {
+          "fileId": "b40f61d2f087156e6f956bcedbe38cef07fbac71",
+          "fileName": "dom.ts",
+          "filePath": "src/utility/dom.ts"
+        },
+        {
+          "fileId": "4c6464794c7be921fe92a5b760bd00684f615054",
+          "fileName": "language.ts",
+          "filePath": "src/utility/language.ts"
+        },
+        {
+          "fileId": "adcca8c40fc3ef2c30c4fb06c9adaf951f20d1b0",
+          "fileName": "localStorage.ts",
+          "filePath": "src/utility/localStorage.ts"
+        },
+        {
+          "fileId": "453ac6df09168bfcc7471c88dd4cc51fe2c735bc",
+          "fileName": "memoize.ts",
+          "filePath": "src/utility/memoize.ts"
+        },
+        {
+          "fileId": "70acb37284fbd7e67df9c0599fbc3eaf1b29e7db",
+          "fileName": "merge.ts",
+          "filePath": "src/utility/merge.ts"
+        },
+        {
+          "fileId": "fe813284dff4f5e3e26c8cd55f526dfef0416552",
+          "fileName": "object.ts",
+          "filePath": "src/utility/object.ts"
+        },
+        {
+          "fileId": "1dc05210d4ddc53887c285d9f183b05be8eaca53",
+          "fileName": "example.spec.ts",
+          "filePath": "tests/unit/example.spec.ts"
+        },
+        {
+          "fileId": "d2470250386757ca75f509ac0eb2dcb4809d3231",
+          "fileName": "tsconfig.json",
+          "filePath": "tsconfig.json"
+        },
+        {
+          "fileId": "58895499ac75f6fcca4dd3492966c436072eb5eb",
+          "fileName": "tslint.json",
+          "filePath": "tslint.json"
+        },
+        {
+          "fileId": "193e868f92c07cc77dadac752e372cba0d21ffc6",
+          "fileName": "yarn.lock",
+          "filePath": "yarn.lock"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/s-bauer/github/office-ui-fabric-vue/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.vue-typescript.json"
+        }
+      ]
+    }
+  ]
+}

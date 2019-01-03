@@ -1,0 +1,5044 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "django-sample-app",
+      "owner": "kirpit",
+      "applicantCommits": [
+        {
+          "id": "08440c6d140de57f37841a7fbe1ee5fcdfd0491d",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "projectname/settings/default.py",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "701eabaf1bd27be181d532a8d859888bfb188d03",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "projectname/wsgi.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "83a1dedfc89c783b7bbd5de726635c0fa9dd60ce",
+          "numberOfFileAffected": 10,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 13,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "projectname/settings/default.py",
+              "lineAdded": 4,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "projectname/settings/local.template.py",
+              "lineAdded": 2,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "projectname/urls.py",
+              "lineAdded": 19,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "projectname/wsgi.py",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 7,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "static-assets/js/main.coffee",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/js/main.js",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/js/main.map",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "templates/base.html",
+              "lineAdded": 13,
+              "lineDeleted": 15
+            }
+          ]
+        },
+        {
+          "id": "c619a79928486b47da26c9cb5a7b084a0190e410",
+          "numberOfFileAffected": 70,
+          "files": [
+            {
+              "filePath": "projectname/settings/default.py",
+              "lineAdded": 121,
+              "lineDeleted": 118
+            },
+            {
+              "filePath": "static-assets/apple-touch-icon.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/favicon.ico",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap-theme.css",
+              "lineAdded": 132,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap-theme.css.map",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap-theme.min.css",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap.css",
+              "lineAdded": 578,
+              "lineDeleted": 110
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap.css.map",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap.min.css",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.svg",
+              "lineAdded": 288,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/js/bootstrap.js",
+              "lineAdded": 259,
+              "lineDeleted": 216
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/js/bootstrap.min.js",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap-3.3.5/js/npm.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap-theme.css.map",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap-theme.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap.css.map",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.svg",
+              "lineAdded": 0,
+              "lineDeleted": 229
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/js/bootstrap.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/css/font-awesome.css",
+              "lineAdded": 133,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/css/font-awesome.min.css",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/FontAwesome.otf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.svg",
+              "lineAdded": 53,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.woff2",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/animated.less",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/bordered-pulled.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/core.less",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/fixed-width.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/font-awesome.less",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/icons.less",
+              "lineAdded": 45,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/larger.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/list.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/mixins.less",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/path.less",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/rotated-flipped.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/stacked.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/less/variables.less",
+              "lineAdded": 47,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_animated.scss",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_bordered-pulled.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_core.scss",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_fixed-width.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_icons.scss",
+              "lineAdded": 45,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_larger.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_list.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_mixins.scss",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_path.scss",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_rotated-flipped.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_stacked.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_variables.scss",
+              "lineAdded": 47,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome-4.3.0/scss/font-awesome.scss",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/css/font-awesome.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/fonts/FontAwesome.otf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/fonts/fontawesome-webfont.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/fonts/fontawesome-webfont.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/html5shiv.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/media",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/robots.txt",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "templates/404.html",
+              "lineAdded": 52,
+              "lineDeleted": 149
+            },
+            {
+              "filePath": "templates/base.html",
+              "lineAdded": 85,
+              "lineDeleted": 76
+            },
+            {
+              "filePath": "templates/home.html",
+              "lineAdded": 32,
+              "lineDeleted": 50
+            }
+          ]
+        },
+        {
+          "id": "a0e85fe42a0a78a2f75c5bd9f415aa35288d3439",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 5,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "projectname/settings/default.py",
+              "lineAdded": 8,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "projectname/wsgi.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "34ddf1db2e2127112e51910a4d44556d3556546a",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 2,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "c8247a21fd91c0a15559c933858bc0e90dfe8f5f",
+          "numberOfFileAffected": 804,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "projectname/settings/local.template.py",
+              "lineAdded": 0,
+              "lineDeleted": 13
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap-theme.css.map",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap-theme.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap.css.map",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/js/bootstrap.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap-theme.css",
+              "lineAdded": 152,
+              "lineDeleted": 29
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap-theme.css.map",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap-theme.min.css",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap.css",
+              "lineAdded": 2962,
+              "lineDeleted": 2415
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap.css.map",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/css/bootstrap.min.css",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.svg",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/js/bootstrap.js",
+              "lineAdded": 709,
+              "lineDeleted": 340
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/js/bootstrap.min.js",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.3.1/js/npm.js",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/css/font-awesome.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/fonts/FontAwesome.otf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/fonts/fontawesome-webfont.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/fonts/fontawesome-webfont.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/core.less",
+              "lineAdded": 0,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/font-awesome.less",
+              "lineAdded": 0,
+              "lineDeleted": 17
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/spinning.less",
+              "lineAdded": 0,
+              "lineDeleted": 30
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_core.scss",
+              "lineAdded": 0,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_spinning.scss",
+              "lineAdded": 0,
+              "lineDeleted": 30
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/css/font-awesome.css",
+              "lineAdded": 394,
+              "lineDeleted": 60
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/css/font-awesome.min.css",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/fonts/FontAwesome.otf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/fonts/fontawesome-webfont.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/fonts/fontawesome-webfont.svg",
+              "lineAdded": 140,
+              "lineDeleted": 34
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/fonts/fontawesome-webfont.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/fonts/fontawesome-webfont.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/bordered-pulled.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/core.less",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/fixed-width.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/font-awesome.less",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/icons.less",
+              "lineAdded": 144,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/larger.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/list.less",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/mixins.less",
+              "lineAdded": 9,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/path.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/rotated-flipped.less",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/spinning.less",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/stacked.less",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/less/variables.less",
+              "lineAdded": 509,
+              "lineDeleted": 329
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_bordered-pulled.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_core.scss",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_fixed-width.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_icons.scss",
+              "lineAdded": 144,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_larger.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_list.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_mixins.scss",
+              "lineAdded": 11,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_path.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_rotated-flipped.scss",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_spinning.scss",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_stacked.scss",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/_variables.scss",
+              "lineAdded": 510,
+              "lineDeleted": 330
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.2.0/scss/font-awesome.scss",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/AUTHORS.txt",
+              "lineAdded": 0,
+              "lineDeleted": 260
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/Gruntfile.js",
+              "lineAdded": 0,
+              "lineDeleted": 357
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/MANIFEST",
+              "lineAdded": 0,
+              "lineDeleted": 739
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/MIT-LICENSE.txt",
+              "lineAdded": 0,
+              "lineDeleted": 26
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/README.md",
+              "lineAdded": 0,
+              "lineDeleted": 96
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/collapsible.html",
+              "lineAdded": 0,
+              "lineDeleted": 50
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/custom-icons.html",
+              "lineAdded": 0,
+              "lineDeleted": 64
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 80
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/fillspace.html",
+              "lineAdded": 0,
+              "lineDeleted": 72
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/hoverintent.html",
+              "lineAdded": 0,
+              "lineDeleted": 148
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/no-auto-height.html",
+              "lineAdded": 0,
+              "lineDeleted": 50
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/sortable.html",
+              "lineAdded": 0,
+              "lineDeleted": 74
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/addClass/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 45
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/addClass/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/animate/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 55
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/animate/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/categories.html",
+              "lineAdded": 0,
+              "lineDeleted": 67
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/combobox.html",
+              "lineAdded": 0,
+              "lineDeleted": 213
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/custom-data.html",
+              "lineAdded": 0,
+              "lineDeleted": 90
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 58
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/folding.html",
+              "lineAdded": 0,
+              "lineDeleted": 56
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/jquery_32x32.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/jqueryui_32x32.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/sizzlejs_32x32.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/transparent_1x1.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/ui-anim_basic_16x16.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 25
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/london.xml",
+              "lineAdded": 0,
+              "lineDeleted": 114
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/maxheight.html",
+              "lineAdded": 0,
+              "lineDeleted": 71
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/multiple-remote.html",
+              "lineAdded": 0,
+              "lineDeleted": 80
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/multiple.html",
+              "lineAdded": 0,
+              "lineDeleted": 93
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/remote-jsonp.html",
+              "lineAdded": 0,
+              "lineDeleted": 82
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/remote-with-cache.html",
+              "lineAdded": 0,
+              "lineDeleted": 52
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/remote.html",
+              "lineAdded": 0,
+              "lineDeleted": 55
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/search.php",
+              "lineAdded": 0,
+              "lineDeleted": 590
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/xml.html",
+              "lineAdded": 0,
+              "lineDeleted": 66
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/checkbox.html",
+              "lineAdded": 0,
+              "lineDeleted": 37
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 34
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/icons.html",
+              "lineAdded": 0,
+              "lineDeleted": 49
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 19
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/radio.html",
+              "lineAdded": 0,
+              "lineDeleted": 32
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/splitbutton.html",
+              "lineAdded": 0,
+              "lineDeleted": 69
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/toolbar.html",
+              "lineAdded": 0,
+              "lineDeleted": 118
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/alt-field.html",
+              "lineAdded": 0,
+              "lineDeleted": 29
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/animation.html",
+              "lineAdded": 0,
+              "lineDeleted": 51
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/buttonbar.html",
+              "lineAdded": 0,
+              "lineDeleted": 28
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/date-formats.html",
+              "lineAdded": 0,
+              "lineDeleted": 40
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/date-range.html",
+              "lineAdded": 0,
+              "lineDeleted": 44
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 26
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/dropdown-month-year.html",
+              "lineAdded": 0,
+              "lineDeleted": 29
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/icon-trigger.html",
+              "lineAdded": 0,
+              "lineDeleted": 30
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/images/calendar.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 27
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/inline.html",
+              "lineAdded": 0,
+              "lineDeleted": 26
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/jquery.ui.datepicker-ar.js",
+              "lineAdded": 0,
+              "lineDeleted": 23
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/jquery.ui.datepicker-fr.js",
+              "lineAdded": 0,
+              "lineDeleted": 25
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/jquery.ui.datepicker-he.js",
+              "lineAdded": 0,
+              "lineDeleted": 23
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/jquery.ui.datepicker-zh-TW.js",
+              "lineAdded": 0,
+              "lineDeleted": 23
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/localization.html",
+              "lineAdded": 0,
+              "lineDeleted": 41
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/min-max.html",
+              "lineAdded": 0,
+              "lineDeleted": 26
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/multiple-calendars.html",
+              "lineAdded": 0,
+              "lineDeleted": 29
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/other-months.html",
+              "lineAdded": 0,
+              "lineDeleted": 30
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/show-week.html",
+              "lineAdded": 0,
+              "lineDeleted": 32
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/demos.css",
+              "lineAdded": 0,
+              "lineDeleted": 19
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/animated.html",
+              "lineAdded": 0,
+              "lineDeleted": 52
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 33
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 19
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/modal-confirmation.html",
+              "lineAdded": 0,
+              "lineDeleted": 46
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/modal-form.html",
+              "lineAdded": 0,
+              "lineDeleted": 157
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/modal-message.html",
+              "lineAdded": 0,
+              "lineDeleted": 49
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/modal.html",
+              "lineAdded": 0,
+              "lineDeleted": 38
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/constrain-movement.html",
+              "lineAdded": 0,
+              "lineDeleted": 58
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/cursor-style.html",
+              "lineAdded": 0,
+              "lineDeleted": 42
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 32
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/delay-start.html",
+              "lineAdded": 0,
+              "lineDeleted": 38
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/events.html",
+              "lineAdded": 0,
+              "lineDeleted": 70
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/handle.html",
+              "lineAdded": 0,
+              "lineDeleted": 41
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 24
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/revert.html",
+              "lineAdded": 0,
+              "lineDeleted": 37
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/scroll.html",
+              "lineAdded": 0,
+              "lineDeleted": 44
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/snap-to.html",
+              "lineAdded": 0,
+              "lineDeleted": 61
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/sortable.html",
+              "lineAdded": 0,
+              "lineDeleted": 50
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/visual-feedback.html",
+              "lineAdded": 0,
+              "lineDeleted": 70
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/accepted-elements.html",
+              "lineAdded": 0,
+              "lineDeleted": 53
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 46
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras2.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras2_min.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras3.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras3_min.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras4.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras4_min.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras_min.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/photo-manager.html",
+              "lineAdded": 0,
+              "lineDeleted": 182
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/propagation.html",
+              "lineAdded": 0,
+              "lineDeleted": 73
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/revert.html",
+              "lineAdded": 0,
+              "lineDeleted": 54
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/shopping-cart.html",
+              "lineAdded": 0,
+              "lineDeleted": 94
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/visual-feedback.html",
+              "lineAdded": 0,
+              "lineDeleted": 72
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/effect/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 102
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/effect/easing.html",
+              "lineAdded": 0,
+              "lineDeleted": 102
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/effect/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/hide/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 95
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/hide/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/calendar.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/demo-config-on-tile.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/demo-config-on.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/demo-spindown-closed.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/demo-spindown-open.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/icon-docs-info.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/pbar-ani.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 40
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/menu/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 67
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/menu/icons.html",
+              "lineAdded": 0,
+              "lineDeleted": 44
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/menu/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/cycler.html",
+              "lineAdded": 0,
+              "lineDeleted": 107
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 137
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/images/earth.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/images/flight.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/images/rocket.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 28
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/images/pbar-ani.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/indeterminate.html",
+              "lineAdded": 0,
+              "lineDeleted": 53
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 16
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/label.html",
+              "lineAdded": 0,
+              "lineDeleted": 61
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/removeClass/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 45
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/removeClass/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/animate.html",
+              "lineAdded": 0,
+              "lineDeleted": 36
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/aspect-ratio.html",
+              "lineAdded": 0,
+              "lineDeleted": 35
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/constrain-area.html",
+              "lineAdded": 0,
+              "lineDeleted": 40
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 33
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/delay-start.html",
+              "lineAdded": 0,
+              "lineDeleted": 45
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/helper.html",
+              "lineAdded": 0,
+              "lineDeleted": 36
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 24
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/max-min.html",
+              "lineAdded": 0,
+              "lineDeleted": 38
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/snap-to-grid.html",
+              "lineAdded": 0,
+              "lineDeleted": 35
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/synchronous-resize.html",
+              "lineAdded": 0,
+              "lineDeleted": 42
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/textarea.html",
+              "lineAdded": 0,
+              "lineDeleted": 34
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/visual-feedback.html",
+              "lineAdded": 0,
+              "lineDeleted": 36
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/selectable/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 43
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/selectable/display-grid.html",
+              "lineAdded": 0,
+              "lineDeleted": 48
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/selectable/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 16
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/selectable/serialize.html",
+              "lineAdded": 0,
+              "lineDeleted": 54
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/show/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 97
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/show/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/colorpicker.html",
+              "lineAdded": 0,
+              "lineDeleted": 87
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 27
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/hotelrooms.html",
+              "lineAdded": 0,
+              "lineDeleted": 49
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 24
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/multiple-vertical.html",
+              "lineAdded": 0,
+              "lineDeleted": 69
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/range-vertical.html",
+              "lineAdded": 0,
+              "lineDeleted": 41
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/range.html",
+              "lineAdded": 0,
+              "lineDeleted": 42
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/rangemax.html",
+              "lineAdded": 0,
+              "lineDeleted": 40
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/rangemin.html",
+              "lineAdded": 0,
+              "lineDeleted": 41
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/side-scroll.html",
+              "lineAdded": 0,
+              "lineDeleted": 131
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/slider-vertical.html",
+              "lineAdded": 0,
+              "lineDeleted": 42
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/steps.html",
+              "lineAdded": 0,
+              "lineDeleted": 41
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/connect-lists-through-tabs.html",
+              "lineAdded": 0,
+              "lineDeleted": 72
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/connect-lists.html",
+              "lineAdded": 0,
+              "lineDeleted": 52
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 45
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/delay-start.html",
+              "lineAdded": 0,
+              "lineDeleted": 61
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/display-grid.html",
+              "lineAdded": 0,
+              "lineDeleted": 48
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/empty-lists.html",
+              "lineAdded": 0,
+              "lineDeleted": 63
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 22
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/items.html",
+              "lineAdded": 0,
+              "lineDeleted": 64
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/placeholder.html",
+              "lineAdded": 0,
+              "lineDeleted": 50
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/portlets.html",
+              "lineAdded": 0,
+              "lineDeleted": 115
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/currency.html",
+              "lineAdded": 0,
+              "lineDeleted": 52
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/decimal.html",
+              "lineAdded": 0,
+              "lineDeleted": 56
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 64
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 19
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/latlong.html",
+              "lineAdded": 0,
+              "lineDeleted": 57
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/overflow.html",
+              "lineAdded": 0,
+              "lineDeleted": 44
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/time.html",
+              "lineAdded": 0,
+              "lineDeleted": 74
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/switchClass/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 40
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/switchClass/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax.html",
+              "lineAdded": 0,
+              "lineDeleted": 46
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax/content1.html",
+              "lineAdded": 0,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax/content2.html",
+              "lineAdded": 0,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax/content3-slow.php",
+              "lineAdded": 0,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax/content4-broken.php",
+              "lineAdded": 0,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/bottom.html",
+              "lineAdded": 0,
+              "lineDeleted": 58
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/collapsible.html",
+              "lineAdded": 0,
+              "lineDeleted": 48
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 42
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/manipulation.html",
+              "lineAdded": 0,
+              "lineDeleted": 122
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/mouseover.html",
+              "lineAdded": 0,
+              "lineDeleted": 44
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/sortable.html",
+              "lineAdded": 0,
+              "lineDeleted": 51
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/vertical.html",
+              "lineAdded": 0,
+              "lineDeleted": 54
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/toggle/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 103
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/toggle/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/toggleClass/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 39
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/toggleClass/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/ajax/content1.html",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/ajax/content2.html",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/custom-animation.html",
+              "lineAdded": 0,
+              "lineDeleted": 54
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/custom-content.html",
+              "lineAdded": 0,
+              "lineDeleted": 83
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/custom-style.html",
+              "lineAdded": 0,
+              "lineDeleted": 95
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 40
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/forms.html",
+              "lineAdded": 0,
+              "lineDeleted": 65
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/images/st-stephens.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/images/tower-bridge.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/tracking.html",
+              "lineAdded": 0,
+              "lineDeleted": 42
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/video-player.html",
+              "lineAdded": 0,
+              "lineDeleted": 117
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/widget/default.html",
+              "lineAdded": 0,
+              "lineDeleted": 178
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/widget/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/globalize.culture.de-DE.js",
+              "lineAdded": 0,
+              "lineDeleted": 81
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/globalize.culture.ja-JP.js",
+              "lineAdded": 0,
+              "lineDeleted": 100
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/globalize.js",
+              "lineAdded": 0,
+              "lineDeleted": 1585
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/jquery.mousewheel.js",
+              "lineAdded": 0,
+              "lineDeleted": 101
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/jshint.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/qunit.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/qunit.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/jquery-1.10.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/package.json",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/index.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/index.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.10.0.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.10.1.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.10.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.1.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.3.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.4.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.7.1.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.7.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.7.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.8.0.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.8.1.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.8.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.8.3.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.9.0.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "c64c2c8da70be0a6175941f256c12b43300f28a2",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 9,
+              "lineDeleted": 10
+            },
+            {
+              "filePath": "projectname/settings/default.py",
+              "lineAdded": 1,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "projectname/wsgihandler.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 7,
+              "lineDeleted": 8
+            }
+          ]
+        },
+        {
+          "id": "64b479711a3f0982ef705f2142f7dd0c7ff90fee",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "276bace66dab76938099301166b9cbb754f4ad3b",
+          "numberOfFileAffected": 840,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 21,
+              "lineDeleted": 36
+            },
+            {
+              "filePath": "media/init.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "projectname/__init__.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "projectname/home/__init__.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "projectname/home/models.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "projectname/home/tests.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "projectname/home/views.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "projectname/manage.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "projectname/settings/__init__.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "projectname/settings/default.py",
+              "lineAdded": 16,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "projectname/settings/local.template.py",
+              "lineAdded": 0,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "projectname/urls.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 7,
+              "lineDeleted": 8
+            },
+            {
+              "filePath": "static-assets/css/main.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/humans.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/images/init.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/js/main.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap-theme.css",
+              "lineAdded": 347,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap-theme.css.map",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap-theme.min.css",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap.css",
+              "lineAdded": 5785,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap.css.map",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/css/bootstrap.min.css",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.svg",
+              "lineAdded": 229,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/js/bootstrap.js",
+              "lineAdded": 1951,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/bootstrap/3.1.1/js/bootstrap.min.js",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/css/font-awesome.css",
+              "lineAdded": 1338,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/css/font-awesome.min.css",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/fonts/FontAwesome.otf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/fonts/fontawesome-webfont.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/fonts/fontawesome-webfont.svg",
+              "lineAdded": 168,
+              "lineDeleted": 38
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/fonts/fontawesome-webfont.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/fonts/fontawesome-webfont.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/bordered-pulled.less",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/core.less",
+              "lineAdded": 12,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/fixed-width.less",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/font-awesome.less",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/icons.less",
+              "lineAdded": 412,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/larger.less",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/list.less",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/mixins.less",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/path.less",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/rotated-flipped.less",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/spinning.less",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/stacked.less",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/less/variables.less",
+              "lineAdded": 381,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_bordered-pulled.scss",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_core.scss",
+              "lineAdded": 12,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_fixed-width.scss",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_icons.scss",
+              "lineAdded": 412,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_larger.scss",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_list.scss",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_mixins.scss",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_path.scss",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_rotated-flipped.scss",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_spinning.scss",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_stacked.scss",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/_variables.scss",
+              "lineAdded": 381,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/font-awesome/4.0.3/scss/font-awesome.scss",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/AUTHORS.txt",
+              "lineAdded": 260,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/Gruntfile.js",
+              "lineAdded": 357,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/MANIFEST",
+              "lineAdded": 739,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/MIT-LICENSE.txt",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/README.md",
+              "lineAdded": 96,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/collapsible.html",
+              "lineAdded": 50,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/custom-icons.html",
+              "lineAdded": 64,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/default.html",
+              "lineAdded": 80,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/fillspace.html",
+              "lineAdded": 72,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/hoverintent.html",
+              "lineAdded": 148,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/index.html",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/no-auto-height.html",
+              "lineAdded": 50,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/accordion/sortable.html",
+              "lineAdded": 74,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/addClass/default.html",
+              "lineAdded": 45,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/addClass/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/animate/default.html",
+              "lineAdded": 55,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/animate/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/categories.html",
+              "lineAdded": 67,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/combobox.html",
+              "lineAdded": 213,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/custom-data.html",
+              "lineAdded": 90,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/default.html",
+              "lineAdded": 58,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/folding.html",
+              "lineAdded": 56,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/jquery_32x32.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/jqueryui_32x32.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/sizzlejs_32x32.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/transparent_1x1.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/images/ui-anim_basic_16x16.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/index.html",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/london.xml",
+              "lineAdded": 114,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/maxheight.html",
+              "lineAdded": 71,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/multiple-remote.html",
+              "lineAdded": 80,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/multiple.html",
+              "lineAdded": 93,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/remote-jsonp.html",
+              "lineAdded": 82,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/remote-with-cache.html",
+              "lineAdded": 52,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/remote.html",
+              "lineAdded": 55,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/search.php",
+              "lineAdded": 590,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/autocomplete/xml.html",
+              "lineAdded": 66,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/checkbox.html",
+              "lineAdded": 37,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/default.html",
+              "lineAdded": 34,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/icons.html",
+              "lineAdded": 49,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/index.html",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/radio.html",
+              "lineAdded": 32,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/splitbutton.html",
+              "lineAdded": 69,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/button/toolbar.html",
+              "lineAdded": 118,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/alt-field.html",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/animation.html",
+              "lineAdded": 51,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/buttonbar.html",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/date-formats.html",
+              "lineAdded": 40,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/date-range.html",
+              "lineAdded": 44,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/default.html",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/dropdown-month-year.html",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/icon-trigger.html",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/images/calendar.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/index.html",
+              "lineAdded": 27,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/inline.html",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/jquery.ui.datepicker-ar.js",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/jquery.ui.datepicker-fr.js",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/jquery.ui.datepicker-he.js",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/jquery.ui.datepicker-zh-TW.js",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/localization.html",
+              "lineAdded": 41,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/min-max.html",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/multiple-calendars.html",
+              "lineAdded": 29,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/other-months.html",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/datepicker/show-week.html",
+              "lineAdded": 32,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/demos.css",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/animated.html",
+              "lineAdded": 52,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/default.html",
+              "lineAdded": 33,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/index.html",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/modal-confirmation.html",
+              "lineAdded": 46,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/modal-form.html",
+              "lineAdded": 157,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/modal-message.html",
+              "lineAdded": 49,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/dialog/modal.html",
+              "lineAdded": 38,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/constrain-movement.html",
+              "lineAdded": 58,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/cursor-style.html",
+              "lineAdded": 42,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/default.html",
+              "lineAdded": 32,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/delay-start.html",
+              "lineAdded": 38,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/events.html",
+              "lineAdded": 70,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/handle.html",
+              "lineAdded": 41,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/index.html",
+              "lineAdded": 24,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/revert.html",
+              "lineAdded": 37,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/scroll.html",
+              "lineAdded": 44,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/snap-to.html",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/sortable.html",
+              "lineAdded": 50,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/draggable/visual-feedback.html",
+              "lineAdded": 70,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/accepted-elements.html",
+              "lineAdded": 53,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/default.html",
+              "lineAdded": 46,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras2.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras2_min.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras3.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras3_min.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras4.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras4_min.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/images/high_tatras_min.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/index.html",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/photo-manager.html",
+              "lineAdded": 182,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/propagation.html",
+              "lineAdded": 73,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/revert.html",
+              "lineAdded": 54,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/shopping-cart.html",
+              "lineAdded": 94,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/droppable/visual-feedback.html",
+              "lineAdded": 72,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/effect/default.html",
+              "lineAdded": 102,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/effect/easing.html",
+              "lineAdded": 102,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/effect/index.html",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/hide/default.html",
+              "lineAdded": 95,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/hide/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/calendar.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/demo-config-on-tile.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/demo-config-on.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/demo-spindown-closed.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/demo-spindown-open.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/icon-docs-info.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/images/pbar-ani.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/index.html",
+              "lineAdded": 40,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/menu/default.html",
+              "lineAdded": 67,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/menu/icons.html",
+              "lineAdded": 44,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/menu/index.html",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/cycler.html",
+              "lineAdded": 107,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/default.html",
+              "lineAdded": 137,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/images/earth.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/images/flight.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/images/rocket.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/position/index.html",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/default.html",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/images/pbar-ani.gif",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/indeterminate.html",
+              "lineAdded": 53,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/index.html",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/progressbar/label.html",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/removeClass/default.html",
+              "lineAdded": 45,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/removeClass/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/animate.html",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/aspect-ratio.html",
+              "lineAdded": 35,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/constrain-area.html",
+              "lineAdded": 40,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/default.html",
+              "lineAdded": 33,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/delay-start.html",
+              "lineAdded": 45,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/helper.html",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/index.html",
+              "lineAdded": 24,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/max-min.html",
+              "lineAdded": 38,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/snap-to-grid.html",
+              "lineAdded": 35,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/synchronous-resize.html",
+              "lineAdded": 42,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/textarea.html",
+              "lineAdded": 34,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/resizable/visual-feedback.html",
+              "lineAdded": 36,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/selectable/default.html",
+              "lineAdded": 43,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/selectable/display-grid.html",
+              "lineAdded": 48,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/selectable/index.html",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/selectable/serialize.html",
+              "lineAdded": 54,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/show/default.html",
+              "lineAdded": 97,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/show/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/colorpicker.html",
+              "lineAdded": 87,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/default.html",
+              "lineAdded": 27,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/hotelrooms.html",
+              "lineAdded": 49,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/index.html",
+              "lineAdded": 24,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/multiple-vertical.html",
+              "lineAdded": 69,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/range-vertical.html",
+              "lineAdded": 41,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/range.html",
+              "lineAdded": 42,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/rangemax.html",
+              "lineAdded": 40,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/rangemin.html",
+              "lineAdded": 41,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/side-scroll.html",
+              "lineAdded": 131,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/slider-vertical.html",
+              "lineAdded": 42,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/slider/steps.html",
+              "lineAdded": 41,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/connect-lists-through-tabs.html",
+              "lineAdded": 72,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/connect-lists.html",
+              "lineAdded": 52,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/default.html",
+              "lineAdded": 45,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/delay-start.html",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/display-grid.html",
+              "lineAdded": 48,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/empty-lists.html",
+              "lineAdded": 63,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/index.html",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/items.html",
+              "lineAdded": 64,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/placeholder.html",
+              "lineAdded": 50,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/sortable/portlets.html",
+              "lineAdded": 115,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/currency.html",
+              "lineAdded": 52,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/decimal.html",
+              "lineAdded": 56,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/default.html",
+              "lineAdded": 64,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/index.html",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/latlong.html",
+              "lineAdded": 57,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/overflow.html",
+              "lineAdded": 44,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/spinner/time.html",
+              "lineAdded": 74,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/switchClass/default.html",
+              "lineAdded": 40,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/switchClass/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax.html",
+              "lineAdded": 46,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax/content1.html",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax/content2.html",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax/content3-slow.php",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/ajax/content4-broken.php",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/bottom.html",
+              "lineAdded": 58,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/collapsible.html",
+              "lineAdded": 48,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/default.html",
+              "lineAdded": 42,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/index.html",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/manipulation.html",
+              "lineAdded": 122,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/mouseover.html",
+              "lineAdded": 44,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/sortable.html",
+              "lineAdded": 51,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tabs/vertical.html",
+              "lineAdded": 54,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/toggle/default.html",
+              "lineAdded": 103,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/toggle/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/toggleClass/default.html",
+              "lineAdded": 39,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/toggleClass/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/ajax/content1.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/ajax/content2.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/custom-animation.html",
+              "lineAdded": 54,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/custom-content.html",
+              "lineAdded": 83,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/custom-style.html",
+              "lineAdded": 95,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/default.html",
+              "lineAdded": 40,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/forms.html",
+              "lineAdded": 65,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/images/st-stephens.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/images/tower-bridge.jpg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/index.html",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/tracking.html",
+              "lineAdded": 42,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/tooltip/video-player.html",
+              "lineAdded": 117,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/widget/default.html",
+              "lineAdded": 178,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/demos/widget/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/globalize.culture.de-DE.js",
+              "lineAdded": 81,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/globalize.culture.ja-JP.js",
+              "lineAdded": 100,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/globalize.js",
+              "lineAdded": 1585,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/jquery.mousewheel.js",
+              "lineAdded": 101,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/jshint.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/qunit.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/external/qunit.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/jquery-1.10.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/package.json",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/index.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/index.html",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/index.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.10.0.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.10.1.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.10.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.1.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.3.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.4.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.6.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.7.1.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.7.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.7.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.8.0.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.8.1.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.8.2.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.8.3.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static-assets/libs/jquery-ui/1.10.4/tests/jquery-1.9.0.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "a0e9f4fac929923989835ea5c0c3f9540b785ed8",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "sampleapp/urls.py",
+              "lineAdded": 5,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "5e6df272409eb33ae3df953381321713763c3e86",
+          "numberOfFileAffected": 53,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 6,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 6,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "sampleapp/settings/default.py",
+              "lineAdded": 20,
+              "lineDeleted": 21
+            },
+            {
+              "filePath": "sampleapp/settings/local.template.py",
+              "lineAdded": 55,
+              "lineDeleted": 43
+            },
+            {
+              "filePath": "sampleapp/urls.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "staticfiles/css/bootstrap-responsive.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/css/bootstrap-responsive.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/css/bootstrap.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/css/bootstrap.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/css/font-awesome-ie7.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/css/font-awesome.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/css/font-awesome.min.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/css/jquery-ui/jquery-ui-base.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/css/main.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/font/FontAwesome.otf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/font/fontawesome-webfont.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/font/fontawesome-webfont.svg",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/font/fontawesome-webfont.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/font/fontawesome-webfont.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/humans.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/glyphicons-halflings-white.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/glyphicons-halflings.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/ico/apple-touch-icon-114x114-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/ico/apple-touch-icon-144x144-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/ico/apple-touch-icon-57x57-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/ico/apple-touch-icon-72x72-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/ico/apple-touch-icon-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/ico/apple-touch-icon.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/ico/favicon.ico",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-bg_flat_0_aaaaaa_40x100.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-bg_flat_75_ffffff_40x100.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-bg_glass_55_fbf9ee_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-bg_glass_65_ffffff_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-bg_glass_75_dadada_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-bg_glass_75_e6e6e6_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-bg_glass_95_fef1ec_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-bg_highlight-soft_75_cccccc_1x100.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-icons_222222_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-icons_2e83ff_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-icons_454545_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-icons_888888_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/img/jquery-ui/base/ui-icons_cd0a0a_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/js/lib/bootstrap.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/js/lib/bootstrap.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/js/lib/jquery-1.9.1.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/js/lib/jquery-1.9.1.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/js/lib/jquery-ui-1.9.2.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/js/lib/modernizr-2.6.2-respond-1.1.0.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/js/main.coffee",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/js/main.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/js/plugins.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/media/init.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "staticfiles/robots.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "05eae1d9fbf7a4f45973bcdb1fc5cb11ca64f322",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "sampleapp/settings/default.py",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "sampleapp/settings/local.template.py",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "5f427599bf6d648658236f5d0f875b778d717d2f",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "static_extra/admin",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "238e8d9dcc0841ac17e8d59e0bac9d3efa66d09a",
+          "numberOfFileAffected": 38,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 6,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "sampleapp/settings/default.py",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static_extra/css/bootstrap-responsive.css",
+              "lineAdded": 24,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "static_extra/css/bootstrap-responsive.min.css",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "static_extra/css/bootstrap.css",
+              "lineAdded": 4266,
+              "lineDeleted": 3661
+            },
+            {
+              "filePath": "static_extra/css/bootstrap.min.css",
+              "lineAdded": 2,
+              "lineDeleted": 710
+            },
+            {
+              "filePath": "static_extra/css/font-awesome-ie7.css",
+              "lineAdded": 0,
+              "lineDeleted": 645
+            },
+            {
+              "filePath": "static_extra/css/font-awesome-ie7.min.css",
+              "lineAdded": 22,
+              "lineDeleted": 215
+            },
+            {
+              "filePath": "static_extra/css/font-awesome.css",
+              "lineAdded": 281,
+              "lineDeleted": 44
+            },
+            {
+              "filePath": "static_extra/css/font-awesome.min.css",
+              "lineAdded": 33,
+              "lineDeleted": 238
+            },
+            {
+              "filePath": "static_extra/font/FontAwesome.otf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/font/fontawesome-webfont.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/font/fontawesome-webfont.svg",
+              "lineAdded": 277,
+              "lineDeleted": 248
+            },
+            {
+              "filePath": "static_extra/font/fontawesome-webfont.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/font/fontawesome-webfont.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/humans.txt",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/ico/apple-touch-icon-114x114-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/ico/apple-touch-icon-144x144-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/ico/apple-touch-icon-57x57-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/ico/apple-touch-icon-72x72-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/ico/apple-touch-icon-precomposed.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/ico/apple-touch-icon.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/ico/favicon.ico",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/lib/bootstrap.js",
+              "lineAdded": 1355,
+              "lineDeleted": 1123
+            },
+            {
+              "filePath": "static_extra/js/lib/bootstrap.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "static_extra/js/lib/jquery-1.8.3.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "static_extra/js/lib/jquery-1.9.1.js",
+              "lineAdded": 9597,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/lib/jquery-1.9.1.min.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/lib/modernizr-2.6.2-all.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "static_extra/js/lib/modernizr-2.6.2-respond-1.1.0.min.js",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/main.js",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static_extra/js/plugins.js",
+              "lineAdded": 20,
+              "lineDeleted": 24
+            },
+            {
+              "filePath": "static_extra/robots.txt",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "templates/404.html",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "templates/500.html",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "templates/base.html",
+              "lineAdded": 14,
+              "lineDeleted": 10
+            },
+            {
+              "filePath": "templates/home.html",
+              "lineAdded": 1,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "c514bf55ccc6a058fbcd4a75834ec4d4b05c8b3f",
+          "numberOfFileAffected": 25,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 13,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "sampleapp/templates/base.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "sampleapp/wsgihandler.py",
+              "lineAdded": 0,
+              "lineDeleted": 30
+            },
+            {
+              "filePath": "static_extra/admin",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/css/jquery-ui/jquery-ui-base.css",
+              "lineAdded": 17,
+              "lineDeleted": 17
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-bg_flat_0_aaaaaa_40x100.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-bg_flat_75_ffffff_40x100.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-bg_glass_55_fbf9ee_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-bg_glass_65_ffffff_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-bg_glass_75_dadada_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-bg_glass_75_e6e6e6_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-bg_glass_95_fef1ec_1x400.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-bg_highlight-soft_75_cccccc_1x100.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-icons_222222_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-icons_2e83ff_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-icons_454545_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-icons_888888_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/jquery-ui/base/ui-icons_cd0a0a_256x240.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/lib/modernizr-2.6.1-respond-1.1.0.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 11
+            },
+            {
+              "filePath": "static_extra/js/lib/modernizr-2.6.2-all.min.js",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/main.coffee",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/main.js",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "wsgihandler.py",
+              "lineAdded": 0,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "wsgihandler.py",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "4aec1a43695de4ace90c353429a225ccd95bda5e",
+          "numberOfFileAffected": 25,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 7,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "sampleapp/settings/default.py",
+              "lineAdded": 13,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "sampleapp/templates/base.html",
+              "lineAdded": 12,
+              "lineDeleted": 14
+            },
+            {
+              "filePath": "static_extra/css/bootstrap-responsive.css",
+              "lineAdded": 33,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "static_extra/css/bootstrap-responsive.min.css",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "static_extra/css/bootstrap.css",
+              "lineAdded": 4173,
+              "lineDeleted": 4394
+            },
+            {
+              "filePath": "static_extra/css/bootstrap.min.css",
+              "lineAdded": 710,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "static_extra/css/font-awesome-ie7.css",
+              "lineAdded": 645,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/css/font-awesome-ie7.min.css",
+              "lineAdded": 215,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/css/font-awesome.css",
+              "lineAdded": 303,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/css/font-awesome.min.css",
+              "lineAdded": 238,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/css/jquery-ui/jquery-ui-base.css",
+              "lineAdded": 474,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/font/fontawesome-webfont.eot",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/font/fontawesome-webfont.svg",
+              "lineAdded": 255,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/font/fontawesome-webfont.ttf",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/font/fontawesome-webfont.woff",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/lib/bootstrap.js",
+              "lineAdded": 1154,
+              "lineDeleted": 1145
+            },
+            {
+              "filePath": "static_extra/js/lib/bootstrap.min.js",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/lib/jquery-1.8.3.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/lib/jquery-ui-1.9.2.min.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/lib/modernizr-2.6.1-respond-1.1.0.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/plugins.js",
+              "lineAdded": 15,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "static_extra/js/vendor/bootstrap.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "static_extra/js/vendor/jquery-1.8.2.min.js",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "52db8e78d10d920c18a176d35179c688a053b5b7",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 7,
+              "lineDeleted": 7
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 4,
+              "lineDeleted": 4
+            }
+          ]
+        },
+        {
+          "id": "746815b9e7b548e9a3547a3b2926877f97a6008d",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            }
+          ]
+        },
+        {
+          "id": "25a1f97839ea85ba4dee03c4624ce3000c3dcd87",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 5,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "static_extra/init.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "d06e8ced7cf54d91c4e78921b4831bab2e9b04f4",
+          "numberOfFileAffected": 23,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 1,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 71,
+              "lineDeleted": 12
+            },
+            {
+              "filePath": "sampleapp/home/views.py",
+              "lineAdded": 5,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "sampleapp/settings/default.py",
+              "lineAdded": 3,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "sampleapp/settings/local.template.py",
+              "lineAdded": 3,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "sampleapp/templates/404.html",
+              "lineAdded": 157,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/templates/500.html",
+              "lineAdded": 148,
+              "lineDeleted": 9
+            },
+            {
+              "filePath": "sampleapp/templates/base.html",
+              "lineAdded": 88,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "sampleapp/templates/home.html",
+              "lineAdded": 29,
+              "lineDeleted": 6
+            },
+            {
+              "filePath": "static_extra/css/bootstrap-responsive.css",
+              "lineAdded": 1058,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/css/bootstrap-responsive.min.css",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/css/bootstrap.css",
+              "lineAdded": 5774,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/css/bootstrap.min.css",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/css/main.css",
+              "lineAdded": 22,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/glyphicons-halflings-white.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/img/glyphicons-halflings.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/init.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/main.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/plugins.js",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/vendor/bootstrap.js",
+              "lineAdded": 2027,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/vendor/bootstrap.min.js",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/vendor/jquery-1.8.2.min.js",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static_extra/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "0036de69c4d2d21fb6f492dd9145b44ecee19c4e",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 4,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "sampleapp/settings/local.py",
+              "lineAdded": 0,
+              "lineDeleted": 61
+            }
+          ]
+        },
+        {
+          "id": "a8fe438676dca41bad73f14422b33653fdf54335",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "34a6134709e237cdde4b053d14afb9b5856f2a3d",
+          "numberOfFileAffected": 21,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 11,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "media/init.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "requirements.txt",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/__init__.py",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/home/__init__.py",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/home/models.py",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/home/tests.py",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/home/views.py",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/manage.py",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/settings/__init__.py",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/settings/default.py",
+              "lineAdded": 198,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/settings/local.py",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/settings/local.template.py",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/templates/500.html",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/templates/base.html",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/templates/home.html",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/urls.py",
+              "lineAdded": 19,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "sampleapp/wsgihandler.py",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "static/init.txt",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "wsgihandler.py",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "5e3fc861c6b57cb265eefa3f1d67a609a93ebf69",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 27,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "289ec97405eb1c3020076b9f2924f4a30317c69a",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "df6bc5b8754e905ba7beaf6b981584639b4a5502",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "init.txt",
+          "filePath": "media/init.txt"
+        },
+        {
+          "fileId": "01017de279f8a2df97f42b95bbd6315084074a9c",
+          "fileName": "__init__.py",
+          "filePath": "projectname/__init__.py"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "__init__.py",
+          "filePath": "projectname/home/__init__.py"
+        },
+        {
+          "fileId": "71a836239075aa6e6e4ecb700e9c42c95c022d91",
+          "fileName": "models.py",
+          "filePath": "projectname/home/models.py"
+        },
+        {
+          "fileId": "501deb776c16733b19f3509d86e125df78958261",
+          "fileName": "tests.py",
+          "filePath": "projectname/home/tests.py"
+        },
+        {
+          "fileId": "3ad28908e8a1395334c7285336be6bbe9868b1a9",
+          "fileName": "views.py",
+          "filePath": "projectname/home/views.py"
+        },
+        {
+          "fileId": "f9726f9e67d10a596ac6efaeb114a6c479fa24ca",
+          "fileName": "manage.py",
+          "filePath": "projectname/manage.py"
+        },
+        {
+          "fileId": "57de53dbd7d2b32308e3e5fc2c64173c8e0b2f78",
+          "fileName": "__init__.py",
+          "filePath": "projectname/settings/__init__.py"
+        },
+        {
+          "fileId": "fcfc8e48b6b80f455752c9e2c25a9a4f1bbbb358",
+          "fileName": "default.py",
+          "filePath": "projectname/settings/default.py"
+        },
+        {
+          "fileId": "b58397f7c7234bb3d69a2bcb5a95d81566454138",
+          "fileName": "local.template.py",
+          "filePath": "projectname/settings/local.template.py"
+        },
+        {
+          "fileId": "681aaaee07a716d5c2dc0be3d348ebfa66f8d0ec",
+          "fileName": "urls.py",
+          "filePath": "projectname/urls.py"
+        },
+        {
+          "fileId": "930fdefd6ed44394cc0171b91a13495f5b376a3e",
+          "fileName": "wsgi.py",
+          "filePath": "projectname/wsgi.py"
+        },
+        {
+          "fileId": "b078b1c889f891b0c4886385dbc24605572c93b9",
+          "fileName": "requirements.txt",
+          "filePath": "requirements.txt"
+        },
+        {
+          "fileId": "600738f2cee82ca5dc8e92efdb4561fd59eaeb47",
+          "fileName": "apple-touch-icon.png",
+          "filePath": "static-assets/apple-touch-icon.png"
+        },
+        {
+          "fileId": "b25e769fbf64d7cb419c40c4573a7e2af46201ef",
+          "fileName": "main.css",
+          "filePath": "static-assets/css/main.css"
+        },
+        {
+          "fileId": "be74abd69ad6a32de7375df13cab9354798e328f",
+          "fileName": "favicon.ico",
+          "filePath": "static-assets/favicon.ico"
+        },
+        {
+          "fileId": "5b037cf2e10f1e8ee747d94d014bbd6aaa288b60",
+          "fileName": "humans.txt",
+          "filePath": "static-assets/humans.txt"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "init.txt",
+          "filePath": "static-assets/images/init.txt"
+        },
+        {
+          "fileId": "f17d298aaefb0e72776f53343b366435ca4824c4",
+          "fileName": "main.coffee",
+          "filePath": "static-assets/js/main.coffee"
+        },
+        {
+          "fileId": "0948564c0213ec5c0b1a69ebafd7d5008312c7a3",
+          "fileName": "main.js",
+          "filePath": "static-assets/js/main.js"
+        },
+        {
+          "fileId": "8c76804893bee42a20e8682c4516a1dc756bd8d9",
+          "fileName": "main.map",
+          "filePath": "static-assets/js/main.map"
+        },
+        {
+          "fileId": "c19cd5c4ba7af19b770268f642cad1fe4952d9b2",
+          "fileName": "bootstrap-theme.css",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap-theme.css"
+        },
+        {
+          "fileId": "753531147d9b355f58d950b269b58f30915bbbcc",
+          "fileName": "bootstrap-theme.css.map",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap-theme.css.map"
+        },
+        {
+          "fileId": "61358b13d045694a6963c5334eab2831e53978ac",
+          "fileName": "bootstrap-theme.min.css",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap-theme.min.css"
+        },
+        {
+          "fileId": "680e7687862ea56dbd8f7717b23eeacc6e0de78c",
+          "fileName": "bootstrap.css",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap.css"
+        },
+        {
+          "fileId": "9f60ed2b1bd4ed75d3b2861366a82bd678404963",
+          "fileName": "bootstrap.css.map",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap.css.map"
+        },
+        {
+          "fileId": "d65c66b1ba297eeb3b5976b71c64c736b41bb763",
+          "fileName": "bootstrap.min.css",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/css/bootstrap.min.css"
+        },
+        {
+          "fileId": "b93a4953fff68df523aa7656497ee339d6026d64",
+          "fileName": "glyphicons-halflings-regular.eot",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.eot"
+        },
+        {
+          "fileId": "94fb5490a2ed10b2c69a4a567a4fd2e4f706d841",
+          "fileName": "glyphicons-halflings-regular.svg",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.svg"
+        },
+        {
+          "fileId": "1413fc609ab6f21774de0cb7e01360095584f65b",
+          "fileName": "glyphicons-halflings-regular.ttf",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.ttf"
+        },
+        {
+          "fileId": "9e612858f802245ddcbf59788a0db942224bab35",
+          "fileName": "glyphicons-halflings-regular.woff",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff"
+        },
+        {
+          "fileId": "64539b54c3751a6d9adb44c8e3a45ba5a73b77f0",
+          "fileName": "glyphicons-halflings-regular.woff2",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2"
+        },
+        {
+          "fileId": "5debfd7de97d5bada8dbd090331fb62103b2493e",
+          "fileName": "bootstrap.js",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/js/bootstrap.js"
+        },
+        {
+          "fileId": "133aeecb98aa2b05d2dc1fcd623afcb37204828a",
+          "fileName": "bootstrap.min.js",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/js/bootstrap.min.js"
+        },
+        {
+          "fileId": "bf6aa80602d9303b61e8d5e63c10568e55b6a4d8",
+          "fileName": "npm.js",
+          "filePath": "static-assets/libs/bootstrap-3.3.5/js/npm.js"
+        },
+        {
+          "fileId": "2dcdc220722c85a5db777797657b94c50d98aff7",
+          "fileName": "font-awesome.css",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/css/font-awesome.css"
+        },
+        {
+          "fileId": "24fcc04c4ed56775bffd4597800eb544bac91178",
+          "fileName": "font-awesome.min.css",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/css/font-awesome.min.css"
+        },
+        {
+          "fileId": "f7936cc1e789eea5438d576d6b12de20191da09d",
+          "fileName": "FontAwesome.otf",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/FontAwesome.otf"
+        },
+        {
+          "fileId": "33b2bb80055cc480e797de704925acaba4ba7d7d",
+          "fileName": "fontawesome-webfont.eot",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.eot"
+        },
+        {
+          "fileId": "1ee89d4368d31a368817a842f14d53f7a64c3038",
+          "fileName": "fontawesome-webfont.svg",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.svg"
+        },
+        {
+          "fileId": "ed9372f8ea0fbaa04f42630a48887e4b38945345",
+          "fileName": "fontawesome-webfont.ttf",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.ttf"
+        },
+        {
+          "fileId": "8b280b98fa2fa261aa4b0f8fd061f772073ef83e",
+          "fileName": "fontawesome-webfont.woff",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.woff"
+        },
+        {
+          "fileId": "3311d585145b1cc1b9581e914acbb32d8542b4f5",
+          "fileName": "fontawesome-webfont.woff2",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/fonts/fontawesome-webfont.woff2"
+        },
+        {
+          "fileId": "66ad52a5ba052ced428dcc7ec7016bc25438a2ca",
+          "fileName": "animated.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/animated.less"
+        },
+        {
+          "fileId": "0c90eb5672b04fc66edcc99f003e15fc638e279c",
+          "fileName": "bordered-pulled.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/bordered-pulled.less"
+        },
+        {
+          "fileId": "f814f1e17eb45276b23f54c6fce48314869fc5bb",
+          "fileName": "core.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/core.less"
+        },
+        {
+          "fileId": "110289f2f4b5260ce04dd035408961f1e4f2785b",
+          "fileName": "fixed-width.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/fixed-width.less"
+        },
+        {
+          "fileId": "1f45c63d154692051135ff84c22d9be73542d9a7",
+          "fileName": "font-awesome.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/font-awesome.less"
+        },
+        {
+          "fileId": "c265de5a6843bfd564d41a6078e2fdce98b0d95e",
+          "fileName": "icons.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/icons.less"
+        },
+        {
+          "fileId": "c9d646770e2186c73632cbe042d82d1d1acaa25b",
+          "fileName": "larger.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/larger.less"
+        },
+        {
+          "fileId": "0b440382f61f0bb1683e5b15c2a00e4e398f9980",
+          "fileName": "list.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/list.less"
+        },
+        {
+          "fileId": "c97f4604ca5f84ed3dd1be0ba849620fc6336ace",
+          "fileName": "mixins.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/mixins.less"
+        },
+        {
+          "fileId": "9211e66597a0345e3faf1319b5c5f11c4e4e9c91",
+          "fileName": "path.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/path.less"
+        },
+        {
+          "fileId": "f6ba81475b92355723f0dc12767f715995a34162",
+          "fileName": "rotated-flipped.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/rotated-flipped.less"
+        },
+        {
+          "fileId": "fc53fb0e7ab49594e1eac97208c32a290558efeb",
+          "fileName": "stacked.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/stacked.less"
+        },
+        {
+          "fileId": "d526064c84c36bb6fd17c34ee4f6af39480f74b0",
+          "fileName": "variables.less",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/less/variables.less"
+        },
+        {
+          "fileId": "8a020dbfff7822bf57c7217eafdaa4884b8aa943",
+          "fileName": "_animated.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_animated.scss"
+        },
+        {
+          "fileId": "9d3fdf3a0b477ffa6e9c1378bf7f0636c1f43c1e",
+          "fileName": "_bordered-pulled.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_bordered-pulled.scss"
+        },
+        {
+          "fileId": "5a2db9d5612d028a6cc3d448262d3dee5f70f6a0",
+          "fileName": "_core.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_core.scss"
+        },
+        {
+          "fileId": "b221c98133a4d4a8449c848ccb69bf631d1c3e5d",
+          "fileName": "_fixed-width.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_fixed-width.scss"
+        },
+        {
+          "fileId": "fbcfe81237b527f4839001b8656751d362cd4294",
+          "fileName": "_icons.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_icons.scss"
+        },
+        {
+          "fileId": "41e9a8184aa287c5970cc8415e3c5a6310dc9f79",
+          "fileName": "_larger.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_larger.scss"
+        },
+        {
+          "fileId": "7d1e4d54d6c293333eb638aa56feba7b62e15564",
+          "fileName": "_list.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_list.scss"
+        },
+        {
+          "fileId": "6b7f16093120f1f2245c16677687f30f5b95b7b7",
+          "fileName": "_mixins.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_mixins.scss"
+        },
+        {
+          "fileId": "bb457c23a8e4e0688ebd9383e34ab9f2b3acecab",
+          "fileName": "_path.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_path.scss"
+        },
+        {
+          "fileId": "a3558fd09ca7cb968166d5445f4df1a0bc2d5a7e",
+          "fileName": "_rotated-flipped.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_rotated-flipped.scss"
+        },
+        {
+          "fileId": "aef7403660c9a2ccc02a264c62c6b105f7d8d532",
+          "fileName": "_stacked.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_stacked.scss"
+        },
+        {
+          "fileId": "9b7210e23bd8e38b41703ccd11d08b7d27a867c9",
+          "fileName": "_variables.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/_variables.scss"
+        },
+        {
+          "fileId": "388ac6b0cd6738cf09470583903708d28809762f",
+          "fileName": "font-awesome.scss",
+          "filePath": "static-assets/libs/font-awesome-4.3.0/scss/font-awesome.scss"
+        },
+        {
+          "fileId": "598876ef5eb20af9def70295abe3d0e869555deb",
+          "fileName": "html5shiv.js",
+          "filePath": "static-assets/libs/html5shiv.js"
+        },
+        {
+          "fileId": "f7f422773d9dcedcd11869151d7bcf5ade218a2d",
+          "fileName": "jquery-2.1.0.js",
+          "filePath": "static-assets/libs/jquery/2.1.0/jquery-2.1.0.js"
+        },
+        {
+          "fileId": "cbe6abe59a8150d1d5deb196915fa636aea44a61",
+          "fileName": "jquery-2.1.0.min.js",
+          "filePath": "static-assets/libs/jquery/2.1.0/jquery-2.1.0.min.js"
+        },
+        {
+          "fileId": "f65d47974786ee51c258f680bd9be621629244f5",
+          "fileName": "modernizr-2.6.2.min.js",
+          "filePath": "static-assets/libs/modernizr/2.6.2/modernizr-2.6.2.min.js"
+        },
+        {
+          "fileId": "d803adfbe59236e87c5f91c7d5cd1e8b7703ba26",
+          "fileName": "media",
+          "filePath": "static-assets/media"
+        },
+        {
+          "fileId": "d0e5f1be6bb0124953f05108e71171eb531e46f5",
+          "fileName": "robots.txt",
+          "filePath": "static-assets/robots.txt"
+        },
+        {
+          "fileId": "8d7925a892c6a7f695637b1a8c943bcd85b8bd27",
+          "fileName": "404.html",
+          "filePath": "templates/404.html"
+        },
+        {
+          "fileId": "83340d2107d076fd1eafd3ff9a1711ca9a4381e9",
+          "fileName": "500.html",
+          "filePath": "templates/500.html"
+        },
+        {
+          "fileId": "4485d39bd21465ac64ab8e5179b3170898ad19ce",
+          "fileName": "base.html",
+          "filePath": "templates/base.html"
+        },
+        {
+          "fileId": "8d9df412bb72b852a84c0c86885f9290dbb78e82",
+          "fileName": "home.html",
+          "filePath": "templates/home.html"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/kirpit/github/django-sample-app/.gitignore"
+        },
+        {
+          "filename": "requirements.txt",
+          "repoFilePath": "requirements.txt",
+          "localFilePath": "test/matching-algo/matcher/dependencies/requirements.django.txt"
+        }
+      ]
+    }
+  ]
+}

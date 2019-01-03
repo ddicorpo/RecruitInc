@@ -38,8 +38,8 @@ out/
 
 # Ignore compiled filed by tsx (Front-End)
 
-recruit-inc-front/pages/*.js
-recruit-inc-front/components/*.js
+recruit-inc-front/src/app/pages/*.js
+recruit-inc-front/src/app/components/*.js
 
 # Ignore Log file
 

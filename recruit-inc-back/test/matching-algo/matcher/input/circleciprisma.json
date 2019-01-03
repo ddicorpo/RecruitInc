@@ -1,0 +1,351 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "CircleCIPrisma",
+      "owner": "lydiahallie",
+      "applicantCommits": [
+        {
+          "id": "a90c4075d09b41e9e0139f06757383fd95520cc9",
+          "numberOfFileAffected": 11,
+          "files": [
+            {
+              "filePath": ".circleci/config.yml",
+              "lineAdded": 26,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 20,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "prisma/generated/prisma-client/index.ts",
+              "lineAdded": 769,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "prisma/generated/prisma-client/prisma-schema.ts",
+              "lineAdded": 399,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "prisma/prisma.yml",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/index.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/resolvers/types/Context.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/tests/__snapshots__/resolvers.test.ts.snap",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/tests/resolvers.test.ts",
+              "lineAdded": 33,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "utils/TestClient.ts",
+              "lineAdded": 46,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "yarn.lock",
+              "lineAdded": 1332,
+              "lineDeleted": 34
+            }
+          ]
+        },
+        {
+          "id": "08c8a88d5d319b8ddc7d09ea75e5497877fdbe41",
+          "numberOfFileAffected": 23,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "docker-compose.yml",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 23,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "prisma/datamodel.prisma",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "prisma/prisma.yml",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "prisma/seed.graphql",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/generated/prisma-client/index.d.ts",
+              "lineAdded": 767,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/generated/prisma-client/index.js",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/generated/prisma-client/index.ts",
+              "lineAdded": 771,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/generated/prisma-client/prisma-schema.js",
+              "lineAdded": 402,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/generated/prisma-client/prisma-schema.ts",
+              "lineAdded": 399,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/generated/resolvers.ts",
+              "lineAdded": 276,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/index.ts",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/resolvers/Mutation.ts",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/resolvers/Post.ts",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/resolvers/Query.ts",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/resolvers/User.ts",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/resolvers/index.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/resolvers/types/Context.ts",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/resolvers/types/TypeMap.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/schema.graphql",
+              "lineAdded": 30,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "tsconfig.json",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "yarn.lock",
+              "lineAdded": 5406,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "c70a8f6185b3f0cef80b0aed9fcf8a02751acc80",
+          "fileName": "config.yml",
+          "filePath": ".circleci/config.yml"
+        },
+        {
+          "fileId": "b512c09d476623ff4bf8d0d63c29b784925dbdf8",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "64b1f3c4aac40180820f2440be9068412b0001fb",
+          "fileName": "docker-compose.yml",
+          "filePath": "docker-compose.yml"
+        },
+        {
+          "fileId": "a71166a11434c0804c1c11d0f308ada50aefb198",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "5064cb47b6d659219c524895fc1dfb9b5e7d9501",
+          "fileName": "datamodel.prisma",
+          "filePath": "prisma/datamodel.prisma"
+        },
+        {
+          "fileId": "36a0758e728378178602b4ed2168cb4235c6ab8c",
+          "fileName": "index.ts",
+          "filePath": "prisma/generated/prisma-client/index.ts"
+        },
+        {
+          "fileId": "dfc4d72f3093440d4ab9cd7c24e54c8a1780366f",
+          "fileName": "prisma-schema.ts",
+          "filePath": "prisma/generated/prisma-client/prisma-schema.ts"
+        },
+        {
+          "fileId": "cf5d16bfc5c16bbf693f8db8efa35c4451a0a130",
+          "fileName": "prisma.yml",
+          "filePath": "prisma/prisma.yml"
+        },
+        {
+          "fileId": "03b4c9cda293ef387d7b8ab8dc6eba61865205a6",
+          "fileName": "seed.graphql",
+          "filePath": "prisma/seed.graphql"
+        },
+        {
+          "fileId": "2f8380977074826367e7ce613b6fc4ff818207e8",
+          "fileName": "index.d.ts",
+          "filePath": "src/generated/prisma-client/index.d.ts"
+        },
+        {
+          "fileId": "8ad66883abb5f2af6ff5447f2f2330b0163ced51",
+          "fileName": "index.js",
+          "filePath": "src/generated/prisma-client/index.js"
+        },
+        {
+          "fileId": "ea7f7ccf1b68179c5c0cccb9a4d654ab2573986a",
+          "fileName": "index.ts",
+          "filePath": "src/generated/prisma-client/index.ts"
+        },
+        {
+          "fileId": "64aa8eb708ff9d0e2eee46f8bc821413fd75560b",
+          "fileName": "prisma-schema.js",
+          "filePath": "src/generated/prisma-client/prisma-schema.js"
+        },
+        {
+          "fileId": "dfc4d72f3093440d4ab9cd7c24e54c8a1780366f",
+          "fileName": "prisma-schema.ts",
+          "filePath": "src/generated/prisma-client/prisma-schema.ts"
+        },
+        {
+          "fileId": "af2b9bcddffb18b0b7f46197fdf1d42ae5bf68c7",
+          "fileName": "resolvers.ts",
+          "filePath": "src/generated/resolvers.ts"
+        },
+        {
+          "fileId": "1a330256ae7d1ecf661e2b829ff2282442d13b8d",
+          "fileName": "index.ts",
+          "filePath": "src/index.ts"
+        },
+        {
+          "fileId": "5966b78beb193f437ab6052df3d61ae98c1ace26",
+          "fileName": "Mutation.ts",
+          "filePath": "src/resolvers/Mutation.ts"
+        },
+        {
+          "fileId": "edd0858599f94f4f0c2524b5e7204b28d9a332c3",
+          "fileName": "Post.ts",
+          "filePath": "src/resolvers/Post.ts"
+        },
+        {
+          "fileId": "5987aba61f5d36c004c182d631095727fe9feac0",
+          "fileName": "Query.ts",
+          "filePath": "src/resolvers/Query.ts"
+        },
+        {
+          "fileId": "129d0b216dfbd9c90ad171ba58cafe8eedc38709",
+          "fileName": "User.ts",
+          "filePath": "src/resolvers/User.ts"
+        },
+        {
+          "fileId": "5b52e6e99926e82382f42857a45f9cfcdb18a30f",
+          "fileName": "index.ts",
+          "filePath": "src/resolvers/index.ts"
+        },
+        {
+          "fileId": "f3d2acf9c80957351173739cfe03a4991f907a69",
+          "fileName": "Context.ts",
+          "filePath": "src/resolvers/types/Context.ts"
+        },
+        {
+          "fileId": "6195efd2dc710ad1a5990eae184b1c77be696737",
+          "fileName": "TypeMap.ts",
+          "filePath": "src/resolvers/types/TypeMap.ts"
+        },
+        {
+          "fileId": "6aadc6797ba648da1c30ba168c4db72900370f0b",
+          "fileName": "schema.graphql",
+          "filePath": "src/schema.graphql"
+        },
+        {
+          "fileId": "c0c19c9a6dc255ba5f9b22a74a76dadf883fb491",
+          "fileName": "resolvers.test.ts.snap",
+          "filePath": "src/tests/__snapshots__/resolvers.test.ts.snap"
+        },
+        {
+          "fileId": "9dbea1c4555c94ccd1b4fb4a79dca00e95c0072c",
+          "fileName": "resolvers.test.ts",
+          "filePath": "src/tests/resolvers.test.ts"
+        },
+        {
+          "fileId": "05f92c9afe637d864313f3ac8baaf6a3ce8f2c88",
+          "fileName": "tsconfig.json",
+          "filePath": "tsconfig.json"
+        },
+        {
+          "fileId": "b31a71c6633e6f4aa5978eafa9df405595271b21",
+          "fileName": "TestClient.ts",
+          "filePath": "utils/TestClient.ts"
+        },
+        {
+          "fileId": "741bd6daa0a8e14be34e1a6efc345de628752de4",
+          "fileName": "yarn.lock",
+          "filePath": "yarn.lock"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/lydiahallie/github/CircleCIPrisma/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.typescript.json"
+        }
+      ]
+    }
+  ]
+}

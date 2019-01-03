@@ -1,0 +1,1019 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "instagram-angular",
+      "owner": "grbalmeida",
+      "applicantCommits": [
+        {
+          "id": "62f97b96c57d6d484d43db0de077d9f779e2ecfa",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/home/new-post/new-post.component.html",
+              "lineAdded": 29,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/home/new-post/new-post.component.ts",
+              "lineAdded": 30,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/app/shared/services/database.service.ts",
+              "lineAdded": 26,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/shared/services/progress.service.ts",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "20a25d6950359bc17d31ad443068c507796507d2",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 7,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/app/home/home.component.html",
+              "lineAdded": 6,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/app/home/new-post/new-post.component.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/home/new-post/new-post.component.html",
+              "lineAdded": 25,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/home/new-post/new-post.component.ts",
+              "lineAdded": 40,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/shared/services/database.service.ts",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "7d84f5e4848613b516d72b6034c22360e495bb3f",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/app.routes.ts",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/home/home.component.html",
+              "lineAdded": 4,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/home/home.component.ts",
+              "lineAdded": 8,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/app/shared/services/auth-guard.service.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/shared/services/auth.service.ts",
+              "lineAdded": 44,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "9a28242135502e0b8d6fd7ff1cef7e333a7bfadf",
+          "numberOfFileAffected": 21,
+          "files": [
+            {
+              "filePath": "src/app/access/login/login.component.css",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/login/login.component.html",
+              "lineAdded": 16,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/app/access/login/login.component.ts",
+              "lineAdded": 25,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/access/register/register.component.ts",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/app.component.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 10,
+              "lineDeleted": 3
+            },
+            {
+              "filePath": "src/app/app.routes.ts",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/home/home.component.css",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/home/home.component.html",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/home/home.component.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/home/publications/publications.component.css",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/home/publications/publications.component.html",
+              "lineAdded": 95,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/home/publications/publications.component.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/shared/services/auth.service.ts",
+              "lineAdded": 10,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/assets/camera.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/instagram-logo-2.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/posts/img1.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/posts/img2.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/posts/img3.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/posts/img4.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles.css",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "f38812dad5042c2d0d2840fc99e583e66a99bd92",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "package.json",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/register/register.component.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/access/register/register.component.ts",
+              "lineAdded": 14,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/app/app.component.ts",
+              "lineAdded": 16,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/shared/services/auth.service.ts",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "072d1647ebb4ff0b42bc5d0490df7a0c3ac0aa5d",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "src/app/access/register/register.component.ts",
+              "lineAdded": 9,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/shared/models/user.model.ts",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "b130ba7eba0da91da1a186048a465911d620e706",
+          "numberOfFileAffected": 5,
+          "files": [
+            {
+              "filePath": "src/app/access/login/login.component.html",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/app/access/register/register.component.css",
+              "lineAdded": 4,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/register/register.component.html",
+              "lineAdded": 26,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/access/register/register.component.ts",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "25716eca545d640b30e25fbb1e3797863ebec06c",
+          "numberOfFileAffected": 17,
+          "files": [
+            {
+              "filePath": "package.json",
+              "lineAdded": 2,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/access/access.component.html",
+              "lineAdded": 17,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/app/access/access.component.ts",
+              "lineAdded": 44,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/app/access/banner/banner-image.model.ts",
+              "lineAdded": 8,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/banner/banner.component.html",
+              "lineAdded": 6,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/access/banner/banner.component.ts",
+              "lineAdded": 39,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "src/app/access/login/login.component.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/access/login/login.component.ts",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/access/register/register.component.html",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/access/register/register.component.ts",
+              "lineAdded": 5,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "src/assets/images/img_1.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/images/img_2.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/images/img_3.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/images/img_4.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/images/img_5.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/polyfills.ts",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "d8ae482652a96d3e202838b4734581fa09368c27",
+          "numberOfFileAffected": 18,
+          "files": [
+            {
+              "filePath": "src/app/access/access.component.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/access.component.html",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/access.component.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/banner/banner.component.css",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/banner/banner.component.html",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/banner/banner.component.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/login/login.component.css",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/login/login.component.html",
+              "lineAdded": 35,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/login/login.component.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/register/register.component.css",
+              "lineAdded": 7,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/register/register.component.html",
+              "lineAdded": 49,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/access/register/register.component.ts",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.css",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.html",
+              "lineAdded": 3,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 12,
+              "lineDeleted": 5
+            },
+            {
+              "filePath": "src/assets/banner-access/background.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/instagram-logo.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/favicon.ico",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "abb3454ea3800adf215ace3c1d7ad306666756e9",
+          "numberOfFileAffected": 30,
+          "files": [
+            {
+              "filePath": ".editorconfig",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 39,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 27,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "angular.json",
+              "lineAdded": 140,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "e2e/protractor.conf.js",
+              "lineAdded": 28,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "e2e/src/app.e2e-spec.ts",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "e2e/src/app.po.ts",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "e2e/tsconfig.e2e.json",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 51,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.css",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.html",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.spec.ts",
+              "lineAdded": 31,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.component.ts",
+              "lineAdded": 10,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/app/app.module.ts",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/assets/.gitkeep",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/browserslist",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/environments/environment.prod.ts",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/environments/environment.ts",
+              "lineAdded": 16,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/favicon.ico",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/index.html",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/karma.conf.js",
+              "lineAdded": 31,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/main.ts",
+              "lineAdded": 12,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/polyfills.ts",
+              "lineAdded": 80,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/styles.css",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/test.ts",
+              "lineAdded": 20,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/tsconfig.app.json",
+              "lineAdded": 11,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/tsconfig.spec.json",
+              "lineAdded": 18,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "src/tslint.json",
+              "lineAdded": 17,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "tsconfig.json",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "tslint.json",
+              "lineAdded": 131,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "e89330a618c137cdaccde46f87923736cc04dfb4",
+          "fileName": ".editorconfig",
+          "filePath": ".editorconfig"
+        },
+        {
+          "fileId": "ee5c9d8336b76b3bb5658d0888bdec86eb7b0990",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "a15c0057e7c5f31922a0dcb8430eeeae339f209a",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "f97d338ebc44a28be8583f9fc2ed340e96c5520f",
+          "fileName": "angular.json",
+          "filePath": "angular.json"
+        },
+        {
+          "fileId": "86776a391a5b48b32506eb0fa62b15ed6c926b69",
+          "fileName": "protractor.conf.js",
+          "filePath": "e2e/protractor.conf.js"
+        },
+        {
+          "fileId": "14ee0e344260b407a719e3d93879e238179e2315",
+          "fileName": "app.e2e-spec.ts",
+          "filePath": "e2e/src/app.e2e-spec.ts"
+        },
+        {
+          "fileId": "72e463a33539a15bd3e028aaa22c697fc647b9a6",
+          "fileName": "app.po.ts",
+          "filePath": "e2e/src/app.po.ts"
+        },
+        {
+          "fileId": "a6dd6220282460dae17d69fc030b94ab1e81d960",
+          "fileName": "tsconfig.e2e.json",
+          "filePath": "e2e/tsconfig.e2e.json"
+        },
+        {
+          "fileId": "f389cef9bf87caa490d05989c0a636d98828316f",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "access.component.css",
+          "filePath": "src/app/access/access.component.css"
+        },
+        {
+          "fileId": "f83625d9d0232e61743f5fa0070edd18c0708d2a",
+          "fileName": "access.component.html",
+          "filePath": "src/app/access/access.component.html"
+        },
+        {
+          "fileId": "71131949eb0b47aa4988c17f2f300a4162004ac2",
+          "fileName": "access.component.ts",
+          "filePath": "src/app/access/access.component.ts"
+        },
+        {
+          "fileId": "64d453481d69100b000ab92b5b6720dab66af2f8",
+          "fileName": "banner-image.model.ts",
+          "filePath": "src/app/access/banner/banner-image.model.ts"
+        },
+        {
+          "fileId": "9d063ffba80e64a2f3dd27a40b5803464bd57ca3",
+          "fileName": "banner.component.css",
+          "filePath": "src/app/access/banner/banner.component.css"
+        },
+        {
+          "fileId": "9f3a628ee63cfdf6bf19aad2165cde75c0bfe059",
+          "fileName": "banner.component.html",
+          "filePath": "src/app/access/banner/banner.component.html"
+        },
+        {
+          "fileId": "72f654604d1809ce425f45f5f20c84bc13e37d29",
+          "fileName": "banner.component.ts",
+          "filePath": "src/app/access/banner/banner.component.ts"
+        },
+        {
+          "fileId": "a8e05665c72fdfcc684b4e198b2d03b4ef7ce08a",
+          "fileName": "login.component.css",
+          "filePath": "src/app/access/login/login.component.css"
+        },
+        {
+          "fileId": "20e7f1dc0bce92bdb9e75b64a55e74244b4a6d51",
+          "fileName": "login.component.html",
+          "filePath": "src/app/access/login/login.component.html"
+        },
+        {
+          "fileId": "15d940221ad77c5f21e4b38efc43a7aebb3f9d5d",
+          "fileName": "login.component.ts",
+          "filePath": "src/app/access/login/login.component.ts"
+        },
+        {
+          "fileId": "a8e05665c72fdfcc684b4e198b2d03b4ef7ce08a",
+          "fileName": "register.component.css",
+          "filePath": "src/app/access/register/register.component.css"
+        },
+        {
+          "fileId": "583bcd205ffeca29a8f30c1e867fc93946b4058e",
+          "fileName": "register.component.html",
+          "filePath": "src/app/access/register/register.component.html"
+        },
+        {
+          "fileId": "6bef1dc283bb9330c3bb086437aad4cff30cc005",
+          "fileName": "register.component.ts",
+          "filePath": "src/app/access/register/register.component.ts"
+        },
+        {
+          "fileId": "b773a54b90f54af3b2ed2f4da67aeb0032c079a6",
+          "fileName": "app.component.css",
+          "filePath": "src/app/app.component.css"
+        },
+        {
+          "fileId": "b42677824f71c42a851878beb08a219777eb57d1",
+          "fileName": "app.component.html",
+          "filePath": "src/app/app.component.html"
+        },
+        {
+          "fileId": "0f4cf4984ebeab209aa15781bddb480f18f8261e",
+          "fileName": "app.component.spec.ts",
+          "filePath": "src/app/app.component.spec.ts"
+        },
+        {
+          "fileId": "973a63f73dc277e3e07375eb1bdd130744ace84c",
+          "fileName": "app.component.ts",
+          "filePath": "src/app/app.component.ts"
+        },
+        {
+          "fileId": "52c31a239a6f3ff9c1b413eac4d32b5b6fc7f6da",
+          "fileName": "app.module.ts",
+          "filePath": "src/app/app.module.ts"
+        },
+        {
+          "fileId": "98d0706074b78cdc41939d7d585ed5e5ca3de993",
+          "fileName": "app.routes.ts",
+          "filePath": "src/app/app.routes.ts"
+        },
+        {
+          "fileId": "78f809106bc18ed70f4c9994f1f5d3c1e02af6bd",
+          "fileName": "home.component.css",
+          "filePath": "src/app/home/home.component.css"
+        },
+        {
+          "fileId": "06d06d4526078b10518a315b28aac18e10a46c73",
+          "fileName": "home.component.html",
+          "filePath": "src/app/home/home.component.html"
+        },
+        {
+          "fileId": "b5002900816aeb58d608c82b730fc9f5a4cd5752",
+          "fileName": "home.component.ts",
+          "filePath": "src/app/home/home.component.ts"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "new-post.component.css",
+          "filePath": "src/app/home/new-post/new-post.component.css"
+        },
+        {
+          "fileId": "5389f9cd1a99a2417e04e25b0e30fc287c09dc42",
+          "fileName": "new-post.component.html",
+          "filePath": "src/app/home/new-post/new-post.component.html"
+        },
+        {
+          "fileId": "8f7897b8dbe52c3e398e5d0716c0607f784ae426",
+          "fileName": "new-post.component.ts",
+          "filePath": "src/app/home/new-post/new-post.component.ts"
+        },
+        {
+          "fileId": "d8f061285e2d99a42b6714641fe5494e3b5bbf8f",
+          "fileName": "publications.component.css",
+          "filePath": "src/app/home/publications/publications.component.css"
+        },
+        {
+          "fileId": "5f50e71cf5e75be1cfb070ea523a230759189e3d",
+          "fileName": "publications.component.html",
+          "filePath": "src/app/home/publications/publications.component.html"
+        },
+        {
+          "fileId": "0840852311472a24d41fc35c13817af9d104087a",
+          "fileName": "publications.component.ts",
+          "filePath": "src/app/home/publications/publications.component.ts"
+        },
+        {
+          "fileId": "f9c5ef748df5858ee3580fae201ae61ed31c52b2",
+          "fileName": "user.model.ts",
+          "filePath": "src/app/shared/models/user.model.ts"
+        },
+        {
+          "fileId": "57b8fc76e3ef18c195d7150005f58cbf043ac553",
+          "fileName": "auth-guard.service.ts",
+          "filePath": "src/app/shared/services/auth-guard.service.ts"
+        },
+        {
+          "fileId": "adc45a159b45b3608436e6dbaca4b12def226d1b",
+          "fileName": "auth.service.ts",
+          "filePath": "src/app/shared/services/auth.service.ts"
+        },
+        {
+          "fileId": "d11aee2c1aa3b78f96c267a1c69461495c549024",
+          "fileName": "database.service.ts",
+          "filePath": "src/app/shared/services/database.service.ts"
+        },
+        {
+          "fileId": "7f1d6844362ddd374359b34f189310f16f0f97c4",
+          "fileName": "progress.service.ts",
+          "filePath": "src/app/shared/services/progress.service.ts"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": ".gitkeep",
+          "filePath": "src/assets/.gitkeep"
+        },
+        {
+          "fileId": "d2415b6071f434af0a79e3a618d6781aaeb8fb8b",
+          "fileName": "background.png",
+          "filePath": "src/assets/banner-access/background.png"
+        },
+        {
+          "fileId": "edecba3c57de92e0aee127cd43f42e8170892d45",
+          "fileName": "camera.png",
+          "filePath": "src/assets/camera.png"
+        },
+        {
+          "fileId": "c216e8c02407b821bba7646c594646612682664f",
+          "fileName": "img_1.png",
+          "filePath": "src/assets/images/img_1.png"
+        },
+        {
+          "fileId": "15bfce2985c21cb76066a144fa570032ba982eb5",
+          "fileName": "img_2.png",
+          "filePath": "src/assets/images/img_2.png"
+        },
+        {
+          "fileId": "3f445dc12a50f270f001767121e1ccc4330b59f8",
+          "fileName": "img_3.png",
+          "filePath": "src/assets/images/img_3.png"
+        },
+        {
+          "fileId": "4b0280d23bc2ad9df26ca3b16b51bb808d97022e",
+          "fileName": "img_4.png",
+          "filePath": "src/assets/images/img_4.png"
+        },
+        {
+          "fileId": "f454d5605b57166de6bb18189c22560b4b681e05",
+          "fileName": "img_5.png",
+          "filePath": "src/assets/images/img_5.png"
+        },
+        {
+          "fileId": "2212744c4ae797fd04aa82377483dc6e2e405a4e",
+          "fileName": "instagram-logo-2.png",
+          "filePath": "src/assets/instagram-logo-2.png"
+        },
+        {
+          "fileId": "dffaea88331f2fc9c0261efa1ab9d50fc711c1b9",
+          "fileName": "instagram-logo.png",
+          "filePath": "src/assets/instagram-logo.png"
+        },
+        {
+          "fileId": "4d88110f4d0a730e4ecd34171b7ae8531b4841cc",
+          "fileName": "img1.png",
+          "filePath": "src/assets/posts/img1.png"
+        },
+        {
+          "fileId": "660bb3591b5efeb2a1a8735bc5c6ef88874032e3",
+          "fileName": "img2.png",
+          "filePath": "src/assets/posts/img2.png"
+        },
+        {
+          "fileId": "0b94ef94f21f9785e89e985367a6f24efdba14a8",
+          "fileName": "img3.png",
+          "filePath": "src/assets/posts/img3.png"
+        },
+        {
+          "fileId": "352c20112988f44a26750641c013006c4d96a8f3",
+          "fileName": "img4.png",
+          "filePath": "src/assets/posts/img4.png"
+        },
+        {
+          "fileId": "37371cb04b9f1986d952499cdf9613c9d5d8ca8c",
+          "fileName": "browserslist",
+          "filePath": "src/browserslist"
+        },
+        {
+          "fileId": "3612073bc31cd4c1f5d6cbb00318521e9a61bd8a",
+          "fileName": "environment.prod.ts",
+          "filePath": "src/environments/environment.prod.ts"
+        },
+        {
+          "fileId": "7b4f817adb754769ca126a939d48ac4b0850489d",
+          "fileName": "environment.ts",
+          "filePath": "src/environments/environment.ts"
+        },
+        {
+          "fileId": "fb064135daf681d2a1cfbb6b2dd806f5fdfdebd7",
+          "fileName": "favicon.ico",
+          "filePath": "src/favicon.ico"
+        },
+        {
+          "fileId": "03ccdb73b45c64bfadee72aa05381be257783224",
+          "fileName": "index.html",
+          "filePath": "src/index.html"
+        },
+        {
+          "fileId": "b6e00421c95f925352ccf765b942a8e94c0cdc74",
+          "fileName": "karma.conf.js",
+          "filePath": "src/karma.conf.js"
+        },
+        {
+          "fileId": "c7b673cf44b388e9989fe908b78d7d73cd2e1409",
+          "fileName": "main.ts",
+          "filePath": "src/main.ts"
+        },
+        {
+          "fileId": "266361ae2b9a74d2353f4226010c647c94262699",
+          "fileName": "polyfills.ts",
+          "filePath": "src/polyfills.ts"
+        },
+        {
+          "fileId": "613136a68688d4c1e6f350e9aa10ef00337c1848",
+          "fileName": "styles.css",
+          "filePath": "src/styles.css"
+        },
+        {
+          "fileId": "16317897b1c50a3a71bc775a8d6429f2b4c6cf98",
+          "fileName": "test.ts",
+          "filePath": "src/test.ts"
+        },
+        {
+          "fileId": "190fd300b601e168a3d185dbfa2758ab73257479",
+          "fileName": "tsconfig.app.json",
+          "filePath": "src/tsconfig.app.json"
+        },
+        {
+          "fileId": "de7733630eb224b246854a20934f792051926e8f",
+          "fileName": "tsconfig.spec.json",
+          "filePath": "src/tsconfig.spec.json"
+        },
+        {
+          "fileId": "52e2c1a5a74ce268bec92d34cd3bca751624adb3",
+          "fileName": "tslint.json",
+          "filePath": "src/tslint.json"
+        },
+        {
+          "fileId": "46aeded1b278b3fd720233810be535ce0a456561",
+          "fileName": "tsconfig.json",
+          "filePath": "tsconfig.json"
+        },
+        {
+          "fileId": "6ddb6b2931511b11e5d5938f76076fb37e70363e",
+          "fileName": "tslint.json",
+          "filePath": "tslint.json"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/grbalmeida/github/instagram-angular/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "localFilePath": "test/matching-algo/matcher/dependencies/package.angular-typescript.json"
+        }
+      ]
+    }
+  ]
+}

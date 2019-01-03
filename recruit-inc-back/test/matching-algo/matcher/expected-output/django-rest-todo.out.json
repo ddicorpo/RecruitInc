@@ -1,0 +1,17 @@
+{
+  "projectName": "django-rest-todo",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Python",
+      "linesOfCode": 335,
+      "numberOfCommits": 6,
+      "frameworks": [
+        {
+          "technologyName": "Django",
+          "linesOfCode": 335,
+          "numberOfCommits": 6
+        }
+      ]
+    }
+  ]
+}

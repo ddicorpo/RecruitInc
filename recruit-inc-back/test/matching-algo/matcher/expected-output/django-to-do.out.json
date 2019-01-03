@@ -1,0 +1,17 @@
+{
+  "projectName": "Django-to-do",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Python",
+      "linesOfCode": 166,
+      "numberOfCommits": 14,
+      "frameworks": [
+        {
+          "technologyName": "Django",
+          "linesOfCode": 166,
+          "numberOfCommits": 14
+        }
+      ]
+    }
+  ]
+}

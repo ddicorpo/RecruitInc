@@ -1,0 +1,76 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "Tic-Tac-Toe-Using-Minimax",
+      "owner": "OmkarPathak",
+      "applicantCommits": [
+        {
+          "id": "08a236729193ef017d8e9dd749d997db3a2723ec",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 12,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "results/tic.png",
+              "lineAdded": 0,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "69a7ea27d31c485027bd96c4093cf391c00e5b8e",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "tic_tac_toe_minimax.py",
+              "lineAdded": 182,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "0b9d783b415f1edc7e9604ee7ba109e03c3e1898",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "LICENSE",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "321ec2e6073e1dec927b8782169f26711a92e4c5",
+          "fileName": "LICENSE",
+          "filePath": "LICENSE"
+        },
+        {
+          "fileId": "8b147167880df6ddfc1f442379f2dd751566b279",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "a8864b4a438e1851e5e8760c8025287ca4b0c480",
+          "fileName": "tic.png",
+          "filePath": "results/tic.png"
+        },
+        {
+          "fileId": "94b7ea0a5665fede1eab69b93a27d195420e5d25",
+          "fileName": "tic_tac_toe_minimax.py",
+          "filePath": "tic_tac_toe_minimax.py"
+        }
+      ],
+      "downloadedSourceFile": []
+    }
+  ]
+}

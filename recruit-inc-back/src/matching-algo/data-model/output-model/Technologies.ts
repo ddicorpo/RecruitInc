@@ -5,4 +5,6 @@ export enum Technologies {
   Python = 'Python',
   Django = 'Django',
   Git = 'Git',
+  Vue = 'Vue',
+  Angular = 'Angular',
 }

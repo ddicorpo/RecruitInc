@@ -1,0 +1,8 @@
+node_modules
+dist
+build
+demo/**/*
+src/**/**/*.js
+src/**/**/*.map
+/demo/demo/app/assets/vendor/PACE/.bower.json
+/demo/

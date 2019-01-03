@@ -1,0 +1,22 @@
+{
+  "projectName": "droplr-clone",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 969,
+      "numberOfCommits": 18,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "React",
+          "linesOfCode": 966,
+          "numberOfCommits": 18
+        }
+      ]
+    }
+  ]
+}

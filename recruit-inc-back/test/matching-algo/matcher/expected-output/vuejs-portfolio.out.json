@@ -1,0 +1,22 @@
+{
+  "projectName": "vuejs-portfolio",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 1733,
+      "numberOfCommits": 30,
+      "frameworks": [
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "Vue",
+          "linesOfCode": 1728,
+          "numberOfCommits": 30
+        }
+      ]
+    }
+  ]
+}
