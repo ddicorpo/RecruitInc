@@ -13,15 +13,15 @@ export class ApplicantFinder {
   public findByPlatformUsername(
     platformUsername: string
   ): Promise<IApplicantModel> {
-      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("platformUsername", platformUsername));
+      return this.baseFinder.findOneBy({platformUsername});
   }
 
   public findByPlatformEmail(platformEmail: string): Promise<IApplicantModel> {
-      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("platformEmail", platformEmail));
+      return this.baseFinder.findOneBy({platformEmail});
   }
 
   public findByUserType(userType: UserType): Promise<IApplicantModel> {
-      return this.baseFinder.findBy(this.baseFinder.buildQuery("userType", userType));
+      return this.baseFinder.findBy({userType});
   }
 
   public findAll(): Promise<IApplicantModel> {
