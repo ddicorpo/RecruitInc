@@ -11,19 +11,19 @@ export class TokenFinder {
   }
 
   public findByPlatform(platform: Platform): Promise<ITokenModel> {
-      return this.baseFinder.findBy(this.baseFinder.buildQuery("platform", platform));
+      return this.baseFinder.findBy({platform});
   }
 
   public findByAccessToken(AccessToken: string): Promise<ITokenModel> {
-      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("AccessToken", AccessToken));
+      return this.baseFinder.findOneBy({AccessToken});
   }
 
   public findByRefreshToken(RefreshToken: string): Promise<ITokenModel> {
-      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("RefreshToken", RefreshToken));
+      return this.baseFinder.findOneBy({RefreshToken});
   }
 
   public findByExpiryDate(ExpiryDate: string): Promise<ITokenModel> {
-      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("ExpiryDate", ExpiryDate));
+      return this.baseFinder.findOneBy({ExpiryDate});
   }
 
   public findAll(): Promise<ITokenModel> {

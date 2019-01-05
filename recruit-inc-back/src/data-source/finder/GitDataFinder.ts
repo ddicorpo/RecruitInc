@@ -14,11 +14,11 @@ export class GitDataFinder {
   public findByLastKnownInfoDate(
     lastKnownInfoDate: string
   ): Promise<IGitDataModel> {
-      return this.baseFinder.findBy(this.baseFinder.buildQuery("lastKnownInfoDate", lastKnownInfoDate));
+      return this.baseFinder.findBy({lastKnownInfoDate});
   }
 
   public findByPlatform(platform: Platform): Promise<IGitDataModel> {
-      return this.baseFinder.findBy(this.baseFinder.buildQuery("platform", platform));
+      return this.baseFinder.findBy({platform});
   }
 
   public findAll(): Promise<IGitDataModel> {

@@ -28,14 +28,14 @@ export class UserFinder {
    * @param username
    */
   public findByUsername(username: string): Promise<IUserModel> {
-      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("username", username));
+      return this.baseFinder.findOneBy({username});
   }
   /**
    * Search by Email
    * @param email
    */
   public findByEmail(email: string): Promise<IUserModel> {
-      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("email", email));
+      return this.baseFinder.findOneBy({email});
   }
 
   /**

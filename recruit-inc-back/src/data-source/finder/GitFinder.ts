@@ -11,7 +11,7 @@ export class GitFinder {
   }
 
   public findByToken(IToken: ITokenModel): Promise<IGitModel> {
-      return this.baseFinder.findOneBy(this.baseFinder.buildQuery("IToken", IToken));
+      return this.baseFinder.findOneBy({IToken});
   }
 
   public findAll(): Promise<IGitModel> {

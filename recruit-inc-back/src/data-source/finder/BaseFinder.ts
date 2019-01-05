@@ -49,12 +49,6 @@ export class BaseFinder {
         });
     }
 
-    public buildQuery(condition: string, value: any): any {
-        var query = {};
-        query[condition] = value;
-        return query;
-    }
-
     private logActionCompleted(methodName: string): void {
         this.logger.info({
             class: this.model.name + ' Model',
