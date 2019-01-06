@@ -7,6 +7,8 @@ import { GitlabApplicants } from './routes/gitlab/GitlabApplicants';
 import { Candidate } from './routes/github/candidate';
 import { ApplicantBitbucket } from './routes/bitbucket/applicantBitbucket';
 import { OAuthCode } from './routes/OAuth/OAuthCode';
+import { Logger } from '../src/Logger';
+var cors = require('cors');
 
 class App {
   public app: express.Application;
@@ -18,9 +20,49 @@ class App {
   public gitlabApplicant: GitlabApplicants = new GitlabApplicants();
   public candidateDataRout: Candidate = new Candidate();
   public oauthCodeRoute: OAuthCode = new OAuthCode();
-
+  private logger: Logger;
   constructor() {
-    this.app = express(); //run the express instance and store in app
+    this.logger = new Logger();
+    // Import all env. variable
+    require('dotenv').config();
+
+    let logCors: number = 0;
+
+    let whitelistDomain: string[] = [
+      process.env.DOMAIN_FRONT_END,
+      process.env.DOMAIN_BACK_END,
+    ];
+    var corsOptionsDelegate = function(req, callback) {
+      var corsOptions;
+      if (
+        (whitelistDomain.indexOf(req.header('Origin')) !== -1 ||
+          whitelistDomain.indexOf(req.header('host')) !== -1) &&
+        process.env.NODE_ENV === 'production'
+      ) {
+        //this.logAction('constructor', 'CORS Enabled for PROD');
+        logCors = 1;
+        corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+      } else if (process.env.NODE_ENV === 'dev') {
+        //this.logAction('constructor', 'CORS Enabled for DEV');
+        logCors = 2;
+        corsOptions = { origin: false }; // disable CORS for this request
+      } else {
+        //this.logAction('constructor', 'CORS disabled for unknown');
+        corsOptions = { origin: callback(new Error("Can't process request")) };
+      }
+      callback(null, corsOptions); // callback expects two parameters: error and options
+    };
+
+    this.app = express();
+    //Logging for Cors must be done here or else you get : "TypeError: Cannot read property 'logAction' of undefined"
+    if (logCors === 1)
+        this.logAction('constructor', 'CORS Enabled for PROD');
+    else if (logCors === 2)
+        this.logAction('constructor', 'CORS Enabled for DEV');
+    else
+        this.logAction('constructor', 'CORS disabled for unknown');
+
+    this.app.use(cors(corsOptionsDelegate));
     this.config();
     this.myDataRoute.routes(this.app);
     this.candidateDataRoute.routes(this.app);
@@ -41,6 +83,15 @@ class App {
         extended: false,
       })
     );
+  }
+
+  private logAction(methodName: string, message: string): void {
+    this.logger.info({
+      class: 'app.ts',
+      method: methodName,
+      action: message,
+      params: {},
+    });
   }
 }
 

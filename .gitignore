@@ -49,6 +49,8 @@ recruit-inc-back/log/*.json
 
 recruit-inc-front/test/**/*.js
 recruit-inc-back/test/**/*.js
+recruit-inc-back/test/**/*.txt
+
 # Ignore downloaded File
 recruit-inc-back/downloaded/
 /downloaded/

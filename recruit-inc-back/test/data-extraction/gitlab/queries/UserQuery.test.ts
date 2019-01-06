@@ -6,6 +6,7 @@ import { IGitlabUser } from '../../../../src/data-extraction/gitlab/api-entities
 const nock = require('nock');
 
 describe('User query class', function() {
+
   beforeEach(() => {
     //mocking the API
     nock('https://api.gitlab.com')
