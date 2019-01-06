@@ -1,8 +1,10 @@
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { IGitProjectOutput } from '../../matching-algo/data-model/output-model/IGitProjectOutput';
 import { ILanguageOutput } from '../../matching-algo/data-model/output-model/ILanguageOutput';
+import { ApplicantSchema } from './applicantSchema';
 import { prop, Typegoose } from 'typegoose';
 import { mongoose } from 'mongoose';
+import { Model, Schema } from 'mongoose';
 
 export class GitProjectSummarySchema extends Typegoose
   implements IGitProjectSummary {
@@ -16,9 +18,4 @@ export class GitProjectSummarySchema extends Typegoose
   projectsOutput: IGitProjectOutput[];
 }
 
-export const GitProjectSummaryModel = new GitProjectSummarySchema().getModelForClass(
-  GitProjectSummarySchema,
-  {
-    schemaOptions: { collection: 'gitProjectSummary' },
-  }
-);
+export const GitProjectSummaryModel: Model<IGitProjectSummary> =  ApplicantSchema.getModel(GitProjectSummarySchema, 'gitProjectSummary');

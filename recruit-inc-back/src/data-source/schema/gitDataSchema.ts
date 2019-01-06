@@ -3,7 +3,9 @@ import { IGitDataModel } from '../../domain/model/IGitDataModel';
 import { Platform } from '../../domain/model/IGitDataModel';
 import { DataEntrySchema } from './dataEntrySchema';
 import { GitProjectSummarySchema } from './gitProjectSummarySchema';
+import { ApplicantSchema } from './applicantSchema';
 import { mongoose } from 'mongoose';
+import { Model, Schema } from 'mongoose';
 
 export class GitDataSchema extends Typegoose implements IGitDataModel {
   @prop()
@@ -22,9 +24,4 @@ export class GitDataSchema extends Typegoose implements IGitDataModel {
   platform: Platform;
 }
 
-export const GitDataModel = new GitDataSchema().getModelForClass(
-  GitDataSchema,
-  {
-    schemaOptions: { collection: 'gitData' },
-  }
-);
+export const GitDataModel: Model<IGitDataModel> = ApplicantSchema.getModel(GitDataSchema, 'gitData');

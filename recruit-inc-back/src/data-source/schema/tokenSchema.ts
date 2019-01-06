@@ -5,6 +5,8 @@ import { prop, Typegoose } from 'typegoose';
 import { mongoose } from 'mongoose';
 import { ITokenModel } from '../../domain/model/ITokenModel';
 import { Platform } from '../../domain/model/IGitDataModel';
+import { ApplicantSchema } from './applicantSchema';
+import { Model, Schema } from 'mongoose';
 
 export class TokenSchema extends Typegoose implements ITokenModel {
   @prop()
@@ -22,7 +24,5 @@ export class TokenSchema extends Typegoose implements ITokenModel {
   @prop({ required: true, unique: true })
   ExpiryDate: string;
 }
-// Can pass schema option in statement below
-export const TokenModel = new TokenSchema().getModelForClass(TokenSchema, {
-  schemaOptions: { collection: 'tokens' },
-});
+
+export const TokenModel: Model<ITokenModel> =  ApplicantSchema.getModel(TokenSchema, 'tokens');
