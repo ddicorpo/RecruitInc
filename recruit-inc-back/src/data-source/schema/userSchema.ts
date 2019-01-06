@@ -3,7 +3,9 @@
  */
 import { prop, Typegoose } from 'typegoose';
 import { IUserModel } from '../../domain/model/IUserModel';
+import { ApplicantSchema } from './applicantSchema';
 import { mongoose } from 'mongoose';
+import { Model, Schema } from 'mongoose';
 
 export class UserSchema extends Typegoose implements IUserModel {
   @prop()
@@ -26,7 +28,4 @@ export class UserSchema extends Typegoose implements IUserModel {
   email: string;
 }
 
-// Can pass schema option in statement below
-export const UserModel = new UserSchema().getModelForClass(UserSchema, {
-  schemaOptions: { collection: 'users' },
-});
+export const UserModel: Model<IUserModel> =  ApplicantSchema.getModel(UserSchema, 'users');

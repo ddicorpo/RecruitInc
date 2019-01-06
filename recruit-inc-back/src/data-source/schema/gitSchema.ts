@@ -7,6 +7,8 @@ import { IGitModel } from '../../domain/model/IGitModel';
 import { IGitDataModel } from '../../domain/model/IGitDataModel';
 import { mongoose } from 'mongoose';
 import { ITokenModel } from '../../domain/model/ITokenModel';
+import { ApplicantSchema } from './applicantSchema';
+import { Model, Schema } from 'mongoose';
 
 export class GitSchema extends Typegoose implements IGitModel {
   @prop()
@@ -19,7 +21,4 @@ export class GitSchema extends Typegoose implements IGitModel {
   IToken: ITokenModel;
 }
 
-// Can pass schema option in statement below
-export const GitModel = new GitSchema().getModelForClass(GitSchema, {
-  schemaOptions: { collection: 'git' },
-});
+export const GitModel: Model<IGitModel> =  ApplicantSchema.getModel(GitSchema, 'git');

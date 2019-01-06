@@ -4,7 +4,9 @@
 import { prop, Ref, Typegoose } from 'typegoose';
 import { UserSchema } from './userSchema';
 import { IHRModel } from '../../domain/model/IHRModel';
+import { ApplicantSchema } from './applicantSchema';
 import { mongoose } from 'mongoose';
+import { Model, Schema } from 'mongoose';
 
 export class HRSchema extends Typegoose implements IHRModel {
   @prop()
@@ -13,7 +15,4 @@ export class HRSchema extends Typegoose implements IHRModel {
   @prop({ ref: UserSchema, required: true })
   userRef: Ref<UserSchema>;
 }
-// Can pass schema option in statement below
-export const HRModel = new HRSchema().getModelForClass(UserSchema, {
-  schemaOptions: { collection: 'hrs' },
-});
+export const HRModel: Model<IHRModel> =  ApplicantSchema.getModel(HRSchema, 'hrs');
