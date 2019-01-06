@@ -26,6 +26,8 @@ class App {
     // Import all env. variable
     require('dotenv').config();
 
+    let logCors: number = 0;
+
     let whitelistDomain: string[] = [
       process.env.DOMAIN_FRONT_END,
       process.env.DOMAIN_BACK_END,
@@ -37,19 +39,29 @@ class App {
           whitelistDomain.indexOf(req.header('host')) !== -1) &&
         process.env.NODE_ENV === 'production'
       ) {
-        this.logAction('constructor', 'CORS Enabled for PROD');
+        //this.logAction('constructor', 'CORS Enabled for PROD');
+        logCors = 1;
         corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
       } else if (process.env.NODE_ENV === 'dev') {
-        this.logAction('constructor', 'CORS Enabled for DEV');
+        //this.logAction('constructor', 'CORS Enabled for DEV');
+        logCors = 2;
         corsOptions = { origin: false }; // disable CORS for this request
       } else {
-        this.logAction('constructor', 'CORS disabled for unknown');
+        //this.logAction('constructor', 'CORS disabled for unknown');
         corsOptions = { origin: callback(new Error("Can't process request")) };
       }
       callback(null, corsOptions); // callback expects two parameters: error and options
     };
 
     this.app = express();
+    //Logging for Cors must be done here or else you get : "TypeError: Cannot read property 'logAction' of undefined"
+    if (logCors === 1)
+        this.logAction('constructor', 'CORS Enabled for PROD');
+    else if (logCors === 2)
+        this.logAction('constructor', 'CORS Enabled for DEV');
+    else
+        this.logAction('constructor', 'CORS disabled for unknown');
+
     this.app.use(cors(corsOptionsDelegate));
     this.config();
     this.myDataRoute.routes(this.app);
