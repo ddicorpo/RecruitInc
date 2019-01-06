@@ -1,7 +1,7 @@
 import { BaseTDG } from './baseTDG';
 import { IDataEntry } from '../../matching-algo/data-model/input-model/IDataEntry';
 import { DataEntryModel } from '../schema/dataEntrySchema';
-import { Types } from 'mongoose';
+import { Types, Model } from 'mongoose';
 
 export class DataEntryTDG {
   private baseTDG: BaseTDG;
@@ -18,7 +18,7 @@ export class DataEntryTDG {
       dataEntryAttr._id = Types.ObjectId();
     }
 
-    const newDataEntryModel = new DataEntryModel(dataEntryAttr);
+    const newDataEntryModel : Model<IDataEntry> = new DataEntryModel(dataEntryAttr);
 
     try {
       return this.baseTDG.create(newDataEntryModel, dataEntryAttr);
@@ -29,7 +29,7 @@ export class DataEntryTDG {
 
   public update(_id: string, updatedValue: IDataEntry): Promise<boolean> {
     try {
-      const dataEntryModelToUpdate = new DataEntryModel(updatedValue);
+      const dataEntryModelToUpdate: Model<IDataEntry> = new DataEntryModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), dataEntryModelToUpdate);
     } catch (Exception) {
       throw new Error('Error while updating DataEntry');

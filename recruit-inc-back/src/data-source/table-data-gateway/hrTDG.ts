@@ -1,7 +1,7 @@
 import { BaseTDG } from './baseTDG';
 import { HRModel } from '../schema/hrSchema';
 import { IHRModel } from '../../domain/model/IHRModel';
-import { Types } from 'mongoose';
+import { Types, Model } from 'mongoose';
 
 /**
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/services/province.service.ts
@@ -27,7 +27,7 @@ export class HRTDG {
     } else {
       hrAttr._id = Types.ObjectId();
     }
-    const newHrModel = new HRModel(hrAttr);
+    const newHrModel : Model<IHRModel> = new HRModel(hrAttr);
 
     try {
       return this.baseTDG.create(newHrModel, hrAttr);
@@ -38,7 +38,7 @@ export class HRTDG {
 
   public update(_id: string, updatedVal: IHRModel) {
     try {
-      const hrModelToUpdate = new HRModel(updatedVal);
+      const hrModelToUpdate: Model<IHRModel> = new HRModel(updatedVal);
       return this.baseTDG.update(Types.ObjectId(_id), hrModelToUpdate);
     } catch (Exception) {
       throw new Error('Problem while updating HR');

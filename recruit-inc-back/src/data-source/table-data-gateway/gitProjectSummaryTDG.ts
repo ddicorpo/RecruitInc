@@ -1,7 +1,7 @@
 import { BaseTDG } from './baseTDG';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { GitProjectSummaryModel } from '../schema/gitProjectSummarySchema';
-import { Types } from 'mongoose';
+import { Types, Model } from 'mongoose';
 
 export class GitProjectSummaryTDG {
   private baseTDG: BaseTDG;
@@ -21,7 +21,7 @@ export class GitProjectSummaryTDG {
       gitProjectSummaryAttr._id = Types.ObjectId();
     }
 
-    const newGitProjectSummaryModel = new GitProjectSummaryModel(
+    const newGitProjectSummaryModel : Model<IGitProjectSummary> = new GitProjectSummaryModel(
       gitProjectSummaryAttr
     );
 
@@ -40,7 +40,7 @@ export class GitProjectSummaryTDG {
     updatedValue: IGitProjectSummary
   ): Promise<boolean> {
     try {
-      const gitProjectSummaryModelToUpdate = new GitProjectSummaryModel(
+      const gitProjectSummaryModelToUpdate: Model<IGitProjectSummary> = new GitProjectSummaryModel(
         updatedValue
       );
       return this.baseTDG.update(

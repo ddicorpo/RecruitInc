@@ -1,7 +1,7 @@
 import { BaseTDG } from './baseTDG';
 import { ITokenModel } from '../../domain/model/ITokenModel';
 import { TokenModel } from '../schema/tokenSchema';
-import { Types } from 'mongoose';
+import { Types, Model } from 'mongoose';
 
 export class TokenTDG {
   private baseTDG: BaseTDG;
@@ -12,7 +12,7 @@ export class TokenTDG {
 
   public create(tokenAttr: ITokenModel): Promise<ITokenModel> {
     tokenAttr._id = Types.ObjectId();
-    const newTokenModel = new TokenModel(tokenAttr);
+    const newTokenModel : Model<ITokenModel> = new TokenModel(tokenAttr);
 
     try {
       return this.baseTDG.create(newTokenModel, tokenAttr);
@@ -23,7 +23,7 @@ export class TokenTDG {
 
   public update(_id: string, updatedValue: ITokenModel): Promise<boolean> {
     try {
-      const TokenModelToUpdate = new TokenModel(updatedValue);
+      const TokenModelToUpdate: Model<ITokenModel> = new TokenModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), TokenModelToUpdate);
     } catch (Exception) {
       throw new Error('Error while updating token object');

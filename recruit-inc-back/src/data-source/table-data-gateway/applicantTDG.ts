@@ -1,7 +1,7 @@
 import { BaseTDG } from './baseTDG';
 import { IApplicantModel } from '../../domain/model/IApplicantModel';
 import { ApplicantModel } from '../schema/applicantSchema';
-import { Types } from 'mongoose';
+import { Types, Model } from 'mongoose';
 
 export class ApplicantTDG {
   private baseTDG: BaseTDG;
@@ -12,7 +12,7 @@ export class ApplicantTDG {
 
   public create(applicantAttr: IApplicantModel): Promise<IApplicantModel> {
     applicantAttr._id = Types.ObjectId();
-    const newApplicantModel = new ApplicantModel(applicantAttr);
+    const newApplicantModel : Model<IApplicantModel> = new ApplicantModel(applicantAttr);
 
     try {
       return this.baseTDG.create(newApplicantModel, applicantAttr);
@@ -23,7 +23,7 @@ export class ApplicantTDG {
 
   public update(_id: string, updatedValue: IApplicantModel): Promise<boolean> {
     try {
-      const ApplicantModelToUpdate = new ApplicantModel(updatedValue);
+      const ApplicantModelToUpdate: Model<IApplicantModel> = new ApplicantModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), ApplicantModelToUpdate);
     } catch (Exception) {
       throw new Error('Error while updating Applicant');

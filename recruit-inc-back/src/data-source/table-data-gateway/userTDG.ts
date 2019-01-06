@@ -12,7 +12,7 @@
 import { BaseTDG } from './baseTDG';
 import { IUserModel } from '../../domain/model/IUserModel';
 import { UserModel } from '../schema/userSchema';
-import { Types } from 'mongoose';
+import { Types, Model } from 'mongoose';
 
 export class UserTDG {
   private baseTDG: BaseTDG;
@@ -29,7 +29,7 @@ export class UserTDG {
       userAttr._id = Types.ObjectId();
     }
 
-    const newUserModel = new UserModel(userAttr);
+    const newUserModel : Model<IUserModel> = new UserModel(userAttr);
 
     try {
       return this.baseTDG.create(newUserModel, userAttr);
@@ -40,7 +40,7 @@ export class UserTDG {
 
   public update(_id: string, updatedValue: IUserModel): Promise<boolean> {
     try {
-      const userModelToUpdate = new UserModel(updatedValue);
+      const userModelToUpdate: Model<IUserModel> = new UserModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), userModelToUpdate);
     } catch (Exception) {
       throw new Error('Error while updating User');

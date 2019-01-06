@@ -1,7 +1,7 @@
 import { BaseTDG } from './baseTDG';
 import { IGitModel } from '../../domain/model/IGitModel';
 import { GitModel } from '../schema/gitSchema';
-import { Types } from 'mongoose';
+import { Types, Model } from 'mongoose';
 
 export class GitTDG {
   private baseTDG: BaseTDG;
@@ -12,7 +12,7 @@ export class GitTDG {
 
   public create(gitAttr: IGitModel): Promise<IGitModel> {
     gitAttr._id = Types.ObjectId();
-    const newGitModel = new GitModel(gitAttr);
+    const newGitModel : Model<IGitModel> = new GitModel(gitAttr);
 
     try {
       return this.baseTDG.create(newGitModel, gitAttr);
@@ -23,7 +23,7 @@ export class GitTDG {
 
   public update(_id: string, updatedValue: IGitModel): Promise<boolean> {
     try {
-      const GitModelToUpdate = new GitModel(updatedValue);
+      const GitModelToUpdate: Model<IGitModel> = new GitModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), GitModelToUpdate);
     } catch (Exception) {
       throw new Error('Error while updating Git object');
