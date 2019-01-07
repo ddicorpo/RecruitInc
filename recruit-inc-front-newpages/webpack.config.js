@@ -29,13 +29,6 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             },
-            // {
-            //     test: /\.(gif|eot|ttf|woff|woff2)$/,
-            //     loader: 'url-loader',
-            //     options: {
-            //         limit: 10000
-            //     }
-            // },
             {
                 test: /\.(jpg|png|svg|gif|eot|ttf|woff|woff2)$/,
                 loader: 'file-loader',
@@ -44,6 +37,9 @@ module.exports = {
                 },
             },
         ]
+    },
+    node: {
+        fs: 'empty'
     },
     plugins: [
         new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'app', 'index.html') }),
