@@ -19,8 +19,8 @@ export class Candidate {
         let location: string = request.params.location;
 
         let query: GithubUserInfo = new GithubUserInfo();
-
-        //Grab the endCursor from the first query
+        githubUser = await query.getUserByLocation(location);
+        /* //Grab the endCursor from the first query
         let data: string = await query.firstQuery(location);
         let jsonData = JSON.parse(data);
         let pageInfo = jsonData.data.search.pageInfo;
@@ -72,7 +72,7 @@ export class Candidate {
             data += nextData;
             githubUser.push(jsonData.data.search.nodes);
           }
-        }
+        } */
 
         response.status(200).send(githubUser);
       });
