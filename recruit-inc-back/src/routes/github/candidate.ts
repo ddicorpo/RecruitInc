@@ -7,10 +7,52 @@ import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUs
 import { GithubDataExtraction } from '../../data-extraction/github/githubDataExtraction';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { Logger } from '../../Logger';
+import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 const logger = new Logger();
 
 export class Candidate {
   public routes(app): void {
+    app
+      .route('/testpause/:location')
+      .get(async (request: Request, response: Response) => {
+        var oldDateObj = new Date(); // Date now
+        var diff = 0.25;
+        var newDateObj = new Date(oldDateObj.getTime() + diff * 60000);
+
+        const CronJob = require('cron').CronJob;
+
+        const job = new CronJob(
+          newDateObj,
+          async function() {
+            let githubUser: IGithubUser[];
+            let location: string = request.params.location;
+            let query: GithubUserInfo = new GithubUserInfo();
+            githubUser = await query.getUserByLocation(location);
+          },
+          null,
+          true
+        );
+
+        job.stop();
+
+        setTimeout(function() {
+          var CronTime = require('cron').CronTime;
+          job.setTime(new CronTime());
+          job.start();
+        }, 5000);
+
+        setTimeout(function() {
+          job.stop();
+        }, 5000);
+
+        setTimeout(function() {
+          var CronTime = require('cron').CronTime;
+          job.start(new CronTime());
+        }, 15000);
+
+        console.log('done');
+      });
+
     app
       .route('/api/github/candidate/hr/:location')
       .get(async (request: Request, response: Response) => {
