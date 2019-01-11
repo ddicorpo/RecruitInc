@@ -12,7 +12,7 @@ export class AbstractQueue {
   private token: string;
   private githubUser: IGithubUser;
 
-  public enqueue(query: string) {}
+  public enqueue(user: IGithubUser, query: any) {}
   public processNextQuery(): any {}
   public saveToDatabase() {}
 }
