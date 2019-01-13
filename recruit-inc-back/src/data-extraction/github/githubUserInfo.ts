@@ -18,7 +18,9 @@ export class GithubUserInfo {
                   endCursor
                   hasNextPage
                 }
-                 nodes {
+                edges{
+                  cursor
+                 node {
                    ... on User {
                      login
                      location
@@ -31,7 +33,8 @@ export class GithubUserInfo {
                    }
                  }
                }
-             }`;
+             }
+            }`;
 
     return await new GithubApiV4().queryData(this.accessToken, query);
   }
@@ -44,7 +47,9 @@ export class GithubUserInfo {
                   endCursor
                   hasNextPage
                 }
-                 nodes {
+                 edges{
+                  cursor
+                 node {
                    ... on User {
                      login
                      location
@@ -57,7 +62,9 @@ export class GithubUserInfo {
                    }
                  }
                }
-             }`;
+             }
+    }`;
+    
 
     return await new GithubApiV4().queryData(this.accessToken, query);
   }
@@ -73,7 +80,9 @@ export class GithubUserInfo {
                   endCursor
                   hasNextPage
                 }
-                 nodes {
+                 edges{
+                  cursor
+                 node {
                    ... on User {
                      login
                      location
@@ -86,7 +95,8 @@ export class GithubUserInfo {
                    }
                  }
                }
-             }`;
+             }
+            }`;
 
     return await new GithubApiV4().queryData(this.accessToken, query);
   }
@@ -103,7 +113,9 @@ export class GithubUserInfo {
                   endCursor
                   hasNextPage
                 }
-                 nodes {
+                 edges{
+                  cursor
+                 node {
                    ... on User {
                      login
                      location
@@ -116,13 +128,15 @@ export class GithubUserInfo {
                    }
                  }
                }
-             }`;
+             }
+    }`;
 
     return await new GithubApiV4().queryData(this.accessToken, query);
   }
 
   async getUserByLocation(location: string): Promise<IGithubUser[]> {
-    let githubUsers: IGithubUser[];
+    let githubUsers: IGithubUser[] = [];
+    let githubUser: IGithubUser;
     //Grab the endCursor from the first query
     let data: string = await this.firstQuery(location);
     let jsonData = JSON.parse(data);
@@ -130,7 +144,11 @@ export class GithubUserInfo {
     let endCursor: string = JSON.stringify(pageInfo.endCursor);
     let hasNextPage: boolean = pageInfo.hasNextPage;
 
-    githubUsers = jsonData.data.search.nodes;
+    for (let edge of jsonData.data.search.edges){
+        githubUser = edge.node;
+        githubUser.cursor = edge.cursor;
+        githubUsers.push(githubUser);
+    }
 
     //Use endCursor in subsequent queries to retrieve more users
     while (hasNextPage) {
@@ -140,14 +158,18 @@ export class GithubUserInfo {
       endCursor = JSON.stringify(pageInfo.endCursor);
       hasNextPage = pageInfo.hasNextPage;
       data += nextData;
-      githubUsers.push(jsonData.data.search.nodes);
+        for (let edge of jsonData.data.search.edges){
+            githubUser = edge.node;
+            githubUser.cursor = edge.cursor;
+            githubUsers.push(githubUser);
+        }
     }
 
     //Loop until a search where no users are returned
     //using the createdAt parameter to get new users
     while (1) {
       let lastCreatedAt: string =
-        jsonData.data.search.nodes[jsonData.data.search.nodes.length - 1]
+        jsonData.data.search.edges[jsonData.data.search.edges.length - 1]
           .createdAt;
       let nextData: string = await this.getDataBefore(location, lastCreatedAt);
       jsonData = JSON.parse(nextData);
@@ -155,7 +177,11 @@ export class GithubUserInfo {
       endCursor = JSON.stringify(pageInfo.endCursor);
       hasNextPage = pageInfo.hasNextPage;
       data += nextData;
-      githubUsers.push(jsonData.data.search.nodes);
+        for (let edge of jsonData.data.search.edges){
+            githubUser = edge.node;
+            githubUser.cursor = edge.cursor;
+            githubUsers.push(githubUser);
+        }
 
       if (!hasNextPage) break;
 
@@ -170,7 +196,11 @@ export class GithubUserInfo {
         endCursor = JSON.stringify(pageInfo.endCursor);
         hasNextPage = pageInfo.hasNextPage;
         data += nextData;
-        githubUsers.push(jsonData.data.search.nodes);
+        for (let edge of jsonData.data.search.edges){
+            githubUser = edge.node;
+            githubUser.cursor = edge.cursor;
+            githubUsers.push(githubUser);
+        }
       }
     }
     return githubUsers;

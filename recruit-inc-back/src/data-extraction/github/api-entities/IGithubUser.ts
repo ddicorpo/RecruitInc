@@ -17,4 +17,5 @@ export interface IGithubUser {
   url: string;
   websiteUrl?: string;
   createdAt: string;
+  cursor?: string; //used for pagination
 }
