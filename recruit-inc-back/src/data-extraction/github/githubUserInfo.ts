@@ -169,8 +169,7 @@ export class GithubUserInfo {
     //using the createdAt parameter to get new users
     while (1) {
       let lastCreatedAt: string =
-        jsonData.data.search.edges[jsonData.data.search.edges.length - 1]
-          .createdAt;
+        jsonData.data.search.edges[jsonData.data.search.edges.length - 1].node.createdAt;
       let nextData: string = await this.getDataBefore(location, lastCreatedAt);
       jsonData = JSON.parse(nextData);
       pageInfo = jsonData.data.search.pageInfo;
