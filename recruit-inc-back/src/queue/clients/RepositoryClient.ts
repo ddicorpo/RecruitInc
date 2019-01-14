@@ -32,6 +32,7 @@ export class RepositoryClient implements IGithubClient {
     for (let repo of allRepos.dataEntry.projectInputs) {
       this.prospect.repoName = repo.projectName;
       this.prospect.repoOwner = repo.owner;
+      this.prospect.user.dataEntry.projectInputs[0] = repo;
 
       //TODO: Populate Tree queue and Commit queue
     }
