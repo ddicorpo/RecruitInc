@@ -13,13 +13,9 @@ export class Controller {
       if (token !== undefined) {
       }
 
-      //let user: IGithubUser = { login: name, url: '', createdAt: '' };
-      //let query: GithubUserRepos = new GithubUserRepos();
+      let user: IGithubUser = { login: name, url: '', createdAt: '' };
 
-      let igitclient: IGithubClient;
-      this.queue.enqueue(igitclient);
-
-      //this.queue.enqueue(user, query);
+      this.queue.enqueue(user);
     }
   }
 }
