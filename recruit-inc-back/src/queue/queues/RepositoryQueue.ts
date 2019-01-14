@@ -18,10 +18,7 @@ export class RepositoryQueue extends AbstractQueue {
   }
 
   public enqueue(prospect: RequiredClientInformation) {
-    let repo: RepositoryClient = new RepositoryClient(
-      prospect.user.login,
-      prospect.repoToken
-    );
+    let repo: RepositoryClient = new RepositoryClient(prospect);
 
     this.queue.push(repo);
   }

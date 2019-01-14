@@ -1,7 +1,6 @@
 import { AbstractQueue } from './queues/AbstractQueue';
 import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser';
-import { GithubUserRepos } from '../data-extraction/github/githubUserRepos';
-import { IGithubClient } from './clients/IGithubClient';
+import { RequiredClientInformation } from './RequiredClientInformation';
 
 export class Controller {
   private queue: AbstractQueue;
@@ -14,8 +13,13 @@ export class Controller {
       }
 
       let user: IGithubUser = { login: name, url: '', createdAt: '' };
+      let prospect: RequiredClientInformation = new RequiredClientInformation(
+        user,
+        '',
+        ''
+      );
 
-      this.queue.enqueue(user, '');
+      this.queue.enqueue(prospect);
     }
   }
 }

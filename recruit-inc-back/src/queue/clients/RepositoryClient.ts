@@ -1,14 +1,15 @@
 import { IGithubClient } from './IGithubClient';
 import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
 import { GithubUserRepos } from '../../data-extraction/github/githubUserRepos';
+import { RequiredClientInformation } from '../RequiredClientInformation';
 
 export class RepositoryClient implements IGithubClient {
   private readonly accessToken: string;
   private username: string;
 
-  public constructor(login: string, accesstoken: string) {
-    this.accessToken = accesstoken;
-    this.username = login;
+  public constructor(prospect: RequiredClientInformation) {
+    this.accessToken = prospect.repoToken;
+    this.username = prospect.user.login;
   }
 
   //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
@@ -25,6 +26,7 @@ export class RepositoryClient implements IGithubClient {
     );
 
     let allRepos = await githubUserRepos.getUserRepos(user);
+
     //TODO:Store this information in db, and use it to create a Tree client and Commit client and pass them to respective queue
   }
 }
