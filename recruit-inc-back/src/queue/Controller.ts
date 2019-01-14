@@ -1,6 +1,7 @@
 import { AbstractQueue } from './queues/AbstractQueue';
 import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser';
 import { GithubUserRepos } from '../data-extraction/github/githubUserRepos';
+import { IGithubClient } from './clients/IGithubClient';
 
 export class Controller {
   private queue: AbstractQueue;
@@ -12,10 +13,13 @@ export class Controller {
       if (token !== undefined) {
       }
 
-      let user: IGithubUser = { login: name, url: '', createdAt: '' };
-      let query: GithubUserRepos = new GithubUserRepos();
+      //let user: IGithubUser = { login: name, url: '', createdAt: '' };
+      //let query: GithubUserRepos = new GithubUserRepos();
 
-      this.queue.enqueue(user, query);
+      let igitclient: IGithubClient;
+      this.queue.enqueue(igitclient);
+
+      //this.queue.enqueue(user, query);
     }
   }
 }
