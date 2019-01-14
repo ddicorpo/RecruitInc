@@ -1,9 +1,9 @@
 import { AbstractQueue } from './AbstractQueue';
-import {TreeShaClient} from "../clients/TreeShaClient";
+import {FilesAffectedByClient} from "../clients/FilesAffectedByClient";
 
-export class TreeShaQueue extends AbstractQueue {
-    private queue: TreeShaClient[];
-    private  static _instance: TreeShaQueue;
+export class FillesAffectedByQueue extends AbstractQueue {
+    private queue: FilesAffectedByClient[];
+    private  static _instance: FillesAffectedByQueue;
     private constructor(){
         super();
         this.queue = [];
@@ -12,8 +12,8 @@ export class TreeShaQueue extends AbstractQueue {
         return this._instance || (this._instance = new this());
     }
 
-    public enqueue(treeSha: TreeShaClient) {
-        this.queue.push(treeSha);
+    public enqueue(commit: FilesAffectedByClient) {
+        this.queue.push(commit);
     }
     public dequeue() {return this.queue.pop();
     }

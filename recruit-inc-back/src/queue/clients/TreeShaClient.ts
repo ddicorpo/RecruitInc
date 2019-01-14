@@ -5,5 +5,6 @@ export class TreeShaClient implements IGithubClient {
   private owner: string;
   private repository: string;
 
-  executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
+  //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
+  executeQuery() {}
 }

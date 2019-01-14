@@ -6,5 +6,6 @@ export class CommitClient implements IGithubClient {
   private repository: string;
   private userId: string;
 
-  executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
+  //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
+  executeQuery() {}
 }

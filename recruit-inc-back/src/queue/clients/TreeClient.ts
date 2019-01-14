@@ -6,5 +6,6 @@ export class TreeClient implements IGithubClient {
   private repository: string;
   private treeSha: string;
 
-  executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
+  //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
+  executeQuery() {};
 }

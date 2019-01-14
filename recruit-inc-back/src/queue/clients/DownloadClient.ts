@@ -6,5 +6,6 @@ export class DownloadClient implements IGithubClient {
   private repository: string;
   private path: string;
 
-  executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
+  //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
+  executeQuery() {}
 }
