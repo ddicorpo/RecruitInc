@@ -10,9 +10,23 @@ import { Logger } from '../../Logger';
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 import { CronJobs } from '../../cron-job/CronJobs';
 const logger = new Logger();
+const { fork } = require('child_process');
 
 export class Candidate {
   public routes(app): void {
+
+    app
+      .route('/threads/:location')
+      .get(async (request: Request, response: Response) => {
+          const forked = fork('src/data-extraction/github/githubUserInfo.ts');
+          let location: string = request.params.location;
+          forked.send(location);
+          forked.on('message', x =>{
+            response.status(200).send(x);
+          });
+
+      });
+
     app
       .route('/locationScan/:location')
       .get(async (request: Request, response: Response) => {

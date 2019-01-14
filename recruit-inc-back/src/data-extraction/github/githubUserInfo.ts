@@ -1,5 +1,6 @@
 import { GithubApiV4 } from './githubApiV4';
 import { IGithubUser } from './api-entities/IGithubUser';
+import * as process from "process"
 
 export class GithubUserInfo {
   private readonly accessToken: string;
@@ -204,4 +205,12 @@ export class GithubUserInfo {
     }
     return githubUsers;
   }
+
 }
+
+  process.on('message', async (msg) => {
+    let query: GithubUserInfo = new GithubUserInfo();
+    const githubUsers: IGithubUser[] = await query.getUserByLocation(msg);
+    process.send(githubUsers);
+  });
+
