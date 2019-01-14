@@ -5,11 +5,18 @@ export class RequiredClientInformation {
   private _repoName: string;
   private _repoOwner: string;
   private _repoToken: string;
+  private _filePath: string;
 
-  public constructor(user: IGithubUser, repoName: string, repoOwner: string) {
+  public constructor(
+    user: IGithubUser,
+    repoName: string,
+    repoOwner: string,
+    filePath: string
+  ) {
     this._user = user;
     this._repoName = repoName;
     this._repoOwner = repoOwner;
+    this._filePath = filePath;
     this._repoToken = process.env.GITHUB_DEFAULT_AUTH_TOKEN;
   }
 
@@ -43,5 +50,13 @@ export class RequiredClientInformation {
 
   set repoToken(value: string) {
     this._repoToken = value;
+  }
+
+  get filePath(): string {
+    return this._filePath;
+  }
+
+  set filePath(value: string) {
+    this._filePath = value;
   }
 }
