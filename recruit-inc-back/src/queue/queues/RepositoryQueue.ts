@@ -2,6 +2,7 @@ import { AbstractQueue } from './AbstractQueue';
 import { RepositoryClient } from '../clients/RepositoryClient';
 import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
 import { IGithubClient } from '../clients/IGithubClient';
+import { RequiredClientInformation } from '../RequiredClientInformation';
 
 export class RepositoryQueue extends AbstractQueue {
   private queue: RepositoryClient[];
@@ -16,9 +17,11 @@ export class RepositoryQueue extends AbstractQueue {
     return this._instance || (this._instance = new this());
   }
 
-  public enqueue(user: IGithubUser) {
-    let repoToken: string = process.env.GITHUB_DEFAULT_AUTH_TOKEN;
-    let repo: RepositoryClient = new RepositoryClient(user.login, repoToken);
+  public enqueue(prospect: RequiredClientInformation) {
+    let repo: RepositoryClient = new RepositoryClient(
+      prospect.user.login,
+      prospect.repoToken
+    );
 
     this.queue.push(repo);
   }

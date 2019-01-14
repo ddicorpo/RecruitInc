@@ -25,6 +25,6 @@ export class RepositoryClient implements IGithubClient {
     );
 
     let allRepos = await githubUserRepos.getUserRepos(user);
-    //TODO:Store this information in db, and use it to create a TreeSha client and commit client and pass them to respective queue
+    //TODO:Store this information in db, and use it to create a Tree client and Commit client and pass them to respective queue
   }
 }

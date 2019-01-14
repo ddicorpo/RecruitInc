@@ -15,7 +15,7 @@ export class Controller {
 
       let user: IGithubUser = { login: name, url: '', createdAt: '' };
 
-      this.queue.enqueue(user);
+      this.queue.enqueue(user, '');
     }
   }
 }
