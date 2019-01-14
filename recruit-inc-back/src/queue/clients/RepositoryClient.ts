@@ -6,10 +6,12 @@ import { RequiredClientInformation } from '../RequiredClientInformation';
 export class RepositoryClient implements IGithubClient {
   private readonly accessToken: string;
   private username: string;
+  private prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
     this.accessToken = prospect.repoToken;
     this.username = prospect.user.login;
+    this.prospect = prospect;
   }
 
   //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
@@ -27,7 +29,13 @@ export class RepositoryClient implements IGithubClient {
 
     let allRepos = await githubUserRepos.getUserRepos(user);
 
+    for (let repo of allRepos.dataEntry.projectInputs) {
+      this.prospect.repoName = repo.projectName;
+      this.prospect.repoOwner = repo.owner;
+
+      //TODO: Populate Tree queue and Commit queue
+    }
+
     //TODO: Store this information in db,
-    //TODO: Populate Tree queue and Commit queue
   }
 }
