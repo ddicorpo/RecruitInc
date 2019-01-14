@@ -1,11 +1,27 @@
 import { IGithubClient } from './IGithubClient';
-import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
+import { RequiredClientInformation } from '../RequiredClientInformation';
+import { GithubUserCommits } from '../../data-extraction/github/githubUserCommits';
 
 export class FilesAffectedByClient implements IGithubClient {
-    private owner: string;
-    private repository: string;
-    private userId: string;
+  private owner: string;
+  private repository: string;
+  private commitId: string;
 
-    //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
-    executeQuery() {}
+  public constructor(prospect: RequiredClientInformation) {
+    this.owner = prospect.repoOwner;
+    this.repository = prospect.repoName;
+    this.commitId = prospect.commitId;
+  }
+
+  executeQuery() {
+    let affected: GithubUserCommits = new GithubUserCommits();
+
+    affected.getFilesAffectedByCommit(
+      this.owner,
+      this.repository,
+      this.commitId
+    );
+
+    //TODO: Save to database
+  }
 }
