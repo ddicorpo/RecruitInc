@@ -1,6 +1,7 @@
 import { IGithubClient } from './IGithubClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { GithubUserCommits } from '../../data-extraction/github/githubUserCommits';
+import { FilesAffectedByQueue } from "../queues/FilesAffectedByQueue";
 
 export class CommitClient implements IGithubClient {
   private owner: string;
@@ -23,12 +24,14 @@ export class CommitClient implements IGithubClient {
       this.owner,
       this.userId
     );
+    //pull the filesAffectedByQueue instance, so that we can populate its queue in this method
+    let filesAffected = FilesAffectedByQueue.get_instance();
 
     //Loop through all commits to update RequiredClientInformation and pass to files affected queue
     for (let singleCommit of allCommits) {
       this.prospect.commitId = singleCommit.id;
-
-      //TODO: Populate Files Affected queue
+      //pass the updated requiredInfo package to the filesAffectedQueue
+      filesAffected.enqueue(this.prospect);
     }
 
     //TODO: Save to database

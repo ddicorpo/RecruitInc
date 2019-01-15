@@ -16,10 +16,7 @@ export class TreeQueue extends AbstractQueue {
   }
 
   public enqueue(prospect: RequiredClientInformation) {
-    let tree: TreeClient = new TreeClient(
-      prospect.repoOwner,
-      prospect.repoName
-    );
+    let tree: TreeClient = new TreeClient(prospect);
     this.queue.push(tree);
   }
 

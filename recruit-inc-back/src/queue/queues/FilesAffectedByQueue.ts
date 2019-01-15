@@ -2,9 +2,9 @@ import { AbstractQueue } from './AbstractQueue';
 import { FilesAffectedByClient } from '../clients/FilesAffectedByClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 
-export class FillesAffectedByQueue extends AbstractQueue {
+export class FilesAffectedByQueue extends AbstractQueue {
   private queue: FilesAffectedByClient[];
-  private static _instance: FillesAffectedByQueue;
+  private static _instance: FilesAffectedByQueue;
 
   private constructor() {
     super();

@@ -3,6 +3,7 @@ import { RequiredClientInformation } from '../RequiredClientInformation';
 import { GithubRepoStructure } from '../../data-extraction/github/githubRepoStructure';
 import { techSourceFiles } from '../../matching-algo/data-model/input-model/TechSourceFiles';
 import { IntersectionArrayString } from '../../util/IntersectionArrayString';
+import { DownloadQueue } from "../queues/DownloadQueue";
 
 export class TreeClient implements IGithubClient {
   private owner: string;
@@ -37,6 +38,9 @@ export class TreeClient implements IGithubClient {
     //List of all filenames that should be downloaded
     const allSourcefileName = this.setSourceFilesArray();
 
+    //pull instance of downloadQueue so taht we can populate it later on
+    let downloadQueue = DownloadQueue.get_instance();
+
     //Loop through project structure to find specific files that need to be downloaded
     while (index < projectInputs[0].projectStructure.length) {
       const tmpfileNameArr: string[] = [
@@ -52,7 +56,8 @@ export class TreeClient implements IGithubClient {
       if (isSourceFile) {
         this.prospect.filePath =
           projectInputs[0].projectStructure[index].filePath;
-        //TODO: Populate the downloads queue
+        // pass the updated requiredInfo package to the download queue
+        downloadQueue.enqueue(this.prospect);
       }
     }
 
