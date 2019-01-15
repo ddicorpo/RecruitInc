@@ -38,4 +38,5 @@ export class CommitQueue extends AbstractQueue {
 
   //TODO: implement save to db feature
   public saveToDatabase() {}
+  public loadFromDatabase() {}
 }

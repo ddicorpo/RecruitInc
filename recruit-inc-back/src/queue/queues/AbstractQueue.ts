@@ -20,4 +20,5 @@ export class AbstractQueue {
   public size() {}
   public processNextQuery(): any {}
   public saveToDatabase() {}
+  public loadFromDatabase() {}
 }

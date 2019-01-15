@@ -38,4 +38,5 @@ export class TreeQueue extends AbstractQueue {
 
   //TODO: implement save to db feature
   public saveToDatabase() {}
+  public loadFromDatabase() {}
 }
