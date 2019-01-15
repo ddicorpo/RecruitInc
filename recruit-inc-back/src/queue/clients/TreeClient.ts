@@ -26,23 +26,29 @@ export class TreeClient implements IGithubClient {
   async executeQuery() {
     let repoStructure: GithubRepoStructure = new GithubRepoStructure();
 
+    //Query to retrieve structure of current repo
     let struct = await repoStructure.getRepoStructureFromUser(
       this.prospect.user
     );
+
     let projectInputs = struct.dataEntry.projectInputs;
 
     let index: number = 0;
+    //List of all filenames that should be downloaded
     const allSourcefileName = this.setSourceFilesArray();
 
+    //Loop through project structure to find specific files that need to be downloaded
     while (index < projectInputs[0].projectStructure.length) {
       const tmpfileNameArr: string[] = [
         projectInputs[0].projectStructure[index].fileName,
       ];
 
+      //Finds a match for a specific downloaded file
       const isSourceFile: boolean =
         IntersectionArrayString.intersection(allSourcefileName, tmpfileNameArr)
           .length > 0;
 
+      //If file exists, update RequiredClientInformation object with file path and pass to downloads queue
       if (isSourceFile) {
         this.prospect.filePath =
           projectInputs[0].projectStructure[index].filePath;

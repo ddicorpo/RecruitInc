@@ -13,10 +13,10 @@ export class FilesAffectedByClient implements IGithubClient {
     this.commitId = prospect.commitId;
   }
 
-  executeQuery() {
+  async executeQuery() {
     let affected: GithubUserCommits = new GithubUserCommits();
 
-    affected.getFilesAffectedByCommit(
+    let allAffectedFiles = await affected.getFilesAffectedByCommit(
       this.owner,
       this.repository,
       this.commitId

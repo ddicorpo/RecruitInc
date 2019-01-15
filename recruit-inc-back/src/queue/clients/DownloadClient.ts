@@ -13,10 +13,14 @@ export class DownloadClient implements IGithubClient {
     this.path = prospect.filePath;
   }
 
-  executeQuery() {
+  async executeQuery() {
     let downloads: GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
 
-    downloads.downloadFile(this.owner, this.repository, this.path);
+    let downlaodedFile = await downloads.downloadFile(
+      this.owner,
+      this.repository,
+      this.path
+    );
 
     //TODO: Save to database
   }
