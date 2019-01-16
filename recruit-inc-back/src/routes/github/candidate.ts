@@ -16,13 +16,28 @@ export class Candidate {
   public routes(app): void {
 
     app
+      .route('/testpause/:location')
+      .get(async (request: Request, response: Response) => {
+          const forked = fork('src/data-extraction/github/githubUserInfo.ts');
+          let location: string = request.params.location;
+          forked.send(location);
+          //forked.kill('SIGINT');
+          //forked.exit();
+          //console.log(forked.uptime());
+          setTimeout(() => { forked.send('STOP') }, 6000);
+          forked.on('message', githubUsers =>{
+            response.status(200).send(githubUsers);
+          });
+      });
+
+    app
       .route('/threads/:location')
       .get(async (request: Request, response: Response) => {
           const forked = fork('src/data-extraction/github/githubUserInfo.ts');
           let location: string = request.params.location;
           forked.send(location);
-          forked.on('message', x =>{
-            response.status(200).send(x);
+          forked.on('message', githubUsers =>{
+            response.status(200).send(githubUsers);
           });
 
       });

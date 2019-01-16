@@ -4,11 +4,20 @@ import * as process from "process"
 
 export class GithubUserInfo {
   private readonly accessToken: string;
+  private githubUsers: IGithubUser[];
 
   public constructor(
     accessToken: string = process.env.GITHUB_DEFAULT_AUTH_TOKEN
   ) {
     this.accessToken = accessToken;
+  }
+
+  setGithubUsers(githubUsers: IGithubUser[]){
+      this.githubUsers = githubUsers;
+  }
+
+  getGithubUsers(){
+      return this.githubUsers;
   }
 
   async firstQuery(location: string): Promise<string> {
@@ -136,7 +145,9 @@ export class GithubUserInfo {
   }
 
   async getUserByLocation(location: string): Promise<IGithubUser[]> {
-    let githubUsers: IGithubUser[] = [];
+    //let githubUsers: IGithubUser[] = [];
+    if (!this.githubUsers)
+        this.githubUsers = [];
     let githubUser: IGithubUser;
     //Grab the endCursor from the first query
     let data: string = await this.firstQuery(location);
@@ -148,7 +159,7 @@ export class GithubUserInfo {
     for (let edge of jsonData.data.search.edges){
         githubUser = edge.node;
         githubUser.cursor = edge.cursor;
-        githubUsers.push(githubUser);
+        this.githubUsers.push(githubUser);
     }
 
     //Use endCursor in subsequent queries to retrieve more users
@@ -162,7 +173,7 @@ export class GithubUserInfo {
         for (let edge of jsonData.data.search.edges){
             githubUser = edge.node;
             githubUser.cursor = edge.cursor;
-            githubUsers.push(githubUser);
+            this.githubUsers.push(githubUser);
         }
     }
 
@@ -180,7 +191,7 @@ export class GithubUserInfo {
         for (let edge of jsonData.data.search.edges){
             githubUser = edge.node;
             githubUser.cursor = edge.cursor;
-            githubUsers.push(githubUser);
+            this.githubUsers.push(githubUser);
         }
 
       if (!hasNextPage) break;
@@ -199,18 +210,30 @@ export class GithubUserInfo {
         for (let edge of jsonData.data.search.edges){
             githubUser = edge.node;
             githubUser.cursor = edge.cursor;
-            githubUsers.push(githubUser);
+            this.githubUsers.push(githubUser);
         }
       }
     }
-    return githubUsers;
+    return this.githubUsers;
   }
 
 }
 
+ let query: GithubUserInfo = new GithubUserInfo();
+
   process.on('message', async (msg) => {
-    let query: GithubUserInfo = new GithubUserInfo();
+    if (msg === 'STOP')
+        process.exit(0);
+    console.log(process.pid);
+    console.log("HelloOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
     const githubUsers: IGithubUser[] = await query.getUserByLocation(msg);
     process.send(githubUsers);
+  });
+
+  process.on('exit', (code) => {
+    console.log(process.argv0);
+    console.log(process.pid);
+    console.log("byeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+    process.send(query.getGithubUsers());
   });
 
