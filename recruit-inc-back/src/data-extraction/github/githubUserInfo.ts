@@ -179,15 +179,59 @@ export class GithubUserInfo {
 
     //Loop until a search where no users are returned
     //using the createdAt parameter to get new users
+    //while (1) {
+    //  let lastCreatedAt: string =
+    //    jsonData.data.search.edges[jsonData.data.search.edges.length - 1].node.createdAt;
+    //  let nextData: string = await this.getDataBefore(location, lastCreatedAt);
+    //  jsonData = JSON.parse(nextData);
+    //  pageInfo = jsonData.data.search.pageInfo;
+    //  endCursor = JSON.stringify(pageInfo.endCursor);
+    //  hasNextPage = pageInfo.hasNextPage;
+    //  data += nextData;
+    //    for (let edge of jsonData.data.search.edges){
+    //        githubUser = edge.node;
+    //        githubUser.cursor = edge.cursor;
+    //        this.githubUsers.push(githubUser);
+    //    }
+
+    //  if (!hasNextPage) break;
+
+    //  while (hasNextPage) {
+    //    let nextData: string = await this.getDataBeforeWithEndCursor(
+    //      location,
+    //      lastCreatedAt,
+    //      endCursor
+    //    );
+    //    jsonData = JSON.parse(nextData);
+    //    pageInfo = jsonData.data.search.pageInfo;
+    //    endCursor = JSON.stringify(pageInfo.endCursor);
+    //    hasNextPage = pageInfo.hasNextPage;
+    //    data += nextData;
+    //    for (let edge of jsonData.data.search.edges){
+    //        githubUser = edge.node;
+    //        githubUser.cursor = edge.cursor;
+    //        this.githubUsers.push(githubUser);
+    //    }
+    //  }
+    //}
+    //return this.githubUsers;
+    return await this.continueGettingUsers(jsonData.data.search.edges[jsonData.data.search.edges.length - 1].node.createdAt, location)
+  }
+
+  async continueGettingUsers(lastCreatedAt: string, location: string): Promise<IGithubUser[]> {
+
+    let githubUser: IGithubUser;
+    let jsonData = null; //First loop use lastCreatedAt passed in
+
     while (1) {
-      let lastCreatedAt: string =
-        jsonData.data.search.edges[jsonData.data.search.edges.length - 1].node.createdAt;
+      if (jsonData){
+      lastCreatedAt = jsonData.data.search.edges[jsonData.data.search.edges.length - 1].node.createdAt;
+      }
       let nextData: string = await this.getDataBefore(location, lastCreatedAt);
       jsonData = JSON.parse(nextData);
-      pageInfo = jsonData.data.search.pageInfo;
-      endCursor = JSON.stringify(pageInfo.endCursor);
-      hasNextPage = pageInfo.hasNextPage;
-      data += nextData;
+      let pageInfo = jsonData.data.search.pageInfo;
+      let endCursor = JSON.stringify(pageInfo.endCursor);
+      let hasNextPage = pageInfo.hasNextPage;
         for (let edge of jsonData.data.search.edges){
             githubUser = edge.node;
             githubUser.cursor = edge.cursor;
@@ -206,7 +250,6 @@ export class GithubUserInfo {
         pageInfo = jsonData.data.search.pageInfo;
         endCursor = JSON.stringify(pageInfo.endCursor);
         hasNextPage = pageInfo.hasNextPage;
-        data += nextData;
         for (let edge of jsonData.data.search.edges){
             githubUser = edge.node;
             githubUser.cursor = edge.cursor;
