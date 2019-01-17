@@ -14,19 +14,47 @@ const { fork } = require('child_process');
 
 export class Candidate {
   public routes(app): void {
+      let users : IGithubUser[];
 
+      //Testing the continueGettingUsers function
+    app
+      .route('/continue')
+      .get(async (request: Request, response: Response) => {
+        let query: GithubUserInfo = new GithubUserInfo();
+        query.setGithubUsers([]);
+        let githubUsers: IGithubUser[];
+        githubUsers = await query.continueGettingUsers("2017-12-26T23:12:12Z", 'montreal');
+            response.status(200).send(githubUsers);
+          });
+
+          //Starts search by location after it was stopped
+          // run this after testpause route and use same location
+    app
+      .route('/start/:location')
+      .get(async (request: Request, response: Response) => {
+          //let result: IGithubUser[];
+          const forked = fork('src/data-extraction/github/githubUserInfo.ts');
+          let location: string = request.params.location;
+          //Set location of last user to make it uniform
+          users[users.length-1].location = location;
+          forked.send(users);
+          forked.on('message', githubUsers =>{
+            response.status(200).send(githubUsers);
+          });
+
+      });
+
+      //Starts function to get uses by location and stops after 10 seconds
     app
       .route('/testpause/:location')
       .get(async (request: Request, response: Response) => {
           const forked = fork('src/data-extraction/github/githubUserInfo.ts');
           let location: string = request.params.location;
           forked.send(location);
-          //forked.kill('SIGINT');
-          //forked.exit();
-          //console.log(forked.uptime());
-          setTimeout(() => { forked.send('STOP') }, 6000);
+          setTimeout(() => { forked.send('STOP') }, 10000);
           forked.on('message', githubUsers =>{
-            response.status(200).send(githubUsers);
+            users = githubUsers;
+            response.status(200).send(users);
           });
       });
 
