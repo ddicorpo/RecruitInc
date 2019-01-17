@@ -32,13 +32,11 @@ interface ILoggerContextInfo {
  * We can send the log as JSON instead of printing
  */
 export class Logger implements ILogger {
- // private logDirectory: string = 'log';
- // private directoryExists: boolean = false;
+  // private logDirectory: string = 'log';
+  // private directoryExists: boolean = false;
 
-  public constructor() {
-  }
+  public constructor() {}
 
-  
   public debug(param: ILoggerParam): void {
     const context: ILoggerContextInfo = this.getContextInfo();
     console.log(this.stringifyLog(param, context));

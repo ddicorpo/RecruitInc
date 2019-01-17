@@ -1,4 +1,4 @@
-declare module "json-loader!*" {
-    let json: any;
-    export default json;
+declare module 'json-loader!*' {
+  let json: any;
+  export default json;
 }
