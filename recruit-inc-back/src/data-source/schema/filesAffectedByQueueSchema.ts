@@ -1,17 +1,18 @@
 import { ApplicantSchema } from './applicantSchema';
-import { prop, Ref, Typegoose } from 'typegoose';
+import { prop, Typegoose } from 'typegoose';
 import { mongoose } from 'mongoose';
 import { Model, Schema } from 'mongoose';
 import { FilesAffectedByQueueModel } from "../../domain/model/FilesAffectedByQueueModel";
-import { filesAffectedFilesClientSchema } from "./filesAffectedFilesClientSchema";
+import { FilesAffectedByClient } from "../../queue/clients/FilesAffectedByClient";
+
 
 
 export class filesAffectedFilesQueueSchema extends Typegoose implements FilesAffectedByQueueModel{
     @prop()
     _id?: mongoose.Types.ObjectId;
 
-    @prop({ ref: filesAffectedFilesClientSchema })
-    queue: Ref<filesAffectedFilesClientSchema[]>;
+    @prop()
+    queue: FilesAffectedByClient[];
 
 }
 
