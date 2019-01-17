@@ -39,7 +39,7 @@ module.exports = {
         ]
     },
     node: {
-        fs: 'empty'
+        fs: "empty"
     },
     plugins: [
         new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'app', 'index.html') }),

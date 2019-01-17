@@ -71,6 +71,7 @@ class WholePageContainer extends React.Component<any, any> {
         const sideNavStatus: string = this.state.sidebarCollapse ? " side-nav-folded" : "";
         const appStyle: string = "app header-success-gradient" + sideNavStatus;
         return (
+
             <div className={appStyle}>
                 <div className="layout">
                     <Header
