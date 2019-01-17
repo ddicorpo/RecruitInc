@@ -1,11 +1,11 @@
 {
-  "name": "react-ts-webpack",
+  "name": "recruit-inc-front",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/webpack",
+    "test": "echo \"No test written yet!\"",
+    "build": "tsc && ./node_modules/.bin/webpack",
     "start": "npm run build && ts-node server.ts"
   },
   "keywords": [],
