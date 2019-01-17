@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"No test written yet!\"",
     "build": "tsc && ./node_modules/.bin/webpack",
-    "start": "npm run build && ts-node server.ts",
+    "start": "npm run build && ts-node ./src/server.ts",
     "prettify": "prettier --single-quote --trailing-comma es5 --write \"*(src)/**/*.ts\""
   },
   "husky": {
