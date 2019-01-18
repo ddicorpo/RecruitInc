@@ -1,7 +1,7 @@
 # Environment Variables
 .env
 .DS_Store
-
+*.iml
 # Untracked Directory
 .idea/
 node_modules/
