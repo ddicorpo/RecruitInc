@@ -1,6 +1,7 @@
 # Environment Variables
 .env
 .DS_Store
+*.iml
 
 # Untracked Directory
 .idea/
@@ -61,3 +62,4 @@ recruit-inc-back/downloaded/
 # Ignore generated JS file
 recruit-inc-back/src/*.js
 recruit-inc-back/src/**/*.js
+recruit-inc-front/build/

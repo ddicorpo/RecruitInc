@@ -5,7 +5,7 @@ import { ITargetMatcher } from '../../matcher-model/ITargetMatcher';
 const matchingTargets: ITargetMatcher[] = [
   {
     sourceFileToParse: 'package.json',
-    matchingPattern: '"angular" {0,1}: {0,1}".*"',
+    matchingPattern: '\@angular\/[a-zA-Z0-9]*" {0,1}: {0,1}"',
   },
 ];
 
