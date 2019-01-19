@@ -7,13 +7,15 @@ export class RequiredClientInformation {
   private _repoToken: string;
   private _filePath: string;
   private _commitId: string;
+  private _location: string;
 
   public constructor(
     user: IGithubUser,
     repoName: string,
     repoOwner: string,
     filePath: string,
-    commitId: string
+    commitId: string,
+    location: string
   ) {
     this._user = user;
     this._repoName = repoName;
@@ -21,6 +23,7 @@ export class RequiredClientInformation {
     this._filePath = filePath;
     this._commitId = commitId;
     this._repoToken = process.env.GITHUB_DEFAULT_AUTH_TOKEN;
+    this._location = location;
   }
 
   get user(): IGithubUser {
@@ -69,5 +72,13 @@ export class RequiredClientInformation {
 
   set commitId(value: string) {
     this._commitId = value;
+  }
+
+  get location(): string {
+    return this._location;
+  }
+
+  set location(value: string) {
+    this._location = value;
   }
 }
