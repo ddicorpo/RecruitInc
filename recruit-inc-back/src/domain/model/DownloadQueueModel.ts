@@ -1,7 +1,8 @@
 import { mongoose } from 'mongoose';
-import { DownloadClientModel } from "./DownloadClientModel";
+import { DownloadClient } from "../../queue/clients/DownloadClient";
+
 
 export interface DownloadQueueModel {
     _id?: mongoose.Types.ObjectId;
-    queue: DownloadClientModel[];
+    queue: DownloadClient[];
 }

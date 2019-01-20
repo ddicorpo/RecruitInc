@@ -9,16 +9,18 @@ export class Controller {
     //if username is defined
     if (name !== undefined) {
       //if token is also defined
-      if (token !== undefined) {
-      }
+      /*if (token !== undefined) {
+      }*/
 
       let user: IGithubUser = { login: name, url: '', createdAt: '' };
       let prospect: RequiredClientInformation = new RequiredClientInformation(
         user,
         '',
-        ''
+        '',
+          '',
+          '',
+          ''
       );
-
       this.queue.enqueue(prospect);
     }
   }
