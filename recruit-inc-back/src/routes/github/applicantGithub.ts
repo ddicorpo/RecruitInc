@@ -56,6 +56,7 @@ export class ApplicantGithub {
             projectInputs: [
               {
                 projectName: 'MinistocksRework',
+                url: "x",
                 owner: 'AyoubeAkaouch',
                 applicantCommits: [],
                 projectStructure: [],
@@ -63,6 +64,7 @@ export class ApplicantGithub {
               },
               {
                 projectName: 'rufus',
+                url: "x",
                 owner: 'MewtR',
                 applicantCommits: [],
                 projectStructure: [],
@@ -108,6 +110,7 @@ export class ApplicantGithub {
             projectInputs: [
               {
                 projectName: 'MinistocksRework',
+                url: "x",
                 owner: 'AyoubeAkaouch',
                 applicantCommits: [],
                 projectStructure: [],
@@ -115,6 +118,7 @@ export class ApplicantGithub {
               },
               {
                 projectName: 'rufus',
+                url: "x",
                 owner: 'MewtR',
                 applicantCommits: [],
                 projectStructure: [],

@@ -28,6 +28,7 @@ export class GithubUserRepos {
                   }
               		nodes{
                         name
+                        url
               		    owner{
                             login
                         }
@@ -52,6 +53,7 @@ export class GithubUserRepos {
                   }
               		nodes{
                         name
+                        url
               		    owner{
                             login
                         }
@@ -87,13 +89,14 @@ export class GithubUserRepos {
     let pageInfo = jsonData.data.user.repositories.pageInfo;
     let hasNextPage = pageInfo.hasNextPage;
     let endCursor: string = JSON.stringify(pageInfo.endCursor);
-    let repositories: { name: string; owner: { login: string } }[] = [];
+    let repositories: { name: string; url: string; owner: { login: string } }[] = [];
     repositories = jsonData.data.user.repositories.nodes;
     user.dataEntry = {
       projectInputs: repositories.map(repository => {
         return {
           projectName: repository.name,
           owner: repository.owner.login,
+          url: repository.url,
           applicantCommits: [],
           projectStructure: [],
           downloadedSourceFile: [],
@@ -118,6 +121,7 @@ export class GithubUserRepos {
             return {
               projectName: repository.name,
               owner: repository.owner.login,
+              url: repository.url,
               applicantCommits: [],
               projectStructure: [],
               downloadedSourceFile: [],

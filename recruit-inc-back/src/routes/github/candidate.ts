@@ -173,6 +173,7 @@ export class Candidate {
             projectInputs: [
               {
                 projectName: 'MinistocksRework',
+                url: 'x',
                 owner: 'AyoubeAkaouch',
                 applicantCommits: [],
                 projectStructure: [],
@@ -180,6 +181,7 @@ export class Candidate {
               },
               {
                 projectName: 'rufus',
+                url: 'x',
                 owner: 'MewtR',
                 applicantCommits: [],
                 projectStructure: [],
@@ -220,6 +222,7 @@ export class Candidate {
             projectInputs: [
               {
                 projectName: 'RecruitInc',
+                url: "x",
                 owner: 'ddicorpo',
                 applicantCommits: [],
                 projectStructure: [],
@@ -227,6 +230,7 @@ export class Candidate {
               },
               {
                 projectName: 'SOEN343',
+                url: "x",
                 owner: 'gprattico',
                 applicantCommits: [],
                 projectStructure: [],
