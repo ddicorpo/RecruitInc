@@ -50,6 +50,7 @@
     "@types/react-autosuggest": "^9.3.6",
     "@types/react-select": "^2.0.10",
     "dotenv": "^6.2.0",
+    "dotenv-webpack": "^1.7.0",
     "express": "^4.16.3",
     "fs": "0.0.1-security",
     "lint-staged": "^8.1.0",

@@ -6,6 +6,7 @@ const path = require('path'),
   port = process.env.PORT || 3000;
 
 app.listen(port, () => {
+  // Load the .env variables
   console.log(`App is listening on port ${port}`);
 });
 
