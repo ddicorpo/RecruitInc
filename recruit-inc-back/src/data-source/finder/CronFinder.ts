@@ -1,5 +1,5 @@
 import { CronModel } from '../schema/cronSchema';
-import { ICronModel } from '../../domain/model/ICronModel';
+import { ICronModel, Status } from '../../domain/model/ICronModel';
 import { Types } from 'mongoose';
 import { BaseFinder } from './BaseFinder';
 
@@ -17,7 +17,7 @@ export class CronFinder {
     return this.baseFinder.findBy({ cron_pattern });
   }
 
-  public findByStatus(status: string): Promise<ICronModel> {
+  public findByStatus(status: Status): Promise<ICronModel> {
     return this.baseFinder.findBy({ status });
   }
 

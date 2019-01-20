@@ -5,7 +5,7 @@ import { prop, Typegoose } from 'typegoose';
 import { mongoose } from 'mongoose';
 import { ApplicantSchema } from './applicantSchema';
 import { Model, Schema } from 'mongoose';
-import { ICronModel } from '../../domain/model/ICronModel';
+import { ICronModel, Status } from '../../domain/model/ICronModel';
 
 export class CronSchema extends Typegoose implements ICronModel {
   @prop()
@@ -24,7 +24,7 @@ export class CronSchema extends Typegoose implements ICronModel {
   cron_pattern: string;
 
   @prop({ required: true })
-  status: string;
+  status: Status;
 }
 
 export const CronModel: Model<ICronModel> = ApplicantSchema.getModel(

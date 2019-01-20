@@ -8,5 +8,12 @@ export interface ICronModel {
   number_scanned: number;
   total_number: number;
   cron_pattern: string;
-  status: string;
+  status: Status;
+}
+
+export enum Status {
+  scanning = 'scanning',
+  complete = 'complete',
+  paused = 'paused',
+  canceled = 'canceled',
 }
