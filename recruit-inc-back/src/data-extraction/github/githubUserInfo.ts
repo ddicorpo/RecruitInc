@@ -264,6 +264,7 @@ export class GithubUserInfo {
 
  let query: GithubUserInfo = new GithubUserInfo();
 
+
   process.on('message', async (msg) => {
     let githubUsers: IGithubUser[];
     if (msg === 'STOP')
@@ -286,9 +287,12 @@ export class GithubUserInfo {
   });
 
   process.on('exit', (code) => {
+    let githubUsers: IGithubUser[] = query.getGithubUsers();
+    if(typeof process.send === 'function'){ //Removing this if causes error for 'npm run test'
+    process.send(githubUsers);
+    }
     console.log(process.argv0);
     console.log(process.pid);
     console.log("byeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-    process.send(query.getGithubUsers());
   });
 

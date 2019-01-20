@@ -16,6 +16,42 @@ export class Candidate {
   public routes(app): void {
       let users : IGithubUser[];
 
+    app
+      .route('/locationThreadStop/:location')
+      .get(async (request: Request, response: Response) => {
+        var oldDateObj = new Date(); // Date now
+        var diff = 0.01;
+        var newDateObj = new Date(oldDateObj.getTime() + diff * 60000);
+        let location: string = request.params.location;
+        let query: GithubUserInfo = new GithubUserInfo();
+        let cronjob1: CronJobs = new CronJobs();
+        let result: any = cronjob1.locationScan(newDateObj, query, location);
+        setTimeout(() => {result.job.stop(); 
+        delete result.job;
+        result.forked.send('STOP');
+        }, 15000);
+        
+        result.forked.on('message', githubUsers =>{
+            console.log('done');
+            response.status(200).send(githubUsers);
+          });
+      });
+
+    app
+      .route('/locationThread/:location')
+      .get(async (request: Request, response: Response) => {
+        var oldDateObj = new Date(); // Date now
+        var diff = 0.1;
+        var newDateObj = new Date(oldDateObj.getTime() + diff * 60000);
+        let location: string = request.params.location;
+        let query: GithubUserInfo = new GithubUserInfo();
+        let cronjob1: CronJobs = new CronJobs();
+        let result: any = cronjob1.locationScan(newDateObj, query, location);
+        result.forked.on('message', githubUsers =>{
+            response.status(200).send(githubUsers);
+          });
+      });
+
       //Testing the continueGettingUsers function
     app
       .route('/continue')

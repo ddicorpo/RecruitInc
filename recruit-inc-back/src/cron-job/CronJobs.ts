@@ -1,21 +1,27 @@
 import { GithubUserInfo } from '../data-extraction/github/githubUserInfo';
 import { CronTime, CronJob } from 'cron';
 import { GithubDataExtraction } from '../data-extraction/github/githubDataExtraction';
+const { fork } = require('child_process');
 
 export class CronJobs {
   locationScan(
     cronTime: CronTime,
     query: GithubUserInfo,
     location: string
-  ): CronJob {
+  ): { forked: any , job: CronJob } {
     const CronJob = require('cron').CronJob;
 
+    const forked = fork('src/data-extraction/github/githubUserInfo.ts');
     const job = new CronJob(cronTime, async function() {
-      await query.getUserByLocation(location);
-    });
+      forked.send(location);
+      //await query.getUserByLocation(location);
+    }, {onComplete: function(){
+        console.log('done too');
+        forked.send('STOP');
+    }});
     job.start();
 
-    return job;
+    return {forked , job};
   }
 
   userScan(
