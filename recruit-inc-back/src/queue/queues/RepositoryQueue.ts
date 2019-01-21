@@ -1,8 +1,11 @@
 import { AbstractQueue } from './AbstractQueue';
 import { RepositoryClient } from '../clients/RepositoryClient';
-import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
-import { IGithubClient } from '../clients/IGithubClient';
+import { mongoose } from 'mongoose';
 import { RequiredClientInformation } from '../RequiredClientInformation';
+import { RepositoryQueueTDG } from "../../data-source/table-data-gateway/repositoryQueueTDG";
+import { RepositoryQueueModel } from "../../domain/model/RepositoryQueueModel";
+import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
+import {RepositoryQueueFinder} from "../../data-source/finder/RepositoryQueueFinder";
 
 export class RepositoryQueue extends AbstractQueue {
   private queue: RepositoryClient[];
@@ -40,7 +43,51 @@ export class RepositoryQueue extends AbstractQueue {
   }
 
   //TODO: implement save to db feature
-  public saveToDatabase() {}
+  public async saveToDatabase() {
 
-  public loadFromDatabase() {}
+    // Establish connection
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
+    // Start connection
+    myFactory.getConnection();
+
+    let queueID = "repoQueueID"
+
+    //create tdg
+    let repoQueueTDG: RepositoryQueueTDG = new RepositoryQueueTDG();
+
+    //delete what was there before
+    let deleteSuccess: boolean = await repoQueueTDG.delete(queueID);
+
+    let newRepositoryQueueModel: RepositoryQueueModel = {
+      _id: queueID,
+      queue: this.queue,
+    };
+
+    //store repository Queue in the database
+    await repoQueueTDG.create(newRepositoryQueueModel, queueID);
+
+    //close connection to db
+    mongoose.connection.close();
+
+  }
+
+  public async loadFromDatabase() {
+
+    // Establish connection
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
+    // Start connection
+    myFactory.getConnection();
+    //create a repo queue finder
+    let repoFinder: RepositoryQueueFinder = new RepositoryQueueFinder();
+    //Find all repo queues (only 1) and load it
+    let newRepositoryQueueModel: RepositoryQueueModel = await repoFinder.findAll();
+    //load the queue from db to this queue
+    this.queue = newRepositoryQueueModel.queue;
+
+    //close connection to db
+    mongoose.connection.close();
+
+  }
 }

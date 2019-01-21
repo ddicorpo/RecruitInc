@@ -16,7 +16,7 @@ import { RepositoryQueueModel } from "../../domain/model/RepositoryQueueModel";
 export class RepositoryQueueFinder {
     private baseFinder: BaseFinder = new BaseFinder(repositoryQueueModel);
     /**
-     * Getting all HR user
+     * Getting all Repositories
      */
     public findAll(): Promise<RepositoryQueueModel> {
         return this.baseFinder.findAll();
