@@ -1,4 +1,5 @@
 import { ObtainTechSupported } from "../domain/command/ObtainTechSupported";
+import { ObtainLocationsCommand } from '../domain/command/ObtainLocationsCommand';
 import {Logger} from '../Logger';
 import { Request, Response } from 'express';
 /**
@@ -30,6 +31,24 @@ import { Request, Response } from 'express';
                 this.logCommandFailure(this.routes.name, 
                     "GET Supported Tech", 
                     "CommandException", 
+                    CommandException);
+            }
+        });
+
+        /**
+         * GET to obain all supported location by the application
+         */
+        app.route('/api/supportedLocation').get(async(request:Request, response: Response) => {
+            try {
+                const locationCommand: ObtainLocationsCommand = new ObtainLocationsCommand();
+                const allLocationJSON: any = locationCommand.execute();
+                response.status(200).send(allLocationJSON);
+                this.logCommandCompleted(this.routes.name, " GET Supported Location... ");
+            } catch (CommandException) {
+                response.send(500).send("Can't get Locations");
+                this.logCommandFailure(this.routes.name,
+                    "GET Supported Location",
+                    "CommandException",
                     CommandException);
             }
         });
