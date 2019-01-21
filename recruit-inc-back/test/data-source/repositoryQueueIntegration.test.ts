@@ -2,36 +2,42 @@ import 'mocha';
 import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/MongoConnectionFactory';
 import { expect } from 'chai';
 import { RepositoryQueueModel } from "../../src/domain/model/RepositoryQueueModel";
-import { IUserModel } from '../../src/domain/model/IUserModel';
 import { RepositoryQueueTDG } from "../../src/data-source/table-data-gateway/repositoryQueueTDG";
-import { HRTDG } from '../../src/data-source/table-data-gateway/hrTDG';
-import { HRFinder } from '../../src/data-source/finder/HRFinder';
-import { IHRModel } from '../../src/domain/model/IHRModel';
-import { UserTDG } from '../../src/data-source/table-data-gateway/userTDG';
 import { Types } from 'mongoose';
 import * as mongoose from 'mongoose';
+import { RepositoryClient } from "../../src/queue/clients/RepositoryClient";
+import { IGithubUser } from "../../src/data-extraction/github/api-entities/IGithubUser";
+import { RequiredClientInformation } from "../../src/queue/RequiredClientInformation";
+import { RepositoryQueueFinder } from "../../src/data-source/finder/RepositoryQueueFinder";
 /**
- * This is a integration test for HR,
- * the HR data is a User saved in a special table
+ * This is a integration test for Repository Queue,
+ * the Queue holds an array of Queue Clients that are saved in a special table
  */
-xdescribe('Integration Test => Repository Queue ', () => {
-    const hrId: string = '5c1fb0fd4cb3ae14244028d3';
-    const newUser: IUserModel = {
-        username: 'PaulPaul69',
-        firstName: 'Paul',
-        lastName: 'Loop',
-        hashedPassword: 'eion20939230k2309k209ke2309e3902keS',
-        email: 'superPaul@gmail.com',
+describe.only('Integration Test => Repository Queue ', () => {
+    const queueId: string = '5c1fb0fd4cb3ae14244028d3';
+
+    const newUser: IGithubUser = {
+        login: "bill nye",
+        createdAt: '',
+        url: '',
+        email: '',
     };
 
-    const newHR: IHRModel = {
-        _id: Types.ObjectId(hrId),
-        userRef: newUser,
+    const prospect: RequiredClientInformation = new RequiredClientInformation(newUser,"bill", "nye", "the", "science", "guy");
+    prospect.repoToken = "fake token";
+
+    const newRepoClient: RepositoryClient = new RepositoryClient(prospect);
+
+    const newQueue = [];
+    newQueue.push(newRepoClient);
+
+    const newRepoQueue: RepositoryQueueModel = {
+        _id: Types.ObjectId(queueId),
+        queue: newQueue,
     };
 
-    const hrTDG: HRTDG = new HRTDG();
-    const hrFinder: HRFinder = new HRFinder();
-    const userTDG: UserTDG = new UserTDG();
+    const repoQueueTDG: RepositoryQueueTDG = new RepositoryQueueTDG();
+    const repoQueueFinder: RepositoryQueueFinder = new RepositoryQueueFinder();
 
     before(() => {
         // Establish connection
@@ -39,8 +45,6 @@ xdescribe('Integration Test => Repository Queue ', () => {
         myFactory.defaultInitialization();
         // Start connection
         myFactory.getConnection();
-        //Create user
-        userTDG.create(newUser, '5c2cbde77e11261104935eb7');
     });
 
     after(() => {
@@ -50,33 +54,23 @@ xdescribe('Integration Test => Repository Queue ', () => {
     it('Test mongo create HR user', async () => {
         //Given: database clean and user data set
         //When
-        let createdHR: IHRModel = await hrTDG.create(newHR, hrId);
+        let createdRepoQueue: RepositoryQueueModel = await repoQueueTDG.create(newRepoQueue, queueId);
 
         //Then
-        expect(newUser.email).to.equal(createdHR.userRef.email);
+        expect("bill nye").to.equal(newRepoQueue.queue[0].prospect.user.login);
     });
 
-    it('Test mongo Find HR By Id', async () => {
-        await hrFinder.findById(hrId).then(doc => {
-            let HRFound: IHRModel = doc;
-            console.log(HRFound);
-            expect('5c2cbde77e11261104935eb7').to.equal(HRFound.userRef.toString());
-            //HRFound.userRef does not have an email property
-            //expect(newUser.email).to.equal(HRFound.userRef.email);
-        });
-    });
     it('Test mongo update HR', async () => {
         // Then
-        newHR.userRef.firstName = 'BigRob';
-        let updatedUser: boolean = await hrTDG.update(hrId, newHR);
+        newRepoQueue.queue[0].prospect.user.login = 'BigRob';
+        let updatedUser: boolean = await repoQueueTDG.update(queueId, newRepoQueue);
         expect(updatedUser).to.be.equal(true);
     });
 
     it('Test mongo delete User: HR delete user', async () => {
         // GIVEN
-        let deleteSuccess: boolean = await hrTDG.delete(hrId);
+        let deleteSuccess: boolean = await repoQueueTDG.delete(queueId);
         //Then
         expect(deleteSuccess).to.be.equal(true);
-        await userTDG.delete('5c2cbde77e11261104935eb7');
     });
 });

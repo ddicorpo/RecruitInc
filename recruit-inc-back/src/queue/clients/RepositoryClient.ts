@@ -7,19 +7,19 @@ import { CommitQueue } from "../queues/CommitQueue";
 
 export class RepositoryClient implements IGithubClient {
   private readonly accessToken: string;
-  private username: string;
-  private prospect: RequiredClientInformation;
+  private _username: string;
+  private _prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
     this.accessToken = prospect.repoToken;
-    this.username = prospect.user.login;
-    this.prospect = prospect;
+    this._username = prospect.user.login;
+    this._prospect = prospect;
   }
 
   //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
   async executeQuery() {
     let user: IGithubUser = {
-      login: this.username,
+      login: this._username,
       createdAt: '',
       url: '',
       email: '',
@@ -36,17 +36,33 @@ export class RepositoryClient implements IGithubClient {
     let commitQueue = CommitQueue.get_instance();
 
     for (let repo of allRepos.dataEntry.projectInputs) {
-      this.prospect.repoName = repo.projectName;
-      this.prospect.repoOwner = repo.owner;
+      this._prospect.repoName = repo.projectName;
+      this._prospect.repoOwner = repo.owner;
       //Replace first position of projectInputs with current repo in order to simplify functionality withing treeQueue
-      this.prospect.user.dataEntry.projectInputs[0] = repo;
+      this._prospect.user.dataEntry.projectInputs[0] = repo;
 
       //enqueue takes the requiredInfo package "prospect" and passes it to the appropriate queue
-      treeQueue.enqueue(this.prospect);
-      commitQueue.enqueue(this.prospect);
-
+      treeQueue.enqueue(this._prospect);
+      commitQueue.enqueue(this._prospect);
     }
 
     //TODO: Store this information in db,
+  }
+
+
+  get username(): string {
+    return this._username;
+  }
+
+  set username(value: string) {
+    this._username = value;
+  }
+
+  get prospect(): RequiredClientInformation {
+    return this._prospect;
+  }
+
+  set prospect(value: RequiredClientInformation) {
+    this._prospect = value;
   }
 }
