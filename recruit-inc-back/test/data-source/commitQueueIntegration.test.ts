@@ -54,7 +54,7 @@ xdescribe('Integration Test => Commit Queue ', () => {
     it('Test mongo create commit queue', async () => {
         //Given: database clean and user data set
         //When
-        let createdTreeQueue: CommitQueueModel = await commitQueueTDG.create(newCommitQueue, queueId);
+        let createdCommitQueue: CommitQueueModel = await commitQueueTDG.create(newCommitQueue, queueId);
 
         //Then
         expect("bill nye").to.equal(newCommitQueue.queue[0].prospect.user.login);
