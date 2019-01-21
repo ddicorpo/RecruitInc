@@ -40,7 +40,7 @@ export class CommitQueue extends AbstractQueue {
   public processNextQuery(): any {
     this.dequeue().executeQuery();
   }
-  
+
   public async saveToDatabase() {
 
     // Establish connection

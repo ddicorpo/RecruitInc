@@ -1,6 +1,11 @@
 import { AbstractQueue } from './AbstractQueue';
 import { FilesAffectedByClient } from '../clients/FilesAffectedByClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
+import { mongoose } from 'mongoose';
+import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
+import { FilesAffectedByQueueTDG } from "../../data-source/table-data-gateway/filesAffectedByQueueTDG";
+import { FilesAffectedByQueueModel } from "../../domain/model/FilesAffectedByQueueModel";
+import { FilesAffectedByQueueFinder } from "../../data-source/finder/FilesAffectedByQueueFinder";
 
 export class FilesAffectedByQueue extends AbstractQueue {
   private queue: FilesAffectedByClient[];
@@ -39,7 +44,53 @@ export class FilesAffectedByQueue extends AbstractQueue {
     this.dequeue().executeQuery();
   }
 
-  //TODO: implement save to db feature
-  public saveToDatabase() {}
-  public loadFromDatabase() {}
+  public async saveToDatabase() {
+
+    // Establish connection
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
+    // Start connection
+    myFactory.getConnection();
+
+    let queueID = "filesQueueID";
+
+    //create tdg
+    let filesQueueTDG: FilesAffectedByQueueTDG = new FilesAffectedByQueueTDG();
+
+    //delete what was there before
+    let deleteSuccess: boolean = await filesQueueTDG.delete(queueID);
+
+    let newFilesQueueModel: FilesAffectedByQueueModel = {
+      _id: queueID,
+      queue: this.queue,
+    };
+
+    //store files affected by Queue in the database
+    await filesQueueTDG.create(newFilesQueueModel, queueID);
+
+    //close connection to db
+    mongoose.connection.close();
+  }
+  public async loadFromDatabase() {
+
+    // Establish connection
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
+
+    // Start connection
+    myFactory.getConnection();
+
+    //create a files affected by queue finder
+    let filesFinder: FilesAffectedByQueueFinder = new FilesAffectedByQueueFinder();
+
+    //Find all files affected by queues (only 1) and load it
+    let newFilesQueueModel: FilesAffectedByQueueModel = await filesFinder.findAll();
+
+    //load the queue from db to this queue
+    this.queue = newFilesQueueModel.queue;
+
+    //close connection to db
+    mongoose.connection.close();
+
+  }
 }
