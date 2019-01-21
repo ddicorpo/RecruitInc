@@ -16,7 +16,7 @@ import { TreeQueueModel } from "../../domain/model/TreeQueueModel";
 export class TreeQueueFinder {
     private baseFinder: BaseFinder = new BaseFinder(treeQueueModel);
     /**
-     * Getting all HR user
+     * Getting all tree queues
      */
     public findAll(): Promise<TreeQueueModel> {
         return this.baseFinder.findAll();

@@ -16,7 +16,7 @@ import { FilesAffectedByQueueModel } from "../../domain/model/FilesAffectedByQue
 export class FilesAffectedByQueueFinder {
     private baseFinder: BaseFinder = new BaseFinder(filesAffectedByQueueModel);
     /**
-     * Getting all HR user
+     * Getting all files affected by queues
      */
     public findAll(): Promise<FilesAffectedByQueueModel> {
         return this.baseFinder.findAll();

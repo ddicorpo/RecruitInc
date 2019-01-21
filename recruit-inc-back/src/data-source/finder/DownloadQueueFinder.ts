@@ -16,7 +16,7 @@ import { DownloadQueueModel } from "../../domain/model/DownloadQueueModel";
 export class DownloadQueueFinder {
     private baseFinder: BaseFinder = new BaseFinder(downloadQueueModel);
     /**
-     * Getting all HR user
+     * Getting all download queues
      */
     public findAll(): Promise<DownloadQueueModel> {
         return this.baseFinder.findAll();

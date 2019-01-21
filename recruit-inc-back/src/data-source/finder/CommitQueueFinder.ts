@@ -16,7 +16,7 @@ import { CommitQueueModel } from "../../domain/model/CommitQueueModel";
 export class CommitQueueFinder {
     private baseFinder: BaseFinder = new BaseFinder(commitQueueModel);
     /**
-     * Getting all HR user
+     * Getting all commit queues
      */
     public findAll(): Promise<CommitQueueModel> {
         return this.baseFinder.findAll();

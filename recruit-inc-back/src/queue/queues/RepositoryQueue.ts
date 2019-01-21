@@ -5,7 +5,7 @@ import { RequiredClientInformation } from '../RequiredClientInformation';
 import { RepositoryQueueTDG } from "../../data-source/table-data-gateway/repositoryQueueTDG";
 import { RepositoryQueueModel } from "../../domain/model/RepositoryQueueModel";
 import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
-import {RepositoryQueueFinder} from "../../data-source/finder/RepositoryQueueFinder";
+import { RepositoryQueueFinder } from "../../data-source/finder/RepositoryQueueFinder";
 
 export class RepositoryQueue extends AbstractQueue {
   private queue: RepositoryClient[];
@@ -42,7 +42,6 @@ export class RepositoryQueue extends AbstractQueue {
     this.dequeue().executeQuery();
   }
 
-  //TODO: implement save to db feature
   public async saveToDatabase() {
 
     // Establish connection
