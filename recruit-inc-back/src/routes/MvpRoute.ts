@@ -2,6 +2,7 @@ import { ObtainTechSupported } from "../domain/command/ObtainTechSupported";
 import { ObtainLocationsCommand } from '../domain/command/ObtainLocationsCommand';
 import {Logger} from '../Logger';
 import { Request, Response } from 'express';
+import {ObtainCandidatesCommand} from '../domain/command/ObtainCandidatesCommand';
 /**
  * This class is a temporary script to ensure
  * a deployment 27 Jan.
@@ -23,7 +24,7 @@ import { Request, Response } from 'express';
             , response: Response) => {
             try{
                 const techCommand: ObtainTechSupported = new ObtainTechSupported();
-                const allTechJSON: any = techCommand.execute();
+                const allTechJSON: any = await techCommand.execute();
                 response.status(200).send(allTechJSON);
                 this.logCommandCompleted(this.routes.name," GET Supported Tech... ");
             }catch(CommandException){
@@ -41,13 +42,31 @@ import { Request, Response } from 'express';
         app.route('/api/supportedLocation').get(async(request:Request, response: Response) => {
             try {
                 const locationCommand: ObtainLocationsCommand = new ObtainLocationsCommand();
-                const allLocationJSON: any = locationCommand.execute();
+                const allLocationJSON: any = await locationCommand.execute();
                 response.status(200).send(allLocationJSON);
                 this.logCommandCompleted(this.routes.name, " GET Supported Location... ");
             } catch (CommandException) {
                 response.send(500).send("Can't get Locations");
                 this.logCommandFailure(this.routes.name,
                     "GET Supported Location",
+                    "CommandException",
+                    CommandException);
+            }
+        });
+
+        /**
+        * GET to obain all candidate in database (assuming we only have Montreal people for now)
+        */
+        app.route('/api/candidates').get(async (request: Request, response: Response) => {
+            try {
+                const candidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
+                const allCandidates: any = await candidatesCommand.execute();
+                response.status(200).send(allCandidates);
+                this.logCommandCompleted(this.routes.name, " GET all candidates... ");
+            } catch (CommandException) {
+                response.send(500).send("Can't get Candidates");
+                this.logCommandFailure(this.routes.name,
+                    "GET Candidates",
                     "CommandException",
                     CommandException);
             }

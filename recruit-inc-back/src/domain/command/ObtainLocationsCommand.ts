@@ -12,6 +12,5 @@ export class ObtainLocationsCommand extends AbstractCommand {
 }
 
 export enum Locations {
-    Montreal = 'Montreal',
-    Laval = 'Laval'
+    Montreal = 'Montreal'
 }
