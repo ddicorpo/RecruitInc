@@ -2,7 +2,7 @@ import { AbstractQueue } from './AbstractQueue';
 import { TreeClient } from '../clients/TreeClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { mongoose } from 'mongoose';
-import {MongoConnectionFactory} from "../../data-source/db-registry/mongo/MongoConnectionFactory";
+import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
 import { TreeQueueTDG } from "../../data-source/table-data-gateway/treeQueueTDG";
 import { TreeQueueModel } from "../../domain/model/TreeQueueModel";
 import { TreeQueueFinder } from "../../data-source/finder/TreeQueueFinder";

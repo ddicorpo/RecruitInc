@@ -49,7 +49,7 @@ export class DownloadQueue extends AbstractQueue {
     // Start connection
     myFactory.getConnection();
 
-    let queueID = "treeQueueID";
+    let queueID = "downloadQueueID";
 
     //create tdg
     let downloadQueueTDG: DownloadQueueTDG = new DownloadQueueTDG();
