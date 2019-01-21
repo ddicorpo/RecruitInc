@@ -62,7 +62,7 @@ export class TreeQueue extends AbstractQueue {
       queue: this.queue,
     };
 
-    //store repository Queue in the database
+    //store tree Queue in the database
     await treeQueueTDG.create(newTreeQueueModel, queueID);
 
     //close connection to db
@@ -77,7 +77,7 @@ export class TreeQueue extends AbstractQueue {
     // Start connection
     myFactory.getConnection();
 
-    //create a repo queue finder
+    //create a tree queue finder
     let treeFinder: TreeQueueFinder = new TreeQueueFinder();
 
     //Find all tree queues (only 1) and load it

@@ -1,6 +1,11 @@
 import { AbstractQueue } from './AbstractQueue';
 import { DownloadClient } from '../clients/DownloadClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
+import { mongoose } from 'mongoose';
+import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
+import { DownloadQueueTDG } from "../../data-source/table-data-gateway/downloadQueueTDG";
+import { DownloadQueueModel } from "../../domain/model/DownloadQueueModel";
+import { DownloadQueueFinder } from "../../data-source/finder/DownloadQueueFinder";
 
 export class DownloadQueue extends AbstractQueue {
   private queue: DownloadClient[];
@@ -36,7 +41,53 @@ export class DownloadQueue extends AbstractQueue {
     this.dequeue().executeQuery();
   }
 
-  //TODO: implement save to db feature
-  public saveToDatabase() {}
-  public loadFromDatabase() {}
+  public async saveToDatabase() {
+
+    // Establish connection
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
+    // Start connection
+    myFactory.getConnection();
+
+    let queueID = "treeQueueID";
+
+    //create tdg
+    let downloadQueueTDG: DownloadQueueTDG = new DownloadQueueTDG();
+
+    //delete what was there before
+    let deleteSuccess: boolean = await downloadQueueTDG.delete(queueID);
+
+    let newDownloadQueueModel: DownloadQueueModel = {
+      _id: queueID,
+      queue: this.queue,
+    };
+
+    //store download Queue in the database
+    await downloadQueueTDG.create(newDownloadQueueModel, queueID);
+
+    //close connection to db
+    mongoose.connection.close();
+  }
+  public async loadFromDatabase() {
+
+    // Establish connection
+    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
+    myFactory.defaultInitialization();
+
+    // Start connection
+    myFactory.getConnection();
+
+    //create a download queue finder
+    let downloadFinder: DownloadQueueFinder = new DownloadQueueFinder();
+
+    //Find all download queues (only 1) and load it
+    let newDownloadQueueModel: DownloadQueueModel = await downloadFinder.findAll();
+
+    //load the queue from db to this queue
+    this.queue = newDownloadQueueModel.queue;
+
+    //close connection to db
+    mongoose.connection.close();
+
+  }
 }
