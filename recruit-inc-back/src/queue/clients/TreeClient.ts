@@ -6,14 +6,14 @@ import { IntersectionArrayString } from '../../util/IntersectionArrayString';
 import { DownloadQueue } from "../queues/DownloadQueue";
 
 export class TreeClient implements IGithubClient {
-  private owner: string;
-  private repository: string;
-  private prospect: RequiredClientInformation;
+  private _owner: string;
+  private _repository: string;
+  private _prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
-    this.owner = prospect.repoOwner;
-    this.repository = prospect.repoName;
-    this.prospect = prospect;
+    this._owner = prospect.repoOwner;
+    this._repository = prospect.repoName;
+    this._prospect = prospect;
   }
 
   private setSourceFilesArray(): string[] {
@@ -29,7 +29,7 @@ export class TreeClient implements IGithubClient {
 
     //Query to retrieve structure of current repo
     let struct = await repoStructure.getRepoStructureFromUser(
-      this.prospect.user
+      this._prospect.user
     );
 
     let projectInputs = struct.dataEntry.projectInputs;
@@ -54,13 +54,37 @@ export class TreeClient implements IGithubClient {
 
       //If file exists, update RequiredClientInformation object with file path and pass to downloads queue
       if (isSourceFile) {
-        this.prospect.filePath =
+        this._prospect.filePath =
           projectInputs[0].projectStructure[index].filePath;
         // pass the updated requiredInfo package to the download queue
-        downloadQueue.enqueue(this.prospect);
+        downloadQueue.enqueue(this._prospect);
       }
     }
 
     //TODO: Save to database
+  }
+
+  get owner(): string {
+    return this._owner;
+  }
+
+  set owner(value: string) {
+    this._owner = value;
+  }
+
+  get repository(): string {
+    return this._repository;
+  }
+
+  set repository(value: string) {
+    this._repository = value;
+  }
+
+  get prospect(): RequiredClientInformation {
+    return this._prospect;
+  }
+
+  set prospect(value: RequiredClientInformation) {
+    this._prospect = value;
   }
 }

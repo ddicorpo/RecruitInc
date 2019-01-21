@@ -13,7 +13,7 @@ import { RepositoryQueueFinder } from "../../src/data-source/finder/RepositoryQu
  * This is a integration test for Repository Queue,
  * the Queue holds an array of Queue Clients that are saved in a special table
  */
-describe.only('Integration Test => Repository Queue ', () => {
+xdescribe('Integration Test => Repository Queue ', () => {
     const queueId: string = '5c1fb0fd4cb3ae14244028d3';
 
     const newUser: IGithubUser = {
@@ -51,7 +51,7 @@ describe.only('Integration Test => Repository Queue ', () => {
         mongoose.connection.close();
     });
 
-    it('Test mongo create HR user', async () => {
+    it('Test mongo create Repository Queue', async () => {
         //Given: database clean and user data set
         //When
         let createdRepoQueue: RepositoryQueueModel = await repoQueueTDG.create(newRepoQueue, queueId);
@@ -60,14 +60,14 @@ describe.only('Integration Test => Repository Queue ', () => {
         expect("bill nye").to.equal(newRepoQueue.queue[0].prospect.user.login);
     });
 
-    it('Test mongo update HR', async () => {
+    it('Test mongo update Repository Queue', async () => {
         // Then
         newRepoQueue.queue[0].prospect.user.login = 'BigRob';
         let updatedUser: boolean = await repoQueueTDG.update(queueId, newRepoQueue);
         expect(updatedUser).to.be.equal(true);
     });
 
-    it('Test mongo delete User: HR delete user', async () => {
+    it('Test mongo delete Repository queue', async () => {
         // GIVEN
         let deleteSuccess: boolean = await repoQueueTDG.delete(queueId);
         //Then
