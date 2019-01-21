@@ -1,35 +1,43 @@
 import 'mocha';
 import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/MongoConnectionFactory';
 import { expect } from 'chai';
-import { IUserModel } from '../../src/domain/model/IUserModel';
-import { HRTDG } from '../../src/data-source/table-data-gateway/hrTDG';
-import { HRFinder } from '../../src/data-source/finder/HRFinder';
-import { IHRModel } from '../../src/domain/model/IHRModel';
-import { UserTDG } from '../../src/data-source/table-data-gateway/userTDG';
 import { Types } from 'mongoose';
 import * as mongoose from 'mongoose';
+import { IGithubUser } from "../../src/data-extraction/github/api-entities/IGithubUser";
+import { RequiredClientInformation } from "../../src/queue/RequiredClientInformation";
+import { DownloadClient } from "../../src/queue/clients/DownloadClient";
+import { DownloadQueueModel } from "../../src/domain/model/DownloadQueueModel";
+import { DownloadQueueTDG } from "../../src/data-source/table-data-gateway/downloadQueueTDG";
+import { DownloadQueueFinder } from "../../src/data-source/finder/DownloadQueueFinder";
 /**
- * This is a integration test for HR,
- * the HR data is a User saved in a special table
+ * This is a integration test for Download Queue,
+ * the Queue holds an array of Queue Clients that are saved in a special table
  */
-xdescribe('Integration Test => HR ', () => {
-    const hrId: string = '5c1fb0fd4cb3ae14244028d3';
-    const newUser: IUserModel = {
-        username: 'PaulPaul69',
-        firstName: 'Paul',
-        lastName: 'Loop',
-        hashedPassword: 'eion20939230k2309k209ke2309e3902keS',
-        email: 'superPaul@gmail.com',
+xdescribe('Integration Test => Download Queue ', () => {
+    const queueId: string = '5c1fb0fd4cb3ae14244028d3';
+
+    const newUser: IGithubUser = {
+        login: "bill nye",
+        createdAt: '',
+        url: '',
+        email: '',
     };
 
-    const newHR: IHRModel = {
-        _id: Types.ObjectId(hrId),
-        userRef: newUser,
+    const prospect: RequiredClientInformation = new RequiredClientInformation(newUser,"bill", "nye", "the", "science", "guy");
+    prospect.repoToken = "fake token";
+
+    const newDownloadClient: DownloadClient = new DownloadClient(prospect);
+
+    const newQueue = [];
+    newQueue.push(newDownloadClient);
+
+    const newDownloadQueue: DownloadQueueModel = {
+        _id: Types.ObjectId(queueId),
+        queue: newQueue,
     };
 
-    const hrTDG: HRTDG = new HRTDG();
-    const hrFinder: HRFinder = new HRFinder();
-    const userTDG: UserTDG = new UserTDG();
+    const downloadQueueTDG: DownloadQueueTDG = new DownloadQueueTDG();
+    const filesQueueFinder: DownloadQueueFinder = new DownloadQueueFinder();
 
     before(() => {
         // Establish connection
@@ -37,44 +45,32 @@ xdescribe('Integration Test => HR ', () => {
         myFactory.defaultInitialization();
         // Start connection
         myFactory.getConnection();
-        //Create user
-        userTDG.create(newUser, '5c2cbde77e11261104935eb7');
     });
 
     after(() => {
         mongoose.connection.close();
     });
 
-    it('Test mongo create HR user', async () => {
+    it('Test mongo create Download queue', async () => {
         //Given: database clean and user data set
         //When
-        let createdHR: IHRModel = await hrTDG.create(newHR, hrId);
+        let createdFilesQueue: DownloadQueueModel = await downloadQueueTDG.create(newDownloadQueue, queueId);
 
         //Then
-        expect(newUser.email).to.equal(createdHR.userRef.email);
+        expect("nye").to.equal(newDownloadQueue.queue[0].owner);
     });
 
-    it('Test mongo Find HR By Id', async () => {
-        await hrFinder.findById(hrId).then(doc => {
-            let HRFound: IHRModel = doc;
-            console.log(HRFound);
-            expect('5c2cbde77e11261104935eb7').to.equal(HRFound.userRef.toString());
-            //HRFound.userRef does not have an email property
-            //expect(newUser.email).to.equal(HRFound.userRef.email);
-        });
-    });
-    it('Test mongo update HR', async () => {
+    it('Test mongo update Download queue', async () => {
         // Then
-        newHR.userRef.firstName = 'BigRob';
-        let updatedUser: boolean = await hrTDG.update(hrId, newHR);
+        newDownloadQueue.queue[0].owner = 'BigRob';
+        let updatedUser: boolean = await downloadQueueTDG.update(queueId, newDownloadQueue);
         expect(updatedUser).to.be.equal(true);
     });
 
-    it('Test mongo delete User: HR delete user', async () => {
+    it('Test mongo delete Download queue', async () => {
         // GIVEN
-        let deleteSuccess: boolean = await hrTDG.delete(hrId);
+        let deleteSuccess: boolean = await downloadQueueTDG.delete(queueId);
         //Then
         expect(deleteSuccess).to.be.equal(true);
-        await userTDG.delete('5c2cbde77e11261104935eb7');
     });
 });
