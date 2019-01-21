@@ -3,7 +3,7 @@ import { repositoryQueueModel } from "../schema/repositoryQueueSchema";
 import { Types, Model } from 'mongoose';
 import { RepositoryQueueModel } from "../../domain/model/RepositoryQueueModel";
 
-export class repositoryQueueTDG {
+export class RepositoryQueueTDG {
     private baseTDG: BaseTDG;
 
     constructor() {

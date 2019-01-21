@@ -3,7 +3,7 @@ import { Types, Model } from 'mongoose';
 import { downloadQueueModel } from "../schema/downloadQueueSchema";
 import { DownloadQueueModel } from "../../domain/model/DownloadQueueModel";
 
-export class downloadQueueTDG {
+export class DownloadQueueTDG {
     private baseTDG: BaseTDG;
 
     constructor() {

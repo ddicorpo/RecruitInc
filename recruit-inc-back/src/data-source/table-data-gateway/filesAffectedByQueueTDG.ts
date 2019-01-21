@@ -3,7 +3,7 @@ import { Types, Model } from 'mongoose';
 import {filesAffectedByQueueModel} from "../schema/filesAffectedByQueueSchema";
 import {FilesAffectedByQueueModel} from "../../domain/model/FilesAffectedByQueueModel";
 
-export class filesAffectedByQueueTDG {
+export class FilesAffectedByQueueTDG {
     private baseTDG: BaseTDG;
 
     constructor() {

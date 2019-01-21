@@ -3,7 +3,7 @@ import { Types, Model } from 'mongoose';
 import { commitQueueModel } from "../schema/commitQueueSchema";
 import { CommitQueueModel } from "../../domain/model/CommitQueueModel";
 
-export class commitQueueTDG {
+export class CommitQueueTDG {
     private baseTDG: BaseTDG;
 
     constructor() {
