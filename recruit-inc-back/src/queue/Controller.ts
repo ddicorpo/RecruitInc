@@ -59,7 +59,7 @@ export class Controller {
       }
     }
     catch(e){
-
+      throw e;
     }
   }
 
@@ -70,7 +70,7 @@ export class Controller {
       }
     }
     catch(e){
-
+      throw e;
     }
   }
 
@@ -81,7 +81,7 @@ export class Controller {
       }
     }
     catch(e){
-
+      throw e;
     }
   }
 
@@ -92,18 +92,27 @@ export class Controller {
       }
     }
     catch(e){
-
+      throw e;
     }
   }
 
 
   //load back all queues from DB
-  public reloadQueues(){
-
+  public async reloadQueues(){
+    await this.repoQueue.loadFromDatabase();
+    await this.treeQueue.loadFromDatabase();
+    await this.commitQueue.loadFromDatabase();
+    await this.filesAffectedByQueue.loadFromDatabase();
+    await this.downloadQueue.loadFromDatabase();
   }
 
-  public storeQueues(){
-
+  //store all queues in db, mostly used in case of error
+  public async storeQueues(){
+    await this.repoQueue.saveToDatabase();
+    await this.treeQueue.saveToDatabase();
+    await this.commitQueue.saveToDatabase();
+    await this.filesAffectedByQueue.saveToDatabase();
+    await this.downloadQueue.saveToDatabase();
   }
 
 }
