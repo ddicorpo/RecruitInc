@@ -7,7 +7,7 @@ import { IGithubUser } from '../../src/data-extraction/github/api-entities/IGith
 
 const repoQueue: RepositoryQueue = RepositoryQueue.get_instance();
 
-describe.only('Get User information', () => {
+xdescribe('Get User information', () => {
   before(() => {
     const newUser: IGithubUser = {
       login: 'bill nye',
