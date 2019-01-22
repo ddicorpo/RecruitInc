@@ -38,7 +38,17 @@ export class Controller {
 
   //main method, runs all the queues and finds the information
   public execute(){
-
+    try{
+      this.executeRepo();
+      this.executeTree();
+      this.executeCommit();
+      this.executeFilesAffected();
+      this.executeDownload();
+    }
+    catch(e){
+      //TODO: STOP THE CRON JOB HERE PLEASE
+      this.storeQueues();
+    }
   }
 
   public executeRepo(){
@@ -95,7 +105,6 @@ export class Controller {
       throw e;
     }
   }
-
 
   //load back all queues from DB
   public async reloadQueues(){
