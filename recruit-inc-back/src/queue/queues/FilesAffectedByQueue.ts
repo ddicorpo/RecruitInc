@@ -33,8 +33,10 @@ export class FilesAffectedByQueue extends AbstractQueue {
   }
 
   public isEmpty() {
-    return this.queue == [];
-  }
+    if(this.queue === undefined || this.queue.length == 0){
+      return true;
+    }
+    return false;  }
 
   public size() {
     return this.queue.length;
