@@ -1,5 +1,4 @@
 import { IGithubClient } from './IGithubClient';
-import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
 import { GithubUserRepos } from '../../data-extraction/github/githubUserRepos';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { TreeQueue } from "../queues/TreeQueue";
@@ -18,18 +17,11 @@ export class RepositoryClient implements IGithubClient {
 
   //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
   async executeQuery() {
-    let user: IGithubUser = {
-      login: this._username,
-      createdAt: '',
-      url: '',
-      email: '',
-    };
-
     let githubUserRepos: GithubUserRepos = new GithubUserRepos(
       this.accessToken
     );
 
-    let allRepos = await githubUserRepos.getUserRepos(user);
+    let allRepos = await githubUserRepos.getUserRepos(this.prospect.user);
 
     // pull the instances of treeQueue and CommitQueue to be populated later
     let treeQueue = TreeQueue.get_instance();

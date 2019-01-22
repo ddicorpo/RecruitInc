@@ -27,7 +27,7 @@ export class RepositoryQueue extends AbstractQueue {
   }
 
   public dequeue() {
-    return this.queue.pop();
+    return this.queue.shift();
   }
 
   public isEmpty() {
@@ -38,8 +38,14 @@ export class RepositoryQueue extends AbstractQueue {
     return this.queue.length;
   }
 
-  public processNextQuery(): any {
-    this.dequeue().executeQuery();
+  public processNextQuery() {
+    try {
+      this.queue[0].executeQuery();
+      //remove the first object from the queue
+      this.dequeue();
+    }
+      catch(e) {
+    }
   }
 
   public async saveToDatabase() {

@@ -26,7 +26,7 @@ export class CommitQueue extends AbstractQueue {
     this.queue.push(commit);
   }
   public dequeue() {
-    return this.queue.pop();
+    return this.queue.shift();
   }
 
   public isEmpty() {
@@ -38,7 +38,13 @@ export class CommitQueue extends AbstractQueue {
   }
 
   public processNextQuery(): any {
-    this.dequeue().executeQuery();
+    try {
+      this.queue[0].executeQuery();
+      //remove the first object from the queue
+      this.dequeue();
+    }
+    catch(e) {
+    }
   }
 
   public async saveToDatabase() {
