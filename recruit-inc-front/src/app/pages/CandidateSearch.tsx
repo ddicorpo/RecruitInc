@@ -6,9 +6,9 @@ import CandidateCard, {
 import { IGitProjectSummary } from '../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary';
 import Pagination from 'react-js-pagination';
 import Select from 'react-select';
-import { Technologies } from '../../../../recruit-inc-back/src/matching-algo/data-model/output-model/Technologies';
 import { ActionMeta, ValueType } from 'react-select/lib/types';
 import { Logger } from '../Logger';
+// import { object, array } from 'prop-types';
 
 const GitProjectSummary: any = require('../../../GitProjectSummary.json');
 const BackEndAddress: string =
@@ -22,15 +22,8 @@ interface IOptions {
 class CandidateSearch extends React.Component<any, any> {
   private gitProjectSummary: IGitProjectSummary;
   private gitUserInfo: IGithubUserInformation;
-  private gitUserInfo1: IGithubUserInformation;
-  private gitUserInfo2: IGithubUserInformation;
-  private gitUserInfo3: IGithubUserInformation;
-  private gitUserInfo4: IGithubUserInformation;
-  private gitUserInfo5: IGithubUserInformation;
 
   private cardProps: ICardProps[];
-  private techSelect: IOptions[] = [];
-  private cities: IOptions[] = [];
   private logger: Logger;
 
   constructor(props: any) {
@@ -43,6 +36,8 @@ class CandidateSearch extends React.Component<any, any> {
       activePage: 1,
       selectedTechOptions: [],
       cityOption: '',
+      techFromBackEnd: [],
+      cities: [],
     };
     this.gitProjectSummary = GitProjectSummary;
 
@@ -52,87 +47,10 @@ class CandidateSearch extends React.Component<any, any> {
       profileLink: 'https://github.com/lydiahallie',
     };
 
-    this.gitUserInfo1 = {
-      username: 'lydiahallie1',
-      email: 'lydiajuliettehallie@gmail.com',
-      profileLink: 'https://github.com/lydiahallie',
-    };
-
-    this.gitUserInfo2 = {
-      username: 'lydiahallie2',
-      email: 'lydiajuliettehallie@gmail.com',
-      profileLink: 'https://github.com/lydiahallie',
-    };
-
-    this.gitUserInfo3 = {
-      username: 'lydiahallie3',
-      email: 'lydiajuliettehallie@gmail.com',
-      profileLink: 'https://github.com/lydiahallie',
-    };
-
-    this.gitUserInfo4 = {
-      username: 'lydiahallie4',
-      email: 'lydiajuliettehallie@gmail.com',
-      profileLink: 'https://github.com/lydiahallie',
-    };
-
-    this.gitUserInfo5 = {
-      username: 'lydiahallie5',
-      email: 'lydiajuliettehallie@gmail.com',
-      profileLink: 'https://github.com/lydiahallie',
-    };
-
     this.cardProps = [
       {
         userInfo: this.gitUserInfo,
         projectInfo: this.gitProjectSummary,
-      },
-      {
-        userInfo: this.gitUserInfo1,
-        projectInfo: this.gitProjectSummary,
-      },
-      {
-        userInfo: this.gitUserInfo2,
-        projectInfo: this.gitProjectSummary,
-      },
-      {
-        userInfo: this.gitUserInfo3,
-        projectInfo: this.gitProjectSummary,
-      },
-      {
-        userInfo: this.gitUserInfo4,
-        projectInfo: this.gitProjectSummary,
-      },
-      {
-        userInfo: this.gitUserInfo5,
-        projectInfo: this.gitProjectSummary,
-      },
-    ];
-
-    const technologies: string[] = Object.keys(Technologies).map(
-      key => Technologies[key]
-    );
-
-    for (const technology of technologies) {
-      this.techSelect.push({ value: technology, label: technology });
-    }
-
-    this.cities = [
-      {
-        value: 'Montreal',
-        label: 'Montreal',
-      },
-      {
-        value: 'Quebec',
-        label: 'Quebec',
-      },
-      {
-        value: 'Laval',
-        label: 'Laval',
-      },
-      {
-        value: 'Montmagny',
-        label: 'Montmagny',
       },
     ];
   }
@@ -151,6 +69,56 @@ class CandidateSearch extends React.Component<any, any> {
       array.push(<div>No result</div>);
     }
     return array;
+  }
+
+  private loadSupportedTechnologies(): void {
+    const obtainTechSource: string =
+      'http://' + BackEndAddress + '/api/supportedTech';
+    fetch(obtainTechSource)
+      .then(response => response.json())
+      .then(
+        result => {
+          let techFromConfig: IOptions[] = [];
+          for (let technology in result) {
+            techFromConfig.push({ value: technology, label: technology });
+          }
+          this.setState({
+            isLoaded: false,
+            techSelect: techFromConfig,
+          });
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
+  }
+
+  private loadSupportedLocation(): void {
+    const obtainLocationSource: string =
+      'http://' + BackEndAddress + '/api/supportedLocation';
+    fetch(obtainLocationSource)
+      .then(response => response.json())
+      .then(
+        result => {
+          let locationFromSource: IOptions[] = [];
+          for (let location in result) {
+            locationFromSource.push({ value: location, label: location });
+          }
+          this.setState({
+            isLoaded: false,
+            cities: locationFromSource,
+          });
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
   }
 
   handlePageChange(pageNumber: number) {
@@ -176,11 +144,18 @@ class CandidateSearch extends React.Component<any, any> {
       cityOption: value,
     });
   }
+  /**
+   * Function call before the render()
+   */
+  componentWillMount() {
+    // Load our Tech from server
+    this.loadSupportedTechnologies();
+    this.loadSupportedLocation();
+  }
 
   render() {
     return (
       <div className="container-fluid">
-        {console.log(BackEndAddress)}
         <div className="page-header">
           <h2 className="header-title">Candidate Search</h2>
         </div>
@@ -200,7 +175,7 @@ class CandidateSearch extends React.Component<any, any> {
                       isMulti={true}
                       isSearchable={true}
                       placeholder="Language"
-                      options={this.techSelect}
+                      options={this.state.techSelect}
                       className="form-control"
                     />
                   </div>
@@ -210,12 +185,14 @@ class CandidateSearch extends React.Component<any, any> {
                 <div className="p-h-10">
                   <div className="form-group">
                     <label className="control-label">City Search</label>
+                    {console.log(this.state.cityOption)}
+                    {console.log(this.state.cities)}
                     <Select
                       value={this.state.cityOption}
                       onChange={this.handleCityChange}
                       isSearchable={true}
                       placeholder="City"
-                      options={this.cities}
+                      options={this.state.cities}
                       className="form-control"
                     />
                   </div>
