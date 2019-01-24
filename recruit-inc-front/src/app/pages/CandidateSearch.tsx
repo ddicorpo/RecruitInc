@@ -1,29 +1,22 @@
 import * as React from 'react';
-import CandidateCard, {
-  ICardProps,
-  IGithubUserInformation,
-} from '../components/CandidateCard';
-import { IGitProjectSummary } from '../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary';
+import { ICardProps } from '../components/CandidateCard';
+//import { IGitProjectSummary } from '../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary';
 import Pagination from 'react-js-pagination';
 import Select from 'react-select';
 import { ActionMeta, ValueType } from 'react-select/lib/types';
 import { Logger } from '../Logger';
-// import { object, array } from 'prop-types';
+import { ICandidate } from '../model/Candidate/ICandidate';
+import { IOptionsBox } from '../model/IOptionsBox';
 
-const GitProjectSummary: any = require('../../../GitProjectSummary.json');
 const BackEndAddress: string =
   process.env.BACK_END_ADDRESS + ':' + process.env.BACK_END_PORT;
 
-interface IOptions {
-  value: string;
-  label: string;
-}
-
 class CandidateSearch extends React.Component<any, any> {
-  private gitProjectSummary: IGitProjectSummary;
-  private gitUserInfo: IGithubUserInformation;
+  // private gitProjectSummary: IGitProjectSummary;
+  // private gitUserInfo: IGithubUserInformation;
 
   private cardProps: ICardProps[];
+  private candidates: ICandidate[];
   private logger: Logger;
 
   constructor(props: any) {
@@ -34,37 +27,37 @@ class CandidateSearch extends React.Component<any, any> {
     this.handleCityChange = this.handleCityChange.bind(this);
     this.state = {
       activePage: 1,
-      selectedTechOptions: [],
-      cityOption: '',
+      selectedTechnology: [],
+      selectedLocation: '',
       techFromBackEnd: [],
-      cities: [],
+      locationFromBackEnd: [],
     };
-    this.gitProjectSummary = GitProjectSummary;
+    // this.gitProjectSummary = GitProjectSummary;
 
-    this.gitUserInfo = {
-      username: 'lydiahallie',
-      email: 'lydiajuliettehallie@gmail.com',
-      profileLink: 'https://github.com/lydiahallie',
-    };
+    // this.gitUserInfo = {
+    //   username: 'lydiahallie',
+    //   email: 'lydiajuliettehallie@gmail.com',
+    //   profileLink: 'https://github.com/lydiahallie',
+    // };
 
-    this.cardProps = [
-      {
-        userInfo: this.gitUserInfo,
-        projectInfo: this.gitProjectSummary,
-      },
-    ];
+    // this.cardProps = [
+    //   {
+    //     userInfo: this.gitUserInfo,
+    //     projectInfo: this.gitProjectSummary,
+    //   },
+    // ];
   }
 
   private renderCards(): JSX.Element[] {
     const array: JSX.Element[] = [];
-    for (let cardProp of this.cardProps) {
-      array.push(
-        <CandidateCard
-          userInfo={cardProp.userInfo}
-          projectInfo={cardProp.projectInfo}
-        />
-      );
-    }
+    // for (let candidate in this.state.candidates) {
+    //   // array.push(
+    //   //   <CandidateCard
+    //   //     userInfo={candidate.userInfo}
+    //   //     projectInfo={candidate.projectInfo}
+    //   //   />
+    //   // );
+    // }
     if (this.cardProps.length < 1) {
       array.push(<div>No result</div>);
     }
@@ -78,7 +71,7 @@ class CandidateSearch extends React.Component<any, any> {
       .then(response => response.json())
       .then(
         result => {
-          let techFromConfig: IOptions[] = [];
+          let techFromConfig: IOptionsBox[] = [];
           for (let technology in result) {
             techFromConfig.push({ value: technology, label: technology });
           }
@@ -96,14 +89,14 @@ class CandidateSearch extends React.Component<any, any> {
       );
   }
 
-  private loadSupportedLocation(): void {
+  private loadSupportedLocations(): void {
     const obtainLocationSource: string =
       'http://' + BackEndAddress + '/api/supportedLocation';
     fetch(obtainLocationSource)
       .then(response => response.json())
       .then(
         result => {
-          let locationFromSource: IOptions[] = [];
+          let locationFromSource: IOptionsBox[] = [];
           for (let location in result) {
             locationFromSource.push({ value: location, label: location });
           }
@@ -131,14 +124,25 @@ class CandidateSearch extends React.Component<any, any> {
     this.setState({ activePage: pageNumber });
   }
 
-  handleLanguageChange(value: ValueType<IOptions>, action: ActionMeta): void {
+  handleLanguageChange(
+    value: ValueType<IOptionsBox>,
+    action: ActionMeta
+  ): void {
     // Once we have a call to the backend, we'll capture this through the button press
     this.setState({
       selectedTechOptions: value,
     });
   }
 
-  handleCityChange(value: ValueType<IOptions>, action: ActionMeta): void {
+  handleSearchClick() {
+    console.log('click!');
+  }
+
+  handleLoadClick() {
+    console.log('load click!');
+  }
+
+  handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {
     // Once we have a call to the backend, we'll capture this through the button press
     this.setState({
       cityOption: value,
@@ -150,10 +154,13 @@ class CandidateSearch extends React.Component<any, any> {
   componentWillMount() {
     // Load our Tech from server
     this.loadSupportedTechnologies();
-    this.loadSupportedLocation();
+    // Load Supported Location
+    this.loadSupportedLocations();
   }
 
   render() {
+    let isResultEmpty =
+      this.candidates == undefined || this.candidates.length < 1;
     return (
       <div className="container-fluid">
         <div className="page-header">
@@ -204,8 +211,9 @@ class CandidateSearch extends React.Component<any, any> {
                     <label className="control-label">&nbsp;</label>
                     <button
                       id="save"
-                      className="btn btn-success form-control"
+                      className="btn btn-success form-control super-button"
                       type="button"
+                      onClick={this.handleSearchClick}
                     >
                       Search
                     </button>
@@ -220,8 +228,20 @@ class CandidateSearch extends React.Component<any, any> {
           <div className="card-header border bottom">
             <h4 className="card-title">Results</h4>
           </div>
-          <div className="card-body">{this.renderCards()}</div>
-
+          {isResultEmpty ? (
+            <div className="form-group middle-man">
+              <button
+                id="load"
+                className="btn btn-gradient-primary form-control super-button"
+                type="button"
+                onClick={this.handleLoadClick}
+              >
+                Load All
+              </button>
+            </div>
+          ) : (
+            <div className="card-body">{this.renderCards()}</div>
+          )}
           <Pagination
             activePage={this.state.activePage}
             itemClass="page-item"
