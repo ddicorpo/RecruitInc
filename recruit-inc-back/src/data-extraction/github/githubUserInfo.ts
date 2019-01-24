@@ -144,6 +144,21 @@ export class GithubUserInfo {
     return await new GithubApiV4().queryData(this.accessToken, query);
   }
 
+  async getUserCountForLocation(
+    location: string
+  ): Promise<number> {
+    let query: string = `{
+             search(query: "type:user location:${location}", type: USER) {
+               userCount
+             }
+    }`;
+
+    let data: string = await new GithubApiV4().queryData(this.accessToken, query);
+    let jsonData = JSON.parse(data);
+
+    return jsonData.data.search.userCount;
+  }
+
   async getUserByLocation(location: string): Promise<IGithubUser[]> {
     //let githubUsers: IGithubUser[] = [];
     if (!this.githubUsers)

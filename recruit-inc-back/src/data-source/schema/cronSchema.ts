@@ -11,7 +11,7 @@ export class CronSchema extends Typegoose implements ICronModel {
   @prop()
   _id?: mongoose.Types.ObjectId;
 
-  @prop({ required: true })
+  @prop({unique: true, required: true })
   location: string;
 
   @prop({ required: true })
@@ -20,11 +20,17 @@ export class CronSchema extends Typegoose implements ICronModel {
   @prop({ required: true })
   total_number: number;
 
-  @prop({ required: true })
+  @prop()
   cron_pattern: string;
 
   @prop({ required: true })
   status: Status;
+
+  @prop()
+  lastCreatedAt: string;
+
+  @prop()
+  cursor: string;
 }
 
 export const CronModel: Model<ICronModel> = ApplicantSchema.getModel(

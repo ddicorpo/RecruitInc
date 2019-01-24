@@ -17,6 +17,15 @@ export class Candidate {
       let users : IGithubUser[];
 
     app
+      .route('/usercount/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let cronjob1: CronJobs = new CronJobs();
+        cronjob1.scheduleCron(location);
+            response.status(200);
+      });
+
+    app
       .route('/locationThreadStop/:location')
       .get(async (request: Request, response: Response) => {
         var oldDateObj = new Date(); // Date now

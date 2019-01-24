@@ -9,9 +9,12 @@ export interface ICronModel {
   total_number: number;
   cron_pattern: string;
   status: Status;
+  lastCreatedAt?: string;
+  lastCursor?: string;
 }
 
 export enum Status {
+  locationscan = 'locationscan',
   scanning = 'scanning',
   complete = 'complete',
   paused = 'paused',

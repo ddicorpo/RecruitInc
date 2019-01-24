@@ -54,6 +54,16 @@ describe.only('Test mongo cronObj', () => {
     await cronTDG.create(cron3);
   });
 
+  it('Test mongo find by location and status', async () => {
+    await cronFinder
+      .findByLocationAndStatus(cron2.location, cron2.status)
+      .then(doc => {
+        let cronFound: ICronModel = doc;
+        expect(cron2.location).to.equal( cronFound.location);
+        expect(cron2.status).to.equal( cronFound.status);
+      });
+  });
+
   it('Test mongo findAll and then delete', async () => {
     let cronObjFound: ICronModel;
     //Find all gitObj

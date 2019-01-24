@@ -11,7 +11,7 @@ import { Platform } from '../../src/domain/model/IGitDataModel';
 require('dotenv').config(); //Get environment variables
 
 
-describe.only('Test mongo GithubUsers', () => {
+xdescribe('Test mongo GithubUsers', () => {
         const user1: IGithubUser = {
           login: 'MewtR',
           createdAt: '',
@@ -24,6 +24,7 @@ describe.only('Test mongo GithubUsers', () => {
                 applicantCommits: [],
                 projectStructure: [],
                 downloadedSourceFile: [],
+                url: '',
               },
               {
                 projectName: 'rufus',
@@ -31,6 +32,7 @@ describe.only('Test mongo GithubUsers', () => {
                 applicantCommits: [],
                 projectStructure: [],
                 downloadedSourceFile: [],
+                url: '',
               },
             ],
           },
@@ -48,6 +50,7 @@ describe.only('Test mongo GithubUsers', () => {
                 applicantCommits: [],
                 projectStructure: [],
                 downloadedSourceFile: [],
+                url: '',
               },
               {
                 projectName: 'SOEN343',
@@ -55,6 +58,7 @@ describe.only('Test mongo GithubUsers', () => {
                 applicantCommits: [],
                 projectStructure: [],
                 downloadedSourceFile: [],
+                url: '',
               },
             ],
           },
@@ -72,6 +76,7 @@ describe.only('Test mongo GithubUsers', () => {
                 applicantCommits: [],
                 projectStructure: [],
                 downloadedSourceFile: [],
+                url: '',
               },
               {
                 projectName: 'NKTT',
@@ -79,6 +84,7 @@ describe.only('Test mongo GithubUsers', () => {
                 applicantCommits: [],
                 projectStructure: [],
                 downloadedSourceFile: [],
+                url: '',
               },
             ],
           },

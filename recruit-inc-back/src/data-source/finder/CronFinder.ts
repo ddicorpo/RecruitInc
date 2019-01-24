@@ -10,7 +10,7 @@ export class CronFinder {
   }
 
   public findByLocation(location: string): Promise<ICronModel> {
-    return this.baseFinder.findBy({ location });
+    return this.baseFinder.findOneBy({ location });
   }
 
   public findByCronPattern(cron_pattern: string): Promise<ICronModel> {
@@ -19,6 +19,19 @@ export class CronFinder {
 
   public findByStatus(status: Status): Promise<ICronModel> {
     return this.baseFinder.findBy({ status });
+  }
+
+  public findByLocationAndStatus(location: string, status: Status): Promise<ICronModel>{
+    return new Promise((resolve: any, reject: any) => {
+      CronModel.findOne(
+        { location: location, status: status },
+        (error: any, obj: any) => {
+          if (error) reject(error.name + ': ' + error.message);
+          obj ? resolve(obj) : resolve();
+        }
+      );
+    });
+
   }
 
   public findAll(): Promise<ICronModel> {
