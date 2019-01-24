@@ -18,6 +18,6 @@ export interface IGithubUser {
   isHireable?: boolean;
   url: string;
   websiteUrl?: string;
-  createdAt: string;
+  createdAt?: string;
   cursor?: string; //used for pagination
 }

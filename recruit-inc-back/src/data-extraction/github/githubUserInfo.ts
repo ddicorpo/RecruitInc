@@ -192,44 +192,6 @@ export class GithubUserInfo {
         }
     }
 
-    //Loop until a search where no users are returned
-    //using the createdAt parameter to get new users
-    //while (1) {
-    //  let lastCreatedAt: string =
-    //    jsonData.data.search.edges[jsonData.data.search.edges.length - 1].node.createdAt;
-    //  let nextData: string = await this.getDataBefore(location, lastCreatedAt);
-    //  jsonData = JSON.parse(nextData);
-    //  pageInfo = jsonData.data.search.pageInfo;
-    //  endCursor = JSON.stringify(pageInfo.endCursor);
-    //  hasNextPage = pageInfo.hasNextPage;
-    //  data += nextData;
-    //    for (let edge of jsonData.data.search.edges){
-    //        githubUser = edge.node;
-    //        githubUser.cursor = edge.cursor;
-    //        this.githubUsers.push(githubUser);
-    //    }
-
-    //  if (!hasNextPage) break;
-
-    //  while (hasNextPage) {
-    //    let nextData: string = await this.getDataBeforeWithEndCursor(
-    //      location,
-    //      lastCreatedAt,
-    //      endCursor
-    //    );
-    //    jsonData = JSON.parse(nextData);
-    //    pageInfo = jsonData.data.search.pageInfo;
-    //    endCursor = JSON.stringify(pageInfo.endCursor);
-    //    hasNextPage = pageInfo.hasNextPage;
-    //    data += nextData;
-    //    for (let edge of jsonData.data.search.edges){
-    //        githubUser = edge.node;
-    //        githubUser.cursor = edge.cursor;
-    //        this.githubUsers.push(githubUser);
-    //    }
-    //  }
-    //}
-    //return this.githubUsers;
     return await this.continueGettingUsers(jsonData.data.search.edges[jsonData.data.search.edges.length - 1].node.createdAt, location)
   }
 
@@ -276,38 +238,4 @@ export class GithubUserInfo {
   }
 
 }
-
-// let query: GithubUserInfo = new GithubUserInfo();
-//
-//
-//  process.on('message', async (msg) => {
-//    let githubUsers: IGithubUser[];
-//    if (msg === 'STOP')
-//        process.exit(0);
-//    if (msg instanceof Array){
-//    console.log('We\'re here boi!')
-//    //let githubUsersSoFar: IGithubUser[] = query.getGithubUsers()
-//    let githubUsersSoFar: IGithubUser[] = msg;
-//    query.setGithubUsers(msg);
-//    let lastUser: IGithubUser = githubUsersSoFar[githubUsersSoFar.length-1];
-//    console.log(lastUser);
-//    githubUsers = await query.continueGettingUsers(lastUser.createdAt, lastUser.location);
-//    process.send(query.getGithubUsers());
-//    }else{
-//    console.log(process.pid);
-//    console.log("HelloOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-//    githubUsers = await query.getUserByLocation(msg);
-//    process.send(githubUsers);
-//    }
-//  });
-//
-//  process.on('exit', (code) => {
-//    let githubUsers: IGithubUser[] = query.getGithubUsers();
-//    if(typeof process.send === 'function'){ //Removing this if causes error for 'npm run test'
-//    process.send(githubUsers);
-//    }
-//    console.log(process.argv0);
-//    console.log(process.pid);
-//    console.log("byeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-//  });
 

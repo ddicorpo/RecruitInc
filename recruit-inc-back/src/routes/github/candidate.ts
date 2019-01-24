@@ -17,126 +17,13 @@ export class Candidate {
       let users : IGithubUser[];
 
     app
-      .route('/usercount/:location')
+      .route('/location/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
-        let cronjob1: CronJobs = new CronJobs();
-        cronjob1.scheduleCron(location);
-            response.status(200);
-      });
+        let cronjob: CronJobs = new CronJobs();
+        cronjob.scheduleCron(location);
 
-    app
-      .route('/locationThreadStop/:location')
-      .get(async (request: Request, response: Response) => {
-        var oldDateObj = new Date(); // Date now
-        var diff = 0.01;
-        var newDateObj = new Date(oldDateObj.getTime() + diff * 60000);
-        let location: string = request.params.location;
-        let query: GithubUserInfo = new GithubUserInfo();
-        let cronjob1: CronJobs = new CronJobs();
-        let result: any = cronjob1.locationScan(newDateObj, query, location);
-        setTimeout(() => {result.job.stop(); 
-        delete result.job;
-        result.forked.send('STOP');
-        }, 15000);
-        
-        result.forked.on('message', githubUsers =>{
-            console.log('done');
-            response.status(200).send(githubUsers);
-          });
-      });
-
-    app
-      .route('/locationThread/:location')
-      .get(async (request: Request, response: Response) => {
-        var oldDateObj = new Date(); // Date now
-        var diff = 0.1;
-        var newDateObj = new Date(oldDateObj.getTime() + diff * 60000);
-        let location: string = request.params.location;
-        let query: GithubUserInfo = new GithubUserInfo();
-        let cronjob1: CronJobs = new CronJobs();
-        let result: any = cronjob1.locationScan(newDateObj, query, location);
-        result.forked.on('message', githubUsers =>{
-            response.status(200).send(githubUsers);
-          });
-      });
-
-      //Testing the continueGettingUsers function
-    app
-      .route('/continue')
-      .get(async (request: Request, response: Response) => {
-        let query: GithubUserInfo = new GithubUserInfo();
-        query.setGithubUsers([]);
-        let githubUsers: IGithubUser[];
-        githubUsers = await query.continueGettingUsers("2017-12-26T23:12:12Z", 'montreal');
-            response.status(200).send(githubUsers);
-          });
-
-          //Starts search by location after it was stopped
-          // run this after testpause route and use same location
-    app
-      .route('/start/:location')
-      .get(async (request: Request, response: Response) => {
-          //let result: IGithubUser[];
-          const forked = fork('src/data-extraction/github/githubUserInfo.ts');
-          let location: string = request.params.location;
-          //Set location of last user to make it uniform
-          users[users.length-1].location = location;
-          forked.send(users);
-          forked.on('message', githubUsers =>{
-            response.status(200).send(githubUsers);
-          });
-
-      });
-
-      //Starts function to get uses by location and stops after 10 seconds
-    app
-      .route('/testpause/:location')
-      .get(async (request: Request, response: Response) => {
-          const forked = fork('src/data-extraction/github/githubUserInfo.ts');
-          let location: string = request.params.location;
-          forked.send(location);
-          setTimeout(() => { forked.send('STOP') }, 10000);
-          forked.on('message', githubUsers =>{
-            users = githubUsers;
-            response.status(200).send(users);
-          });
-      });
-
-    app
-      .route('/threads/:location')
-      .get(async (request: Request, response: Response) => {
-          const forked = fork('src/data-extraction/github/githubUserInfo.ts');
-          let location: string = request.params.location;
-          forked.send(location);
-          forked.on('message', githubUsers =>{
-            response.status(200).send(githubUsers);
-          });
-
-      });
-
-    app
-      .route('/locationScan/:location')
-      .get(async (request: Request, response: Response) => {
-        var oldDateObj = new Date(); // Date now
-        var diff = 0.25;
-        var newDateObj = new Date(oldDateObj.getTime() + diff * 60000);
-        let location: string = request.params.location;
-        let query: GithubUserInfo = new GithubUserInfo();
-        let cronjob1: CronJobs = new CronJobs();
-        cronjob1.locationScan(newDateObj, query, location);
-      });
-
-    app
-      .route('/userScan/:login')
-      .get(async (request: Request, response: Response) => {
-        var oldDateObj = new Date(); // Date now
-        var diff = 0.25;
-        var newDateObj = new Date(oldDateObj.getTime() + diff * 60000);
-        let login: string = request.params.login;
-        let query: GithubDataExtraction = new GithubDataExtraction();
-        let cronjob2: CronJobs = new CronJobs();
-        cronjob2.userScan(newDateObj, query, login);
+        response.status(200);
       });
 
     app
