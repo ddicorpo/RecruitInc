@@ -1,7 +1,11 @@
 import { ICandidate } from '../model/Candidate/ICandidate';
-import { baseAdapter } from './baseAdapter';
+import { BaseAdapter } from './BaseAdapter';
 
-export class CandidateAdapter extends baseAdapter {
+/**
+ * This class prevents dependency between our domain model back-end
+ * and our domain model front-end
+ */
+export class CandidateAdapter extends BaseAdapter {
   constructor() {
     super();
   }
