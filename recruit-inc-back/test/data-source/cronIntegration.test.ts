@@ -8,7 +8,7 @@ import { MongoConnectionFactory } from '../../src/data-source/db-registry/mongo/
 
 require('dotenv').config(); //Get environment variables
 
-describe.only('Test mongo cronObj', () => {
+xdescribe('Test mongo cronObj', () => {
   const cron: ICronModel = {
     location: 'Montreal',
     number_scanned: 456,
