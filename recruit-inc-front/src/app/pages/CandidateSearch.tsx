@@ -139,6 +139,16 @@ class CandidateSearch extends React.Component<any, any> {
   }
 
   handleLoadClick() {
+    const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
+    fetch(apiCandidates)
+        .then(response => response.json())
+        .then(
+            result => {
+              console.log(result);
+            },
+            error => {
+            }
+        );
     console.log('load click!');
   }
 
@@ -213,8 +223,7 @@ class CandidateSearch extends React.Component<any, any> {
                       id="save"
                       className="btn btn-success form-control super-button"
                       type="button"
-                      onClick={this.handleSearchClick}
-                    >
+                      onClick={this.handleSearchClick}>
                       Search
                     </button>
                   </div>

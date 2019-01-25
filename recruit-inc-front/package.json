@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"No test written yet!\"",
-    "build": "tsc && ./node_modules/.bin/webpack",
+    "build": "tsc && webpack --config webpack.config.js",
     "start": "npm run build && ts-node ./src/server.ts",
     "prettify": "prettier --single-quote --trailing-comma es5 --write \"*(src)/**/*.ts\""
   },
