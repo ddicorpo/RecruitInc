@@ -7,73 +7,32 @@ import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUs
 import { GithubDataExtraction } from '../../data-extraction/github/githubDataExtraction';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { Logger } from '../../Logger';
+import { SSL_OP_EPHEMERAL_RSA } from 'constants';
+import { CronJobs } from '../../cron-job/CronJobs';
 const logger = new Logger();
+const { fork } = require('child_process');
 
 export class Candidate {
   public routes(app): void {
+      let users : IGithubUser[];
+
+    app
+      .route('/location/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let cronjob: CronJobs = new CronJobs();
+        cronjob.scheduleCron(location);
+
+        response.status(200);
+      });
+
     app
       .route('/api/github/candidate/hr/:location')
       .get(async (request: Request, response: Response) => {
         let githubUser: IGithubUser[];
-
         let location: string = request.params.location;
-
         let query: GithubUserInfo = new GithubUserInfo();
-
-        //Grab the endCursor from the first query
-        let data: string = await query.firstQuery(location);
-        let jsonData = JSON.parse(data);
-        let pageInfo = jsonData.data.search.pageInfo;
-        let endCursor: string = JSON.stringify(pageInfo.endCursor);
-        let hasNextPage: boolean = pageInfo.hasNextPage;
-
-        githubUser = jsonData.data.search.nodes;
-
-        //Use endCursor in subsequent queries to retrieve more users
-        while (hasNextPage) {
-          let nextData: string = await query.getData(location, endCursor);
-          jsonData = JSON.parse(nextData);
-          pageInfo = jsonData.data.search.pageInfo;
-          endCursor = JSON.stringify(pageInfo.endCursor);
-          hasNextPage = pageInfo.hasNextPage;
-          data += nextData;
-          githubUser.push(jsonData.data.search.nodes);
-        }
-
-        //Loop until a search where no users are returned
-        //using the createdAt parameter to get new users
-        while (1) {
-          let lastCreatedAt: string =
-            jsonData.data.search.nodes[jsonData.data.search.nodes.length - 1]
-              .createdAt;
-          let nextData: string = await query.getDataBefore(
-            location,
-            lastCreatedAt
-          );
-          jsonData = JSON.parse(nextData);
-          pageInfo = jsonData.data.search.pageInfo;
-          endCursor = JSON.stringify(pageInfo.endCursor);
-          hasNextPage = pageInfo.hasNextPage;
-          data += nextData;
-          githubUser.push(jsonData.data.search.nodes);
-
-          if (!hasNextPage) break;
-
-          while (hasNextPage) {
-            let nextData: string = await query.getDataBeforeWithEndCursor(
-              location,
-              lastCreatedAt,
-              endCursor
-            );
-            jsonData = JSON.parse(nextData);
-            pageInfo = jsonData.data.search.pageInfo;
-            endCursor = JSON.stringify(pageInfo.endCursor);
-            hasNextPage = pageInfo.hasNextPage;
-            data += nextData;
-            githubUser.push(jsonData.data.search.nodes);
-          }
-        }
-
+        githubUser = await query.getUserByLocation(location);
         response.status(200).send(githubUser);
       });
 
@@ -110,6 +69,7 @@ export class Candidate {
             projectInputs: [
               {
                 projectName: 'MinistocksRework',
+                url: 'x',
                 owner: 'AyoubeAkaouch',
                 applicantCommits: [],
                 projectStructure: [],
@@ -117,6 +77,7 @@ export class Candidate {
               },
               {
                 projectName: 'rufus',
+                url: 'x',
                 owner: 'MewtR',
                 applicantCommits: [],
                 projectStructure: [],
@@ -157,6 +118,7 @@ export class Candidate {
             projectInputs: [
               {
                 projectName: 'RecruitInc',
+                url: "x",
                 owner: 'ddicorpo',
                 applicantCommits: [],
                 projectStructure: [],
@@ -164,6 +126,7 @@ export class Candidate {
               },
               {
                 projectName: 'SOEN343',
+                url: "x",
                 owner: 'gprattico',
                 applicantCommits: [],
                 projectStructure: [],
