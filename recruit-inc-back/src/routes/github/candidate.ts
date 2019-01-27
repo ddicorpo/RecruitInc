@@ -6,6 +6,7 @@ import { GithubDownloadedFilesPath } from '../../data-extraction/github/githubDo
 import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
 import { GithubDataExtraction } from '../../data-extraction/github/githubDataExtraction';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
+import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 import { Logger } from '../../Logger';
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 import { CronJobs } from '../../cron-job/CronJobs';
@@ -17,13 +18,36 @@ export class Candidate {
       let users : IGithubUser[];
 
     app
+      .route('/update')
+      .get(async (request: Request, response: Response) => {
+      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+      let criteria = {
+          location: "nouakchott",
+          githubUsers: {
+              $elemMatch: {
+                  login: "jemal"
+              }
+          }
+      }
+      let update = {
+          $set: {"githubUsers.$[gU].dataEntry.$[dE].applicantCommits.$[aC].files.$[f].lineDeleted": 10}
+      }
+
+      let options = {
+          arrayFilters: [{"gU.login": "jemal"},{"dE.owner": "Lemine"},{"aC.id": "893420fjkds"}, {"f.filePath": "pom.xml"}]
+      }
+      await githubUsersTDG.generalUpdate(criteria, update, options);
+
+        response.status(200).send('Finished');
+
+      });
+
+    app
       .route('/location/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
         let cronjob: CronJobs = new CronJobs();
         cronjob.scheduleCron(location);
-
-        response.status(200);
       });
 
     app

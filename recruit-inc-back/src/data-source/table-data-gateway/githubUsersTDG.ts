@@ -37,4 +37,21 @@ export class GithubUsersTDG {
       throw new Error('Error while delete collection of GithubUsers');
     }
   }
+
+  public generalUpdate(criteria: any, update: any, options: any):Promise<boolean>{
+      return new Promise((resolve: any, reject: any)=>{
+      console.log("hello");
+      GithubUsersModel.update(criteria, update, options, (error, doc) =>{
+
+          if (error){
+          this.baseTDG.logActionFailure(this.update.name, error.name, error.message);
+          resolve(false);
+          }else{
+          this.baseTDG.logActionCompleted(this.update.name);
+          resolve(true);
+          }
+      });
+      });
+  }
+
 }

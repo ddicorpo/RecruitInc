@@ -8,6 +8,7 @@ import { Status } from '../domain/model/ICronModel'
 import { IGithubUsersModel } from '../domain/model/IGithubUsersModel'
 import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser'
 import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG'
+import { GithubUsersFinder } from '../data-source/finder/GithubUsersFinder'
 const { fork } = require('child_process');
 
 export class CronJobs {
@@ -15,6 +16,7 @@ export class CronJobs {
     private cronTDG: CronTDG = new CronTDG();
     private githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
     private cronFinder: CronFinder = new CronFinder();
+    private githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
 
     public async scheduleCron(location: string) {
 
@@ -47,7 +49,12 @@ export class CronJobs {
     } 
 
     async scan(location: string){
-        //Call a different function
+        let githubUsersModel : IGithubUsersModel = await this.githubUsersFinder.findByLocation(location);
+        let githubUsers : IGithubUser[] = githubUsersModel.githubUsers; 
+        for (let user of githubUsers){
+        
+        }
+        //Call queue controller
     }
 
     async stopScan(location: string){

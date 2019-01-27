@@ -30,7 +30,8 @@ export class Controller {
     // Here we reload the queues with unfinished elements that remained from last time.
     this.reloadQueues();
 
-    let users: IGithubUser[] = this.fetchUsersFromDatabase();
+    //let users: IGithubUser[] = this.fetchUsersFromDatabase();
+    let users: IGithubUser[] = []
 
     if (this.areQueuesEmpty()) {
       this.enqueueUser(users.pop());
@@ -81,11 +82,11 @@ export class Controller {
     );
   }
 
-  private fetchUsersFromDatabase(): IGithubUser[] {
-    // Check whether there are unfinished users to be scanned
-    // Get all the locations that are currently in scanning status from db
-    // Get all the users from those locations that should be scanned
-  }
+//  private fetchUsersFromDatabase(): IGithubUser[] {
+//    // Check whether there are unfinished users to be scanned
+//    // Get all the locations that are currently in scanning status from db
+//    // Get all the users from those locations that should be scanned
+//  }
 
   private handleError(method: string, error: string) {
     this.logger.info({
