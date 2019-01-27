@@ -17,12 +17,10 @@
     "esModuleInterop": true,
     "outDir": "./build/",
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    // Allowing Jest to work
+    "skipLibCheck": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "./src/**/**/*"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["./src/**/**/*"]
 }
