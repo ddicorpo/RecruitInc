@@ -40,15 +40,29 @@ export class GithubUsersTDG {
 
   public generalUpdate(criteria: any, update: any, options: any):Promise<boolean>{
       return new Promise((resolve: any, reject: any)=>{
-      console.log("hello");
-      GithubUsersModel.update(criteria, update, options, (error, doc) =>{
+      GithubUsersModel.updateOne(criteria, update, options, (error, doc) =>{
 
           if (error){
-          this.baseTDG.logActionFailure(this.update.name, error.name, error.message);
+          this.baseTDG.logActionFailure(this.generalUpdate.name, error.name, error.message);
           resolve(false);
           }else{
-          this.baseTDG.logActionCompleted(this.update.name);
+          this.baseTDG.logActionCompleted(this.generalUpdate.name);
           resolve(true);
+          }
+      });
+      });
+  }
+
+  public findSingleUser(query, projection): Promise<any> {
+      return new Promise((resolve: any, reject: any)=>{
+      GithubUsersModel.find(query, projection, (error, doc) =>{
+
+          if (error){
+          this.baseTDG.logActionFailure(this.findSingleUser.name, error.name, error.message);
+          reject(error.name+': '+ error.message);
+          }else{
+          this.baseTDG.logActionCompleted(this.findSingleUser.name);
+          resolve(doc);
           }
       });
       });

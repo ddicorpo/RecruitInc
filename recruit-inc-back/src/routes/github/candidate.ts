@@ -18,6 +18,29 @@ export class Candidate {
       let users : IGithubUser[];
 
     app
+      .route('/find/:login')
+      .get(async (request: Request, response: Response) => {
+      let login: string = request.params.login;
+      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+      let query = {
+          "githubUsers.login": login
+      }
+      let projection = {
+          _id: 0,
+          githubUsers: {
+              $elemMatch: {
+                  "login": login
+              }
+          }
+      }
+
+      let result: any = await githubUsersTDG.findSingleUser(query, projection);
+
+        response.status(200).send(result);
+
+      });
+
+    app
       .route('/update')
       .get(async (request: Request, response: Response) => {
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
@@ -30,7 +53,7 @@ export class Candidate {
           }
       }
       let update = {
-          $set: {"githubUsers.$[gU].dataEntry.$[dE].applicantCommits.$[aC].files.$[f].lineDeleted": 10}
+          $set: {"githubUsers.$[gU].dataEntry.$[dE].applicantCommits.$[aC].files.$[f].lineDeleted": 2}
       }
 
       let options = {
