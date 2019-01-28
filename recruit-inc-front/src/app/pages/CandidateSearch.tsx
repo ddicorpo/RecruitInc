@@ -139,17 +139,34 @@ class CandidateSearch extends React.Component<any, any> {
   }
 
   handleLoadClick() {
-    const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
-    fetch(apiCandidates)
-        .then(response => response.json())
-        .then(
-            result => {
-              console.log(result);
-            },
-            error => {
+      const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
+      fetch(apiCandidates)
+          .then(function (response) {
+              return response.json();
+          })
+          .then(function(result){
+              let candidates: ICandidate[]  = [];
+
+              let num: number;
+              for(num=0; num<result.length; num++){
+                console.log();
+                candidates.push({
+                  isFilter: false,
+                  username: result[num].platformUsername,
+                  profileLink: "",
+                  userType: "",
+                  email: result[num].platformEmail,
+                  ProjectSummary: {
+                    totalOutput: [],
+                    projectOutput: {
+                      projectName: "",
+                      projectUrl: "",
+                      languageOutput: []
+                    }
+                  }
+                });
             }
-        );
-    console.log('load click!');
+          });
   }
 
   handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {
