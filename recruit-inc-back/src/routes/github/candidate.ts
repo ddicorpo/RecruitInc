@@ -46,7 +46,8 @@ export class Candidate {
       .get(async (request: Request, response: Response) => {
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
       let criteria = {
-          location: "nouakchott",
+          //location: "nouakchott", <- also works
+          "githubUsers.login": "jemal",
           githubUsers: {
               $elemMatch: {
                   login: "jemal"
@@ -54,7 +55,7 @@ export class Candidate {
           }
       }
       let update = {
-          $set: {"githubUsers.$[gU].dataEntry.$[dE].applicantCommits.$[aC].files.$[f].lineDeleted": 2}
+          $set: {"githubUsers.$[gU].dataEntry.$[dE].applicantCommits.$[aC].files.$[f].lineDeleted": 20}
       }
 
       let options = {
