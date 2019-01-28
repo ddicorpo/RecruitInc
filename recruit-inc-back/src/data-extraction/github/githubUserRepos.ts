@@ -1,6 +1,7 @@
 import { GithubApiV4 } from './githubApiV4';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { Logger } from '../../Logger';
+import { IGithubProjectInput } from '../../matching-algo/data-model/input-model/IGithubProjectInput';
 
 export class GithubUserRepos {
   private readonly accessToken: string;
@@ -143,5 +144,83 @@ export class GithubUserRepos {
     }
 
     return user;
+  }
+
+  async getRepos(user: IGithubUser): Promise<IGithubProjectInput[]> {
+    let data: string = '';
+    let projectInputs: IGithubProjectInput[];
+    let jsonData;
+    try {
+      data = await this.firstQuery(user.login);
+      jsonData = JSON.parse(data);
+      if (jsonData.data == null || jsonData.data.user == null)
+        throw new TypeError('The user you are trying to query does not exist');
+    } catch (error) {
+      this.logger.error({
+        class: 'GithubUserRepos',
+        method: 'getUserRepos',
+        action:
+          'Error while trying to obtain a list of repos from a given user. (Initial Query)',
+        params: {},
+        value: error.toString(),
+      });
+      return projectInputs;
+    }
+    let pageInfo = jsonData.data.user.repositories.pageInfo;
+    let hasNextPage = pageInfo.hasNextPage;
+    let endCursor: string = JSON.stringify(pageInfo.endCursor);
+    let repositories: { name: string; url: string; owner: { login: string } }[] = [];
+    repositories = jsonData.data.user.repositories.nodes;
+    projectInputs = repositories.map(repository => {
+        return {
+          projectName: repository.name,
+          owner: repository.owner.login,
+          url: repository.url,
+          applicantCommits: [],
+          projectStructure: [],
+          downloadedSourceFile: [],
+        };
+      })
+
+    while (hasNextPage) {
+      let nextData: string = '';
+      try {
+        nextData = await this.getDataAfterCursor(user.login, endCursor);
+        jsonData = JSON.parse(nextData);
+        if (jsonData.data == null || jsonData.data.user == null)
+          throw new Error(
+            "Either you reached the api's limit or the response was uncorrectly formatted."
+          );
+        pageInfo = jsonData.data.user.repositories.pageInfo;
+        endCursor = JSON.stringify(pageInfo.endCursor);
+        hasNextPage = pageInfo.hasNextPage;
+        repositories = jsonData.data.user.repositories.nodes;
+        projectInputs = projectInputs.concat(
+          repositories.map(repository => {
+            return {
+              projectName: repository.name,
+              owner: repository.owner.login,
+              url: repository.url,
+              applicantCommits: [],
+              projectStructure: [],
+              downloadedSourceFile: [],
+            };
+          })
+        );
+        data += nextData;
+      } catch (error) {
+        this.logger.error({
+          class: 'GithubUserRepos',
+          method: 'getUserRepos',
+          action:
+            'Error while trying to obtain a list of repos from a given user.(Subsequent Queries with endCursor)',
+          params: {},
+          value: error.toString(),
+        });
+        return projectInputs;
+      }
+    }
+
+    return projectInputs;
   }
 }

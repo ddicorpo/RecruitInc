@@ -7,6 +7,7 @@ import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUs
 import { GithubDataExtraction } from '../../data-extraction/github/githubDataExtraction';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
+import { IGithubProjectInput } from '../../matching-algo/data-model/input-model/IGithubProjectInput';
 import { Logger } from '../../Logger';
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 import { CronJobs } from '../../cron-job/CronJobs';
@@ -81,6 +82,18 @@ export class Candidate {
         let query: GithubUserInfo = new GithubUserInfo();
         githubUser = await query.getUserByLocation(location);
         response.status(200).send(githubUser);
+      });
+
+    app
+      .route('/api/github/candidate/justrepo/:username')
+      .get(async (req: Request, res: Response) => {
+        let username: string = req.params.username;
+        let user: IGithubUser = { login: username, url: '', createdAt: '' };
+        let repos: IGithubProjectInput[];
+        let query: GithubUserRepos = new GithubUserRepos();
+        repos = await query.getRepos(user);
+
+        res.status(200).send(repos);
       });
 
     app
