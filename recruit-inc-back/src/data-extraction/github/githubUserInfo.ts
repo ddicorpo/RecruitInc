@@ -40,6 +40,7 @@ export class GithubUserInfo {
                      url
                      websiteUrl
                      createdAt
+                     id
                    }
                  }
                }

@@ -2,6 +2,8 @@ import { GithubApiV4 } from './githubApiV4';
 import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { ISingleFileCommit } from '../../matching-algo/data-model/input-model/ISingleFileCommit';
+import { ICommit } from '../../matching-algo/data-model/input-model/ICommit';
+import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 import { Logger } from '../../Logger';
 
 export class GithubUserCommits {
@@ -24,7 +26,7 @@ export class GithubUserCommits {
     owner: string,
     repo: string,
     sha: string
-  ): Promise<{ filePath: string; lineAdded: number; lineDeleted: number }[]> {
+  ): Promise<ISourceFiles[]> {
     let result: {
       filePath: string;
       lineAdded: number;
@@ -219,7 +221,7 @@ export class GithubUserCommits {
     owner: string,
     userID: string
   ): Promise<
-    { id: string; numberOfFileAffected: number; files: ISingleFileCommit[] }[]
+    ICommit[]
   > {
     let result: any[] = [];
     let data: string;
