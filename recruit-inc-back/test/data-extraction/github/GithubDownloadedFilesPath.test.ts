@@ -13,9 +13,9 @@ describe('Write to file', async () => {
 
     //Write to file
     test.writeToFile('This is a test', pathToFile);
-    let exists: boolean = fs.existsSync(pathToFile);
+    let isFilePathValid: boolean = fs.existsSync(pathToFile);
 
-    expect(exists).to.be.true;
+    expect(isFilePathValid).to.be.true;
 
     //Delete file
     fs.unlinkSync(pathToFile);
