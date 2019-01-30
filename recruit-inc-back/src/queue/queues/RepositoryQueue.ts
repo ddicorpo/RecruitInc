@@ -4,7 +4,6 @@ import { mongoose } from 'mongoose';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { RepositoryQueueTDG } from "../../data-source/table-data-gateway/repositoryQueueTDG";
 import { RepositoryQueueModel } from "../../domain/model/RepositoryQueueModel";
-import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
 import { RepositoryQueueFinder } from "../../data-source/finder/RepositoryQueueFinder";
 
 export class RepositoryQueue extends AbstractQueue {
@@ -53,12 +52,6 @@ export class RepositoryQueue extends AbstractQueue {
 
   public async saveToDatabase() {
 
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-    // Start connection
-    myFactory.getConnection();
-
     let queueID = "repoQueueID"
 
     //create tdg
@@ -75,27 +68,16 @@ export class RepositoryQueue extends AbstractQueue {
     //store repository Queue in the database
     await repoQueueTDG.create(newRepositoryQueueModel, queueID);
 
-    //close connection to db
-    mongoose.connection.close();
-
   }
 
   public async loadFromDatabase() {
 
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-    // Start connection
-    myFactory.getConnection();
     //create a repo queue finder
     let repoFinder: RepositoryQueueFinder = new RepositoryQueueFinder();
     //Find all repo queues (only 1) and load it
     let newRepositoryQueueModel: RepositoryQueueModel = await repoFinder.findAll();
     //load the queue from db to this queue
     this.queue = newRepositoryQueueModel.queue;
-
-    //close connection to db
-    mongoose.connection.close();
 
   }
 }

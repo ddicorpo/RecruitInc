@@ -2,7 +2,6 @@ import { AbstractQueue } from './AbstractQueue';
 import { TreeClient } from '../clients/TreeClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { mongoose } from 'mongoose';
-import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
 import { TreeQueueTDG } from "../../data-source/table-data-gateway/treeQueueTDG";
 import { TreeQueueModel } from "../../domain/model/TreeQueueModel";
 import { TreeQueueFinder } from "../../data-source/finder/TreeQueueFinder";
@@ -50,12 +49,6 @@ export class TreeQueue extends AbstractQueue {
 
   public async saveToDatabase() {
 
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-    // Start connection
-    myFactory.getConnection();
-
     let queueID = "treeQueueID";
 
     //create tdg
@@ -72,17 +65,8 @@ export class TreeQueue extends AbstractQueue {
     //store tree Queue in the database
     await treeQueueTDG.create(newTreeQueueModel, queueID);
 
-    //close connection to db
-    mongoose.connection.close();
   }
   public async loadFromDatabase() {
-
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-
-    // Start connection
-    myFactory.getConnection();
 
     //create a tree queue finder
     let treeFinder: TreeQueueFinder = new TreeQueueFinder();
@@ -92,9 +76,6 @@ export class TreeQueue extends AbstractQueue {
 
     //load the queue from db to this queue
     this.queue = newTreeQueueModel.queue;
-
-    //close connection to db
-    mongoose.connection.close();
 
   }
 }

@@ -47,9 +47,9 @@ export class TreeClient implements IGithubClient {
     let downloadQueue = DownloadQueue.get_instance();
 
     //Loop through project structure to find specific files that need to be downloaded
-    while (index < projectInputs[0].projectStructure.length) {
+    while (index < struct.length) {
       const tmpfileNameArr: string[] = [
-        projectInputs[0].projectStructure[index].fileName,
+        struct[index].fileName
       ];
 
       //Finds a match for a specific downloaded file
@@ -60,13 +60,14 @@ export class TreeClient implements IGithubClient {
       //If file exists, update RequiredClientInformation object with file path and pass to downloads queue
       if (isSourceFile) {
         this._prospect.filePath =
-          projectInputs[0].projectStructure[index].filePath;
+          struct[index].filePath;
         // pass the updated requiredInfo package to the download queue
         downloadQueue.enqueue(this._prospect);
       }
     }
 
-    //TODO: Save to database
+    //Save STRUCT TO DB HERE
+    //TODO: Save userinfo in the database
   }
 
   get owner(): string {

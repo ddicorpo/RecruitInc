@@ -2,7 +2,6 @@ import { AbstractQueue } from './AbstractQueue';
 import { DownloadClient } from '../clients/DownloadClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { mongoose } from 'mongoose';
-import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
 import { DownloadQueueTDG } from "../../data-source/table-data-gateway/downloadQueueTDG";
 import { DownloadQueueModel } from "../../domain/model/DownloadQueueModel";
 import { DownloadQueueFinder } from "../../data-source/finder/DownloadQueueFinder";
@@ -50,12 +49,6 @@ export class DownloadQueue extends AbstractQueue {
 
   public async saveToDatabase() {
 
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-    // Start connection
-    myFactory.getConnection();
-
     let queueID = "downloadQueueID";
 
     //create tdg
@@ -72,17 +65,8 @@ export class DownloadQueue extends AbstractQueue {
     //store download Queue in the database
     await downloadQueueTDG.create(newDownloadQueueModel, queueID);
 
-    //close connection to db
-    mongoose.connection.close();
   }
   public async loadFromDatabase() {
-
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-
-    // Start connection
-    myFactory.getConnection();
 
     //create a download queue finder
     let downloadFinder: DownloadQueueFinder = new DownloadQueueFinder();
@@ -92,9 +76,6 @@ export class DownloadQueue extends AbstractQueue {
 
     //load the queue from db to this queue
     this.queue = newDownloadQueueModel.queue;
-
-    //close connection to db
-    mongoose.connection.close();
 
   }
 }

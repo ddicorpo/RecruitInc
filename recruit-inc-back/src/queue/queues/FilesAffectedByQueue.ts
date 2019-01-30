@@ -2,7 +2,6 @@ import { AbstractQueue } from './AbstractQueue';
 import { FilesAffectedByClient } from '../clients/FilesAffectedByClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { mongoose } from 'mongoose';
-import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
 import { FilesAffectedByQueueTDG } from "../../data-source/table-data-gateway/filesAffectedByQueueTDG";
 import { FilesAffectedByQueueModel } from "../../domain/model/FilesAffectedByQueueModel";
 import { FilesAffectedByQueueFinder } from "../../data-source/finder/FilesAffectedByQueueFinder";
@@ -53,12 +52,6 @@ export class FilesAffectedByQueue extends AbstractQueue {
 
   public async saveToDatabase() {
 
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-    // Start connection
-    myFactory.getConnection();
-
     let queueID = "filesQueueID";
 
     //create tdg
@@ -75,18 +68,8 @@ export class FilesAffectedByQueue extends AbstractQueue {
     //store files affected by Queue in the database
     await filesQueueTDG.create(newFilesQueueModel, queueID);
 
-    //close connection to db
-    mongoose.connection.close();
   }
   public async loadFromDatabase() {
-
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-
-    // Start connection
-    myFactory.getConnection();
-
     //create a files affected by queue finder
     let filesFinder: FilesAffectedByQueueFinder = new FilesAffectedByQueueFinder();
 
@@ -95,9 +78,6 @@ export class FilesAffectedByQueue extends AbstractQueue {
 
     //load the queue from db to this queue
     this.queue = newFilesQueueModel.queue;
-
-    //close connection to db
-    mongoose.connection.close();
 
   }
 }

@@ -2,7 +2,6 @@ import { AbstractQueue } from './AbstractQueue';
 import { CommitClient } from '../clients/CommitClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { mongoose } from 'mongoose';
-import { MongoConnectionFactory } from "../../data-source/db-registry/mongo/MongoConnectionFactory";
 import { CommitQueueTDG } from "../../data-source/table-data-gateway/commitQueueTDG";
 import { CommitQueueModel } from "../../domain/model/CommitQueueModel";
 import { CommitQueueFinder } from "../../data-source/finder/CommitQueueFinder";
@@ -51,12 +50,6 @@ export class CommitQueue extends AbstractQueue {
 
   public async saveToDatabase() {
 
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-    // Start connection
-    myFactory.getConnection();
-
     let queueID = "commitQueueID";
 
     //create tdg
@@ -73,17 +66,8 @@ export class CommitQueue extends AbstractQueue {
     //store commit Queue in the database
     await commitQueueTDG.create(newCommitQueueModel, queueID);
 
-    //close connection to db
-    mongoose.connection.close();
   }
   public async loadFromDatabase() {
-
-    // Establish connection
-    let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
-    myFactory.defaultInitialization();
-
-    // Start connection
-    myFactory.getConnection();
 
     //create a commit queue finder
     let commitFinder: CommitQueueFinder = new CommitQueueFinder();
@@ -94,8 +78,6 @@ export class CommitQueue extends AbstractQueue {
     //load the queue from db to this queue
     this.queue = newCommitQueueModel.queue;
 
-    //close connection to db
-    mongoose.connection.close();
 
   }
 }
