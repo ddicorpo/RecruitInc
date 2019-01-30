@@ -4,6 +4,7 @@ import { GithubRepoStructure } from '../../data-extraction/github/githubRepoStru
 import { techSourceFiles } from '../../matching-algo/data-model/input-model/TechSourceFiles';
 import { IntersectionArrayString } from '../../util/IntersectionArrayString';
 import { DownloadQueue } from "../queues/DownloadQueue";
+import { IProjectStructure } from "../../matching-algo/data-model/input-model/IProjectStructure";
 
 export class TreeClient implements IGithubClient {
   private _owner: string;
@@ -24,16 +25,20 @@ export class TreeClient implements IGithubClient {
     return sourcefilesArr;
   }
 
+  //Should be for a single repo
   async executeQuery() {
     let repoStructure: GithubRepoStructure = new GithubRepoStructure();
 
     //Query to retrieve structure of current repo
-    let struct = await repoStructure.getRepoStructureFromUser(
-      this._prospect.user
+    //Project structure for a single project at a time or for all projects? cuz that's what this next method does
+    let struct : IProjectStructure[] = await repoStructure.getRepoStructure(
+      this._owner,
+      this._repository
     );
 
-    let projectInputs = struct.dataEntry.projectInputs;
+    //let projectInputs = struct.dataEntry.projectInputs;
 
+    //Why are you doing it for a single project?
     let index: number = 0;
     //List of all filenames that should be downloaded
     const allSourcefileName = this.setSourceFilesArray();

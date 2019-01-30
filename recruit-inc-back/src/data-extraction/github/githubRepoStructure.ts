@@ -1,6 +1,7 @@
 import { GithubApiV4 } from './githubApiV4';
 import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
+import { IProjectStructure } from '../../matching-algo/data-model/input-model/IGitProjectInput';
 import { Logger } from '../../Logger';
 
 const logger = new Logger();
@@ -61,6 +62,7 @@ export class GithubRepoStructure {
         repository.owner,
         repository.projectName
       );
+
     }
     return user;
   }
@@ -70,7 +72,7 @@ export class GithubRepoStructure {
   async getRepoStructure(
     owner: string,
     repoName: string
-  ): Promise<{ fileId: string; fileName: string; filePath: string }[]> {
+  ): Promise<IProjectStructure[]> {
     let data: string = '';
     let projectStructure: {
       fileId: string;
