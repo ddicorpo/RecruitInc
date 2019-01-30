@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICardProps } from '../components/CandidateCard';
+import CandidateCard, { ICardProps } from '../components/CandidateCard';
 //import { IGitProjectSummary } from '../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary';
 import Pagination from 'react-js-pagination';
 import Select from 'react-select';
@@ -50,14 +50,14 @@ class CandidateSearch extends React.Component<any, any> {
 
   private renderCards(): JSX.Element[] {
     const array: JSX.Element[] = [];
-    // for (let candidate in this.state.candidates) {
-    //   // array.push(
-    //   //   <CandidateCard
-    //   //     userInfo={candidate.userInfo}
-    //   //     projectInfo={candidate.projectInfo}
-    //   //   />
-    //   // );
-    // }
+    this.state.candidates.forEach(function (candidate) {
+      array.push(
+          <CandidateCard
+              userInfo={candidate.userInfo}
+              projectInfo={candidate.projectInfo}
+          />
+      );
+    });
     if (this.cardProps.length < 1) {
       array.push(<div>No result</div>);
     }
@@ -141,31 +141,31 @@ class CandidateSearch extends React.Component<any, any> {
   handleLoadClick() {
       const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
       fetch(apiCandidates)
-          .then(function (response) {
+          .then(response => {
               return response.json();
           })
-          .then(function(result){
-              let candidates: ICandidate[]  = [];
-
-              let num: number;
-              for(num=0; num<result.length; num++){
-                console.log();
-                candidates.push({
-                  isFilter: false,
-                  username: result[num].platformUsername,
-                  profileLink: "",
-                  userType: "",
-                  email: result[num].platformEmail,
-                  ProjectSummary: {
-                    totalOutput: [],
-                    projectOutput: {
-                      projectName: "",
-                      projectUrl: "",
-                      languageOutput: []
-                    }
+          .then(result => {
+            let candidates: ICandidate[] = [];
+            let num: number;
+            for(num=0; num < result.length; num++){
+              candidates.push({
+                isFilter: false,
+                username: result[num].platformUsername,
+                profileLink: "",
+                userType: "",
+                email: result[num].platformEmail,
+                ProjectSummary: {
+                  totalOutput: [],
+                  projectOutput: {
+                    projectName: "",
+                    projectUrl: "",
+                    languageOutput: []
                   }
-                });
+                }
+              });
+              console.log(result[num].platformUsername);
             }
+            this.candidates = candidates;
           });
   }
 
