@@ -4,7 +4,7 @@
   "description": "Recruit Platform",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"No test written yet!\"",
+    "test": "jest",
     "build": "tsc && webpack --config webpack.config.js",
     "start": "npm run build && ts-node ./src/server.ts",
     "prettify": "prettier --single-quote --trailing-comma es5 --write \"*(src)/**/*.ts\""
