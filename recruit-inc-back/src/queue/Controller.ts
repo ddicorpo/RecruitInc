@@ -5,6 +5,8 @@ import { TreeQueue } from './queues/TreeQueue';
 import { CommitQueue } from './queues/CommitQueue';
 import { DownloadQueue } from './queues/DownloadQueue';
 import { FilesAffectedByQueue } from './queues/FilesAffectedByQueue';
+import { GithubUsersFinder } from '../data-source/finder/GithubUsersFinder';
+import { IGithubUsersModel } from '../domain/model/IGithubUsersModel';
 import { Logger } from '../Logger';
 
 export class Controller {
@@ -26,7 +28,7 @@ export class Controller {
   private logger: Logger;
 
   //main method, runs all the queues and finds the information
-  public execute() {
+  public async execute(location: string) {
     // Here we reload the queues with unfinished elements that remained from last time.
     this.reloadQueues();
 
@@ -82,11 +84,14 @@ export class Controller {
     );
   }
 
-//  private fetchUsersFromDatabase(): IGithubUser[] {
-//    // Check whether there are unfinished users to be scanned
-//    // Get all the locations that are currently in scanning status from db
-//    // Get all the users from those locations that should be scanned
-//  }
+  private async fetchUsersFromDatabase(location: string): Promise<IGithubUser[]> {
+      let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+      let githubUsersModel : IGithubUsersModel = await githubUsersFinder.findByLocation(location);
+      return githubUsersModel.githubUsers;
+    // Check whether there are unfinished users to be scanned
+    // Get all the locations that are currently in scanning status from db
+    // Get all the users from those locations that should be scanned
+  }
 
   private handleError(method: string, error: string) {
     this.logger.info({
