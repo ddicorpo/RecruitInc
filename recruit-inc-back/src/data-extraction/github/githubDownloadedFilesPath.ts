@@ -2,6 +2,7 @@ import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { techSourceFiles } from '../../matching-algo/data-model/input-model/TechSourceFiles';
 import { IntersectionArrayString } from '../../util/IntersectionArrayString';
+import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 import { Logger } from '../../Logger';
 
 const fs = require('fs');
@@ -130,4 +131,23 @@ export class GithubDownloadedFilesPath {
     }
     return user;
   }
+  async downloadSingleFile(owner: string, repoName: string, path: string, login: string): Promise<ISourceFiles>{
+          let generatedPath: string = this.generatePath(
+            login,
+            repoName,
+            path
+          );
+          let sourceFile: {
+            name: string;
+            path: string;
+            content: string;
+          } = await this.downloadFile(
+            owner,
+            repoName,
+            path
+          );
+          this.writeToFile(sourceFile.content, generatedPath);
+          return {filename: sourceFile.name, repoFilePath: sourceFile.path, localFilePath: generatedPath};
+  }
+
 }

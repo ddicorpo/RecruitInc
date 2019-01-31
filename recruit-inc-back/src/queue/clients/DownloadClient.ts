@@ -1,28 +1,58 @@
 import { IGithubClient } from './IGithubClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { GithubDownloadedFilesPath } from '../../data-extraction/github/githubDownloadedFilesPath';
+import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
+import { ICommit } from '../../matching-algo/data-model/input-model/ICommit';
+import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 
 export class DownloadClient implements IGithubClient {
   private _owner: string;
   private _repository: string;
   private _path: string;
+  private _login: string;
+  
 
   public constructor(prospect: RequiredClientInformation) {
     this._owner = prospect.repoOwner;
     this._repository = prospect.repoName;
     this._path = prospect.filePath;
+    this._login = prospect.user.login;
   }
 
   async executeQuery() {
     let downloads: GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
 
-    let downlaodedFile = await downloads.downloadFile(
+    let downlaodedFile: ISourceFiles = await downloads.downloadSingleFile(
       this._owner,
       this._repository,
-      this._path
+      this._path,
+      this._login
     );
 
     //TODO: Save to database
+    await this.updateUser(this._login, this._repository, downlaodedFile)
+  }
+
+  
+  public async updateUser(login: string, projectName: string, downlaodedFile: ISourceFiles){
+      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+      let criteria: any = {
+          "githubUsers.login": login,
+          githubUsers: {
+              $elemMatch: {
+                  login: login
+              }
+          }
+      }
+      let update: any = {
+          $push: {"githubUsers.$[gU].dataEntry.projectInputs.$[pI].downloadedSourceFile": downlaodedFile }
+      }
+      let options = {                         //Might cause issues if user contributes to several project with same name
+          arrayFilters: [{"gU.login": login}, {"pI.projectName": projectName}]
+      }
+
+      await githubUsersTDG.generalUpdate(criteria, update, options);
+  
   }
 
   get owner(): string {

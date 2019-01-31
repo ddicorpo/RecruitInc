@@ -3,32 +3,36 @@ import { RequiredClientInformation } from '../RequiredClientInformation';
 import { GithubUserCommits } from '../../data-extraction/github/githubUserCommits';
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
+import { ISingleFileCommit } from '../../matching-algo/data-model/input-model/ISingleFileCommit';
 
 export class FilesAffectedByClient implements IGithubClient {
   private _owner: string;
   private _repository: string;
   private _commitId: string;
+  private _login: string;
 
   public constructor(prospect: RequiredClientInformation) {
     this._owner = prospect.repoOwner;
     this._repository = prospect.repoName;
     this._commitId = prospect.commitId;
+    this._login = prospect.user.login;
   }
 
   async executeQuery() {
     let affected: GithubUserCommits = new GithubUserCommits();
 
-    let allAffectedFiles: ISourceFiles[] = await affected.getFilesAffectedByCommit(
+    let allAffectedFiles: ISingleFileCommit[] = await affected.getFilesAffectedByCommit(
       this._owner,
       this._repository,
       this._commitId
     );
 
     //TODO: Save to database
-    await this.updateUser(this.prospect.user.login, this._repository, allAffectedFiles, this._commitId);
+    await this.updateUser(this._login, this._repository, allAffectedFiles, this._commitId);
   }
 
-  public updateUser(login: string, projectName: string, allAffectedFiles: ISourceFiles[], commitId: string){
+  public async updateUser(login: string, projectName: string, allAffectedFiles: ISingleFileCommit[], commitId: string){
+      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
       let criteria: any = {
           "githubUsers.login": login,
           githubUsers: {

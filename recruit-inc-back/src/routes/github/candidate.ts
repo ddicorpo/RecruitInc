@@ -8,6 +8,7 @@ import { GithubDataExtraction } from '../../data-extraction/github/githubDataExt
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 import { IGithubProjectInput } from '../../matching-algo/data-model/input-model/IGithubProjectInput';
+import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 import { Logger } from '../../Logger';
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 import { CronJobs } from '../../cron-job/CronJobs';
@@ -17,6 +18,18 @@ const { fork } = require('child_process');
 export class Candidate {
   public routes(app): void {
       let users : IGithubUser[];
+
+    app
+      .route('/downloadFile/:owner/:repoName/:login/*')
+      .get(async (request: Request, response: Response) => {
+        let owner: string = request.params.owner;
+        let login: string = request.params.login;
+        let repoName: string = request.params.repoName;
+        let path: string = request.params[0];
+        let query: GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
+        let result: ISourceFiles = await query.downloadSingleFile(owner, repoName, path, login);
+        response.status(200).send(result);
+      });
 
     app
       .route('/find/:login')

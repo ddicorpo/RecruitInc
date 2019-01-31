@@ -5,6 +5,7 @@ import { techSourceFiles } from '../../matching-algo/data-model/input-model/Tech
 import { IntersectionArrayString } from '../../util/IntersectionArrayString';
 import { DownloadQueue } from "../queues/DownloadQueue";
 import { IProjectStructure } from "../../matching-algo/data-model/input-model/IProjectStructure";
+import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 
 export class TreeClient implements IGithubClient {
   private _owner: string;
@@ -64,10 +65,37 @@ export class TreeClient implements IGithubClient {
         // pass the updated requiredInfo package to the download queue
         downloadQueue.enqueue(this._prospect);
       }
+      index++;
     }
 
     //Save STRUCT TO DB HERE
-    //TODO: Save userinfo in the database
+    //Save userinfo in the database
+    await this.updateUser(this.prospect.user.login, struct, this._repository);
+  }
+
+
+  public async updateUser(login: string, struct: IProjectStructure[], projectName: string ){
+      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+      let criteria: any = {
+          "githubUsers.login": login,
+          githubUsers: {
+              $elemMatch: {
+                  login: login
+              }
+          }
+      }
+
+      let update: any = {
+          $set: {"githubUsers.$[gU].dataEntry.projectInputs.$[pi].projectStructure": struct }
+      }
+
+      //Not really necessary in this case
+      let options = {
+          arrayFilters: [{"gU.login": login}, {"pI.projectName": projectName}]
+      } 
+
+      await githubUsersTDG.generalUpdate(criteria, update, options);
+
   }
 
   get owner(): string {

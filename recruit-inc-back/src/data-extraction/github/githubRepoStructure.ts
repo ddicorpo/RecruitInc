@@ -1,7 +1,7 @@
 import { GithubApiV4 } from './githubApiV4';
 import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
-import { IProjectStructure } from '../../matching-algo/data-model/input-model/IGitProjectInput';
+import { IProjectStructure } from '../../matching-algo/data-model/input-model/IProjectStructure';
 import { Logger } from '../../Logger';
 
 const logger = new Logger();

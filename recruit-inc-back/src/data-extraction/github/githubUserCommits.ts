@@ -3,7 +3,6 @@ import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { ISingleFileCommit } from '../../matching-algo/data-model/input-model/ISingleFileCommit';
 import { ICommit } from '../../matching-algo/data-model/input-model/ICommit';
-import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 import { Logger } from '../../Logger';
 
 export class GithubUserCommits {
@@ -26,7 +25,7 @@ export class GithubUserCommits {
     owner: string,
     repo: string,
     sha: string
-  ): Promise<ISourceFiles[]> {
+  ): Promise<ISingleFileCommit[]> {
     let result: {
       filePath: string;
       lineAdded: number;
