@@ -7,6 +7,7 @@
     "test": "jest",
     "build": "tsc && webpack --config webpack.config.js",
     "start": "npm run build && ts-node ./src/server.ts",
+    "demo": "npm run start | lt --port 3000 --subdomain recruit-front ",
     "prettify": "prettier --single-quote --trailing-comma es5 --write \"*(src)/**/*.ts\""
   },
   "husky": {
@@ -78,6 +79,7 @@
     "express": "^4.16.3",
     "fs": "0.0.1-security",
     "lint-staged": "^8.1.0",
+    "localtunnel": "^1.9.1",
     "react": "^16.7.0",
     "react-autosuggest": "^9.4.2",
     "react-dom": "^16.7.0",
