@@ -1,7 +1,7 @@
 import * as React from 'react';
-import CandidateCard, { ICardProps } from '../components/CandidateCard';
+//import CandidateCard, { ICardProps } from '../components/CandidateCard';
 //import { IGitProjectSummary } from '../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary';
-import Pagination from 'react-js-pagination';
+//import Pagination from 'react-js-pagination';
 import Select from 'react-select';
 import { ActionMeta, ValueType } from 'react-select/lib/types';
 import { Logger } from '../Logger';
@@ -15,8 +15,7 @@ class CandidateSearch extends React.Component<any, any> {
   // private gitProjectSummary: IGitProjectSummary;
   // private gitUserInfo: IGithubUserInformation;
 
-  private cardProps: ICardProps[];
-  private candidates: ICandidate[];
+  //private cardProps: ICardProps[];
   private logger: Logger;
 
   constructor(props: any) {
@@ -31,6 +30,7 @@ class CandidateSearch extends React.Component<any, any> {
       selectedLocation: '',
       techFromBackEnd: [],
       locationFromBackEnd: [],
+      candidates: [],
     };
     // this.gitProjectSummary = GitProjectSummary;
 
@@ -52,13 +52,14 @@ class CandidateSearch extends React.Component<any, any> {
     const array: JSX.Element[] = [];
     this.state.candidates.forEach(function (candidate) {
       array.push(
-          <CandidateCard
-              userInfo={candidate.userInfo}
-              projectInfo={candidate.projectInfo}
-          />
+          <tr>
+            <td>{candidate.username}</td>
+            <td>{candidate.email}</td>
+            <td>{candidate.profileLink}</td>
+          </tr>
       );
     });
-    if (this.cardProps.length < 1) {
+    if (this.state.candidates.length < 1) {
       array.push(<div>No result</div>);
     }
     return array;
@@ -77,7 +78,7 @@ class CandidateSearch extends React.Component<any, any> {
           }
           this.setState({
             isLoaded: false,
-            techSelect: techFromConfig,
+            techFromBackEnd: techFromConfig,
           });
         },
         error => {
@@ -102,7 +103,7 @@ class CandidateSearch extends React.Component<any, any> {
           }
           this.setState({
             isLoaded: false,
-            cities: locationFromSource,
+            locationFromBackEnd: locationFromSource,
           });
         },
         error => {
@@ -139,34 +140,52 @@ class CandidateSearch extends React.Component<any, any> {
   }
 
   handleLoadClick() {
-      const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
-      fetch(apiCandidates)
-          .then(response => {
-              return response.json();
-          })
-          .then(result => {
-            let candidates: ICandidate[] = [];
-            let num: number;
-            for(num=0; num < result.length; num++){
-              candidates.push({
-                isFilter: false,
-                username: result[num].platformUsername,
-                profileLink: "",
-                userType: "",
-                email: result[num].platformEmail,
-                ProjectSummary: {
-                  totalOutput: [],
-                  projectOutput: {
-                    projectName: "",
-                    projectUrl: "",
-                    languageOutput: []
-                  }
+    //let result = this.getCandidates();
+    const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
+    fetch(apiCandidates)
+        .then(response => {
+          return response.json();
+        })
+        .then(result => {
+          console.log(result);
+
+          let localCandidates: ICandidate[] = [];
+
+          let num: number;
+          for(num=0; num < result.length; num++){
+            localCandidates.push({
+              isFilter: false,
+              username: result[num].platformUsername,
+              profileLink: "",
+              userType: "",
+              email: result[num].platformEmail,
+              ProjectSummary: {
+                totalOutput: [],
+                projectOutput: {
+                  projectName: "",
+                  projectUrl: "",
+                  languageOutput: []
                 }
-              });
-              console.log(result[num].platformUsername);
-            }
-            this.candidates = candidates;
-          });
+              }
+            });
+
+            // this.setState({
+            //   candidates: localCandidates,
+            // });
+            //this.render();
+          }
+        });
+  }
+
+  getCandidates() : any{
+    const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
+    fetch(apiCandidates)
+        .then(response => {
+          return response.json();
+        })
+        .then(result => {
+          return result;
+        });
   }
 
   handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {
@@ -183,11 +202,12 @@ class CandidateSearch extends React.Component<any, any> {
     this.loadSupportedTechnologies();
     // Load Supported Location
     this.loadSupportedLocations();
+
+    this.handleLoadClick();
   }
 
   render() {
-    let isResultEmpty =
-      this.candidates == undefined || this.candidates.length < 1;
+    //let isResultEmpty = this.state.candidates == undefined || this.state.candidates.length < 1;
     return (
       <div className="container-fluid">
         <div className="page-header">
@@ -209,7 +229,7 @@ class CandidateSearch extends React.Component<any, any> {
                       isMulti={true}
                       isSearchable={true}
                       placeholder="Language"
-                      options={this.state.techSelect}
+                      options={this.state.techFromBackEnd}
                       className="form-control"
                     />
                   </div>
@@ -220,13 +240,13 @@ class CandidateSearch extends React.Component<any, any> {
                   <div className="form-group">
                     <label className="control-label">City Search</label>
                     {console.log(this.state.cityOption)}
-                    {console.log(this.state.cities)}
+                    {console.log(this.state.locationFromBackEnd)}
                     <Select
                       value={this.state.cityOption}
                       onChange={this.handleCityChange}
                       isSearchable={true}
                       placeholder="City"
-                      options={this.state.cities}
+                      options={this.state.locationFromBackEnd}
                       className="form-control"
                     />
                   </div>
@@ -254,7 +274,6 @@ class CandidateSearch extends React.Component<any, any> {
           <div className="card-header border bottom">
             <h4 className="card-title">Results</h4>
           </div>
-          {isResultEmpty ? (
             <div className="form-group middle-man">
               <button
                 id="load"
@@ -265,18 +284,23 @@ class CandidateSearch extends React.Component<any, any> {
                 Load All
               </button>
             </div>
-          ) : (
-            <div className="card-body">{this.renderCards()}</div>
+          <div className="card-body">
+            <div className="table-overflow">
+              <table id="dt-opt" className="table table-hover table-xl">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Profile Link</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.renderCards()}
+                </tbody>
+              </table>
+            </div>
+            </div>
           )}
-          <Pagination
-            activePage={this.state.activePage}
-            itemClass="page-item"
-            linkClass="page-link"
-            itemsCountPerPage={10}
-            totalItemsCount={450}
-            pageRangeDisplayed={5}
-            onChange={this.handlePageChange}
-          />
         </div>
       </div>
     );
