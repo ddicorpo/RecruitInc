@@ -1,20 +1,14 @@
 import * as React from 'react';
-import {IGitProjectSummary} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary";
-import {IGitProjectOutput} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectOutput";
-import {ILanguageOutput} from "../../../../recruit-inc-back/src/matching-algo/data-model/output-model/ILanguageOutput";
 import {Logger} from "../Logger";
+import {IProjectSummary} from '../model/Candidate/IProjectSummary';
+import { ICandidate } from '../model/Candidate/ICandidate';
+import {ILanguageOutput} from '../model/Candidate/ILanguageOutput';
+import {IGitProjectOutput} from '../model/Candidate/IGitProjectOuput';
 
 export interface ICardProps {
-    userInfo: IGithubUserInformation
-    projectInfo: IGitProjectSummary
+    userInfo: ICandidate
+    projectInfo: IProjectSummary
 }
-
-export interface IGithubUserInformation {
-    username: string,
-    profileLink: string,
-    email: string,
-}
-
 interface IGithubFlattenedInfo {
     language: string,
     commits: number,
@@ -114,7 +108,7 @@ class CandidateCard extends React.Component<ICardProps, any> {
     }
 
     private processGithubInfo() {
-        this.flatProjectsOutput = this.flattenProjectOutput(this.props.projectInfo.projectsOutput);
+        this.flatProjectsOutput = this.flattenProjectOutput(this.props.projectInfo.projectOutput);
         this.flatTotal = this.flattenGithubLanguages(this.props.projectInfo.totalOutput);
     }
 
@@ -135,7 +129,8 @@ class CandidateCard extends React.Component<ICardProps, any> {
     }
 
     private flattenGithubLanguages(languageOutput: ILanguageOutput[]): IGithubFlattenedInfo[] {
-        const array: IGithubFlattenedInfo[] = [];
+        const array: IGithubFlattenedInfo[] = []; 
+           
         for (let output of languageOutput) {
             array.push(
                 {
@@ -155,7 +150,6 @@ class CandidateCard extends React.Component<ICardProps, any> {
             }
         }
         return array;
-
     }
 
     private renderGithubTable(flatGithubInfo: IGithubFlattenedInfo[]): JSX.Element {

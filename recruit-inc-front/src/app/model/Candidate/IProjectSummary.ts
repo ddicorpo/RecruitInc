@@ -3,5 +3,5 @@ import { IGitProjectOutput } from './IGitProjectOuput';
 
 export interface IProjectSummary {
   totalOutput: ILanguageOutput[];
-  projectOutput: IGitProjectOutput;
+  projectOutput: IGitProjectOutput[];
 }

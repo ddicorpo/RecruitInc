@@ -1,21 +1,16 @@
 import * as React from 'react';
-//import CandidateCard, { ICardProps } from '../components/CandidateCard';
-//import { IGitProjectSummary } from '../../../../recruit-inc-back/src/matching-algo/data-model/output-model/IGitProjectSummary';
-//import Pagination from 'react-js-pagination';
+import CandidateCard, { ICardProps } from '../components/CandidateCard';
 import Select from 'react-select';
 import { ActionMeta, ValueType } from 'react-select/lib/types';
 import { Logger } from '../Logger';
 import { ICandidate } from '../model/Candidate/ICandidate';
 import { IOptionsBox } from '../model/IOptionsBox';
+import { IProjectSummary } from '../model/Candidate/IProjectSummary';
 
 const BackEndAddress: string =
   process.env.BACK_END_ADDRESS + ':' + process.env.BACK_END_PORT;
 
 class CandidateSearch extends React.Component<any, any> {
-  // private gitProjectSummary: IGitProjectSummary;
-  // private gitUserInfo: IGithubUserInformation;
-
-  //private cardProps: ICardProps[];
   private logger: Logger;
 
   constructor(props: any) {
@@ -32,33 +27,27 @@ class CandidateSearch extends React.Component<any, any> {
       locationFromBackEnd: [],
       candidates: [],
     };
-    // this.gitProjectSummary = GitProjectSummary;
-
-    // this.gitUserInfo = {
-    //   username: 'lydiahallie',
-    //   email: 'lydiajuliettehallie@gmail.com',
-    //   profileLink: 'https://github.com/lydiahallie',
-    // };
-
-    // this.cardProps = [
-    //   {
-    //     userInfo: this.gitUserInfo,
-    //     projectInfo: this.gitProjectSummary,
-    //   },
-    // ];
   }
 
   private renderCards(): JSX.Element[] {
     const array: JSX.Element[] = [];
-    this.state.candidates.forEach(function (candidate) {
-      array.push(
-          <tr>
-            <td>{candidate.username}</td>
-            <td>{candidate.email}</td>
-            <td>{candidate.profileLink}</td>
-          </tr>
-      );
-    });
+    let index : number;
+    for(index = 0; index<this.state.candidates.length; index++){
+      if (!this.state.candidates[index].isFilter){
+        let tmpProps: ICardProps = {
+          userInfo: this.state.candidates[index],
+          projectInfo: this.state.candidates[index].ProjectSummary
+        }
+
+        array.push(
+          <CandidateCard
+            userInfo={tmpProps.userInfo}
+            projectInfo={tmpProps.projectInfo}
+          />
+        ); 
+      }
+     
+    }
     if (this.state.candidates.length < 1) {
       array.push(<div>No result</div>);
     }
@@ -135,57 +124,48 @@ class CandidateSearch extends React.Component<any, any> {
     });
   }
 
-  handleSearchClick() {
-    console.log('click!');
-  }
-
-  handleLoadClick() {
-    //let result = this.getCandidates();
+  getCandidates = () => {
     const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
     fetch(apiCandidates)
         .then(response => {
           return response.json();
         })
         .then(result => {
-          console.log(result);
-
           let localCandidates: ICandidate[] = [];
-
           let num: number;
-          for(num=0; num < result.length; num++){
-            localCandidates.push({
-              isFilter: false,
-              username: result[num].platformUsername,
-              profileLink: "",
-              userType: "",
-              email: result[num].platformEmail,
-              ProjectSummary: {
-                totalOutput: [],
-                projectOutput: {
-                  projectName: "",
-                  projectUrl: "",
-                  languageOutput: []
-                }
-              }
-            });
 
-            this.setState({
-              candidates: localCandidates,
-            });
-            //this.render();
+          for(num=0; num < result.length; num++){
+            let projectSummary : IProjectSummary = {
+              totalOutput: result[num].iGit.IGitData[0].gitProjectSummary.totalOutput,
+              projectOutput: result[num].iGit.IGitData[0].gitProjectSummary.projectsOutput,
+            }
+            
+            let candidade : ICandidate = {
+              ProjectSummary : projectSummary,
+              email: result[num].platformEmail,
+              isFilter: false,
+              profileLink: "https://wwww.github.com/" + result[num].platformUsername,
+              userType: result[num].userType,
+              username: result[num].platformUsername,
+            };
+
+            localCandidates.push(candidade);
           }
+          this.setState({
+            candidates: localCandidates,
+          });
         });
   }
 
-  getCandidates() : any{
-    const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
-    fetch(apiCandidates)
-        .then(response => {
-          return response.json();
-        })
-        .then(result => {
-          return result;
-        });
+  handleSearchClick = () => {
+    this.getCandidates();
+    //TODO the search for the searchClick on this.state.candidates before this.render()
+    this.render();  
+  }
+
+  handleLoadClick = () => {
+    this.getCandidates();
+    this.render();
   }
 
   handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {
@@ -202,8 +182,6 @@ class CandidateSearch extends React.Component<any, any> {
     this.loadSupportedTechnologies();
     // Load Supported Location
     this.loadSupportedLocations();
-
-    this.handleLoadClick();
   }
 
   render() {
@@ -239,8 +217,6 @@ class CandidateSearch extends React.Component<any, any> {
                 <div className="p-h-10">
                   <div className="form-group">
                     <label className="control-label">City Search</label>
-                    {console.log(this.state.cityOption)}
-                    {console.log(this.state.locationFromBackEnd)}
                     <Select
                       value={this.state.cityOption}
                       onChange={this.handleCityChange}
@@ -279,28 +255,11 @@ class CandidateSearch extends React.Component<any, any> {
                 id="load"
                 className="btn btn-gradient-primary form-control super-button"
                 type="button"
-                onClick={this.handleLoadClick}
-              >
+                onClick={this.handleLoadClick}>
                 Load All
               </button>
             </div>
-          <div className="card-body">
-            <div className="table-overflow">
-              <table id="dt-opt" className="table table-hover table-xl">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Profile Link</th>
-                    <th>Email</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.renderCards()}
-                </tbody>
-              </table>
-            </div>
-            </div>
-          )}
+            <div className="card-body">{this.renderCards()}</div>
         </div>
       </div>
     );
