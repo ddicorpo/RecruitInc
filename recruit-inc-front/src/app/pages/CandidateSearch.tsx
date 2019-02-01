@@ -169,9 +169,9 @@ class CandidateSearch extends React.Component<any, any> {
               }
             });
 
-            // this.setState({
-            //   candidates: localCandidates,
-            // });
+            this.setState({
+              candidates: localCandidates,
+            });
             //this.render();
           }
         });
