@@ -20,6 +20,39 @@ export class Candidate {
       let users : IGithubUser[];
 
     app
+      .route('/unscannedusers/:location')
+      .get(async (request: Request, response: Response) => {
+      let location: string = request.params.location;
+      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+      let pipeline = 
+          [
+          {$match: {location: location}},
+          {
+              $project:{
+                  "githubUsers": {
+                      $filter: {
+                      input: "$githubUsers",
+                      as: "githubUser",
+                      //cond: {"$ifNull":["$$githubUser.dataEntry", true]}
+                      cond: {"$eq": [{$type:"$$githubUser.dataEntry"}, "missing"]}
+
+                      
+                  }}
+              }
+
+          }
+      ]
+      
+      
+      
+
+      let result: any = await githubUsersTDG.findUnscannedUsers(pipeline);
+
+        response.status(200).send(result);
+
+      });
+
+    app
       .route('/downloadFile/:owner/:repoName/:login/*')
       .get(async (request: Request, response: Response) => {
         let owner: string = request.params.owner;
@@ -48,7 +81,7 @@ export class Candidate {
           }
       }
 
-      let result: any = await githubUsersTDG.findSingleUser(query, projection);
+      let result: any = await githubUsersTDG.generalFind(query, projection);
 
         response.status(200).send(result);
 

@@ -23,6 +23,7 @@ export class GithubUsersTDG {
 
   public update(_id: string, updatedValue: IGithubUsersModel): Promise<boolean> {
     try {
+
       const GithubUsersModelToUpdate: Model<IGithubUsersModel> = new GithubUsersModel(updatedValue);
       return this.baseTDG.update(Types.ObjectId(_id), GithubUsersModelToUpdate);
     } catch (Exception) {
@@ -53,19 +54,35 @@ export class GithubUsersTDG {
       });
   }
 
-  public findSingleUser(query, projection): Promise<any> {
+  public generalFind(query: any, projection: any): Promise<any> {
       return new Promise((resolve: any, reject: any)=>{
       GithubUsersModel.find(query, projection, (error, doc) =>{
 
           if (error){
-          this.baseTDG.logActionFailure(this.findSingleUser.name, error.name, error.message);
+          this.baseTDG.logActionFailure(this.generalFind.name, error.name, error.message);
           reject(error.name+': '+ error.message);
           }else{
-          this.baseTDG.logActionCompleted(this.findSingleUser.name);
+          this.baseTDG.logActionCompleted(this.generalFind.name);
           resolve(doc);
           }
       });
       });
+  }
+
+  public findUnscannedUsers(pipeline: any[]): Promise<any>{
+      return new Promise((resolve: any, reject: any)=>{
+      GithubUsersModel.aggregate(pipeline, (error, doc) =>{
+
+          if (error){
+          this.baseTDG.logActionFailure(this.findUnscannedUsers.name, error.name, error.message);
+          reject(error.name+': '+ error.message);
+          }else{
+          this.baseTDG.logActionCompleted(this.findUnscannedUsers.name);
+          resolve(doc);
+          }
+      });
+      });
+  
   }
 
 }
