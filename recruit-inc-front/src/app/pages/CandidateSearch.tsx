@@ -38,7 +38,6 @@ class CandidateSearch extends React.Component<any, any> {
           userInfo: this.state.candidates[index],
           projectInfo: this.state.candidates[index].ProjectSummary
         }
-
         array.push(
           <CandidateCard
             userInfo={tmpProps.userInfo}
@@ -124,14 +123,16 @@ class CandidateSearch extends React.Component<any, any> {
     });
   }
 
-  getCandidates = () => {
+  getCandidates = (isSearchFilter: boolean) => {
+    let localCandidates: ICandidate[] = [];
+
     const apiCandidates: string = 'http://' + BackEndAddress + '/api/candidates';
     fetch(apiCandidates)
         .then(response => {
           return response.json();
         })
         .then(result => {
-          let localCandidates: ICandidate[] = [];
+
           let num: number;
 
           for(num=0; num < result.length; num++){
@@ -139,18 +140,24 @@ class CandidateSearch extends React.Component<any, any> {
               totalOutput: result[num].iGit.IGitData[0].gitProjectSummary.totalOutput,
               projectOutput: result[num].iGit.IGitData[0].gitProjectSummary.projectsOutput,
             }
+
+            let isFilter: boolean = false;
+            if(isSearchFilter && !this.isTechUsedByCandidate(projectSummary.totalOutput)){
+              isFilter = true;
+            }
             
-            let candidade : ICandidate = {
+            let candidate : ICandidate = {
               ProjectSummary : projectSummary,
               email: result[num].platformEmail,
-              isFilter: false,
+              isFilter: isFilter,
               profileLink: "https://wwww.github.com/" + result[num].platformUsername,
               userType: result[num].userType,
               username: result[num].platformUsername,
             };
 
-            localCandidates.push(candidade);
+            localCandidates.push(candidate);
           }
+
           this.setState({
             candidates: localCandidates,
           });
@@ -158,14 +165,38 @@ class CandidateSearch extends React.Component<any, any> {
   }
 
   handleSearchClick = () => {
-    this.getCandidates();
-    //TODO the search for the searchClick on this.state.candidates before this.render()
+    this.getCandidates(true);
     this.render();  
   }
 
   handleLoadClick = () => {
-    this.getCandidates();
+    this.getCandidates(false);
     this.render();
+  }
+
+  isTechUsedByCandidate = (candidateProjectSummaryTotalOutput): boolean =>{
+    let techIndex: number;
+    for(techIndex=0; techIndex<this.state.selectedTechOptions.length; techIndex++) {
+      let tech = this.state.selectedTechOptions[techIndex].value;
+
+      let languageIndex: number;
+      for (languageIndex = 0; languageIndex < candidateProjectSummaryTotalOutput.length; languageIndex++) {
+        if (tech == candidateProjectSummaryTotalOutput[languageIndex].languageOrFramework
+            && candidateProjectSummaryTotalOutput[languageIndex].linesOfCode > 0) {
+          return true;
+        }
+        else {
+          let frameworkIndex: number;
+          for (frameworkIndex = 0; frameworkIndex < candidateProjectSummaryTotalOutput[languageIndex].frameworks.length; frameworkIndex++) {
+            if (tech == candidateProjectSummaryTotalOutput[languageIndex].frameworks[frameworkIndex].technologyName
+                && candidateProjectSummaryTotalOutput[languageIndex].frameworks[frameworkIndex].linesOfCode > 0) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+    return false;
   }
 
   handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {
