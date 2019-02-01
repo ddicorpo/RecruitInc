@@ -17,7 +17,7 @@ export class CronFinder {
     return this.baseFinder.findBy({ cron_pattern });
   }
 
-  public findByStatus(status: Status): Promise<ICronModel> {
+  public findByStatus(status: Status): Promise<ICronModel[]> {
     return this.baseFinder.findBy({ status });
   }
 

@@ -9,6 +9,9 @@ import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 import { IGithubProjectInput } from '../../matching-algo/data-model/input-model/IGithubProjectInput';
 import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
+import { CronFinder } from '../../data-source/finder/CronFinder';
+import { ICronModel } from '../../domain/model/ICronModel';
+import { Status } from '../../domain/model/ICronModel';
 import { Logger } from '../../Logger';
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 import { CronJobs } from '../../cron-job/CronJobs';
@@ -19,6 +22,16 @@ export class Candidate {
   public routes(app): void {
       let users : IGithubUser[];
 
+    app
+      .route('/findScanning')
+      .get(async (request: Request, response: Response) => {
+      let cronFinder: CronFinder = new CronFinder();
+
+      let result: ICronModel[] = await cronFinder.findByStatus(Status.scanning);
+
+        response.status(200).send(result);
+
+      });
     app
       .route('/unscannedusers/:location')
       .get(async (request: Request, response: Response) => {

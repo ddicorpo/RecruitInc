@@ -6,7 +6,11 @@ import { CommitQueue } from './queues/CommitQueue';
 import { DownloadQueue } from './queues/DownloadQueue';
 import { FilesAffectedByQueue } from './queues/FilesAffectedByQueue';
 import { GithubUsersFinder } from '../data-source/finder/GithubUsersFinder';
+import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG';
 import { IGithubUsersModel } from '../domain/model/IGithubUsersModel';
+import { CronFinder } from '../data-source/finder/CronFinder';
+import { ICronModel } from '../domain/model/ICronModel';
+import { Status } from '../domain/model/ICronModel';
 import { Logger } from '../Logger';
 
 export class Controller {
@@ -28,12 +32,11 @@ export class Controller {
   private logger: Logger;
 
   //main method, runs all the queues and finds the information
-  public async execute(location: string) {
+  public async execute() {
     // Here we reload the queues with unfinished elements that remained from last time.
     this.reloadQueues();
 
-    //let users: IGithubUser[] = this.fetchUsersFromDatabase();
-    let users: IGithubUser[] = []
+    let users: IGithubUser[] = this.fetchUsersFromDatabase();
 
     if (this.areQueuesEmpty()) {
       this.enqueueUser(users.pop());
@@ -84,10 +87,33 @@ export class Controller {
     );
   }
 
-  private async fetchUsersFromDatabase(location: string): Promise<IGithubUser[]> {
-      let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-      let githubUsersModel : IGithubUsersModel = await githubUsersFinder.findByLocation(location);
-      return githubUsersModel.githubUsers;
+  private async fetchUsersFromDatabase(): Promise<IGithubUser[]> {
+      let githubUsers: IGithubUser[] = [];
+      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+      let cronFinder: CronFinder = new CronFinder();
+      //Find all crons with "scanning" status
+      let scanning: ICronModel[] = await cronFinder.findByStatus(Status.scanning)
+
+      //For all crons found, get their locations
+      for (let crons of scanning){
+      let pipeline = [
+          {$match: {location: crons.location}},
+          {
+              $project:{
+                  "githubUsers": {
+                      $filter: {
+                      input: "$githubUsers",
+                      as: "githubUser",
+                      cond: {"$eq": [{$type:"$$githubUser.dataEntry"}, "missing"]}
+                  }}
+              }
+          }
+      ]
+          //For each location found find unscanned users (with no dataEntry)
+          let unscannedUsers: any = await githubUsersTDG.findUnscannedUsers(pipeline);
+          githubUsers.concat(unscannedUsers.githubUsers);
+      }
+      return githubUsers;
     // Check whether there are unfinished users to be scanned
     // Get all the locations that are currently in scanning status from db
     // Get all the users from those locations that should be scanned
