@@ -1,11 +1,12 @@
 import { ICandidate } from '../model/Candidate/ICandidate';
 import { BaseAdapter } from './BaseAdapter';
-import {IProjectSummary} from "../model/Candidate/IProjectSummary";
-import {IGitProjectInput} from "../model/Candidate/IGitProjectInput";
+import { IProjectSummary } from '../model/Candidate/IProjectSummary';
+import { IGitProjectInput } from '../model/Candidate/IGitProjectInput';
 
 /**
  * This class prevents dependency between our domain model back-end
- * and our domain model front-end
+ * and our domain model front-end, by converting our back-end data
+ * schema to front-end data schema
  */
 export class CandidateAdapter extends BaseAdapter {
   constructor() {
@@ -16,23 +17,27 @@ export class CandidateAdapter extends BaseAdapter {
     let candidates: ICandidate[] = [];
     let num: number;
 
-    for(num=0; num < result.length; num++){
-      let projectSummary : IProjectSummary = {
+    for (num = 0; num < result.length; num++) {
+      let projectSummary: IProjectSummary = {
         totalOutput: result[num].iGit.IGitData[0].gitProjectSummary.totalOutput,
-        projectOutput: result[num].iGit.IGitData[0].gitProjectSummary.projectsOutput,
+        projectOutput:
+          result[num].iGit.IGitData[0].gitProjectSummary.projectsOutput,
       };
 
       // Assign Email iff email contains '@'
-      let emailValidator : string = "empty";
-      if(result[num].platformEmail != null &&
-          result[num].platformEmail != undefined &&
-          result[num].platformEmail.includes('@')){
+      let emailValidator: string = 'empty';
+      if (
+        result[num].platformEmail != null &&
+        result[num].platformEmail != undefined &&
+        result[num].platformEmail.includes('@')
+      ) {
         emailValidator = result[num].platformEmail;
       }
 
-      let projectInputsRaw : IGitProjectInput[] = [];
-      for(let projectInp of result[num].iGit.IGitData[0].dataEntry.projectInputs){
-        const projectInput : IGitProjectInput = {
+      let projectInputsRaw: IGitProjectInput[] = [];
+      for (let projectInp of result[num].iGit.IGitData[0].dataEntry
+        .projectInputs) {
+        const projectInput: IGitProjectInput = {
           projectName: projectInp.projectName,
           owner: projectInp.owner,
         };
@@ -41,14 +46,14 @@ export class CandidateAdapter extends BaseAdapter {
 
       console.log(projectInputsRaw);
 
-      let candidate : ICandidate = {
+      let candidate: ICandidate = {
         isFilter: false,
         username: result[num].platformUsername,
-        profileLink: "https://www.github.com/" + result[num].platformUsername,
+        profileLink: 'https://www.github.com/' + result[num].platformUsername,
         userType: result[num].userType,
         email: emailValidator,
-        projectSummary : projectSummary,
-        projectInputs : projectInputsRaw
+        projectSummary: projectSummary,
+        projectInputs: projectInputsRaw,
       };
 
       console.log(candidate);
@@ -57,6 +62,4 @@ export class CandidateAdapter extends BaseAdapter {
     }
     return candidates;
   }
-
-
 }

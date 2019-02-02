@@ -18,8 +18,12 @@
     "outDir": "./build/",
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "jest-fetch-mock": ["./"]
+    }
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/**/*"]
+  "include": ["./src/**/**/*", "./test/**/**/*"]
 }
