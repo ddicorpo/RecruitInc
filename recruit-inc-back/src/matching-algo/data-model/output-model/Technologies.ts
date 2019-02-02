@@ -7,4 +7,5 @@ export enum Technologies {
   Git = 'Git',
   Vue = 'Vue',
   Angular = 'Angular',
+  Csharp = 'Csharp',
 }

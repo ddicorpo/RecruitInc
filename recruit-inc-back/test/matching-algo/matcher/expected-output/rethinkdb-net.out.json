@@ -1,0 +1,11 @@
+{
+  "projectName": "rethinkdb-net",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Csharp",
+      "linesOfCode": 121,
+      "numberOfCommits": 5,
+      "frameworks": []
+    }
+  ]
+}
