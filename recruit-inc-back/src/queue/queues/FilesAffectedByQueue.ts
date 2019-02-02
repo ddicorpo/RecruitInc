@@ -23,6 +23,10 @@ export class FilesAffectedByQueue extends AbstractQueue {
     let filesAffected: FilesAffectedByClient = new FilesAffectedByClient(
       prospect
     );
+    if (this.queue){
+    }else{
+        this.queue = [];
+    }
 
     this.queue.push(filesAffected);
   }

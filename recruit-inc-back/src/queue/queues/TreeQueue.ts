@@ -21,6 +21,10 @@ export class TreeQueue extends AbstractQueue {
 
   public enqueue(prospect: RequiredClientInformation) {
     let tree: TreeClient = new TreeClient(prospect);
+    if (this.queue){
+    }else{
+        this.queue = [];
+    }
     this.queue.push(tree);
   }
 

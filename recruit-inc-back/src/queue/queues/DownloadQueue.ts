@@ -21,7 +21,10 @@ export class DownloadQueue extends AbstractQueue {
 
   public enqueue(prospect: RequiredClientInformation) {
     let download: DownloadClient = new DownloadClient(prospect);
-
+    if (this.queue){
+    }else{
+        this.queue = [];
+    }
     this.queue.push(download);
   }
   public dequeue() {

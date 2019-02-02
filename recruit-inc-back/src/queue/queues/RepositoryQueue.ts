@@ -5,9 +5,10 @@ import { RequiredClientInformation } from '../RequiredClientInformation';
 import { RepositoryQueueTDG } from "../../data-source/table-data-gateway/repositoryQueueTDG";
 import { RepositoryQueueModel } from "../../domain/model/RepositoryQueueModel";
 import { RepositoryQueueFinder } from "../../data-source/finder/RepositoryQueueFinder";
+import { Types } from 'mongoose';
 
 export class RepositoryQueue extends AbstractQueue {
-  private queue: RepositoryClient[];
+  public queue: RepositoryClient[];
   private static _instance: RepositoryQueue;
 
   private constructor() {
@@ -22,6 +23,10 @@ export class RepositoryQueue extends AbstractQueue {
   public enqueue(prospect: RequiredClientInformation) {
     let repo: RepositoryClient = new RepositoryClient(prospect);
 
+    if (this.queue){
+    }else{
+        this.queue = [];
+    }
     this.queue.push(repo);
   }
 
@@ -47,26 +52,29 @@ export class RepositoryQueue extends AbstractQueue {
       this.dequeue();
     }
       catch(e) {
+          //console.log("processNextQuery error: ", e);
     }
   }
 
   public async saveToDatabase() {
 
-    let queueID = "repoQueueID"
+    let queueID = Types.ObjectId();
+    let repoFinder: RepositoryQueueFinder = new RepositoryQueueFinder();
+    let oldRepositoryQueueModel: RepositoryQueueModel[] = await repoFinder.findAll();
 
-    //create tdg
     let repoQueueTDG: RepositoryQueueTDG = new RepositoryQueueTDG();
-
+    if (oldRepositoryQueueModel.length === 1){
+    //create tdg
     //delete what was there before
-    let deleteSuccess: boolean = await repoQueueTDG.delete(queueID);
+    let deleteSuccess: boolean = await repoQueueTDG.delete(oldRepositoryQueueModel[0]._id);
+    }
 
     let newRepositoryQueueModel: RepositoryQueueModel = {
-      _id: queueID,
       queue: this.queue,
     };
 
     //store repository Queue in the database
-    await repoQueueTDG.create(newRepositoryQueueModel, queueID);
+    await repoQueueTDG.create(newRepositoryQueueModel);
 
   }
 
@@ -75,9 +83,13 @@ export class RepositoryQueue extends AbstractQueue {
     //create a repo queue finder
     let repoFinder: RepositoryQueueFinder = new RepositoryQueueFinder();
     //Find all repo queues (only 1) and load it
-    let newRepositoryQueueModel: RepositoryQueueModel = await repoFinder.findAll();
+    //findAll returns an array
+    let newRepositoryQueueModel: RepositoryQueueModel[] = await repoFinder.findAll();
     //load the queue from db to this queue
-    this.queue = newRepositoryQueueModel.queue;
+    //console.log("newRepositoryQueueModel: ", newRepositoryQueueModel);
+    if (newRepositoryQueueModel.length === 0)
+        return; //When nothing is in the database don't set this.queue
+    this.queue = newRepositoryQueueModel[0].queue;
 
   }
 }

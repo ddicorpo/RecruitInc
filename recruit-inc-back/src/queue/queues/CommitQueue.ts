@@ -21,6 +21,10 @@ export class CommitQueue extends AbstractQueue {
 
   public enqueue(prospect: RequiredClientInformation) {
     let commit: CommitClient = new CommitClient(prospect);
+    if (this.queue){
+    }else{
+        this.queue = [];
+    }
 
     this.queue.push(commit);
   }

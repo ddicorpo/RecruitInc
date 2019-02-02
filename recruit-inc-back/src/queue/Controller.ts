@@ -36,7 +36,7 @@ export class Controller {
     // Here we reload the queues with unfinished elements that remained from last time.
     this.reloadQueues();
 
-    let users: IGithubUser[] = this.fetchUsersFromDatabase();
+    let users: IGithubUser[] = await this.fetchUsersFromDatabase();
 
     if (this.areQueuesEmpty()) {
       this.enqueueUser(users.pop());
@@ -46,26 +46,32 @@ export class Controller {
     while (canStillScan) {
       canStillScan = this.executeRepo();
 
-      if (canStillScan) {
-        canStillScan = this.executeTree();
-      }
-      if (canStillScan) {
-        canStillScan = this.executeCommit();
-      }
-      if (canStillScan) {
-        canStillScan = this.executeFilesAffected();
-      }
-      if (canStillScan) {
-        canStillScan = this.executeDownload();
-      }
+      //if (canStillScan) {
+      //  canStillScan = this.executeTree();
+      //}
+      //if (canStillScan) {
+      //  canStillScan = this.executeCommit();
+      //}
+      //if (canStillScan) {
+      //  canStillScan = this.executeFilesAffected();
+      //}
+      //if (canStillScan) {
+      //  canStillScan = this.executeDownload();
+      //}
 
       if (canStillScan) {
+        //console.log("users at this point: ", users);
+        if (users.length === 0){ //fixing the cannot read login of undefined error because a user is still enqueued even though the users array is empty
+            canStillScan = false;
+            continue;
+        }
         this.enqueueUser(users.pop());
       }
     }
   }
 
   private enqueueUser(user: IGithubUser): void {
+      //console.log("enqueueing user:", user);
     const prospect: RequiredClientInformation = new RequiredClientInformation(
       user,
       '',
@@ -87,12 +93,13 @@ export class Controller {
     );
   }
 
-  private async fetchUsersFromDatabase(): Promise<IGithubUser[]> {
+  public async fetchUsersFromDatabase(): Promise<IGithubUser[]> {
       let githubUsers: IGithubUser[] = [];
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
       let cronFinder: CronFinder = new CronFinder();
       //Find all crons with "scanning" status
       let scanning: ICronModel[] = await cronFinder.findByStatus(Status.scanning)
+      //console.log("scanning",scanning);
 
       //For all crons found, get their locations
       for (let crons of scanning){
@@ -109,10 +116,13 @@ export class Controller {
               }
           }
       ]
+      //console.log("pipeline: ",pipeline);
           //For each location found find unscanned users (with no dataEntry)
           let unscannedUsers: any = await githubUsersTDG.findUnscannedUsers(pipeline);
-          githubUsers.concat(unscannedUsers.githubUsers);
+          //console.log("unscannedUsers: ", unscannedUsers[0].githubUsers);
+          githubUsers = githubUsers.concat(unscannedUsers[0].githubUsers);
       }
+      //console.log("users",githubUsers);
       return githubUsers;
     // Check whether there are unfinished users to be scanned
     // Get all the locations that are currently in scanning status from db

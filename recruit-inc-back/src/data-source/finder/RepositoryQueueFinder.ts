@@ -18,7 +18,7 @@ export class RepositoryQueueFinder {
     /**
      * Getting all Repositories
      */
-    public findAll(): Promise<RepositoryQueueModel> {
+    public findAll(): Promise<RepositoryQueueModel[]> {
         return this.baseFinder.findAll();
     }
 

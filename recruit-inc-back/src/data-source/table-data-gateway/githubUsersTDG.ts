@@ -69,6 +69,7 @@ export class GithubUsersTDG {
       });
   }
 
+  //aggregate returns an array apparently
   public findUnscannedUsers(pipeline: any[]): Promise<any>{
       return new Promise((resolve: any, reject: any)=>{
       GithubUsersModel.aggregate(pipeline, (error, doc) =>{

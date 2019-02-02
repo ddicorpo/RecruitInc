@@ -31,16 +31,16 @@ export class RepositoryClient implements IGithubClient {
     let treeQueue = TreeQueue.get_instance();
     let commitQueue = CommitQueue.get_instance();
 
-    for (let repo of allRepos) {
-      this._prospect.repoName = repo.projectName;
-      this._prospect.repoOwner = repo.owner;
-      //Replace first position of projectInputs with current repo in order to simplify functionality withing treeQueue
-      this._prospect.user.dataEntry.projectInputs[0] = repo;
+  //  for (let repo of allRepos) {
+  //    this._prospect.repoName = repo.projectName;
+  //    this._prospect.repoOwner = repo.owner;
+  //    //Replace first position of projectInputs with current repo in order to simplify functionality withing treeQueue
+  //    this._prospect.user.dataEntry.projectInputs[0] = repo;
 
-      //enqueue takes the requiredInfo package "prospect" and passes it to the appropriate queue
-      treeQueue.enqueue(this._prospect);
-      commitQueue.enqueue(this._prospect);
-    }
+  //    //enqueue takes the requiredInfo package "prospect" and passes it to the appropriate queue
+  //    treeQueue.enqueue(this._prospect);
+  //    commitQueue.enqueue(this._prospect);
+  //  }
 
     //TODO: Store this information in db,
     //Store all Repos for the user in db -> in RepositoryClient or GihubUsers?

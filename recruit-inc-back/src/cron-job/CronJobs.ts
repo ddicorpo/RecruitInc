@@ -9,6 +9,7 @@ import { IGithubUsersModel } from '../domain/model/IGithubUsersModel'
 import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser'
 import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG'
 import { GithubUsersFinder } from '../data-source/finder/GithubUsersFinder'
+import { Controller } from '../queue/Controller'
 const { fork } = require('child_process');
 
 export class CronJobs {
@@ -17,8 +18,9 @@ export class CronJobs {
     private githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
     private cronFinder: CronFinder = new CronFinder();
     private githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+    private controller: Controller = Controller.get_instance();
 
-    public async scheduleCron(location: string) {
+    public async scheduleCron(location: string): Promise<boolean> {
 
         let total_number: number = await this.githubUserInfo.getUserCountForLocation(location);
 
@@ -35,6 +37,8 @@ export class CronJobs {
          //Update status to scanning
          cron.status = Status.scanning;
          await this.cronTDG.update(cron._id, cron);
+         await this.scan();
+         return true;
     }
 
     //Put this in a real cronjob (with library)?
@@ -48,13 +52,15 @@ export class CronJobs {
         this.githubUsersTDG.create(githubUsersModel);
     } 
 
-    async scan(location: string){
-        let githubUsersModel : IGithubUsersModel = await this.githubUsersFinder.findByLocation(location);
-        let githubUsers : IGithubUser[] = githubUsersModel.githubUsers; 
-        for (let user of githubUsers){
-        
-        }
+    async scan(){
+        //let githubUsersModel : IGithubUsersModel = await this.githubUsersFinder.findByLocation(location);
+        //let githubUsers : IGithubUser[] = githubUsersModel.githubUsers; 
+        //for (let user of githubUsers){
+        //
+        //}
         //Call queue controller
+        await this.controller.execute();
+        
     }
 
     async stopScan(location: string){

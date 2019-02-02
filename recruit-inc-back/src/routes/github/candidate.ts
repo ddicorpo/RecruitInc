@@ -15,6 +15,8 @@ import { Status } from '../../domain/model/ICronModel';
 import { Logger } from '../../Logger';
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 import { CronJobs } from '../../cron-job/CronJobs';
+import { Controller } from '../../queue/Controller'
+import { RepositoryQueue } from '../../queue/queues/RepositoryQueue'
 const logger = new Logger();
 const { fork } = require('child_process');
 
@@ -22,6 +24,27 @@ export class Candidate {
   public routes(app): void {
       let users : IGithubUser[];
 
+    app
+      .route('/testqueue/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let cronjob: CronJobs = new CronJobs();
+        let finished: boolean = await cronjob.scheduleCron(location);
+
+        response.status(200).send(finished);
+
+      });
+
+    app
+      .route('/fetchUsersFromDatabase')
+      .get(async (request: Request, response: Response) => {
+      let controller: Controller = Controller.get_instance();
+
+      let result: IGithubUser[] = await controller.fetchUsersFromDatabase();
+
+        response.status(200).send(result);
+
+      });
     app
       .route('/findScanning')
       .get(async (request: Request, response: Response) => {
