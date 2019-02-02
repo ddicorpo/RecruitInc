@@ -5,7 +5,7 @@ import { ActionMeta, ValueType } from 'react-select/lib/types';
 import { Logger } from '../Logger';
 import { ICandidate } from '../model/Candidate/ICandidate';
 import { IOptionsBox } from '../model/IOptionsBox';
-import { IProjectSummary } from '../model/Candidate/IProjectSummary';
+import {CandidateAdapter} from "../adapter/CandidateAdapter";
 
 const BackEndAddress: string =
   process.env.BACK_END_ADDRESS + ':' + process.env.BACK_END_PORT;
@@ -36,8 +36,8 @@ class CandidateSearch extends React.Component<any, any> {
       if (!this.state.candidates[index].isFilter){
         let tmpProps: ICardProps = {
           userInfo: this.state.candidates[index],
-          projectInfo: this.state.candidates[index].ProjectSummary
-        }
+          projectInfo: this.state.candidates[index].projectSummary
+        };
         array.push(
           <CandidateCard
             userInfo={tmpProps.userInfo}
@@ -132,47 +132,31 @@ class CandidateSearch extends React.Component<any, any> {
           return response.json();
         })
         .then(result => {
-
-          let num: number;
-
-          for(num=0; num < result.length; num++){
-            let projectSummary : IProjectSummary = {
-              totalOutput: result[num].iGit.IGitData[0].gitProjectSummary.totalOutput,
-              projectOutput: result[num].iGit.IGitData[0].gitProjectSummary.projectsOutput,
-            }
-
+          let adapter : CandidateAdapter = new CandidateAdapter();
+          localCandidates = adapter.adapt(result);
+          for(let candidates of localCandidates){
             let isFilter: boolean = false;
-            if(isSearchFilter && !this.isTechUsedByCandidate(projectSummary.totalOutput)){
+            if(isSearchFilter && !this.isTechUsedByCandidate(candidates.projectSummary.totalOutput)){
               isFilter = true;
             }
-            
-            let candidate : ICandidate = {
-              ProjectSummary : projectSummary,
-              email: result[num].platformEmail,
-              isFilter: isFilter,
-              profileLink: "https://wwww.github.com/" + result[num].platformUsername,
-              userType: result[num].userType,
-              username: result[num].platformUsername,
-            };
-
-            localCandidates.push(candidate);
+            candidates.isFilter = isFilter;
           }
 
           this.setState({
             candidates: localCandidates,
           });
         });
-  }
+  };
 
   handleSearchClick = () => {
     this.getCandidates(true);
     this.render();  
-  }
+  };
 
   handleLoadClick = () => {
     this.getCandidates(false);
     this.render();
-  }
+  };
 
   isTechUsedByCandidate = (candidateProjectSummaryTotalOutput): boolean =>{
     let techIndex: number;
@@ -197,7 +181,7 @@ class CandidateSearch extends React.Component<any, any> {
       }
     }
     return false;
-  }
+  };
 
   handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {
     // Once we have a call to the backend, we'll capture this through the button press

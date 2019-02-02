@@ -4,6 +4,7 @@ import {IProjectSummary} from '../model/Candidate/IProjectSummary';
 import { ICandidate } from '../model/Candidate/ICandidate';
 import {ILanguageOutput} from '../model/Candidate/ILanguageOutput';
 import {IGitProjectOutput} from '../model/Candidate/IGitProjectOuput';
+import {IGitProjectInput} from "../model/Candidate/IGitProjectInput";
 
 export interface ICardProps {
     userInfo: ICandidate
@@ -108,19 +109,32 @@ class CandidateCard extends React.Component<ICardProps, any> {
     }
 
     private processGithubInfo() {
-        this.flatProjectsOutput = this.flattenProjectOutput(this.props.projectInfo.projectOutput);
+        this.flatProjectsOutput = this.flattenProjectOutput(this.props.projectInfo.projectOutput, this.props.userInfo.projectInputs);
         this.flatTotal = this.flattenGithubLanguages(this.props.projectInfo.totalOutput);
     }
 
-    private flattenProjectOutput(githubProjects: IGitProjectOutput[]): IGithubProjectFlattenedInfo[] {
+    private flattenProjectOutput(githubProjects: IGitProjectOutput[], gitProjectInputs : IGitProjectInput[]): IGithubProjectFlattenedInfo[] {
         const array: IGithubProjectFlattenedInfo[] = [];
 
         for (let project of githubProjects) {
+            let projectOwner : string = 'empty';
+            // Grab the owner of the project
+            //TODO: Refactor to reduce the Big-O
+            for(let projInput of gitProjectInputs){
+                if(projInput.projectName === project.projectName){
+                    projectOwner = projInput.owner;
+                }
+            };
+
+            let projectUrlBuilder : string = 'empty';
+            if(projectOwner != 'empty'){
+                projectUrlBuilder =  'https://www.github.com/' + projectOwner + '/' + project.projectName
+            }
             array.push(
                 {
                     project: project.projectName,
                     info: this.flattenGithubLanguages(project.languageOutput),
-                    projectUrl: project.projectUrl as string
+                    projectUrl: projectUrlBuilder,
                 }
             );
         }
