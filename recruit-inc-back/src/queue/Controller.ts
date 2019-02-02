@@ -36,7 +36,7 @@ export class Controller {
     // Here we reload the queues with unfinished elements that remained from last time.
     this.reloadQueues();
 
-    let users: IGithubUser[] = this.fetchUsersFromDatabase();
+    let users: IGithubUser[] = await this.fetchUsersFromDatabase();
 
     if (this.areQueuesEmpty()) {
       this.enqueueUser(users.pop());
