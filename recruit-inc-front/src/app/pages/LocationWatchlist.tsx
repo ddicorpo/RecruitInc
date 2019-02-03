@@ -155,48 +155,60 @@ class LocationWatchList extends React.Component<any, {watchlistInfo: IWatchlistI
         return (
                 <div className="container-fluid">
                     <div className="page-header">
-                        <h2 className="header-title">Location Watchlist</h2>
+                        <h2 className="header-title">Location Watchlist (Not Ready)</h2>
                     </div>
-                    <div className="card">
-                        <div className="card-header border bottom">
-                            <h4 className="card-title">Search and Add</h4>
-                        </div>
-                        <div className="card-body">
-                            <div className="row m-t-30">
-                                <div className="col-md-4">
-                                    <div className="p-h-10">
-                                        <div className="form-group">
-                                            <label className="control-label">Add city to watchlist</label>
-                                            <input onChange={this.handleTextInput} type="text" className="form-control" placeholder="City"/>
+
+                    {/*This is only to have to elements blur while we finish the construction*/}
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" className="blur-svg">
+                        <defs>
+                            <filter id="blur-filter">
+                                <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+                            </filter>
+                        </defs>
+                    </svg>
+
+                    {/*To remove this div when construction is finish*/}
+                    <div className="blur">
+
+                        <div className="card blur">
+                            <div className="card-header border bottom">
+                                <h4 className="card-title">Search and Add</h4>
+                            </div>
+                            <div className="card-body">
+                                <div className="row m-t-30">
+                                    <div className="col-md-4">
+                                        <div className="p-h-10">
+                                            <div className="form-group">
+                                                <label className="control-label">Add city to watchlist</label>
+                                                <input onChange={this.handleTextInput} type="text" className="form-control" placeholder="City"/>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-md-4">
-                                    <div className="p-h-10">
-                                        <div className="form-group">
-                                            <label className="control-label">&nbsp;</label>
-                                            <button onClick= {this.handleAdd} id="save" className="btn btn-success form-control"
-                                                    type="button">Add
-                                            </button>
+                                    <div className="col-md-4">
+                                        <div className="p-h-10">
+                                            <div className="form-group">
+                                                <label className="control-label">&nbsp;</label>
+                                                <button onClick= {this.handleAdd} id="save" className="btn btn-success form-control"
+                                                        type="button">Add
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
 
-                   <div className="card">
-                        <div className="card-header border bottom">
-                            <h4 className="card-title">Watchlist</h4>
+
+                       <div className="card">
+                            <div className="card-header border bottom">
+                                <h4 className="card-title">Watchlist</h4>
+                            </div>
+                            <div className="card-body">
+                                {this.renderTable()}
+                            </div>
                         </div>
-                        <div className="card-body">
-                            {this.renderTable()}
-                        </div>
+
                     </div>
-
-
-
                     
                 </div>
         );
