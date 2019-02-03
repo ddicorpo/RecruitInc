@@ -49,9 +49,9 @@ export class Controller {
       if (canStillScan) {
         canStillScan = await this.executeTree();
       }
-      //if (canStillScan) {
-      //  canStillScan = this.executeCommit();
-      //}
+      if (canStillScan) {
+        canStillScan = await this.executeCommit();
+      }
       //if (canStillScan) {
       //  canStillScan = this.executeFilesAffected();
       //}
@@ -178,11 +178,11 @@ export class Controller {
     return canStillScan;
   }
 
-  private executeCommit(): boolean {
+  private async executeCommit(): Promise<boolean> {
     let canStillScan: boolean = true;
     try {
       while (this.commitQueue.size() > 0) {
-        this.commitQueue.processNextQuery();
+        await this.commitQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeCommit', e.toString());

@@ -39,10 +39,7 @@ export class RepositoryClient implements IGithubClient {
 
       //enqueue takes the requiredInfo package "prospect" and passes it to the appropriate queue
       treeQueue.enqueue(this._prospect);
-      console.log("Inside RepositoryClient after enqueueing----------------------------------");
-      console.log("treeQueue size: ", treeQueue.size());
-
-      //commitQueue.enqueue(this._prospect);
+      commitQueue.enqueue(this._prospect);
     }
 
     //TODO: Store this information in db,
