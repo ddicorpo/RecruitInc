@@ -18,7 +18,7 @@ export class FilesAffectedByQueueFinder {
     /**
      * Getting all files affected by queues
      */
-    public findAll(): Promise<FilesAffectedByQueueModel> {
+    public findAll(): Promise<FilesAffectedByQueueModel[]> {
         return this.baseFinder.findAll();
     }
 

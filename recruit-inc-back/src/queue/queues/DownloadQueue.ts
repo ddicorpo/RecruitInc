@@ -5,6 +5,7 @@ import { mongoose } from 'mongoose';
 import { DownloadQueueTDG } from "../../data-source/table-data-gateway/downloadQueueTDG";
 import { DownloadQueueModel } from "../../domain/model/DownloadQueueModel";
 import { DownloadQueueFinder } from "../../data-source/finder/DownloadQueueFinder";
+import { Types } from 'mongoose';
 
 export class DownloadQueue extends AbstractQueue {
   private queue: DownloadClient[];
@@ -41,9 +42,9 @@ export class DownloadQueue extends AbstractQueue {
     return this.queue.length;
   }
 
-  public processNextQuery(): any {
+  public async processNextQuery() {
     try {
-      this.queue[0].executeQuery();
+      await this.queue[0].executeQuery();
       //remove the first object from the queue
       this.dequeue();
     }
@@ -52,21 +53,23 @@ export class DownloadQueue extends AbstractQueue {
 
   public async saveToDatabase() {
 
-    let queueID = "downloadQueueID";
-
+    let queueID = Types.ObjectId();
     //create tdg
     let downloadQueueTDG: DownloadQueueTDG = new DownloadQueueTDG();
+    let downloadFinder: DownloadQueueFinder = new DownloadQueueFinder();
+    let oldDownloadQueueModel: DownloadQueueModel[] = await downloadFinder.findAll();
 
+    if (oldDownloadQueueModel.length === 1){
     //delete what was there before
-    let deleteSuccess: boolean = await downloadQueueTDG.delete(queueID);
+    let deleteSuccess: boolean = await downloadQueueTDG.delete(oldDownloadQueueModel[0]._id);
+    }
 
     let newDownloadQueueModel: DownloadQueueModel = {
-      _id: queueID,
       queue: this.queue,
     };
 
     //store download Queue in the database
-    await downloadQueueTDG.create(newDownloadQueueModel, queueID);
+    await downloadQueueTDG.create(newDownloadQueueModel);
 
   }
   public async loadFromDatabase() {
@@ -75,10 +78,12 @@ export class DownloadQueue extends AbstractQueue {
     let downloadFinder: DownloadQueueFinder = new DownloadQueueFinder();
 
     //Find all download queues (only 1) and load it
-    let newDownloadQueueModel: DownloadQueueModel = await downloadFinder.findAll();
+    let newDownloadQueueModel: DownloadQueueModel[] = await downloadFinder.findAll();
 
+    if (newDownloadQueueModel.length === 0)
+        return;
     //load the queue from db to this queue
-    this.queue = newDownloadQueueModel.queue;
+    this.queue = newDownloadQueueModel[0].queue;
 
   }
 }

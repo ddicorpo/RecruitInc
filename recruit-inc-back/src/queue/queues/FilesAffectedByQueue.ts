@@ -5,6 +5,7 @@ import { mongoose } from 'mongoose';
 import { FilesAffectedByQueueTDG } from "../../data-source/table-data-gateway/filesAffectedByQueueTDG";
 import { FilesAffectedByQueueModel } from "../../domain/model/FilesAffectedByQueueModel";
 import { FilesAffectedByQueueFinder } from "../../data-source/finder/FilesAffectedByQueueFinder";
+import { Types } from 'mongoose';
 
 export class FilesAffectedByQueue extends AbstractQueue {
   private queue: FilesAffectedByClient[];
@@ -45,9 +46,9 @@ export class FilesAffectedByQueue extends AbstractQueue {
     return this.queue.length;
   }
 
-  public processNextQuery(): any {
+  public async processNextQuery() {
     try {
-      this.queue[0].executeQuery();
+      await this.queue[0].executeQuery();
       //remove the first object from the queue
       this.dequeue();
     }
@@ -56,21 +57,24 @@ export class FilesAffectedByQueue extends AbstractQueue {
 
   public async saveToDatabase() {
 
-    let queueID = "filesQueueID";
+    let queueID = Types.ObjectId();
 
     //create tdg
     let filesQueueTDG: FilesAffectedByQueueTDG = new FilesAffectedByQueueTDG();
+    let filesFinder: FilesAffectedByQueueFinder = new FilesAffectedByQueueFinder();
+    let oldFilesQueueModel: FilesAffectedByQueueModel[] = await filesFinder.findAll();
 
+    if (oldFilesQueueModel.length === 1){
     //delete what was there before
-    let deleteSuccess: boolean = await filesQueueTDG.delete(queueID);
+    let deleteSuccess: boolean = await filesQueueTDG.delete(oldFilesQueueModel[0]._id);
+    }
 
     let newFilesQueueModel: FilesAffectedByQueueModel = {
-      _id: queueID,
       queue: this.queue,
     };
 
     //store files affected by Queue in the database
-    await filesQueueTDG.create(newFilesQueueModel, queueID);
+    await filesQueueTDG.create(newFilesQueueModel);
 
   }
   public async loadFromDatabase() {
@@ -78,10 +82,12 @@ export class FilesAffectedByQueue extends AbstractQueue {
     let filesFinder: FilesAffectedByQueueFinder = new FilesAffectedByQueueFinder();
 
     //Find all files affected by queues (only 1) and load it
-    let newFilesQueueModel: FilesAffectedByQueueModel = await filesFinder.findAll();
+    let newFilesQueueModel: FilesAffectedByQueueModel[] = await filesFinder.findAll();
 
+    if (newFilesQueueModel.length === 0)
+        return; //When nothing is in the database don't set this.queue
     //load the queue from db to this queue
-    this.queue = newFilesQueueModel.queue;
+    this.queue = newFilesQueueModel[0].queue;
 
   }
 }

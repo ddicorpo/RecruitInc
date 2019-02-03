@@ -52,12 +52,12 @@ export class Controller {
       if (canStillScan) {
         canStillScan = await this.executeCommit();
       }
-      //if (canStillScan) {
-      //  canStillScan = this.executeFilesAffected();
-      //}
-      //if (canStillScan) {
-      //  canStillScan = this.executeDownload();
-      //}
+      if (canStillScan) {
+        canStillScan = await this.executeFilesAffected();
+      }
+      if (canStillScan) {
+        canStillScan = await this.executeDownload();
+      }
 
       if (canStillScan) {
         //console.log("users at this point: ", users);
@@ -68,12 +68,6 @@ export class Controller {
         this.enqueueUser(users.pop());
       }
     }
-    //this.executeRepo();
-    //this.executeTree();
-    //this.executeCommit();
-    //this.executeFilesAffected();
-    //this.executeFilesAffected();
-    //this.executeDownload();
   }
 
   private enqueueUser(user: IGithubUser): void {
@@ -191,11 +185,11 @@ export class Controller {
     return canStillScan;
   }
 
-  private executeFilesAffected(): boolean {
+  private async executeFilesAffected(): Promise<boolean> {
     let canStillScan: boolean = true;
     try {
       while (this.filesAffectedByQueue.size() > 0) {
-        this.filesAffectedByQueue.processNextQuery();
+        await this.filesAffectedByQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeExecuteFilesAffected', e.toString());
@@ -204,11 +198,11 @@ export class Controller {
     return canStillScan;
   }
 
-  private executeDownload(): boolean {
+  private async executeDownload(): Promise<boolean> {
     let canStillScan: boolean = true;
     try {
       while (this.downloadQueue.size() > 0) {
-        this.downloadQueue.processNextQuery();
+        await this.downloadQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeDownload', e.toString());

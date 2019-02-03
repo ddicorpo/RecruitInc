@@ -46,7 +46,7 @@ export class TreeClient implements IGithubClient {
     const allSourcefileName = this.setSourceFilesArray();
 
     //pull instance of downloadQueue so taht we can populate it later on
-    //let downloadQueue = DownloadQueue.get_instance();
+    let downloadQueue = DownloadQueue.get_instance();
 
     //Loop through project structure to find specific files that need to be downloaded
     while (index < struct.length) {
@@ -64,7 +64,7 @@ export class TreeClient implements IGithubClient {
         this._prospect.filePath =
           struct[index].filePath;
         // pass the updated requiredInfo package to the download queue
-        //downloadQueue.enqueue(this._prospect);
+        downloadQueue.enqueue(this._prospect);
       }
       index++;
     }
