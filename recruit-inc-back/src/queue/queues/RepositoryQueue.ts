@@ -23,8 +23,7 @@ export class RepositoryQueue extends AbstractQueue {
   public enqueue(prospect: RequiredClientInformation) {
     let repo: RepositoryClient = new RepositoryClient(prospect);
 
-    if (this.queue){
-    }else{
+    if (!this.queue){
         this.queue = [];
     }
     this.queue.push(repo);
@@ -45,9 +44,9 @@ export class RepositoryQueue extends AbstractQueue {
     return this.queue.length;
   }
 
-  public processNextQuery() {
+  public async processNextQuery() {
     try {
-      this.queue[0].executeQuery();
+      await this.queue[0].executeQuery();
       //remove the first object from the queue
       this.dequeue();
     }

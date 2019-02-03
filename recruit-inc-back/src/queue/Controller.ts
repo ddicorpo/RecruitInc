@@ -44,11 +44,11 @@ export class Controller {
 
     let canStillScan: boolean = true;
     while (canStillScan) {
-      canStillScan = this.executeRepo();
+      canStillScan = await this.executeRepo();
 
-      //if (canStillScan) {
-      //  canStillScan = this.executeTree();
-      //}
+      if (canStillScan) {
+        canStillScan = await this.executeTree();
+      }
       //if (canStillScan) {
       //  canStillScan = this.executeCommit();
       //}
@@ -68,6 +68,12 @@ export class Controller {
         this.enqueueUser(users.pop());
       }
     }
+    //this.executeRepo();
+    //this.executeTree();
+    //this.executeCommit();
+    //this.executeFilesAffected();
+    //this.executeFilesAffected();
+    //this.executeDownload();
   }
 
   private enqueueUser(user: IGithubUser): void {
@@ -140,11 +146,14 @@ export class Controller {
     this.storeQueues();
   }
 
-  private executeRepo(): boolean {
+  private async executeRepo(): Promise<boolean> {
+    //  console.log("executing repo -------------------------------------------");
+      console.log("repoQueue size: ", this.repoQueue.size());
+      console.log("repoQueue", this.repoQueue);
     let canStillScan: boolean = true;
     try {
       while (this.repoQueue.size() > 0) {
-        this.repoQueue.processNextQuery();
+        await this.repoQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeRepo', e.toString());
@@ -153,11 +162,14 @@ export class Controller {
     return canStillScan;
   }
 
-  private executeTree(): boolean {
+  private async executeTree(): Promise<boolean> {
+    //  console.log("executing tree -------------------------------------------");
+      console.log("treeQueue size: ", this.treeQueue.size());
+      console.log("treeQueue", this.treeQueue);
     let canStillScan: boolean = true;
     try {
       while (this.treeQueue.size() > 0) {
-        this.treeQueue.processNextQuery();
+        await this.treeQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeTree', e.toString());

@@ -31,22 +31,25 @@ export class RepositoryClient implements IGithubClient {
     let treeQueue = TreeQueue.get_instance();
     let commitQueue = CommitQueue.get_instance();
 
-  //  for (let repo of allRepos) {
-  //    this._prospect.repoName = repo.projectName;
-  //    this._prospect.repoOwner = repo.owner;
-  //    //Replace first position of projectInputs with current repo in order to simplify functionality withing treeQueue
-  //    this._prospect.user.dataEntry.projectInputs[0] = repo;
+    for (let repo of allRepos) {
+      this._prospect.repoName = repo.projectName;
+      this._prospect.repoOwner = repo.owner;
+      //Replace first position of projectInputs with current repo in order to simplify functionality withing treeQueue
+      //this._prospect.user.dataEntry.projectInputs[0] = repo;
 
-  //    //enqueue takes the requiredInfo package "prospect" and passes it to the appropriate queue
-  //    treeQueue.enqueue(this._prospect);
-  //    commitQueue.enqueue(this._prospect);
-  //  }
+      //enqueue takes the requiredInfo package "prospect" and passes it to the appropriate queue
+      treeQueue.enqueue(this._prospect);
+      console.log("Inside RepositoryClient after enqueueing----------------------------------");
+      console.log("treeQueue size: ", treeQueue.size());
+
+      //commitQueue.enqueue(this._prospect);
+    }
 
     //TODO: Store this information in db,
     //Store all Repos for the user in db -> in RepositoryClient or GihubUsers?
     //GithubUsers to have centralized data
     await this.updateUser(this._prospect.user.login, allRepos);
-
+    //await treeQueue.saveToDatabase();
   }
  
   public async updateUser(login: string, projectInputs: IGithubProjectInput[] ){

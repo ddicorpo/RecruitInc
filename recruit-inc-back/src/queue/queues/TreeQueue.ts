@@ -5,6 +5,7 @@ import { mongoose } from 'mongoose';
 import { TreeQueueTDG } from "../../data-source/table-data-gateway/treeQueueTDG";
 import { TreeQueueModel } from "../../domain/model/TreeQueueModel";
 import { TreeQueueFinder } from "../../data-source/finder/TreeQueueFinder";
+import { Types } from 'mongoose';
 
 export class TreeQueue extends AbstractQueue {
   private queue: TreeClient[];
@@ -21,8 +22,7 @@ export class TreeQueue extends AbstractQueue {
 
   public enqueue(prospect: RequiredClientInformation) {
     let tree: TreeClient = new TreeClient(prospect);
-    if (this.queue){
-    }else{
+    if (!this.queue){
         this.queue = [];
     }
     this.queue.push(tree);
@@ -42,9 +42,9 @@ export class TreeQueue extends AbstractQueue {
     return this.queue.length;
   }
 
-  public processNextQuery(): any {
+  public async processNextQuery() {
     try {
-      this.queue[0].executeQuery();
+      await this.queue[0].executeQuery();
       //remove the first object from the queue
       this.dequeue();
     }
@@ -53,21 +53,24 @@ export class TreeQueue extends AbstractQueue {
 
   public async saveToDatabase() {
 
-    let queueID = "treeQueueID";
+    let queueID = Types.ObjectId();
+    let treeFinder: TreeQueueFinder = new TreeQueueFinder();
+    let oldTreeQueueModel: TreeQueueModel[] = await treeFinder.findAll();
 
     //create tdg
     let treeQueueTDG: TreeQueueTDG = new TreeQueueTDG();
+    if (oldTreeQueueModel.length === 1){
 
     //delete what was there before
-    let deleteSuccess: boolean = await treeQueueTDG.delete(queueID);
+    let deleteSuccess: boolean = await treeQueueTDG.delete(oldTreeQueueModel[0]._id);
+    }
 
     let newTreeQueueModel: TreeQueueModel = {
-      _id: queueID,
       queue: this.queue,
     };
 
     //store tree Queue in the database
-    await treeQueueTDG.create(newTreeQueueModel, queueID);
+    await treeQueueTDG.create(newTreeQueueModel);
 
   }
   public async loadFromDatabase() {
@@ -76,10 +79,12 @@ export class TreeQueue extends AbstractQueue {
     let treeFinder: TreeQueueFinder = new TreeQueueFinder();
 
     //Find all tree queues (only 1) and load it
-    let newTreeQueueModel: TreeQueueModel = await treeFinder.findAll();
+    let newTreeQueueModel: TreeQueueModel[] = await treeFinder.findAll();
 
+    if (newTreeQueueModel.length === 0)
+        return; //no tree queue in database -> stop here
     //load the queue from db to this queue
-    this.queue = newTreeQueueModel.queue;
+    this.queue = newTreeQueueModel[0].queue;
 
   }
 }
