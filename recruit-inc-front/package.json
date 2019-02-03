@@ -1,19 +1,14 @@
 {
   "name": "recruit-inc-front",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Recruit Platform",
+  "main": "webpack.config.js",
   "scripts": {
-    "test": "mocha -r ts-node/register test/**/*.spec.ts test/**/*.test.ts",
-    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register test/**/*.test.ts && nyc report",
-    "dev": "tsc && node server.js",
-    "build": "tsc && next build",
-    "start": "npm run dev",
-    "transpile": "tsc",
-    "devwatch": "tsc -w",
-    "export": "npm run build && next export",
-    "demo": "npm run dev | lt --port 3000 --subdomain recruit-front ",
-    "prettify": "prettier --single-quote --trailing-comma es5 --write \"*(pages|test|components)/**/*.*(ts|tsx|js)\""
+    "test": "jest",
+    "build": "tsc && webpack --config webpack.config.js",
+    "start": "npm run build && ts-node ./src/server.ts",
+    "demo": "npm run start | lt --port 3000 --subdomain recruit-front ",
+    "prettify": "prettier --single-quote --trailing-comma es5 --write \"*(src)/**/*.ts\""
   },
   "husky": {
     "hooks": {
@@ -27,30 +22,74 @@
       "git add"
     ]
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/next": "^6.1.7",
-    "@types/react": "^16.4.14",
-    "express": "^4.16.3",
-    "localtunnel": "^1.9.1",
-    "next": "^7.0.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "<rootDir>/test-shim.js",
+      "<rootDir>/test-setup.js",
+      "<rootDir>/setupJest.ts"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/test-preprocessor.js"
+    },
+    "testMatch": [
+      "**/test/**/*.(ts|tsx|js)"
+    ]
   },
+  "keywords": [],
+  "author": "SOEN 490 - Team Abada",
+  "license": "ISC",
   "devDependencies": {
-    "@types/body-parser": "^1.17.0",
-    "@types/chai": "^4.1.5",
-    "@types/mocha": "^5.2.5",
-    "chai": "^4.1.2",
+    "@types/enzyme": "^3.1.15",
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.12.12",
+    "@types/react": "^16.7.21",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-js-pagination": "^3.0.1",
+    "css-loader": "^1.0.1",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.8.0",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "husky": "^1.1.3",
-    "lint-staged": "^8.0.4",
-    "mocha": "^5.2.0",
-    "nyc": "^13.0.1",
-    "prettier": "1.15.1",
-    "ts-mockito": "^2.3.1",
+    "jest": "^24.0.0",
+    "jest-fetch-mock": "^2.1.0",
+    "prettier": "^1.15.3",
+    "react-test-renderer": "^16.7.0",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^4.3.0",
+    "typescript": "^3.2.1",
+    "url-loader": "^1.1.2",
+    "webpack": "4.8.3",
+    "terser": "3.14.1",
+    "webpack-cli": "3.2.0",
+    "webpack-dev-middleware": "3.1.3",
+    "webpack-hot-middleware": "2.22.2"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.6.1",
+    "@material-ui/icons": "^3.0.1",
+    "@types/react-autosuggest": "^9.3.6",
+    "@types/react-select": "^2.0.10",
+    "awesome-typescript-loader": "^5.2.1",
+    "dotenv": "^6.2.0",
+    "dotenv-webpack": "^1.7.0",
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "lint-staged": "^8.1.0",
+    "localtunnel": "^1.9.1",
+    "react": "^16.7.0",
+    "react-autosuggest": "^9.4.2",
+    "react-dom": "^16.7.0",
+    "react-js-pagination": "^3.0.2",
+    "react-select": "^2.1.2",
     "ts-node": "^7.0.1",
-    "typescript": "^3.0.3"
+    "winston": "^3.1.0"
   }
 }

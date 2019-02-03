@@ -7,6 +7,7 @@ import { GitlabApplicants } from './routes/gitlab/GitlabApplicants';
 import { Candidate } from './routes/github/candidate';
 import { ApplicantBitbucket } from './routes/bitbucket/applicantBitbucket';
 import { OAuthCode } from './routes/OAuth/OAuthCode';
+import { MvpRoute } from './routes/MvpRoute'
 import { Logger } from '../src/Logger';
 var cors = require('cors');
 
@@ -20,6 +21,7 @@ class App {
   public gitlabApplicant: GitlabApplicants = new GitlabApplicants();
   public candidateDataRout: Candidate = new Candidate();
   public oauthCodeRoute: OAuthCode = new OAuthCode();
+  public mvpRoute : MvpRoute = new MvpRoute();
   private logger: Logger;
   constructor() {
     this.logger = new Logger();
@@ -72,6 +74,7 @@ class App {
     this.gitlabApplicant.routes(this.app);
     this.candidateDataRout.routes(this.app);
     this.oauthCodeRoute.routes(this.app);
+    this.mvpRoute.routes(this.app);
   }
 
   private config(): void {

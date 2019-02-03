@@ -96,6 +96,21 @@ files (one for each node).
  
 ![alt text](https://github.com/ddicorpo/RecruitInc/blob/master/CourseAdmin/assets/SampleTestCoverage.png "Sample Test Coverage")
 
+(attempt to use/install Jest + enzyme + webpack + typescript)
+### Testing Front-End
+The front-end will be tested with `Enzyme`. (https://github.com/airbnb/enzyme)
+The library will provide a `shallow` method in which we can use react components and test those.
+The library is allowing us to build integration UI test and UI unit test.
+The library is allowing simulating 'click'.
+
+`shallow`: isolate test to a single component 
+`mount`: Used for DOM rendering, can test using lifecycle `componentDidMount`
+`render`: redering static HTML in react componenent (optional function)
+
+#### Demo UI Test 
+
+A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
+
 
  
 ### Run Unit Test (Front-End)
@@ -107,6 +122,8 @@ files (one for each node).
  - You can get a unit test coverage report using the script writtien in `pakage.json`
  - Run the command: `npm run testWithCoverage` to run the test coverage
  - The command will create a folder: `coverage` with all results inside
+
+
 
 
 ## Database
