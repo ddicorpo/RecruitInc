@@ -4,7 +4,7 @@ def teamMap = [:]
 teamMap['benjamin.tanguay@gmail.com'] = [name: "btanguay", slack: "<@UBDKRBTFY>", front: "11000", back: "11001", database: "11002"]
 teamMap['philippe.beaudry96@gmail.com'] = [name: "pbeaudry", slack: "<@UBC851WHL>", front: "12000", back: "12001", database: "12002"]
 teamMap['ddicorpo@gmail.com'] = [name: "ddicorpo", slack: "<@UBB76KAV9>", front: "13000", back: "13001", database: "13002"]
-teamMap['m.user.work@gmail.com'] = [name: "winterhart", slack: "<@UBAP7QD4H>", front: "14000", back: "14001", database: "14002"]
+teamMap['m.user.work@gmail.com'] = [name: "chardy", slack: "<@UBAP7QD4H>", front: "14000", back: "14001", database: "14002"]
 teamMap['mohamed_2_27@hotmail.com'] = [name: "mfarah", slack: "<@UBBTDN7U0>", front: "15000", back: "15001", database: "15002"]
 teamMap['mohamedlemineelhadj@outlook.com'] = [name: "mlemine", slack: "<@UBCAK2XV1>", front: "16000", back: "16001", database: "16002"]
 teamMap['saitaghiles@gmail.com'] = [name: "asait", slack: "<@UBB9FQNAV>", front: "17000", back: "17001", database: "17002"]
@@ -16,7 +16,7 @@ def serverIP = "http://169.45.50.135"
 def builderImgName = "NodeJSBuilder"
 def backendFolder = "/home/builder/recruit-inc-back"
 def frontendFolder = "/home/builder/recruit-inc-front"
-def dockerPassword = "tigidou"
+def dockerPassword = "abada490"
 
 def jenkinsWorkspace = "/var/jenkins_home/workspace/Nodejs-pipeline"
 def jenkinsProjectFolder = "RecruitInc"
