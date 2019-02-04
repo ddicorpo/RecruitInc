@@ -4,7 +4,7 @@ def teamMap = [:]
 teamMap['benjamin.tanguay@gmail.com'] = [name: "btanguay", slack: "<@UBDKRBTFY>", front: "11000", back: "11001", database: "11002"]
 teamMap['philippe.beaudry96@gmail.com'] = [name: "pbeaudry", slack: "<@UBC851WHL>", front: "12000", back: "12001", database: "12002"]
 teamMap['ddicorpo@gmail.com'] = [name: "ddicorpo", slack: "<@UBB76KAV9>", front: "13000", back: "13001", database: "13002"]
-teamMap['m.user.work@gmail.com'] = [name: "chardy", slack: "<@UBAP7QD4H>", front: "14000", back: "14001", database: "14002"]
+teamMap['m.user.work@gmail.com'] = [name: "winterhart", slack: "<@UBAP7QD4H>", front: "14000", back: "14001", database: "14002"]
 teamMap['mohamed_2_27@hotmail.com'] = [name: "mfarah", slack: "<@UBBTDN7U0>", front: "15000", back: "15001", database: "15002"]
 teamMap['mohamedlemineelhadj@outlook.com'] = [name: "mlemine", slack: "<@UBCAK2XV1>", front: "16000", back: "16001", database: "16002"]
 teamMap['saitaghiles@gmail.com'] = [name: "asait", slack: "<@UBB9FQNAV>", front: "17000", back: "17001", database: "17002"]
@@ -16,6 +16,7 @@ def serverIP = "http://169.45.50.135"
 def builderImgName = "NodeJSBuilder"
 def backendFolder = "/home/builder/recruit-inc-back"
 def frontendFolder = "/home/builder/recruit-inc-front"
+def dockerPassword = "tigidou"
 
 def jenkinsWorkspace = "/var/jenkins_home/workspace/Nodejs-pipeline"
 def jenkinsProjectFolder = "RecruitInc"
@@ -108,7 +109,7 @@ node {
         stage('Updating builder') {
             echo "STARTING STAGE UPDATING BUILDER -------------------------------------------------"
             echo "PULLING IMAGE"
-            dockerLogin("abadanpm", "PASSWORD")
+            dockerLogin("abadanpm", "$dockerPassword")
             sh "docker pull abadanpm/npm:latest"
 
             echo "STARTING IMAGE"
@@ -142,33 +143,51 @@ node {
             shellInImage("$builderImgName", "cd $frontendFolder; npm run test")
         }
         stage("Packaging") {
-            shellInImage("$builderImgName", "cd $backendFolder; pkg --targets node8-alpine-x64 dist/server.js")
+            shellInImage("$builderImgName", "cd $backendFolder; pkg --targets node8-alpine-x64 dist/src/server.js")
 
-            shellInImage("$builderImgName", "cd $frontendFolder; pkg --targets node8-alpine-x64 server.js")
+            shellInImage("$builderImgName", "cd $frontendFolder; pkg --targets node8-alpine-x64 src/server.ts")
 
         }
         stage("Deploying") {
-            dockerLogin("abadafrontend", "PASSWORD")
+            dockerLogin("abadafrontend",  "$dockerPassword")
             sh "docker pull abadafrontend/frontend:base"
             def frontendImg = "${teamMember.name}-frontend-$shortHash"
             stopContainer("${teamMember.name}-frontend")
             sh "docker run -id --name $frontendImg -p ${teamMember.front}:3000  --net=bridge abadafrontend/frontend:base sh"
+            
             sh "docker start $frontendImg"
             shellInImage("$frontendImg", "mkdir -p $builderRoot")
 
             sh 'mkdir -p frontend'
-            sh "docker cp $builderImgName:/$frontendFolder/server frontend"
-            sh "docker cp $builderImgName:/$frontendFolder/.next frontend"
-            sh "docker cp $builderImgName:/$frontendFolder/node_modules frontend"
-
+            //Create .env file for frontend domain so that it is whitelisted
+            //Add other env variables
+            sh 'touch frontend/.env'
+            sh "echo NODE_ENV=dev >> frontend/.env"
+            sh "echo PORT=3000 >> frontend/.env"
+            sh "echo DEFAULT_TIMEOUT=2147483643 >> frontend/.env"
+            sh "echo DOMAIN_FRONT_END=$serverIP:${teamMember.front} >> frontend/.env"
+            sh "echo BACK_END_ADDRESS=169.45.50.135 >> frontend/.env"
+            sh "echo BACK_END_PORT=${teamMember.back} >> frontend/.env"
+            sh "echo REST_PREFIX=http:// >> frontend/.env"
+            //Let's first try by copy all folder
+            sh "docker cp $builderImgName:/$frontendFolder frontend"
+            
+    //Need to copy next.config.js to get environment variables for the frontend (next.js)
+    // try{
+    //  sh "docker cp $builderImgName:/$frontendFolder/next.config.js frontend"
+    // }
+    // catch (exception){
+    //     echo "$exception"
+    // }
             sh "docker cp frontend/. $frontendImg:/$builderRoot"
 
 
 
 
-            shellInImageDetached("$frontendImg", "cd $builderRoot; NODE_ENV=production ./server")
+            shellInImageDetached("$frontendImg", "cd $builderRoot; NODE_ENV=production BACK_END_URL=$serverIP:${teamMember.back} ./server")
+      
 
-            dockerLogin("abadabackendnode", "PASSWORD")
+            dockerLogin("abadabackendnode",  "$dockerPassword")
             sh "docker pull abadabackendnode/backend:base"
 
             def backendImg = "${teamMember.name}-backend-$shortHash"
@@ -178,10 +197,28 @@ node {
             shellInImage("$backendImg", "mkdir -p $builderRoot")
 
             sh 'mkdir -p backend'
+            //Create .env file with frontend domain so that it is whitelisted
+            //Add other env variables
+            sh 'touch backend/.env'
+            sh "echo DOMAIN_FRONT_END=$serverIP:${teamMember.front} >> backend/.env"
+            sh "echo DOMAIN_BACK_END=169.45.50.135:${teamMember.back} >> backend/.env"
+            sh "echo NODE_ENV=production >> backend/.env"
+            sh "echo GITHUB_DEFAULT_AUTH_TOKEN=37780cb5a0cd8bbedda4c9537ebf348a6e402baf >> backend/.env"
+            sh "echo DEFAULT_TIMEOUT=2147483643 >> backend/.env"
+            
+            sh "echo DB_HOST=mongodb://169.45.50.135:${teamMember.database} >> backend/.env"
+            sh "echo DB_NAME=recruitinc >> backend/.env"
+
+            
+
+
+            //Copy from builder image container to jenkins container
             sh "docker cp $builderImgName:/$backendFolder/server backend"
+            
             sh "docker cp backend/. $backendImg:/$builderRoot"
 
-            shellInImageDetached("$backendImg", "cd $builderRoot; ./server")
+            //shellInImageDetached("$backendImg", "cd $builderRoot; ./server")
+            shellInImageDetached("$backendImg", "cd $builderRoot; sh")
 
             slackSend(botUser: true, color: '#08ff00', message: "${teamMember.slack}\nBuild deployed: ${env.JOB_NAME} [${env.BUILD_NUMBER}]\nEnv: ${teamMember.name}\nFront end: ${serverIP}:${teamMember.front}\nBack end: ${serverIP}:${teamMember.back}\nDatabase: ${serverIP}:${teamMember.database}\nBuild: ${env.BUILD_URL}")
         }
@@ -195,12 +232,12 @@ node {
             shellInImage("$builderImgName", "cd $frontendFolder; ls | grep -v node_modules | xargs rm -rf")
 
             echo "COMMITING CHANGES TO IMAGE"
-            dockerLogin("abadanpm", "PASSWORD")
+            dockerLogin("abadanpm",  "$dockerPassword")
             commitAndPushContainer(builderImgName, "abadanpm/npm", "latest")
             sh "docker stop $builderImgName"
-            /*dockerLogin("abadabackendnode", "PASSWORD")
+            /*dockerLogin("abadabackendnode",  "$dockerPassword")
             commitAndPushContainer(builderImgName, "abadabackendnode/backend", "$shortHash")
-            dockerLogin("abadafrontend", "PASSWORD")
+            dockerLogin("abadafrontend",  "$dockerPassword")
             commitAndPushContainer(builderImgName, "abadafrontend/frontend", "$shortHash")*/
         }
     }
@@ -212,7 +249,7 @@ node {
 
         echo "CLEANING UP THE FOLDER EXCEPTED THE DEPENDENCIES"
         shellInImage("$builderImgName", "cd $backendFolder; ls | grep -v node_modules | xargs rm -rf")
-        shellInImage("$builderImgName", "cd $frontendFolder; ls | grep -v node_modules | xargs rm -rf")
+        shellInImage("$builderImgName", "cd $frontendFolder; ls | echo grep -v node_modules | xargs rm -rf")
         echo "$exception"
         throw exception
     }
