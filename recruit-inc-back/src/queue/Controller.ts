@@ -46,18 +46,18 @@ export class Controller {
     while (canStillScan) {
       canStillScan = this.executeRepo();
 
-      //if (canStillScan) {
-      //  canStillScan = this.executeTree();
-      //}
-      //if (canStillScan) {
-      //  canStillScan = this.executeCommit();
-      //}
-      //if (canStillScan) {
-      //  canStillScan = this.executeFilesAffected();
-      //}
-      //if (canStillScan) {
-      //  canStillScan = this.executeDownload();
-      //}
+      if (canStillScan) {
+       canStillScan = this.executeTree();
+      }
+      if (canStillScan) {
+       canStillScan = this.executeCommit();
+      }
+      if (canStillScan) {
+       canStillScan = this.executeFilesAffected();
+      }
+      if (canStillScan) {
+       canStillScan = this.executeDownload();
+      }
 
       if (canStillScan) {
         //console.log("users at this point: ", users);
