@@ -3,6 +3,8 @@ node {
    def productionPortBE = 10001
    def productionPortFE = 80
    def jenkinsProjectFolder = "RecruitInc"
+   def dockerPassword = "abada490"
+   def dockerUsername = "abadanpm"
 
    def teamMap = [:]
    teamMap['release'] = [name: "production", slack: "<@chaîne>", front: "80", back: "10001", database: "10002"]
@@ -23,7 +25,8 @@ node {
    //TODO: Build Back-end
    // Navigate to recruit-inc-back and 
    // write a back-end .env
-   // Build a docker image : docker build -t winterhart/node-app . (will use the Dockerfile)
+   // Build a docker image : docker build -t winterhart/node-app . 
+   // (will use the Dockerfile)
    // Start the docker image : docker run -p 6969:6969 winterhart/node-app
 
 
@@ -43,8 +46,9 @@ node {
    sh "ls"
    sh "cat .env"
 
-   // Build a docker image : docker build -t winterhart/node-app-front
-   // Start the docker iamge: docker run -p 3000:3000 winterhart/node-app
+   // Build a docker image : docker build -t winterhart/node-app-front .
+
+   // Start the docker iamge: docker run -p 3000:3000 winterhart/node-app-front
 
    //That's it !!!
 
