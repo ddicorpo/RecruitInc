@@ -56,8 +56,8 @@ export class RepositoryClient implements IGithubClient {
       let pros = this.prospect;
       pros.repoName = repo;
       pros.repoOwner = owner;
-      treeQueue.enqueue(this._prospect);
-      commitQueue.enqueue(this._prospect);
+      treeQueue.enqueue(pros);
+      commitQueue.enqueue(pros);
   }
 
 
