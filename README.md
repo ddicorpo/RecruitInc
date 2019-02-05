@@ -19,6 +19,34 @@
 - Give a name to the configuration and save.
 - You should be able to debug from normal runtime (not from a test)
 
+## How to start the project?
+
+### Write `.env` file
+
+You need to write one `.env` in the recruit-inc-back
+It needs to have the same variable as `recruit-inc-back/.env.example`
+
+
+You need to write one `.env` in the recruit-inc-front
+It needs to have the same variables as `recruit-inc-front/.env.example`
+
+
+### Launch Containers
+
+Back-End Docker Commands:
+- docker login [...]
+- cd recruit-inc-back
+- docker build -t $USER/node-app .
+- docker run -p 6969:6969 winterhart/node-app .
+
+Front-End Docker Commands:
+- docker login [...]
+- cd recruit-inc-front
+- docker build -t $USER/node-app-front .
+- docker run -p 3000:3000 winterhart/node-app-front .
+
+
+
 
 ## API Endpoints
 
