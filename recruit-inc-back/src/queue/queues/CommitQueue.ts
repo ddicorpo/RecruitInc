@@ -5,6 +5,7 @@ import { mongoose } from 'mongoose';
 import { CommitQueueTDG } from "../../data-source/table-data-gateway/commitQueueTDG";
 import { CommitQueueModel } from "../../domain/model/CommitQueueModel";
 import { CommitQueueFinder } from "../../data-source/finder/CommitQueueFinder";
+import { Types } from 'mongoose';
 
 export class CommitQueue extends AbstractQueue {
   private queue: CommitClient[];
@@ -42,9 +43,9 @@ export class CommitQueue extends AbstractQueue {
     return this.queue.length;
   }
 
-  public processNextQuery(): any {
+  public async processNextQuery() {
     try {
-      this.queue[0].executeQuery();
+      await this.queue[0].executeQuery();
       //remove the first object from the queue
       this.dequeue();
     }
@@ -54,21 +55,24 @@ export class CommitQueue extends AbstractQueue {
 
   public async saveToDatabase() {
 
-    let queueID = "commitQueueID";
+    let queueID = Types.ObjectId();
 
     //create tdg
     let commitQueueTDG: CommitQueueTDG = new CommitQueueTDG();
+    let commitFinder: CommitQueueFinder = new CommitQueueFinder();
+    let oldCommitQueueModel: CommitQueueModel[] = await commitFinder.findAll();
 
+    if (oldCommitQueueModel.length === 1){
     //delete what was there before
-    let deleteSuccess: boolean = await commitQueueTDG.delete(queueID);
+    let deleteSuccess: boolean = await commitQueueTDG.delete(oldCommitQueueModel[0]._id);
+    }
 
     let newCommitQueueModel: CommitQueueModel = {
-      _id: queueID,
       queue: this.queue,
     };
 
     //store commit Queue in the database
-    await commitQueueTDG.create(newCommitQueueModel, queueID);
+    await commitQueueTDG.create(newCommitQueueModel);
 
   }
   public async loadFromDatabase() {
@@ -77,10 +81,12 @@ export class CommitQueue extends AbstractQueue {
     let commitFinder: CommitQueueFinder = new CommitQueueFinder();
 
     //Find all commit queues (only 1) and load it
-    let newCommitQueueModel: CommitQueueModel = await commitFinder.findAll();
+    let newCommitQueueModel: CommitQueueModel[] = await commitFinder.findAll();
 
+    if (newCommitQueueModel.length === 0)
+        return;
     //load the queue from db to this queue
-    this.queue = newCommitQueueModel.queue;
+    this.queue = newCommitQueueModel[0].queue;
 
 
   }

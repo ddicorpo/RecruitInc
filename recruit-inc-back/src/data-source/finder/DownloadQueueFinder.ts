@@ -18,7 +18,7 @@ export class DownloadQueueFinder {
     /**
      * Getting all download queues
      */
-    public findAll(): Promise<DownloadQueueModel> {
+    public findAll(): Promise<DownloadQueueModel[]> {
         return this.baseFinder.findAll();
     }
 

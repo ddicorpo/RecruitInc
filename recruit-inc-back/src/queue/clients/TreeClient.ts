@@ -28,6 +28,7 @@ export class TreeClient implements IGithubClient {
 
   //Should be for a single repo
   async executeQuery() {
+    console.log("Tree client actually executing stuff");
     let repoStructure: GithubRepoStructure = new GithubRepoStructure();
 
     //Query to retrieve structure of current repo
@@ -91,7 +92,7 @@ export class TreeClient implements IGithubClient {
 
       //Not really necessary in this case
       let options = {
-          arrayFilters: [{"gU.login": login}, {"pI.projectName": projectName}]
+          arrayFilters: [{"gU.login": login}, {"pi.projectName": projectName}]
       } 
 
       await githubUsersTDG.generalUpdate(criteria, update, options);

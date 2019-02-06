@@ -44,19 +44,19 @@ export class Controller {
 
     let canStillScan: boolean = true;
     while (canStillScan) {
-      canStillScan = this.executeRepo();
+      canStillScan = await this.executeRepo();
 
       if (canStillScan) {
-       canStillScan = this.executeTree();
+        canStillScan = await this.executeTree();
       }
       if (canStillScan) {
-       canStillScan = this.executeCommit();
+        canStillScan = await this.executeCommit();
       }
       if (canStillScan) {
-       canStillScan = this.executeFilesAffected();
+        canStillScan = await this.executeFilesAffected();
       }
       if (canStillScan) {
-       canStillScan = this.executeDownload();
+        canStillScan = await this.executeDownload();
       }
 
       if (canStillScan) {
@@ -140,11 +140,14 @@ export class Controller {
     this.storeQueues();
   }
 
-  private executeRepo(): boolean {
+  private async executeRepo(): Promise<boolean> {
+    //  console.log("executing repo -------------------------------------------");
+      console.log("repoQueue size: ", this.repoQueue.size());
+      console.log("repoQueue", this.repoQueue);
     let canStillScan: boolean = true;
     try {
       while (this.repoQueue.size() > 0) {
-        this.repoQueue.processNextQuery();
+        await this.repoQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeRepo', e.toString());
@@ -153,11 +156,14 @@ export class Controller {
     return canStillScan;
   }
 
-  private executeTree(): boolean {
+  private async executeTree(): Promise<boolean> {
+    //  console.log("executing tree -------------------------------------------");
+      console.log("treeQueue size: ", this.treeQueue.size());
+      console.log("treeQueue", this.treeQueue);
     let canStillScan: boolean = true;
     try {
       while (this.treeQueue.size() > 0) {
-        this.treeQueue.processNextQuery();
+        await this.treeQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeTree', e.toString());
@@ -166,11 +172,11 @@ export class Controller {
     return canStillScan;
   }
 
-  private executeCommit(): boolean {
+  private async executeCommit(): Promise<boolean> {
     let canStillScan: boolean = true;
     try {
       while (this.commitQueue.size() > 0) {
-        this.commitQueue.processNextQuery();
+        await this.commitQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeCommit', e.toString());
@@ -179,11 +185,11 @@ export class Controller {
     return canStillScan;
   }
 
-  private executeFilesAffected(): boolean {
+  private async executeFilesAffected(): Promise<boolean> {
     let canStillScan: boolean = true;
     try {
       while (this.filesAffectedByQueue.size() > 0) {
-        this.filesAffectedByQueue.processNextQuery();
+        await this.filesAffectedByQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeExecuteFilesAffected', e.toString());
@@ -192,11 +198,11 @@ export class Controller {
     return canStillScan;
   }
 
-  private executeDownload(): boolean {
+  private async executeDownload(): Promise<boolean> {
     let canStillScan: boolean = true;
     try {
       while (this.downloadQueue.size() > 0) {
-        this.downloadQueue.processNextQuery();
+        await this.downloadQueue.processNextQuery();
       }
     } catch (e) {
       this.handleError('executeDownload', e.toString());

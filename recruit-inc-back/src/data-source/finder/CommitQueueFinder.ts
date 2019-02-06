@@ -18,7 +18,7 @@ export class CommitQueueFinder {
     /**
      * Getting all commit queues
      */
-    public findAll(): Promise<CommitQueueModel> {
+    public findAll(): Promise<CommitQueueModel[]> {
         return this.baseFinder.findAll();
     }
 

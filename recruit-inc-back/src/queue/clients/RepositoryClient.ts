@@ -47,7 +47,7 @@ export class RepositoryClient implements IGithubClient {
     //Store all Repos for the user in db -> in RepositoryClient or GihubUsers?
     //GithubUsers to have centralized data
     await this.updateUser(this._prospect.user.login, allRepos);
-
+    //await treeQueue.saveToDatabase();
   }
 
   public passAlongInfo(repo: string, owner:string){

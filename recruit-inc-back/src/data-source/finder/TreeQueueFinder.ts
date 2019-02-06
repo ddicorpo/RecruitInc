@@ -18,7 +18,7 @@ export class TreeQueueFinder {
     /**
      * Getting all tree queues
      */
-    public findAll(): Promise<TreeQueueModel> {
+    public findAll(): Promise<TreeQueueModel[]> {
         return this.baseFinder.findAll();
     }
 
