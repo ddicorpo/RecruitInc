@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { GithubToken } from '../../data-extraction/github/GithubToken';
-import { BitbucketToken } from '../../data-extraction/bitbucket/BitbucketToken';
 import * as fs from 'fs';
 import { Logger } from '../../Logger';
 
@@ -36,24 +35,6 @@ export class OAuthCode {
             token = JSON.parse(token).access_token;
             returnResponse =
               'Access Token received from Github using code: ' +
-              code +
-              ' -> token: ' +
-              token;
-            break;
-          }
-          case 'gitlab': {
-            //when gitlab is being used the code is the token right now
-            //token = await new GitlabToken().getToken(code);
-            token = code;
-            returnResponse =
-              'Access Token received from Gitlab: -> token: ' + token;
-            break;
-          }
-          case 'bitbucket': {
-            token = await new BitbucketToken().getToken(code);
-            token = JSON.parse(token).access_token;
-            returnResponse =
-              'Access Token received from BitBucket using code: ' +
               code +
               ' -> token: ' +
               token;
