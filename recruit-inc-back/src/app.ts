@@ -47,7 +47,7 @@ class App {
         corsOptions = { origin: false }; // disable CORS for this request
       } else {
         //this.logAction('constructor', 'CORS disabled for unknown');
-        corsOptions = { origin: callback(new Error("Can't process request")) };
+        corsOptions = { origin: true };
       }
       callback(null, corsOptions); // callback expects two parameters: error and options
     };
