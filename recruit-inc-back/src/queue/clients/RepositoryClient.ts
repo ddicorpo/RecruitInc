@@ -28,19 +28,24 @@ export class RepositoryClient implements IGithubClient {
     let allRepos: IGithubProjectInput[] = await githubUserRepos.getRepos(this.prospect.user);
 
     // pull the instances of treeQueue and CommitQueue to be populated later
-    //let treeQueue = TreeQueue.get_instance();
-    //let commitQueue = CommitQueue.get_instance();
+    let treeQueue = TreeQueue.get_instance();
+    let commitQueue = CommitQueue.get_instance();
 
     for (let repo of allRepos) {
-        this.passAlongInfo(repo.projectName, repo.owner);
-      //this._prospect.repoName = repo.projectName;
-      //this._prospect.repoOwner = repo.owner;
-      //Replace first position of projectInputs with current repo in order to simplify functionality withing treeQueue
-      //this._prospect.user.dataEntry.projectInputs[0] = repo;
+
+      let newProspect : RequiredClientInformation = new RequiredClientInformation(
+          this._prospect.user,
+          repo.projectName,
+          repo.owner,
+          '',
+          '',
+          '',
+          repo.url
+      );
 
      //enqueue takes the requiredInfo package "prospect" and passes it to the appropriate queue
-      //treeQueue.enqueue(this._prospect);
-      //commitQueue.enqueue(this._prospect);
+      treeQueue.enqueue(newProspect);
+      commitQueue.enqueue(newProspect);
     }
 
     //TODO: Store this information in db,
@@ -49,17 +54,6 @@ export class RepositoryClient implements IGithubClient {
     await this.updateUser(this._prospect.user.login, allRepos);
     //await treeQueue.saveToDatabase();
   }
-
-  public passAlongInfo(repo: string, owner:string){
-      let treeQueue = TreeQueue.get_instance();
-      let commitQueue = CommitQueue.get_instance();
-      let pros = this.prospect;
-      pros.repoName = repo;
-      pros.repoOwner = owner;
-      treeQueue.enqueue(pros);
-      commitQueue.enqueue(pros);
-  }
-
 
   public async updateUser(login: string, projectInputs: IGithubProjectInput[] ){
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();

@@ -10,11 +10,13 @@ import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsers
 export class TreeClient implements IGithubClient {
   private _owner: string;
   private _repository: string;
+  private _projectUrl: string;
   private _prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
     this._owner = prospect.repoOwner;
     this._repository = prospect.repoName;
+    this._projectUrl = prospect.projectUrl;
     this._prospect = prospect;
   }
 
@@ -28,7 +30,6 @@ export class TreeClient implements IGithubClient {
 
   //Should be for a single repo
   async executeQuery() {
-    console.log("Tree client actually executing stuff");
     let repoStructure: GithubRepoStructure = new GithubRepoStructure();
 
     //Query to retrieve structure of current repo
@@ -75,7 +76,7 @@ export class TreeClient implements IGithubClient {
   }
 
 
-  public async updateUser(login: string, struct: IProjectStructure[], projectName: string ){
+  public async updateUser(login: string, struct: IProjectStructure[], projectUrl: string ){
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
       let criteria: any = {
           "githubUsers.login": login,
@@ -92,7 +93,7 @@ export class TreeClient implements IGithubClient {
 
       //Not really necessary in this case
       let options = {
-          arrayFilters: [{"gU.login": login}, {"pi.projectName": projectName}]
+          arrayFilters: [{"gU.login": login}, {"pi.url": projectUrl}]
       } 
 
       await githubUsersTDG.generalUpdate(criteria, update, options);

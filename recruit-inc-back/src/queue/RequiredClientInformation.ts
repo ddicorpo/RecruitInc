@@ -3,6 +3,7 @@ import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser'
 export class RequiredClientInformation {
   private _user: IGithubUser;
   private _repoName: string;
+  private _projectUrl: string;
   private _repoOwner: string;
   private _repoToken: string;
   private _filePath: string;
@@ -15,7 +16,8 @@ export class RequiredClientInformation {
     repoOwner: string,
     filePath: string,
     commitId: string,
-    location: string
+    location: string,
+    projectUrl: string
   ) {
     this._user = user;
     this._repoName = repoName;
@@ -24,6 +26,7 @@ export class RequiredClientInformation {
     this._commitId = commitId;
     this._repoToken = process.env.GITHUB_DEFAULT_AUTH_TOKEN;
     this._location = location;
+    this._projectUrl = projectUrl;
   }
 
   get user(): IGithubUser {
@@ -80,5 +83,13 @@ export class RequiredClientInformation {
 
   set location(value: string) {
     this._location = value;
+  }
+
+  get projectUrl(): string {
+    return this._projectUrl;
+  }
+
+  set projectUrl(value: string) {
+    this._projectUrl = value;
   }
 }

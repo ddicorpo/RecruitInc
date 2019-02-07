@@ -9,12 +9,14 @@ export class CommitClient implements IGithubClient {
   private _owner: string;
   private _repository: string;
   private _userId: string;
+  private _projectUrl: string;
   private _prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
     this._owner = prospect.repoOwner;
     this._repository = prospect.repoName;
     this._userId = prospect.user.id;
+    this._projectUrl = prospect.projectUrl;
     this._prospect = prospect;
   }
 
@@ -37,10 +39,10 @@ export class CommitClient implements IGithubClient {
     }
 
     //TODO: Save to database
-    await this.updateUser(this.prospect.user.login, this._repository, allCommits);
+    await this.updateUser(this.prospect.user.login, this._projectUrl, allCommits);
   }
 
-  public async updateUser(login: string, projectName: string, allCommits: ICommit[] ){
+  public async updateUser(login: string, projectUrl: string, allCommits: ICommit[] ){
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
       let criteria: any = {
           "githubUsers.login": login,
@@ -51,10 +53,10 @@ export class CommitClient implements IGithubClient {
           }
       }
       let update: any = {
-          $set: {"githubUsers.$[gU].dataEntry.projectInputs.$[pI].applicantCommits": allCommits }
+          $set: {"githubUsers.$[gU].dataEntry.projectInputs.$[pi].applicantCommits": allCommits }
       }
       let options = {                         //Might cause issues if user contributes to several project with same name
-          arrayFilters: [{"gU.login": login}, {"pI.projectName": projectName}]
+          arrayFilters: [{"gU.login": login}, {"pi.url": projectUrl}]
       }
 
       await githubUsersTDG.generalUpdate(criteria, update, options);
