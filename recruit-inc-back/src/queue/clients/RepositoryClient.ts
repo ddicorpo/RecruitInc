@@ -43,7 +43,6 @@ export class RepositoryClient implements IGithubClient {
           repo.url
       );
 
-     //enqueue takes the requiredInfo package "prospect" and passes it to the appropriate queue
       treeQueue.enqueue(newProspect);
       commitQueue.enqueue(newProspect);
     }

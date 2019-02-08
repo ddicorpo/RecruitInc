@@ -7,6 +7,8 @@ import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUs
 import { GithubDataExtraction } from '../../data-extraction/github/githubDataExtraction';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
+import { GithubUsersFinder } from '../../data-source/finder/GithubUsersFinder';
+import { IGithubUsersModel } from '../../domain/model/IGithubUsersModel';
 import { IGithubProjectInput } from '../../matching-algo/data-model/input-model/IGithubProjectInput';
 import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 import { CronFinder } from '../../data-source/finder/CronFinder';
@@ -30,8 +32,10 @@ export class Candidate {
         let location: string = request.params.location;
         let cronjob: CronJobs = new CronJobs();
         let finished: boolean = await cronjob.scheduleCron(location);
+        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+        let result: IGithubUsersModel = await githubUsersFinder.findByLocation(location);
 
-        response.status(200).send(finished);
+        response.status(200).send(result);
 
       });
 

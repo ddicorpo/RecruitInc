@@ -38,11 +38,13 @@ export class Controller {
 
     let users: IGithubUser[] = await this.fetchUsersFromDatabase();
 
+    if (users.length !== 0){
     if (this.areQueuesEmpty()) {
       this.enqueueUser(users.pop());
     }
+    }
 
-    let canStillScan: boolean = true;
+    let canStillScan: boolean = users.length !== 0;
     while (canStillScan) {
       canStillScan = await this.executeRepo();
 
@@ -158,9 +160,6 @@ export class Controller {
   }
 
   private async executeTree(): Promise<boolean> {
-    //  console.log("executing tree -------------------------------------------");
-      console.log("treeQueue size: ", this.treeQueue.size());
-      console.log("treeQueue", this.treeQueue);
     let canStillScan: boolean = true;
     try {
       while (this.treeQueue.size() > 0) {

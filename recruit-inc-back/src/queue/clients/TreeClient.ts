@@ -72,7 +72,7 @@ export class TreeClient implements IGithubClient {
 
     //Save STRUCT TO DB HERE
     //Save userinfo in the database
-    await this.updateUser(this.prospect.user.login, struct, this._repository);
+    await this.updateUser(this.prospect.user.login, struct, this._projectUrl);
   }
 
 

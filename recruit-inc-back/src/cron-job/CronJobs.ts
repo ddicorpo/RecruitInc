@@ -21,17 +21,22 @@ export class CronJobs {
     private controller: Controller = Controller.get_instance();
 
     public async scheduleCron(location: string): Promise<boolean> {
+        let cron: ICronModel = await this.cronFinder.findByLocation(location);
+        if (cron){
+            await this.scan();
+            return true; //Cronjob already exists for location
+        }
 
         let total_number: number = await this.githubUserInfo.getUserCountForLocation(location);
 
-         let cron : ICronModel = {
+         cron = {
             location: location.toLowerCase(),
             number_scanned: 0,
             total_number: total_number,
             cron_pattern: '',
             status: Status.locationscan
         };
-
+         
          cron = await this.cronTDG.create(cron);
          await this.preliminaryScan(location);
          //Update status to scanning
@@ -53,14 +58,7 @@ export class CronJobs {
     } 
 
     async scan(){
-        //let githubUsersModel : IGithubUsersModel = await this.githubUsersFinder.findByLocation(location);
-        //let githubUsers : IGithubUser[] = githubUsersModel.githubUsers; 
-        //for (let user of githubUsers){
-        //
-        //}
-        //Call queue controller
         await this.controller.execute();
-        
     }
 
     async stopScan(location: string){

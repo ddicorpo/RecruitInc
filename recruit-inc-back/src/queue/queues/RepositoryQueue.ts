@@ -51,7 +51,6 @@ export class RepositoryQueue extends AbstractQueue {
       this.dequeue();
     }
       catch(e) {
-          //console.log("processNextQuery error: ", e);
     }
   }
 
