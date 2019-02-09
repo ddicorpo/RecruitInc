@@ -122,7 +122,6 @@ export class Controller {
       //console.log("pipeline: ",pipeline);
           //For each location found find unscanned users (with no dataEntry)
           let unscannedUsers: any = await githubUsersTDG.findUnscannedUsers(pipeline);
-          //console.log("unscannedUsers: ", unscannedUsers[0].githubUsers);
           githubUsers = githubUsers.concat(unscannedUsers[0].githubUsers);
       }
       //console.log("users",githubUsers);

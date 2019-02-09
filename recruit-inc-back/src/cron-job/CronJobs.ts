@@ -43,6 +43,9 @@ export class CronJobs {
          cron.status = Status.scanning;
          await this.cronTDG.update(cron._id, cron);
          await this.scan();
+         //Update status to scanned
+         cron.status = Status.complete;
+         await this.cronTDG.update(cron._id, cron);
          return true;
     }
 
@@ -54,7 +57,7 @@ export class CronJobs {
             githubUsers : githubUsers,
             location: location.toLowerCase()
         }
-        this.githubUsersTDG.create(githubUsersModel);
+        await this.githubUsersTDG.create(githubUsersModel);
     } 
 
     async scan(){
