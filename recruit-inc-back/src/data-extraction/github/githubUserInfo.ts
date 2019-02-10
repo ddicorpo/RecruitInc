@@ -70,6 +70,7 @@ export class GithubUserInfo {
                      url
                      websiteUrl
                      createdAt
+                     id
                    }
                  }
                }
@@ -103,6 +104,7 @@ export class GithubUserInfo {
                      url
                      websiteUrl
                      createdAt
+                     id
                    }
                  }
                }
@@ -136,6 +138,7 @@ export class GithubUserInfo {
                      url
                      websiteUrl
                      createdAt
+                     id
                    }
                  }
                }
