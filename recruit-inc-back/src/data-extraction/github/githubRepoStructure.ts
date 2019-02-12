@@ -10,6 +10,7 @@ const path = require('path');
 
 export class GithubRepoStructure {
   private readonly accessToken: string;
+  private throwError: boolean;
 
   public constructor(
     accessToken: string = process.env.GITHUB_DEFAULT_AUTH_TOKEN
@@ -104,6 +105,7 @@ export class GithubRepoStructure {
         params: {},
         value: error.toString(),
       });
+      throw error;
       return [];
     }
 

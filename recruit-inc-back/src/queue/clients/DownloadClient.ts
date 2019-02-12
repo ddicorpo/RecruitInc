@@ -22,12 +22,18 @@ export class DownloadClient implements IGithubClient {
   async executeQuery() {
     let downloads: GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
 
-    let downlaodedFile: ISourceFiles = await downloads.downloadSingleFile(
+    let downlaodedFile: ISourceFiles;
+
+    try{
+    downlaodedFile = await downloads.downloadSingleFile(
       this._owner,
       this._repository,
       this._path,
       this._login
     );
+    } catch(error){
+        throw error;
+    }
 
     //TODO: Save to database
     await this.updateUser(this._login, this._repository, downlaodedFile)

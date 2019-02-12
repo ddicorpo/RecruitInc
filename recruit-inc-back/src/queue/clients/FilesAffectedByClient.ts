@@ -20,12 +20,19 @@ export class FilesAffectedByClient implements IGithubClient {
 
   async executeQuery() {
     let affected: GithubUserCommits = new GithubUserCommits();
+    let allAffectedFiles: ISingleFileCommit[] = [];
 
-    let allAffectedFiles: ISingleFileCommit[] = await affected.getFilesAffectedByCommit(
+    try{
+    allAffectedFiles = await affected.getFilesAffectedByCommit(
       this._owner,
       this._repository,
       this._commitId
+      //'absolutetrash'
     );
+    } catch(error){
+        throw error;
+    }
+
 
     //TODO: Save to database
     await this.updateUser(this._login, this._repository, allAffectedFiles, this._commitId);

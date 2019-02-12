@@ -25,7 +25,7 @@ export class GithubUserCommits {
     owner: string,
     repo: string,
     sha: string
-  ): Promise<ISingleFileCommit[]> {
+  ): Promise<ISingleFileCommit[]>{
     let result: {
       filePath: string;
       lineAdded: number;
@@ -55,6 +55,7 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
+      throw error;
       return result;
     }
 
@@ -215,6 +216,7 @@ export class GithubUserCommits {
     }
     return user;
   }
+
   async getCommits(
     repository: string,
     owner: string,
@@ -241,6 +243,7 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
+      throw error;
       return [];
     }
 
@@ -260,7 +263,18 @@ export class GithubUserCommits {
         userID,
         endCursor
       );
+
+      try{
       jsonData = JSON.parse(nextData);
+      if (!jsonData.data.repository.ref)
+        throw new TypeError(
+          `Rate limit abuse (probably) while gathering commits`
+        );
+      }catch(error){
+          throw error;
+          return result;
+      }
+
       edges = jsonData.data.repository.ref.target.history.edges;
       pageInfo = jsonData.data.repository.ref.target.history.pageInfo;
       endCursor = JSON.stringify(pageInfo.endCursor);

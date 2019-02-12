@@ -53,6 +53,7 @@ export class GithubDownloadedFilesPath {
         params: {},
         value: error.toString(),
       });
+      throw error;
       return data;
     }
     let content = Buffer.from(jsonData.content, 'base64').toString();
@@ -141,11 +142,16 @@ export class GithubDownloadedFilesPath {
             name: string;
             path: string;
             content: string;
-          } = await this.downloadFile(
+          };
+          try{
+          sourceFile = await this.downloadFile(
             owner,
             repoName,
             path
           );
+          }catch(error){
+              throw error;
+          }
           this.writeToFile(sourceFile.content, generatedPath);
           return {filename: sourceFile.name, repoFilePath: sourceFile.path, localFilePath: generatedPath};
   }

@@ -22,12 +22,17 @@ export class CommitClient implements IGithubClient {
 
   async executeQuery() {
     let commits: GithubUserCommits = new GithubUserCommits();
+    let allCommits: ICommit[] = [];
 
-    let allCommits: ICommit[] = await commits.getCommits(
+    try{
+    allCommits = await commits.getCommits(
       this._repository,
       this._owner,
       this._userId
     );
+    } catch (error){
+        throw error;
+    }
     //pull the filesAffectedByQueue instance, so that we can populate its queue in this method
     let filesAffected = FilesAffectedByQueue.get_instance();
 

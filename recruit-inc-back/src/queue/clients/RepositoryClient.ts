@@ -22,10 +22,15 @@ export class RepositoryClient implements IGithubClient {
     let githubUserRepos: GithubUserRepos = new GithubUserRepos(
       this.accessToken
     );
+    let allRepos: IGithubProjectInput[] = [];
 
     //modifies the user, which means duplicate data stored in db
     //Need a method that simply returns repos
-    let allRepos: IGithubProjectInput[] = await githubUserRepos.getRepos(this.prospect.user);
+    try{
+    allRepos = await githubUserRepos.getRepos(this.prospect.user);
+    }catch(error){
+        throw error;
+    }
 
     // pull the instances of treeQueue and CommitQueue to be populated later
     let treeQueue = TreeQueue.get_instance();

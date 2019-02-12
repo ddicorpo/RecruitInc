@@ -38,13 +38,16 @@ export class Controller {
 
     let users: IGithubUser[] = await this.fetchUsersFromDatabase();
 
+    console.log("users: ", users);
+    let canStillScan: boolean = users.length !== 0;
     if (users.length !== 0){
     if (this.areQueuesEmpty()) {
       this.enqueueUser(users.pop());
     }
     }
 
-    let canStillScan: boolean = users.length !== 0;
+    console.log("users length: ", users.length);
+    console.log("canStillScan: ", canStillScan);
     while (canStillScan) {
       canStillScan = await this.executeRepo();
 
@@ -143,9 +146,6 @@ export class Controller {
   }
 
   private async executeRepo(): Promise<boolean> {
-    //  console.log("executing repo -------------------------------------------");
-      console.log("repoQueue size: ", this.repoQueue.size());
-      console.log("repoQueue", this.repoQueue);
     let canStillScan: boolean = true;
     try {
       while (this.repoQueue.size() > 0) {

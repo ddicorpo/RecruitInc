@@ -31,13 +31,18 @@ export class TreeClient implements IGithubClient {
   //Should be for a single repo
   async executeQuery() {
     let repoStructure: GithubRepoStructure = new GithubRepoStructure();
+    let struct : IProjectStructure[] = [];
 
     //Query to retrieve structure of current repo
     //Project structure for a single project at a time or for all projects? cuz that's what this next method does
-    let struct : IProjectStructure[] = await repoStructure.getRepoStructure(
+     try{
+     struct = await repoStructure.getRepoStructure(
       this._owner,
       this._repository
     );
+     }catch(error){
+         throw error;
+     }
 
     //let projectInputs = struct.dataEntry.projectInputs;
 

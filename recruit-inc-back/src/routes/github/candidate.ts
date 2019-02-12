@@ -27,6 +27,16 @@ export class Candidate {
       let users : IGithubUser[];
 
     app
+      .route('/getUsersDB/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+        let result: IGithubUsersModel = await githubUsersFinder.findByLocation(location);
+        response.status(200).send(result);
+
+      });
+
+    app
       .route('/testqueue/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;

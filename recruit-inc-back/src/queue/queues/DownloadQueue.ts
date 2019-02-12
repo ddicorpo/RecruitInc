@@ -48,7 +48,8 @@ export class DownloadQueue extends AbstractQueue {
       //remove the first object from the queue
       this.dequeue();
     }
-    catch(e) {
+    catch(error) {
+        throw error;
     }  }
 
   public async saveToDatabase() {

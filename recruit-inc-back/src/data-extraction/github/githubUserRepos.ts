@@ -164,6 +164,7 @@ export class GithubUserRepos {
         params: {},
         value: error.toString(),
       });
+      throw error;
       return projectInputs;
     }
     let pageInfo = jsonData.data.user.repositories.pageInfo;
@@ -217,6 +218,7 @@ export class GithubUserRepos {
           params: {},
           value: error.toString(),
         });
+        throw error;
         return projectInputs;
       }
     }
