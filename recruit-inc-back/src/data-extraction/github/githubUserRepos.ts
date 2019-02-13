@@ -164,7 +164,9 @@ export class GithubUserRepos {
         params: {},
         value: error.toString(),
       });
-      throw error;
+      if (error.toString().includes("abuse detection mechanism")){ 
+        throw error;
+      }
       return projectInputs;
     }
     let pageInfo = jsonData.data.user.repositories.pageInfo;
@@ -218,7 +220,9 @@ export class GithubUserRepos {
           params: {},
           value: error.toString(),
         });
+      if (error.toString().includes("abuse detection mechanism")){ 
         throw error;
+      }
         return projectInputs;
       }
     }

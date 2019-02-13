@@ -45,6 +45,9 @@ export class GithubApiV3 {
           params: {},
           value: error,
         });
+      if (error.toString().includes("rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
+        throw error;
+      }
         return error;
       });
   }
@@ -90,6 +93,9 @@ export class GithubApiV3 {
           params: {},
           value: error,
         });
+      if (error.toString().includes("rate-limiting")){ 
+        throw error;
+      }
         return error;
       });
   }
@@ -135,6 +141,9 @@ export class GithubApiV3 {
           params: {},
           value: error,
         });
+      if (error.toString().includes("rate-limiting")){ 
+        throw error;
+      }
         return error;
       });
   }

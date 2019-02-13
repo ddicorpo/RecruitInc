@@ -135,6 +135,7 @@ export class Controller {
   }
 
   private handleError(method: string, error: string) {
+      //verify that this is a ratelimit error
     this.logger.info({
       class: 'Controller.ts',
       method,

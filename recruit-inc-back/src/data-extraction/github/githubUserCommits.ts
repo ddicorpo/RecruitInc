@@ -55,7 +55,8 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
-      throw error;
+      if (error.toString().includes("rate-limiting")) //Only throw error to calling function if it is due to rate-limit abuse
+        throw error;
       return result;
     }
 
@@ -227,8 +228,8 @@ export class GithubUserCommits {
     let result: any[] = [];
     let data: string;
     let jsonData: any = {};
-    data = await this.GetCommitsSpecificToUser(repository, owner, userID);
     try {
+    data = await this.GetCommitsSpecificToUser(repository, owner, userID);
       jsonData = JSON.parse(data);
       if (!jsonData.data.repository.ref)
         throw new TypeError(
@@ -243,7 +244,9 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
-      throw error;
+      if (error.toString().includes("abuse detection mechanism")){ //Only throw error to calling function if it is due to rate-limit abuse
+        throw error;
+      }
       return [];
     }
 
@@ -257,21 +260,24 @@ export class GithubUserCommits {
     }
 
     while (hasNextPage) {
-      let nextData: string = await this.GetCommitsSpecificToUserNext(
+      let nextData: string;
+
+      try{
+      nextData = await this.GetCommitsSpecificToUserNext(
         repository,
         owner,
         userID,
         endCursor
       );
-
-      try{
       jsonData = JSON.parse(nextData);
       if (!jsonData.data.repository.ref)
         throw new TypeError(
           `Rate limit abuse (probably) while gathering commits`
         );
       }catch(error){
-          throw error;
+      if (error.toString().includes("abuse detection mechanism")){ //Only throw error to calling function if it is due to rate-limit abuse
+        throw error;
+      }
           return result;
       }
 

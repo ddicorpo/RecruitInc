@@ -53,7 +53,9 @@ export class GithubDownloadedFilesPath {
         params: {},
         value: error.toString(),
       });
-      throw error;
+      if (error.toString().includes("rate-limiting")){ 
+        throw error;
+      }
       return data;
     }
     let content = Buffer.from(jsonData.content, 'base64').toString();

@@ -51,9 +51,13 @@ export class GithubRepoStructure {
         params: {},
         value: error.toString(),
       });
+      if (error.toString().includes("abuse detection mechanism")){ 
+        throw error;
+      }
       return null;
     }
 
+      console.log("returning jsonData.data.repository.object.oid");
     return jsonData.data.repository.object.oid;
   }
 
@@ -84,6 +88,9 @@ export class GithubRepoStructure {
 
     //could also be passed in parameters if we wanted to make it a single query method
     let treeSha: string = await this.getTreeSha(owner, repoName);
+    if (!treeSha || treeSha === "null"){
+        return [];
+    }
 
     try {
       data = await new GithubApiV3().getGitTree(
@@ -105,7 +112,9 @@ export class GithubRepoStructure {
         params: {},
         value: error.toString(),
       });
-      throw error;
+      if (error.toString().includes("rate-limiting")){ 
+        throw error;
+      }
       return [];
     }
 

@@ -39,7 +39,9 @@ export class GithubApiV4 {
           params: {},
           value: error,
         });
-
+      if (error.toString().includes("abuse detection mechanism")){ //Only throw error to calling function if it is due to rate-limit abuse
+        throw error;
+      }
         console.error(error);
         return error;
       });
