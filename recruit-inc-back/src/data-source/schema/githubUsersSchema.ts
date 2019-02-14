@@ -10,10 +10,12 @@ export class GithubUsersSchema extends Typegoose implements IGithubUsersModel {
   _id?: mongoose.Types.ObjectId;
 
   @prop()
-  githubUsers: IGithubUser[];
+  githubUser: IGithubUser;
 
-  @prop({ unique: true})
-  location: string
+  @prop({ unique: true })
+  location: string;
 }
 
-export const GithubUsersModel: Model<IGithubUsersModel> = ApplicantSchema.getModel(GithubUsersSchema, 'githubUsers');
+export const GithubUsersModel: Model<
+  IGithubUsersModel
+> = ApplicantSchema.getModel(GithubUsersSchema, 'githubUsers');

@@ -5,6 +5,6 @@ import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUs
  */
 export interface IGithubUsersModel {
   _id?: mongoose.Types.ObjectId;
-  githubUsers: IGithubUser[];
+  githubUser: IGithubUser;
   location: string;
 }
