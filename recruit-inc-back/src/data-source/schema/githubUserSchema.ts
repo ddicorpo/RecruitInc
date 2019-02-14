@@ -1,11 +1,11 @@
 import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
-import { IGithubUsersModel } from '../../domain/model/IGithubUsersModel';
+import { IGithubUserModel } from '../../domain/model/IGithubUserModel';
 import { ApplicantSchema } from './applicantSchema';
 import { prop, Typegoose } from 'typegoose';
 import { mongoose } from 'mongoose';
 import { Model, Schema } from 'mongoose';
 
-export class GithubUsersSchema extends Typegoose implements IGithubUsersModel {
+export class GithubUserSchema extends Typegoose implements IGithubUserModel {
   @prop()
   _id?: mongoose.Types.ObjectId;
 
@@ -16,6 +16,6 @@ export class GithubUsersSchema extends Typegoose implements IGithubUsersModel {
   location: string;
 }
 
-export const GithubUsersModel: Model<
-  IGithubUsersModel
-> = ApplicantSchema.getModel(GithubUsersSchema, 'githubUsers');
+export const GithubUserModel: Model<
+  IGithubUserModel
+> = ApplicantSchema.getModel(GithubUserSchema, 'githubUsers');

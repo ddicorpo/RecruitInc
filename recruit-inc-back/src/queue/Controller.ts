@@ -7,7 +7,7 @@ import { DownloadQueue } from './queues/DownloadQueue';
 import { FilesAffectedByQueue } from './queues/FilesAffectedByQueue';
 import { GithubUsersFinder } from '../data-source/finder/GithubUsersFinder';
 import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG';
-import { IGithubUsersModel } from '../domain/model/IGithubUsersModel';
+import { IGithubUserModel } from '../domain/model/IGithubUserModel';
 import { CronFinder } from '../data-source/finder/CronFinder';
 import { ICronModel } from '../domain/model/ICronModel';
 import { Status } from '../domain/model/ICronModel';
@@ -38,16 +38,16 @@ export class Controller {
 
     let users: IGithubUser[] = await this.fetchUsersFromDatabase();
 
-    console.log("users: ", users);
+    console.log('users: ', users);
     let canStillScan: boolean = users.length !== 0;
-    if (users.length !== 0){
-    if (this.areQueuesEmpty()) {
-      this.enqueueUser(users.pop());
-    }
+    if (users.length !== 0) {
+      if (this.areQueuesEmpty()) {
+        this.enqueueUser(users.pop());
+      }
     }
 
-    console.log("users length: ", users.length);
-    console.log("canStillScan: ", canStillScan);
+    console.log('users length: ', users.length);
+    console.log('canStillScan: ', canStillScan);
     while (canStillScan) {
       canStillScan = await this.executeRepo();
 
@@ -66,9 +66,10 @@ export class Controller {
 
       if (canStillScan) {
         //console.log("users at this point: ", users);
-        if (users.length === 0){ //fixing the cannot read login of undefined error because a user is still enqueued even though the users array is empty
-            canStillScan = false;
-            continue;
+        if (users.length === 0) {
+          //fixing the cannot read login of undefined error because a user is still enqueued even though the users array is empty
+          canStillScan = false;
+          continue;
         }
         this.enqueueUser(users.pop());
       }
@@ -76,7 +77,7 @@ export class Controller {
   }
 
   private enqueueUser(user: IGithubUser): void {
-      //console.log("enqueueing user:", user);
+    //console.log("enqueueing user:", user);
     const prospect: RequiredClientInformation = new RequiredClientInformation(
       user,
       '',
@@ -100,42 +101,45 @@ export class Controller {
   }
 
   public async fetchUsersFromDatabase(): Promise<IGithubUser[]> {
-      let githubUsers: IGithubUser[] = [];
-      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let cronFinder: CronFinder = new CronFinder();
-      //Find all crons with "scanning" status
-      let scanning: ICronModel[] = await cronFinder.findByStatus(Status.scanning)
-      //console.log("scanning",scanning);
+    let githubUsers: IGithubUser[] = [];
+    let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+    let cronFinder: CronFinder = new CronFinder();
+    //Find all crons with "scanning" status
+    let scanning: ICronModel[] = await cronFinder.findByStatus(Status.scanning);
+    //console.log("scanning",scanning);
 
-      //For all crons found, get their locations
-      for (let crons of scanning){
+    //For all crons found, get their locations
+    for (let crons of scanning) {
       let pipeline = [
-          {$match: {location: crons.location}},
-          {
-              $project:{
-                  "githubUsers": {
-                      $filter: {
-                      input: "$githubUsers",
-                      as: "githubUser",
-                      cond: {"$eq": [{$type:"$$githubUser.dataEntry"}, "missing"]}
-                  }}
-              }
-          }
-      ]
+        { $match: { location: crons.location } },
+        {
+          $project: {
+            githubUsers: {
+              $filter: {
+                input: '$githubUsers',
+                as: 'githubUser',
+                cond: { $eq: [{ $type: '$$githubUser.dataEntry' }, 'missing'] },
+              },
+            },
+          },
+        },
+      ];
       //console.log("pipeline: ",pipeline);
-          //For each location found find unscanned users (with no dataEntry)
-          let unscannedUsers: any = await githubUsersTDG.findUnscannedUsers(pipeline);
-          githubUsers = githubUsers.concat(unscannedUsers[0].githubUsers);
-      }
-      //console.log("users",githubUsers);
-      return githubUsers;
+      //For each location found find unscanned users (with no dataEntry)
+      let unscannedUsers: any = await githubUsersTDG.findUnscannedUsers(
+        pipeline
+      );
+      githubUsers = githubUsers.concat(unscannedUsers[0].githubUsers);
+    }
+    //console.log("users",githubUsers);
+    return githubUsers;
     // Check whether there are unfinished users to be scanned
     // Get all the locations that are currently in scanning status from db
     // Get all the users from those locations that should be scanned
   }
 
   private handleError(method: string, error: string) {
-      //verify that this is a ratelimit error
+    //verify that this is a ratelimit error
     this.logger.info({
       class: 'Controller.ts',
       method,

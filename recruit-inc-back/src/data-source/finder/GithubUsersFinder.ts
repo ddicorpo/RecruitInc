@@ -1,20 +1,19 @@
-import { IGithubUsersModel } from '../../domain/model/IGithubUsersModel';
-import { GithubUsersModel } from '../schema/githubUsersSchema';
+import { IGithubUserModel } from '../../domain/model/IGithubUserModel';
+import { GithubUserModel } from '../schema/githubUserSchema';
 import { BaseFinder } from './BaseFinder';
 import { Types } from 'mongoose';
 
 export class GithubUsersFinder {
-    private baseFinder: BaseFinder = new BaseFinder(GithubUsersModel);
-  public findById(_id: string): Promise<IGithubUsersModel> {
-      return this.baseFinder.findById(_id);
+  private baseFinder: BaseFinder = new BaseFinder(GithubUserModel);
+  public findById(_id: string): Promise<IGithubUserModel> {
+    return this.baseFinder.findById(_id);
   }
 
-  public findByLocation(location: string): Promise<IGithubUsersModel> {
-      return this.baseFinder.findOneBy({location});
+  public findByLocation(location: string): Promise<IGithubUserModel> {
+    return this.baseFinder.findOneBy({ location });
   }
 
-  public findAll(): Promise<IGithubUsersModel> {
-      return this.baseFinder.findAll();
+  public findAll(): Promise<IGithubUserModel> {
+    return this.baseFinder.findAll();
   }
-
 }

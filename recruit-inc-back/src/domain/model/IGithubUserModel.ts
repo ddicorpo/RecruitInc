@@ -3,7 +3,7 @@ import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUs
 /**
  * Typegoose is including schema and model in one class
  */
-export interface IGithubUsersModel {
+export interface IGithubUserModel {
   _id?: mongoose.Types.ObjectId;
   githubUser: IGithubUser;
   location: string;

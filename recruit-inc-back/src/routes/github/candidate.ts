@@ -8,7 +8,7 @@ import { GithubDataExtraction } from '../../data-extraction/github/githubDataExt
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 import { GithubUsersFinder } from '../../data-source/finder/GithubUsersFinder';
-import { IGithubUsersModel } from '../../domain/model/IGithubUsersModel';
+import { IGithubUserModel } from '../../domain/model/IGithubUserModel';
 import { IGithubProjectInput } from '../../matching-algo/data-model/input-model/IGithubProjectInput';
 import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 import { CronFinder } from '../../data-source/finder/CronFinder';
@@ -17,23 +17,24 @@ import { Status } from '../../domain/model/ICronModel';
 import { Logger } from '../../Logger';
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 import { CronJobs } from '../../cron-job/CronJobs';
-import { Controller } from '../../queue/Controller'
-import { RepositoryQueue } from '../../queue/queues/RepositoryQueue'
+import { Controller } from '../../queue/Controller';
+import { RepositoryQueue } from '../../queue/queues/RepositoryQueue';
 const logger = new Logger();
 const { fork } = require('child_process');
 
 export class Candidate {
   public routes(app): void {
-      let users : IGithubUser[];
+    let users: IGithubUser[];
 
     app
       .route('/getUsersDB/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
         let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-        let result: IGithubUsersModel = await githubUsersFinder.findByLocation(location);
+        let result: IGithubUserModel = await githubUsersFinder.findByLocation(
+          location
+        );
         response.status(200).send(result);
-
       });
 
     app
@@ -43,63 +44,59 @@ export class Candidate {
         let cronjob: CronJobs = new CronJobs();
         let finished: boolean = await cronjob.scheduleCron(location);
         let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-        let result: IGithubUsersModel = await githubUsersFinder.findByLocation(location);
+        let result: IGithubUserModel = await githubUsersFinder.findByLocation(
+          location
+        );
 
         response.status(200).send(result);
-
       });
 
     app
       .route('/fetchUsersFromDatabase')
       .get(async (request: Request, response: Response) => {
-      let controller: Controller = Controller.get_instance();
+        let controller: Controller = Controller.get_instance();
 
-      let result: IGithubUser[] = await controller.fetchUsersFromDatabase();
+        let result: IGithubUser[] = await controller.fetchUsersFromDatabase();
 
         response.status(200).send(result);
-
       });
     app
       .route('/findScanning')
       .get(async (request: Request, response: Response) => {
-      let cronFinder: CronFinder = new CronFinder();
+        let cronFinder: CronFinder = new CronFinder();
 
-      let result: ICronModel[] = await cronFinder.findByStatus(Status.scanning);
+        let result: ICronModel[] = await cronFinder.findByStatus(
+          Status.scanning
+        );
 
         response.status(200).send(result);
-
       });
     app
       .route('/unscannedusers/:location')
       .get(async (request: Request, response: Response) => {
-      let location: string = request.params.location;
-      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let pipeline = 
-          [
-          {$match: {location: location}},
+        let location: string = request.params.location;
+        let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+        let pipeline = [
+          { $match: { location: location } },
           {
-              $project:{
-                  "githubUsers": {
-                      $filter: {
-                      input: "$githubUsers",
-                      as: "githubUser",
-                      //cond: {"$ifNull":["$$githubUser.dataEntry", true]}
-                      cond: {"$eq": [{$type:"$$githubUser.dataEntry"}, "missing"]}
+            $project: {
+              githubUsers: {
+                $filter: {
+                  input: '$githubUsers',
+                  as: 'githubUser',
+                  //cond: {"$ifNull":["$$githubUser.dataEntry", true]}
+                  cond: {
+                    $eq: [{ $type: '$$githubUser.dataEntry' }, 'missing'],
+                  },
+                },
+              },
+            },
+          },
+        ];
 
-                      
-                  }}
-              }
-
-          }
-      ]
-      
-      
-      
-
-      let result: any = await githubUsersTDG.findUnscannedUsers(pipeline);
+        let result: any = await githubUsersTDG.findUnscannedUsers(pipeline);
 
         response.status(200).send(result);
-
       });
 
     app
@@ -110,58 +107,66 @@ export class Candidate {
         let repoName: string = request.params.repoName;
         let path: string = request.params[0];
         let query: GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
-        let result: ISourceFiles = await query.downloadSingleFile(owner, repoName, path, login);
+        let result: ISourceFiles = await query.downloadSingleFile(
+          owner,
+          repoName,
+          path,
+          login
+        );
         response.status(200).send(result);
       });
 
     app
       .route('/find/:login')
       .get(async (request: Request, response: Response) => {
-      let login: string = request.params.login;
-      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let query = {
-          "githubUsers.login": login
-      }
-      let projection = {
+        let login: string = request.params.login;
+        let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+        let query = {
+          'githubUsers.login': login,
+        };
+        let projection = {
           _id: 0,
           githubUsers: {
-              $elemMatch: {
-                  "login": login
-              }
-          }
-      }
+            $elemMatch: {
+              login: login,
+            },
+          },
+        };
 
-      let result: any = await githubUsersTDG.generalFind(query, projection);
+        let result: any = await githubUsersTDG.generalFind(query, projection);
 
         response.status(200).send(result);
-
       });
 
-    app
-      .route('/update')
-      .get(async (request: Request, response: Response) => {
+    app.route('/update').get(async (request: Request, response: Response) => {
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
       let criteria = {
-          //location: "nouakchott", <- also works
-          "githubUsers.login": "jemal",
-          githubUsers: {
-              $elemMatch: {
-                  login: "jemal"
-              }
-          }
-      }
+        //location: "nouakchott", <- also works
+        'githubUsers.login': 'jemal',
+        githubUsers: {
+          $elemMatch: {
+            login: 'jemal',
+          },
+        },
+      };
       let update = {
-          $set: {"githubUsers.$[gU].dataEntry.$[dE].applicantCommits.$[aC].files.$[f].lineDeleted": 20}
-      }
+        $set: {
+          'githubUsers.$[gU].dataEntry.$[dE].applicantCommits.$[aC].files.$[f].lineDeleted': 20,
+        },
+      };
 
       let options = {
-          arrayFilters: [{"gU.login": "jemal"},{"dE.owner": "Lemine"},{"aC.id": "893420fjkds"}, {"f.filePath": "pom.xml"}]
-      }
+        arrayFilters: [
+          { 'gU.login': 'jemal' },
+          { 'dE.owner': 'Lemine' },
+          { 'aC.id': '893420fjkds' },
+          { 'f.filePath': 'pom.xml' },
+        ],
+      };
       await githubUsersTDG.generalUpdate(criteria, update, options);
 
-        response.status(200).send('Finished');
-
-      });
+      response.status(200).send('Finished');
+    });
 
     app
       .route('/location/:location')
@@ -275,7 +280,7 @@ export class Candidate {
             projectInputs: [
               {
                 projectName: 'RecruitInc',
-                url: "x",
+                url: 'x',
                 owner: 'ddicorpo',
                 applicantCommits: [],
                 projectStructure: [],
@@ -283,7 +288,7 @@ export class Candidate {
               },
               {
                 projectName: 'SOEN343',
-                url: "x",
+                url: 'x',
                 owner: 'gprattico',
                 applicantCommits: [],
                 projectStructure: [],
