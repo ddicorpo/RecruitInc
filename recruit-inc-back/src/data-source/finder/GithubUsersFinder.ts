@@ -9,8 +9,8 @@ export class GithubUsersFinder {
     return this.baseFinder.findById(_id);
   }
 
-  public findByLocation(location: string): Promise<IGithubUserModel> {
-    return this.baseFinder.findOneBy({ location });
+  public findByLocation(location: string): Promise<IGithubUserModel[]> {
+    return this.baseFinder.findBy({ location });
   }
 
   public findAll(): Promise<IGithubUserModel> {

@@ -21,7 +21,8 @@ describe('Test the FilesAffectedByClient', () => {
             'bob',
             'path',
             '122',
-            'montreal'
+            'montreal',
+            'projectUrl'
         );
         filesClient = new FilesAffectedByClient(requiredInfo);
 

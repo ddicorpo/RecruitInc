@@ -64,7 +64,7 @@ export class GithubUsersTDG {
     });
   }
 
-  public generalFind(query: any, projection: any): Promise<any> {
+  public generalFind(query: any, projection: any = {}): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
       GithubUserModel.find(query, projection, (error, doc) => {
         if (error) {
@@ -95,6 +95,24 @@ export class GithubUsersTDG {
           reject(error.name + ': ' + error.message);
         } else {
           this.baseTDG.logActionCompleted(this.findUnscannedUsers.name);
+          resolve(doc);
+        }
+      });
+    });
+  }
+
+  public insertMany(githubUsers:  IGithubUserModel[]): Promise<any> {
+    return new Promise((resolve: any, reject: any) => {
+      GithubUserModel.insertMany(githubUsers, {},  (error, doc) => {
+        if (error) {
+          this.baseTDG.logActionFailure(
+            this.insertMany.name,
+            error.name,
+            error.message
+          );
+          reject(error.name + ': ' + error.message);
+        } else {
+          this.baseTDG.logActionCompleted(this.insertMany.name);
           resolve(doc);
         }
       });

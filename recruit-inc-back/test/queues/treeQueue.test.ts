@@ -21,7 +21,8 @@ describe('Get User information', () => {
             'bob',
             'path',
             '122',
-            'montreal'
+            'montreal',
+            'projectUrl'
         );
         let requiredInfo2: RequiredClientInformation = new RequiredClientInformation(
             newUser,
@@ -29,7 +30,8 @@ describe('Get User information', () => {
             'bob',
             'path',
             '122',
-            'montreal'
+            'montreal',
+            'projectUrl'
         );
         treeQueue.enqueue(requiredInfo);
         treeQueue.enqueue(requiredInfo2);

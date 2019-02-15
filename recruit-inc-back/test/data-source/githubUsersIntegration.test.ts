@@ -127,7 +127,8 @@ xdescribe('Test mongo GithubUsers', () => {
     await githubUsersFinder
       .findByLocation(githubUsersModel1.location)
       .then(doc => {
-        let githubUserModelFound: IGithubUserModel = doc;
+        let githubUserModelFound: IGithubUserModel[] = doc;
+        console.log(doc);
         expect(githubUsersModel1.location).to.equal(githubUsersModel1.location);
       });
   });

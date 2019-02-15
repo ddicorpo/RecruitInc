@@ -23,7 +23,7 @@ xdescribe('Integration Test => filesAffectedBy Queue ', () => {
         email: '',
     };
 
-    const prospect: RequiredClientInformation = new RequiredClientInformation(newUser,"bill", "nye", "the", "science", "guy");
+    const prospect: RequiredClientInformation = new RequiredClientInformation(newUser,"bill", "nye", "the", "science", "guy", "projectUrl");
     prospect.repoToken = "fake token";
 
     const newFilesClient: FilesAffectedByClient = new FilesAffectedByClient(prospect);

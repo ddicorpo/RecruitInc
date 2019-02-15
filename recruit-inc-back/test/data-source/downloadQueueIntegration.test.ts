@@ -23,7 +23,7 @@ xdescribe('Integration Test => Download Queue ', () => {
         email: '',
     };
 
-    const prospect: RequiredClientInformation = new RequiredClientInformation(newUser,"bill", "nye", "the", "science", "guy");
+    const prospect: RequiredClientInformation = new RequiredClientInformation(newUser,"bill", "nye", "the", "science", "guy", "jfkdsjfkdsf");
     prospect.repoToken = "fake token";
 
     const newDownloadClient: DownloadClient = new DownloadClient(prospect);

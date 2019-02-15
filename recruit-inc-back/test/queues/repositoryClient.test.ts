@@ -21,7 +21,8 @@ describe('Test the repositoryClient', () => {
             'bob',
             'path',
             '122',
-            'montreal'
+            'montreal',
+            'projectUrl'
         );
         repoClient = new RepositoryClient(requiredInfo);
 

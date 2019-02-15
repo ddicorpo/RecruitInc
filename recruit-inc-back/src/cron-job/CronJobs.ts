@@ -45,9 +45,10 @@ export class CronJobs {
     cron.status = Status.scanning;
     await this.cronTDG.update(cron._id, cron);
     await this.scan();
-    //Update status to scanned
-    cron.status = Status.complete;
-    await this.cronTDG.update(cron._id, cron);
+    ////Update status to scanned
+//    cron.status = Status.complete;
+//    await this.cronTDG.update(cron._id, cron);
+    console.log("returning true");
     return true;
   }
 
@@ -57,13 +58,16 @@ export class CronJobs {
     let githubUsers: IGithubUser[] = await this.githubUserInfo.getUserByLocation(
       location
     );
+    let githubUsersModel: IGithubUserModel[] = [];
     for (const githubUser of githubUsers) {
-      let githubUsersModel: IGithubUserModel = {
+      let githubUserModel: IGithubUserModel = {
         githubUser,
-        location: location.toLowerCase(),
+        location: location.toLowerCase()
       };
-      await this.githubUsersTDG.create(githubUsersModel);
+      githubUsersModel.push(githubUserModel);
     }
+      console.log("githubUsersModel: ", githubUsersModel);
+      await this.githubUsersTDG.insertMany(githubUsersModel);
   }
 
   async scan() {

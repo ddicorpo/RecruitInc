@@ -31,7 +31,7 @@ export class Candidate {
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
         let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-        let result: IGithubUserModel = await githubUsersFinder.findByLocation(
+        let result: IGithubUserModel[] = await githubUsersFinder.findByLocation(
           location
         );
         response.status(200).send(result);
@@ -44,7 +44,7 @@ export class Candidate {
         let cronjob: CronJobs = new CronJobs();
         let finished: boolean = await cronjob.scheduleCron(location);
         let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-        let result: IGithubUserModel = await githubUsersFinder.findByLocation(
+        let result: IGithubUserModel[] = await githubUsersFinder.findByLocation(
           location
         );
 

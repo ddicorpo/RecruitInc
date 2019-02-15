@@ -21,7 +21,8 @@ describe('Test the treeClient', () => {
             'bob',
             'path',
             '122',
-            'montreal'
+            'montreal',
+            'projectUrl'
         );
         treeClient = new TreeClient(requiredInfo);
 

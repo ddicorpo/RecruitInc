@@ -22,7 +22,8 @@ describe('Test the commitClient', () => {
             'bob',
             'path',
             '122',
-            'montreal'
+            'montreal',
+            'projectUrl'
         );
         commitClient = new CommitClient(requiredInfo);
 

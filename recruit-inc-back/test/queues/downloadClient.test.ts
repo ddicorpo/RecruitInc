@@ -21,7 +21,8 @@ describe('Test the downloadClient', () => {
             'bob',
             'path',
             '122',
-            'montreal'
+            'montreal',
+            'projectUrl'
         );
         downloadClient = new DownloadClient(requiredInfo);
 
