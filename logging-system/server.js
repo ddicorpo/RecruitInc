@@ -1,18 +1,17 @@
-let express = require('express');
-let app = express();
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
 
-app.get('/', function (req, res){
-    res.send('Logging System');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.listen(5656, function () {
+    console.log("Listening on port 5656")
 });
 
-app.post('/', function (req, res) {
-    res.send('POST works');
-    console.log(req.method + " --- " + req.originalUrl);
-    console.log(req.params);
-})
-
-let server = app.listen(5656, function() {
-    let port = server.address().port;
-
-    console.log("Listening on port: " + port);
+app.post('/', function(req, res){
+    var myData = req.body;
+    console.log(myData);
+    res.status(200).send();
 });
+

@@ -1,6 +1,10 @@
 import * as fileSystem from 'fs';
 import * as logConfig from 'winston';
 import * as util from 'util';
+import winston = require('winston');
+
+const { format } = winston;
+const { combine, label, json } = format;
 
 interface ILoggerParam {
   class: string;
@@ -76,7 +80,6 @@ export class Logger implements ILogger {
           new logConfig.transports.Http({
             host: process.env.DOMAIN_LOGGING_SYSTEM,
             port: parseInt(process.env.PORT_LOGGING_SYSTEM, 10),
-            path: '/',
           }),
         ],
       });
