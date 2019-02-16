@@ -72,6 +72,10 @@ export class Logger implements ILogger {
             filename: `${this.logDirectory}/silly.json`,
             level: 'silly',
           }),
+          new logConfig.transports.Http({
+            host: process.env.DOMAIN_LOGGING_SYSTEM,
+            port: parseInt(process.env.PORT_LOGGING_SYSTEM, 10),
+          }),
         ],
       });
     }
