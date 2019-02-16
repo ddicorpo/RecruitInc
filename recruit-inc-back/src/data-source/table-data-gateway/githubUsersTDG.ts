@@ -45,7 +45,7 @@ export class GithubUsersTDG {
   public generalUpdate(
     criteria: any,
     update: any,
-    options: any
+    options: any = {}
   ): Promise<boolean> {
     return new Promise((resolve: any, reject: any) => {
       GithubUserModel.updateOne(criteria, update, options, (error, doc) => {

@@ -42,19 +42,12 @@ export class DownloadClient implements IGithubClient {
   
   public async updateUser(login: string, projectName: string, downlaodedFile: ISourceFiles){
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let criteria: any = {
-          "githubUsers.login": login,
-          githubUsers: {
-              $elemMatch: {
-                  login: login
-              }
-          }
-      }
+      let criteria: any = { "githubUser.login": login }
       let update: any = {
-          $push: {"githubUsers.$[gU].dataEntry.projectInputs.$[pI].downloadedSourceFile": downlaodedFile }
+          $push: {"githubUser.dataEntry.projectInputs.$[pI].downloadedSourceFile": downlaodedFile }
       }
       let options = {                         //Might cause issues if user contributes to several project with same name
-          arrayFilters: [{"gU.login": login}, {"pI.projectName": projectName}]
+          arrayFilters: [{"pI.projectName": projectName}]
       }
 
       await githubUsersTDG.generalUpdate(criteria, update, options);

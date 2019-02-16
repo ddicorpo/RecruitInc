@@ -61,25 +61,13 @@ export class RepositoryClient implements IGithubClient {
 
   public async updateUser(login: string, projectInputs: IGithubProjectInput[] ){
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let criteria: any = {
-          "githubUsers.login": login,
-          githubUsers: {
-              $elemMatch: {
-                  login: login
-              }
-          }
-      }
+      let criteria: any = { "githubUser.login": login }
 
       let update: any = {
-          $set: {"githubUsers.$[gU].dataEntry": { projectInputs: projectInputs}}
+          $set: {"githubUser.dataEntry": { projectInputs: projectInputs}}
       }
 
-      //Not really necessary in this case
-      let options = {
-          arrayFilters: [{"gU.login": login}]
-      } 
-
-      await githubUsersTDG.generalUpdate(criteria, update, options);
+      await githubUsersTDG.generalUpdate(criteria, update);
   }
 
   get username(): string {

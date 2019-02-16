@@ -38,42 +38,42 @@ export class Controller {
 
     let users: IGithubUser[] = await this.fetchUsersFromDatabase();
 
-    console.log('users: ', users);
-//    let canStillScan: boolean = users.length !== 0;
-//    if (users.length !== 0) {
-//      if (this.areQueuesEmpty()) {
-//        this.enqueueUser(users.pop());
-//      }
-//    }
-//
-//    console.log('users length: ', users.length);
-//    console.log('canStillScan: ', canStillScan);
-//    while (canStillScan) {
-//      canStillScan = await this.executeRepo();
-//
-//      if (canStillScan) {
-//        canStillScan = await this.executeTree();
-//      }
-//      if (canStillScan) {
-//        canStillScan = await this.executeCommit();
-//      }
-//      if (canStillScan) {
-//        canStillScan = await this.executeFilesAffected();
-//      }
-//      if (canStillScan) {
-//        canStillScan = await this.executeDownload();
-//      }
-//
-//      if (canStillScan) {
-//        //console.log("users at this point: ", users);
-//        if (users.length === 0) {
-//          //fixing the cannot read login of undefined error because a user is still enqueued even though the users array is empty
-//          canStillScan = false;
-//          continue;
-//        }
-//        this.enqueueUser(users.pop());
-//      }
-//    }
+    //console.log('users: ', users);
+    let canStillScan: boolean = users.length !== 0;
+    if (users.length !== 0) {
+      if (this.areQueuesEmpty()) {
+        this.enqueueUser(users.pop());
+      }
+    }
+
+    //console.log('users length: ', users.length);
+    //console.log('canStillScan: ', canStillScan);
+    while (canStillScan) {
+      canStillScan = await this.executeRepo();
+
+      if (canStillScan) {
+        canStillScan = await this.executeTree();
+      }
+      if (canStillScan) {
+        canStillScan = await this.executeCommit();
+      }
+      if (canStillScan) {
+        canStillScan = await this.executeFilesAffected();
+      }
+      if (canStillScan) {
+        canStillScan = await this.executeDownload();
+      }
+
+      if (canStillScan) {
+        //console.log("users at this point: ", users);
+        if (users.length === 0) {
+          //fixing the cannot read login of undefined error because a user is still enqueued even though the users array is empty
+          canStillScan = false;
+          continue;
+        }
+        this.enqueueUser(users.pop());
+      }
+    }
   }
 
   private enqueueUser(user: IGithubUser): void {
@@ -104,28 +104,18 @@ export class Controller {
     let githubUsers: IGithubUser[] = [];
     let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
     let cronFinder: CronFinder = new CronFinder();
-    //Find all crons with "scanning" status
-    let scanning: ICronModel[] = await cronFinder.findByStatus(Status.scanning);
-    //console.log("scanning",scanning);
 
-    //For all crons found, get their locations
-    for (let crons of scanning) {
       let query = 
         { "githubUser.dataEntry": null }
       ;
-      //console.log("pipeline: ",pipeline);
-      //For each location found find unscanned users (with no dataEntry)
+      //Find unscanned users (with no dataEntry)
       let unscannedUsers: any = await githubUsersTDG.generalFind(
         query
       );
       console.log("unscannedUsers: ", unscannedUsers );
       githubUsers = githubUsers.concat(unscannedUsers.map(githubUserModel => { return githubUserModel.githubUser}));
-    }
     //console.log("users",githubUsers);
     return githubUsers;
-    // Check whether there are unfinished users to be scanned
-    // Get all the locations that are currently in scanning status from db
-    // Get all the users from those locations that should be scanned
   }
 
   private handleError(method: string, error: string) {

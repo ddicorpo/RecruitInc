@@ -40,21 +40,14 @@ export class FilesAffectedByClient implements IGithubClient {
 
   public async updateUser(login: string, projectName: string, allAffectedFiles: ISingleFileCommit[], commitId: string){
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let criteria: any = {
-          "githubUsers.login": login,
-          githubUsers: {
-              $elemMatch: {
-                  login: login
-              }
-          }
-      }
+      let criteria: any = { "githubUser.login": login }
 
       let update: any = {
-          $set: {"githubUsers.$[gU].dataEntry.projectInputs.$[pI].applicantCommits.$[aC].files": allAffectedFiles }
+          $set: {"githubUser.dataEntry.projectInputs.$[pI].applicantCommits.$[aC].files": allAffectedFiles }
       }
 
       let options = {  
-          arrayFilters: [{"gU.login": login}, {"pI.projectName": projectName}, {"aC.id": commitId}]
+          arrayFilters: [{"pI.projectName": projectName}, {"aC.id": commitId}]
       }
   
       await githubUsersTDG.generalUpdate(criteria, update, options);

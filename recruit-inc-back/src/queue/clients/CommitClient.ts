@@ -49,19 +49,12 @@ export class CommitClient implements IGithubClient {
 
   public async updateUser(login: string, projectUrl: string, allCommits: ICommit[] ){
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let criteria: any = {
-          "githubUsers.login": login,
-          githubUsers: {
-              $elemMatch: {
-                  login: login
-              }
-          }
-      }
+      let criteria: any = { "githubUser.login": login }
       let update: any = {
-          $set: {"githubUsers.$[gU].dataEntry.projectInputs.$[pi].applicantCommits": allCommits }
+          $set: {"githubUser.dataEntry.projectInputs.$[pi].applicantCommits": allCommits }
       }
       let options = {                         //Might cause issues if user contributes to several project with same name
-          arrayFilters: [{"gU.login": login}, {"pi.url": projectUrl}]
+          arrayFilters: [{"pi.url": projectUrl}]
       }
 
       await githubUsersTDG.generalUpdate(criteria, update, options);

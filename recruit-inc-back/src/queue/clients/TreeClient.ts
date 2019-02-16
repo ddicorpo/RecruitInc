@@ -83,22 +83,13 @@ export class TreeClient implements IGithubClient {
 
   public async updateUser(login: string, struct: IProjectStructure[], projectUrl: string ){
       let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let criteria: any = {
-          "githubUsers.login": login,
-          githubUsers: {
-              $elemMatch: {
-                  login: login
-              }
-          }
-      }
-
+      let criteria: any = { "githubUser.login": login} 
       let update: any = {
-          $set: {"githubUsers.$[gU].dataEntry.projectInputs.$[pi].projectStructure": struct }
+          $set: {"githubUser.dataEntry.projectInputs.$[pi].projectStructure": struct }
       }
 
-      //Not really necessary in this case
       let options = {
-          arrayFilters: [{"gU.login": login}, {"pi.url": projectUrl}]
+          arrayFilters: [{"pi.url": projectUrl}]
       } 
 
       await githubUsersTDG.generalUpdate(criteria, update, options);
