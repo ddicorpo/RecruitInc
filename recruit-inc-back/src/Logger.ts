@@ -72,9 +72,11 @@ export class Logger implements ILogger {
             filename: `${this.logDirectory}/silly.json`,
             level: 'silly',
           }),
+          //  This transports.http is to send the logs to our logging-system
           new logConfig.transports.Http({
             host: process.env.DOMAIN_LOGGING_SYSTEM,
             port: parseInt(process.env.PORT_LOGGING_SYSTEM, 10),
+            path: '/',
           }),
         ],
       });
