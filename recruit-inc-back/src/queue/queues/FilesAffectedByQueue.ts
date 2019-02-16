@@ -89,6 +89,9 @@ export class FilesAffectedByQueue extends AbstractQueue {
         return; //When nothing is in the database don't set this.queue
     //load the queue from db to this queue
     this.queue = newFilesQueueModel[0].queue;
+    console.log("Loaded files queue", this.queue );
+    console.log("files queue type", this.queue.constructor.name );
+    console.log("files queue element type", this.queue[0].constructor.name );
 
   }
 }

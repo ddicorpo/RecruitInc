@@ -27,7 +27,6 @@ export class BaseTDG {
   public create(item: any, attrValidate: any): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
       item.save((err: any, new_obj: any) => {
-        console.log('item id: ' + item._id);
         if (err) {
           this.logActionFailure(this.create.name, err.name, err.message);
           reject(err.name + ': ' + err.message);

@@ -112,7 +112,7 @@ export class Controller {
       let unscannedUsers: any = await githubUsersTDG.generalFind(
         query
       );
-      console.log("unscannedUsers: ", unscannedUsers );
+      //console.log("unscannedUsers: ", unscannedUsers );
       githubUsers = githubUsers.concat(unscannedUsers.map(githubUserModel => { return githubUserModel.githubUser}));
     //console.log("users",githubUsers);
     return githubUsers;

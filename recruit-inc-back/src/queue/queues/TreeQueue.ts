@@ -86,6 +86,7 @@ export class TreeQueue extends AbstractQueue {
         return; //no tree queue in database -> stop here
     //load the queue from db to this queue
     this.queue = newTreeQueueModel[0].queue;
+    console.log("Loaded tree queue", this.queue );
 
   }
 }

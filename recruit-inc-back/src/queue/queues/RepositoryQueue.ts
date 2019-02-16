@@ -89,6 +89,7 @@ export class RepositoryQueue extends AbstractQueue {
     if (newRepositoryQueueModel.length === 0)
         return; //When nothing is in the database don't set this.queue
     this.queue = newRepositoryQueueModel[0].queue;
+    console.log("Loaded repo queue", this.queue );
 
   }
 }

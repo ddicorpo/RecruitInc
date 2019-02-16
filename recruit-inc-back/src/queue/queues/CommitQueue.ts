@@ -88,6 +88,7 @@ export class CommitQueue extends AbstractQueue {
         return;
     //load the queue from db to this queue
     this.queue = newCommitQueueModel[0].queue;
+    console.log("Loaded commit queue", this.queue );
 
 
   }

@@ -85,6 +85,7 @@ export class DownloadQueue extends AbstractQueue {
         return;
     //load the queue from db to this queue
     this.queue = newDownloadQueueModel[0].queue;
+    console.log("Loaded download queue", this.queue );
 
   }
 }
