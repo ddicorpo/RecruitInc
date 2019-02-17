@@ -2,6 +2,7 @@ import { GithubApiV4 } from './githubApiV4';
 import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { ISingleFileCommit } from '../../matching-algo/data-model/input-model/ISingleFileCommit';
+import { ICommit } from '../../matching-algo/data-model/input-model/ICommit';
 import { Logger } from '../../Logger';
 
 export class GithubUserCommits {
@@ -24,7 +25,7 @@ export class GithubUserCommits {
     owner: string,
     repo: string,
     sha: string
-  ): Promise<{ filePath: string; lineAdded: number; lineDeleted: number }[]> {
+  ): Promise<ISingleFileCommit[]>{
     let result: {
       filePath: string;
       lineAdded: number;
@@ -54,6 +55,8 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
+      if (error.toString().includes("rate-limiting")) //Only throw error to calling function if it is due to rate-limit abuse
+        throw error;
       return result;
     }
 
@@ -214,18 +217,19 @@ export class GithubUserCommits {
     }
     return user;
   }
+
   async getCommits(
     repository: string,
     owner: string,
     userID: string
   ): Promise<
-    { id: string; numberOfFileAffected: number; files: ISingleFileCommit[] }[]
+    ICommit[]
   > {
     let result: any[] = [];
     let data: string;
     let jsonData: any = {};
-    data = await this.GetCommitsSpecificToUser(repository, owner, userID);
     try {
+    data = await this.GetCommitsSpecificToUser(repository, owner, userID);
       jsonData = JSON.parse(data);
       if (!jsonData.data.repository.ref)
         throw new TypeError(
@@ -240,6 +244,9 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
+      if (error.toString().includes("abuse detection mechanism")){ //Only throw error to calling function if it is due to rate-limit abuse
+        throw error;
+      }
       return [];
     }
 
@@ -253,13 +260,27 @@ export class GithubUserCommits {
     }
 
     while (hasNextPage) {
-      let nextData: string = await this.GetCommitsSpecificToUserNext(
+      let nextData: string;
+
+      try{
+      nextData = await this.GetCommitsSpecificToUserNext(
         repository,
         owner,
         userID,
         endCursor
       );
       jsonData = JSON.parse(nextData);
+      if (!jsonData.data.repository.ref)
+        throw new TypeError(
+          `Rate limit abuse (probably) while gathering commits`
+        );
+      }catch(error){
+      if (error.toString().includes("abuse detection mechanism")){ //Only throw error to calling function if it is due to rate-limit abuse
+        throw error;
+      }
+          return result;
+      }
+
       edges = jsonData.data.repository.ref.target.history.edges;
       pageInfo = jsonData.data.repository.ref.target.history.pageInfo;
       endCursor = JSON.stringify(pageInfo.endCursor);

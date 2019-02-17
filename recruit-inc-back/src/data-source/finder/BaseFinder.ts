@@ -59,25 +59,26 @@ export class BaseFinder {
     });
   }
 
-  private logActionCompleted(methodName: string): void {
-    this.logger.info({
-      class: this.model.name + ' Model',
-      method: methodName,
-      action: 'Transaction Completed',
-      params: {},
-    });
-  }
+    public logActionCompleted(methodName: string): void {
+        this.logger.info({
+            class: this.model.name + ' Model',
+            method: methodName,
+            action: 'Transaction Completed',
+            params: {},
+        });
+    }
 
-  private logActionFailure(
-    methodName: string,
-    errorName: string,
-    errorDesc: string
-  ): void {
-    this.logger.error({
-      class: this.model.name + ' Model',
-      method: methodName,
-      action: 'Transaction Fails reason: ' + errorName + ' desc: ' + errorDesc,
-      params: {},
-    });
-  }
+    public logActionFailure(
+        methodName: string,
+        errorName: string,
+        errorDesc: string
+    ): void {
+        this.logger.info({
+            class: this.model.name + ' Model',
+            method: methodName,
+            action: 'Transaction Fails reason: ' + errorName + ' desc: ' + errorDesc,
+            params: {},
+        });
+    }
+
 }
