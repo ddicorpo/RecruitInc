@@ -21,13 +21,13 @@ describe("Get a repository's root tree hash", () => {
     return test
       .getTreeSha('AyoubeAkaouch', 'MinistocksRework')
       .then(response => {
+        console.log("response: ", response);
         expect(response).to.be.a('string');
 
-        response = JSON.parse(response);
+        //response = JSON.parse(response);
         console.log(response);
-        expect(response['data']['repository']['object']['oid']).to.equal(
-          '63eb39fb316577353412a5c8a60f0693316edb14'
-        );
+        //expect(response['data']['repository']['object']['oid']).to.equal( '63eb39fb316577353412a5c8a60f0693316edb14');
+        expect(response).to.equal('63eb39fb316577353412a5c8a60f0693316edb14');
       });
   });
 });

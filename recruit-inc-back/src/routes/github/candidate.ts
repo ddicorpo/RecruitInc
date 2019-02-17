@@ -6,75 +6,206 @@ import { GithubDownloadedFilesPath } from '../../data-extraction/github/githubDo
 import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
 import { GithubDataExtraction } from '../../data-extraction/github/githubDataExtraction';
 import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
+import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
+import { GithubUsersFinder } from '../../data-source/finder/GithubUsersFinder';
+import { IGithubUserModel } from '../../domain/model/IGithubUserModel';
+import { IGithubProjectInput } from '../../matching-algo/data-model/input-model/IGithubProjectInput';
+import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
+import { CronFinder } from '../../data-source/finder/CronFinder';
+import { ICronModel } from '../../domain/model/ICronModel';
+import { Status } from '../../domain/model/ICronModel';
 import { Logger } from '../../Logger';
+import { SSL_OP_EPHEMERAL_RSA } from 'constants';
+import { CronJobs } from '../../cron-job/CronJobs';
+import { Controller } from '../../queue/Controller';
+import { RepositoryQueue } from '../../queue/queues/RepositoryQueue';
+import { CronTime, CronJob } from 'cron';
 const logger = new Logger();
+const { fork } = require('child_process');
 
 export class Candidate {
   public routes(app): void {
+    let users: IGithubUser[];
+
+    app
+      .route('/scheduleCron/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let cronjob: CronJobs = new CronJobs();
+        let job: CronJob = await cronjob.scheduleCron(location);
+        response.status(200).send("Cron successfully scheduled");
+      });
+
+    app
+      .route('/getUsersDB/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+        let result: IGithubUserModel[] = await githubUsersFinder.findByLocation(
+          location
+        );
+        response.status(200).send(result);
+      });
+
+    app
+      .route('/queues/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let cronjob: CronJobs = new CronJobs();
+        let finished: boolean = await cronjob.runQueues(location);
+        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+        let result: IGithubUserModel[] = await githubUsersFinder.findByLocation(
+          location
+        );
+
+        response.status(200).send(result);
+      });
+
+    app
+      .route('/fetchUsersFromDatabase')
+      .get(async (request: Request, response: Response) => {
+        let controller: Controller = Controller.get_instance();
+
+        let result: IGithubUser[] = await controller.fetchUsersFromDatabase();
+
+        response.status(200).send(result);
+      });
+    app
+      .route('/findScanning')
+      .get(async (request: Request, response: Response) => {
+        let cronFinder: CronFinder = new CronFinder();
+
+        let result: ICronModel[] = await cronFinder.findByStatus(
+          Status.scanning
+        );
+
+        response.status(200).send(result);
+      });
+    app
+      .route('/unscannedusers/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+        let pipeline = [
+          { $match: { location: location } },
+          {
+            $project: {
+              githubUsers: {
+                $filter: {
+                  input: '$githubUsers',
+                  as: 'githubUser',
+                  //cond: {"$ifNull":["$$githubUser.dataEntry", true]}
+                  cond: {
+                    $eq: [{ $type: '$$githubUser.dataEntry' }, 'missing'],
+                  },
+                },
+              },
+            },
+          },
+        ];
+
+        let result: any = await githubUsersFinder.findUnscannedUsers(pipeline);
+
+        response.status(200).send(result);
+      });
+
+    app
+      .route('/downloadFile/:owner/:repoName/:login/*')
+      .get(async (request: Request, response: Response) => {
+        let owner: string = request.params.owner;
+        let login: string = request.params.login;
+        let repoName: string = request.params.repoName;
+        let path: string = request.params[0];
+        let query: GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
+        let result: ISourceFiles = await query.downloadSingleFile(
+          owner,
+          repoName,
+          path,
+          login
+        );
+        response.status(200).send(result);
+      });
+
+    app
+      .route('/find/:login')
+      .get(async (request: Request, response: Response) => {
+        let login: string = request.params.login;
+        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+        let query = {
+          'githubUsers.login': login,
+        };
+        let projection = {
+          _id: 0,
+          githubUsers: {
+            $elemMatch: {
+              login: login,
+            },
+          },
+        };
+
+        let result: any = await githubUsersFinder.generalFind(query, projection);
+
+        response.status(200).send(result);
+      });
+
+    app.route('/update').get(async (request: Request, response: Response) => {
+      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+      let criteria = {
+        //location: "nouakchott", <- also works
+        'githubUsers.login': 'jemal',
+        githubUsers: {
+          $elemMatch: {
+            login: 'jemal',
+          },
+        },
+      };
+      let update = {
+        $set: {
+          'githubUsers.$[gU].dataEntry.$[dE].applicantCommits.$[aC].files.$[f].lineDeleted': 20,
+        },
+      };
+
+      let options = {
+        arrayFilters: [
+          { 'gU.login': 'jemal' },
+          { 'dE.owner': 'Lemine' },
+          { 'aC.id': '893420fjkds' },
+          { 'f.filePath': 'pom.xml' },
+        ],
+      };
+      await githubUsersTDG.generalUpdate(criteria, update, options);
+
+      response.status(200).send('Finished');
+    });
+
+    app
+      .route('/location/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let cronjob: CronJobs = new CronJobs();
+        cronjob.runQueues(location);
+      });
+
     app
       .route('/api/github/candidate/hr/:location')
       .get(async (request: Request, response: Response) => {
         let githubUser: IGithubUser[];
-
         let location: string = request.params.location;
-
         let query: GithubUserInfo = new GithubUserInfo();
-
-        //Grab the endCursor from the first query
-        let data: string = await query.firstQuery(location);
-        let jsonData = JSON.parse(data);
-        let pageInfo = jsonData.data.search.pageInfo;
-        let endCursor: string = JSON.stringify(pageInfo.endCursor);
-        let hasNextPage: boolean = pageInfo.hasNextPage;
-
-        githubUser = jsonData.data.search.nodes;
-
-        //Use endCursor in subsequent queries to retrieve more users
-        while (hasNextPage) {
-          let nextData: string = await query.getData(location, endCursor);
-          jsonData = JSON.parse(nextData);
-          pageInfo = jsonData.data.search.pageInfo;
-          endCursor = JSON.stringify(pageInfo.endCursor);
-          hasNextPage = pageInfo.hasNextPage;
-          data += nextData;
-          githubUser.push(jsonData.data.search.nodes);
-        }
-
-        //Loop until a search where no users are returned
-        //using the createdAt parameter to get new users
-        while (1) {
-          let lastCreatedAt: string =
-            jsonData.data.search.nodes[jsonData.data.search.nodes.length - 1]
-              .createdAt;
-          let nextData: string = await query.getDataBefore(
-            location,
-            lastCreatedAt
-          );
-          jsonData = JSON.parse(nextData);
-          pageInfo = jsonData.data.search.pageInfo;
-          endCursor = JSON.stringify(pageInfo.endCursor);
-          hasNextPage = pageInfo.hasNextPage;
-          data += nextData;
-          githubUser.push(jsonData.data.search.nodes);
-
-          if (!hasNextPage) break;
-
-          while (hasNextPage) {
-            let nextData: string = await query.getDataBeforeWithEndCursor(
-              location,
-              lastCreatedAt,
-              endCursor
-            );
-            jsonData = JSON.parse(nextData);
-            pageInfo = jsonData.data.search.pageInfo;
-            endCursor = JSON.stringify(pageInfo.endCursor);
-            hasNextPage = pageInfo.hasNextPage;
-            data += nextData;
-            githubUser.push(jsonData.data.search.nodes);
-          }
-        }
-
+        githubUser = await query.getUserByLocation(location);
         response.status(200).send(githubUser);
+      });
+
+    app
+      .route('/api/github/candidate/justrepo/:username')
+      .get(async (req: Request, res: Response) => {
+        let username: string = req.params.username;
+        let user: IGithubUser = { login: username, url: '', createdAt: '' };
+        let repos: IGithubProjectInput[];
+        let query: GithubUserRepos = new GithubUserRepos();
+        repos = await query.getRepos(user);
+
+        res.status(200).send(repos);
       });
 
     app
@@ -110,6 +241,7 @@ export class Candidate {
             projectInputs: [
               {
                 projectName: 'MinistocksRework',
+                url: 'x',
                 owner: 'AyoubeAkaouch',
                 applicantCommits: [],
                 projectStructure: [],
@@ -117,6 +249,7 @@ export class Candidate {
               },
               {
                 projectName: 'rufus',
+                url: 'x',
                 owner: 'MewtR',
                 applicantCommits: [],
                 projectStructure: [],
@@ -157,6 +290,7 @@ export class Candidate {
             projectInputs: [
               {
                 projectName: 'RecruitInc',
+                url: 'x',
                 owner: 'ddicorpo',
                 applicantCommits: [],
                 projectStructure: [],
@@ -164,6 +298,7 @@ export class Candidate {
               },
               {
                 projectName: 'SOEN343',
+                url: 'x',
                 owner: 'gprattico',
                 applicantCommits: [],
                 projectStructure: [],

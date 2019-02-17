@@ -4,13 +4,13 @@ const path = require('path'),
   webpackConfig = require('./../webpack.config.js'),
   app = express();
 
-  require('dotenv').config();
-  const port = process.env.PORT || 3000;
+require('dotenv').config();
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   // Load the .env variables
   console.log(`App is listening on port ${port}`);
-})
+});
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, './../dist', 'index.html'));
