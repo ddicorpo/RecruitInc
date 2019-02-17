@@ -5,6 +5,7 @@ import { mongoose } from 'mongoose';
 import { TreeQueueTDG } from "../../data-source/table-data-gateway/treeQueueTDG";
 import { TreeQueueModel } from "../../domain/model/TreeQueueModel";
 import { TreeQueueFinder } from "../../data-source/finder/TreeQueueFinder";
+import { IGithubUser } from "../../data-extraction/github/api-entities/IGithubUser";
 import { Types } from 'mongoose';
 
 export class TreeQueue extends AbstractQueue {
@@ -86,7 +87,11 @@ export class TreeQueue extends AbstractQueue {
         return; //no tree queue in database -> stop here
     //load the queue from db to this queue
     this.queue = newTreeQueueModel[0].queue;
-    console.log("Loaded tree queue", this.queue );
+    for (let i: number = 0; i < this.queue.length; i++){
+        let user: IGithubUser = this.queue[i]._prospect._user; //untested
+        //console.log("User.login: ", user.login);
+        this.queue[i] = new TreeClient(new RequiredClientInformation(user, this.queue[i]._repository, this.queue[i]._owner, null, null, null, this.queue[i]._projectUrl));
+    }
 
   }
 }

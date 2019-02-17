@@ -6,10 +6,10 @@ import { ICommit } from '../../matching-algo/data-model/input-model/ICommit';
 import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 
 export class DownloadClient implements IGithubClient {
-  private _owner: string;
-  private _repository: string;
-  private _path: string;
-  private _login: string;
+  public _owner: string;
+  public _repository: string;
+  public _path: string;
+  public _login: string;
   
 
   public constructor(prospect: RequiredClientInformation) {

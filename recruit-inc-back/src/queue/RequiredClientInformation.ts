@@ -1,14 +1,15 @@
 import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser';
 
 export class RequiredClientInformation {
-  private _user: IGithubUser;
-  private _repoName: string;
-  private _projectUrl: string;
-  private _repoOwner: string;
-  private _repoToken: string;
-  private _filePath: string;
-  private _commitId: string;
-  private _location: string;
+  //Everything public! Due to lack of testing the reload CommitQueue, RepositoryQueue and TreeQueue
+  public _user: IGithubUser;
+  public _repoName: string;
+  public _projectUrl: string;
+  public _repoOwner: string;
+  public _repoToken: string;
+  public _filePath: string;
+  public _commitId: string;
+  public _location: string;
 
   public constructor(
     user: IGithubUser,

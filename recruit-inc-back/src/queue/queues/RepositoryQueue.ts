@@ -5,6 +5,7 @@ import { RequiredClientInformation } from '../RequiredClientInformation';
 import { RepositoryQueueTDG } from "../../data-source/table-data-gateway/repositoryQueueTDG";
 import { RepositoryQueueModel } from "../../domain/model/RepositoryQueueModel";
 import { RepositoryQueueFinder } from "../../data-source/finder/RepositoryQueueFinder";
+import { IGithubUser } from "../../data-extraction/github/api-entities/IGithubUser";
 import { Types } from 'mongoose';
 
 export class RepositoryQueue extends AbstractQueue {
@@ -89,7 +90,11 @@ export class RepositoryQueue extends AbstractQueue {
     if (newRepositoryQueueModel.length === 0)
         return; //When nothing is in the database don't set this.queue
     this.queue = newRepositoryQueueModel[0].queue;
-    console.log("Loaded repo queue", this.queue );
+    for (let i: number = 0; i < this.queue.length; i++){
+        let user: IGithubUser = this.queue[i]._prospect._user;
+        //console.log("User.login: ", user.login);
+        this.queue[i] = new RepositoryClient(new RequiredClientInformation(user, null, null, null, null, null, null));
+    }
 
   }
 }

@@ -6,11 +6,11 @@ import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsers
 import { ICommit } from '../../matching-algo/data-model/input-model/ICommit';
 
 export class CommitClient implements IGithubClient {
-  private _owner: string;
-  private _repository: string;
-  private _userId: string;
-  private _projectUrl: string;
-  private _prospect: RequiredClientInformation;
+  public _owner: string;
+  public _repository: string;
+  public _userId: string;
+  public _projectUrl: string;
+  public _prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
     this._owner = prospect.repoOwner;

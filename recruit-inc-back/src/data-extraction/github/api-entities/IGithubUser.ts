@@ -16,7 +16,7 @@ export interface IGithubUser {
   email?: string;
   company?: string;
   isHireable?: boolean;
-  url: string;
+  url?: string;
   websiteUrl?: string;
   createdAt?: string;
   cursor?: string; //used for pagination

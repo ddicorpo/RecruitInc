@@ -7,9 +7,9 @@ import { TreeQueue } from "../queues/TreeQueue";
 import { CommitQueue } from "../queues/CommitQueue";
 
 export class RepositoryClient implements IGithubClient {
-  private readonly accessToken: string;
-  private _username: string;
-  private _prospect: RequiredClientInformation;
+  public readonly accessToken: string;
+  public _username: string;
+  public _prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
     this.accessToken = prospect.repoToken;

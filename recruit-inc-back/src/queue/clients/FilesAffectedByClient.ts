@@ -6,12 +6,12 @@ import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISource
 import { ISingleFileCommit } from '../../matching-algo/data-model/input-model/ISingleFileCommit';
 
 export class FilesAffectedByClient implements IGithubClient {
-  private _owner: string;
-  private _repository: string;
-  private _commitId: string;
-  private _login: string;
+  public _owner: string;
+  public _repository: string;
+  public _commitId: string;
+  public _login: string;
 
-  public constructor(prospect: RequiredClientInformation) {
+  constructor(prospect: RequiredClientInformation) {
     this._owner = prospect.repoOwner;
     this._repository = prospect.repoName;
     this._commitId = prospect.commitId;
@@ -76,5 +76,13 @@ export class FilesAffectedByClient implements IGithubClient {
 
   set commitId(value: string) {
     this._commitId = value;
+  }
+
+  public get login(): string {
+    return this._login;
+  }
+
+  public set login(value: string) {
+    this._login = value;
   }
 }

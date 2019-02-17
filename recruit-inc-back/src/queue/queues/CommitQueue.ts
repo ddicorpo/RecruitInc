@@ -5,6 +5,7 @@ import { mongoose } from 'mongoose';
 import { CommitQueueTDG } from "../../data-source/table-data-gateway/commitQueueTDG";
 import { CommitQueueModel } from "../../domain/model/CommitQueueModel";
 import { CommitQueueFinder } from "../../data-source/finder/CommitQueueFinder";
+import { IGithubUser } from "../../data-extraction/github/api-entities/IGithubUser";
 import { Types } from 'mongoose';
 
 export class CommitQueue extends AbstractQueue {
@@ -88,8 +89,12 @@ export class CommitQueue extends AbstractQueue {
         return;
     //load the queue from db to this queue
     this.queue = newCommitQueueModel[0].queue;
-    console.log("Loaded commit queue", this.queue );
-
+    //Fixes TypeError: this.queue[0].executeQuery is not a function
+    for (let i: number = 0; i < this.queue.length; i++){
+        let user: IGithubUser = this.queue[i]._prospect._user; //untested
+        //console.log("User.login: ", user.login);
+        this.queue[i] = new CommitClient(new RequiredClientInformation(user, this.queue[i]._repository, this.queue[i]._owner, null, null, null, this.queue[i]._projectUrl));
+    }
 
   }
 }

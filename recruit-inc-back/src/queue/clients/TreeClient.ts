@@ -8,10 +8,10 @@ import { IProjectStructure } from "../../matching-algo/data-model/input-model/IP
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 
 export class TreeClient implements IGithubClient {
-  private _owner: string;
-  private _repository: string;
-  private _projectUrl: string;
-  private _prospect: RequiredClientInformation;
+  public _owner: string;
+  public _repository: string;
+  public _projectUrl: string;
+  public _prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
     this._owner = prospect.repoOwner;

@@ -5,6 +5,7 @@ import { mongoose } from 'mongoose';
 import { FilesAffectedByQueueTDG } from "../../data-source/table-data-gateway/filesAffectedByQueueTDG";
 import { FilesAffectedByQueueModel } from "../../domain/model/FilesAffectedByQueueModel";
 import { FilesAffectedByQueueFinder } from "../../data-source/finder/FilesAffectedByQueueFinder";
+import { IGithubUser } from "../../data-extraction/github/api-entities/IGithubUser";
 import { Types } from 'mongoose';
 
 export class FilesAffectedByQueue extends AbstractQueue {
@@ -89,9 +90,12 @@ export class FilesAffectedByQueue extends AbstractQueue {
         return; //When nothing is in the database don't set this.queue
     //load the queue from db to this queue
     this.queue = newFilesQueueModel[0].queue;
-    console.log("Loaded files queue", this.queue );
-    console.log("files queue type", this.queue.constructor.name );
-    console.log("files queue element type", this.queue[0].constructor.name );
+    //Fixes TypeError: this.queue[0].executeQuery is not a function
+    for (let i: number = 0; i < this.queue.length; i++){
+        let user: IGithubUser = {login: this.queue[i]._login};
+        //console.log("User.login: ", user.login);
+        this.queue[i] = new FilesAffectedByClient(new RequiredClientInformation(user, this.queue[i]._repository, this.queue[i]._owner, null, this.queue[i]._commitId, null, null));
+    }
 
   }
 }

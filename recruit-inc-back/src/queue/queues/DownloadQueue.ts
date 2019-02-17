@@ -5,6 +5,7 @@ import { mongoose } from 'mongoose';
 import { DownloadQueueTDG } from "../../data-source/table-data-gateway/downloadQueueTDG";
 import { DownloadQueueModel } from "../../domain/model/DownloadQueueModel";
 import { DownloadQueueFinder } from "../../data-source/finder/DownloadQueueFinder";
+import { IGithubUser } from "../../data-extraction/github/api-entities/IGithubUser";
 import { Types } from 'mongoose';
 
 export class DownloadQueue extends AbstractQueue {
@@ -85,7 +86,10 @@ export class DownloadQueue extends AbstractQueue {
         return;
     //load the queue from db to this queue
     this.queue = newDownloadQueueModel[0].queue;
-    console.log("Loaded download queue", this.queue );
-
+    for (let i: number = 0; i < this.queue.length; i++){
+        let user: IGithubUser = {login: this.queue[i]._login};
+        //console.log("User.login: ", user.login);
+        this.queue[i] = new DownloadClient(new RequiredClientInformation(user, this.queue[i]._repository, this.queue[i]._owner, this.queue[i]._path, null , null, null));
+    }
   }
 }
