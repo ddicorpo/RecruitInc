@@ -98,13 +98,15 @@ export class GithubDataExtraction {
     };
     //TODO issue #126, This line is creating bug by sending "NULL" email to our table applicants
     let newplatformEmail: string = null;
-    if (user.email.length != 0) {
+
+    if (user.email.length != 0 || user.email === 'null') {
+
       newplatformEmail = user.email;
     }
 
     const newApplicant: IApplicantModel = {
       platformUsername: user.login,
-      platformEmail: newplatformEmail,
+      platformEmail: user.login,
       iGit: newIGitModel,
       userType: UserType.Applicant,
     };

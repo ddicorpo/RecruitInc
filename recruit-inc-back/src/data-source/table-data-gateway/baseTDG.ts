@@ -90,7 +90,7 @@ export class BaseTDG {
     errorName: string,
     errorDesc: string
   ): void {
-    this.logger.info({
+    this.logger.error({
       class: this.schema.name + ' Model',
       method: methodName,
       action: 'Transaction Fails reason: ' + errorName + ' desc: ' + errorDesc,
