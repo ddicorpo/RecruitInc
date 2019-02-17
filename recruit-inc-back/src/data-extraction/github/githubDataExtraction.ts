@@ -1,17 +1,17 @@
-import {IGithubUser} from './api-entities/IGithubUser';
-import {GithubUserRepos} from './githubUserRepos';
-import {GithubRepoStructure} from './githubRepoStructure';
-import {GithubDownloadedFilesPath} from './githubDownloadedFilesPath';
-import {GithubUserCommits} from './githubUserCommits';
-import {MatcherClient} from '../../matching-algo/matcher-client/MatcherClient';
-import {IGitProjectSummary} from '../../matching-algo/data-model/output-model/IGitProjectSummary';
-import {DataEntryTDG} from '../../data-source/table-data-gateway/dataEntryTDG';
-import {ApplicantTDG} from "../../data-source/table-data-gateway/applicantTDG";
-import {GitProjectSummaryTDG} from '../../data-source/table-data-gateway/gitProjectSummaryTDG';
-import {IApplicantModel, UserType} from "../../domain/model/IApplicantModel";
-import {IGitDataModel} from "../../domain/model/IGitDataModel";
-import {ITokenModel, Platform} from "../../domain/model/ITokenModel";
-import {IGitModel} from "../../domain/model/IGitModel";
+import { IGithubUser } from './api-entities/IGithubUser';
+import { GithubUserRepos } from './githubUserRepos';
+import { GithubRepoStructure } from './githubRepoStructure';
+import { GithubDownloadedFilesPath } from './githubDownloadedFilesPath';
+import { GithubUserCommits } from './githubUserCommits';
+import { MatcherClient } from '../../matching-algo/matcher-client/MatcherClient';
+import { IGitProjectSummary } from '../../matching-algo/data-model/output-model/IGitProjectSummary';
+import { DataEntryTDG } from '../../data-source/table-data-gateway/dataEntryTDG';
+import { ApplicantTDG } from '../../data-source/table-data-gateway/applicantTDG';
+import { GitProjectSummaryTDG } from '../../data-source/table-data-gateway/gitProjectSummaryTDG';
+import { IApplicantModel, UserType } from '../../domain/model/IApplicantModel';
+import { IGitDataModel } from '../../domain/model/IGitDataModel';
+import { ITokenModel, Platform } from '../../domain/model/ITokenModel';
+import { IGitModel } from '../../domain/model/IGitModel';
 
 export class GithubDataExtraction {
   private readonly accessToken: string;
@@ -61,7 +61,6 @@ export class GithubDataExtraction {
     login: string,
     email: string = ''
   ): Promise<IGitProjectSummary> {
-
     const dataEntryTDG: DataEntryTDG = new DataEntryTDG();
     const gitProjectSummaryTDG: GitProjectSummaryTDG = new GitProjectSummaryTDG();
     let user: IGithubUser = await this.extractData(login, email);
@@ -79,7 +78,7 @@ export class GithubDataExtraction {
     const newIGitDataModel: IGitDataModel = {
       dataEntry: user.dataEntry,
       gitProjectSummary: output,
-      lastKnownInfoDate: "",
+      lastKnownInfoDate: '',
       platform: Platform.Github,
     };
 
@@ -88,9 +87,9 @@ export class GithubDataExtraction {
 
     const newITokenModel: ITokenModel = {
       platform: Platform.Github,
-      AccessToken: "",
-      RefreshToken: "",
-      ExpiryDate: "",
+      AccessToken: '',
+      RefreshToken: '',
+      ExpiryDate: '',
     };
 
     const newIGitModel: IGitModel = {
@@ -99,18 +98,20 @@ export class GithubDataExtraction {
     };
     //TODO issue #126, This line is creating bug by sending "NULL" email to our table applicants
     let newplatformEmail: string = null;
-    if(user.email.length != 0) {
-    newplatformEmail = user.email;
+
+    if (user.email.length != 0 || user.email === 'null') {
+
+      newplatformEmail = user.email;
     }
 
     const newApplicant: IApplicantModel = {
       platformUsername: user.login,
-      platformEmail: newplatformEmail,
+      platformEmail: user.login,
       iGit: newIGitModel,
       userType: UserType.Applicant,
     };
 
-    console.log("this is the applicant   " + newApplicant);
+    console.log('this is the applicant   ' + newApplicant);
     await applicantTDG.create(newApplicant);
 
     return output;

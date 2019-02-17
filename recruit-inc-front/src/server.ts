@@ -2,8 +2,10 @@ const path = require('path'),
   express = require('express'),
   webpack = require('webpack'),
   webpackConfig = require('./../webpack.config.js'),
-  app = express(),
-  port = process.env.PORT || 3000;
+  app = express();
+
+require('dotenv').config();
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   // Load the .env variables

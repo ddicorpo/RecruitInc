@@ -1,6 +1,7 @@
 import { GithubApiV4 } from './githubApiV4';
 import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
+import { IProjectStructure } from '../../matching-algo/data-model/input-model/IProjectStructure';
 import { Logger } from '../../Logger';
 
 const logger = new Logger();
@@ -9,6 +10,7 @@ const path = require('path');
 
 export class GithubRepoStructure {
   private readonly accessToken: string;
+  private throwError: boolean;
 
   public constructor(
     accessToken: string = process.env.GITHUB_DEFAULT_AUTH_TOKEN
@@ -18,44 +20,20 @@ export class GithubRepoStructure {
 
   async getTreeSha(owner: string, repoName: string): Promise<string> {
     let query: string = `query {
-  repository(owner: "${owner}", name: "${repoName}"){
-    name
-    object(expression: "master:"){ 
-        ... on Tree{ 
-          oid
+      repository(owner: "${owner}", name: "${repoName}"){
+        name
+        object(expression: "master:"){ 
+            ... on Tree{ 
+              oid
+            }
+          }
         }
-      }
-    }
-  }`;
+      }`;
 
-    return await new GithubApiV4().queryData(this.accessToken, query);
-  }
-
-  async getRepoStructureFromUser(user: IGithubUser): Promise<IGithubUser> {
-    for (let repository of user.dataEntry.projectInputs) {
-      repository.projectStructure = await this.getRepoStructure(
-        repository.owner,
-        repository.projectName
-      );
-    }
-    return user;
-  }
-
-  async getRepoStructure(
-    owner: string,
-    repoName: string
-  ): Promise<{ fileId: string; fileName: string; filePath: string }[]> {
     let data: string = '';
-    let treeSha: string = '';
-    let projectStructure: {
-      fileId: string;
-      fileName: string;
-      filePath: string;
-    }[] = [];
     let jsonData;
-
     try {
-      data = await this.getTreeSha(owner, repoName);
+      data = await new GithubApiV4().queryData(this.accessToken, query);
       jsonData = JSON.parse(data);
       if (jsonData.data == null || jsonData.data.repository == null)
         throw new TypeError(
@@ -73,10 +51,47 @@ export class GithubRepoStructure {
         params: {},
         value: error.toString(),
       });
-      return [];
+      if (error.toString().includes("abuse detection mechanism")){ 
+        throw error;
+      }
+      return null;
     }
 
-    treeSha = jsonData.data.repository.object.oid;
+      console.log("returning jsonData.data.repository.object.oid");
+    return jsonData.data.repository.object.oid;
+  }
+
+  async getRepoStructureFromUser(user: IGithubUser): Promise<IGithubUser> {
+    for (let repository of user.dataEntry.projectInputs) {
+      repository.projectStructure = await this.getRepoStructure(
+        repository.owner,
+        repository.projectName
+      );
+
+    }
+    return user;
+  }
+
+  //two query are called here. if we want only one, we could call treesha
+  // first and pass the result of the previous query(treesha) as parameter here as well.
+  async getRepoStructure(
+    owner: string,
+    repoName: string
+  ): Promise<IProjectStructure[]> {
+    let data: string = '';
+    let projectStructure: {
+      fileId: string;
+      fileName: string;
+      filePath: string;
+    }[] = [];
+    let jsonData;
+
+    //could also be passed in parameters if we wanted to make it a single query method
+    let treeSha: string = await this.getTreeSha(owner, repoName);
+    if (!treeSha || treeSha === "null"){
+        return [];
+    }
+
     try {
       data = await new GithubApiV3().getGitTree(
         this.accessToken,
@@ -97,6 +112,9 @@ export class GithubRepoStructure {
         params: {},
         value: error.toString(),
       });
+      if (error.toString().includes("rate-limiting")){ 
+        throw error;
+      }
       return [];
     }
 

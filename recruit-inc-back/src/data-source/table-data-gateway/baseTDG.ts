@@ -27,7 +27,6 @@ export class BaseTDG {
   public create(item: any, attrValidate: any): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
       item.save((err: any, new_obj: any) => {
-        console.log('item id: ' + item._id);
         if (err) {
           this.logActionFailure(this.create.name, err.name, err.message);
           reject(err.name + ': ' + err.message);
@@ -77,7 +76,7 @@ export class BaseTDG {
     });
   }
 
-  private logActionCompleted(methodName: string): void {
+  public logActionCompleted(methodName: string): void {
     this.logger.info({
       class: this.schema.name + ' Model',
       method: methodName,
@@ -86,12 +85,12 @@ export class BaseTDG {
     });
   }
 
-  private logActionFailure(
+  public logActionFailure(
     methodName: string,
     errorName: string,
     errorDesc: string
   ): void {
-    this.logger.info({
+    this.logger.error({
       class: this.schema.name + ' Model',
       method: methodName,
       action: 'Transaction Fails reason: ' + errorName + ' desc: ' + errorDesc,
