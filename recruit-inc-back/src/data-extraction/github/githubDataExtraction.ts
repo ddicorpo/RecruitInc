@@ -96,6 +96,7 @@ export class GithubDataExtraction {
       IGitData: arrayIGitDataModel,
       IToken: newITokenModel,
     };
+    //TODO issue #126, This line is creating bug by sending "NULL" email to our table applicants
     let newplatformEmail: string = null;
     if (user.email.length != 0) {
       newplatformEmail = user.email;

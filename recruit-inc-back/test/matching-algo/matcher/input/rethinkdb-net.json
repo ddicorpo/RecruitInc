@@ -1,0 +1,2366 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "rethinkdb-net",
+      "owner": "lucasjans",
+      "applicantCommits": [
+        {
+          "id": "d68a7d7fe1f702857e125cb7e0cf3f115431713d",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "rethinkdb-net-newtonsoft-test/Integration/ComplexObjectTests.cs",
+              "lineAdded": 1,
+              "lineDeleted": 20
+            },
+            {
+              "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/ComplexObject.cs",
+              "lineAdded": 0,
+              "lineDeleted": 2
+            }
+          ]
+        },
+        {
+          "id": "1e9b07bcdad7d95564d8abb77a894ae98587a07f",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "rethinkdb-net-newtonsoft-test/App.config",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "rethinkdb-net-test/App.config",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "39b05184bd42b25259b5e871e7617f7e57394645",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "rethinkdb-net-newtonsoft-test/App.config",
+              "lineAdded": 2,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "rethinkdb-net-test/App.config",
+              "lineAdded": 1,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "9eaf0cae571d3191c0aebd4033d54f8256660a61",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "rethinkdb-net-newtonsoft/Configuration/ConfigurationAssembler.cs",
+              "lineAdded": 4,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "rethinkdb-net/Configuration/ConfigurationAssembler.cs",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "rethinkdb-net/Configuration/ConnectionPoolElement.cs",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "rethinkdb-net/ConnectionFactories/ConnectionPoolingConnectionFactory.cs",
+              "lineAdded": 11,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "648aa076c032436c5e6ec0bce2a009c0fe8c927a",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "rethinkdb-net-newtonsoft-test/Integration/ComplexObjectTests.cs",
+              "lineAdded": 20,
+              "lineDeleted": 1
+            },
+            {
+              "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/ComplexObject.cs",
+              "lineAdded": 2,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "66b1de207696fb410b6f6450c7289410eb04717f",
+          "numberOfFileAffected": 2,
+          "files": [
+            {
+              "filePath": "RELEASE-NOTES.md",
+              "lineAdded": 6,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "rethinkdb-net-test/Integration/TableTests.cs",
+              "lineAdded": 78,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "7ee6e453f8a8a41d8a6f13ef062f6b45f5a1cdfe",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "rethinkdb-net/Conflict.cs",
+              "lineAdded": 15,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "rethinkdb-net/Query.cs",
+              "lineAdded": 4,
+              "lineDeleted": 4
+            },
+            {
+              "filePath": "rethinkdb-net/QueryTerm/InsertQuery.cs",
+              "lineAdded": 12,
+              "lineDeleted": 15
+            },
+            {
+              "filePath": "rethinkdb-net/rethinkdb-net.csproj",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "aba6a06e1a641d950fa1708be7584e4fcbd66ce9",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "21a99318faa3c7a35ba4ee624df9d652f94b12e4",
+          "fileName": "App.config",
+          "filePath": "Examples/RethinkDb.Examples.ConsoleApp/App.config"
+        },
+        {
+          "fileId": "b9da08a979f9aca808135ec4b6c0771ff10cb825",
+          "fileName": "AssemblyInfo.cs",
+          "filePath": "Examples/RethinkDb.Examples.ConsoleApp/AssemblyInfo.cs"
+        },
+        {
+          "fileId": "3ac8b3239a82492dc4e9174d9a466921d3d8d0cf",
+          "fileName": "Person.cs",
+          "filePath": "Examples/RethinkDb.Examples.ConsoleApp/Person.cs"
+        },
+        {
+          "fileId": "40ad2c600cace27cc62bd3065696bdf8c45d6e43",
+          "fileName": "Program.cs",
+          "filePath": "Examples/RethinkDb.Examples.ConsoleApp/Program.cs"
+        },
+        {
+          "fileId": "8e88c9ec8c04379c69e851c20e22ae7d67690a87",
+          "fileName": "RethinkDb.Examples.ConsoleApp.csproj",
+          "filePath": "Examples/RethinkDb.Examples.ConsoleApp/RethinkDb.Examples.ConsoleApp.csproj"
+        },
+        {
+          "fileId": "ee525283f0488e21faa27ae873e86776343c69c4",
+          "fileName": "LICENSE.txt",
+          "filePath": "LICENSE.txt"
+        },
+        {
+          "fileId": "64f7945dea8998e3f674d745eebec50d93cfad31",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "5f5eaffc98d008f3dc685dc3fa85033a910633bf",
+          "fileName": "RELEASE-NOTES.md",
+          "filePath": "RELEASE-NOTES.md"
+        },
+        {
+          "fileId": "de2134bc4907de3942b5353af1945644bce22403",
+          "fileName": "build.sh",
+          "filePath": "build.sh"
+        },
+        {
+          "fileId": "386ed7d2ae2056344021a1859ff3d9c61180c84a",
+          "fileName": "make-release.sh",
+          "filePath": "make-release.sh"
+        },
+        {
+          "fileId": "8d598efe18b448207df54ad8e7b2fe2b96547b6c",
+          "fileName": "FluentAssertions.2.1.0.0.nupkg",
+          "filePath": "packages/FluentAssertions.2.1.0.0/FluentAssertions.2.1.0.0.nupkg"
+        },
+        {
+          "fileId": "e46e5aea79942e00dfe48e4a4ff2cccfab33f034",
+          "fileName": "FluentAssertions.2.1.0.0.nuspec",
+          "filePath": "packages/FluentAssertions.2.1.0.0/FluentAssertions.2.1.0.0.nuspec"
+        },
+        {
+          "fileId": "93c6a5c417948f22ebe64e3cc63bfecc277382fd",
+          "fileName": "FluentAssertions.dll",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/net35/FluentAssertions.dll"
+        },
+        {
+          "fileId": "093d39f38e47fed5a09dd5d4fb7c0eb83a30a258",
+          "fileName": "FluentAssertions.pdb",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/net35/FluentAssertions.pdb"
+        },
+        {
+          "fileId": "fe5b7fe722b6df887db59e2e6332680899bcb259",
+          "fileName": "FluentAssertions.xml",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/net35/FluentAssertions.xml"
+        },
+        {
+          "fileId": "5f78edd3d0aed2050ace37096d80524cda2c89d2",
+          "fileName": "FluentAssertions.dll",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/net40/FluentAssertions.dll"
+        },
+        {
+          "fileId": "6adb33cd318ddad13dc345cb3459db8fb7b175ce",
+          "fileName": "FluentAssertions.pdb",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/net40/FluentAssertions.pdb"
+        },
+        {
+          "fileId": "7e8ce57ad3997065ae1050c500b84d054a025965",
+          "fileName": "FluentAssertions.xml",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/net40/FluentAssertions.xml"
+        },
+        {
+          "fileId": "9972ad9b416fde153a31b89fadc7862caad3cea3",
+          "fileName": "FluentAssertions.dll",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/net45/FluentAssertions.dll"
+        },
+        {
+          "fileId": "1a3de4c8eb231f15dbee3c05602de052b02f5792",
+          "fileName": "FluentAssertions.pdb",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/net45/FluentAssertions.pdb"
+        },
+        {
+          "fileId": "fe06c5f49ba16023dcc3885fd1840968791fad86",
+          "fileName": "FluentAssertions.xml",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/net45/FluentAssertions.xml"
+        },
+        {
+          "fileId": "9c05741460b2226296320c497992b0ddb0eb0c00",
+          "fileName": "FluentAssertions.WindowsPhone.dll",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/sl4-windowsphone71/FluentAssertions.WindowsPhone.dll"
+        },
+        {
+          "fileId": "d9ee94c179e409b06215649a1d0d4f62492b9ad9",
+          "fileName": "FluentAssertions.WindowsPhone.pdb",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/sl4-windowsphone71/FluentAssertions.WindowsPhone.pdb"
+        },
+        {
+          "fileId": "c046bfe56b019e24696e4915174c04508d55e44e",
+          "fileName": "FluentAssertions.WindowsPhone.xml",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/sl4-windowsphone71/FluentAssertions.WindowsPhone.xml"
+        },
+        {
+          "fileId": "4c825be6f1f44d0fb01554b47f7e5a721a1c868f",
+          "fileName": "FluentAssertions.Silverlight.dll",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/sl4/FluentAssertions.Silverlight.dll"
+        },
+        {
+          "fileId": "809744c4b7a416142a9d192e7dfc02d125379622",
+          "fileName": "FluentAssertions.Silverlight.pdb",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/sl4/FluentAssertions.Silverlight.pdb"
+        },
+        {
+          "fileId": "3fb98b91daf8fc5c0fd751f753b79994996bc693",
+          "fileName": "FluentAssertions.Silverlight.xml",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/sl4/FluentAssertions.Silverlight.xml"
+        },
+        {
+          "fileId": "9313918b18d2dcdb4e80594637103d1cd11623c3",
+          "fileName": "Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/sl4/Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll"
+        },
+        {
+          "fileId": "0b84c0ae7d8abac1cbc501c169e144322ed03b16",
+          "fileName": "Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.xml",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/sl4/Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.xml"
+        },
+        {
+          "fileId": "33834eb79901c644e60c24647859683b261ffaf6",
+          "fileName": "FluentAssertions.dll",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/winrt45/FluentAssertions.dll"
+        },
+        {
+          "fileId": "4311f05a163a8707bef692bcb64a674c66085b68",
+          "fileName": "FluentAssertions.pdb",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/winrt45/FluentAssertions.pdb"
+        },
+        {
+          "fileId": "afaf0e783632ec17ee6400c70636cb41c0d3eb85",
+          "fileName": "FluentAssertions.xml",
+          "filePath": "packages/FluentAssertions.2.1.0.0/lib/winrt45/FluentAssertions.xml"
+        },
+        {
+          "fileId": "058159a159021292e2199ea6bf8da795da352bc9",
+          "fileName": "BreakingChanges.txt",
+          "filePath": "packages/NSubstitute.1.6.0.0/BreakingChanges.txt"
+        },
+        {
+          "fileId": "f0a0eced337796158b6daa2ae2a984093da09407",
+          "fileName": "CHANGELOG.txt",
+          "filePath": "packages/NSubstitute.1.6.0.0/CHANGELOG.txt"
+        },
+        {
+          "fileId": "0bcd0dde48b4f7ef139ca67434414aa6dd8ef1f6",
+          "fileName": "LICENSE.txt",
+          "filePath": "packages/NSubstitute.1.6.0.0/LICENSE.txt"
+        },
+        {
+          "fileId": "ebffe8f4f829e786732636f581f56020b5bc320a",
+          "fileName": "NSubstitute.1.6.0.0.nupkg",
+          "filePath": "packages/NSubstitute.1.6.0.0/NSubstitute.1.6.0.0.nupkg"
+        },
+        {
+          "fileId": "400861f36638b7989003a3f11eecf20912622248",
+          "fileName": "README.txt",
+          "filePath": "packages/NSubstitute.1.6.0.0/README.txt"
+        },
+        {
+          "fileId": "c2e1132475a79ea572726a0f6c48da0d30c8b101",
+          "fileName": "acknowledgements.txt",
+          "filePath": "packages/NSubstitute.1.6.0.0/acknowledgements.txt"
+        },
+        {
+          "fileId": "c2ae7dc4b079281ac67bdca1b757b0581a2ab975",
+          "fileName": "NSubstitute.XML",
+          "filePath": "packages/NSubstitute.1.6.0.0/lib/NET35/NSubstitute.XML"
+        },
+        {
+          "fileId": "3f613c9f2a8d176fdcd8058ba0f9b6602cc04054",
+          "fileName": "NSubstitute.dll",
+          "filePath": "packages/NSubstitute.1.6.0.0/lib/NET35/NSubstitute.dll"
+        },
+        {
+          "fileId": "c2ae7dc4b079281ac67bdca1b757b0581a2ab975",
+          "fileName": "NSubstitute.XML",
+          "filePath": "packages/NSubstitute.1.6.0.0/lib/NET40/NSubstitute.XML"
+        },
+        {
+          "fileId": "4a5174ae7df06f3750737c1a675d9a8a8a133686",
+          "fileName": "NSubstitute.dll",
+          "filePath": "packages/NSubstitute.1.6.0.0/lib/NET40/NSubstitute.dll"
+        },
+        {
+          "fileId": "26f15bdc7f1075d97c4e8bdd2ee9bdaf7833fcb6",
+          "fileName": "NUnit.2.6.2.nupkg",
+          "filePath": "packages/NUnit.2.6.2/NUnit.2.6.2.nupkg"
+        },
+        {
+          "fileId": "14d86a90c5d50daae6077fddcb49234a7b5c9b92",
+          "fileName": "NUnit.2.6.2.nuspec",
+          "filePath": "packages/NUnit.2.6.2/NUnit.2.6.2.nuspec"
+        },
+        {
+          "fileId": "3e24ba1ca6260d7d0499624d13d2c5a2cd75b52a",
+          "fileName": "nunit.framework.dll",
+          "filePath": "packages/NUnit.2.6.2/lib/nunit.framework.dll"
+        },
+        {
+          "fileId": "c0bd9cbbab9566080ac1b9f36a43b829b08995b0",
+          "fileName": "nunit.framework.xml",
+          "filePath": "packages/NUnit.2.6.2/lib/nunit.framework.xml"
+        },
+        {
+          "fileId": "530a6e0036d4df30b702fcf1225ce6e43e914fff",
+          "fileName": "license.txt",
+          "filePath": "packages/NUnit.2.6.2/license.txt"
+        },
+        {
+          "fileId": "b9d7150e560470f2917efd4c36162647ffc15f76",
+          "fileName": "NUnit.Runners.2.6.1.nupkg",
+          "filePath": "packages/NUnit.Runners.2.6.1/NUnit.Runners.2.6.1.nupkg"
+        },
+        {
+          "fileId": "530a6e0036d4df30b702fcf1225ce6e43e914fff",
+          "fileName": "license.txt",
+          "filePath": "packages/NUnit.Runners.2.6.1/license.txt"
+        },
+        {
+          "fileId": "ddbcd8ea6d81dbc7ab573666f6b84b19fbec5da5",
+          "fileName": "agent.conf",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/agent.conf"
+        },
+        {
+          "fileId": "b5bcd9da484d0d4eb00c062288f3bf2327d221dd",
+          "fileName": "agent.log.conf",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/agent.log.conf"
+        },
+        {
+          "fileId": "b5bcd9da484d0d4eb00c062288f3bf2327d221dd",
+          "fileName": "launcher.log.conf",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/launcher.log.conf"
+        },
+        {
+          "fileId": "c245548b91600f0e984c68b8c86a91b176de70cc",
+          "fileName": "Failure.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Circles/Failure.jpg"
+        },
+        {
+          "fileId": "0549b70588bccd8adb8fc04a81ba8de6316c9ca4",
+          "fileName": "Ignored.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Circles/Ignored.jpg"
+        },
+        {
+          "fileId": "8d36153cdb9002279e406f5d62f83dab4e8cfa84",
+          "fileName": "Inconclusive.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Circles/Inconclusive.jpg"
+        },
+        {
+          "fileId": "3d84255ccfed9df405586367652c74f97502f1d9",
+          "fileName": "Skipped.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Circles/Skipped.jpg"
+        },
+        {
+          "fileId": "15ec1b7fbc9257d3638dff3c5819416078c6ff7b",
+          "fileName": "Success.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Circles/Success.jpg"
+        },
+        {
+          "fileId": "658905fd98d459f9e93e17767f816f63cc9cedf4",
+          "fileName": "Failure.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Classic/Failure.jpg"
+        },
+        {
+          "fileId": "95b7fdbd142d9de0d244e866a43fb0aef35e43f2",
+          "fileName": "Ignored.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Classic/Ignored.jpg"
+        },
+        {
+          "fileId": "32a0ff72f11713991a178d600e4e6a681a40d0e5",
+          "fileName": "Inconclusive.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Classic/Inconclusive.jpg"
+        },
+        {
+          "fileId": "3d84255ccfed9df405586367652c74f97502f1d9",
+          "fileName": "Skipped.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Classic/Skipped.jpg"
+        },
+        {
+          "fileId": "3d8e76092fbea18dda6339c414fbdd675f3386f0",
+          "fileName": "Success.jpg",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Classic/Success.jpg"
+        },
+        {
+          "fileId": "2e400b276fcd227a2f056b4a2c704a3a17776bf2",
+          "fileName": "Failure.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Default/Failure.png"
+        },
+        {
+          "fileId": "05715cbbc2fd250366c4434707ba85f5d945824b",
+          "fileName": "Ignored.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Default/Ignored.png"
+        },
+        {
+          "fileId": "4807b7cedbc70436d121f9052bdf719cf2e692ed",
+          "fileName": "Inconclusive.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Default/Inconclusive.png"
+        },
+        {
+          "fileId": "7c9fc64e3874e15f3f22a234083c1da3ce8d62b8",
+          "fileName": "Skipped.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Default/Skipped.png"
+        },
+        {
+          "fileId": "2a301508c65d836d905e2752ce2e5807aad090f1",
+          "fileName": "Success.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Default/Success.png"
+        },
+        {
+          "fileId": "ba03e84853241e5fbd33f88b5b051a6d8f36e94e",
+          "fileName": "Failure.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Visual Studio/Failure.png"
+        },
+        {
+          "fileId": "9271d6e7526ce9a05e9ad571af4f21c6e4cb09f3",
+          "fileName": "Ignored.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Visual Studio/Ignored.png"
+        },
+        {
+          "fileId": "76219b5c094636e682e4a61c97335eb3dbb7fd16",
+          "fileName": "Inconclusive.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Visual Studio/Inconclusive.png"
+        },
+        {
+          "fileId": "6a578ccaa274898b5d1c30204fb584e786cfc971",
+          "fileName": "SeriousWarning.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Visual Studio/SeriousWarning.png"
+        },
+        {
+          "fileId": "7c9fc64e3874e15f3f22a234083c1da3ce8d62b8",
+          "fileName": "Skipped.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Visual Studio/Skipped.png"
+        },
+        {
+          "fileId": "346fe8f923d6ccd9fc5df3367496bebb47cdc471",
+          "fileName": "Success.png",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/Images/Tree/Visual Studio/Success.png"
+        },
+        {
+          "fileId": "20a2e1c47dea6ee52dc38cfd4eee0cfde7894faa",
+          "fileName": "log4net.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/log4net.dll"
+        },
+        {
+          "fileId": "e637d6523b6a8c679ed85ab3c1401798a32cf9db",
+          "fileName": "nunit-console-runner.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/nunit-console-runner.dll"
+        },
+        {
+          "fileId": "820069dc050cfa23f6f3ab8dc5759ce3d46c85da",
+          "fileName": "nunit-gui-runner.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/nunit-gui-runner.dll"
+        },
+        {
+          "fileId": "1c57782550dfa97ec9aef0ba9df9bcce5c4c07b5",
+          "fileName": "nunit.core.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/nunit.core.dll"
+        },
+        {
+          "fileId": "941d4931d985684f622ed5536cb498f7ea76a839",
+          "fileName": "nunit.core.interfaces.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/nunit.core.interfaces.dll"
+        },
+        {
+          "fileId": "f5f712b15829917253b0ba277822db53d1ca2257",
+          "fileName": "nunit.uiexception.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/nunit.uiexception.dll"
+        },
+        {
+          "fileId": "398d052f1b104c185e2571490caf429f8de8fd5f",
+          "fileName": "nunit.uikit.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/nunit.uikit.dll"
+        },
+        {
+          "fileId": "c837e9ecf062d53771c23393177781528ee5241c",
+          "fileName": "nunit.util.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/lib/nunit.util.dll"
+        },
+        {
+          "fileId": "8800632f9f6ede2cc4f10e2155661780e98192ed",
+          "fileName": "nunit-agent-x86.exe",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-agent-x86.exe"
+        },
+        {
+          "fileId": "de2caf60fde9df5e015453585dd9dfcef9416748",
+          "fileName": "nunit-agent-x86.exe.config",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-agent-x86.exe.config"
+        },
+        {
+          "fileId": "4cb626fa810cb5d7384cbf4aabdcd83130cf1e07",
+          "fileName": "nunit-agent.exe",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-agent.exe"
+        },
+        {
+          "fileId": "de2caf60fde9df5e015453585dd9dfcef9416748",
+          "fileName": "nunit-agent.exe.config",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-agent.exe.config"
+        },
+        {
+          "fileId": "0f9a832d3be1cf656d5175aa11f5d72b18398391",
+          "fileName": "nunit-console-x86.exe",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-console-x86.exe"
+        },
+        {
+          "fileId": "8a6a2a6a6691fa66e8b19b7aaf31e21172b613b4",
+          "fileName": "nunit-console-x86.exe.config",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-console-x86.exe.config"
+        },
+        {
+          "fileId": "db1700badd12f2e222c71309d23dee96428c9aa1",
+          "fileName": "nunit-console.exe",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-console.exe"
+        },
+        {
+          "fileId": "8a6a2a6a6691fa66e8b19b7aaf31e21172b613b4",
+          "fileName": "nunit-console.exe.config",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-console.exe.config"
+        },
+        {
+          "fileId": "9c16269c1a7affbbf284ea759274c367b0495f91",
+          "fileName": "nunit-editor.exe",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-editor.exe"
+        },
+        {
+          "fileId": "dd6483721db59867c8746e7514e2710caac97b6f",
+          "fileName": "nunit-x86.exe",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-x86.exe"
+        },
+        {
+          "fileId": "e3c06b7fe7314d09b6061f06b65e3165afb1df5a",
+          "fileName": "nunit-x86.exe.config",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit-x86.exe.config"
+        },
+        {
+          "fileId": "b7e0ce12f91983cac154b89ec871bf5b098c8ef9",
+          "fileName": "nunit.exe",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit.exe"
+        },
+        {
+          "fileId": "e3c06b7fe7314d09b6061f06b65e3165afb1df5a",
+          "fileName": "nunit.exe.config",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit.exe.config"
+        },
+        {
+          "fileId": "215767d2fb38837c02dffec220b3ce69b4859260",
+          "fileName": "nunit.framework.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/nunit.framework.dll"
+        },
+        {
+          "fileId": "68e87cc13f7263cced32f8bf9ccc1163bf531946",
+          "fileName": "pnunit-agent.exe",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/pnunit-agent.exe"
+        },
+        {
+          "fileId": "c1516ef4189797cce1103559c57e96f00b3515e8",
+          "fileName": "pnunit-agent.exe.config",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/pnunit-agent.exe.config"
+        },
+        {
+          "fileId": "e03271dc43e80cc65e006e0cb09a179fb1b96300",
+          "fileName": "pnunit-launcher.exe",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/pnunit-launcher.exe"
+        },
+        {
+          "fileId": "c1516ef4189797cce1103559c57e96f00b3515e8",
+          "fileName": "pnunit-launcher.exe.config",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/pnunit-launcher.exe.config"
+        },
+        {
+          "fileId": "f8cf2790d90ec2fbaa60f0728cc9ded689559e86",
+          "fileName": "pnunit.framework.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/pnunit.framework.dll"
+        },
+        {
+          "fileId": "6e577c9efc0d97e6708433079bfc4336be20d41a",
+          "fileName": "pnunit.tests.dll",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/pnunit.tests.dll"
+        },
+        {
+          "fileId": "43b3a69f84c3577dd745bd3326975ce4b6a27f37",
+          "fileName": "runpnunit.bat",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/runpnunit.bat"
+        },
+        {
+          "fileId": "ce825ebe30ab9d8cfa56cf1b0b5c6813dd3c9861",
+          "fileName": "test.conf",
+          "filePath": "packages/NUnit.Runners.2.6.1/tools/test.conf"
+        },
+        {
+          "fileId": "9f9b265ae67be49f653ccf2ec66842c37b06314c",
+          "fileName": "Newtonsoft.Json.5.0.8.nupkg",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/Newtonsoft.Json.5.0.8.nupkg"
+        },
+        {
+          "fileId": "8f11e82007d33b967ab7f19554f24fafcb5432c4",
+          "fileName": "Newtonsoft.Json.5.0.8.nuspec",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/Newtonsoft.Json.5.0.8.nuspec"
+        },
+        {
+          "fileId": "2024b03b53bf96f74c2bc94f27d0fbc776e51564",
+          "fileName": "Newtonsoft.Json.dll",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/net20/Newtonsoft.Json.dll"
+        },
+        {
+          "fileId": "f75ed9b0961ded4a6ba1a34d837722a981f77d6e",
+          "fileName": "Newtonsoft.Json.xml",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/net20/Newtonsoft.Json.xml"
+        },
+        {
+          "fileId": "a7dfbe06b340fad1464d63b9a1d66b9a6223e9c1",
+          "fileName": "Newtonsoft.Json.dll",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/net35/Newtonsoft.Json.dll"
+        },
+        {
+          "fileId": "a374f26c79bd169c4287399a734dacda3fe531b6",
+          "fileName": "Newtonsoft.Json.xml",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/net35/Newtonsoft.Json.xml"
+        },
+        {
+          "fileId": "0a159151ba7bfd0d6199945e948ae996c9bb2912",
+          "fileName": "Newtonsoft.Json.dll",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/net40/Newtonsoft.Json.dll"
+        },
+        {
+          "fileId": "edc54c68b6d53d3f5614d35257f4aaf2366fceb7",
+          "fileName": "Newtonsoft.Json.xml",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/net40/Newtonsoft.Json.xml"
+        },
+        {
+          "fileId": "52306fdbdce983729b500602f8e928f2203768a2",
+          "fileName": "Newtonsoft.Json.dll",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/net45/Newtonsoft.Json.dll"
+        },
+        {
+          "fileId": "3025e683b61124a2d70e9e3177ce677e3021ecb3",
+          "fileName": "Newtonsoft.Json.xml",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/net45/Newtonsoft.Json.xml"
+        },
+        {
+          "fileId": "b278f27f1a49a1101a406e94374d3b4b72e783ed",
+          "fileName": "Newtonsoft.Json.dll",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/netcore45/Newtonsoft.Json.dll"
+        },
+        {
+          "fileId": "a73f6d30748b70c44f6c4923a0fcea255a03ac52",
+          "fileName": "Newtonsoft.Json.xml",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/netcore45/Newtonsoft.Json.xml"
+        },
+        {
+          "fileId": "2156ff18ff8fe883cde6d1445e417f198b1a4077",
+          "fileName": "Newtonsoft.Json.dll",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/portable-net40+sl4+wp7+win8/Newtonsoft.Json.dll"
+        },
+        {
+          "fileId": "068c87f28e7313adbca36a87c5f52b1202aad180",
+          "fileName": "Newtonsoft.Json.xml",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/portable-net40+sl4+wp7+win8/Newtonsoft.Json.xml"
+        },
+        {
+          "fileId": "c0168188fad28615b7162b4037dd07acdb815132",
+          "fileName": "Newtonsoft.Json.dll",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/portable-net45+wp80+win8/Newtonsoft.Json.dll"
+        },
+        {
+          "fileId": "b14b116aec7407b9d5faf290613705660ebb419f",
+          "fileName": "Newtonsoft.Json.xml",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/lib/portable-net45+wp80+win8/Newtonsoft.Json.xml"
+        },
+        {
+          "fileId": "de74a5b5e00909f69261dea671e7443ee44e255e",
+          "fileName": "install.ps1",
+          "filePath": "packages/Newtonsoft.Json.5.0.8/tools/install.ps1"
+        },
+        {
+          "fileId": "810523e523d44b2e54e9dba5a187404bcb25e5c1",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net20-cf/protobuf-net.dll"
+        },
+        {
+          "fileId": "701b7e682fa00230748beb70e16c4e4504fba448",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net20-cf/protobuf-net.pdb"
+        },
+        {
+          "fileId": "9c206bc5deac2adb093f49c1aa3b1f59892999cd",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net20-cf/protobuf-net.xml"
+        },
+        {
+          "fileId": "b3f447c32f9517017b8f68c8fef84a7123a2810c",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net20/protobuf-net.dll"
+        },
+        {
+          "fileId": "0b8cf49ffec028fdd07177f9990c91260e6b81f6",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net20/protobuf-net.pdb"
+        },
+        {
+          "fileId": "9b383cb127e9bbfdbbbc0e4abddc69f4b8eb823b",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net20/protobuf-net.xml"
+        },
+        {
+          "fileId": "dda2162e8cc01b12412a0f9934156f06701d830c",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net30/protobuf-net.dll"
+        },
+        {
+          "fileId": "c57254e257a38df949db7112914c47e0278203da",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net30/protobuf-net.pdb"
+        },
+        {
+          "fileId": "4e047dec7667e3322f5263e142567967d49d82be",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net30/protobuf-net.xml"
+        },
+        {
+          "fileId": "75eda055bd09b740fd4905456c6b45080577f62e",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net35-cf/protobuf-net.dll"
+        },
+        {
+          "fileId": "49b02c61dc83c1ec5ef80cd207c1c2fc1c7190e9",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net35-cf/protobuf-net.pdb"
+        },
+        {
+          "fileId": "9c206bc5deac2adb093f49c1aa3b1f59892999cd",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net35-cf/protobuf-net.xml"
+        },
+        {
+          "fileId": "dda2162e8cc01b12412a0f9934156f06701d830c",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net35/protobuf-net.dll"
+        },
+        {
+          "fileId": "c57254e257a38df949db7112914c47e0278203da",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net35/protobuf-net.pdb"
+        },
+        {
+          "fileId": "4e047dec7667e3322f5263e142567967d49d82be",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net35/protobuf-net.xml"
+        },
+        {
+          "fileId": "75eda055bd09b740fd4905456c6b45080577f62e",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net40-cf/protobuf-net.dll"
+        },
+        {
+          "fileId": "49b02c61dc83c1ec5ef80cd207c1c2fc1c7190e9",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net40-cf/protobuf-net.pdb"
+        },
+        {
+          "fileId": "9c206bc5deac2adb093f49c1aa3b1f59892999cd",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net40-cf/protobuf-net.xml"
+        },
+        {
+          "fileId": "dda2162e8cc01b12412a0f9934156f06701d830c",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net40/protobuf-net.dll"
+        },
+        {
+          "fileId": "c57254e257a38df949db7112914c47e0278203da",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net40/protobuf-net.pdb"
+        },
+        {
+          "fileId": "4e047dec7667e3322f5263e142567967d49d82be",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/net40/protobuf-net.xml"
+        },
+        {
+          "fileId": "5eff52d80225c17e850f230009b2b94d9421a5fc",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/netcore45/protobuf-net.dll"
+        },
+        {
+          "fileId": "c64521f5e7bd673614d31b3cc4d919f26fa97956",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/netcore45/protobuf-net.pdb"
+        },
+        {
+          "fileId": "03574cc2461f79851c624ff726d27bad2a15f597",
+          "fileName": "protobuf-net.pri",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/netcore45/protobuf-net.pri"
+        },
+        {
+          "fileId": "ac20c0734efef5b0194354d7bc3af3574fc705c2",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/portable-sl4+net40+wp7+windows8/protobuf-net.dll"
+        },
+        {
+          "fileId": "157020089a8994024a3de88310e8740b022d9abc",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/portable-sl4+net40+wp7+windows8/protobuf-net.pdb"
+        },
+        {
+          "fileId": "9c206bc5deac2adb093f49c1aa3b1f59892999cd",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/portable-sl4+net40+wp7+windows8/protobuf-net.xml"
+        },
+        {
+          "fileId": "f1849cbf08b245a1fa2416b206d97f2fdbc45861",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/sl3-wp/protobuf-net.dll"
+        },
+        {
+          "fileId": "7eeaaf165d7d7bfc6e4e36c17e826ca392bace16",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/sl3-wp/protobuf-net.pdb"
+        },
+        {
+          "fileId": "5eee2f002b8c9b0bdfb853a54013e50404241d30",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/sl3-wp/protobuf-net.xml"
+        },
+        {
+          "fileId": "f1849cbf08b245a1fa2416b206d97f2fdbc45861",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/sl4-windowsphone71/protobuf-net.dll"
+        },
+        {
+          "fileId": "7eeaaf165d7d7bfc6e4e36c17e826ca392bace16",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/sl4-windowsphone71/protobuf-net.pdb"
+        },
+        {
+          "fileId": "5eee2f002b8c9b0bdfb853a54013e50404241d30",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/sl4-windowsphone71/protobuf-net.xml"
+        },
+        {
+          "fileId": "aa206cf2e6541619a2799190d6975730bf18b2c6",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/sl4/protobuf-net.dll"
+        },
+        {
+          "fileId": "063f398a1c20b9f29e1cd3444cc7e416f3f9392f",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/sl4/protobuf-net.pdb"
+        },
+        {
+          "fileId": "ef3eb2030cb92c91da26d491b109d798c673e55d",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/sl4/protobuf-net.xml"
+        },
+        {
+          "fileId": "53cd99af1105b3fe479ee00d5a873d124a14f59d",
+          "fileName": "protobuf-net.dll",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/windowsphone8/protobuf-net.dll"
+        },
+        {
+          "fileId": "7cfcda7fa1a072833c5e4ee0c32131e599695a59",
+          "fileName": "protobuf-net.pdb",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/windowsphone8/protobuf-net.pdb"
+        },
+        {
+          "fileId": "42d09c3ddaea103cc769aaa67b00677979e35da2",
+          "fileName": "protobuf-net.xml",
+          "filePath": "packages/protobuf-net.2.0.0.666/lib/windowsphone8/protobuf-net.xml"
+        },
+        {
+          "fileId": "71f4af0515f5a34f7414fe857f0e9bb5f0efda69",
+          "fileName": "protobuf-net.2.0.0.666.nupkg",
+          "filePath": "packages/protobuf-net.2.0.0.666/protobuf-net.2.0.0.666.nupkg"
+        },
+        {
+          "fileId": "beed09483a0961e20b735f484b1b523e928c8a2e",
+          "fileName": "repositories.config",
+          "filePath": "packages/repositories.config"
+        },
+        {
+          "fileId": "5bb14232696a0fddd31d05ac2e9148787b71a216",
+          "fileName": "App.config",
+          "filePath": "rethinkdb-net-newtonsoft-test/App.config"
+        },
+        {
+          "fileId": "d977e86a48ee141721133075953bc0087ba85d8b",
+          "fileName": "ComplexObjectTests.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/DatumConversion/ComplexObjectTests.cs"
+        },
+        {
+          "fileId": "0b2a8816a27ae82ac5e0bda3aed8016f41ce2eea",
+          "fileName": "DateTimeOffsetTests.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/DatumConversion/DateTimeOffsetTests.cs"
+        },
+        {
+          "fileId": "25624c7dec68f6c3fa77e77f527408d898ad31cf",
+          "fileName": "DateTimeTests.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/DatumConversion/DateTimeTests.cs"
+        },
+        {
+          "fileId": "96bcb9d54c2874212d3d38e2dfae00d4d7f72ce4",
+          "fileName": "FatDateTimeTests.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/DatumConversion/FatDateTimeTests.cs"
+        },
+        {
+          "fileId": "fd7efa032259d6ad0dd838a0cead1c4d5647c884",
+          "fileName": "GeneralTests.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/DatumConversion/GeneralTests.cs"
+        },
+        {
+          "fileId": "171e2cc6019bbbd28232d0fcde7da0b1a4b08645",
+          "fileName": "TimeSpanTests.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/DatumConversion/TimeSpanTests.cs"
+        },
+        {
+          "fileId": "8f86848a1c01a8978d3cc74da7c6c710919143dc",
+          "fileName": "Util.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/DatumConversion/Util.cs"
+        },
+        {
+          "fileId": "3a2e3bf733ceacff8f6f8335441b51d26c591068",
+          "fileName": "DebugExtensionsForDatum.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/DebugExtensionsForDatum.cs"
+        },
+        {
+          "fileId": "2cfd27d0b445b336326b5e6a601b22fd5fdeb894",
+          "fileName": "DebugTests.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/DebugTests.cs"
+        },
+        {
+          "fileId": "cd108983d628e6db7f4d51fc8219deaf9f491e39",
+          "fileName": "ComplexObjectTests.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/Integration/ComplexObjectTests.cs"
+        },
+        {
+          "fileId": "ef0681fd839a5598c1e448c92e3149daaa35f96a",
+          "fileName": "CoreIntegrationTests.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/Integration/CoreIntegrationTests.cs"
+        },
+        {
+          "fileId": "7403f1fdfcfa4a79d425b0748ecb2699567f3e92",
+          "fileName": "Native.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/Native.cs"
+        },
+        {
+          "fileId": "badc4e1c8b5ea0dd293df18ebab246a813d401be",
+          "fileName": "AssemblyInfo.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/Properties/AssemblyInfo.cs"
+        },
+        {
+          "fileId": "798f2600a7721e4c1cd273823b52d6327dab12f4",
+          "fileName": "ADateTime.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/ADateTime.cs"
+        },
+        {
+          "fileId": "da5549c5763ab3b89fe02cea7701f1e8e66b2081",
+          "fileName": "ADateTimeOffset.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/ADateTimeOffset.cs"
+        },
+        {
+          "fileId": "5d5cfb4e96212db43197582bc29a3989be92f7ad",
+          "fileName": "ComplexObject.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/ComplexObject.cs"
+        },
+        {
+          "fileId": "3b90db4e07f7256c2693b909c6d953f8ec8a438d",
+          "fileName": "DateTimeNullable.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/DateTimeNullable.cs"
+        },
+        {
+          "fileId": "417610cc85ea51c9306233207499a414ffef2290",
+          "fileName": "DateTimeOffsetNullable.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/DateTimeOffsetNullable.cs"
+        },
+        {
+          "fileId": "a09570aada3bb84bd28b3281a42f1f6a4b48d539",
+          "fileName": "FatDateTimeObject.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/FatDateTimeObject.cs"
+        },
+        {
+          "fileId": "951b258d560d9eda8efdd3c6a542f5366b90e059",
+          "fileName": "TestObjectNewton.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/TestObjectNewton.cs"
+        },
+        {
+          "fileId": "75c838e95376393bd09dad2b4d67cdb752c0c951",
+          "fileName": "TimeSpanObject.cs",
+          "filePath": "rethinkdb-net-newtonsoft-test/TestObjects/TimeSpanObject.cs"
+        },
+        {
+          "fileId": "f977b08dc1dbc783038510cc982871413a38fe1c",
+          "fileName": "packages.config",
+          "filePath": "rethinkdb-net-newtonsoft-test/packages.config"
+        },
+        {
+          "fileId": "4a25301fe31e88f155c8c433ceec1624029393ce",
+          "fileName": "rethinkdb-net-newtonsoft-test.csproj",
+          "filePath": "rethinkdb-net-newtonsoft-test/rethinkdb-net-newtonsoft-test.csproj"
+        },
+        {
+          "fileId": "a04b78f271246a457b4e02c3b058fb1596d2e8fa",
+          "fileName": "rethinkdb-net-newtonsoft.nuspec",
+          "filePath": "rethinkdb-net-newtonsoft.nuspec"
+        },
+        {
+          "fileId": "fb7e8bbc43836f76ca59c1f863d24b8e1e8a6d5e",
+          "fileName": "ConfigurationAssembler.cs",
+          "filePath": "rethinkdb-net-newtonsoft/Configuration/ConfigurationAssembler.cs"
+        },
+        {
+          "fileId": "3e3399fd45416e9dfb47123bb37a22b8b473a913",
+          "fileName": "NewtonSerializer.cs",
+          "filePath": "rethinkdb-net-newtonsoft/Configuration/NewtonSerializer.cs"
+        },
+        {
+          "fileId": "2f3356278f7123762555c39fb67b5748c8b2d7cb",
+          "fileName": "NewtonsoftConnectionFactory.cs",
+          "filePath": "rethinkdb-net-newtonsoft/Configuration/NewtonsoftConnectionFactory.cs"
+        },
+        {
+          "fileId": "d54c23fcf464f36ea661b989de24d05c793da878",
+          "fileName": "NewtonsoftDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net-newtonsoft/Configuration/NewtonsoftDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "add3e676acc39443469d1d572894c0fc48cfa916",
+          "fileName": "NewtonsoftReferenceDatumConverter.cs",
+          "filePath": "rethinkdb-net-newtonsoft/Configuration/NewtonsoftReferenceDatumConverter.cs"
+        },
+        {
+          "fileId": "98002a6700e03fcaea762058563f5cceee38e718",
+          "fileName": "TimeSpanConverter.cs",
+          "filePath": "rethinkdb-net-newtonsoft/Converters/TimeSpanConverter.cs"
+        },
+        {
+          "fileId": "424dbdfd941cce37471d068564f3e7a82deb4074",
+          "fileName": "DatumConvert.cs",
+          "filePath": "rethinkdb-net-newtonsoft/DatumConvert.cs"
+        },
+        {
+          "fileId": "a6478cf7a5256a7cbab9f582d89b56140e183493",
+          "fileName": "DatumReader.cs",
+          "filePath": "rethinkdb-net-newtonsoft/DatumReader.cs"
+        },
+        {
+          "fileId": "f7302233520f24d17f981da52d00f5597f8a964c",
+          "fileName": "DatumReaderToken.cs",
+          "filePath": "rethinkdb-net-newtonsoft/DatumReaderToken.cs"
+        },
+        {
+          "fileId": "e0a62fed814446f278bb48aecd5ce8a3e27ffe11",
+          "fileName": "DatumWriter.cs",
+          "filePath": "rethinkdb-net-newtonsoft/DatumWriter.cs"
+        },
+        {
+          "fileId": "d24c3047d36d50f56cf39f1fca3f1a4c2686acfa",
+          "fileName": "DatumWriterToken.cs",
+          "filePath": "rethinkdb-net-newtonsoft/DatumWriterToken.cs"
+        },
+        {
+          "fileId": "2e9d136ca20a5a7c8660fbe7f997ed5f82e38800",
+          "fileName": "Demand.cs",
+          "filePath": "rethinkdb-net-newtonsoft/Demand.cs"
+        },
+        {
+          "fileId": "492468781fcb1f3162f807c69f2a723c5cdcc471",
+          "fileName": "AssemblyInfo.cs",
+          "filePath": "rethinkdb-net-newtonsoft/Properties/AssemblyInfo.cs"
+        },
+        {
+          "fileId": "c750b742c4d00a01c6f23b767cddb9da22d0c4df",
+          "fileName": "packages.config",
+          "filePath": "rethinkdb-net-newtonsoft/packages.config"
+        },
+        {
+          "fileId": "b76ea2a3a2129f77bf1edd6fa72393c9622dbb06",
+          "fileName": "rethinkdb-net-newtonsoft.csproj",
+          "filePath": "rethinkdb-net-newtonsoft/rethinkdb-net-newtonsoft.csproj"
+        },
+        {
+          "fileId": "5bb14232696a0fddd31d05ac2e9148787b71a216",
+          "fileName": "App.config",
+          "filePath": "rethinkdb-net-test/App.config"
+        },
+        {
+          "fileId": "6f836f80af416504d57932a35e34a9bf78c149f9",
+          "fileName": "ConnectionPoolingConnectionFactoryTests.cs",
+          "filePath": "rethinkdb-net-test/ConnectionFactories/ConnectionPoolingConnectionFactoryTests.cs"
+        },
+        {
+          "fileId": "6bfe769dfc6a67ef156dd80385250fd85939dadc",
+          "fileName": "ReliableConnectionFactoryTests.cs",
+          "filePath": "rethinkdb-net-test/ConnectionFactories/ReliableConnectionFactoryTests.cs"
+        },
+        {
+          "fileId": "96f528dfa44ceb95360f48be8d6955b8caceba0d",
+          "fileName": "AbstractDatumConverterFactoryTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/AbstractDatumConverterFactoryTests.cs"
+        },
+        {
+          "fileId": "cd98a5f1847a4a4f2af47118ca34ee3cef825f97",
+          "fileName": "AbstractReferenceTypeDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/AbstractReferenceTypeDatumConverterTests.cs"
+        },
+        {
+          "fileId": "1ec449c042002de1e6e4377e423795ba7384a2a8",
+          "fileName": "AbstractValueTypeDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/AbstractValueTypeDatumConverterTests.cs"
+        },
+        {
+          "fileId": "df7531413ae4878222fa0915018ff595042b5716",
+          "fileName": "AggregateDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/AggregateDatumConverterTests.cs"
+        },
+        {
+          "fileId": "fa3eb97304fb3a2fbf6d7b14b285b42be3ecc459",
+          "fileName": "AnonymousTypeDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/AnonymousTypeDatumConverterTests.cs"
+        },
+        {
+          "fileId": "3a0e0e19a432aa414c134eff5b772d65ede842ff",
+          "fileName": "ArrayDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/ArrayDatumConverterTests.cs"
+        },
+        {
+          "fileId": "b7b5024a7098d8c2e3c2f6bfa187f81ef6d95d7a",
+          "fileName": "BinaryDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/BinaryDatumConverterTests.cs"
+        },
+        {
+          "fileId": "0546f074e251564b99d3944c49e17ef860cd9c8b",
+          "fileName": "BoolDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/BoolDatumConverterTests.cs"
+        },
+        {
+          "fileId": "d0d20684c00d02e0c93d8431d22396d244f050f7",
+          "fileName": "ByteDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/ByteDatumConverterTests.cs"
+        },
+        {
+          "fileId": "f26104e76699803fca6a126dc529171309e387a3",
+          "fileName": "CharDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/CharDatumConverterTests.cs"
+        },
+        {
+          "fileId": "1cfbb9af8e31ba4afebe9819b040fe8f6620eea9",
+          "fileName": "DataContractDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/DataContractDatumConverterTests.cs"
+        },
+        {
+          "fileId": "7f4c627334f975e05ca77bf334adcf0a9f1f809d",
+          "fileName": "DateTimeDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/DateTimeDatumConverterTests.cs"
+        },
+        {
+          "fileId": "6f52f904640b08a74818e4dccd5e32c22f46b8af",
+          "fileName": "DateTimeOffsetDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/DateTimeOffsetDatumConverterTests.cs"
+        },
+        {
+          "fileId": "a913ee5cdba3f228304fdf6957e4f0aadea38759",
+          "fileName": "DecimalDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/DecimalDatumConverterTests.cs"
+        },
+        {
+          "fileId": "6759f9381777e2701ec1bd44eae2cf2b82eb5fbf",
+          "fileName": "DefaultDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/DefaultDatumConverterTests.cs"
+        },
+        {
+          "fileId": "32f755587652f2f3209142b51b6f67740f7b036f",
+          "fileName": "DoubleDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/DoubleDatumConverterTests.cs"
+        },
+        {
+          "fileId": "683008854f090629c55bac25183e79b577d22de2",
+          "fileName": "EnumDatumConverterFactoryTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/EnumDatumConverterFactoryTests.cs"
+        },
+        {
+          "fileId": "8949f1fd592674c58afa44d29d457515a408f3f7",
+          "fileName": "FloatDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/FloatDatumConverterTests.cs"
+        },
+        {
+          "fileId": "2081fd174b0d75bf1177a62bcb250a0b0c9fb1c7",
+          "fileName": "GuidDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/GuidDatumConverterTests.cs"
+        },
+        {
+          "fileId": "bc25e74f10d4c426a25fe8740c0f8d94ddc566fa",
+          "fileName": "IntDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/IntDatumConverterTests.cs"
+        },
+        {
+          "fileId": "5ad7d94442f0fd89d1b26cffababd0d1a40f9a6a",
+          "fileName": "ListDatumConverterFactoryTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/ListDatumConverterFactoryTests.cs"
+        },
+        {
+          "fileId": "280fc4528ffe2049acc13f5bb09d310e259447f4",
+          "fileName": "LongDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/LongDatumConverterTests.cs"
+        },
+        {
+          "fileId": "fd9a6b81715d9cba501db1d0e72472630f955cd7",
+          "fileName": "NullableDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/NullableDatumConverterTests.cs"
+        },
+        {
+          "fileId": "2a719ea57212ec6db6594ed62bc7c817cff0895c",
+          "fileName": "ShortDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/ShortDatumConverterTests.cs"
+        },
+        {
+          "fileId": "4f996d66fea84750d78613605a36d033cb096c61",
+          "fileName": "SignedByteDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/SignedByteDatumConverterTests.cs"
+        },
+        {
+          "fileId": "88c4d82f77b9445746ca954c59688f3c1e9303a5",
+          "fileName": "StringDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/StringDatumConverterTests.cs"
+        },
+        {
+          "fileId": "e6e6cc517156918f654692d18b11c02c959161c6",
+          "fileName": "TimeSpanDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/TimeSpanDatumConverterTests.cs"
+        },
+        {
+          "fileId": "276ab7b9c44a2ef540e31123e2c32b5bb04dfd34",
+          "fileName": "TupleDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/TupleDatumConverterTests.cs"
+        },
+        {
+          "fileId": "32a9be4c132f0c80dd5720b17ec22db0e6ead46f",
+          "fileName": "UnsignedIntDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/UnsignedIntDatumConverterTests.cs"
+        },
+        {
+          "fileId": "7bf4b0799488a5b74ce83fc500fa07f0a3100876",
+          "fileName": "UnsignedLongDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/UnsignedLongDatumConverterTests.cs"
+        },
+        {
+          "fileId": "634112b95cd6bcd1d6d9c2bfe0ac39179fdc3369",
+          "fileName": "UnsignedShortDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/UnsignedShortDatumConverterTests.cs"
+        },
+        {
+          "fileId": "f8adb036ce71bcf1bf1aa354c161d47d4f533ce4",
+          "fileName": "UriDatumConverterTests.cs",
+          "filePath": "rethinkdb-net-test/DatumConverters/UriDatumConverterTests.cs"
+        },
+        {
+          "fileId": "94add3da05795b011c4ced14e1edf0cfd6d25965",
+          "fileName": "DatumHelpers.cs",
+          "filePath": "rethinkdb-net-test/DatumHelpers.cs"
+        },
+        {
+          "fileId": "d3e98c7e14ca9e19b99a0fa4ee7e9a362df00b4b",
+          "fileName": "DateTimeExpressionTests.cs",
+          "filePath": "rethinkdb-net-test/Expressions/DateTimeExpressionTests.cs"
+        },
+        {
+          "fileId": "7becf56cf03b2a8daaa341ffb8563a32e9f11e0d",
+          "fileName": "DefaultExpressionConverterFactoryTests.cs",
+          "filePath": "rethinkdb-net-test/Expressions/DefaultExpressionConverterFactoryTests.cs"
+        },
+        {
+          "fileId": "8052b620c12b534736c0749d4b1f92d6062b599d",
+          "fileName": "GenericTypeConstraintExpressionTests.cs",
+          "filePath": "rethinkdb-net-test/Expressions/GenericTypeConstraintExpressionTests.cs"
+        },
+        {
+          "fileId": "1aa3bc098094b5a062a51a2ced17b2d63f5a0eaf",
+          "fileName": "GuidExpressionTests.cs",
+          "filePath": "rethinkdb-net-test/Expressions/GuidExpressionTests.cs"
+        },
+        {
+          "fileId": "1413842ffb200929475e8005cd396042cfb661c3",
+          "fileName": "TimeSpanExpressionTests.cs",
+          "filePath": "rethinkdb-net-test/Expressions/TimeSpanExpressionTests.cs"
+        },
+        {
+          "fileId": "ef508bb53dfad7e19ca09f643374726494b94de4",
+          "fileName": "AnotherTestObject.cs",
+          "filePath": "rethinkdb-net-test/Integration/AnotherTestObject.cs"
+        },
+        {
+          "fileId": "9ccbce90d5d34883d951d7a8ec044e91efc04eb6",
+          "fileName": "BlankTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/BlankTests.cs"
+        },
+        {
+          "fileId": "e4a378ddf26ca15e102c08a85b6941cee3e0b99f",
+          "fileName": "ConnectTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/ConnectTests.cs"
+        },
+        {
+          "fileId": "a01a0f9c29a74bac640ba6ef9a759e37732fa4ab",
+          "fileName": "DatabaseTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/DatabaseTests.cs"
+        },
+        {
+          "fileId": "e962c01e9df053d70ccaadab8378181a0f37bc1f",
+          "fileName": "Author.cs",
+          "filePath": "rethinkdb-net-test/Integration/Documentation/Author.cs"
+        },
+        {
+          "fileId": "76e2f7b4fd5024136e9d359a0744c31afe9f0637",
+          "fileName": "Post.cs",
+          "filePath": "rethinkdb-net-test/Integration/Documentation/Post.cs"
+        },
+        {
+          "fileId": "79e84b2bedb1d60b10fc94092b20500439d387c0",
+          "fileName": "TenMinuteGuide.cs",
+          "filePath": "rethinkdb-net-test/Integration/Documentation/TenMinuteGuide.cs"
+        },
+        {
+          "fileId": "92a5e8044ef8d7c4008477c94e598159164dd702",
+          "fileName": "GroupingTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/GroupingTests.cs"
+        },
+        {
+          "fileId": "dd61cdc3807f9ddf895ca88c1f79fa36a059e16a",
+          "fileName": "HasFieldsTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/HasFieldsTests.cs"
+        },
+        {
+          "fileId": "29b147cf5277ce300bc48ac656b866a7fd9744b7",
+          "fileName": "IntegrationTestSetup.cs",
+          "filePath": "rethinkdb-net-test/Integration/IntegrationTestSetup.cs"
+        },
+        {
+          "fileId": "60131c19e813e7096e7c9c0dcfd5558909c0b07f",
+          "fileName": "ManyObjectTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/ManyObjectTests.cs"
+        },
+        {
+          "fileId": "9b9ba09e06198730e9511ce31bb7f2e5953d0b36",
+          "fileName": "MultiObjectTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/MultiObjectTests.cs"
+        },
+        {
+          "fileId": "2f28635bebd7b26d445f2b56829a6006c6764f80",
+          "fileName": "MultiTableTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/MultiTableTests.cs"
+        },
+        {
+          "fileId": "6dbb37707a242d5599ddb67b29484a648f3ce886",
+          "fileName": "SingleObjectTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/SingleObjectTests.cs"
+        },
+        {
+          "fileId": "7066572b9319d4c196bde3b83815a0da45b74fe0",
+          "fileName": "TableTests.cs",
+          "filePath": "rethinkdb-net-test/Integration/TableTests.cs"
+        },
+        {
+          "fileId": "28c8d463edf367ab8802ea2f82c1048d50f5de9e",
+          "fileName": "TestBase.cs",
+          "filePath": "rethinkdb-net-test/Integration/TestBase.cs"
+        },
+        {
+          "fileId": "c96ba6d35fbe43b2e1cf05432820722fc208b497",
+          "fileName": "TestObject.cs",
+          "filePath": "rethinkdb-net-test/Integration/TestObject.cs"
+        },
+        {
+          "fileId": "850775f27b71d731aa64738a096a56bb05e381dc",
+          "fileName": "TestObject2.cs",
+          "filePath": "rethinkdb-net-test/Integration/TestObject2.cs"
+        },
+        {
+          "fileId": "e5ffb338b08fe67f5ac4d15ee4387d7da4ea24f3",
+          "fileName": "TestObject3.cs",
+          "filePath": "rethinkdb-net-test/Integration/TestObject3.cs"
+        },
+        {
+          "fileId": "15dbb06bcc1a04dbf92544859e9e094aff24a04e",
+          "fileName": "TestObject4.cs",
+          "filePath": "rethinkdb-net-test/Integration/TestObject4.cs"
+        },
+        {
+          "fileId": "f027747703687627e08bbf37bdb7f3ee93370418",
+          "fileName": "ZipTestObject.cs",
+          "filePath": "rethinkdb-net-test/Integration/ZipTestObject.cs"
+        },
+        {
+          "fileId": "8da9770f608d0ffda7268c1244c55dbb2a26edb4",
+          "fileName": "AssemblyInfo.cs",
+          "filePath": "rethinkdb-net-test/Properties/AssemblyInfo.cs"
+        },
+        {
+          "fileId": "b3a53e6fb65522c3f0622d65cee9ec650683c18e",
+          "fileName": "ReplaceQueryTests.cs",
+          "filePath": "rethinkdb-net-test/QueryTests/ReplaceQueryTests.cs"
+        },
+        {
+          "fileId": "de8c01df72f17b3d23e5307fb625ccd389c4ddc4",
+          "fileName": "UpdateQueryTests.cs",
+          "filePath": "rethinkdb-net-test/QueryTests/UpdateQueryTests.cs"
+        },
+        {
+          "fileId": "a67897c2df39431e8314e5d4fffd5ab3f91230c4",
+          "fileName": "packages.config",
+          "filePath": "rethinkdb-net-test/packages.config"
+        },
+        {
+          "fileId": "96315a26c2db37c09914d629d7a5746685226f01",
+          "fileName": "rethinkdb-net-test.csproj",
+          "filePath": "rethinkdb-net-test/rethinkdb-net-test.csproj"
+        },
+        {
+          "fileId": "fe2b3874b9364792a73739f900d674e8b74d69e6",
+          "fileName": "rethinkdb-net.VS2013.sln",
+          "filePath": "rethinkdb-net.VS2013.sln"
+        },
+        {
+          "fileId": "944b81c2c40eb7807356ac0709111e417d64a450",
+          "fileName": "rethinkdb-net.VS2013.sln.DotSettings",
+          "filePath": "rethinkdb-net.VS2013.sln.DotSettings"
+        },
+        {
+          "fileId": "3354762140c43b3569a0f9f8df47cef9e20946e5",
+          "fileName": "rethinkdb-net.nuspec",
+          "filePath": "rethinkdb-net.nuspec"
+        },
+        {
+          "fileId": "71eafdffceffb9e9a8ff2b5ee24593b6c05c8e5c",
+          "fileName": "rethinkdb-net.sln",
+          "filePath": "rethinkdb-net.sln"
+        },
+        {
+          "fileId": "5d725776267c3a6d2e6bdd31c63d08670e6736ce",
+          "fileName": "Bound.cs",
+          "filePath": "rethinkdb-net/Bound.cs"
+        },
+        {
+          "fileId": "4fe60e5c76f2b9f97c3387ef30e1723811bde817",
+          "fileName": "ClusterElement.cs",
+          "filePath": "rethinkdb-net/Configuration/ClusterElement.cs"
+        },
+        {
+          "fileId": "65c91be0622ee6dddf962efc53f202b84b9710eb",
+          "fileName": "ClusterElementCollection.cs",
+          "filePath": "rethinkdb-net/Configuration/ClusterElementCollection.cs"
+        },
+        {
+          "fileId": "fffd3d2d5c9b91b6c6811bc38d9f5e98151b04b5",
+          "fileName": "ConfigurationAssembler.cs",
+          "filePath": "rethinkdb-net/Configuration/ConfigurationAssembler.cs"
+        },
+        {
+          "fileId": "acf3668b1beaeb47739467c984860665d6a0e287",
+          "fileName": "ConnectionPoolElement.cs",
+          "filePath": "rethinkdb-net/Configuration/ConnectionPoolElement.cs"
+        },
+        {
+          "fileId": "23e17bd60482755a7619a39af5c735dec5fd1a55",
+          "fileName": "DefaultLoggerElement.cs",
+          "filePath": "rethinkdb-net/Configuration/DefaultLoggerElement.cs"
+        },
+        {
+          "fileId": "d656cc4fb0fafefefabf0b030c091ead34ee9c5a",
+          "fileName": "EndPointElement.cs",
+          "filePath": "rethinkdb-net/Configuration/EndPointElement.cs"
+        },
+        {
+          "fileId": "0a24b08dd7c787a8c90963c7254a60b583f6db17",
+          "fileName": "EndPointElementCollection.cs",
+          "filePath": "rethinkdb-net/Configuration/EndPointElementCollection.cs"
+        },
+        {
+          "fileId": "40d4f761503ac4a52adbc19390ff107526d78e63",
+          "fileName": "NetworkErrorHandlingElement.cs",
+          "filePath": "rethinkdb-net/Configuration/NetworkErrorHandlingElement.cs"
+        },
+        {
+          "fileId": "bc69191ee35b01d97a55b4750c944c3f5ca0000b",
+          "fileName": "RethinkDbClientSection.cs",
+          "filePath": "rethinkdb-net/Configuration/RethinkDbClientSection.cs"
+        },
+        {
+          "fileId": "493cab9b867b6a9d25f19a39e2f5448728d94f7b",
+          "fileName": "Conflict.cs",
+          "filePath": "rethinkdb-net/Conflict.cs"
+        },
+        {
+          "fileId": "02061eb3b13f63981e18c96442a3a0419cd2e6cb",
+          "fileName": "Connection.cs",
+          "filePath": "rethinkdb-net/Connection.cs"
+        },
+        {
+          "fileId": "bdd3c4a134378c686d41be98f1cf8bb24d478123",
+          "fileName": "ConnectionExtensions.cs",
+          "filePath": "rethinkdb-net/ConnectionExtensions.cs"
+        },
+        {
+          "fileId": "379577961f64c185182171b5c52db84c6940f3fd",
+          "fileName": "ConnectionPoolingConnectionFactory.cs",
+          "filePath": "rethinkdb-net/ConnectionFactories/ConnectionPoolingConnectionFactory.cs"
+        },
+        {
+          "fileId": "5949783a4b8808520c571f1f24d6db928219dc11",
+          "fileName": "DefaultConnectionFactory.cs",
+          "filePath": "rethinkdb-net/ConnectionFactories/DefaultConnectionFactory.cs"
+        },
+        {
+          "fileId": "063f249ad75081e8339300a52dae7e802faeab86",
+          "fileName": "ReliableConnectionFactory.cs",
+          "filePath": "rethinkdb-net/ConnectionFactories/ReliableConnectionFactory.cs"
+        },
+        {
+          "fileId": "dd8d6d566060c6c0ef7fbf2e5c1e871febf41b2f",
+          "fileName": "AbstractDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/AbstractDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "837d9c80918696d3842ac9e71985ba9ac000b947",
+          "fileName": "AbstractReferenceTypeDatumConverter.cs",
+          "filePath": "rethinkdb-net/DatumConverters/AbstractReferenceTypeDatumConverter.cs"
+        },
+        {
+          "fileId": "ae182f856723c852ecffbb989491a78e2a9dce2d",
+          "fileName": "AbstractValueTypeDatumConverter.cs",
+          "filePath": "rethinkdb-net/DatumConverters/AbstractValueTypeDatumConverter.cs"
+        },
+        {
+          "fileId": "bf9759d1b992ad81482ee2f056ce68b63d512519",
+          "fileName": "AggregateDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/AggregateDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "bdec8813f26445a4fcb34bd025d40508979d1fdd",
+          "fileName": "AnonymousTypeDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/AnonymousTypeDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "a4caabf18823a5ce2ea4672397d436438993272d",
+          "fileName": "ArrayDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/ArrayDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "8300f64486886cef7f67d16dc88c67b8477afbbf",
+          "fileName": "BinaryDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/BinaryDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "b5bb6309e9dcc9c01a39668481c9767ab8a6d100",
+          "fileName": "BoundEnumDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/BoundEnumDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "37a1b8d19580a506569e4c21d36239398ec8b9f0",
+          "fileName": "DataContractDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/DataContractDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "ac00039fb58e72f0a84d9a740371c47e8eb3b927",
+          "fileName": "DateTimeDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/DateTimeDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "6cff0834b065a87f631c629b1ec06f8f0fa7d397",
+          "fileName": "DateTimeOffsetDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/DateTimeOffsetDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "2331ddaa371f2588e3fdcef9096406c1bb72b4bd",
+          "fileName": "DatumConverterFactoryExtensions.cs",
+          "filePath": "rethinkdb-net/DatumConverters/DatumConverterFactoryExtensions.cs"
+        },
+        {
+          "fileId": "9a8fd3988aa31d9db11140fad993c75ed6e27383",
+          "fileName": "EnumDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/EnumDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "cf06eb88e13c30b9a5c52b91f48e720b415dc27f",
+          "fileName": "GroupingDictionaryDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/GroupingDictionaryDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "325a9b2a2abe7289f60b6bfeec8bbb24fde56525",
+          "fileName": "GuidDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/GuidDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "9090fb63e82a5efd8c587ba777b21762761bee65",
+          "fileName": "ListDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/ListDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "6ca364d6d84f3f11de8d8407722820e542115712",
+          "fileName": "NullableDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/NullableDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "54ad35f295bd2f4292b3cb65b3b98e7fc5922dd4",
+          "fileName": "PrimitiveDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/PrimitiveDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "adfff880cca37aef6318492333d786f67d0c6dca",
+          "fileName": "TimeSpanDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/TimeSpanDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "9f41a1613cbb0bd69a82d0614a5081add35ddd78",
+          "fileName": "TupleDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/TupleDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "6af2c352693535284ce5c36840d3902ad2bdb32a",
+          "fileName": "UriDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/DatumConverters/UriDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "fd88c415bbee6850ba442a3ec83a1cc8c245de89",
+          "fileName": "DmlResponse.cs",
+          "filePath": "rethinkdb-net/DmlResponse.cs"
+        },
+        {
+          "fileId": "525a462d64a9be028566259c8d249381fd1f627b",
+          "fileName": "RethinkDbException.cs",
+          "filePath": "rethinkdb-net/Exceptions/RethinkDbException.cs"
+        },
+        {
+          "fileId": "c53cfb69099bea82a73a0b0ad9e0820be165669b",
+          "fileName": "RethinkDbInternalErrorException.cs",
+          "filePath": "rethinkdb-net/Exceptions/RethinkDbInternalErrorException.cs"
+        },
+        {
+          "fileId": "6618aaf778d911890d21551b727cccb1e55ddb9d",
+          "fileName": "RethinkDbNetworkException.cs",
+          "filePath": "rethinkdb-net/Exceptions/RethinkDbNetworkException.cs"
+        },
+        {
+          "fileId": "b7051468fa09078cfb522717731166eac2ee2d88",
+          "fileName": "RethinkDbRuntimeException.cs",
+          "filePath": "rethinkdb-net/Exceptions/RethinkDbRuntimeException.cs"
+        },
+        {
+          "fileId": "961532ca422443f151218bee6442e10e90507f51",
+          "fileName": "BaseExpression.cs",
+          "filePath": "rethinkdb-net/Expressions/BaseExpression.cs"
+        },
+        {
+          "fileId": "4d91da1d7e63981e88c416a61d9a5cecf802c0ed",
+          "fileName": "DateTimeExpressionConverters.cs",
+          "filePath": "rethinkdb-net/Expressions/DateTimeExpressionConverters.cs"
+        },
+        {
+          "fileId": "e6d705361007da9d1e5c262eb41482dcf9378b71",
+          "fileName": "DefaultExpressionConverterFactory.cs",
+          "filePath": "rethinkdb-net/Expressions/DefaultExpressionConverterFactory.cs"
+        },
+        {
+          "fileId": "2228dc7a7d7be2b06dad18be37e76a38352acf8d",
+          "fileName": "GuidExpressionConverters.cs",
+          "filePath": "rethinkdb-net/Expressions/GuidExpressionConverters.cs"
+        },
+        {
+          "fileId": "3425352883e4dd1f4953592217d07e110bb936f6",
+          "fileName": "LinqExpressionConverters.cs",
+          "filePath": "rethinkdb-net/Expressions/LinqExpressionConverters.cs"
+        },
+        {
+          "fileId": "c04b439c75a0871e8afc95e85cb9320b3503a84b",
+          "fileName": "SingleParameterLambda.cs",
+          "filePath": "rethinkdb-net/Expressions/SingleParameterLambda.cs"
+        },
+        {
+          "fileId": "fc2c1eb856b6e5707b1f1dd11b752d39b7ce145d",
+          "fileName": "TwoParameterLambda.cs",
+          "filePath": "rethinkdb-net/Expressions/TwoParameterLambda.cs"
+        },
+        {
+          "fileId": "54f12f72d4f9deee19109c791702eef35a061109",
+          "fileName": "ZeroParameterLambda.cs",
+          "filePath": "rethinkdb-net/Expressions/ZeroParameterLambda.cs"
+        },
+        {
+          "fileId": "da7046fcd0d00f2f40c10affab85dbd8358a7fe5",
+          "fileName": "Index.cs",
+          "filePath": "rethinkdb-net/Index.cs"
+        },
+        {
+          "fileId": "9edad00df29bdfad9d303d8584b41549773eae8b",
+          "fileName": "IAsyncEnumerator.cs",
+          "filePath": "rethinkdb-net/Interfaces/IAsyncEnumerator.cs"
+        },
+        {
+          "fileId": "382d4b0d5df521e77637a2c88c96df3d1f6edc0a",
+          "fileName": "IBaseIndex.cs",
+          "filePath": "rethinkdb-net/Interfaces/IBaseIndex.cs"
+        },
+        {
+          "fileId": "efc20863a55a74656a8308248dd380d31db38ed4",
+          "fileName": "IConnectableConnection.cs",
+          "filePath": "rethinkdb-net/Interfaces/IConnectableConnection.cs"
+        },
+        {
+          "fileId": "136b3732c55c23a28d2d992d123721e55fb3eaef",
+          "fileName": "IConnection.cs",
+          "filePath": "rethinkdb-net/Interfaces/IConnection.cs"
+        },
+        {
+          "fileId": "1ec81ae397098cc6a078ffeb0f8236aa4d2fa7e7",
+          "fileName": "IConnectionFactory.cs",
+          "filePath": "rethinkdb-net/Interfaces/IConnectionFactory.cs"
+        },
+        {
+          "fileId": "da8e75ae98e31874d1b48b7fc2dbf9dc6bb35ce0",
+          "fileName": "IDatabaseQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/IDatabaseQuery.cs"
+        },
+        {
+          "fileId": "0c923b95bd67d7158990cde442f616461f729a00",
+          "fileName": "IDatumConverter.cs",
+          "filePath": "rethinkdb-net/Interfaces/IDatumConverter.cs"
+        },
+        {
+          "fileId": "634b81adaf1df4c945d227d6230a16ac3c77b61d",
+          "fileName": "IDatumConverterFactory.cs",
+          "filePath": "rethinkdb-net/Interfaces/IDatumConverterFactory.cs"
+        },
+        {
+          "fileId": "30d7aeb037b31c21697a4e1df3e6654b3bd18c52",
+          "fileName": "IExpressionConverterFactory.cs",
+          "filePath": "rethinkdb-net/Interfaces/IExpressionConverterFactory.cs"
+        },
+        {
+          "fileId": "a70999eeedb9059b4445cd9d7fd65e511dfae6ab",
+          "fileName": "IExpressionConverterOneParameter.cs",
+          "filePath": "rethinkdb-net/Interfaces/IExpressionConverterOneParameter.cs"
+        },
+        {
+          "fileId": "985c8098858ebdda26b8b7c5ac56b8962487264d",
+          "fileName": "IExpressionConverterTwoParameter.cs",
+          "filePath": "rethinkdb-net/Interfaces/IExpressionConverterTwoParameter.cs"
+        },
+        {
+          "fileId": "0dca800fbd0ccffff3335a02eee47375479eac85",
+          "fileName": "IExpressionConverterZeroParameter.cs",
+          "filePath": "rethinkdb-net/Interfaces/IExpressionConverterZeroParameter.cs"
+        },
+        {
+          "fileId": "5dd0b571c952e1759b2b176b3ced6cc4f6246df1",
+          "fileName": "IGroupingDictionary.cs",
+          "filePath": "rethinkdb-net/Interfaces/IGroupingDictionary.cs"
+        },
+        {
+          "fileId": "338aaafd459a8bd1876247d9d6c62e241d7189d3",
+          "fileName": "IGroupingQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/IGroupingQuery.cs"
+        },
+        {
+          "fileId": "c3263e62a54c37c1d76f89c0628dfa5026379f5d",
+          "fileName": "IIndex.cs",
+          "filePath": "rethinkdb-net/Interfaces/IIndex.cs"
+        },
+        {
+          "fileId": "fc7adee9776ad9c0fc8655ba220e5d2fe7a83b8e",
+          "fileName": "ILogger.cs",
+          "filePath": "rethinkdb-net/Interfaces/ILogger.cs"
+        },
+        {
+          "fileId": "68bc076e89862684b506966af66406ac2b69fc07",
+          "fileName": "IMultiIndex.cs",
+          "filePath": "rethinkdb-net/Interfaces/IMultiIndex.cs"
+        },
+        {
+          "fileId": "91607308d11ca41a03e292f1ae52a367ce1eef67",
+          "fileName": "IMutableSingleObjectQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/IMutableSingleObjectQuery.cs"
+        },
+        {
+          "fileId": "0e79622ee9b9ed896817f6f68e3d9da0bee13cb0",
+          "fileName": "IObjectDatumConverter.cs",
+          "filePath": "rethinkdb-net/Interfaces/IObjectDatumConverter.cs"
+        },
+        {
+          "fileId": "298bc94180d78ead93f6c11ba30d4c4863fd5fc3",
+          "fileName": "IOrderedSequenceQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/IOrderedSequenceQuery.cs"
+        },
+        {
+          "fileId": "90d4e0b7001ee5d66cdc04d7a96f0851ee5f3810",
+          "fileName": "IQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/IQuery.cs"
+        },
+        {
+          "fileId": "243d9d01a210f57f00bc08a2e0ec37e201b18b93",
+          "fileName": "IQueryConverter.cs",
+          "filePath": "rethinkdb-net/Interfaces/IQueryConverter.cs"
+        },
+        {
+          "fileId": "40a1feb791c69160eb733708043e734d0c9f7ac5",
+          "fileName": "IScalarQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/IScalarQuery.cs"
+        },
+        {
+          "fileId": "6dc5ef4511e196415267bf52e0b00d29a71f147e",
+          "fileName": "ISequenceQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/ISequenceQuery.cs"
+        },
+        {
+          "fileId": "1da45e0f6fc69218fd55d5531a19153be43f2a83",
+          "fileName": "ISingleObjectQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/ISingleObjectQuery.cs"
+        },
+        {
+          "fileId": "d3c855004d2f698899435136bcbcc061e3f27bd7",
+          "fileName": "ITableQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/ITableQuery.cs"
+        },
+        {
+          "fileId": "a1719d3617b007e0192c74a0aed0b6ed5751706e",
+          "fileName": "IWriteQuery.cs",
+          "filePath": "rethinkdb-net/Interfaces/IWriteQuery.cs"
+        },
+        {
+          "fileId": "d6508e0135ab53ee33507066f0fa97c53262e520",
+          "fileName": "OrderByTerm.cs",
+          "filePath": "rethinkdb-net/Interfaces/OrderByTerm.cs"
+        },
+        {
+          "fileId": "5222231c838b1d1f33f9dc0164be9dece559b9f8",
+          "fileName": "JsonException.cs",
+          "filePath": "rethinkdb-net/Json/JsonException.cs"
+        },
+        {
+          "fileId": "a22a59b8112ac802eb5de93a7f7733ee30de8be8",
+          "fileName": "JsonParser.cs",
+          "filePath": "rethinkdb-net/Json/JsonParser.cs"
+        },
+        {
+          "fileId": "65e4729c354934c40d19850f897b1fbb905b3a68",
+          "fileName": "JsonParserToken.cs",
+          "filePath": "rethinkdb-net/Json/JsonParserToken.cs"
+        },
+        {
+          "fileId": "7ec2c434bd9af69e0b222e7b69a590395dbcac93",
+          "fileName": "JsonReader.cs",
+          "filePath": "rethinkdb-net/Json/JsonReader.cs"
+        },
+        {
+          "fileId": "9a61b09536e3c4b0b5816c7205bc0cca143e0bcb",
+          "fileName": "JsonWriter.cs",
+          "filePath": "rethinkdb-net/Json/JsonWriter.cs"
+        },
+        {
+          "fileId": "7ea86ed5a8e211627d28b41d0fc7c10e2fcb64e8",
+          "fileName": "DefaultLogger.cs",
+          "filePath": "rethinkdb-net/Logging/DefaultLogger.cs"
+        },
+        {
+          "fileId": "b04988ba125cfa65d2e1c9204be86252b5082033",
+          "fileName": "LoggingCategory.cs",
+          "filePath": "rethinkdb-net/Logging/LoggingCategory.cs"
+        },
+        {
+          "fileId": "69ec2a86f6f996d158923ab5d993289cd21a7ac9",
+          "fileName": "LoggingUtils.cs",
+          "filePath": "rethinkdb-net/Logging/LoggingUtils.cs"
+        },
+        {
+          "fileId": "213d5d910417f286f2d194c7209ec2e5900d8ff4",
+          "fileName": "MultiIndex.cs",
+          "filePath": "rethinkdb-net/MultiIndex.cs"
+        },
+        {
+          "fileId": "aeb6535277bde654eca017d3df6464bf3eb482c9",
+          "fileName": "OrderByDirection.cs",
+          "filePath": "rethinkdb-net/OrderByDirection.cs"
+        },
+        {
+          "fileId": "211547966fec695bcec9af00b76acb34665968c5",
+          "fileName": "AssemblyInfo.cs",
+          "filePath": "rethinkdb-net/Properties/AssemblyInfo.cs"
+        },
+        {
+          "fileId": "6e8705637aef7980040cc957426b2292a8c81260",
+          "fileName": "Extensions.cs",
+          "filePath": "rethinkdb-net/Protocols/Extensions.cs"
+        },
+        {
+          "fileId": "3e84669b84a64eff655ca004be9976ebd9c25a73",
+          "fileName": "IProtocol.cs",
+          "filePath": "rethinkdb-net/Protocols/IProtocol.cs"
+        },
+        {
+          "fileId": "800150cd15705badc837d0135b99971d5bd021a7",
+          "fileName": "Version_0_2_Protocol.cs",
+          "filePath": "rethinkdb-net/Protocols/Version_0_2_Protocol.cs"
+        },
+        {
+          "fileId": "ab198310901075763d8a90fc128f47b58de150d9",
+          "fileName": "Version_0_3.cs",
+          "filePath": "rethinkdb-net/Protocols/Version_0_3.cs"
+        },
+        {
+          "fileId": "6eb4f643104f32b4d922037b6a3b0eeaa12064a0",
+          "fileName": "Version_0_3_JsonProtocol.cs",
+          "filePath": "rethinkdb-net/Protocols/Version_0_3_JsonProtocol.cs"
+        },
+        {
+          "fileId": "7f2bd7bf4abce8b53dbe22ccd23f7f6eb6ac087f",
+          "fileName": "Version_0_3_ProtobufProtocol.cs",
+          "filePath": "rethinkdb-net/Protocols/Version_0_3_ProtobufProtocol.cs"
+        },
+        {
+          "fileId": "8e9ebb84934eab5735c8ca2fc8dfd0f2b4765d29",
+          "fileName": "Query.cs",
+          "filePath": "rethinkdb-net/Query.cs"
+        },
+        {
+          "fileId": "498e0bd07ab8b6170a8936784a03aecd253d18c7",
+          "fileName": "QueryConverter.cs",
+          "filePath": "rethinkdb-net/QueryConverter.cs"
+        },
+        {
+          "fileId": "c18d7d96e7259f16671a4da12d22b88d2b9bf1ec",
+          "fileName": "AvgAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/AvgAggregateQuery.cs"
+        },
+        {
+          "fileId": "a30739ebdf625ccd381b42fd94df22a25efa054b",
+          "fileName": "AvgGroupAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/AvgGroupAggregateQuery.cs"
+        },
+        {
+          "fileId": "50ca4f23191a3336edb56b65a69ee6e41d81c17a",
+          "fileName": "BetweenQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/BetweenQuery.cs"
+        },
+        {
+          "fileId": "e1a6a97ab9c2763614fc6b3ce2240e1a55ed7e9e",
+          "fileName": "ChangesQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ChangesQuery.cs"
+        },
+        {
+          "fileId": "4cae5e33810e3d498b8a5013873184bdbc9fc0c5",
+          "fileName": "ConcatMapQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ConcatMapQuery.cs"
+        },
+        {
+          "fileId": "538c702c615058938a5c97087a820fb556989eb6",
+          "fileName": "ContainsAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ContainsAggregateQuery.cs"
+        },
+        {
+          "fileId": "b5672de14201c183bfb82793936c62351ab3ae0a",
+          "fileName": "ContainsGroupAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ContainsGroupAggregateQuery.cs"
+        },
+        {
+          "fileId": "b0740acb635cc25ef98f998efcccf7d49a5667ea",
+          "fileName": "CountAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/CountAggregateQuery.cs"
+        },
+        {
+          "fileId": "44f0f277e4a6862d6bb8e01ebc848ccb5391304c",
+          "fileName": "CountGroupAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/CountGroupAggregateQuery.cs"
+        },
+        {
+          "fileId": "746a8dce85cbbd2949c0c6c129b7f214ee87326c",
+          "fileName": "DbCreateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/DbCreateQuery.cs"
+        },
+        {
+          "fileId": "c7fa49e57d08c197ac2121234903a10494acba52",
+          "fileName": "DbDropQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/DbDropQuery.cs"
+        },
+        {
+          "fileId": "b069f2f3e96ad59ef0732cee7acfb3a5177723e8",
+          "fileName": "DbListQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/DbListQuery.cs"
+        },
+        {
+          "fileId": "7ff9f7752f172dd4fce1d2f133dc585b5a3b78c5",
+          "fileName": "DbQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/DbQuery.cs"
+        },
+        {
+          "fileId": "2868d5f8a008d67aa2c8ba854dbba91de11d9cea",
+          "fileName": "DeleteAndReturnValueQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/DeleteAndReturnValueQuery.cs"
+        },
+        {
+          "fileId": "b984ffcd4b31545830df5397e891638109f780aa",
+          "fileName": "DeleteQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/DeleteQuery.cs"
+        },
+        {
+          "fileId": "9f6b5c7b9b619c5ffc9b4731025d7732a8a32259",
+          "fileName": "DeleteQueryBase.cs",
+          "filePath": "rethinkdb-net/QueryTerm/DeleteQueryBase.cs"
+        },
+        {
+          "fileId": "b7dc30d65ff17792ed4c35949987cd60d1ccfaa4",
+          "fileName": "DistinctQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/DistinctQuery.cs"
+        },
+        {
+          "fileId": "e5246080b1965fe8119aac90bca8f47225041f91",
+          "fileName": "EqJoinQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/EqJoinQuery.cs"
+        },
+        {
+          "fileId": "e7b929fc937e3f9b78de319955f55b76ad4675ba",
+          "fileName": "ExprQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ExprQuery.cs"
+        },
+        {
+          "fileId": "1aa5f43aeaf8fb0b616c8d308bab466716b4e021",
+          "fileName": "ExprSequenceQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ExprSequenceQuery.cs"
+        },
+        {
+          "fileId": "77756c5f3f533985fe7902bf52724aa97a9d5658",
+          "fileName": "ExpressionUtils.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ExpressionUtils.cs"
+        },
+        {
+          "fileId": "a95ec214972ac4cd305bcbdd75be73b743fdbdb8",
+          "fileName": "FilterQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/FilterQuery.cs"
+        },
+        {
+          "fileId": "3efdcee0a8c9dcadffd806d5d4580cf1348ea743",
+          "fileName": "GetAllQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/GetAllQuery.cs"
+        },
+        {
+          "fileId": "9ad01790f685f10634512458c8d0f4457641d083",
+          "fileName": "GetQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/GetQuery.cs"
+        },
+        {
+          "fileId": "ca66aeb4e5955685649b717ec1a4a2c13eb4093f",
+          "fileName": "GroupByFunctionQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/GroupByFunctionQuery.cs"
+        },
+        {
+          "fileId": "f531ce213c9e5a3a59661e392259cdcfcec2a9b0",
+          "fileName": "GroupByIndexQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/GroupByIndexQuery.cs"
+        },
+        {
+          "fileId": "14e3dfd56b56a8bcf43e3874afe91c1f37a3046e",
+          "fileName": "HasFieldsQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/HasFieldsQuery.cs"
+        },
+        {
+          "fileId": "b29b5aa8e5aee5d37049f47a6802e611ba2efdbe",
+          "fileName": "IndexCreateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/IndexCreateQuery.cs"
+        },
+        {
+          "fileId": "de05876a972583857ae10ade5554dc46c1ad63fd",
+          "fileName": "IndexDropQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/IndexDropQuery.cs"
+        },
+        {
+          "fileId": "b22193399f829d1b0084867d773c18c5b023b82b",
+          "fileName": "IndexListQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/IndexListQuery.cs"
+        },
+        {
+          "fileId": "97b67a57811c8067e1728549881037aba1fa8f33",
+          "fileName": "InnerJoinQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/InnerJoinQuery.cs"
+        },
+        {
+          "fileId": "c037f87e1f2814b9ed2113d3dc96a0020b823e60",
+          "fileName": "InsertQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/InsertQuery.cs"
+        },
+        {
+          "fileId": "601b19184be9cf665fcbba2765afa0e7d28ad1af",
+          "fileName": "LImitQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/LImitQuery.cs"
+        },
+        {
+          "fileId": "5c3c56e7af3b082a7bda48a1072d368ac28aa5ce",
+          "fileName": "MapGroupQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/MapGroupQuery.cs"
+        },
+        {
+          "fileId": "5c37d642ccc9253ece351af4d85003812cd9ef00",
+          "fileName": "MapQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/MapQuery.cs"
+        },
+        {
+          "fileId": "107f33149b668ab887fd714d15de18dd92affadf",
+          "fileName": "MaxAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/MaxAggregateQuery.cs"
+        },
+        {
+          "fileId": "6b16657419611b8f3c46a4ef9234bcb72f0ad7c9",
+          "fileName": "MaxGroupAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/MaxGroupAggregateQuery.cs"
+        },
+        {
+          "fileId": "36e1dc5a5d15fccfd70a6513739820f10ec1cbe0",
+          "fileName": "MinAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/MinAggregateQuery.cs"
+        },
+        {
+          "fileId": "ff0a25045ee42c73f1c3104cc4157e82d31e904b",
+          "fileName": "MinGroupAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/MinGroupAggregateQuery.cs"
+        },
+        {
+          "fileId": "b458e4ae18ffcb7c5c5573839bae9443875bceb6",
+          "fileName": "NowQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/NowQuery.cs"
+        },
+        {
+          "fileId": "4d3662c9dfb2ad658134d374d7addaba0424cc1c",
+          "fileName": "NthQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/NthQuery.cs"
+        },
+        {
+          "fileId": "7c50d166a84b03e29ceb0baa62a88fc12ca801a4",
+          "fileName": "OrderByQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/OrderByQuery.cs"
+        },
+        {
+          "fileId": "6a1722985f525ff6f5a96d4c7ef06c12d0e48865",
+          "fileName": "OuterJoinQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/OuterJoinQuery.cs"
+        },
+        {
+          "fileId": "0ef1037112672cedd09f9260ca867eed75d0abc7",
+          "fileName": "ReduceGroupQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ReduceGroupQuery.cs"
+        },
+        {
+          "fileId": "0790a0117861b5a439ba13932e27d3cf67287e79",
+          "fileName": "ReduceQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ReduceQuery.cs"
+        },
+        {
+          "fileId": "d511e0acc5744d3c4aa4c73165e81d4e86c1bdc7",
+          "fileName": "ReplaceAndReturnValueQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ReplaceAndReturnValueQuery.cs"
+        },
+        {
+          "fileId": "4d118cbd34049ef178c10afe40058583b8ca01df",
+          "fileName": "ReplaceQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ReplaceQuery.cs"
+        },
+        {
+          "fileId": "57662a39265c503c777fea3a4b20689a4b56e31b",
+          "fileName": "ReplaceQueryBase.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ReplaceQueryBase.cs"
+        },
+        {
+          "fileId": "24fa7ac28273ee0a99b681007739a3ffca6f6d96",
+          "fileName": "SampleQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/SampleQuery.cs"
+        },
+        {
+          "fileId": "735eaedf0a1add0393b1c08de7c4d88f63967cb5",
+          "fileName": "SkipQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/SkipQuery.cs"
+        },
+        {
+          "fileId": "836fc6cd69532711fb6e377ad016a8e6dbe6238b",
+          "fileName": "SliceQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/SliceQuery.cs"
+        },
+        {
+          "fileId": "d75ecc77f84e7463568892f442a25f419c500c93",
+          "fileName": "SumAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/SumAggregateQuery.cs"
+        },
+        {
+          "fileId": "a980a98c644207ee4aeba07468fae22947b3f34a",
+          "fileName": "SumGroupAggregateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/SumGroupAggregateQuery.cs"
+        },
+        {
+          "fileId": "ce1d2056584d25f4ea8465fe75da808a005da077",
+          "fileName": "TableCreateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/TableCreateQuery.cs"
+        },
+        {
+          "fileId": "3c33f955fbb08bfec16b6c780b0903d3de82a3b9",
+          "fileName": "TableDropQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/TableDropQuery.cs"
+        },
+        {
+          "fileId": "9352df0f14870412dfe7864b61aa5ac3264f41fc",
+          "fileName": "TableListQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/TableListQuery.cs"
+        },
+        {
+          "fileId": "6571e6e444d56934d781a573cfa0f3bdbb89e260",
+          "fileName": "TableQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/TableQuery.cs"
+        },
+        {
+          "fileId": "1e2e94ff0ec13528583ae744a6a3c992ce1b90e2",
+          "fileName": "UngroupQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/UngroupQuery.cs"
+        },
+        {
+          "fileId": "07f83a2d28aa0e1e8d63616cf3f4606d8def7866",
+          "fileName": "UnionQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/UnionQuery.cs"
+        },
+        {
+          "fileId": "f23c9869f1b56b834789e5d02802e9c3f79c031b",
+          "fileName": "UpdateAndReturnValueQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/UpdateAndReturnValueQuery.cs"
+        },
+        {
+          "fileId": "bee5fc1fd6c431cb30b4db5c85573bf36e4fe478",
+          "fileName": "UpdateQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/UpdateQuery.cs"
+        },
+        {
+          "fileId": "8edb4ea4eb60b45a8772f3077b3819c9904fa339",
+          "fileName": "UpdateQueryBase.cs",
+          "filePath": "rethinkdb-net/QueryTerm/UpdateQueryBase.cs"
+        },
+        {
+          "fileId": "3968dd803c4d62e2d4ddab8d0208b3042824bfb9",
+          "fileName": "ZipQuery.cs",
+          "filePath": "rethinkdb-net/QueryTerm/ZipQuery.cs"
+        },
+        {
+          "fileId": "adaca1d75dd31d2e6cf5fa7b1f9fd6942898f26a",
+          "fileName": "ReQLExpression.cs",
+          "filePath": "rethinkdb-net/ReQLExpression.cs"
+        },
+        {
+          "fileId": "24f796ba950e9e078db22107f35a12dfbb37d627",
+          "fileName": "SynchronousApiExtensions.cs",
+          "filePath": "rethinkdb-net/SynchronousApiExtensions.cs"
+        },
+        {
+          "fileId": "94cd015d17601cc2804ba7c944f0a8bc7e95bdb0",
+          "fileName": "TaskUtilities.cs",
+          "filePath": "rethinkdb-net/TaskUtilities.cs"
+        },
+        {
+          "fileId": "81bb0017bfef73f003a33b5923ff1c3fa0a17b72",
+          "fileName": "UngroupObject.cs",
+          "filePath": "rethinkdb-net/UngroupObject.cs"
+        },
+        {
+          "fileId": "930682d82a9e4316daf4fba5fc27f87e593af9a8",
+          "fileName": "packages.config",
+          "filePath": "rethinkdb-net/packages.config"
+        },
+        {
+          "fileId": "c682c29e97ba6f93dae75f239f343bbd104cdc9c",
+          "fileName": "regenerate_rethinkdb_spec.sh",
+          "filePath": "rethinkdb-net/regenerate_rethinkdb_spec.sh"
+        },
+        {
+          "fileId": "0e4dcef21b929182dcc9b2be80b92fac2edf251b",
+          "fileName": "rethinkdb-net.csproj",
+          "filePath": "rethinkdb-net/rethinkdb-net.csproj"
+        },
+        {
+          "fileId": "2ff1ae233e6861e8e8d44e16730d22f50b0bd3fe",
+          "fileName": "rethinkdb_spec.cs",
+          "filePath": "rethinkdb-net/rethinkdb_spec.cs"
+        },
+        {
+          "fileId": "a5ba1ef13245ddc8a79717783ec19f5426824aae",
+          "fileName": "rethinkdb_spec.proto",
+          "filePath": "rethinkdb-net/rethinkdb_spec.proto"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/lucasjans/github/rethinkdb-net/.gitignore"
+        }
+      ]
+    }
+  ]
+}

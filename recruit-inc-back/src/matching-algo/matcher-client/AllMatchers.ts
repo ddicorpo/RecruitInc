@@ -7,6 +7,7 @@ import { PythonMatcher } from '../matcher/Python/PythonMatcher';
 import { DjangoMatcher } from '../matcher/Python/DjangoMatcher';
 import { VueMatcher } from '../matcher/Javascript/VueMatcher';
 import { AngularMatcher } from '../matcher/Javascript/AngularMatcher';
+import { CsharpMatcher } from '../matcher/Csharp/csharpMatcher';
 
 const javascriptMatcher: AbstractLanguageMatcher = new JavascriptMatcher();
 const reactMatcher: AbstractFrameworkMatcher = new ReactMatcher();
@@ -15,6 +16,8 @@ const angularMatcher: AbstractFrameworkMatcher = new AngularMatcher();
 const typescriptMatcher: AbstractFrameworkMatcher = new TypescriptMatcher();
 
 const pythonMatcher: AbstractLanguageMatcher = new PythonMatcher();
+const csharpMatcher: AbstractLanguageMatcher = new CsharpMatcher();
+
 const djangoMatcher: AbstractFrameworkMatcher = new DjangoMatcher();
 
 javascriptMatcher
@@ -27,6 +30,7 @@ pythonMatcher.addFramework(djangoMatcher);
 export const allMatchers: AbstractLanguageMatcher[] = [
   javascriptMatcher,
   pythonMatcher,
+  csharpMatcher,
 ];
 
 export const pythonMatchers: AbstractLanguageMatcher[] = [pythonMatcher];

@@ -1,40 +1,57 @@
-'use strict';
-var __importDefault =
-  (this && this.__importDefault) ||
-  function(mod) {
-    return mod && mod.__esModule ? mod : { default: mod };
-  };
-Object.defineProperty(exports, '__esModule', { value: true });
-const path_1 = __importDefault(require('path'));
-const config = {
-  mode: 'production',
-  entry: './pages/index.tsx',
+const path = require('path'),
+  webpack = require('webpack'),
+  HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const DotEnv = require('dotenv-webpack');
+module.exports = {
+  entry: {
+    app: ['./src/app/App.tsx', 'webpack-hot-middleware/client'],
+    vendor: ['react', 'react-dom'],
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].bundle.js',
+  },
+  devtool: 'source-map',
   resolve: {
-    // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      assets: path.resolve(__dirname, 'src/app/assets'),
+    },
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
   module: {
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        loader: 'awesome-typescript-loader',
+        exclude: /node_modules/,
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader',
+      },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-        loader: 'url-loader',
+        test: /\.(jpg|png|svg|gif|eot|ttf|woff|woff2)$/,
+        loader: 'file-loader',
         options: {
-          limit: 10000,
+          name: '[path][name].[hash].[ext]',
         },
-      },
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
       },
     ],
   },
-  output: {
-    path: path_1.default.resolve(__dirname, 'dist'),
-    filename: 'frontend.bundle.js',
+  node: {
+    fs: 'empty',
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', 'app', 'index.html'),
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new DotEnv(),
+  ],
 };
-exports.default = config;
