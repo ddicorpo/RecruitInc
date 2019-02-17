@@ -85,7 +85,7 @@ export class Candidate {
       .route('/unscannedusers/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
-        let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
         let pipeline = [
           { $match: { location: location } },
           {
@@ -104,7 +104,7 @@ export class Candidate {
           },
         ];
 
-        let result: any = await githubUsersTDG.findUnscannedUsers(pipeline);
+        let result: any = await githubUsersFinder.findUnscannedUsers(pipeline);
 
         response.status(200).send(result);
       });
@@ -130,7 +130,7 @@ export class Candidate {
       .route('/find/:login')
       .get(async (request: Request, response: Response) => {
         let login: string = request.params.login;
-        let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
         let query = {
           'githubUsers.login': login,
         };
@@ -143,7 +143,7 @@ export class Candidate {
           },
         };
 
-        let result: any = await githubUsersTDG.generalFind(query, projection);
+        let result: any = await githubUsersFinder.generalFind(query, projection);
 
         response.status(200).send(result);
       });

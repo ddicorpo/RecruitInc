@@ -103,13 +103,14 @@ export class Controller {
   public async fetchUsersFromDatabase(): Promise<IGithubUser[]> {
     let githubUsers: IGithubUser[] = [];
     let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+    let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
     let cronFinder: CronFinder = new CronFinder();
 
       let query = 
         { "githubUser.dataEntry": null }
       ;
       //Find unscanned users (with no dataEntry)
-      let unscannedUsers: any = await githubUsersTDG.generalFind(
+      let unscannedUsers: any = await githubUsersFinder.generalFind(
         query
       );
       //console.log("unscannedUsers: ", unscannedUsers );

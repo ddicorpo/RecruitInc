@@ -49,7 +49,7 @@ export class BaseFinder {
         });
     }
 
-    private logActionCompleted(methodName: string): void {
+    public logActionCompleted(methodName: string): void {
         this.logger.info({
             class: this.model.name + ' Model',
             method: methodName,
@@ -58,7 +58,7 @@ export class BaseFinder {
         });
     }
 
-    private logActionFailure(
+    public logActionFailure(
         methodName: string,
         errorName: string,
         errorDesc: string
