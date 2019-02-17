@@ -34,7 +34,7 @@ export class GithubApiV3 {
           params: {},
           value: body,
         });
-      if (body.toString().includes("rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
+      if (body.toString().includes("https://developer.github.com/v3/#rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
         console.log("Actually throwing the error v3", body.toString());
         throw body;
       }
@@ -89,7 +89,7 @@ export class GithubApiV3 {
           params: {},
           value: body,
         });
-      if (body.toString().includes("rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
+      if (body.toString().includes("https://developer.github.com/v3/#rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
         console.log("Actually throwing the error v3", body.toString());
         throw body;
       }
@@ -144,7 +144,7 @@ export class GithubApiV3 {
           params: {},
           value: body,
         });
-      if (body.toString().includes("rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
+      if (body.toString().includes("https://developer.github.com/v3/#rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
         console.log("Actually throwing the error v3", body.toString());
         throw body;
       }
