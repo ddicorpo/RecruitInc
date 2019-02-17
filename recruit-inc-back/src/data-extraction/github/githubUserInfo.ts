@@ -203,6 +203,7 @@ export class GithubUserInfo {
 
     let githubUser: IGithubUser;
     let jsonData = null; //First loop use lastCreatedAt passed in
+    let failsafeCounter = 0;
 
     while (1) {
       if (jsonData){
@@ -237,6 +238,8 @@ export class GithubUserInfo {
             this.githubUsers.push(githubUser);
         }
       }
+      failsafeCounter++;
+      if(failsafeCounter > 10000000) break;
     }
     return this.githubUsers;
   }

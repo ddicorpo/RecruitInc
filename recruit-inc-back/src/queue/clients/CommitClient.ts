@@ -6,18 +6,18 @@ import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsers
 import { ICommit } from '../../matching-algo/data-model/input-model/ICommit';
 
 export class CommitClient implements IGithubClient {
-  public _owner: string;
-  public _repository: string;
-  public _userId: string;
-  public _projectUrl: string;
-  public _prospect: RequiredClientInformation;
+  public owner: string;
+  public repository: string;
+  public userId: string;
+  public projectUrl: string;
+  public prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
-    this._owner = prospect.repoOwner;
-    this._repository = prospect.repoName;
-    this._userId = prospect.user.id;
-    this._projectUrl = prospect.projectUrl;
-    this._prospect = prospect;
+    this.owner = prospect.repoOwner;
+    this.repository = prospect.repoName;
+    this.userId = prospect.user.id;
+    this.projectUrl = prospect.projectUrl;
+    this.prospect = prospect;
   }
 
   async executeQuery() {
@@ -26,9 +26,9 @@ export class CommitClient implements IGithubClient {
 
     try{
     allCommits = await commits.getCommits(
-      this._repository,
-      this._owner,
-      this._userId
+      this.repository,
+      this.owner,
+      this.userId
     );
     } catch (error){
         throw error;
@@ -38,13 +38,13 @@ export class CommitClient implements IGithubClient {
 
     //Loop through all commits to update RequiredClientInformation and pass to files affected queue
     for (let singleCommit of allCommits) {
-      this._prospect.commitId = singleCommit.id;
+      this.prospect.commitId = singleCommit.id;
       //pass the updated requiredInfo package to the filesAffectedQueue
-      filesAffected.enqueue(this._prospect);
+      filesAffected.enqueue(this.prospect);
     }
 
     //TODO: Save to database
-    await this.updateUser(this.prospect.user.login, this._projectUrl, allCommits);
+    await this.updateUser(this.prospect.user.login, this.projectUrl, allCommits);
   }
 
   public async updateUser(login: string, projectUrl: string, allCommits: ICommit[] ){
@@ -61,35 +61,4 @@ export class CommitClient implements IGithubClient {
   
   }
 
-  get owner(): string {
-    return this._owner;
-  }
-
-  set owner(value: string) {
-    this._owner = value;
-  }
-
-  get repository(): string {
-    return this._repository;
-  }
-
-  set repository(value: string) {
-    this._repository = value;
-  }
-
-  get userId(): string {
-    return this._userId;
-  }
-
-  set userId(value: string) {
-    this._userId = value;
-  }
-
-  get prospect(): RequiredClientInformation {
-    return this._prospect;
-  }
-
-  set prospect(value: RequiredClientInformation) {
-    this._prospect = value;
-  }
 }

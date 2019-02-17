@@ -91,7 +91,7 @@ export class RepositoryQueue extends AbstractQueue {
         return; //When nothing is in the database don't set this.queue
     this.queue = newRepositoryQueueModel[0].queue;
     for (let i: number = 0; i < this.queue.length; i++){
-        let user: IGithubUser = this.queue[i]._prospect._user;
+        let user: IGithubUser = this.queue[i].prospect.user;
         //console.log("User.login: ", user.login);
         this.queue[i] = new RepositoryClient(new RequiredClientInformation(user, null, null, null, null, null, null));
     }

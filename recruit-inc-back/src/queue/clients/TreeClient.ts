@@ -8,16 +8,16 @@ import { IProjectStructure } from "../../matching-algo/data-model/input-model/IP
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 
 export class TreeClient implements IGithubClient {
-  public _owner: string;
-  public _repository: string;
-  public _projectUrl: string;
-  public _prospect: RequiredClientInformation;
+  public owner: string;
+  public repository: string;
+  public projectUrl: string;
+  public prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
-    this._owner = prospect.repoOwner;
-    this._repository = prospect.repoName;
-    this._projectUrl = prospect.projectUrl;
-    this._prospect = prospect;
+    this.owner = prospect.repoOwner;
+    this.repository = prospect.repoName;
+    this.projectUrl = prospect.projectUrl;
+    this.prospect = prospect;
   }
 
   private setSourceFilesArray(): string[] {
@@ -37,8 +37,8 @@ export class TreeClient implements IGithubClient {
     //Project structure for a single project at a time or for all projects? cuz that's what this next method does
      try{
      struct = await repoStructure.getRepoStructure(
-      this._owner,
-      this._repository
+      this.owner,
+      this.repository
     );
      }catch(error){
          throw error;
@@ -67,17 +67,17 @@ export class TreeClient implements IGithubClient {
 
       //If file exists, update RequiredClientInformation object with file path and pass to downloads queue
       if (isSourceFile) {
-        this._prospect.filePath =
+        this.prospect.filePath =
           struct[index].filePath;
         // pass the updated requiredInfo package to the download queue
-        downloadQueue.enqueue(this._prospect);
+        downloadQueue.enqueue(this.prospect);
       }
       index++;
     }
 
     //Save STRUCT TO DB HERE
     //Save userinfo in the database
-    await this.updateUser(this.prospect.user.login, struct, this._projectUrl);
+    await this.updateUser(this.prospect.user.login, struct, this.projectUrl);
   }
 
 
@@ -96,27 +96,4 @@ export class TreeClient implements IGithubClient {
 
   }
 
-  get owner(): string {
-    return this._owner;
-  }
-
-  set owner(value: string) {
-    this._owner = value;
-  }
-
-  get repository(): string {
-    return this._repository;
-  }
-
-  set repository(value: string) {
-    this._repository = value;
-  }
-
-  get prospect(): RequiredClientInformation {
-    return this._prospect;
-  }
-
-  set prospect(value: RequiredClientInformation) {
-    this._prospect = value;
-  }
 }

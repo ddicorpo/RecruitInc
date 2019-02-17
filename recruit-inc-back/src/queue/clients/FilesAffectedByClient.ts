@@ -6,16 +6,16 @@ import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISource
 import { ISingleFileCommit } from '../../matching-algo/data-model/input-model/ISingleFileCommit';
 
 export class FilesAffectedByClient implements IGithubClient {
-  public _owner: string;
-  public _repository: string;
-  public _commitId: string;
-  public _login: string;
+  public owner: string;
+  public repository: string;
+  public commitId: string;
+  public login: string;
 
   constructor(prospect: RequiredClientInformation) {
-    this._owner = prospect.repoOwner;
-    this._repository = prospect.repoName;
-    this._commitId = prospect.commitId;
-    this._login = prospect.user.login;
+    this.owner = prospect.repoOwner;
+    this.repository = prospect.repoName;
+    this.commitId = prospect.commitId;
+    this.login = prospect.user.login;
   }
 
   async executeQuery() {
@@ -24,9 +24,9 @@ export class FilesAffectedByClient implements IGithubClient {
 
     try{
     allAffectedFiles = await affected.getFilesAffectedByCommit(
-      this._owner,
-      this._repository,
-      this._commitId
+      this.owner,
+      this.repository,
+      this.commitId
       //'absolutetrash'
     );
     } catch(error){
@@ -35,7 +35,7 @@ export class FilesAffectedByClient implements IGithubClient {
 
 
     //TODO: Save to database
-    await this.updateUser(this._login, this._repository, allAffectedFiles, this._commitId);
+    await this.updateUser(this.login, this.repository, allAffectedFiles, this.commitId);
   }
 
   public async updateUser(login: string, projectName: string, allAffectedFiles: ISingleFileCommit[], commitId: string){
@@ -53,36 +53,4 @@ export class FilesAffectedByClient implements IGithubClient {
       await githubUsersTDG.generalUpdate(criteria, update, options);
   }
 
-
-  get owner(): string {
-    return this._owner;
-  }
-
-  set owner(value: string) {
-    this._owner = value;
-  }
-
-  get repository(): string {
-    return this._repository;
-  }
-
-  set repository(value: string) {
-    this._repository = value;
-  }
-
-  get commitId(): string {
-    return this._commitId;
-  }
-
-  set commitId(value: string) {
-    this._commitId = value;
-  }
-
-  public get login(): string {
-    return this._login;
-  }
-
-  public set login(value: string) {
-    this._login = value;
-  }
 }

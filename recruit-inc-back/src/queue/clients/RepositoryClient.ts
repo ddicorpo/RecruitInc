@@ -8,13 +8,13 @@ import { CommitQueue } from "../queues/CommitQueue";
 
 export class RepositoryClient implements IGithubClient {
   public readonly accessToken: string;
-  public _username: string;
-  public _prospect: RequiredClientInformation;
+  public username: string;
+  public prospect: RequiredClientInformation;
 
   public constructor(prospect: RequiredClientInformation) {
     this.accessToken = prospect.repoToken;
-    this._username = prospect.user.login;
-    this._prospect = prospect;
+    this.username = prospect.user.login;
+    this.prospect = prospect;
   }
 
   //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
@@ -39,7 +39,7 @@ export class RepositoryClient implements IGithubClient {
     for (let repo of allRepos) {
 
       let newProspect : RequiredClientInformation = new RequiredClientInformation(
-          this._prospect.user,
+          this.prospect.user,
           repo.projectName,
           repo.owner,
           '',
@@ -55,7 +55,7 @@ export class RepositoryClient implements IGithubClient {
     //TODO: Store this information in db,
     //Store all Repos for the user in db -> in RepositoryClient or GihubUsers?
     //GithubUsers to have centralized data
-    await this.updateUser(this._prospect.user.login, allRepos);
+    await this.updateUser(this.prospect.user.login, allRepos);
     //await treeQueue.saveToDatabase();
   }
 
@@ -70,19 +70,4 @@ export class RepositoryClient implements IGithubClient {
       await githubUsersTDG.generalUpdate(criteria, update);
   }
 
-  get username(): string {
-    return this._username;
-  }
-
-  set username(value: string) {
-    this._username = value;
-  }
-
-  get prospect(): RequiredClientInformation {
-    return this._prospect;
-  }
-
-  set prospect(value: RequiredClientInformation) {
-    this._prospect = value;
-  }
 }

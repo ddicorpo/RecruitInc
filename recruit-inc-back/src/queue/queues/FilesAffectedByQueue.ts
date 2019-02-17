@@ -92,9 +92,9 @@ export class FilesAffectedByQueue extends AbstractQueue {
     this.queue = newFilesQueueModel[0].queue;
     //Fixes TypeError: this.queue[0].executeQuery is not a function
     for (let i: number = 0; i < this.queue.length; i++){
-        let user: IGithubUser = {login: this.queue[i]._login};
+        let user: IGithubUser = {login: this.queue[i].login};
         //console.log("User.login: ", user.login);
-        this.queue[i] = new FilesAffectedByClient(new RequiredClientInformation(user, this.queue[i]._repository, this.queue[i]._owner, null, this.queue[i]._commitId, null, null));
+        this.queue[i] = new FilesAffectedByClient(new RequiredClientInformation(user, this.queue[i].repository, this.queue[i].owner, null, this.queue[i].commitId, null, null));
     }
 
   }

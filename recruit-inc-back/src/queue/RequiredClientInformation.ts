@@ -2,14 +2,14 @@ import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser'
 
 export class RequiredClientInformation {
   //Everything public! Due to lack of testing the reload CommitQueue, RepositoryQueue and TreeQueue
-  public _user: IGithubUser;
-  public _repoName: string;
-  public _projectUrl: string;
-  public _repoOwner: string;
-  public _repoToken: string;
-  public _filePath: string;
-  public _commitId: string;
-  public _location: string;
+  public user: IGithubUser;
+  public repoName: string;
+  public projectUrl: string;
+  public repoOwner: string;
+  public repoToken: string;
+  public filePath: string;
+  public commitId: string;
+  public location: string;
 
   public constructor(
     user: IGithubUser,
@@ -20,77 +20,15 @@ export class RequiredClientInformation {
     location: string,
     projectUrl: string
   ) {
-    this._user = user;
-    this._repoName = repoName;
-    this._repoOwner = repoOwner;
-    this._filePath = filePath;
-    this._commitId = commitId;
-    this._repoToken = process.env.GITHUB_DEFAULT_AUTH_TOKEN;
-    this._location = location;
-    this._projectUrl = projectUrl;
+    this.user = user;
+    this.repoName = repoName;
+    this.repoOwner = repoOwner;
+    this.filePath = filePath;
+    this.commitId = commitId;
+    this.repoToken = process.env.GITHUB_DEFAULT_AUTH_TOKEN;
+    this.location = location;
+    this.projectUrl = projectUrl;
   }
 
-  get user(): IGithubUser {
-    return this._user;
-  }
 
-  set user(value: IGithubUser) {
-    this._user = value;
-  }
-
-  get repoName(): string {
-    return this._repoName;
-  }
-
-  set repoName(value: string) {
-    this._repoName = value;
-  }
-
-  get repoOwner(): string {
-    return this._repoOwner;
-  }
-
-  set repoOwner(value: string) {
-    this._repoOwner = value;
-  }
-
-  get repoToken(): string {
-    return this._repoToken;
-  }
-
-  set repoToken(value: string) {
-    this._repoToken = value;
-  }
-
-  get filePath(): string {
-    return this._filePath;
-  }
-
-  set filePath(value: string) {
-    this._filePath = value;
-  }
-
-  get commitId(): string {
-    return this._commitId;
-  }
-
-  set commitId(value: string) {
-    this._commitId = value;
-  }
-
-  get location(): string {
-    return this._location;
-  }
-
-  set location(value: string) {
-    this._location = value;
-  }
-
-  get projectUrl(): string {
-    return this._projectUrl;
-  }
-
-  set projectUrl(value: string) {
-    this._projectUrl = value;
-  }
 }

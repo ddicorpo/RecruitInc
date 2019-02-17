@@ -6,17 +6,17 @@ import { ICommit } from '../../matching-algo/data-model/input-model/ICommit';
 import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 
 export class DownloadClient implements IGithubClient {
-  public _owner: string;
-  public _repository: string;
-  public _path: string;
-  public _login: string;
+  public owner: string;
+  public repository: string;
+  public path: string;
+  public login: string;
   
 
   public constructor(prospect: RequiredClientInformation) {
-    this._owner = prospect.repoOwner;
-    this._repository = prospect.repoName;
-    this._path = prospect.filePath;
-    this._login = prospect.user.login;
+    this.owner = prospect.repoOwner;
+    this.repository = prospect.repoName;
+    this.path = prospect.filePath;
+    this.login = prospect.user.login;
   }
 
   async executeQuery() {
@@ -26,17 +26,17 @@ export class DownloadClient implements IGithubClient {
 
     try{
     downlaodedFile = await downloads.downloadSingleFile(
-      this._owner,
-      this._repository,
-      this._path,
-      this._login
+      this.owner,
+      this.repository,
+      this.path,
+      this.login
     );
     } catch(error){
         throw error;
     }
 
     //TODO: Save to database
-    await this.updateUser(this._login, this._repository, downlaodedFile)
+    await this.updateUser(this.login, this.repository, downlaodedFile)
   }
 
   
@@ -54,35 +54,4 @@ export class DownloadClient implements IGithubClient {
   
   }
 
-  get owner(): string {
-    return this._owner;
-  }
-
-  set owner(value: string) {
-    this._owner = value;
-  }
-
-  get repository(): string {
-    return this._repository;
-  }
-
-  set repository(value: string) {
-    this._repository = value;
-  }
-
-  get path(): string {
-    return this._path;
-  }
-
-  set path(value: string) {
-    this._path = value;
-  }
-
-    get login(): string {
-        return this._login;
-    }
-
-    set login(value: string) {
-        this._login = value;
-    }
 }

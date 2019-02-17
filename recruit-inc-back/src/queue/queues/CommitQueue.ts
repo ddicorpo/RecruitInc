@@ -91,9 +91,9 @@ export class CommitQueue extends AbstractQueue {
     this.queue = newCommitQueueModel[0].queue;
     //Fixes TypeError: this.queue[0].executeQuery is not a function
     for (let i: number = 0; i < this.queue.length; i++){
-        let user: IGithubUser = this.queue[i]._prospect._user; //untested
+        let user: IGithubUser = this.queue[i].prospect.user; //untested
         //console.log("User.login: ", user.login);
-        this.queue[i] = new CommitClient(new RequiredClientInformation(user, this.queue[i]._repository, this.queue[i]._owner, null, null, null, this.queue[i]._projectUrl));
+        this.queue[i] = new CommitClient(new RequiredClientInformation(user, this.queue[i].repository, this.queue[i].owner, null, null, null, this.queue[i].projectUrl));
     }
 
   }

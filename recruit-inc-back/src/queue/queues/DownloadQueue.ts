@@ -87,9 +87,9 @@ export class DownloadQueue extends AbstractQueue {
     //load the queue from db to this queue
     this.queue = newDownloadQueueModel[0].queue;
     for (let i: number = 0; i < this.queue.length; i++){
-        let user: IGithubUser = {login: this.queue[i]._login};
+        let user: IGithubUser = {login: this.queue[i].login};
         //console.log("User.login: ", user.login);
-        this.queue[i] = new DownloadClient(new RequiredClientInformation(user, this.queue[i]._repository, this.queue[i]._owner, this.queue[i]._path, null , null, null));
+        this.queue[i] = new DownloadClient(new RequiredClientInformation(user, this.queue[i].repository, this.queue[i].owner, this.queue[i].path, null , null, null));
     }
   }
 }
