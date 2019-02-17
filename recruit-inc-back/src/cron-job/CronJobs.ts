@@ -20,7 +20,24 @@ export class CronJobs {
   private githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
   private controller: Controller = Controller.get_instance();
 
-  public async scheduleCron(location: string): Promise<boolean> {
+  //Default crontime: Run everyday at midnight
+  //Explanation: Run at second 0, minute 0, hour 0, every day, every month, from sunday to saturday
+  public async scheduleCron(
+    location: string,
+    cronTime: CronTime = '0 0 0 * * 0-6' 
+  ): CronJob {
+    const CronJob = require('cron').CronJob;
+
+    const job = new CronJob(cronTime, async function() {
+      let cronjobs: CronJobs = new CronJobs();
+      await cronjobs.runQueues(location);
+    });
+    job.start();
+
+    return job;
+  }
+
+  public async runQueues(location: string): Promise<boolean> {
     let cron: ICronModel = await this.cronFinder.findByLocation(location);
     if (cron) {
       await this.scan();

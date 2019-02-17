@@ -19,12 +19,22 @@ import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 import { CronJobs } from '../../cron-job/CronJobs';
 import { Controller } from '../../queue/Controller';
 import { RepositoryQueue } from '../../queue/queues/RepositoryQueue';
+import { CronTime, CronJob } from 'cron';
 const logger = new Logger();
 const { fork } = require('child_process');
 
 export class Candidate {
   public routes(app): void {
     let users: IGithubUser[];
+
+    app
+      .route('/scheduleCron/:location')
+      .get(async (request: Request, response: Response) => {
+        let location: string = request.params.location;
+        let cronjob: CronJobs = new CronJobs();
+        let job: CronJob = await cronjob.scheduleCron(location);
+        response.status(200).send("Cron successfully scheduled");
+      });
 
     app
       .route('/getUsersDB/:location')
@@ -38,11 +48,11 @@ export class Candidate {
       });
 
     app
-      .route('/testqueue/:location')
+      .route('/queues/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
         let cronjob: CronJobs = new CronJobs();
-        let finished: boolean = await cronjob.scheduleCron(location);
+        let finished: boolean = await cronjob.runQueues(location);
         let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
         let result: IGithubUserModel[] = await githubUsersFinder.findByLocation(
           location
@@ -173,7 +183,7 @@ export class Candidate {
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
         let cronjob: CronJobs = new CronJobs();
-        cronjob.scheduleCron(location);
+        cronjob.runQueues(location);
       });
 
     app
