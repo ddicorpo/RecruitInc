@@ -8,4 +8,5 @@ export enum Technologies {
   Vue = 'Vue',
   Angular = 'Angular',
   Csharp = 'Csharp',
+  Flask = 'Flask'
 }
