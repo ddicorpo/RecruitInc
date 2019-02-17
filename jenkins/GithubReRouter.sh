@@ -1,3 +1,5 @@
+#!/bin/bash
+
 rm -rf committer_name.properties committer_email.properties
 touch committer_email.properties
 touch committer_name.properties

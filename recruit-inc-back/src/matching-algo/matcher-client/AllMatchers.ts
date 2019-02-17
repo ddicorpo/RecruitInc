@@ -9,12 +9,14 @@ import { VueMatcher } from '../matcher/Javascript/VueMatcher';
 import { AngularMatcher } from '../matcher/Javascript/AngularMatcher';
 import { CsharpMatcher } from '../matcher/Csharp/csharpMatcher';
 import { FlaskMatcher } from '../matcher/Python/FlaskMatcher';
+import { JavaMatcher } from '../matcher/Java/JavaMatcher';
 
 const javascriptMatcher: AbstractLanguageMatcher = new JavascriptMatcher();
 const reactMatcher: AbstractFrameworkMatcher = new ReactMatcher();
 const vueMatcher: AbstractFrameworkMatcher = new VueMatcher();
 const angularMatcher: AbstractFrameworkMatcher = new AngularMatcher();
 const typescriptMatcher: AbstractFrameworkMatcher = new TypescriptMatcher();
+const javaMatcher: AbstractLanguageMatcher = new JavaMatcher();
 
 const pythonMatcher: AbstractLanguageMatcher = new PythonMatcher();
 const csharpMatcher: AbstractLanguageMatcher = new CsharpMatcher();
@@ -35,6 +37,7 @@ export const allMatchers: AbstractLanguageMatcher[] = [
   javascriptMatcher,
   pythonMatcher,
   csharpMatcher,
+  javaMatcher,
 ];
 
 export const pythonMatchers: AbstractLanguageMatcher[] = [pythonMatcher];

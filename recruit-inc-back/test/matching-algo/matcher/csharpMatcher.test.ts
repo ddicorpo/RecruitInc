@@ -10,7 +10,7 @@ import { CsharpMatcher } from '../../../src/matching-algo/matcher/Csharp/csharpM
 const csharpMatcher: AbstractLanguageMatcher = new CsharpMatcher();
 const customLanguageMatchers: AbstractLanguageMatcher[] = [csharpMatcher];
 
-describe.only('Test csharp matching algorithm', () => {
+describe('Test csharp matching algorithm', () => {
   it('The csharp matcher should return the correct output object with rethinkdb-net repository', () => {
     // GIVEN
     const input = require('./input/rethinkdb-net.json');
