@@ -4,17 +4,17 @@ import { MatcherClient } from '../../../src/matching-algo/matcher-client/Matcher
 import { AbstractLanguageMatcher } from '../../../src/matching-algo/matcher/AbstractLanguageMatcher';
 import { IGitProjectSummary } from '../../../src/matching-algo/data-model/output-model/IGitProjectSummary';
 import { IGitProjectOutput } from '../../../src/matching-algo/data-model/output-model/IGitProjectOutput';
-import { CsharpMatcher } from '../../../src/matching-algo/matcher/Csharp/csharpMatcher';
+import { JavaMatcher } from '../../../src/matching-algo/matcher/Java/JavaMatcher';
 
 // Setup Language Matcher
-const csharpMatcher: AbstractLanguageMatcher = new CsharpMatcher();
-const customLanguageMatchers: AbstractLanguageMatcher[] = [csharpMatcher];
+const javaMatcher: AbstractLanguageMatcher = new JavaMatcher();
+const customLanguageMatchers: AbstractLanguageMatcher[] = [javaMatcher];
 
-describe('Test csharp matching algorithm', () => {
-  it('The csharp matcher should return the correct output object with rethinkdb-net repository', () => {
+describe('Test Java matching algorithm', () => {
+  it('The Java matcher based on JSON extracted ', () => {
     // GIVEN
-    const input = require('./input/rethinkdb-net.json');
-    const expected = require('./expected-output/rethinkdb-net.out.json');
+    const input = require('./input/pet-clinic.json');
+    const expected = require('./expected-output/pet-clinic.json');
     const client: MatcherClient = new MatcherClient(
       input,
       customLanguageMatchers

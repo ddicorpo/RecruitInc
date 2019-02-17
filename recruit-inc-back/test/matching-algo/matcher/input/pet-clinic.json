@@ -1,0 +1,142 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "pet-clinic",
+      "owner": "dsyou",
+      "applicantCommits": [
+        {
+          "id": " 57792e26ea9ecbb24d27dafd63fe48a748ac1c94",
+          "numberOfFileAffected": 6,
+          "files": [
+            {
+              "filePath": "pet.java",
+              "lineAdded": 99,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "store.java",
+              "lineAdded": 3,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "data.java",
+              "lineAdded": 24,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "clinic.java",
+              "lineAdded": 13,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "pom.xml",
+              "lineAdded": 31,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "cf3a8a8f2c418dba2fef148d4be0c97908b557db",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": "pet.java",
+              "lineAdded": 221,
+              "lineDeleted": 23
+            },
+            {
+              "filePath": "LICENSE",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "cf3a8a8f2c418dba2fef148d4be0c34343b557db",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "clinic.java",
+              "lineAdded": 3333,
+              "lineDeleted": 332
+            },
+            {
+              "filePath": "pom.xml",
+              "lineAdded": 33,
+              "lineDeleted": 2
+            },
+            {
+              "filePath": "gilbert.java",
+              "lineAdded": 353,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "ad46b30886fa350c1f59761b100e5e4b01f9a7ec",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "5fea7ddb50165482863c390cf48b3f6c5626b0a0",
+          "fileName": "LICENSE",
+          "filePath": "LICENSE"
+        },
+        {
+          "fileId": "3ff525955109bc4fb56ed2bce69c81507e5fb607",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "16848470bb509aa3d02a19b973fc258ef2d69eb9",
+          "fileName": "pom.xml",
+          "filePath": "pom.xml"
+        },
+        {
+          "fileId": "16448470bb509aa3d02a19b973fc258ef2d69eb9",
+          "fileName": "pet.java",
+          "filePath": "src/main/java/com/clinic/pet.java"
+        },
+        {
+          "fileId": "10078470bb509aa3d02a19b973fc258ef2d69eb9",
+          "fileName": "store.java",
+          "filePath": "src/main/java/com/clinic/store.java"
+        },
+        {
+          "fileId": "09998470bb509aa3d02a19b973fc258ef2d69eb9",
+          "fileName": "data.java",
+          "filePath": "src/main/java/com/clinic/data.java"
+        },
+        {
+          "fileId": "23238470bb509aa3d02a19b973fc258ef2d69eb9",
+          "fileName": "clinic.java",
+          "filePath": "src/main/java/com/clinic/clinic.java"
+        },
+        {
+          "fileId": "10078470bb509aa3d02a19b973fc258ef2d69eb9",
+          "fileName": "gilbert.java",
+          "filePath": "src/main/java/com/clinic/gilbert.java"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/g-harel/github/pineapplol/.gitignore"
+        }
+      ]
+    }
+  ]
+}
