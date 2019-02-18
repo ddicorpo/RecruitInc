@@ -1,0 +1,17 @@
+  {
+    "projectName": "RecipesApp",
+    "languageOutput": [
+      {
+        "languageOrFramework": "Python",
+        "linesOfCode": -8330,
+        "numberOfCommits": 2,
+        "frameworks": [
+          {
+            "technologyName": "Flask",
+            "linesOfCode": -8330,
+            "numberOfCommits": 2
+          }
+        ]
+      }
+    ]
+  }
