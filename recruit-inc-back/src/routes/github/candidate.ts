@@ -28,15 +28,6 @@ export class Candidate {
     let users: IGithubUser[];
 
     app
-      .route('/scheduleCron/:location')
-      .get(async (request: Request, response: Response) => {
-        let location: string = request.params.location;
-        let cronjob: CronJobs = new CronJobs();
-        let job: CronJob = await cronjob.scheduleCron(location);
-        response.status(200).send("Cron successfully scheduled");
-      });
-
-    app
       .route('/getUsersDB/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
@@ -48,17 +39,13 @@ export class Candidate {
       });
 
     app
-      .route('/queues/:location')
+      .route('/addToWatchlist/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
         let cronjob: CronJobs = new CronJobs();
-        let finished: boolean = await cronjob.runQueues(location);
-        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-        let result: IGithubUserModel[] = await githubUsersFinder.findByLocation(
-          location
-        );
+        let finished: boolean = await cronjob.addToWatchlist(location);
 
-        response.status(200).send(result);
+        response.sendStatus(200);
       });
 
     app
@@ -183,7 +170,7 @@ export class Candidate {
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
         let cronjob: CronJobs = new CronJobs();
-        cronjob.runQueues(location);
+        cronjob.addToWatchlist(location);
       });
 
     app

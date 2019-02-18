@@ -23,24 +23,23 @@ export class CronJobs {
   //Default crontime: Run everyday at midnight
   //Explanation: Run at second 0, minute 0, hour 0, every day, every month, from sunday to saturday
   public async scheduleCron(
-    location: string,
     cronTime: CronTime = '0 0 0 * * 0-6' 
+    //cronTime: CronTime = '0 21 20 * * 0-6' 
   ): CronJob {
     const CronJob = require('cron').CronJob;
 
     const job = new CronJob(cronTime, async function() {
       let cronjobs: CronJobs = new CronJobs();
-      await cronjobs.runQueues(location);
+      await cronjobs.scan();
     });
     job.start();
 
     return job;
   }
 
-  public async runQueues(location: string): Promise<boolean> {
+  public async addToWatchlist(location: string): Promise<boolean> {
     let cron: ICronModel = await this.cronFinder.findByLocation(location);
     if (cron) {
-      await this.scan();
       return true; //Cronjob already exists for location
     }
 
@@ -61,11 +60,6 @@ export class CronJobs {
     //Update status to scanning
     cron.status = Status.scanning;
     await this.cronTDG.update(cron._id, cron);
-    await this.scan();
-    ////Update status to scanned
-//    cron.status = Status.complete;
-//    await this.cronTDG.update(cron._id, cron);
-    console.log("returning true");
     return true;
   }
 
@@ -83,7 +77,6 @@ export class CronJobs {
       };
       githubUsersModel.push(githubUserModel);
     }
-      console.log("githubUsersModel: ", githubUsersModel);
       await this.githubUsersTDG.insertMany(githubUsersModel);
   }
 
