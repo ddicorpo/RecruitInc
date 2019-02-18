@@ -1,5 +1,6 @@
 import app from './app';
 import { MongoConnectionFactory } from './data-source/db-registry/mongo/MongoConnectionFactory';
+import { CronJobs } from './cron-job/CronJobs';
 const PORT = process.env.PORT || 6969;
 const DEFAULT_TIMEOUT: number = parseInt(process.env.DEFAULT_TIMEOUT);
 
@@ -30,6 +31,11 @@ var server = app.listen(PORT, () => {
  */
 server.setTimeout(DEFAULT_TIMEOUT);
 console.log('Server DEFAULT TIMEOUT =>  ' + DEFAULT_TIMEOUT);
+
+//Set cronjob on app startup
+let cronjob: CronJobs = new CronJobs();
+cronjob.scheduleCron();
+
 
 /**
  * Setup the CORS, if we are in production we want rules
