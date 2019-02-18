@@ -21,7 +21,7 @@
 
 ## How to start the project?
 
-### Write `.env` file
+### Write `.env` file 
 
 You need to write one `.env` in the recruit-inc-back
 It needs to have the same variable as `recruit-inc-back/.env.example`
