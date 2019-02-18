@@ -44,12 +44,8 @@ export class Candidate {
         let location: string = request.params.location;
         let cronjob: CronJobs = new CronJobs();
         let finished: boolean = await cronjob.addToWatchlist(location);
-        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-        let result: IGithubUserModel[] = await githubUsersFinder.findByLocation(
-          location
-        );
 
-        response.status(200).send(result);
+        response.sendStatus(200);
       });
 
     app
