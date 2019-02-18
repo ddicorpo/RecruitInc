@@ -9,4 +9,5 @@ export enum Technologies {
   Angular = 'Angular',
   Csharp = 'Csharp',
   Java = 'Java',
+  Ruby = 'Ruby',
 }
