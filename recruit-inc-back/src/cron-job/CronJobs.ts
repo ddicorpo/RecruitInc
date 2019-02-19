@@ -23,7 +23,8 @@ export class CronJobs {
   //Default crontime: Run everyday at midnight
   //Explanation: Run at second 0, minute 0, hour 0, every day, every month, from sunday to saturday
   public async scheduleCron(
-    cronTime: CronTime = '0 0 0 * * 0-6' 
+    //cronTime: CronTime = '0 0 0 * * 0-6' 
+    cronTime: CronTime = '0 0 */4 * * 0-6' 
     //cronTime: CronTime = '0 21 20 * * 0-6' 
   ): CronJob {
     const CronJob = require('cron').CronJob;
