@@ -28,6 +28,13 @@ export class Candidate {
     let users: IGithubUser[];
 
     app
+      .route('/scan')
+      .get(async (request: Request, response: Response) => {
+        let cronjob: CronJobs = new CronJobs();
+        cronjob.scan();
+      });
+
+    app
       .route('/getUsersDB/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
