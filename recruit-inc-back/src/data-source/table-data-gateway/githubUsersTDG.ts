@@ -53,7 +53,7 @@ export class GithubUsersTDG {
           this.baseTDG.logActionFailure(
             this.generalUpdate.name,
             error.name,
-            error.message
+            error.toString()
           );
           resolve(false);
         } else {
@@ -64,9 +64,9 @@ export class GithubUsersTDG {
     });
   }
 
-  public insertMany(githubUsers:  IGithubUserModel[]): Promise<any> {
+  public insertMany(githubUsers: IGithubUserModel[]): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
-      GithubUserModel.insertMany(githubUsers, {},  (error, doc) => {
+      GithubUserModel.insertMany(githubUsers, {}, (error, doc) => {
         if (error) {
           this.baseTDG.logActionFailure(
             this.insertMany.name,
