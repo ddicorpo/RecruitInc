@@ -1,6 +1,7 @@
 import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { techSourceFiles } from '../../matching-algo/data-model/input-model/TechSourceFiles';
+import { excludedFolders } from '../../matching-algo/data-model/input-model/ExcludedFolders';
 import { IntersectionArrayString } from '../../util/IntersectionArrayString';
 import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 import { Logger } from '../../Logger';
@@ -53,7 +54,7 @@ export class GithubDownloadedFilesPath {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes("rate-limiting")){ 
+      if (error.toString().includes('rate-limiting')) {
         throw error;
       }
       return data;
@@ -123,39 +124,29 @@ export class GithubDownloadedFilesPath {
             repository.projectName,
             file.filePath
           );
-          this.writeToFile(sourceFile.content, generatedPath);
-          repository.downloadedSourceFile.push({
-            filename: sourceFile.name,
-            repoFilePath: sourceFile.path,
-            localFilePath: generatedPath,
-          });
+          repository.downloadedSourceFile.push(sourceFile);
         }
       }
     }
     return user;
   }
-  async downloadSingleFile(owner: string, repoName: string, path: string, login: string): Promise<ISourceFiles>{
-          let generatedPath: string = this.generatePath(
-            login,
-            repoName,
-            path
-          );
-          let sourceFile: {
-            name: string;
-            path: string;
-            content: string;
-          };
-          try{
-          sourceFile = await this.downloadFile(
-            owner,
-            repoName,
-            path
-          );
-          }catch(error){
-              throw error;
-          }
-          this.writeToFile(sourceFile.content, generatedPath);
-          return {filename: sourceFile.name, repoFilePath: sourceFile.path, localFilePath: generatedPath};
+  async downloadSingleFile(
+    owner: string,
+    repoName: string,
+    path: string,
+    login: string
+  ): Promise<ISourceFiles> {
+    let generatedPath: string = this.generatePath(login, repoName, path);
+    let sourceFile: {
+      name: string;
+      path: string;
+      content: string;
+    };
+    try {
+      sourceFile = await this.downloadFile(owner, repoName, path);
+    } catch (error) {
+      throw error;
+    }
+    return sourceFile;
   }
-
 }
