@@ -10,6 +10,7 @@ import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser'
 import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG';
 import { GithubUsersFinder } from '../data-source/finder/GithubUsersFinder';
 import { Controller } from '../queue/Controller';
+import { ScanningStatus } from '../data-source/schema/githubUserSchema';
 const { fork } = require('child_process');
 
 export class CronJobs {
@@ -23,9 +24,9 @@ export class CronJobs {
   //Default crontime: Run everyday at midnight
   //Explanation: Run at second 0, minute 0, hour 0, every day, every month, from sunday to saturday
   public async scheduleCron(
-    //cronTime: CronTime = '0 0 0 * * 0-6' 
-    cronTime: CronTime = '0 0 */4 * * 0-6' 
-    //cronTime: CronTime = '0 21 20 * * 0-6' 
+    //cronTime: CronTime = '0 0 0 * * 0-6'
+    cronTime: CronTime = '0 0 */4 * * 0-6'
+    //cronTime: CronTime = '0 21 20 * * 0-6'
   ): CronJob {
     const CronJob = require('cron').CronJob;
 
@@ -74,11 +75,12 @@ export class CronJobs {
     for (const githubUser of githubUsers) {
       let githubUserModel: IGithubUserModel = {
         githubUser,
-        location: location.toLowerCase()
+        location: location.toLowerCase(),
+        scanningStatus: ScanningStatus.pending,
       };
       githubUsersModel.push(githubUserModel);
     }
-      await this.githubUsersTDG.insertMany(githubUsersModel);
+    await this.githubUsersTDG.insertMany(githubUsersModel);
   }
 
   async scan() {
