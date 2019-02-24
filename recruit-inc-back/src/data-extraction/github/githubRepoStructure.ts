@@ -3,6 +3,7 @@ import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { IProjectStructure } from '../../matching-algo/data-model/input-model/IProjectStructure';
 import { Logger } from '../../Logger';
+import { excludedFolders } from '../../matching-algo/data-model/input-model/ExcludedFolders';
 
 const logger = new Logger();
 
@@ -118,14 +119,23 @@ export class GithubRepoStructure {
     }
 
     let tree = jsonData.tree;
+    let dontPush: boolean; //Ignore useless files/folders (node_modules etc)
     //only include blobs in project structure
     for (let file of tree) {
-      if (file.type == 'blob')
+      dontPush = false;
+      if (file.type == 'blob') {
+        for (let excludedFolder of excludedFolders) {
+          if (file.path.includes(excludedFolder)) dontPush = true;
+          break;
+        }
+        if (dontPush) continue;
+
         projectStructure.push({
           fileId: file.sha,
           fileName: path.basename(file.path),
           filePath: file.path,
         });
+      }
     }
 
     return projectStructure;
