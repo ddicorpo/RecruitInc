@@ -94,10 +94,6 @@ export class MongoConnection extends Connection {
   }
   private buildConnectionObj(): any {
     const connectionString: string = this.getConnectionString();
-    console.log(
-      '****************************** URL **********************************'
-    );
-    console.log(connectionString);
 
     var tmpConn = mongoose
       .connect(
