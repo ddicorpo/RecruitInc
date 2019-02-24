@@ -15,23 +15,11 @@ export class MongoConnection extends Connection {
     this.logger = new Logger();
   }
 
-  public setDatabaseURL(databaseURL: string): void {
-    this.databaseURL = databaseURL;
+  public setDatabaseURI(databaseURI: string): void {
+    this.databaseURI = databaseURI;
   }
   public setDatabaseName(databaseName: string): void {
     this.databaseName = databaseName;
-  }
-  public setDatabasePassword(databasePassword: string): void {
-    this.databasePassword = databasePassword;
-  }
-  public setDatabasePort(databasePort: string): void {
-    this.databasePort = databasePort;
-  }
-  public setDatabaseUser(databaseUser: string): void {
-    this.databaseUser = databaseUser;
-  }
-  public setDatabaseOption(databaseOption: string): void {
-    this.databaseOption = databaseOption;
   }
 
   protected getConnectionString(): string {
@@ -39,36 +27,24 @@ export class MongoConnection extends Connection {
     if (process.env.NODE_ENV === 'production')
       return `${process.env.DB_HOST}/${process.env.DB_NAME}`;
     const connectUrl: string =
-      this.databaseURL +
-      this.databaseUser +
-      ':' +
-      this.databasePassword +
-      '@' +
+      this.databaseURI +
+      '/' +
       this.databaseName +
-      this.databaseOption;
-    // This constant is made to log the connection string without logging the password..
-    const loggedUrl: string =
-      this.databaseURL +
-      this.databaseUser +
-      ':' +
-      '<PASSWORD>' +
-      '@' +
-      this.databaseName +
-      this.databaseOption;
-    logger.info({
-      class: 'MongoConnection',
-      method: 'getConnectionString',
-      action: 'Connection String',
-      params: {},
-      value: { loggedUrl },
-    });
+      logger.info({
+        class: 'MongoConnection',
+        method: 'getConnectionString',
+        action: 'Connection String ',
+        params: {},
+        value: {},
+      });
+
     return connectUrl;
   }
   public buildConnection(): any {
     //Var db is part of MongoClient requirement
     var db = mongoose
       .connect(
-        this.getConnectionString(),
+        'mongodb://abada:777deltaRouge$@68.183.196.227:27017/admin',
         this.options
       )
       .then(() => {
@@ -119,9 +95,15 @@ export class MongoConnection extends Connection {
     }
   }
   private buildConnectionObj(): any {
+    const connectionString: string = this.getConnectionString();
+    console.log(
+      '****************************** URL **********************************'
+    );
+    console.log(connectionString);
+
     var tmpConn = mongoose
       .connect(
-        this.getConnectionString(),
+        connectionString,
         this.options
       )
       .then(() => {
