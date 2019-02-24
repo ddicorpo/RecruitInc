@@ -8,7 +8,7 @@ import { Model, Schema } from 'mongoose';
 export enum ScanningStatus {
   pending = 'pending',
   started = 'started',
-  interrupted = 'interrupted',
+  paused = 'paused',
   completed = 'completed',
 }
 
