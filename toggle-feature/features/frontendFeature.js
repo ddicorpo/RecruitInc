@@ -1,11 +1,12 @@
-class BackendFeatures{
+class FrontendFeature{
     constructor(){
-        this.backendFeatures = [
+        this.frontendFeatures = [
             {
                 id: 'closedBeta',
                 name: 'This is a closed beta for only certain users',
                 description: 'Closed beta allows us to test on small groups of users',
-                criteria: {isUserAllowed: true}
+                enabled: false,
+                criteria: {isPaidUser: true, percentageOfUsers: 0.50}
             },
             {
                 id: 'newFeatureRollout',
@@ -21,12 +22,13 @@ class BackendFeatures{
                 enabled: false,
             },
         ];
-    };
 
-    getBackendFeature() {
-        return this.backendFeatures;
-    };
+    }
+
+    getFrontendFeature() {
+        return this.frontendFeatures;
+    }
 }
 
-module.exports = BackendFeatures;
+module.exports = FrontendFeature;
 
