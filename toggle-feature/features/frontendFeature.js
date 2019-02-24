@@ -6,7 +6,7 @@ class FrontendFeature{
                 name: 'This is a closed beta for only certain users',
                 description: 'Closed beta allows us to test on small groups of users',
                 enabled: false,
-                criteria: {isPaidUser: true, percentageOfUsers: 0.50}
+                criteria: {isUserAllowed: true}
             },
             {
                 id: 'newFeatureRollout',
