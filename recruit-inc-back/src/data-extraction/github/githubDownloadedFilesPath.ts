@@ -31,7 +31,10 @@ export class GithubDownloadedFilesPath {
     owner: string,
     repoName: string,
     path: string
-  ): Promise<{ name: string; path: string; content: string }> {
+  ): Promise<ISourceFiles> {
+    for (let excludedFolder of excludedFolders) {
+      if (path.includes(excludedFolder)) return; //Don't download package.json within node_modules
+    }
     let data;
     let jsonData;
     try {
@@ -61,23 +64,11 @@ export class GithubDownloadedFilesPath {
     }
     let content = Buffer.from(jsonData.content, 'base64').toString();
 
-    return { name: jsonData.name, path: jsonData.path, content: content };
-  }
-
-  //This function creates directories as needed
-  //So that when we try to write to a file with fs it does not throw an error
-  writeToFile(content: string, path: string) {
-    let notExist = path.split('/');
-    let exists: string = '';
-    for (let i = 0; i < notExist.length - 1; i++) {
-      exists += `${notExist[i]}/`;
-      if (fs.existsSync(exists)) continue;
-      else fs.mkdirSync(exists);
-    }
-
-    fs.writeFile(path, content, err => {
-      if (err) throw err;
-    });
+    return {
+      filename: jsonData.name,
+      repoFilePath: jsonData.path,
+      fileContents: content,
+    };
   }
 
   generatePath(username: string, repoName: string, filePath: string): string {
@@ -110,20 +101,16 @@ export class GithubDownloadedFilesPath {
             tmpfileNameArr
           ).length > 0;
         if (isSourceFile) {
-          let generatedPath: string = this.generatePath(
-            user.login,
-            repository.projectName,
-            file.filePath
-          );
           let sourceFile: {
-            name: string;
-            path: string;
-            content: string;
+            filename: string;
+            repoFilePath: string;
+            fileContents: string;
           } = await this.downloadFile(
             repository.owner,
             repository.projectName,
             file.filePath
           );
+          if (!sourceFile) continue;
           repository.downloadedSourceFile.push(sourceFile);
         }
       }
@@ -136,11 +123,10 @@ export class GithubDownloadedFilesPath {
     path: string,
     login: string
   ): Promise<ISourceFiles> {
-    let generatedPath: string = this.generatePath(login, repoName, path);
     let sourceFile: {
-      name: string;
-      path: string;
-      content: string;
+      filename: string;
+      repoFilePath: string;
+      fileContents: string;
     };
     try {
       sourceFile = await this.downloadFile(owner, repoName, path);
