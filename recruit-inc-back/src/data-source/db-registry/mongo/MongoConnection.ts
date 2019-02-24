@@ -24,27 +24,25 @@ export class MongoConnection extends Connection {
 
   protected getConnectionString(): string {
     //Production database does not have user or password
-    if (process.env.NODE_ENV === 'production')
-      return `${process.env.DB_HOST}/${process.env.DB_NAME}`;
     const connectUrl: string =
-      this.databaseURI +
-      '/' +
-      this.databaseName +
-      logger.info({
-        class: 'MongoConnection',
-        method: 'getConnectionString',
-        action: 'Connection String ',
-        params: {},
-        value: {},
-      });
+      this.databaseURI + '/' + this.databaseName + '?authSource=admin';
+
+    logger.info({
+      class: 'MongoConnection',
+      method: 'getConnectionString',
+      action: 'Connection String ',
+      params: {},
+      value: {},
+    });
 
     return connectUrl;
   }
   public buildConnection(): any {
     //Var db is part of MongoClient requirement
+    const db_string: string = this.getConnectionString();
     var db = mongoose
       .connect(
-        'mongodb://abada:777deltaRouge$@68.183.196.227:27017/admin',
+        db_string,
         this.options
       )
       .then(() => {
@@ -57,7 +55,7 @@ export class MongoConnection extends Connection {
           class: 'MongoConnection',
           method: 'buildConnection',
           action: 'Attempt to connect',
-          params: {},
+          params: { db_string },
           value: error,
         });
       });
