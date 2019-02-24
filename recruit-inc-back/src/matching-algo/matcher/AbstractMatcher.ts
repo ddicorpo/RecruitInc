@@ -67,7 +67,7 @@ export abstract class AbstractMatcher {
           let filetext = null;
           let isMatchingTechnology: boolean = false;
           try {
-            filetext = this.readTargetFile(sourceFile.localFilePath);
+            filetext = sourceFile.fileContents;
             isMatchingTechnology = this.isTechnologyFound(
               filetext,
               matchingTarget.matchingPattern
@@ -84,7 +84,7 @@ export abstract class AbstractMatcher {
             const processedSourceFile: IProcessedSourceFile = {
               filename: sourceFile.filename,
               repoFilePath: sourceFile.repoFilePath,
-              localFilePath: sourceFile.localFilePath,
+              fileContents: sourceFile.fileContents,
               isMatchingTechnology,
             };
             sourceFilesOutput.push(processedSourceFile);
@@ -115,10 +115,6 @@ export abstract class AbstractMatcher {
     }
     codeOutput.linesOfCode = numberOfLines;
     return codeOutput;
-  }
-
-  private readTargetFile(filePath: string): string {
-    return fs.readFileSync(filePath, 'utf8');
   }
 
   private isTechnologyFound(filetext: string, pattern: string): boolean {
