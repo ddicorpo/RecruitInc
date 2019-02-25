@@ -52,6 +52,7 @@
     "cron": "^1.6.0",
     "dotenv": "^6.1.0",
     "express": "^4.16.3",
+    "fflip": "^4.0.0",
     "fs": "0.0.1-security",
     "localtunnel": "^1.9.1",
     "mongoose": "^5.0.0",
