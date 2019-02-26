@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const cors = require('cors')
+const cors = require('cors');
 const port = 3547;
 
 const backendFeature = require('./features/backendFeature');
@@ -34,5 +34,5 @@ app.get('/backend/feature', function(req, res){
 });
 
 app.listen(port, function () {
-    console.log(`CORS-enabled web server listening on port ${port}`)
+    console.log(`Listening on port ${port}`)
 });
