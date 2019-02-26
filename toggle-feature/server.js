@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const port = 3547;
 
 const backendFeature = require('./features/backendFeature');
@@ -8,6 +9,7 @@ const backendCriteria = require('./criteria/backendCriteria');
 const frontendFeature = require('./features/frontendFeature');
 const frontendCriteria = require('./criteria/frontendCriteria');
 
+app.use(cors());
 
 app.get('/', (req, res) => res.send('Navigate to /frontend{or backend}/criteria{or feature}'));
 
@@ -31,4 +33,6 @@ app.get('/backend/feature', function(req, res){
     res.send(features.getBackendFeature());
 });
 
-app.listen(port, () => console.log(`toggle-feature is listening on port ${port}!`));
+app.listen(port, function () {
+    console.log(`CORS-enabled web server listening on port ${port}`)
+});
