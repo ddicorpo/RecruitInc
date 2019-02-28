@@ -5,13 +5,6 @@ import { prop, Typegoose } from 'typegoose';
 import { mongoose } from 'mongoose';
 import { Model, Schema } from 'mongoose';
 
-export enum ScanningStatus {
-  pending = 'pending',
-  started = 'started',
-  interrupted = 'interrupted',
-  completed = 'completed',
-}
-
 export class GithubUserSchema extends Typegoose implements IGithubUserModel {
   @prop()
   _id?: mongoose.Types.ObjectId;
@@ -21,9 +14,6 @@ export class GithubUserSchema extends Typegoose implements IGithubUserModel {
 
   @prop()
   location: string;
-
-  @prop()
-  scanningStatus: ScanningStatus;
 }
 
 export const GithubUserModel: Model<
