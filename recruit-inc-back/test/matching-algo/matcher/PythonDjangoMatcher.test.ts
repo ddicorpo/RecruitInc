@@ -43,31 +43,6 @@ describe('Test Django matching algorithm', () => {
     }
   });
 
-  it('The Django-Python matcher should return the correct output object with django-rest-todo repository', () => {
-    // GIVEN
-    const input = require('./input/django-rest-todo.json');
-    const expected = require('./expected-output/django-rest-todo.out.json');
-    const client: MatcherClient = new MatcherClient(
-      input,
-      customLanguageMatchers
-    );
-
-    // WHEN
-    const computedOutput: IGitProjectSummary = client.execute();
-
-    // THEN
-    const length: number = computedOutput.projectsOutput.length;
-    for (let index = 0; index < length; ++index) {
-      const computedProjectSum: IGitProjectOutput =
-        computedOutput.projectsOutput[index];
-      if (JSON.stringify(expected) !== JSON.stringify(computedProjectSum)) {
-        console.log('expected : ' + JSON.stringify(expected));
-        console.log('actual: ' + JSON.stringify(computedProjectSum));
-        expect.fail();
-      }
-    }
-  });
-
   it('The Django-Python matcher should return the correct output object with django-sample.app repository', () => {
     // GIVEN
     const input = require('./input/django-sample.app.json');
