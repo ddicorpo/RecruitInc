@@ -2,10 +2,10 @@ import { AbstractQueue } from './AbstractQueue';
 import { FilesAffectedByClient } from '../clients/FilesAffectedByClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { mongoose } from 'mongoose';
-import { FilesAffectedByQueueTDG } from "../../data-source/table-data-gateway/filesAffectedByQueueTDG";
-import { FilesAffectedByQueueModel } from "../../domain/model/FilesAffectedByQueueModel";
-import { FilesAffectedByQueueFinder } from "../../data-source/finder/FilesAffectedByQueueFinder";
-import { IGithubUser } from "../../data-extraction/github/api-entities/IGithubUser";
+import { FilesAffectedByQueueTDG } from '../../data-source/table-data-gateway/filesAffectedByQueueTDG';
+import { FilesAffectedByQueueModel } from '../../domain/model/FilesAffectedByQueueModel';
+import { FilesAffectedByQueueFinder } from '../../data-source/finder/FilesAffectedByQueueFinder';
+import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUser';
 import { Types } from 'mongoose';
 
 export class FilesAffectedByQueue extends AbstractQueue {
@@ -25,9 +25,9 @@ export class FilesAffectedByQueue extends AbstractQueue {
     let filesAffected: FilesAffectedByClient = new FilesAffectedByClient(
       prospect
     );
-    if (this.queue){
-    }else{
-        this.queue = [];
+    if (this.queue) {
+    } else {
+      this.queue = [];
     }
 
     this.queue.push(filesAffected);
@@ -37,11 +37,20 @@ export class FilesAffectedByQueue extends AbstractQueue {
     return this.queue.shift();
   }
 
+  public getUsername(): string {
+    if (!this.isEmpty()) {
+      return this.queue[0].login;
+    } else {
+      return '';
+    }
+  }
+
   public isEmpty() {
-    if(this.queue === undefined || this.queue.length == 0){
+    if (this.queue === undefined || this.queue.length == 0) {
       return true;
     }
-    return false;  }
+    return false;
+  }
 
   public size() {
     return this.queue.length;
@@ -52,13 +61,12 @@ export class FilesAffectedByQueue extends AbstractQueue {
       await this.queue[0].executeQuery();
       //remove the first object from the queue
       this.dequeue();
+    } catch (error) {
+      throw error;
     }
-    catch(error) {
-        throw error;
-    }  }
+  }
 
   public async saveToDatabase() {
-
     let queueID = Types.ObjectId();
 
     //create tdg
@@ -66,9 +74,11 @@ export class FilesAffectedByQueue extends AbstractQueue {
     let filesFinder: FilesAffectedByQueueFinder = new FilesAffectedByQueueFinder();
     let oldFilesQueueModel: FilesAffectedByQueueModel[] = await filesFinder.findAll();
 
-    if (oldFilesQueueModel.length === 1){
-    //delete what was there before
-    let deleteSuccess: boolean = await filesQueueTDG.delete(oldFilesQueueModel[0]._id);
+    if (oldFilesQueueModel.length === 1) {
+      //delete what was there before
+      let deleteSuccess: boolean = await filesQueueTDG.delete(
+        oldFilesQueueModel[0]._id
+      );
     }
 
     let newFilesQueueModel: FilesAffectedByQueueModel = {
@@ -77,7 +87,6 @@ export class FilesAffectedByQueue extends AbstractQueue {
 
     //store files affected by Queue in the database
     await filesQueueTDG.create(newFilesQueueModel);
-
   }
   public async loadFromDatabase() {
     //create a files affected by queue finder
@@ -86,16 +95,24 @@ export class FilesAffectedByQueue extends AbstractQueue {
     //Find all files affected by queues (only 1) and load it
     let newFilesQueueModel: FilesAffectedByQueueModel[] = await filesFinder.findAll();
 
-    if (newFilesQueueModel.length === 0)
-        return; //When nothing is in the database don't set this.queue
+    if (newFilesQueueModel.length === 0) return; //When nothing is in the database don't set this.queue
     //load the queue from db to this queue
     this.queue = newFilesQueueModel[0].queue;
     //Fixes TypeError: this.queue[0].executeQuery is not a function
-    for (let i: number = 0; i < this.queue.length; i++){
-        let user: IGithubUser = {login: this.queue[i].login};
-        //console.log("User.login: ", user.login);
-        this.queue[i] = new FilesAffectedByClient(new RequiredClientInformation(user, this.queue[i].repository, this.queue[i].owner, null, this.queue[i].commitId, null, null));
+    for (let i: number = 0; i < this.queue.length; i++) {
+      let user: IGithubUser = { login: this.queue[i].login };
+      //console.log("User.login: ", user.login);
+      this.queue[i] = new FilesAffectedByClient(
+        new RequiredClientInformation(
+          user,
+          this.queue[i].repository,
+          this.queue[i].owner,
+          null,
+          this.queue[i].commitId,
+          null,
+          null
+        )
+      );
     }
-
   }
 }
