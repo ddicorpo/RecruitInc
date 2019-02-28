@@ -90,7 +90,6 @@
     "react": "^16.7.0",
     "react-autosuggest": "^9.4.2",
     "react-dom": "^16.7.0",
-    "react-fontawesome": "^1.6.1",
     "react-js-pagination": "^3.0.2",
     "react-select": "^2.1.2",
     "ts-node": "^7.0.1",
