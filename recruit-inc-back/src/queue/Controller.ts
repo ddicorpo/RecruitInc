@@ -6,12 +6,12 @@ import { CommitQueue } from './queues/CommitQueue';
 import { DownloadQueue } from './queues/DownloadQueue';
 import { FilesAffectedByQueue } from './queues/FilesAffectedByQueue';
 import { GithubUsersFinder } from '../data-source/finder/GithubUsersFinder';
-import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG';
-import { IGithubUserModel } from '../domain/model/IGithubUserModel';
-import { CronFinder } from '../data-source/finder/CronFinder';
-import { ICronModel } from '../domain/model/ICronModel';
-import { Status } from '../domain/model/ICronModel';
 import { Logger } from '../Logger';
+import {
+  GithubUserSchema,
+  ScanningStatus,
+} from '../data-source/schema/githubUserSchema';
+import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG';
 
 export class Controller {
   private static _instance: Controller;
@@ -36,18 +36,29 @@ export class Controller {
     // Here we reload the queues with unfinished elements that remained from last time.
     this.reloadQueues();
 
-    let users: IGithubUser[] = await this.fetchUsersFromDatabase();
+    let usersSchemas: GithubUserSchema[] = await this.fetchUsersFromDatabase();
 
-    //console.log('users: ', users);
-    let canStillScan: boolean = users.length !== 0;
-    if (users.length !== 0) {
+    let canStillScan: boolean = usersSchemas.length !== 0;
+    let currentUserSchema: GithubUserSchema = null;
+    if (usersSchemas.length !== 0) {
       if (this.areQueuesEmpty()) {
-        this.enqueueUser(users.pop());
+        currentUserSchema = usersSchemas.pop();
+        this.enqueueUser(currentUserSchema.githubUser);
+      } else {
+        const githubUsername: string = this.getUsername();
+        currentUserSchema = await this.fetchSpecificUserFromDatabase(
+          githubUsername
+        );
       }
     }
 
-    //console.log('users length: ', users.length);
-    //console.log('canStillScan: ', canStillScan);
+    // UPDATING THE STATUS OF THE GITHUB USER TO REFLECT THAT THE SCAN STARTED
+    currentUserSchema.scanningStatus = ScanningStatus.started;
+    const githubTDG: GithubUsersTDG = new GithubUsersTDG();
+    const githubUserFinder: GithubUsersFinder = new GithubUsersFinder();
+    githubTDG.update(currentUserSchema._id, currentUserSchema);
+    // **********************************************************************
+
     while (canStillScan) {
       canStillScan = await this.executeRepo();
 
@@ -64,14 +75,32 @@ export class Controller {
         canStillScan = await this.executeDownload();
       }
 
+      // UPDATING THE STATUS OF THE GITHUB USER TO REFLECT THAT THE SCAN COMPLETED OR WAS INTERRUPTED
+      currentUserSchema = (await githubUserFinder.findById(
+        currentUserSchema._id
+      )) as GithubUserSchema;
+      if (canStillScan) {
+        // Here we update the database to notify that the object has been completly processed
+        currentUserSchema.scanningStatus = ScanningStatus.completed;
+      } else {
+        currentUserSchema.scanningStatus = ScanningStatus.paused;
+      }
+      githubTDG.update(currentUserSchema._id, currentUserSchema);
+      // ********************************************************************************************
+
       if (canStillScan) {
         //console.log("users at this point: ", users);
-        if (users.length === 0) {
+        if (usersSchemas.length === 0) {
           //fixing the cannot read login of undefined error because a user is still enqueued even though the users array is empty
           canStillScan = false;
           continue;
+        } else {
+          currentUserSchema = usersSchemas.pop();
+          currentUserSchema.scanningStatus = ScanningStatus.started;
+          githubTDG.update(currentUserSchema._id, currentUserSchema);
+
+          this.enqueueUser(currentUserSchema.githubUser);
         }
-        this.enqueueUser(users.pop());
       }
     }
   }
@@ -100,23 +129,46 @@ export class Controller {
     );
   }
 
-  public async fetchUsersFromDatabase(): Promise<IGithubUser[]> {
-    let githubUsers: IGithubUser[] = [];
-    let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-    let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-    let cronFinder: CronFinder = new CronFinder();
+  private getUsername(): string {
+    if (!this.repoQueue.isEmpty()) {
+      return this.repoQueue.getUsername();
+    }
+    if (!this.treeQueue.isEmpty()) {
+      return this.treeQueue.getUsername();
+    }
+    if (!this.commitQueue.isEmpty()) {
+      return this.commitQueue.getUsername();
+    }
+    if (!this.downloadQueue.isEmpty()) {
+      return this.downloadQueue.getUsername();
+    }
+    if (!this.filesAffectedByQueue.isEmpty()) {
+      return this.filesAffectedByQueue.getUsername();
+    }
+  }
 
-      let query = 
-        { "githubUser.dataEntry": null }
-      ;
-      //Find unscanned users (with no dataEntry)
-      let unscannedUsers: any = await githubUsersFinder.generalFind(
-        query
-      );
-      //console.log("unscannedUsers: ", unscannedUsers );
-      githubUsers = githubUsers.concat(unscannedUsers.map(githubUserModel => { return githubUserModel.githubUser}));
-    //console.log("users",githubUsers);
-    return githubUsers;
+  public async fetchUsersFromDatabase(): Promise<GithubUserSchema[]> {
+    let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+
+    let query = { 'githubUser.dataEntry': null };
+    //Find unscanned users (with no dataEntry)
+    let unscannedUsers: any = await githubUsersFinder.generalFind(query);
+    return unscannedUsers;
+  }
+
+  public async fetchSpecificUserFromDatabase(
+    username: string
+  ): Promise<GithubUserSchema> {
+    let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+
+    let query = { 'githubUser.login': username };
+    //Find unscanned users (with no dataEntry)
+    let user: any = await githubUsersFinder.generalFind(query);
+    if (Array.isArray(user)) {
+      return user[0];
+    } else {
+      return user;
+    }
   }
 
   private handleError(method: string, error: string) {
