@@ -1,5 +1,4 @@
 import { ICandidate } from '../model/Candidate/ICandidate';
-import { BaseAdapter } from './BaseAdapter';
 import { IProjectSummary } from '../model/Candidate/IProjectSummary';
 import { IGitProjectInput } from '../model/Candidate/IGitProjectInput';
 
@@ -8,10 +7,8 @@ import { IGitProjectInput } from '../model/Candidate/IGitProjectInput';
  * and our domain model front-end, by converting our back-end data
  * schema to front-end data schema
  */
-export class CandidateAdapter extends BaseAdapter {
-  constructor() {
-    super();
-  }
+export class CandidateAdapter {
+  constructor() {}
 
   public adapt(result): ICandidate[] {
     let candidates: ICandidate[] = [];
