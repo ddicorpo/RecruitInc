@@ -18,7 +18,7 @@ pythonMatcher.addFramework(djangoMatcher);
 
 const customLanguageMatchers: AbstractLanguageMatcher[] = [pythonMatcher];
 
-describe.only('Test Django matching algorithm', () => {
+describe('Test Django matching algorithm', () => {
   it('The Django-Python matcher should return the correct output object', () => {
     // GIVEN
     const client: MatcherClient = new MatcherClient(
