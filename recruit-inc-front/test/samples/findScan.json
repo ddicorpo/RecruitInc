@@ -1,0 +1,11 @@
+[
+  {
+    "_id": "5c74aacf20acc93b8eed4f5f",
+    "location": "port-of-spain",
+    "number_scanned": 0,
+    "total_number": 10,
+    "cron_pattern": "",
+    "status": "scanning",
+    "__v": 0
+  }
+]

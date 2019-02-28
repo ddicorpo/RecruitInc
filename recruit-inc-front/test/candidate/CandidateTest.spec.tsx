@@ -9,6 +9,9 @@ describe('Candidate Search Page', () => {
    */
   it('Candidate Search Page Rendering ', () => {
     //fetch.mockResponses(JSON.stringify(candidatesJSON));
-    shallow(<CandidateSearch />);
+    const wrapper = shallow(<CandidateSearch />);
+    const element = <label className="control-label">Language Search</label>;
+    const isElementInside = wrapper.contains(element);
+    expect(isElementInside).toBe(true);
   });
 });
