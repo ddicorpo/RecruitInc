@@ -4,6 +4,7 @@ import { GithubUsersTDG } from '../../src/data-source/table-data-gateway/githubU
 import { IGithubUserModel } from '../../src/domain/model/IGithubUserModel';
 import { IGithubUser } from '../../src/data-extraction/github/api-entities/IGithubUser';
 import { GithubUsersFinder } from '../../src/data-source/finder/GithubUsersFinder';
+import { ScanningStatus } from '../../src/data-source/schema/githubUserSchema';
 import { expect } from 'chai';
 import * as mongoose from 'mongoose';
 import { Platform } from '../../src/domain/model/IGitDataModel';
@@ -92,11 +93,13 @@ xdescribe('Test mongo GithubUsers', () => {
   const githubUsersModel1: IGithubUserModel = {
     githubUser: user1,
     location: 'montreal',
+    scanningStatus: ScanningStatus.pending,
   };
 
   const githubUsersModel2: IGithubUserModel = {
     githubUser: user2,
     location: 'nktt',
+    scanningStatus: ScanningStatus.started,
   };
   const githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
   const githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
