@@ -4,4 +4,6 @@ import { MatcherClient } from '../../../src/matching-algo/matcher-client/Matcher
 import { AbstractLanguageMatcher } from '../../../src/matching-algo/matcher/AbstractLanguageMatcher';
 import { IGitProjectSummary } from '../../../src/matching-algo/data-model/output-model/IGitProjectSummary';
 import { IGitProjectOutput } from '../../../src/matching-algo/data-model/output-model/IGitProjectOutput';
-import { CsharpMatcher } from '../../../src/matching-algo/matcher/Csharp/csharpMatcher';
+import { RubyMatcher } from '../../../src/matching-algo/matcher/Ruby/RubyMatcher';
+
+//setting up the language matcher
