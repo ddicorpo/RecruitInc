@@ -4,7 +4,7 @@
   "description": "Recruit Platform",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "jest",
+    "test": "tsc && jest",
     "build": "tsc && webpack --config webpack.config.js",
     "start": "npm run build && ts-node ./src/server.ts",
     "demo": "npm run start | lt --port 3000 --subdomain recruit-front ",
@@ -38,7 +38,7 @@
       "^.+\\.(ts|tsx)$": "<rootDir>/test-preprocessor.js"
     },
     "testMatch": [
-      "**/test/**/*.(ts|tsx|js)"
+      "**/test/**/*.(ts|tsx)"
     ]
   },
   "keywords": [],
@@ -46,6 +46,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/jest": "^23.3.13",
     "@types/node": "^10.12.12",
     "@types/react": "^16.7.21",
@@ -82,12 +83,14 @@
     "dotenv": "^6.2.0",
     "dotenv-webpack": "^1.7.0",
     "express": "^4.16.3",
+    "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
     "lint-staged": "^8.1.0",
     "localtunnel": "^1.9.1",
     "react": "^16.7.0",
     "react-autosuggest": "^9.4.2",
     "react-dom": "^16.7.0",
+    "react-fontawesome": "^1.6.1",
     "react-js-pagination": "^3.0.2",
     "react-select": "^2.1.2",
     "ts-node": "^7.0.1",

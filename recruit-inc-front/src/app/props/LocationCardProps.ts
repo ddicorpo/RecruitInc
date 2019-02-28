@@ -1,5 +1,5 @@
-import { Location } from '../model/Location/Location';
+import { LocationWatch } from '../model/Location/LocationWatch';
 
 export interface LocationCardProps {
-  location: Location;
+  locationWatchData: LocationWatch;
 }

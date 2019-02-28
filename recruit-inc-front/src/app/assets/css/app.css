@@ -12525,3 +12525,15 @@ table.dataTable thead .sorting_desc_disabled:after {
   margin-top: 5%;
   margin-bottom: 5%;
 }
+.super-title {
+  margin: auto;
+  font-size: 20px;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.super-icon {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}

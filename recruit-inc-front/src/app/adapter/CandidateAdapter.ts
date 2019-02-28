@@ -41,8 +41,6 @@ export class CandidateAdapter {
         projectInputsRaw.push(projectInput);
       }
 
-      console.log(projectInputsRaw);
-
       let candidate: ICandidate = {
         isFilter: false,
         username: result[num].platformUsername,
@@ -52,8 +50,6 @@ export class CandidateAdapter {
         projectSummary: projectSummary,
         projectInputs: projectInputsRaw,
       };
-
-      console.log(candidate);
 
       candidates.push(candidate);
     }

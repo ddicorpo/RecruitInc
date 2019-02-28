@@ -1,4 +1,4 @@
-export class Location {
+export class LocationWatch {
   name: string;
   numberOfUsers: number;
   scannedUsers: number;

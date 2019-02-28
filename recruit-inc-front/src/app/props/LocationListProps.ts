@@ -1,5 +1,5 @@
-import { LocationWatchList } from '../model/Location/LocationWatchList';
+import { LocationList } from '../model/Location/LocationList';
 
 export interface LocationListProps {
-  LocationList: LocationWatchList;
+  Locations: LocationList;
 }
