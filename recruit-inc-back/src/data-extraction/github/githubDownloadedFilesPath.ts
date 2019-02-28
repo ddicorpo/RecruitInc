@@ -1,6 +1,7 @@
 import { GithubApiV3 } from './githubApiV3';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { techSourceFiles } from '../../matching-algo/data-model/input-model/TechSourceFiles';
+import { excludedFolders } from '../../matching-algo/data-model/input-model/ExcludedFolders';
 import { IntersectionArrayString } from '../../util/IntersectionArrayString';
 import { ISourceFiles } from '../../matching-algo/data-model/input-model/ISourceFiles';
 import { Logger } from '../../Logger';
@@ -30,7 +31,10 @@ export class GithubDownloadedFilesPath {
     owner: string,
     repoName: string,
     path: string
-  ): Promise<{ name: string; path: string; content: string }> {
+  ): Promise<ISourceFiles> {
+    for (let excludedFolder of excludedFolders) {
+      if (path.includes(excludedFolder)) return; //Don't download package.json within node_modules
+    }
     let data;
     let jsonData;
     try {
@@ -53,30 +57,18 @@ export class GithubDownloadedFilesPath {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes("rate-limiting")){ 
+      if (error.toString().includes('rate-limiting')) {
         throw error;
       }
       return data;
     }
     let content = Buffer.from(jsonData.content, 'base64').toString();
 
-    return { name: jsonData.name, path: jsonData.path, content: content };
-  }
-
-  //This function creates directories as needed
-  //So that when we try to write to a file with fs it does not throw an error
-  writeToFile(content: string, path: string) {
-    let notExist = path.split('/');
-    let exists: string = '';
-    for (let i = 0; i < notExist.length - 1; i++) {
-      exists += `${notExist[i]}/`;
-      if (fs.existsSync(exists)) continue;
-      else fs.mkdirSync(exists);
-    }
-
-    fs.writeFile(path, content, err => {
-      if (err) throw err;
-    });
+    return {
+      filename: jsonData.name,
+      repoFilePath: jsonData.path,
+      fileContents: content,
+    };
   }
 
   generatePath(username: string, repoName: string, filePath: string): string {
@@ -109,53 +101,38 @@ export class GithubDownloadedFilesPath {
             tmpfileNameArr
           ).length > 0;
         if (isSourceFile) {
-          let generatedPath: string = this.generatePath(
-            user.login,
-            repository.projectName,
-            file.filePath
-          );
           let sourceFile: {
-            name: string;
-            path: string;
-            content: string;
+            filename: string;
+            repoFilePath: string;
+            fileContents: string;
           } = await this.downloadFile(
             repository.owner,
             repository.projectName,
             file.filePath
           );
-          this.writeToFile(sourceFile.content, generatedPath);
-          repository.downloadedSourceFile.push({
-            filename: sourceFile.name,
-            repoFilePath: sourceFile.path,
-            localFilePath: generatedPath,
-          });
+          if (!sourceFile) continue;
+          repository.downloadedSourceFile.push(sourceFile);
         }
       }
     }
     return user;
   }
-  async downloadSingleFile(owner: string, repoName: string, path: string, login: string): Promise<ISourceFiles>{
-          let generatedPath: string = this.generatePath(
-            login,
-            repoName,
-            path
-          );
-          let sourceFile: {
-            name: string;
-            path: string;
-            content: string;
-          };
-          try{
-          sourceFile = await this.downloadFile(
-            owner,
-            repoName,
-            path
-          );
-          }catch(error){
-              throw error;
-          }
-          this.writeToFile(sourceFile.content, generatedPath);
-          return {filename: sourceFile.name, repoFilePath: sourceFile.path, localFilePath: generatedPath};
+  async downloadSingleFile(
+    owner: string,
+    repoName: string,
+    path: string,
+    login: string
+  ): Promise<ISourceFiles> {
+    let sourceFile: {
+      filename: string;
+      repoFilePath: string;
+      fileContents: string;
+    };
+    try {
+      sourceFile = await this.downloadFile(owner, repoName, path);
+    } catch (error) {
+      throw error;
+    }
+    return sourceFile;
   }
-
 }
