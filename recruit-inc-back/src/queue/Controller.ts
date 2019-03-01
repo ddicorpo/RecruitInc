@@ -1,4 +1,6 @@
 import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser';
+import { IGithubUserModel } from '../domain/model/IGithubUserModel';
+import { IGitProjectSummary } from '../matching-algo/data-model/output-model/IGitProjectSummary';
 import { RequiredClientInformation } from './RequiredClientInformation';
 import { RepositoryQueue } from './queues/RepositoryQueue';
 import { TreeQueue } from './queues/TreeQueue';
@@ -6,6 +8,7 @@ import { CommitQueue } from './queues/CommitQueue';
 import { DownloadQueue } from './queues/DownloadQueue';
 import { FilesAffectedByQueue } from './queues/FilesAffectedByQueue';
 import { GithubUsersFinder } from '../data-source/finder/GithubUsersFinder';
+import { GithubDataExtraction } from '../data-extraction/github/githubDataExtraction';
 import { Logger } from '../Logger';
 import {
   GithubUserSchema,
@@ -168,6 +171,27 @@ export class Controller {
       return user[0];
     } else {
       return user;
+    }
+  }
+
+  public async processUsers() {
+    let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
+    let githubDataExtractor: GithubDataExtraction = new GithubDataExtraction();
+    let githubUserModels: IGithubUserModel[] = await githubUsersFinder.findByStatus(
+      ScanningStatus.completed
+    );
+
+    let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+    let summary: IGitProjectSummary;
+    for (let user of githubUserModels) {
+      if (!user.githubUser.dataEntry) continue;
+
+      summary = githubDataExtractor.processUser(user.githubUser);
+
+      if (!summary) continue;
+      let criteria: any = { 'githubUser.login': user.githubUser.login };
+      let update: any = { $set: { 'githubUser.projectSummary': summary } };
+      await githubUsersTDG.generalUpdate(criteria, update);
     }
   }
 

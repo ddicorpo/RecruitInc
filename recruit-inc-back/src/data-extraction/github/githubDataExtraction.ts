@@ -57,6 +57,12 @@ export class GithubDataExtraction {
     return user;
   }
 
+  processUser(user: IGithubUser): IGitProjectSummary {
+    let client: MatcherClient = new MatcherClient(user.dataEntry);
+    let output: IGitProjectSummary = client.execute();
+    return output;
+  }
+
   async matchGithubUser(
     login: string,
     email: string = ''
@@ -100,7 +106,6 @@ export class GithubDataExtraction {
     let newplatformEmail: string = null;
 
     if (user.email.length != 0 || user.email === 'null') {
-
       newplatformEmail = user.email;
     }
 

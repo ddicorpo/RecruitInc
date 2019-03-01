@@ -1,5 +1,6 @@
 import { IGithubUserModel } from '../../domain/model/IGithubUserModel';
 import { GithubUserModel } from '../schema/githubUserSchema';
+import { ScanningStatus } from '../schema/githubUserSchema';
 import { BaseFinder } from './BaseFinder';
 import { Types } from 'mongoose';
 
@@ -13,6 +14,12 @@ export class GithubUsersFinder {
     return this.baseFinder.findBy({ location });
   }
 
+  public findByStatus(
+    scanningStatus: ScanningStatus
+  ): Promise<IGithubUserModel[]> {
+    return this.baseFinder.findBy({ scanningStatus });
+  }
+
   public findAll(): Promise<IGithubUserModel> {
     return this.baseFinder.findAll();
   }
@@ -21,9 +28,9 @@ export class GithubUsersFinder {
       GithubUserModel.find(query, projection, (error, doc) => {
         if (error) {
           this.baseFinder.logActionFailure(
-              this.generalFind.name,
-              error.name,
-              error.message
+            this.generalFind.name,
+            error.name,
+            error.message
           );
           reject(error.name + ': ' + error.message);
         } else {
@@ -40,9 +47,9 @@ export class GithubUsersFinder {
       GithubUserModel.aggregate(pipeline, (error, doc) => {
         if (error) {
           this.baseFinder.logActionFailure(
-              this.findUnscannedUsers.name,
-              error.name,
-              error.message
+            this.findUnscannedUsers.name,
+            error.name,
+            error.message
           );
           reject(error.name + ': ' + error.message);
         } else {
