@@ -7,3 +7,5 @@ import { IGitProjectOutput } from '../../../src/matching-algo/data-model/output-
 import { RubyMatcher } from '../../../src/matching-algo/matcher/Ruby/RubyMatcher';
 
 //setting up the language matcher
+const rubyMatcher: AbstractLanguageMatcher = new RubyMatcher();
+const customLanguageMatchers: AbstractLanguageMatcher[] = [rubyMatcher];

@@ -1,0 +1,894 @@
+{
+  "projectInputs": [
+    {
+      "projectName": "sample_app",
+      "owner": "railstutorial",
+      "url": "https://github.com/railstutorial/sample_app",
+      "applicantCommits": [],
+      "projectStructure": [
+        {
+          "fileId": "a177ed289390c4dc04abcf6b7c8d7ebcddf1ae7c",
+          "fileName": ".autotest",
+          "filePath": ".autotest"
+        },
+        {
+          "fileId": "c2abe9eb94736ef58a4469c60936d324bb9fcfcb",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "61f260b7197b284b6158f5cc97f97b66dbe01a8f",
+          "fileName": ".rspec",
+          "filePath": ".rspec"
+        },
+        {
+          "fileId": "bf7cd22887b64134cd9f97422d44db6faa6802cf",
+          "fileName": "Gemfile",
+          "filePath": "Gemfile"
+        },
+        {
+          "fileId": "f9d65656a8e8ce5905d5532bb997ffdecb0d2088",
+          "fileName": "Gemfile.lock",
+          "filePath": "Gemfile.lock"
+        },
+        {
+          "fileId": "f840cc20e89ec30dea44c44f94e3fee4a8926a4d",
+          "fileName": "README.markdown",
+          "filePath": "README.markdown"
+        },
+        {
+          "fileId": "827fc38f9bbbcf56c9344a3965ae93b8c1000afe",
+          "fileName": "Rakefile",
+          "filePath": "Rakefile"
+        },
+        {
+          "fileId": "6d4bf3c1e0833fec14df164a7d74546e8c638766",
+          "fileName": "application_controller.rb",
+          "filePath": "app/controllers/application_controller.rb"
+        },
+        {
+          "fileId": "4113720f6f2c385ae65bd4e142e5502891bf362b",
+          "fileName": "microposts_controller.rb",
+          "filePath": "app/controllers/microposts_controller.rb"
+        },
+        {
+          "fileId": "0300651d6e68b702780a03ca79a3e47be10681c4",
+          "fileName": "pages_controller.rb",
+          "filePath": "app/controllers/pages_controller.rb"
+        },
+        {
+          "fileId": "c7e69c83975bc7cc36fa133b706968ab56950ca2",
+          "fileName": "relationships_controller.rb",
+          "filePath": "app/controllers/relationships_controller.rb"
+        },
+        {
+          "fileId": "242ef84ea93e924ca50816546ca62690f6e5620c",
+          "fileName": "sessions_controller.rb",
+          "filePath": "app/controllers/sessions_controller.rb"
+        },
+        {
+          "fileId": "603d1c560d7132ddaf9603f2dc63b4d633163452",
+          "fileName": "users_controller.rb",
+          "filePath": "app/controllers/users_controller.rb"
+        },
+        {
+          "fileId": "5e4c3f8d6ad67fee2004c19370e8d3a567a8bf93",
+          "fileName": "application_helper.rb",
+          "filePath": "app/helpers/application_helper.rb"
+        },
+        {
+          "fileId": "ba2702d2004db8214b8f6c0b9b503f499da8d495",
+          "fileName": "microposts_helper.rb",
+          "filePath": "app/helpers/microposts_helper.rb"
+        },
+        {
+          "fileId": "2c057fd05451d46274bd4615fef38910583c108b",
+          "fileName": "pages_helper.rb",
+          "filePath": "app/helpers/pages_helper.rb"
+        },
+        {
+          "fileId": "fc79f4d3c37a317b7c531c31f73485307b57c0ae",
+          "fileName": "sessions_helper.rb",
+          "filePath": "app/helpers/sessions_helper.rb"
+        },
+        {
+          "fileId": "85883a69a5189e8547765a6894044b619a3c9b31",
+          "fileName": "users_helper.rb",
+          "filePath": "app/helpers/users_helper.rb"
+        },
+        {
+          "fileId": "2eb04765870c3ef17d7dda0665d159f3ee30a480",
+          "fileName": "micropost.rb",
+          "filePath": "app/models/micropost.rb"
+        },
+        {
+          "fileId": "d024bb7c985a62a9a29ea3f1106d5bd7c23b9c94",
+          "fileName": "relationship.rb",
+          "filePath": "app/models/relationship.rb"
+        },
+        {
+          "fileId": "d95a16d34b6864124bf384b06079e15bd0af0a2c",
+          "fileName": "user.rb",
+          "filePath": "app/models/user.rb"
+        },
+        {
+          "fileId": "859ce5f217a4421234c2276ea9eb5b6a90c50d6d",
+          "fileName": "_footer.html.erb",
+          "filePath": "app/views/layouts/_footer.html.erb"
+        },
+        {
+          "fileId": "bc8fd78286e37e7c9aa3270f88bcdde97bb8207f",
+          "fileName": "_header.html.erb",
+          "filePath": "app/views/layouts/_header.html.erb"
+        },
+        {
+          "fileId": "a7a80e2425985f547ae618dee10e25f50f106bd6",
+          "fileName": "_stylesheets.html.erb",
+          "filePath": "app/views/layouts/_stylesheets.html.erb"
+        },
+        {
+          "fileId": "c737b883c9fa5798481db01345a075120222198c",
+          "fileName": "application.html.erb",
+          "filePath": "app/views/layouts/application.html.erb"
+        },
+        {
+          "fileId": "8d1feb7c3b9f9fe21aa7149e62d9de0f666ce54f",
+          "fileName": "_micropost.html.erb",
+          "filePath": "app/views/microposts/_micropost.html.erb"
+        },
+        {
+          "fileId": "2f4255755d659bc11935291d294fbf3b966d9d4f",
+          "fileName": "about.html.erb",
+          "filePath": "app/views/pages/about.html.erb"
+        },
+        {
+          "fileId": "9c3c793934126c3482e41e8afab42ccf26e4c91a",
+          "fileName": "contact.html.erb",
+          "filePath": "app/views/pages/contact.html.erb"
+        },
+        {
+          "fileId": "20dcea915e4d22c92f1d649755a848a62ce96f55",
+          "fileName": "help.html.erb",
+          "filePath": "app/views/pages/help.html.erb"
+        },
+        {
+          "fileId": "4ae2fba739f85c956cc44f51a500c876a29ff24f",
+          "fileName": "home.html.erb",
+          "filePath": "app/views/pages/home.html.erb"
+        },
+        {
+          "fileId": "a3e2b0949139a18251d0b54c4f35ecdd585cd579",
+          "fileName": "create.js.erb",
+          "filePath": "app/views/relationships/create.js.erb"
+        },
+        {
+          "fileId": "32cd47c405ff794daed5968085b98e0980e6bc64",
+          "fileName": "destroy.js.erb",
+          "filePath": "app/views/relationships/destroy.js.erb"
+        },
+        {
+          "fileId": "72028c9acdfce4b8fba59ab33d90e5c74f043778",
+          "fileName": "new.html.erb",
+          "filePath": "app/views/sessions/new.html.erb"
+        },
+        {
+          "fileId": "ae3df2ecb4f7328f8a809d45011e1da1d7e66a77",
+          "fileName": "_error_messages.html.erb",
+          "filePath": "app/views/shared/_error_messages.html.erb"
+        },
+        {
+          "fileId": "ca0a1380e2bc12648e9ad52cc4644884288cf3a5",
+          "fileName": "_feed.html.erb",
+          "filePath": "app/views/shared/_feed.html.erb"
+        },
+        {
+          "fileId": "3bb07c3aef3c0c319cd3114d36b5bd6852c0d6f2",
+          "fileName": "_feed_item.html.erb",
+          "filePath": "app/views/shared/_feed_item.html.erb"
+        },
+        {
+          "fileId": "a4d8f0bf0abe32a40566d4130cc8467b86b9b76b",
+          "fileName": "_micropost_form.html.erb",
+          "filePath": "app/views/shared/_micropost_form.html.erb"
+        },
+        {
+          "fileId": "2a0c7cf5080d609f4851606293f4306c29289b11",
+          "fileName": "_stats.html.erb",
+          "filePath": "app/views/shared/_stats.html.erb"
+        },
+        {
+          "fileId": "14467349313187266849f185ccfcc9931e454b15",
+          "fileName": "_user_info.html.erb",
+          "filePath": "app/views/shared/_user_info.html.erb"
+        },
+        {
+          "fileId": "0b04d32743a09238fdcef28884461fbdf0439898",
+          "fileName": "_fields.html.erb",
+          "filePath": "app/views/users/_fields.html.erb"
+        },
+        {
+          "fileId": "8fd790d7bfa4495685092b997c1e9bb8318bcd0a",
+          "fileName": "_follow.html.erb",
+          "filePath": "app/views/users/_follow.html.erb"
+        },
+        {
+          "fileId": "e3c5bee36483c8a45ba59e09d32fa340e4affa9c",
+          "fileName": "_follow_form.html.erb",
+          "filePath": "app/views/users/_follow_form.html.erb"
+        },
+        {
+          "fileId": "e34c12e1507d57d9a2b09032b11ac7fb25f2382d",
+          "fileName": "_unfollow.html.erb",
+          "filePath": "app/views/users/_unfollow.html.erb"
+        },
+        {
+          "fileId": "532ae15c8e10cc577a7488407e739c1ac744c753",
+          "fileName": "_user.html.erb",
+          "filePath": "app/views/users/_user.html.erb"
+        },
+        {
+          "fileId": "3a572b82e599a7de3818f520943de5667aa061d7",
+          "fileName": "edit.html.erb",
+          "filePath": "app/views/users/edit.html.erb"
+        },
+        {
+          "fileId": "d96cda33d4aeee8da697ba3e1987d49eeb052139",
+          "fileName": "index.html.erb",
+          "filePath": "app/views/users/index.html.erb"
+        },
+        {
+          "fileId": "cda93c8498d505d567b4aedc4c081242f1737460",
+          "fileName": "new.html.erb",
+          "filePath": "app/views/users/new.html.erb"
+        },
+        {
+          "fileId": "711a45e041bdc451be742531c11571d2f704455d",
+          "fileName": "show.html.erb",
+          "filePath": "app/views/users/show.html.erb"
+        },
+        {
+          "fileId": "594784ef53a01b68a80ef0c22924bb6ce45e89fa",
+          "fileName": "show_follow.html.erb",
+          "filePath": "app/views/users/show_follow.html.erb"
+        },
+        {
+          "fileId": "f421dc5ff9f7a97d6601416ee20741222f6d1065",
+          "fileName": "discover.rb",
+          "filePath": "autotest/discover.rb"
+        },
+        {
+          "fileId": "313f3d4d9ee2e921f8fd5ccfcfe7efbb47e3566d",
+          "fileName": "annotate",
+          "filePath": "bin/annotate"
+        },
+        {
+          "fileId": "64dcb9cb08a95d412d17ad1f2d6e5de296b3ece6",
+          "fileName": "autospec",
+          "filePath": "bin/autospec"
+        },
+        {
+          "fileId": "5e9a7a4d1bbff91a746deed9d748007733e49e2c",
+          "fileName": "autotest",
+          "filePath": "bin/autotest"
+        },
+        {
+          "fileId": "2c7348b8b30fbd38cee0531dbaf0683c37bd210e",
+          "fileName": "erubis",
+          "filePath": "bin/erubis"
+        },
+        {
+          "fileId": "c70e238dc2d81ab8ecc70537203db00db723e4e4",
+          "fileName": "htmldiff",
+          "filePath": "bin/htmldiff"
+        },
+        {
+          "fileId": "8e3524a92e366c5fcfba0c83b7b3eca0b94fafdb",
+          "fileName": "ldiff",
+          "filePath": "bin/ldiff"
+        },
+        {
+          "fileId": "abc00a49760312c09f5790a6abc9cd0dfb37e3d0",
+          "fileName": "multigem",
+          "filePath": "bin/multigem"
+        },
+        {
+          "fileId": "fa574be94e80de5b47af0ec475825d2f52dd82e3",
+          "fileName": "multiruby",
+          "filePath": "bin/multiruby"
+        },
+        {
+          "fileId": "28432ebe4c3ae5df28341c57e577ec721a3a5bf9",
+          "fileName": "multiruby_setup",
+          "filePath": "bin/multiruby_setup"
+        },
+        {
+          "fileId": "d55f84b057bf75ff62ddeff7f7a10cad9ffaa278",
+          "fileName": "nokogiri",
+          "filePath": "bin/nokogiri"
+        },
+        {
+          "fileId": "8cc9953e5cfb0af92535d93ee3466e673dd8deca",
+          "fileName": "rackup",
+          "filePath": "bin/rackup"
+        },
+        {
+          "fileId": "daa4a399d5bafc7381fec86a02623278a106072c",
+          "fileName": "rails",
+          "filePath": "bin/rails"
+        },
+        {
+          "fileId": "26c7a2d5b5f18e50c555558e19ed6050ab461628",
+          "fileName": "rake",
+          "filePath": "bin/rake"
+        },
+        {
+          "fileId": "b0b6ec9b869378330c3c20a2f92abb5fe89c7239",
+          "fileName": "rake2thor",
+          "filePath": "bin/rake2thor"
+        },
+        {
+          "fileId": "f57260f36efdd23b37927528c4975209332d8c77",
+          "fileName": "rdoc",
+          "filePath": "bin/rdoc"
+        },
+        {
+          "fileId": "90f2517da4f3e52dc699ce7ef6a93a1c0e123ad3",
+          "fileName": "ri",
+          "filePath": "bin/ri"
+        },
+        {
+          "fileId": "0c86b5c6fa177ab2b58ee7146e19d0d26506487d",
+          "fileName": "rspec",
+          "filePath": "bin/rspec"
+        },
+        {
+          "fileId": "a127260effbda2211ea675ead1e29bbe0096dff6",
+          "fileName": "spork",
+          "filePath": "bin/spork"
+        },
+        {
+          "fileId": "8421e001eac7fd15bc92dc8d30c1390139252833",
+          "fileName": "thor",
+          "filePath": "bin/thor"
+        },
+        {
+          "fileId": "6e3920b8ced6ecb28f0ac588940c3ec17471e2f7",
+          "fileName": "tt",
+          "filePath": "bin/tt"
+        },
+        {
+          "fileId": "765d72b0b6fa95285f15f3bcf0f2339c4b5be9c6",
+          "fileName": "unit_diff",
+          "filePath": "bin/unit_diff"
+        },
+        {
+          "fileId": "a140d5e38c7d7152fd61f6b978c45a8780176bf7",
+          "fileName": "zentest",
+          "filePath": "bin/zentest"
+        },
+        {
+          "fileId": "313f3d4d9ee2e921f8fd5ccfcfe7efbb47e3566d",
+          "fileName": "annotate",
+          "filePath": "bundler_stubs/annotate"
+        },
+        {
+          "fileId": "64dcb9cb08a95d412d17ad1f2d6e5de296b3ece6",
+          "fileName": "autospec",
+          "filePath": "bundler_stubs/autospec"
+        },
+        {
+          "fileId": "2c7348b8b30fbd38cee0531dbaf0683c37bd210e",
+          "fileName": "erubis",
+          "filePath": "bundler_stubs/erubis"
+        },
+        {
+          "fileId": "c70e238dc2d81ab8ecc70537203db00db723e4e4",
+          "fileName": "htmldiff",
+          "filePath": "bundler_stubs/htmldiff"
+        },
+        {
+          "fileId": "8e3524a92e366c5fcfba0c83b7b3eca0b94fafdb",
+          "fileName": "ldiff",
+          "filePath": "bundler_stubs/ldiff"
+        },
+        {
+          "fileId": "d55f84b057bf75ff62ddeff7f7a10cad9ffaa278",
+          "fileName": "nokogiri",
+          "filePath": "bundler_stubs/nokogiri"
+        },
+        {
+          "fileId": "8cc9953e5cfb0af92535d93ee3466e673dd8deca",
+          "fileName": "rackup",
+          "filePath": "bundler_stubs/rackup"
+        },
+        {
+          "fileId": "daa4a399d5bafc7381fec86a02623278a106072c",
+          "fileName": "rails",
+          "filePath": "bundler_stubs/rails"
+        },
+        {
+          "fileId": "26c7a2d5b5f18e50c555558e19ed6050ab461628",
+          "fileName": "rake",
+          "filePath": "bundler_stubs/rake"
+        },
+        {
+          "fileId": "b0b6ec9b869378330c3c20a2f92abb5fe89c7239",
+          "fileName": "rake2thor",
+          "filePath": "bundler_stubs/rake2thor"
+        },
+        {
+          "fileId": "f57260f36efdd23b37927528c4975209332d8c77",
+          "fileName": "rdoc",
+          "filePath": "bundler_stubs/rdoc"
+        },
+        {
+          "fileId": "90f2517da4f3e52dc699ce7ef6a93a1c0e123ad3",
+          "fileName": "ri",
+          "filePath": "bundler_stubs/ri"
+        },
+        {
+          "fileId": "0c86b5c6fa177ab2b58ee7146e19d0d26506487d",
+          "fileName": "rspec",
+          "filePath": "bundler_stubs/rspec"
+        },
+        {
+          "fileId": "a127260effbda2211ea675ead1e29bbe0096dff6",
+          "fileName": "spork",
+          "filePath": "bundler_stubs/spork"
+        },
+        {
+          "fileId": "8421e001eac7fd15bc92dc8d30c1390139252833",
+          "fileName": "thor",
+          "filePath": "bundler_stubs/thor"
+        },
+        {
+          "fileId": "6e3920b8ced6ecb28f0ac588940c3ec17471e2f7",
+          "fileName": "tt",
+          "filePath": "bundler_stubs/tt"
+        },
+        {
+          "fileId": "550b8227a2f65dedaf54f9bb773422fb0bf2b750",
+          "fileName": "config.ru",
+          "filePath": "config.ru"
+        },
+        {
+          "fileId": "0682943aca98f464a278c76ab279d3f5565590e4",
+          "fileName": "application.rb",
+          "filePath": "config/application.rb"
+        },
+        {
+          "fileId": "ab6cb374de20fe94b208a1f092cce79a7ef6108e",
+          "fileName": "boot.rb",
+          "filePath": "config/boot.rb"
+        },
+        {
+          "fileId": "025d62a8d8102735fade34d52f66f95c3d46e0a6",
+          "fileName": "database.yml",
+          "filePath": "config/database.yml"
+        },
+        {
+          "fileId": "58e6ea6d287942254a34622aafd6d15e828ec6c7",
+          "fileName": "environment.rb",
+          "filePath": "config/environment.rb"
+        },
+        {
+          "fileId": "8064061e2eb8d756fa4afcad89a291abe0cf1bf2",
+          "fileName": "development.rb",
+          "filePath": "config/environments/development.rb"
+        },
+        {
+          "fileId": "0fad1b0f531a595c6241868d49c95a454ae9765b",
+          "fileName": "production.rb",
+          "filePath": "config/environments/production.rb"
+        },
+        {
+          "fileId": "b5586f086450281af8c5c5a9d26c20267b99c982",
+          "fileName": "test.rb",
+          "filePath": "config/environments/test.rb"
+        },
+        {
+          "fileId": "59385cdf379bd06a8d2326dcd4de6d5cd5d3f5b0",
+          "fileName": "backtrace_silencers.rb",
+          "filePath": "config/initializers/backtrace_silencers.rb"
+        },
+        {
+          "fileId": "9e8b0131f8ff7e3d3923697eca0b0ffdc77b19ce",
+          "fileName": "inflections.rb",
+          "filePath": "config/initializers/inflections.rb"
+        },
+        {
+          "fileId": "72aca7e441e1855f8c7a7ac1f1cbe5d42cd1235b",
+          "fileName": "mime_types.rb",
+          "filePath": "config/initializers/mime_types.rb"
+        },
+        {
+          "fileId": "ee67d913798e9733e0f89c10801502a81f745f7a",
+          "fileName": "secret_token.rb",
+          "filePath": "config/initializers/secret_token.rb"
+        },
+        {
+          "fileId": "e3e55055f6385ef12b52489788bc8e4fa644a13c",
+          "fileName": "session_store.rb",
+          "filePath": "config/initializers/session_store.rb"
+        },
+        {
+          "fileId": "a747bfa6987b7bec1bf149ecc5bb8801d5e25e34",
+          "fileName": "en.yml",
+          "filePath": "config/locales/en.yml"
+        },
+        {
+          "fileId": "ca006a8db5bcd97b08616cb93a62e29b43e0f438",
+          "fileName": "routes.rb",
+          "filePath": "config/routes.rb"
+        },
+        {
+          "fileId": "805ba7b3319a345d7d2169c2f755e53b1425020d",
+          "fileName": "20100821203213_create_users.rb",
+          "filePath": "db/migrate/20100821203213_create_users.rb"
+        },
+        {
+          "fileId": "95c5122c697d16c002303131babd8b96997edd8b",
+          "fileName": "20100822012431_add_email_uniqueness_index.rb",
+          "filePath": "db/migrate/20100822012431_add_email_uniqueness_index.rb"
+        },
+        {
+          "fileId": "0621dc1f9a5a6d7a7b86b705cf4c32cb7f86bab9",
+          "fileName": "20100822204528_add_password_to_users.rb",
+          "filePath": "db/migrate/20100822204528_add_password_to_users.rb"
+        },
+        {
+          "fileId": "11e8f5316b68ec7d3184a49680da051d2c49568d",
+          "fileName": "20100822233125_add_salt_to_users.rb",
+          "filePath": "db/migrate/20100822233125_add_salt_to_users.rb"
+        },
+        {
+          "fileId": "ad38d916ae0d037023910d812881515f77a1b329",
+          "fileName": "20100829021049_add_admin_to_users.rb",
+          "filePath": "db/migrate/20100829021049_add_admin_to_users.rb"
+        },
+        {
+          "fileId": "41ddf67541ef6facfdc78524f3edf6a19310faab",
+          "fileName": "20100829210229_create_microposts.rb",
+          "filePath": "db/migrate/20100829210229_create_microposts.rb"
+        },
+        {
+          "fileId": "a0fcddfdceec8d5e0d35ef252171caf7f53c30ab",
+          "fileName": "20100831012055_create_relationships.rb",
+          "filePath": "db/migrate/20100831012055_create_relationships.rb"
+        },
+        {
+          "fileId": "52c1e87b59f13504cd419df57be19fdd9bcd235c",
+          "fileName": "schema.rb",
+          "filePath": "db/schema.rb"
+        },
+        {
+          "fileId": "664d8c74c881988e55df276a81f50d1d25b8d262",
+          "fileName": "seeds.rb",
+          "filePath": "db/seeds.rb"
+        },
+        {
+          "fileId": "fe41f5cc24d667635c46a533fd09bf7bb514e032",
+          "fileName": "README_FOR_APP",
+          "filePath": "doc/README_FOR_APP"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": ".gitkeep",
+          "filePath": "lib/tasks/.gitkeep"
+        },
+        {
+          "fileId": "5d4aed0f11e4db89da4e0c0729dbd897a1d8f12c",
+          "fileName": "sample_data.rake",
+          "filePath": "lib/tasks/sample_data.rake"
+        },
+        {
+          "fileId": "9a48320a5f1c025b6cc9819ab539a6d17fcbaf81",
+          "fileName": "404.html",
+          "filePath": "public/404.html"
+        },
+        {
+          "fileId": "83660ab1878ba9adc6477ed910333e32bb6b46ce",
+          "fileName": "422.html",
+          "filePath": "public/422.html"
+        },
+        {
+          "fileId": "b80307fc1664db7814f02603257704f9873d9e67",
+          "fileName": "500.html",
+          "filePath": "public/500.html"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": "favicon.ico",
+          "filePath": "public/favicon.ico"
+        },
+        {
+          "fileId": "66439e058de4f5fafcd1d1a53d01888ffe4819fe",
+          "fileName": "logo.png",
+          "filePath": "public/images/logo.png"
+        },
+        {
+          "fileId": "d5edc04e65f555e3ba4dcdaad39dc352e75b575e",
+          "fileName": "rails.png",
+          "filePath": "public/images/rails.png"
+        },
+        {
+          "fileId": "fe4577696b2811818fe7439990be0d2f65a892c5",
+          "fileName": "application.js",
+          "filePath": "public/javascripts/application.js"
+        },
+        {
+          "fileId": "7392fb664c08a6350e59eb6ac6bc2013af03428c",
+          "fileName": "controls.js",
+          "filePath": "public/javascripts/controls.js"
+        },
+        {
+          "fileId": "15c6dbca68ba56e5862fc38d2fd74e29aa699744",
+          "fileName": "dragdrop.js",
+          "filePath": "public/javascripts/dragdrop.js"
+        },
+        {
+          "fileId": "066ee5909ce7faa69d47221f9cda27de05502e3e",
+          "fileName": "effects.js",
+          "filePath": "public/javascripts/effects.js"
+        },
+        {
+          "fileId": "06249a6ae37d5fff9e1b629b5544d4d9e044549d",
+          "fileName": "prototype.js",
+          "filePath": "public/javascripts/prototype.js"
+        },
+        {
+          "fileId": "4283ed89824f8493f6834c2d8237e0e3e8e4f80c",
+          "fileName": "rails.js",
+          "filePath": "public/javascripts/rails.js"
+        },
+        {
+          "fileId": "085187fa58b1631e955f5d514d895a7721466797",
+          "fileName": "robots.txt",
+          "filePath": "public/robots.txt"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": ".gitkeep",
+          "filePath": "public/stylesheets/.gitkeep"
+        },
+        {
+          "fileId": "3dddda9451f84f20b5b0b27307f0eac4f1a535fe",
+          "fileName": "ie.css",
+          "filePath": "public/stylesheets/blueprint/ie.css"
+        },
+        {
+          "fileId": "1514d51a3cf1b67e1c5b9ada36f1fd474e2d214a",
+          "fileName": "cross.png",
+          "filePath": "public/stylesheets/blueprint/plugins/buttons/icons/cross.png"
+        },
+        {
+          "fileId": "a9d5e4f8cc75240f6e6bbb9e73466a9e3effb610",
+          "fileName": "key.png",
+          "filePath": "public/stylesheets/blueprint/plugins/buttons/icons/key.png"
+        },
+        {
+          "fileId": "a9925a06ab02db30c1e7ead9c701c15bc63145cb",
+          "fileName": "tick.png",
+          "filePath": "public/stylesheets/blueprint/plugins/buttons/icons/tick.png"
+        },
+        {
+          "fileId": "aa9fe26ba27a9971bc704f53614766008b76479b",
+          "fileName": "readme.txt",
+          "filePath": "public/stylesheets/blueprint/plugins/buttons/readme.txt"
+        },
+        {
+          "fileId": "bb66b2154d996a9029416db9a5d61d093982df7b",
+          "fileName": "screen.css",
+          "filePath": "public/stylesheets/blueprint/plugins/buttons/screen.css"
+        },
+        {
+          "fileId": "85f24915223b93f2a7e468890d917e34f709916b",
+          "fileName": "readme.txt",
+          "filePath": "public/stylesheets/blueprint/plugins/fancy-type/readme.txt"
+        },
+        {
+          "fileId": "127cf2553d8e7b507a9b5ed6107a1ed0793cf694",
+          "fileName": "screen.css",
+          "filePath": "public/stylesheets/blueprint/plugins/fancy-type/screen.css"
+        },
+        {
+          "fileId": "834cdfaf48a509ca51d93250fb28dd12e5ea0a13",
+          "fileName": "doc.png",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/icons/doc.png"
+        },
+        {
+          "fileId": "7348aed77fe6a64c2210a202f12c6eccae7fcf24",
+          "fileName": "email.png",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/icons/email.png"
+        },
+        {
+          "fileId": "cf1cfb42687a8ddd637139eb8ff83e8d03e91a0f",
+          "fileName": "external.png",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/icons/external.png"
+        },
+        {
+          "fileId": "315c4f4fa62cb720326ba3f54259666ba3999e42",
+          "fileName": "feed.png",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/icons/feed.png"
+        },
+        {
+          "fileId": "79f35ccbdad44489dbf07d1bf688c411aa3b612c",
+          "fileName": "im.png",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/icons/im.png"
+        },
+        {
+          "fileId": "8f8095e46fa4965700afe1f9d065d8a37b101676",
+          "fileName": "pdf.png",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/icons/pdf.png"
+        },
+        {
+          "fileId": "ebf206def2729dae1fa9e8c5c9e5a95b7176c45b",
+          "fileName": "visited.png",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/icons/visited.png"
+        },
+        {
+          "fileId": "b977d7e52e2446ea01201c5c7209ac3a05f12c9f",
+          "fileName": "xls.png",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/icons/xls.png"
+        },
+        {
+          "fileId": "fc4dc649002bfe0ea2fbd01e552c6352f23618cd",
+          "fileName": "readme.txt",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/readme.txt"
+        },
+        {
+          "fileId": "7b4bef9888f801352496133663604876f9415d0e",
+          "fileName": "screen.css",
+          "filePath": "public/stylesheets/blueprint/plugins/link-icons/screen.css"
+        },
+        {
+          "fileId": "5564c402ad05d96aba5c7c7316014d9efdd5e6fa",
+          "fileName": "readme.txt",
+          "filePath": "public/stylesheets/blueprint/plugins/rtl/readme.txt"
+        },
+        {
+          "fileId": "7db7eb5e62fd56db7a91e22498f3a3824354acde",
+          "fileName": "screen.css",
+          "filePath": "public/stylesheets/blueprint/plugins/rtl/screen.css"
+        },
+        {
+          "fileId": "fdb82208e9920c801638671f92a8fd0b62902464",
+          "fileName": "print.css",
+          "filePath": "public/stylesheets/blueprint/print.css"
+        },
+        {
+          "fileId": "46ca92b197cde551e4612f3a0289f4117952d5a8",
+          "fileName": "screen.css",
+          "filePath": "public/stylesheets/blueprint/screen.css"
+        },
+        {
+          "fileId": "b49113407525176336e68f6bfb6878e5d8f55f9b",
+          "fileName": "forms.css",
+          "filePath": "public/stylesheets/blueprint/src/forms.css"
+        },
+        {
+          "fileId": "02a9d0ca3bcb8d3235882ab417c79f7a1185c4bb",
+          "fileName": "grid.css",
+          "filePath": "public/stylesheets/blueprint/src/grid.css"
+        },
+        {
+          "fileId": "d42a6c32c173bf067ee9fe1aa062afd915fb366c",
+          "fileName": "grid.png",
+          "filePath": "public/stylesheets/blueprint/src/grid.png"
+        },
+        {
+          "fileId": "0f458e6e966e5f9d5d66baa13f9b114d2edb6bdd",
+          "fileName": "ie.css",
+          "filePath": "public/stylesheets/blueprint/src/ie.css"
+        },
+        {
+          "fileId": "bbc7948affe3780631b264861de31bc71f72a312",
+          "fileName": "print.css",
+          "filePath": "public/stylesheets/blueprint/src/print.css"
+        },
+        {
+          "fileId": "09d9131abc3c998ed5e5bf3f6d04512d885a58e0",
+          "fileName": "reset.css",
+          "filePath": "public/stylesheets/blueprint/src/reset.css"
+        },
+        {
+          "fileId": "a1cfe272b4508bc2bb5c9d13f450341b9376a433",
+          "fileName": "typography.css",
+          "filePath": "public/stylesheets/blueprint/src/typography.css"
+        },
+        {
+          "fileId": "d3a3de5f1fa1da2d7e378a961973856797da3d1c",
+          "fileName": "custom.css",
+          "filePath": "public/stylesheets/custom.css"
+        },
+        {
+          "fileId": "f8da2cffd4de029d658fe2f7b9ec88f28dc34a9a",
+          "fileName": "rails",
+          "filePath": "script/rails"
+        },
+        {
+          "fileId": "725aed825739c95640ceca0a22212bef86bd2712",
+          "fileName": "microposts_controller_spec.rb",
+          "filePath": "spec/controllers/microposts_controller_spec.rb"
+        },
+        {
+          "fileId": "6688771106c9efae996a996e93833b6b00b30d1a",
+          "fileName": "pages_controller_spec.rb",
+          "filePath": "spec/controllers/pages_controller_spec.rb"
+        },
+        {
+          "fileId": "34fe0a856f3a7e3a22bfd75f58f12119de8d7182",
+          "fileName": "relationships_controller_spec.rb",
+          "filePath": "spec/controllers/relationships_controller_spec.rb"
+        },
+        {
+          "fileId": "f2165e861f6abe72aa498bf7bf34a0dbf10fa25b",
+          "fileName": "sessions_controller_spec.rb",
+          "filePath": "spec/controllers/sessions_controller_spec.rb"
+        },
+        {
+          "fileId": "907420ee99755ded6662297d7936ce37fcc402fc",
+          "fileName": "users_controller_spec.rb",
+          "filePath": "spec/controllers/users_controller_spec.rb"
+        },
+        {
+          "fileId": "937d72f0135914daba471ae315f887bbe58de6ad",
+          "fileName": "factories.rb",
+          "filePath": "spec/factories.rb"
+        },
+        {
+          "fileId": "5a66d85df938bf0d8bd12f14c3901b65056c3757",
+          "fileName": "micropost_spec.rb",
+          "filePath": "spec/models/micropost_spec.rb"
+        },
+        {
+          "fileId": "da04b149553671223a74ca83d8b0fd3001b7715a",
+          "fileName": "relationship_spec.rb",
+          "filePath": "spec/models/relationship_spec.rb"
+        },
+        {
+          "fileId": "7ca184a8ee9bd8fb14b1f5912af42dbc6de29f59",
+          "fileName": "user_spec.rb",
+          "filePath": "spec/models/user_spec.rb"
+        },
+        {
+          "fileId": "48b753e538a9ed3edd67d59ad47493aeec7560e3",
+          "fileName": "friendly_forwardings_spec.rb",
+          "filePath": "spec/requests/friendly_forwardings_spec.rb"
+        },
+        {
+          "fileId": "b5be9f79b2aa8bba5be03683e31b993cf10aa2f8",
+          "fileName": "layout_links_spec.rb",
+          "filePath": "spec/requests/layout_links_spec.rb"
+        },
+        {
+          "fileId": "8813b71dba3e279dd4dc28dc2d78dad52e48ab9e",
+          "fileName": "microposts_spec.rb",
+          "filePath": "spec/requests/microposts_spec.rb"
+        },
+        {
+          "fileId": "93b858f85685b696501e6207b1aba2790c982186",
+          "fileName": "users_spec.rb",
+          "filePath": "spec/requests/users_spec.rb"
+        },
+        {
+          "fileId": "ba6975486c3c2dab34a7ae298e3b4f78c8dc3bbd",
+          "fileName": "spec_helper.rb",
+          "filePath": "spec/spec_helper.rb"
+        },
+        {
+          "fileId": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "fileName": ".gitkeep",
+          "filePath": "vendor/plugins/.gitkeep"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/railstutorial/github/sample_app/.gitignore"
+        }
+      ]
+    }
+  ]
+}
