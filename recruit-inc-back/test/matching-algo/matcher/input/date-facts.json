@@ -3475,7 +3475,7 @@
         {
           "filename": "package-lock.json",
           "repoFilePath": "package-lock.json",
-          "localFilePath": "test/matching-algo/matcher/dependencies/package.javascript.json"
+          "fileContents": "package.javascript.json"
         }
       ]
     }
