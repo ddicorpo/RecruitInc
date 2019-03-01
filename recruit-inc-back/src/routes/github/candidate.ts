@@ -27,9 +27,15 @@ export class Candidate {
   public routes(app): void {
     let users: IGithubUser[];
 
+    app.route('/process').get(async (request: Request, response: Response) => {
+      let controller: Controller = Controller.get_instance();
+      await controller.processUsers();
+      response.sendStatus(200);
+    });
     app.route('/scan').get(async (request: Request, response: Response) => {
       let cronjob: CronJobs = new CronJobs();
-      cronjob.scan();
+      await cronjob.scan();
+      response.sendStatus(200);
     });
 
     app
@@ -58,7 +64,7 @@ export class Candidate {
       .get(async (request: Request, response: Response) => {
         let controller: Controller = Controller.get_instance();
 
-        let result: IGithubUser[] = await controller.fetchUsersFromDatabase();
+        let result: any = await controller.fetchUsersFromDatabase();
 
         response.status(200).send(result);
       });
