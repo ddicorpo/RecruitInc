@@ -21,4 +21,14 @@ describe('Testing Scan Adapter, Success Scenario', () => {
     );
     expect(isLocationInside).toBe(false);
   });
+
+  it('Test Scan Adapter for another location', () => {
+    const targetLocation: string = 'rosemere';
+    const adapter: ScanAdapter = new ScanAdapter();
+    const locationsExtracted: string[] = adapter.adapt(rawJSON);
+    const isLocationInside: boolean = locationsExtracted.includes(
+      targetLocation
+    );
+    expect(isLocationInside).toBe(true);
+  });
 });
