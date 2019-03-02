@@ -2,16 +2,16 @@ import { Routes } from '../Routes';
 import { baseService } from './baseService';
 import axios from 'axios';
 
-export class ObtainLocations extends baseService {
+export class ObtainUserToScan extends baseService {
   constructor() {
     super();
-    this.serviceName = Routes.ObtainLocations;
-    this.serviceAddress = this.buildServiceAddress(Routes.ObtainLocations);
+    this.serviceName = Routes.ObtainUserToScan;
+    this.serviceAddress = this.buildServiceAddress(Routes.ObtainUserToScan);
   }
 
-  public execute(): any {
+  public execute(location: string): any {
     return axios.request({
-      url: this.serviceAddress,
+      url: this.serviceAddress + location,
       method: 'get',
       headers: {
         'Access-Control-Allow-Origin': '*',

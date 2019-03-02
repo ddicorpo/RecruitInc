@@ -1,12 +1,12 @@
-import { baseService } from './baseService';
 import { Routes } from '../Routes';
+import { baseService } from './baseService';
 import axios from 'axios';
 
-export class ObtainCandidates extends baseService {
+export class ObtainScan extends baseService {
   constructor() {
     super();
-    this.serviceName = Routes.ObtainCandidates;
-    this.serviceAddress = this.buildServiceAddress(Routes.ObtainCandidates);
+    this.serviceName = Routes.ObtainScan;
+    this.serviceAddress = this.buildServiceAddress(Routes.ObtainScan);
   }
 
   public execute(): any {

@@ -6,7 +6,6 @@ export abstract class baseService {
   serviceAddress: string;
   BackEndAddress: string =
     process.env.BACK_END_ADDRESS + ':' + process.env.BACK_END_PORT;
-  private servicePrefix: string = process.env.REST_PREFIX + '';
   protected constructor() {
     this.logger = new Logger();
   }
@@ -14,14 +13,14 @@ export abstract class baseService {
   /**
    * Main method to execute a transaction
    */
-  abstract async execute(): Promise<any>;
+  abstract async execute(parameter?: string): Promise<any>;
 
   /**
    * Use by other Service class, it used to build the API address
    * @param apiMethod
    */
   buildServiceAddress(apiMethod: string): string {
-    return this.servicePrefix + this.BackEndAddress + apiMethod;
+    return process.env.REST_PREFIX + this.BackEndAddress + apiMethod;
   }
 
   /**
@@ -29,6 +28,7 @@ export abstract class baseService {
    * @param serviceName
    */
   logActionCompleted(serviceName: string): void {
+    console.log('action complete ' + serviceName);
     this.logger.info({
       class: serviceName,
       method: this.execute.name,
@@ -48,6 +48,7 @@ export abstract class baseService {
     errorName: string,
     errorDesc: string
   ): void {
+    console.log('action complete ' + serviceName);
     this.logger.info({
       class: serviceName,
       method: this.execute.name,
