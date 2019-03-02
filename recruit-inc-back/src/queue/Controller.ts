@@ -41,7 +41,8 @@ export class Controller {
 
     let usersSchemas: GithubUserSchema[] = await this.fetchUsersFromDatabase();
 
-    let canStillScan: boolean = usersSchemas.length !== 0;
+    let canStillScan: boolean =
+      usersSchemas.length !== 0 || !this.areQueuesEmpty(); //Bug here if no scannable users found it database but there is still a user in the queues this should be true
     let currentUserSchema: GithubUserSchema = null;
     if (usersSchemas.length !== 0) {
       if (this.areQueuesEmpty()) {
@@ -62,19 +63,21 @@ export class Controller {
     githubTDG.update(currentUserSchema._id, currentUserSchema);
     // **********************************************************************
 
+    //Assuming above bug is fixed: if user is still in downloadQueue canStillScan becomes false and user scan isn't completed
     while (canStillScan) {
+      //Checking for empty queues here causes infinite loop
       canStillScan = await this.executeRepo();
 
-      if (canStillScan) {
+      if (canStillScan || !this.treeQueue.isEmpty()) {
         canStillScan = await this.executeTree();
       }
-      if (canStillScan) {
+      if (canStillScan || !this.commitQueue.isEmpty()) {
         canStillScan = await this.executeCommit();
       }
-      if (canStillScan) {
+      if (canStillScan || !this.filesAffectedByQueue.isEmpty()) {
         canStillScan = await this.executeFilesAffected();
       }
-      if (canStillScan) {
+      if (canStillScan || !this.downloadQueue.isEmpty()) {
         canStillScan = await this.executeDownload();
       }
 
@@ -92,7 +95,6 @@ export class Controller {
       // ********************************************************************************************
 
       if (canStillScan) {
-        //console.log("users at this point: ", users);
         if (usersSchemas.length === 0) {
           //fixing the cannot read login of undefined error because a user is still enqueued even though the users array is empty
           canStillScan = false;
@@ -106,6 +108,7 @@ export class Controller {
         }
       }
     }
+    this.processUsers();
   }
 
   private enqueueUser(user: IGithubUser): void {
@@ -185,6 +188,7 @@ export class Controller {
     let summary: IGitProjectSummary;
     for (let user of githubUserModels) {
       if (!user.githubUser.dataEntry) continue;
+      if (user.githubUser.projectSummary) continue; //Has already been processed
 
       summary = githubDataExtractor.processUser(user.githubUser);
 
@@ -205,6 +209,7 @@ export class Controller {
       value: { error },
     });
     this.storeQueues();
+    this.processUsers();
   }
 
   private async executeRepo(): Promise<boolean> {
