@@ -79,11 +79,11 @@
     "@types/react-autosuggest": "9.3.7",
     "@types/react-select": "2.0.13",
     "awesome-typescript-loader": "5.2.1",
+    "axios": "^0.18.0",
     "dotenv": "6.2.0",
     "dotenv-webpack": "1.7.0",
     "express": "4.16.4",
     "fflip": "4.0.0",
-    "axios": "^0.18.0",
     "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
     "lint-staged": "8.1.4",
@@ -93,6 +93,7 @@
     "react-dom": "16.8.3",
     "react-js-pagination": "3.0.2",
     "react-select": "2.4.1",
+    "sinon": "^7.2.6",
     "ts-node": "7.0.1",
     "winston": "3.2.1"
   }
