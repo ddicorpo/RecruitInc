@@ -10,6 +10,7 @@ export enum ScanningStatus {
   started = 'started',
   paused = 'paused',
   completed = 'completed',
+  analyzed = 'analyzed',
 }
 
 export class GithubUserSchema extends Typegoose implements IGithubUserModel {

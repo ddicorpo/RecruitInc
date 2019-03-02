@@ -85,6 +85,7 @@ export class CronJobs {
 
   async scan() {
     await this.controller.execute();
+    await this.controller.processUsers();
   }
 
   async stopScan(location: string) {

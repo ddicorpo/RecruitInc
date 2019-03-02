@@ -43,6 +43,8 @@ export class Controller {
 
     let canStillScan: boolean =
       usersSchemas.length !== 0 || !this.areQueuesEmpty(); //Bug here if no scannable users found it database but there is still a user in the queues this should be true
+    if (!canStillScan) return;
+
     let currentUserSchema: GithubUserSchema = null;
     if (usersSchemas.length !== 0) {
       if (this.areQueuesEmpty()) {
@@ -68,16 +70,16 @@ export class Controller {
       //Checking for empty queues here causes infinite loop
       canStillScan = await this.executeRepo();
 
-      if (canStillScan || !this.treeQueue.isEmpty()) {
+      if (canStillScan) {
         canStillScan = await this.executeTree();
       }
-      if (canStillScan || !this.commitQueue.isEmpty()) {
+      if (canStillScan) {
         canStillScan = await this.executeCommit();
       }
-      if (canStillScan || !this.filesAffectedByQueue.isEmpty()) {
+      if (canStillScan) {
         canStillScan = await this.executeFilesAffected();
       }
-      if (canStillScan || !this.downloadQueue.isEmpty()) {
+      if (canStillScan) {
         canStillScan = await this.executeDownload();
       }
 
@@ -108,7 +110,7 @@ export class Controller {
         }
       }
     }
-    this.processUsers();
+    //this.processUsers();
   }
 
   private enqueueUser(user: IGithubUser): void {
@@ -193,6 +195,8 @@ export class Controller {
       summary = githubDataExtractor.processUser(user.githubUser);
 
       if (!summary) continue;
+      user.scanningStatus = ScanningStatus.analyzed;
+      await githubUsersTDG.update(user._id, user);
       let criteria: any = { 'githubUser.login': user.githubUser.login };
       let update: any = { $set: { 'githubUser.projectSummary': summary } };
       await githubUsersTDG.generalUpdate(criteria, update);
@@ -209,7 +213,7 @@ export class Controller {
       value: { error },
     });
     this.storeQueues();
-    this.processUsers();
+    //this.processUsers();
   }
 
   private async executeRepo(): Promise<boolean> {
