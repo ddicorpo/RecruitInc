@@ -5,7 +5,7 @@ import { ApplicantGithub } from './routes/github/applicantGithub';
 import { Candidate } from './routes/github/candidate';
 import { OAuthCode } from './routes/OAuth/OAuthCode';
 import { MvpRoute } from './routes/MvpRoute';
-import { Logger } from '../src/Logger';
+import { Logger } from './Logger';
 var cors = require('cors');
 
 class App {
