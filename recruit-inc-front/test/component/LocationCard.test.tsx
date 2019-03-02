@@ -2,6 +2,7 @@ import { LocationWatch } from '../../src/app/model/Location/LocationWatch';
 import { LocationCard } from '../../src/app/components/Location/LocationCard';
 import { shallow } from 'enzyme';
 import * as React from 'react';
+import renderer from 'react-test-renderer';
 
 describe('LocationCard Component Testing', () => {
   it('Testing Component with data', () => {
@@ -35,5 +36,14 @@ describe('LocationCard Component Testing', () => {
     const wrapper = shallow(<LocationCard {...props} />);
     const itShallContains: boolean = wrapper.contains('Running');
     expect(itShallContains).toBe(true);
+  });
+
+  it('render correctly the LocationCard component', () => {
+    const fakeWatchLocation: LocationWatch = new LocationWatch('rena', 270, 20);
+    const props = {
+      locationWatchData: fakeWatchLocation,
+    };
+    const wrapper = renderer.create(<LocationCard {...props} />).toJSON();
+    expect(wrapper).toMatchSnapshot();
   });
 });
