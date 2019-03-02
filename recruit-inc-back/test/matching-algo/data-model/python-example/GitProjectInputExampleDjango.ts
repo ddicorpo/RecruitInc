@@ -4,6 +4,7 @@ import { IProjectStructure } from '../../../../src/matching-algo/data-model/inpu
 import { IDataEntry } from '../../../../src/matching-algo/data-model/input-model/IDataEntry';
 import { IGitProjectInput } from '../../../../src/matching-algo/data-model/input-model/IGitProjectInput';
 import { ISourceFiles } from '../../../../src/matching-algo/data-model/input-model/ISourceFiles';
+const fs = require('fs');
 
 const projectStructure: IProjectStructure[] = [
   {
@@ -446,19 +447,19 @@ const pathToFakeRequirementsTxt: string =
 const packageJsonSourceFile: ISourceFiles = {
   filename: 'package.json',
   repoFilePath: 'frontend/package.json',
-  localFilePath: pathToFakePackageJson,
+  fileContents: fs.readFileSync(pathToFakePackageJson, 'utf8'),
 };
 
 const gitIgnoreSourceFile: ISourceFiles = {
   filename: '.gitignore',
   repoFilePath: '.gitignore',
-  localFilePath: pathToFakeGitIgnore,
+  fileContents: fs.readFileSync(pathToFakeGitIgnore, 'utf8'),
 };
 
 const requirementsSourceFIle: ISourceFiles = {
   filename: 'requirements.txt',
   repoFilePath: 'requirements.txt',
-  localFilePath: pathToFakeRequirementsTxt,
+  fileContents: fs.readFileSync(pathToFakeRequirementsTxt, 'utf8'),
 };
 
 const projectInput: IGitProjectInput = {

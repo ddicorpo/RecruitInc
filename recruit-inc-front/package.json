@@ -4,7 +4,7 @@
   "description": "Recruit Platform",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "jest",
+    "test": "tsc && jest",
     "build": "tsc && webpack --config webpack.config.js",
     "start": "npm run build && ts-node ./src/server.ts",
     "demo": "npm run start | lt --port 3000 --subdomain recruit-front ",
@@ -38,13 +38,14 @@
       "^.+\\.(ts|tsx)$": "<rootDir>/test-preprocessor.js"
     },
     "testMatch": [
-      "**/test/**/*.(ts|tsx|js)"
+      "**/test/**/*.(ts|tsx)"
     ]
   },
   "keywords": [],
   "author": "SOEN 490 - Team Abada",
   "license": "ISC",
   "devDependencies": {
+    "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/enzyme": "3.9.0",
     "@types/jest": "23.3.14",
     "@types/node": "10.12.27",
@@ -78,9 +79,12 @@
     "@types/react-autosuggest": "9.3.7",
     "@types/react-select": "2.0.13",
     "awesome-typescript-loader": "5.2.1",
+    "axios": "^0.18.0",
     "dotenv": "6.2.0",
     "dotenv-webpack": "1.7.0",
     "express": "4.16.4",
+    "fflip": "4.0.0",
+    "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
     "lint-staged": "8.1.4",
     "localtunnel": "1.9.1",
@@ -89,6 +93,7 @@
     "react-dom": "16.8.3",
     "react-js-pagination": "3.0.2",
     "react-select": "2.4.1",
+    "sinon": "^7.2.6",
     "ts-node": "7.0.1",
     "winston": "3.2.1"
   }

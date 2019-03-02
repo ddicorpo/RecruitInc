@@ -1,8 +1,4 @@
 export interface IConnection {
-  databaseURL: String;
-  databasePassword: String;
-  databasePort: String;
-  databaseUser: String;
+  databaseURI: String;
   databaseName: String;
-  databaseOption?: String;
 }
