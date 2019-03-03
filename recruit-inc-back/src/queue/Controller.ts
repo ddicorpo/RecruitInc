@@ -110,7 +110,6 @@ export class Controller {
         }
       }
     }
-    //this.processUsers();
   }
 
   private enqueueUser(user: IGithubUser): void {
@@ -213,7 +212,6 @@ export class Controller {
       value: { error },
     });
     this.storeQueues();
-    //this.processUsers();
   }
 
   private async executeRepo(): Promise<boolean> {
