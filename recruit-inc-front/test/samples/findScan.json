@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "5c74aacf20acc93b8eed4f5f",
+    "location": "port-of-spain",
+    "number_scanned": 0,
+    "total_number": 10,
+    "cron_pattern": "",
+    "status": "scanning",
+    "__v": 0
+  },
+  {
+    "_id": "5c7847d2217b9f2b55bf547a",
+    "location": "rosemere",
+    "number_scanned": 0,
+    "total_number": 2,
+    "cron_pattern": "",
+    "status": "scanning",
+    "__v": 0
+  },
+  {
+    "_id": "5c7849d9217b9f2b55bf547d",
+    "location": "saint-eustache",
+    "number_scanned": 0,
+    "total_number": 5,
+    "cron_pattern": "",
+    "status": "scanning",
+    "__v": 0
+  },
+  {
+    "_id": "5c7a953284c5eb2a19b27c34",
+    "location": "saint-leonard",
+    "number_scanned": 0,
+    "total_number": 2,
+    "cron_pattern": "",
+    "status": "scanning",
+    "__v": 0
+  }
+]

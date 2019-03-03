@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationCard Component Testing render correctly the LocationCard component 1`] = `
+<div
+  className="col-xl-6 col-lg-6 col-md-12 col-sm-12"
+>
+  <div
+    className="card"
+  >
+    <div
+      className="card-body"
+    >
+      <h5
+        className="super-title card-title "
+      >
+        rena
+      </h5>
+      <br />
+      <ul
+        className="list-group list-group-flush"
+      >
+        <li
+          className="list-group-item"
+        >
+          <b>
+            Number of user:
+          </b>
+          <span>
+             
+          </span>
+          270
+        </li>
+        <li
+          className="list-group-item"
+        >
+          <b>
+            Scanned users:
+          </b>
+          <span>
+             
+          </span>
+          20
+        </li>
+        <li
+          className="list-group-item"
+        >
+          <b>
+            Status:
+          </b>
+          <span>
+             
+          </span>
+          <span>
+            Running
+          </span>
+        </li>
+      </ul>
+      <div
+        className="super-icon"
+      >
+        <i
+          className="fa fa-sync fa-3x fa-spin"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

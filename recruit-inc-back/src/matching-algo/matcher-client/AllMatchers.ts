@@ -8,6 +8,7 @@ import { DjangoMatcher } from '../matcher/Python/DjangoMatcher';
 import { VueMatcher } from '../matcher/Javascript/VueMatcher';
 import { AngularMatcher } from '../matcher/Javascript/AngularMatcher';
 import { CsharpMatcher } from '../matcher/Csharp/csharpMatcher';
+import { FlaskMatcher } from '../matcher/Python/FlaskMatcher';
 import { JavaMatcher } from '../matcher/Java/JavaMatcher';
 import { RubyMatcher } from '../matcher/Ruby/RubyMatcher';
 
@@ -23,15 +24,14 @@ const csharpMatcher: AbstractLanguageMatcher = new CsharpMatcher();
 const rubyMatcher: AbstractLanguageMatcher = new RubyMatcher();
 
 const djangoMatcher: AbstractFrameworkMatcher = new DjangoMatcher();
+const flaskMatcher: AbstractFrameworkMatcher = new FlaskMatcher();
 
 javascriptMatcher
   .addFramework(reactMatcher)
   .addFramework(typescriptMatcher)
   .addFramework(vueMatcher)
   .addFramework(angularMatcher);
-pythonMatcher.addFramework(djangoMatcher);
-//csharpMatcher
-//.addFramework(dotNetMatcher);
+pythonMatcher.addFramework(djangoMatcher).addFramework(flaskMatcher);
 
 export const allMatchers: AbstractLanguageMatcher[] = [
   javascriptMatcher,

@@ -9,7 +9,7 @@ const configurationTS = require('./tsconfig');
 
 module.exports = {
   process(src, path) {
-    if (path.endsWith('.ts') || path.endsWith('.tsx') || path.endsWith('.js')) {
+    if (path.endsWith('.ts') || path.endsWith('.tsx')) {
       return tsc.transpile(src, configurationTS.compilerOptions, path, []);
     }
     return src;

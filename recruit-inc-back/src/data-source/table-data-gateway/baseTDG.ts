@@ -76,6 +76,28 @@ export class BaseTDG {
     });
   }
 
+  public updateOne(
+    criteria: any,
+    update: any,
+    options: any = {}
+  ): Promise<boolean> {
+    return new Promise((resolve: any, reject: any) => {
+      this.schema.updateOne(criteria, update, options, (error, doc) => {
+        if (error) {
+          this.logActionFailure(
+            this.updateOne.name,
+            error.name,
+            error.toString()
+          );
+          resolve(false);
+        } else {
+          this.logActionCompleted(this.updateOne.name);
+          resolve(true);
+        }
+      });
+    });
+  }
+
   public logActionCompleted(methodName: string): void {
     this.logger.info({
       class: this.schema.name + ' Model',

@@ -27,14 +27,10 @@ export class Candidate {
   public routes(app): void {
     let users: IGithubUser[];
 
-    app
-      .route('/scheduleCron/:location')
-      .get(async (request: Request, response: Response) => {
-        let location: string = request.params.location;
-        let cronjob: CronJobs = new CronJobs();
-        let job: CronJob = await cronjob.scheduleCron(location);
-        response.status(200).send("Cron successfully scheduled");
-      });
+    app.route('/scan').get(async (request: Request, response: Response) => {
+      let cronjob: CronJobs = new CronJobs();
+      cronjob.scan();
+    });
 
     app
       .route('/getUsersDB/:location')
@@ -48,17 +44,13 @@ export class Candidate {
       });
 
     app
-      .route('/queues/:location')
+      .route('/addToWatchlist/:location')
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
         let cronjob: CronJobs = new CronJobs();
-        let finished: boolean = await cronjob.runQueues(location);
-        let githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-        let result: IGithubUserModel[] = await githubUsersFinder.findByLocation(
-          location
-        );
+        let finished: boolean = await cronjob.addToWatchlist(location);
 
-        response.status(200).send(result);
+        response.sendStatus(200);
       });
 
     app
@@ -123,6 +115,9 @@ export class Candidate {
           path,
           login
         );
+        console.log('result: ', result);
+        if (!result) console.log('Nice');
+
         response.status(200).send(result);
       });
 
@@ -143,7 +138,10 @@ export class Candidate {
           },
         };
 
-        let result: any = await githubUsersFinder.generalFind(query, projection);
+        let result: any = await githubUsersFinder.generalFind(
+          query,
+          projection
+        );
 
         response.status(200).send(result);
       });
@@ -183,7 +181,7 @@ export class Candidate {
       .get(async (request: Request, response: Response) => {
         let location: string = request.params.location;
         let cronjob: CronJobs = new CronJobs();
-        cronjob.runQueues(location);
+        cronjob.addToWatchlist(location);
       });
 
     app
@@ -273,33 +271,46 @@ export class Candidate {
         let query: GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
         let path: string = req.params[0];
         let data = await query.downloadFile(owner, repoName, path);
-        query.writeToFile(
-          data.content,
-          query.generatePath('MewtR', repoName, path)
-        );
         res.status(200).send(data);
       });
     app
       .route('/api/github/candidate/downloadforuser')
       .get(async (req: Request, res: Response) => {
+        //let user: IGithubUser = {
+        //  login: 'MewtR',
+        //  createdAt: '',
+        //  url: '',
+        //  dataEntry: {
+        //    projectInputs: [
+        //      {
+        //        projectName: 'RecruitInc',
+        //        url: 'x',
+        //        owner: 'ddicorpo',
+        //        applicantCommits: [],
+        //        projectStructure: [],
+        //        downloadedSourceFile: [],
+        //      },
+        //      {
+        //        projectName: 'SOEN343',
+        //        url: 'x',
+        //        owner: 'gprattico',
+        //        applicantCommits: [],
+        //        projectStructure: [],
+        //        downloadedSourceFile: [],
+        //      },
+        //    ],
+        //  },
+        //};
         let user: IGithubUser = {
-          login: 'MewtR',
+          login: 'g-harel',
           createdAt: '',
           url: '',
           dataEntry: {
             projectInputs: [
               {
-                projectName: 'RecruitInc',
+                projectName: 'codingexercise',
                 url: 'x',
-                owner: 'ddicorpo',
-                applicantCommits: [],
-                projectStructure: [],
-                downloadedSourceFile: [],
-              },
-              {
-                projectName: 'SOEN343',
-                url: 'x',
-                owner: 'gprattico',
+                owner: 'g-harel',
                 applicantCommits: [],
                 projectStructure: [],
                 downloadedSourceFile: [],

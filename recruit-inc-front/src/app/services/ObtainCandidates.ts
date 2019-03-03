@@ -1,25 +1,22 @@
 import { baseService } from './baseService';
 import { Routes } from '../Routes';
+import axios from 'axios';
 
 export class ObtainCandidates extends baseService {
   constructor() {
     super();
-    this.serviceName = 'ObtainLocations';
+    this.serviceName = Routes.ObtainCandidates;
     this.serviceAddress = this.buildServiceAddress(Routes.ObtainCandidates);
   }
 
   public execute(): any {
-    fetch(this.serviceAddress)
-      .then(response => response.json())
-      .then(
-        result => {
-          this.logActionCompleted(this.serviceName);
-          return result;
-        },
-        error => {
-          this.logActionFailure(this.serviceName, error.name, error.message);
-          return error;
-        }
-      );
+    return axios.request({
+      url: this.serviceAddress,
+      method: 'get',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
+    });
   }
 }
