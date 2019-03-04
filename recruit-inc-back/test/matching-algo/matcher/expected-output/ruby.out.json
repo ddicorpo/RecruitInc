@@ -1,0 +1,67 @@
+{
+  "projectName": "ruby",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Javascript",
+      "linesOfCode": 0,
+      "numberOfCommits": 0,
+      "frameworks": [
+        {
+          "technologyName": "React",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "Typescript",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "Vue",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "Angular",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    },
+    {
+      "languageOrFramework": "Python",
+      "linesOfCode": 0,
+      "numberOfCommits": 0,
+      "frameworks": [
+        {
+          "technologyName": "Django",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        },
+        {
+          "technologyName": "Flask",
+          "linesOfCode": 0,
+          "numberOfCommits": 0
+        }
+      ]
+    },
+    {
+      "languageOrFramework": "Csharp",
+      "linesOfCode": 0,
+      "numberOfCommits": 0,
+      "frameworks": []
+    },
+    {
+      "languageOrFramework": "Java",
+      "linesOfCode": 0,
+      "numberOfCommits": 0,
+      "frameworks": []
+    },
+    {
+      "languageOrFramework": "Ruby",
+      "linesOfCode": 2256,
+      "numberOfCommits": 34,
+      "frameworks": []
+    }
+  ]
+}
