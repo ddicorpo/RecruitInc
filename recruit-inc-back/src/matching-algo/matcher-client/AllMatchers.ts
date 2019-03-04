@@ -43,4 +43,4 @@ export const allMatchers: AbstractLanguageMatcher[] = [
 
 export const pythonMatchers: AbstractLanguageMatcher[] = [pythonMatcher];
 export const jsMatchers: AbstractLanguageMatcher[] = [javascriptMatcher];
-/* export const csharpMatchers:AbstractLanguageMatcher[] =[csharpMatcher]; */
+export const csharpMatchers: AbstractLanguageMatcher[] = [csharpMatcher];
