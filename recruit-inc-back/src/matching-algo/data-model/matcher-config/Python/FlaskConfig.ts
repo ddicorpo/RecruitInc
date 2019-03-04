@@ -3,16 +3,16 @@ import { IMatcherConfig } from '../../matcher-model/IMatcherConfig';
 import { Technologies } from '../../output-model/Technologies';
 
 const matchingTargets: ITargetMatcher[] = [
-    {
-      sourceFileToParse: 'requirements.txt',
-      matchingPattern: 'Flask',
-    },
-  ];
+  {
+    sourceFileToParse: 'requirements.txt',
+    matchingPattern: 'Flask',
+  },
+];
 
 export const flaskConfig: IMatcherConfig = {
   technology: Technologies.Flask,
   extensions: ['py'],
   matchingTargets,
   sourceFolder: null,
-  excludedFolders: ['__pycache__']
+  excludedFolders: ['__pycache__'],
 };

@@ -10,5 +10,5 @@ export enum Technologies {
   Csharp = 'Csharp',
   Flask = 'Flask',
   Java = 'Java',
-
+  Ruby = 'Ruby',
 }
