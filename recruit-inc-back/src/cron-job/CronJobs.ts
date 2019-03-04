@@ -10,6 +10,7 @@ import { IGithubUser } from '../data-extraction/github/api-entities/IGithubUser'
 import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG';
 import { GithubUsersFinder } from '../data-source/finder/GithubUsersFinder';
 import { Controller } from '../queue/Controller';
+import { ScanningStatus } from '../data-source/schema/githubUserSchema';
 const { fork } = require('child_process');
 
 export class CronJobs {
@@ -75,6 +76,7 @@ export class CronJobs {
       let githubUserModel: IGithubUserModel = {
         githubUser,
         location: location.toLowerCase(),
+        scanningStatus: ScanningStatus.pending,
       };
       githubUsersModel.push(githubUserModel);
     }
@@ -83,6 +85,7 @@ export class CronJobs {
 
   async scan() {
     await this.controller.execute();
+    await this.controller.processUsers();
   }
 
   async stopScan(location: string) {
