@@ -38,15 +38,11 @@ export class FilesAffectedByQueue extends AbstractQueue {
   }
 
   public getUsername(): string {
-    if (!this.isEmpty()) {
-      return this.queue[0].login;
-    } else {
-      return '';
-    }
+    return !this.isEmpty() ? this.queue[0].login : '';
   }
 
   public isEmpty() {
-    if (this.queue === undefined || this.queue.length == 0) {
+    if (this.queue === undefined || this.queue.length === 0) {
       return true;
     }
     return false;

@@ -43,7 +43,7 @@ export class CommitQueue extends AbstractQueue {
   }
 
   public isEmpty() {
-    if (this.queue === undefined || this.queue.length == 0) {
+    if (this.queue === undefined || this.queue.length === 0) {
       return true;
     }
     return false;

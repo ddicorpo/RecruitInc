@@ -246,7 +246,7 @@ export class GithubUserInfo {
         }
       }
       failsafeCounter++;
-      if (failsafeCounter > 10000000000) break;
+      if (failsafeCounter > 10000000) break;
     }
     return this.githubUsers;
   }
