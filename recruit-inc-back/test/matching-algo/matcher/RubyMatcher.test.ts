@@ -2,24 +2,19 @@ import { expect } from 'chai';
 import 'mocha';
 import { MatcherClient } from '../../../src/matching-algo/matcher-client/MatcherClient';
 import { AbstractLanguageMatcher } from '../../../src/matching-algo/matcher/AbstractLanguageMatcher';
-import { AbstractFrameworkMatcher } from '../../../src/matching-algo/matcher/AbstractFrameworkMatcher';
 import { IGitProjectSummary } from '../../../src/matching-algo/data-model/output-model/IGitProjectSummary';
 import { IGitProjectOutput } from '../../../src/matching-algo/data-model/output-model/IGitProjectOutput';
-import { FlaskMatcher } from '../../../src/matching-algo/matcher/Python/FlaskMatcher';
-import { PythonMatcher } from '../../../src/matching-algo/matcher/Python/PythonMatcher';
+import { RubyMatcher } from '../../../src/matching-algo/matcher/Ruby/RubyMatcher';
 
-// Setup Language Matcher with Python and django
-const flaskMatcher: AbstractFrameworkMatcher = new FlaskMatcher();
-const pythonMatcher: AbstractLanguageMatcher = new PythonMatcher();
+//setting up the language matcher
+const rubyMatcher: AbstractLanguageMatcher = new RubyMatcher();
+const customLanguageMatchers: AbstractLanguageMatcher[] = [rubyMatcher];
 
-pythonMatcher.addFramework(flaskMatcher);
-const customLanguageMatchers: AbstractLanguageMatcher[] = [pythonMatcher];
-
-describe('Test Flask matching algorithm', () => {
-  it('The Flask-Python matcher should return the correct output object', () => {
+describe('Test Ruby matching algorithm', () => {
+  it('The Ruby matcher should return the correct output object with Ruby repository', () => {
     // GIVEN
-    const input = require('./input/recipesapp.json');
-    const expected = require('./expected-output/recipesapp.out.json');
+    const input = require('./input/ruby.json');
+    const expected = require('./expected-output/ruby.out.json');
     const client: MatcherClient = new MatcherClient(
       input,
       customLanguageMatchers

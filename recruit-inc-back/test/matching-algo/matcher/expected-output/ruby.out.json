@@ -1,0 +1,11 @@
+{
+  "projectName": "ruby",
+  "languageOutput": [
+    {
+      "languageOrFramework": "Ruby",
+      "linesOfCode": 2256,
+      "numberOfCommits": 34,
+      "frameworks": []
+    }
+  ]
+}
