@@ -1,4 +1,4 @@
-import { AbstractCommand } from './abstractCommand';
+import { AbstractCommand } from './AbstractCommand';
 import { RequestContext } from './RequestContext';
 import { ApplicantFinder } from '../../data-source/finder/ApplicantFinder'
 import { IApplicantModel } from '../model/IApplicantModel';

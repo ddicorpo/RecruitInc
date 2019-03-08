@@ -196,6 +196,8 @@ export class Controller {
       if (!summary) continue;
       user.scanningStatus = ScanningStatus.analyzed;
       await githubUsersTDG.update(user._id, user);
+      //TODO: increase by one the count of scanned user
+      //TODO: add the user to the candidate table
       let criteria: any = { 'githubUser.login': user.githubUser.login };
       let update: any = { $set: { 'githubUser.projectSummary': summary } };
       await githubUsersTDG.generalUpdate(criteria, update);

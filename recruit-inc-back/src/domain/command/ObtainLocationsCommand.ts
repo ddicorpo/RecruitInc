@@ -1,4 +1,4 @@
-import { AbstractCommand } from './abstractCommand';
+import { AbstractCommand } from './AbstractCommand';
 import { RequestContext } from './RequestContext';
 
 export class ObtainLocationsCommand extends AbstractCommand {
