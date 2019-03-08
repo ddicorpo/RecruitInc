@@ -15,6 +15,12 @@ import {
   ScanningStatus,
 } from '../data-source/schema/githubUserSchema';
 import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG';
+import { IncreaseScanUserCommand } from '../domain/command/IncreaseScanUserCommand';
+import { InsertCandidateCommand } from '../domain/command/InsertCandidateCommand';
+import { IApplicantModel, UserType } from '../domain/model/IApplicantModel';
+import { IGitModel } from '../domain/model/IGitModel';
+import { IGitDataModel, Platform } from '../domain/model/IGitDataModel';
+import { ITokenModel } from '../domain/model/ITokenModel';
 
 export class Controller {
   private static _instance: Controller;
@@ -32,6 +38,8 @@ export class Controller {
   private commitQueue: CommitQueue = CommitQueue.get_instance();
   private downloadQueue: DownloadQueue = DownloadQueue.get_instance();
   private filesAffectedByQueue: FilesAffectedByQueue = FilesAffectedByQueue.get_instance();
+  private increaseByOneCommand : IncreaseScanUserCommand = new IncreaseScanUserCommand();
+  private insertCandidateCommand : InsertCandidateCommand = new InsertCandidateCommand();
   private logger: Logger;
 
   //main method, runs all the queues and finds the information
@@ -196,8 +204,27 @@ export class Controller {
       if (!summary) continue;
       user.scanningStatus = ScanningStatus.analyzed;
       await githubUsersTDG.update(user._id, user);
-      //TODO: increase by one the count of scanned user
-      //TODO: add the user to the candidate table
+      // Safe attempt to add user in candidate table and increase the counter...
+      try{
+        //TODO: Test the new functionality
+        //We do not log info in here since we will log all in command class...
+        const newCandidate: IApplicantModel = this.convertToCandidate(user);
+        const increaseByOneStatus: Boolean = await this.increaseByOneCommand.increasedByOne(user.location);
+        const insertCandidateStatus: Boolean = await this.insertCandidateCommand.insertCandidate(newCandidate);
+
+        if(increaseByOneStatus){
+          console.log("Successfully increased the number of scan user by one");
+        }
+
+        if(insertCandidateStatus){
+          console.log("Successfully insert new candidate to candidates table");
+        }
+
+      }catch(Exception){
+        console.log("Problem while adding data to other table...")
+      }
+
+
       let criteria: any = { 'githubUser.login': user.githubUser.login };
       let update: any = { $set: { 'githubUser.projectSummary': summary } };
       await githubUsersTDG.generalUpdate(criteria, update);
@@ -279,6 +306,33 @@ export class Controller {
       canStillScan = false;
     }
     return canStillScan;
+  }
+  private convertToCandidate(user : any) : IApplicantModel{
+    const gitDataModel: IGitDataModel = {
+      dataEntry: user.githubUser.dataEntry,
+      gitProjectSummary: user.githubUser.projectSummary,
+      lastKnownInfoDate: user.githubUser.createdAt,
+      platform: Platform.Github
+    }
+    //We assume token will be emptu
+    const token: ITokenModel = {
+      platform: Platform.Github,
+      AccessToken: "",
+      RefreshToken: "",
+      ExpiryDate: ""
+    }
+    const gitModel: IGitModel = {
+      IGitData: [gitDataModel],
+      IToken: token
+    }
+    const newCandidate: IApplicantModel = {
+      platformUsername: user.githubUser.login,
+      platformEmail: user.githubUser.email,
+      iGit: gitModel,
+      userType: UserType.Candidate
+    }
+
+    return newCandidate;
   }
 
   //load back all queues from DB
