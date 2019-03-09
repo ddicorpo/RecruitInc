@@ -2,6 +2,7 @@ import { GithubApiV4 } from './githubApiV4';
 import { IGithubUser } from './api-entities/IGithubUser';
 import { Logger } from '../../Logger';
 import { IGithubProjectInput } from '../../matching-algo/data-model/input-model/IGithubProjectInput';
+import { GithubUserCommits } from './githubUserCommits';
 
 export class GithubUserRepos {
   private readonly accessToken: string;
@@ -69,6 +70,7 @@ export class GithubUserRepos {
   //The two queries above are sufficient to get all repos from a given user (including the repos where he/she has contributed but is not the user)
   //No need to use the createdAt variable
   async getUserRepos(user: IGithubUser): Promise<IGithubUser> {
+    let githubUserCommits: GithubUserCommits = new GithubUserCommits();
     let data: string = '';
     let jsonData;
     try {
@@ -90,19 +92,29 @@ export class GithubUserRepos {
     let pageInfo = jsonData.data.user.repositories.pageInfo;
     let hasNextPage = pageInfo.hasNextPage;
     let endCursor: string = JSON.stringify(pageInfo.endCursor);
-    let repositories: { name: string; url: string; owner: { login: string } }[] = [];
+    let repositories: {
+      name: string;
+      url: string;
+      owner: { login: string };
+      commitCount: number;
+    }[] = [];
     repositories = jsonData.data.user.repositories.nodes;
+    repositories = await this.addCommitCount(repositories, user.id);
     user.dataEntry = {
-      projectInputs: repositories.map(repository => {
-        return {
-          projectName: repository.name,
-          owner: repository.owner.login,
-          url: repository.url,
-          applicantCommits: [],
-          projectStructure: [],
-          downloadedSourceFile: [],
-        };
-      }),
+      projectInputs: repositories
+        .filter(repository => {
+          return repository.commitCount !== 0;
+        })
+        .map(repository => {
+          return {
+            projectName: repository.name,
+            owner: repository.owner.login,
+            url: repository.url,
+            applicantCommits: [],
+            projectStructure: [],
+            downloadedSourceFile: [],
+          };
+        }),
     };
     while (hasNextPage) {
       let nextData: string = '';
@@ -117,17 +129,22 @@ export class GithubUserRepos {
         endCursor = JSON.stringify(pageInfo.endCursor);
         hasNextPage = pageInfo.hasNextPage;
         repositories = jsonData.data.user.repositories.nodes;
+        repositories = await this.addCommitCount(repositories, user.id);
         user.dataEntry.projectInputs = user.dataEntry.projectInputs.concat(
-          repositories.map(repository => {
-            return {
-              projectName: repository.name,
-              owner: repository.owner.login,
-              url: repository.url,
-              applicantCommits: [],
-              projectStructure: [],
-              downloadedSourceFile: [],
-            };
-          })
+          repositories
+            .filter(repository => {
+              return repository.commitCount !== 0;
+            })
+            .map(repository => {
+              return {
+                projectName: repository.name,
+                owner: repository.owner.login,
+                url: repository.url,
+                applicantCommits: [],
+                projectStructure: [],
+                downloadedSourceFile: [],
+              };
+            })
         );
         data += nextData;
       } catch (error) {
@@ -144,6 +161,34 @@ export class GithubUserRepos {
     }
 
     return user;
+  }
+
+  async addCommitCount(
+    repositories: {
+      name: string;
+      url: string;
+      owner: { login: string };
+      commitCount: number;
+    }[],
+    userId
+  ): Promise<
+    {
+      name: string;
+      url: string;
+      owner: { login: string };
+      commitCount: number;
+    }[]
+  > {
+    let githubUserCommits: GithubUserCommits = new GithubUserCommits();
+    for (let repository of repositories) {
+      let count: number = await githubUserCommits.getCommitCount(
+        repository.name,
+        repository.owner.login,
+        userId
+      );
+      repository.commitCount = count; //repository with no commits for user in question
+    }
+    return repositories;
   }
 
   async getRepos(user: IGithubUser): Promise<IGithubProjectInput[]> {
@@ -164,7 +209,7 @@ export class GithubUserRepos {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes("abuse detection mechanism")){ 
+      if (error.toString().includes('abuse detection mechanism')) {
         throw error;
       }
       return projectInputs;
@@ -172,9 +217,19 @@ export class GithubUserRepos {
     let pageInfo = jsonData.data.user.repositories.pageInfo;
     let hasNextPage = pageInfo.hasNextPage;
     let endCursor: string = JSON.stringify(pageInfo.endCursor);
-    let repositories: { name: string; url: string; owner: { login: string } }[] = [];
+    let repositories: {
+      name: string;
+      url: string;
+      owner: { login: string };
+      commitCount: number;
+    }[] = [];
     repositories = jsonData.data.user.repositories.nodes;
-    projectInputs = repositories.map(repository => {
+    repositories = await this.addCommitCount(repositories, user.id);
+    projectInputs = repositories
+      .filter(repository => {
+        return repository.commitCount !== 0;
+      })
+      .map(repository => {
         return {
           projectName: repository.name,
           owner: repository.owner.login,
@@ -183,7 +238,7 @@ export class GithubUserRepos {
           projectStructure: [],
           downloadedSourceFile: [],
         };
-      })
+      });
 
     while (hasNextPage) {
       let nextData: string = '';
@@ -198,17 +253,23 @@ export class GithubUserRepos {
         endCursor = JSON.stringify(pageInfo.endCursor);
         hasNextPage = pageInfo.hasNextPage;
         repositories = jsonData.data.user.repositories.nodes;
+        repositories = await this.addCommitCount(repositories, user.id);
         projectInputs = projectInputs.concat(
-          repositories.map(repository => {
-            return {
-              projectName: repository.name,
-              owner: repository.owner.login,
-              url: repository.url,
-              applicantCommits: [],
-              projectStructure: [],
-              downloadedSourceFile: [],
-            };
-          })
+          repositories
+            .filter(repository => {
+              return repository.commitCount !== 0;
+            })
+            .map(repository => {
+              if (repository)
+                return {
+                  projectName: repository.name,
+                  owner: repository.owner.login,
+                  url: repository.url,
+                  applicantCommits: [],
+                  projectStructure: [],
+                  downloadedSourceFile: [],
+                };
+            })
         );
         data += nextData;
       } catch (error) {
@@ -220,9 +281,9 @@ export class GithubUserRepos {
           params: {},
           value: error.toString(),
         });
-      if (error.toString().includes("abuse detection mechanism")){ 
-        throw error;
-      }
+        if (error.toString().includes('abuse detection mechanism')) {
+          throw error;
+        }
         return projectInputs;
       }
     }
