@@ -204,25 +204,30 @@ export class Controller {
       if (!summary) continue;
       user.scanningStatus = ScanningStatus.analyzed;
       await githubUsersTDG.update(user._id, user);
-      // Safe attempt to add user in candidate table and increase the counter...
-      try{
-        //TODO: Test the new functionality
-        //We do not log info in here since we will log all in command class...
-        const newCandidate: IApplicantModel = this.convertToCandidate(user);
-        const increaseByOneStatus: Boolean = await this.increaseByOneCommand.increasedByOne(user.location);
-        const insertCandidateStatus: Boolean = await this.insertCandidateCommand.insertCandidate(newCandidate);
+      console.log(user);
+      console.log(summary);
+      if (summary != undefined && summary != null) {
+        // Safe attempt to add user in candidate table and increase the counter...
+        try {
+          //We do not log info in here since we will log all in command class...
 
-        if(increaseByOneStatus){
-          console.log("Successfully increased the number of scan user by one");
+          const newCandidate: IApplicantModel = this.convertToCandidate(user, summary);
+          const increaseByOneStatus: Boolean = await this.increaseByOneCommand.increasedByOne(user.location);
+          const insertCandidateStatus: Boolean = await this.insertCandidateCommand.insertCandidate(newCandidate);
+
+          if (increaseByOneStatus) {
+            console.log("Successfully increased the number of scan user by one");
+          }
+
+          if (insertCandidateStatus) {
+            console.log("Successfully insert new candidate to candidates table");
+          }
+
+        } catch (Exception) {
+          console.log("Problem while adding data to other table...")
         }
-
-        if(insertCandidateStatus){
-          console.log("Successfully insert new candidate to candidates table");
-        }
-
-      }catch(Exception){
-        console.log("Problem while adding data to other table...")
       }
+
 
 
       let criteria: any = { 'githubUser.login': user.githubUser.login };
@@ -307,10 +312,16 @@ export class Controller {
     }
     return canStillScan;
   }
-  private convertToCandidate(user : any) : IApplicantModel{
+  private convertToCandidate(user : any, summary : any) : IApplicantModel{
+    console.log(user);
+    //Prevent error since table applicant expect email
+    const email: string = (user.githubUser.email != undefined && user.githubUser.email.length > 2) ?
+     user.github.email : this.hashCode(user.githubUser.login);
+     console.log('email' );
+     console.log(email);
     const gitDataModel: IGitDataModel = {
       dataEntry: user.githubUser.dataEntry,
-      gitProjectSummary: user.githubUser.projectSummary,
+      gitProjectSummary: summary,
       lastKnownInfoDate: user.githubUser.createdAt,
       platform: Platform.Github
     }
@@ -327,13 +338,22 @@ export class Controller {
     }
     const newCandidate: IApplicantModel = {
       platformUsername: user.githubUser.login,
-      platformEmail: user.githubUser.email,
+      platformEmail: email,
       iGit: gitModel,
       userType: UserType.Candidate
     }
 
     return newCandidate;
   }
+
+  //Function from https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0
+  private hashCode(username : string ) {
+    var h = 0, l = username.length, i = 0;
+    if (l > 0)
+      while (i < l)
+        h = (h << 5) - h + username.charCodeAt(i++) | 0;
+    return h.toString();
+  };
 
   //load back all queues from DB
   private async reloadQueues() {
