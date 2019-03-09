@@ -25,7 +25,7 @@ export class GithubUserCommits {
     owner: string,
     repo: string,
     sha: string
-  ): Promise<ISingleFileCommit[]>{
+  ): Promise<ISingleFileCommit[]> {
     let result: {
       filePath: string;
       lineAdded: number;
@@ -55,7 +55,8 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes("rate-limiting")) //Only throw error to calling function if it is due to rate-limit abuse
+      if (error.toString().includes('rate-limiting'))
+        //Only throw error to calling function if it is due to rate-limit abuse
         throw error;
       return result;
     }
@@ -100,6 +101,58 @@ export class GithubUserCommits {
       }
     }
     return user;
+  }
+
+  async getCommitCount(
+    RepoName: string,
+    OwnerUsername: string,
+    ID: string
+  ): Promise<number> {
+    let data: string;
+    let count: number;
+    let jsonData: any = {};
+    data = await this.GetCommitCountForUser(RepoName, OwnerUsername, ID);
+
+    try {
+      jsonData = JSON.parse(data);
+      if (!jsonData.data || !jsonData.data.repository)
+        throw new Error(
+          `Error while retrieving commit count on repository (${RepoName}) owned by (${OwnerUsername})`
+        );
+    } catch (error) {
+      this.logger.error({
+        class: 'GithubUserCommits',
+        method: 'getCommitCount',
+        action: 'Error while trying to obtain commit count.',
+        params: {},
+        value: error.toString(),
+      });
+      return 0;
+    }
+    count = jsonData.data.repository.ref.target.history.totalCount;
+    return count;
+  }
+  async GetCommitCountForUser(
+    RepoName: string,
+    OwnerUsername: string,
+    ID: string
+  ): Promise<string> {
+    let query: string = `query {
+  
+              repository(name: "${RepoName}", owner: "${OwnerUsername}") {
+                  ref(qualifiedName: "master") {
+                    target {
+                      ... on Commit {
+                        history(author : {id: "${ID}"} first: 100) { 
+                            totalCount
+                        }
+                      }
+                    }
+                 }
+                }
+              }`;
+
+    return await new GithubApiV4().queryData(this.accessToken, query);
   }
   async GetCommitsSpecificToUser(
     RepoName: string,
@@ -222,14 +275,12 @@ export class GithubUserCommits {
     repository: string,
     owner: string,
     userID: string
-  ): Promise<
-    ICommit[]
-  > {
+  ): Promise<ICommit[]> {
     let result: any[] = [];
     let data: string;
     let jsonData: any = {};
     try {
-    data = await this.GetCommitsSpecificToUser(repository, owner, userID);
+      data = await this.GetCommitsSpecificToUser(repository, owner, userID);
       jsonData = JSON.parse(data);
       if (!jsonData.data.repository.ref)
         throw new TypeError(
@@ -244,7 +295,8 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes("abuse detection mechanism")){ //Only throw error to calling function if it is due to rate-limit abuse
+      if (error.toString().includes('abuse detection mechanism')) {
+        //Only throw error to calling function if it is due to rate-limit abuse
         throw error;
       }
       return [];
@@ -262,23 +314,24 @@ export class GithubUserCommits {
     while (hasNextPage) {
       let nextData: string;
 
-      try{
-      nextData = await this.GetCommitsSpecificToUserNext(
-        repository,
-        owner,
-        userID,
-        endCursor
-      );
-      jsonData = JSON.parse(nextData);
-      if (!jsonData.data.repository.ref)
-        throw new TypeError(
-          `Rate limit abuse (probably) while gathering commits`
+      try {
+        nextData = await this.GetCommitsSpecificToUserNext(
+          repository,
+          owner,
+          userID,
+          endCursor
         );
-      }catch(error){
-      if (error.toString().includes("abuse detection mechanism")){ //Only throw error to calling function if it is due to rate-limit abuse
-        throw error;
-      }
-          return result;
+        jsonData = JSON.parse(nextData);
+        if (!jsonData.data.repository.ref)
+          throw new TypeError(
+            `Rate limit abuse (probably) while gathering commits`
+          );
+      } catch (error) {
+        if (error.toString().includes('abuse detection mechanism')) {
+          //Only throw error to calling function if it is due to rate-limit abuse
+          throw error;
+        }
+        return result;
       }
 
       edges = jsonData.data.repository.ref.target.history.edges;
