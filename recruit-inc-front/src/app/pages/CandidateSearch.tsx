@@ -40,6 +40,7 @@ class CandidateSearch extends React.Component<any, any> {
         };
         array.push(
           <CandidateCard
+            key={tmpProps.userInfo.username}
             userInfo={tmpProps.userInfo}
             projectInfo={tmpProps.projectInfo}
           />
@@ -136,7 +137,6 @@ class CandidateSearch extends React.Component<any, any> {
           }
           candidates.isFilter = isFilter;
         }
-
         this.setState({
           candidates: localCandidates,
         });
