@@ -14,10 +14,9 @@ export class CandidatesRoute extends baseRoute {
 
                 let page : number = request.query.page;
                 let filter : string = request.query.filter;
-                let location : string = request.query.location;
 
-                this.logCommandCompleted(this.routes.name, " GET all candidates... ");
-                const candidates: any = await candidatesCommand.execute(page, filter, location);
+                const candidates: any = await candidatesCommand.execute(page, filter);
+                this.logCommandCompleted(this.routes.name, " GET candidates with filter... ");
                 response.status(200).send(candidates);
 
             } catch (CommandException) {

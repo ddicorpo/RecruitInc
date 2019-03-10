@@ -12,9 +12,12 @@ export class ObtainCandidatesCommand extends AbstractCommand {
     constructor(applicationContext?: RequestContext) {
         super();
     }
-    public async execute(page: number, filter : string, location: string): Promise<any> {
+    public async execute(page: number, filter : string): Promise<any> {
         try{
-            let allCandidates : IApplicantModel = await this.finder.findAll()
+            //Build query from filter...
+            const query = "";
+            //TODO Build the query based on the filter...
+            let allCandidates : IApplicantModel = await this.finder.findByPageQuery(query, page);
             return JSON.stringify(allCandidates);
         }catch(CommandException){
             throw CommandException
