@@ -115,7 +115,11 @@ export class GithubUserCommits {
 
     try {
       jsonData = JSON.parse(data);
-      if (!jsonData.data || !jsonData.data.repository)
+      if (
+        !jsonData.data ||
+        !jsonData.data.repository ||
+        !jsonData.data.repository.ref
+      )
         throw new Error(
           `Error while retrieving commit count on repository (${RepoName}) owned by (${OwnerUsername})`
         );
@@ -123,7 +127,8 @@ export class GithubUserCommits {
       this.logger.error({
         class: 'GithubUserCommits',
         method: 'getCommitCount',
-        action: 'Error while trying to obtain commit count.',
+        action:
+          'Error while trying to obtain commit count. The repository is probably empty',
         params: {},
         value: error.toString(),
       });

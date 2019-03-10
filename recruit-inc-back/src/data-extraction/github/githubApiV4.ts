@@ -27,16 +27,19 @@ export class GithubApiV4 {
           params: {},
           value: body,
         });
-      if (body.toString().includes("abuse detection mechanism")){ //Only throw error to calling function if it is due to rate-limit abuse
-        console.log("Actually throwing the error v4", body.toString());
-        throw body;
-      }
+        if (
+          body.toString().includes('API rate limit exceeded') &&
+          !body.toString().includes('data')
+        ) {
+          //Only throw error to calling function if it is due to rate-limit abuse
+          console.log('Actually throwing the error v4', body.toString());
+          throw body;
+        }
         console.log(body);
         return body;
       })
       .catch(error => {
-        console.log("Caught an error dawg v4: ", error.toString());
-        console.log("Rate abuse", error.toString().includes("abuse detection mechanism"));
+        console.log('Caught an error dawg v4: ', error.toString());
         logger.error({
           class: 'GithubAPIV4',
           method: 'queryData',
@@ -44,10 +47,14 @@ export class GithubApiV4 {
           params: {},
           value: error,
         });
-      if (error.toString().includes("abuse detection mechanism")){ //Only throw error to calling function if it is due to rate-limit abuse
-        console.log("Actually throwing the error v4", error.toString());
-        throw error;
-      }
+        if (
+          error.toString().includes('API rate limit exceeded') &&
+          !body.toString().includes('data')
+        ) {
+          //Only throw error to calling function if it is due to rate-limit abuse
+          console.log('Actually throwing the error v4', error.toString());
+          throw error;
+        }
         console.error(error);
         return error;
       });
