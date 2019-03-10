@@ -49,7 +49,7 @@ export class GithubApiV4 {
         });
         if (
           error.toString().includes('API rate limit exceeded') &&
-          !body.toString().includes('data')
+          !error.toString().includes('data')
         ) {
           //Only throw error to calling function if it is due to rate-limit abuse
           console.log('Actually throwing the error v4', error.toString());
