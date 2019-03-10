@@ -19,11 +19,12 @@ export class LocationsRoute extends baseRoute {
                 response.status(200).send(allLocationJSON);
                 this.logCommandCompleted(this.routes.name, " GET Supported Location... ");
             } catch (CommandException) {
-                response.send(500).send("Can't get Locations");
                 this.logCommandFailure(this.routes.name,
                     "GET Supported Location",
                     "CommandException",
                     CommandException);
+                response.send(404).send("Can't get Locations");
+
             }
         });
     }

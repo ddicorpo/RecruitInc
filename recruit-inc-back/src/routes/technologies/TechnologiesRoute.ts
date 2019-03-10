@@ -18,11 +18,12 @@ export class TechnologiesRoute extends  baseRoute {
                 console.log(this.routes.name);
                 this.logCommandCompleted(this.routes.name, " GET Supported Tech... ");
             } catch (CommandException) {
-                response.send(500).send("Can't get tech");
                 this.logCommandFailure(this.routes.name,
                     "GET Supported Tech",
                     "CommandException",
                     CommandException);
+                response.send(404).send("Can't get tech");
+
             }
         });
     }

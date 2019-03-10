@@ -26,7 +26,8 @@ export class ApplicantFinder {
   }
 
   public findByPageQuery(query : string, page : number) : Promise<IApplicantModel>{
-      
+      //TODO: Build query to filter by e.g. technologie not equal 0...
+      //We should try to do that using mongo query
       return this.baseFinder.findByWithPage(query, page, CandidatePage.size);
   }
 

@@ -1,6 +1,7 @@
 import { AbstractCommand } from './AbstractCommand';
 import { RequestContext } from './RequestContext';
 
+//TODO: Refactor to get location from cronData table
 export class ObtainLocationsCommand extends AbstractCommand {
     constructor(applicationContext?: RequestContext) {
         super();

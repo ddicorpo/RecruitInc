@@ -12,10 +12,16 @@ export class ObtainCandidatesCommand extends AbstractCommand {
     constructor(applicationContext?: RequestContext) {
         super();
     }
-    public async execute(page: number, filter : string): Promise<any> {
+    public async getCandidates(page: number, filter : string): Promise<any> {
         try{
             //Build query from filter...
-            const query = "";
+            //TODO: Handle technologies... e.g. Java, Python
+            const query = undefined;
+
+            //Prevent crash of the application by inserting page=-1 or page=0
+            if(page < 1){
+                page = 1
+            }
             //TODO Build the query based on the filter...
             let allCandidates : IApplicantModel = await this.finder.findByPageQuery(query, page);
             return JSON.stringify(allCandidates);
@@ -24,5 +30,15 @@ export class ObtainCandidatesCommand extends AbstractCommand {
         }
     }
 
+    public async getAllCandidates(): Promise<any>{
+        try {
+            let allCandidates: IApplicantModel = await this.finder.findAll();
+            return JSON.stringify(allCandidates);
+
+        }catch(CommandException){
+            throw CommandException
+        }
+
+    }
 
 }

@@ -1,4 +1,4 @@
 
 export enum CandidatePage {
-    size = 100
+    size = 2
 }
