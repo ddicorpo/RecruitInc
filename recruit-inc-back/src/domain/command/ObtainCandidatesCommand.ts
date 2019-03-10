@@ -12,7 +12,7 @@ export class ObtainCandidatesCommand extends AbstractCommand {
     constructor(applicationContext?: RequestContext) {
         super();
     }
-    public async execute(): Promise<any> {
+    public async execute(page: number, filter : string, location: string): Promise<any> {
         try{
             let allCandidates : IApplicantModel = await this.finder.findAll()
             return JSON.stringify(allCandidates);
@@ -20,5 +20,6 @@ export class ObtainCandidatesCommand extends AbstractCommand {
             throw CommandException
         }
     }
+
 
 }
