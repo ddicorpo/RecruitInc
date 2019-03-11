@@ -55,7 +55,12 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes('rate-limiting'))
+      if (
+        error
+          .toString()
+          .includes('https://developer.github.com/v3/#rate-limiting') &&
+        !error.toString().includes('sha')
+      )
         //Only throw error to calling function if it is due to rate-limit abuse
         throw error;
       return result;
@@ -132,6 +137,12 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
+      if (
+        error.toString().includes('API rate limit exceeded') &&
+        !error.toString().includes('data')
+      ) {
+        throw error;
+      }
       return 0;
     }
     count = jsonData.data.repository.ref.target.history.totalCount;
@@ -300,7 +311,10 @@ export class GithubUserCommits {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes('abuse detection mechanism')) {
+      if (
+        error.toString().includes('API rate limit exceeded') &&
+        !error.toString().includes('data')
+      ) {
         //Only throw error to calling function if it is due to rate-limit abuse
         throw error;
       }
@@ -332,7 +346,10 @@ export class GithubUserCommits {
             `Rate limit abuse (probably) while gathering commits`
           );
       } catch (error) {
-        if (error.toString().includes('abuse detection mechanism')) {
+        if (
+          error.toString().includes('API rate limit exceeded') &&
+          !error.toString().includes('data')
+        ) {
           //Only throw error to calling function if it is due to rate-limit abuse
           throw error;
         }

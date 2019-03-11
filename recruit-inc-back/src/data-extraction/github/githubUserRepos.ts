@@ -209,7 +209,10 @@ export class GithubUserRepos {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes('abuse detection mechanism')) {
+      if (
+        error.toString().includes('API rate limit exceeded') &&
+        !error.toString().includes('data')
+      ) {
         throw error;
       }
       return projectInputs;
@@ -281,7 +284,10 @@ export class GithubUserRepos {
           params: {},
           value: error.toString(),
         });
-        if (error.toString().includes('abuse detection mechanism')) {
+        if (
+          error.toString().includes('API rate limit exceeded') &&
+          !error.toString().includes('data')
+        ) {
           throw error;
         }
         return projectInputs;
