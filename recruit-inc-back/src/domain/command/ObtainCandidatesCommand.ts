@@ -47,17 +47,18 @@ export class ObtainCandidatesCommand extends AbstractCommand {
   ): Promise<any> {
     try {
       // query to filter technology for a specific candidate
+
       const query = undefined;
 
       if (page < 1) {
         page = 1;
       }
 
-      let allCandidates: IApplicantModel = await this.finder.findByPageQuery(
+      let CandidatesTechnologies: IApplicantModel = await this.finder.findByPageQuery(
         query,
         page
       );
-      return JSON.stringify(allCandidates);
+      return JSON.stringify(CandidatesTechnologies);
     } catch (CommandException) {
       throw CommandException;
     }
