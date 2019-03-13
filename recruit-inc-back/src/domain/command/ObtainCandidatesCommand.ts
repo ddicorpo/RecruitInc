@@ -15,17 +15,7 @@ export class ObtainCandidatesCommand extends AbstractCommand {
     try {
       //Build query from filter...
       //TODO: Handle technologies... e.g. Java, Python
-
-      const query = {
-        'iGit.iGitData.0.gitProjectSummary.totalOutput': {
-          $elemMatch: {
-            languageOrFramework: filter,
-            linesOfCode: { $gt: 0 },
-            numberOfCommits: { $gt: 0 },
-            frameworks: [],
-          },
-        },
-      };
+      const query = undefined;
 
       //Prevent crash of the application by inserting page=-1 or page=0
       if (page < 1) {
@@ -45,6 +35,28 @@ export class ObtainCandidatesCommand extends AbstractCommand {
   public async getAllCandidates(): Promise<any> {
     try {
       let allCandidates: IApplicantModel = await this.finder.findAll();
+      return JSON.stringify(allCandidates);
+    } catch (CommandException) {
+      throw CommandException;
+    }
+  }
+
+  public async getCandidatesTechnologies(
+    page: number,
+    filter: string
+  ): Promise<any> {
+    try {
+      // query to filter technology for a specific candidate
+      const query = undefined;
+
+      if (page < 1) {
+        page = 1;
+      }
+
+      let allCandidates: IApplicantModel = await this.finder.findByPageQuery(
+        query,
+        page
+      );
       return JSON.stringify(allCandidates);
     } catch (CommandException) {
       throw CommandException;
