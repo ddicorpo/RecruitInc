@@ -15,10 +15,12 @@ import {
   ScanningStatus,
 } from '../data-source/schema/githubUserSchema';
 import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG';
+import { tokens } from '../../tokenlist.json';
 
 export class Controller {
   private static _instance: Controller;
-
+  //TODO replace tokens in tokenlist with tokens from a fake account, and remove tokenlistjson from the gitignore
+  public githubTokens = tokens;
   private constructor() {
     this.logger = new Logger();
   }
