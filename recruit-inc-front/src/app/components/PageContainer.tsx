@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Pages } from '../pages/Pages';
 import CandidateSearch from '../pages/CandidateSearch';
 import LocationWatchList from '../pages/LocationWatchlist';
+import DirectMessaging from '../pages/DirectMessaging';
 
 class PageContainer extends React.Component<any, any> {
   constructor(props: any) {
@@ -18,6 +19,10 @@ class PageContainer extends React.Component<any, any> {
         return <LocationWatchList />;
       }
 
+      case Pages.Direct_Messaging: {
+        return <DirectMessaging />;
+      }
+
       default: {
         return <div />;
       }
@@ -31,7 +36,7 @@ class PageContainer extends React.Component<any, any> {
         <footer className="content-footer">
           <div className="footer">
             <div className="copyright">
-              <span>RecruitInc © 2018. All rights reserved.</span>
+              <span>RecruitInc © 2019. All rights reserved.</span>
             </div>
           </div>
         </footer>
