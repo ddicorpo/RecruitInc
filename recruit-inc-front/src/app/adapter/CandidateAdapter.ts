@@ -23,7 +23,6 @@ export class CandidateAdapter {
           projectOutput:
             result[num].iGit.IGitData[0].gitProjectSummary.projectsOutput,
         };
-
         // Assign Email iff email contains '@'
         let emailValidator: string = 'empty';
         if (
@@ -33,17 +32,17 @@ export class CandidateAdapter {
         ) {
           emailValidator = result[num].platformEmail;
         }
-
         let projectInputsRaw: IGitProjectInput[] = [];
-        for (let projectInp of result[num].iGit.IGitData[0].dataEntry
-          .projectInputs) {
-          const projectInput: IGitProjectInput = {
-            projectName: projectInp.projectName,
-            owner: projectInp.owner,
-          };
-          projectInputsRaw.push(projectInput);
+        if (result[num].iGit.IGitData[0].dataEntry.projectInputs.length > 0) {
+          for (let projectInp of result[num].iGit.IGitData[0].dataEntry
+            .projectInputs) {
+            const projectInput: IGitProjectInput = {
+              projectName: projectInp.projectName,
+              owner: projectInp.owner,
+            };
+            projectInputsRaw.push(projectInput);
+          }
         }
-
         let candidate: ICandidate = {
           isFilter: false,
           username: result[num].platformUsername,
@@ -53,7 +52,6 @@ export class CandidateAdapter {
           projectSummary: projectSummary,
           projectInputs: projectInputsRaw,
         };
-
         candidates.push(candidate);
       } catch (Exception) {
         console.log("can't adapt user " + result[num].platformUsername);

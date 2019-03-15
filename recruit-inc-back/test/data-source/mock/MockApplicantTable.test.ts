@@ -11,6 +11,8 @@ import { ILanguageOutput } from '../../../src/matching-algo/data-model/output-mo
 import { IGitProjectOutput } from '../../../src/matching-algo/data-model/output-model/IGitProjectOutput';
 import { IFrameworkOutput } from '../../../src/matching-algo/data-model/output-model/IFrameworkOutput';
 import { Technologies } from '../../../src/matching-algo/data-model/output-model/Technologies';
+import { IDataEntry } from '../../../src/matching-algo/data-model/input-model/IDataEntry';
+import { IGitProjectInput } from '../../../src/matching-algo/data-model/input-model/IGitProjectInput';
 var casual = require('casual');
 require('dotenv').config(); //Get environment variables
 
@@ -20,7 +22,7 @@ require('dotenv').config(); //Get environment variables
  */
 xdescribe('Mock Fill Applicant Table', () => {
     const tdg: ApplicantTDG = new ApplicantTDG();
-    const numberOfMock : number = 1;
+    const numberOfMock : number = 10;
 
     before(() => {
         // Establish connection
@@ -98,7 +100,7 @@ export class ApplicanMockFactory{
 
     private generateRandomIGitData() : IGitDataModel {
         let gitData : IGitDataModel = {
-            dataEntry : null,
+            dataEntry : this.generateRandomDataEntry(),
             gitProjectSummary : this.generateRandomIGitProjectSummary(),
             lastKnownInfoDate: casual.date('YYYY-MM-DD').toString(),
             platform: Platform.Github
@@ -107,10 +109,13 @@ export class ApplicanMockFactory{
     }
 
     private generateRandomIGitProjectSummary() : IGitProjectSummary {
+        const lang : ILanguageOutput[] = this.generateRandomLanguageOutput();
+        
         let projSummary : IGitProjectSummary = {
-            totalOutput: this.generateRandomLanguageOutput(),
+            totalOutput: lang,
             projectsOutput: this.generateRandomGitProjectOutput()
         }
+        projSummary.projectsOutput[0].languageOutput = lang;
         return projSummary;
     }
 
@@ -130,10 +135,12 @@ export class ApplicanMockFactory{
             
             let linesOfCode : number = 0;
             let numberOfCommits : number = 0;
+            
             const techUsedByUser : boolean = (Math.round(casual.random * 10) >= 7);
             if(techUsedByUser){
                 linesOfCode = Math.round(casual.random * 3000);
-                numberOfCommits = Math.round(casual.random * 500)
+                numberOfCommits = Math.round(casual.random * 500);
+
             }
             let langOutput : ILanguageOutput = {
                 languageOrFramework: languages[lang],
@@ -150,11 +157,49 @@ export class ApplicanMockFactory{
     }
 
     private generateRandomGitProjectOutput(): IGitProjectOutput[] {
-        return []
+        const fakeProject  : IGitProjectOutput = {
+            projectName: casual.first_name,
+            projectUrl: casual.first_name,
+            languageOutput: this.generateRandomLanguageOutput()
+        }
+        return [fakeProject]
     }
 
     private generateRandomFrameworkOutput(): IFrameworkOutput[] {
-        return []
+        let IframeworkOutputs : IFrameworkOutput[] = [];
+        //Build a framework list...
+        let frameworks : string[] = [];
+        frameworks.push(Technologies.Angular);
+        frameworks.push(Technologies.Django);
+        frameworks.push(Technologies.Flask);
+        frameworks.push(Technologies.React);
+        frameworks.push(Technologies.Vue);
+        frameworks.push(Technologies.Typescript);
+
+        const shouldAddFramework: boolean = (Math.round(casual.random * 10) >= 7);
+        for(let framework in frameworks){
+            if(shouldAddFramework){
+                let f: IFrameworkOutput = {
+                    technologyName : Technologies[framework],
+                    linesOfCode: Math.round(casual.random * 900),
+                    numberOfCommits: Math.round(casual.random * 10)
+                }
+
+                IframeworkOutputs.push(f);
+                
+            }
+
+        }
+
+        return IframeworkOutputs
+    }
+
+    private generateRandomDataEntry(): IDataEntry {
+        const sampleData = require('../../matching-algo/data-model/javascript-example/GitProjectInputExample');
+        const data : IDataEntry = {
+            projectInputs : sampleData.dataEntry
+        }
+        return data
     }
 
 
