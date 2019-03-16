@@ -20,7 +20,9 @@ class PageContainer extends React.Component<any, any> {
       }
 
       case Pages.Direct_Messaging: {
-        return <DirectMessaging />;
+        return (
+          <DirectMessaging appkey="wmfGqY" token="TypeScriptReactExample" />
+        );
       }
 
       default: {
