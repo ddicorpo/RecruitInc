@@ -1,0 +1,123 @@
+{
+  "isFilter": true,
+  "username": "g-harel",
+  "profileLink": "https://github.com/g-harel",
+  "userType": "Candidate",
+  "email": "gabrielj.harel@gmail.com",
+
+  "projectInputs": [
+    {
+      "projectName": "jest-7165",
+      "owner": "g-harel",
+      "applicantCommits": [
+        {
+          "id": "903331709f93d023cd634585aca88cd05a319ccc",
+          "numberOfFileAffected": 1,
+          "files": [
+            {
+              "filePath": "README.md",
+              "lineAdded": 3,
+              "lineDeleted": 1
+            }
+          ]
+        },
+        {
+          "id": "a555c4637389871773f08e4a96d02b369ce0d8a6",
+          "numberOfFileAffected": 4,
+          "files": [
+            {
+              "filePath": "index.js",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "package.json",
+              "lineAdded": 14,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "test.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "test/test.js",
+              "lineAdded": 5,
+              "lineDeleted": 0
+            }
+          ]
+        },
+        {
+          "id": "5cc9c370aae03ea82bcb0196cfba320eb0ded260",
+          "numberOfFileAffected": 3,
+          "files": [
+            {
+              "filePath": ".gitignore",
+              "lineAdded": 61,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "LICENSE",
+              "lineAdded": 21,
+              "lineDeleted": 0
+            },
+            {
+              "filePath": "README.md",
+              "lineAdded": 1,
+              "lineDeleted": 0
+            }
+          ]
+        }
+      ],
+      "projectStructure": [
+        {
+          "fileId": "ad46b30886fa350c1f59761b100e5e4b01f9a7ec",
+          "fileName": ".gitignore",
+          "filePath": ".gitignore"
+        },
+        {
+          "fileId": "5fea7ddb50165482863c390cf48b3f6c5626b0a0",
+          "fileName": "LICENSE",
+          "filePath": "LICENSE"
+        },
+        {
+          "fileId": "d251f15f3cbaf2eaafac152fbcaa6cccbec57b86",
+          "fileName": "README.md",
+          "filePath": "README.md"
+        },
+        {
+          "fileId": "bf906012673a39250ff35964a8c9a5d5d4bf8bbb",
+          "fileName": "index.js",
+          "filePath": "index.js"
+        },
+        {
+          "fileId": "9cd3ac62306d7d18891615de9d83a34536541265",
+          "fileName": "package.json",
+          "filePath": "package.json"
+        },
+        {
+          "fileId": "be7ccdee5fcebd8df3c448ce1d325613fed76310",
+          "fileName": "test.js",
+          "filePath": "test.js"
+        },
+        {
+          "fileId": "b772e3ab356c0c25a6c32a8bb26e25d3771fff84",
+          "fileName": "test.js",
+          "filePath": "test/test.js"
+        }
+      ],
+      "downloadedSourceFile": [
+        {
+          "filename": ".gitignore",
+          "repoFilePath": ".gitignore",
+          "localFilePath": "downloaded/g-harel/github/jest-7165/.gitignore"
+        },
+        {
+          "filename": "package.json",
+          "repoFilePath": "package.json",
+          "fileContents": "package.javascript.json"
+        }
+      ]
+    }
+  ]
+}
