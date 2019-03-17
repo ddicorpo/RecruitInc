@@ -33,19 +33,17 @@ class CandidateSearch extends React.Component<any, any> {
     const array: JSX.Element[] = [];
     let index: number;
     for (index = 0; index < this.state.candidates.length; index++) {
-      if (!this.state.candidates[index].isFilter) {
-        let tmpProps: ICardProps = {
-          userInfo: this.state.candidates[index],
-          projectInfo: this.state.candidates[index].projectSummary,
-        };
-        array.push(
-          <CandidateCard
-            key={tmpProps.userInfo.username}
-            userInfo={tmpProps.userInfo}
-            projectInfo={tmpProps.projectInfo}
-          />
-        );
-      }
+      let tmpProps: ICardProps = {
+        userInfo: this.state.candidates[index],
+        projectInfo: this.state.candidates[index].projectSummary,
+      };
+      array.push(
+        <CandidateCard
+          key={tmpProps.userInfo.username}
+          userInfo={tmpProps.userInfo}
+          projectInfo={tmpProps.projectInfo}
+        />
+      );
     }
     if (this.state.candidates.length < 1) {
       array.push(<div>No result</div>);
@@ -134,16 +132,6 @@ class CandidateSearch extends React.Component<any, any> {
         candidatesService.logActionCompleted(candidatesService.serviceName);
         let adapter: CandidateAdapter = new CandidateAdapter();
         localCandidates = adapter.adapt(result.data);
-        for (let candidates of localCandidates) {
-          let isFilter: boolean = false;
-          if (
-            isSearchFilter &&
-            !this.isTechUsedByCandidate(candidates.projectSummary.totalOutput)
-          ) {
-            isFilter = true;
-          }
-          candidates.isFilter = isFilter;
-        }
         this.setState({
           candidates: localCandidates,
         });
@@ -165,54 +153,6 @@ class CandidateSearch extends React.Component<any, any> {
   handleLoadClick = () => {
     this.getCandidates(false);
     this.render();
-  };
-
-  isTechUsedByCandidate = (candidateProjectSummaryTotalOutput): boolean => {
-    let techIndex: number;
-    for (
-      techIndex = 0;
-      techIndex < this.state.selectedTechOptions.length;
-      techIndex++
-    ) {
-      let tech = this.state.selectedTechOptions[techIndex].value;
-
-      let languageIndex: number;
-      for (
-        languageIndex = 0;
-        languageIndex < candidateProjectSummaryTotalOutput.length;
-        languageIndex++
-      ) {
-        if (
-          tech ==
-            candidateProjectSummaryTotalOutput[languageIndex]
-              .languageOrFramework &&
-          candidateProjectSummaryTotalOutput[languageIndex].linesOfCode > 0
-        ) {
-          return true;
-        } else {
-          let frameworkIndex: number;
-          for (
-            frameworkIndex = 0;
-            frameworkIndex <
-            candidateProjectSummaryTotalOutput[languageIndex].frameworks.length;
-            frameworkIndex++
-          ) {
-            if (
-              tech ==
-                candidateProjectSummaryTotalOutput[languageIndex].frameworks[
-                  frameworkIndex
-                ].technologyName &&
-              candidateProjectSummaryTotalOutput[languageIndex].frameworks[
-                frameworkIndex
-              ].linesOfCode > 0
-            ) {
-              return true;
-            }
-          }
-        }
-      }
-    }
-    return false;
   };
 
   handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {

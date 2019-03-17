@@ -21,10 +21,12 @@ export class ObtainCandidates extends baseService {
   }
 
   public execute(): any {
-    let addressToExecute: string = this.serviceAddress + '?page=' + this.page;
+    let addressToExecute: string = this.serviceAddress;
 
     let filterParams: string = '';
     if (typeof this.filters != 'undefined') {
+      addressToExecute = addressToExecute + '?page=' + this.page;
+
       for (let params of this.filters) {
         filterParams = filterParams + '&filter=' + params.value;
       }
