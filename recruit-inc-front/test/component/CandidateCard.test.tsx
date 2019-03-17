@@ -1,56 +1,35 @@
-import { LocationWatch } from '../../src/app/model/Location/LocationWatch';
+//import { LocationWatch } from '../../src/app/model/Location/LocationWatch';
 import { CandidateCard } from '../../src/app/components/CandidateCard';
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import { ICardProps } from '../../src/app/components/CandidateCard';
-import renderer from 'react-test-renderer';
+import { CandidateAdapter } from '../../src/app/adapter/CandidateAdapter';
+import { ICandidate } from 'src/app/model/Candidate/ICandidate';
+//import { ICardProps } from '../../src/app/components/CandidateCard';
+//mport renderer from 'react-test-renderer';
 
 const JSONimport = require('../samples/FakeCandidateCard.json');
 describe.only('CandidateCard Component Testing', () => {
+  const adapter: CandidateAdapter = new CandidateAdapter();
+  const results: ICandidate[] = adapter.adapt(JSONimport);
   it('Testing Component with data', () => {
-    const fakeCandidateCard: CandidateCard = new CandidateCard('bob');
-    const fakeProps: ICardProps = {
-      userInfo: JSONimport,
-      projectInfo: JSONimport.projectSummary,
-    };
+    const email: string = results[0].email ? results[0].email : ' ';
     const props = {
+      userInfo: results[0],
+      projectInfo: results[0].projectSummary,
+    };
+    //const fakeCandidateCard: CandidateCard = new CandidateCard('bob');
+    /*const fakeProps: ICardProps = {
       userInfo: JSONimport,
       projectInfo: JSONimport.projectSummary,
-    };
+    };*/
+
+    /*const props = {
+      userInfo: JSONimport,
+      projectInfo: JSONimport.projectSummary,
+    };*/
 
     const wrapper = shallow(<CandidateCard {...props} />);
-    const itShallContains: boolean = wrapper.contains(JSONimport.email);
+    const itShallContains: boolean = wrapper.contains(email);
     expect(itShallContains).toBe(true);
   });
-
-  /*it('Testing Component full list', () => {
-    const fakeWatchLocation: LocationWatch = new LocationWatch('bob', 200, 200);
-    const props = {
-      locationWatchData: fakeWatchLocation,
-    };
-
-    const wrapper = shallow(<CandidateCard  {...props} />);
-    const itShallContains: boolean = wrapper.contains('Finished');
-    expect(itShallContains).toBe(true);
-  });
-
-  it('Testing Component non-full list', () => {
-    const fakeWatchLocation: LocationWatch = new LocationWatch('bob', 200, 20);
-    const props = {
-      locationWatchData: fakeWatchLocation,
-    };
-
-    const wrapper = shallow(<CandidateCard  {...props} />);
-    const itShallContains: boolean = wrapper.contains('Running');
-    expect(itShallContains).toBe(true);
-  });
-
-  it('render correctly the CandidateCard  component', () => {
-    const fakeWatchLocation: LocationWatch = new LocationWatch('rena', 270, 20);
-    const props = {
-      locationWatchData: fakeWatchLocation,
-    };
-    const wrapper = renderer.create(<CandidateCard {...props} />).toJSON();
-    expect(wrapper).toMatchSnapshot();
-  });*/
 });
