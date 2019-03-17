@@ -249,16 +249,16 @@ class CandidateSearch extends React.Component<any, any> {
           <div className="card-header border bottom">
             <h4 className="card-title">Results</h4>
           </div>
-          <div className="form-group middle-man">
-            <button
-              id="load"
-              className="btn btn-gradient-primary form-control super-button"
-              type="button"
-              onClick={this.handleLoadClick}
-            >
-              Load All
-            </button>
-          </div>
+          {/*<div className="form-group middle-man">*/}
+          {/*<button*/}
+          {/*id="load"*/}
+          {/*className="btn btn-gradient-primary form-control super-button"*/}
+          {/*type="button"*/}
+          {/*onClick={this.handleLoadClick}*/}
+          {/*>*/}
+          {/*Load All*/}
+          {/*</button>*/}
+          {/*</div>*/}
           <div className="card-body">{this.renderCards()}</div>
 
           <Pagination
