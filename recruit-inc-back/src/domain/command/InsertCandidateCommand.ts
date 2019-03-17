@@ -37,7 +37,7 @@ export class InsertCandidateCommand extends AbstractCommand {
             }
 
             if(commandStatus){
-                this.logActionCompleted(this.insertCandidate.name);
+                this.logActionCompleted(this.insertCandidate.name + " inserted in Applicant table");
             }else{
                 this.logActionFailure(this.insertCandidate.name,
                      "Error", "Error while adding a candidate")
