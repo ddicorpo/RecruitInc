@@ -22,7 +22,7 @@ interface IGithubProjectFlattenedInfo {
   info: IGithubFlattenedInfo[];
 }
 
-class CandidateCard extends React.Component<ICardProps, any> {
+export class CandidateCard extends React.Component<ICardProps, any> {
   private flatProjectsOutput: IGithubProjectFlattenedInfo[];
   private flatTotal: IGithubFlattenedInfo[];
   private logger: Logger;
