@@ -22,9 +22,11 @@ export class CandidatesRoute extends baseRoute {
             const rawFilters = request.query.filter;
 
             // Make sure the filters always are in an array
-            let filter: string[] = Array.isArray(rawFilters)
-              ? rawFilters
-              : [rawFilters];
+            let filter: string[] = [];
+
+            if (rawFilters !== undefined) {
+              filter = Array.isArray(rawFilters) ? rawFilters : [rawFilters];
+            }
 
             candidates = await candidatesCommand.getCandidates(page, filter);
           }
