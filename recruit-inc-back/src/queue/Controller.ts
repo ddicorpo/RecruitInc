@@ -121,7 +121,6 @@ export class Controller {
   }
 
   private enqueueUser(user: IGithubUser): void {
-    //console.log("enqueueing user:", user);
     const prospect: RequiredClientInformation = new RequiredClientInformation(
       user,
       '',
@@ -204,8 +203,6 @@ export class Controller {
       if (!summary) continue;
       user.scanningStatus = ScanningStatus.analyzed;
       await githubUsersTDG.update(user._id, user);
-      console.log(user);
-      console.log(summary);
       if (summary != undefined && summary != null) {
         // Safe attempt to add user in candidate table and increase the counter...
         try {

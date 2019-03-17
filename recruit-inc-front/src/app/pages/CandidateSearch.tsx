@@ -9,6 +9,7 @@ import { CandidateAdapter } from '../adapter/CandidateAdapter';
 import { ObtainCandidates } from '../services/ObtainCandidates';
 import { ObtainLocations } from '../services/ObtainLocations';
 import { ObtainTechnologies } from '../services/ObtainTechnologies';
+import Pagination from 'react-js-pagination';
 
 class CandidateSearch extends React.Component<any, any> {
   private logger: Logger;
@@ -33,19 +34,17 @@ class CandidateSearch extends React.Component<any, any> {
     const array: JSX.Element[] = [];
     let index: number;
     for (index = 0; index < this.state.candidates.length; index++) {
-      if (!this.state.candidates[index].isFilter) {
-        let tmpProps: ICardProps = {
-          userInfo: this.state.candidates[index],
-          projectInfo: this.state.candidates[index].projectSummary,
-        };
-        array.push(
-          <CandidateCard
-            key={tmpProps.userInfo.username}
-            userInfo={tmpProps.userInfo}
-            projectInfo={tmpProps.projectInfo}
-          />
-        );
-      }
+      let tmpProps: ICardProps = {
+        userInfo: this.state.candidates[index],
+        projectInfo: this.state.candidates[index].projectSummary,
+      };
+      array.push(
+        <CandidateCard
+          key={tmpProps.userInfo.username}
+          userInfo={tmpProps.userInfo}
+          projectInfo={tmpProps.projectInfo}
+        />
+      );
     }
     if (this.state.candidates.length < 1) {
       array.push(<div>No result</div>);
@@ -99,13 +98,19 @@ class CandidateSearch extends React.Component<any, any> {
   }
 
   handlePageChange(pageNumber: number) {
+    this.getCandidates(true, pageNumber);
+    this.setState({ activePage: pageNumber });
+
     this.logger.info({
       class: 'CandidateSearch',
       method: 'handlePageChange',
       action: 'Changing the page to ' + pageNumber,
       params: { pageNumber },
     });
+
     this.setState({ activePage: pageNumber });
+
+    this.render();
   }
 
   handleLanguageChange(
@@ -118,25 +123,24 @@ class CandidateSearch extends React.Component<any, any> {
     });
   }
 
-  getCandidates = (isSearchFilter: boolean) => {
+  getCandidates = (isSearchFilter: boolean, page: number) => {
     let localCandidates: ICandidate[] = [];
-    const candidatesService: ObtainCandidates = new ObtainCandidates();
+    let candidatesService: ObtainCandidates = new ObtainCandidates();
+
+    candidatesService.changePage(page);
+    this.setState({ activePage: page });
+
+    if (isSearchFilter) {
+      console.log(this.state.selectedTechOptions);
+      candidatesService.applyFilters(this.state.selectedTechOptions);
+    }
+
     candidatesService
       .execute()
       .then(result => {
         candidatesService.logActionCompleted(candidatesService.serviceName);
         let adapter: CandidateAdapter = new CandidateAdapter();
         localCandidates = adapter.adapt(result.data);
-        for (let candidates of localCandidates) {
-          let isFilter: boolean = false;
-          if (
-            isSearchFilter &&
-            !this.isTechUsedByCandidate(candidates.projectSummary.totalOutput)
-          ) {
-            isFilter = true;
-          }
-          candidates.isFilter = isFilter;
-        }
         this.setState({
           candidates: localCandidates,
         });
@@ -151,61 +155,15 @@ class CandidateSearch extends React.Component<any, any> {
   };
 
   handleSearchClick = () => {
-    this.getCandidates(true);
+    const page: number = 1;
+    this.getCandidates(true, page);
     this.render();
   };
 
   handleLoadClick = () => {
-    this.getCandidates(false);
+    const page: number = 1;
+    this.getCandidates(false, page);
     this.render();
-  };
-
-  isTechUsedByCandidate = (candidateProjectSummaryTotalOutput): boolean => {
-    let techIndex: number;
-    for (
-      techIndex = 0;
-      techIndex < this.state.selectedTechOptions.length;
-      techIndex++
-    ) {
-      let tech = this.state.selectedTechOptions[techIndex].value;
-
-      let languageIndex: number;
-      for (
-        languageIndex = 0;
-        languageIndex < candidateProjectSummaryTotalOutput.length;
-        languageIndex++
-      ) {
-        if (
-          tech ==
-            candidateProjectSummaryTotalOutput[languageIndex]
-              .languageOrFramework &&
-          candidateProjectSummaryTotalOutput[languageIndex].linesOfCode > 0
-        ) {
-          return true;
-        } else {
-          let frameworkIndex: number;
-          for (
-            frameworkIndex = 0;
-            frameworkIndex <
-            candidateProjectSummaryTotalOutput[languageIndex].frameworks.length;
-            frameworkIndex++
-          ) {
-            if (
-              tech ==
-                candidateProjectSummaryTotalOutput[languageIndex].frameworks[
-                  frameworkIndex
-                ].technologyName &&
-              candidateProjectSummaryTotalOutput[languageIndex].frameworks[
-                frameworkIndex
-              ].linesOfCode > 0
-            ) {
-              return true;
-            }
-          }
-        }
-      }
-    }
-    return false;
   };
 
   handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {
@@ -291,17 +249,28 @@ class CandidateSearch extends React.Component<any, any> {
           <div className="card-header border bottom">
             <h4 className="card-title">Results</h4>
           </div>
-          <div className="form-group middle-man">
-            <button
-              id="load"
-              className="btn btn-gradient-primary form-control super-button"
-              type="button"
-              onClick={this.handleLoadClick}
-            >
-              Load All
-            </button>
-          </div>
+          {/*<div className="form-group middle-man">*/}
+          {/*<button*/}
+          {/*id="load"*/}
+          {/*className="btn btn-gradient-primary form-control super-button"*/}
+          {/*type="button"*/}
+          {/*onClick={this.handleLoadClick}*/}
+          {/*>*/}
+          {/*Load All*/}
+          {/*</button>*/}
+          {/*</div>*/}
           <div className="card-body">{this.renderCards()}</div>
+
+          <Pagination
+            activePage={this.state.activePage}
+            itemClass="page-item"
+            linkClass="page-link"
+            // Would be good to do an initial call to see how many items there is
+            itemsCountPerPage={2}
+            totalItemsCount={100}
+            pageRangeDisplayed={3}
+            onChange={this.handlePageChange}
+          />
         </div>
       </div>
     );
