@@ -5,7 +5,7 @@ import { expect } from 'chai';
 
 //tested the chardy database
 
-describe.only('Test pagination and filtering',() => {
+xdescribe('Test pagination and filtering',() => {
       before(() => {
         // Establish connection
         let myFactory: MongoConnectionFactory = new MongoConnectionFactory();
