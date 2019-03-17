@@ -120,7 +120,14 @@ class CandidateSearch extends React.Component<any, any> {
 
   getCandidates = (isSearchFilter: boolean) => {
     let localCandidates: ICandidate[] = [];
-    const candidatesService: ObtainCandidates = new ObtainCandidates();
+    let candidatesService: ObtainCandidates = new ObtainCandidates();
+    candidatesService.changePage(1);
+
+    if (isSearchFilter) {
+      console.log(this.state.selectedTechOptions);
+      candidatesService.applyFilters(this.state.selectedTechOptions);
+    }
+
     candidatesService
       .execute()
       .then(result => {
