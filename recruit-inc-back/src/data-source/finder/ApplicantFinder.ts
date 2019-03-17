@@ -6,32 +6,39 @@ import { Types } from 'mongoose';
 import { CandidatePage } from '../../domain/model/CandidatePageModel';
 
 export class ApplicantFinder {
-    private baseFinder: BaseFinder = new BaseFinder(ApplicantModel);
+  private baseFinder: BaseFinder = new BaseFinder(ApplicantModel);
   public findById(_id: string): Promise<IApplicantModel> {
-      return this.baseFinder.findById(_id);
+    return this.baseFinder.findById(_id);
   }
 
   public findByPlatformUsername(
     platformUsername: string
   ): Promise<IApplicantModel> {
-      return this.baseFinder.findOneBy({platformUsername});
+    return this.baseFinder.findOneBy({ platformUsername });
   }
 
   public findByPlatformEmail(platformEmail: string): Promise<IApplicantModel> {
-      return this.baseFinder.findOneBy({platformEmail});
+    return this.baseFinder.findOneBy({ platformEmail });
   }
 
   public findByUserType(userType: UserType): Promise<IApplicantModel> {
-      return this.baseFinder.findBy({userType});
+    return this.baseFinder.findBy({ userType });
   }
 
-  public findByPageQuery(query : string, page : number) : Promise<IApplicantModel>{
-      //TODO: Build query to filter by e.g. technologie not equal 0...
-      //We should try to do that using mongo query
-      return this.baseFinder.findByWithPage(query, page, CandidatePage.size);
+  public findByPageQuery(
+    query: {},
+    page: number,
+    excludeField: {} = {}
+  ): Promise<IApplicantModel> {
+    return this.baseFinder.findByWithPage(
+      query,
+      page,
+      CandidatePage.size,
+      excludeField
+    );
   }
 
   public findAll(): Promise<IApplicantModel> {
-      return this.baseFinder.findAll();
+    return this.baseFinder.findAll();
   }
 }

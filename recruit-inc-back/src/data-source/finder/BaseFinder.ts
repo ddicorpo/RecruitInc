@@ -59,36 +59,43 @@ export class BaseFinder {
     });
   }
 
-  public findByWithPage(query: any, page: number, pageSize: number) : Promise<any> {
-    const numberOfResultToSkip : number = (page -1) * pageSize;
-    const refinedQuery = (query == undefined) ? {} : query;
-     return new Promise((resolve: any, reject: any) => {
+  public findByWithPage(
+    query: any,
+    page: number,
+    pageSize: number,
+    excludeFields: {} = {}
+  ): Promise<any> {
+    const numberOfResultToSkip: number = (page - 1) * pageSize;
+    const refinedQuery = query == undefined ? {} : query;
+    return new Promise((resolve: any, reject: any) => {
       const findByErrorHandler: any = (error: any, obj: any) =>
         this.errorHandler(error, obj, this.findBy.name, resolve, reject);
-      this.model.find(refinedQuery, findByErrorHandler).skip(numberOfResultToSkip).limit(pageSize);
+      this.model
+        .find(refinedQuery, excludeFields, findByErrorHandler)
+        .skip(numberOfResultToSkip)
+        .limit(pageSize);
     });
   }
 
-    public logActionCompleted(methodName: string): void {
-        this.logger.info({
-            class: this.model.name + ' Model',
-            method: methodName,
-            action: 'Transaction Completed',
-            params: {},
-        });
-    }
+  public logActionCompleted(methodName: string): void {
+    this.logger.info({
+      class: this.model.name + ' Model',
+      method: methodName,
+      action: 'Transaction Completed',
+      params: {},
+    });
+  }
 
-    public logActionFailure(
-        methodName: string,
-        errorName: string,
-        errorDesc: string
-    ): void {
-        this.logger.info({
-            class: this.model.name + ' Model',
-            method: methodName,
-            action: 'Transaction Fails reason: ' + errorName + ' desc: ' + errorDesc,
-            params: {},
-        });
-    }
-
+  public logActionFailure(
+    methodName: string,
+    errorName: string,
+    errorDesc: string
+  ): void {
+    this.logger.info({
+      class: this.model.name + ' Model',
+      method: methodName,
+      action: 'Transaction Fails reason: ' + errorName + ' desc: ' + errorDesc,
+      params: {},
+    });
+  }
 }
