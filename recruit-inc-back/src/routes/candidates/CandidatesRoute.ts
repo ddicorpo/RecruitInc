@@ -14,12 +14,18 @@ export class CandidatesRoute extends baseRoute {
           const candidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
           let candidates: any;
           let page: number = request.query.page;
-          let filter: string = request.query.filter;
-          if (filter == undefined && page == undefined) {
+          if (request.query.filter === undefined && page === undefined) {
             // User wants all candidates
             candidates = await candidatesCommand.getAllCandidates();
           } else {
             //User wants candidates by page
+            const rawFilters = request.query.filter;
+
+            // Make sure the filters always are in an array
+            let filter: string[] = Array.isArray(rawFilters)
+              ? rawFilters
+              : [rawFilters];
+
             candidates = await candidatesCommand.getCandidates(page, filter);
           }
 
