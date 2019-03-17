@@ -213,15 +213,18 @@ export class Controller {
           const insertCandidateStatus: Boolean = await this.insertCandidateCommand.insertCandidate(newCandidate);
 
           if (increaseByOneStatus) {
-            console.log("Successfully increased the number of scan user by one");
+            this.handleLog(this.fetchSpecificUserFromDatabase.name,
+               "Successfully increased the number of scan user by one");
           }
 
           if (insertCandidateStatus) {
-            console.log("Successfully insert new candidate to candidates table");
+            this.handleLog(this.fetchSpecificUserFromDatabase.name,
+              "Successfully insert new candidate to candidates table");
           }
 
         } catch (Exception) {
-          console.log("Problem while adding data to other table...")
+          this.handleLog(this.fetchSpecificUserFromDatabase.name,
+           "Problem while adding data to other table..."  + Exception.message);
         }
       }
 
@@ -233,7 +236,7 @@ export class Controller {
     }
   }
 
-  private handleError(method: string, error: string) {
+  private handleLog(method: string, error: string) {
     //verify that this is a ratelimit error
     this.logger.info({
       class: 'Controller.ts',
@@ -252,7 +255,7 @@ export class Controller {
         await this.repoQueue.processNextQuery();
       }
     } catch (e) {
-      this.handleError('executeRepo', e.toString());
+      this.handleLog('executeRepo', e.toString());
       canStillScan = false;
     }
     return canStillScan;
@@ -265,7 +268,7 @@ export class Controller {
         await this.treeQueue.processNextQuery();
       }
     } catch (e) {
-      this.handleError('executeTree', e.toString());
+      this.handleLog('executeTree', e.toString());
       canStillScan = false;
     }
     return canStillScan;
@@ -278,7 +281,7 @@ export class Controller {
         await this.commitQueue.processNextQuery();
       }
     } catch (e) {
-      this.handleError('executeCommit', e.toString());
+      this.handleLog('executeCommit', e.toString());
       canStillScan = false;
     }
     return canStillScan;
@@ -291,7 +294,7 @@ export class Controller {
         await this.filesAffectedByQueue.processNextQuery();
       }
     } catch (e) {
-      this.handleError('executeExecuteFilesAffected', e.toString());
+      this.handleLog('executeExecuteFilesAffected', e.toString());
       canStillScan = false;
     }
     return canStillScan;
@@ -304,18 +307,15 @@ export class Controller {
         await this.downloadQueue.processNextQuery();
       }
     } catch (e) {
-      this.handleError('executeDownload', e.toString());
+      this.handleLog('executeDownload', e.toString());
       canStillScan = false;
     }
     return canStillScan;
   }
   private convertToCandidate(user : any, summary : any) : IApplicantModel{
-    console.log(user);
     //Prevent error since table applicant expect email
     const email: string = (user.githubUser.email != undefined && user.githubUser.email.length > 2) ?
      user.github.email : this.hashCode(user.githubUser.login);
-     console.log('email' );
-     console.log(email);
     const gitDataModel: IGitDataModel = {
       dataEntry: user.githubUser.dataEntry,
       gitProjectSummary: summary,

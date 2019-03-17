@@ -32,14 +32,14 @@ export class IncreaseScanUserCommand extends AbstractCommand {
             }else{
                 this.logActionFailure(this.increasedByOne.name, 
                     "Failure", 
-                    "Successful is false" );
+                    "Can't increase user scanned by one!" );
             }
 
             return new Promise(function(resolve, reject){
                 if(successful){
                     resolve(successful);
                 }else{
-                    reject(Error("Can't increase location"));
+                    reject(Error("Can't increase user scanned by one!"));
                 }
             })
 

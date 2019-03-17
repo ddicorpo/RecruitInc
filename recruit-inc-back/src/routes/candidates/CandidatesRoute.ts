@@ -1,6 +1,7 @@
 import { baseRoute } from '../baseRoute';
 import { ObtainCandidatesCommand } from '../../domain/command/ObtainCandidatesCommand';
 import { Response, Request } from 'express';
+import { IApplicantModel } from '../../domain/model/IApplicantModel';
 
 export class CandidatesRoute extends baseRoute {
   public routes(app): void {
@@ -12,7 +13,7 @@ export class CandidatesRoute extends baseRoute {
       .get(async (request: Request, response: Response) => {
         try {
           const candidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
-          let candidates: any;
+          let candidates: IApplicantModel[];
           let page: number = request.query.page;
           if (request.query.filter === undefined && page === undefined) {
             // User wants all candidates
@@ -52,8 +53,6 @@ export class CandidatesRoute extends baseRoute {
       .get(async (request: Request, response: Response) => {
         try {
           const candidatesTechnologies: ObtainCandidatesCommand = new ObtainCandidatesCommand();
-          let candidates: any;
-          let technologies: any;
           let page: number = request.query.page;
           let filter: string = request.query.filter;
 
