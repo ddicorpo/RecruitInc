@@ -17,11 +17,11 @@ export class InsertCandidateCommand extends AbstractCommand {
     }
 
     public async insertCandidate(applicant: IApplicantModel): Promise<Boolean> {
-        const isCandidateInStorage : Boolean = 
+        const isInsertCompleted : Boolean = 
         await this.inStorageCommand.isCandidateIn(applicant.platformUsername);
         let commandStatus : boolean = false;
         try{
-            if(isCandidateInStorage){
+            if(isInsertCompleted){
                 //Grab the id of the object
                 const foundApplicant : IApplicantModel =
                  await this.applicantFinder.findByPlatformUsername(applicant.platformUsername);
