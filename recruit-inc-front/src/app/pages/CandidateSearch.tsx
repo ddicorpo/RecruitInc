@@ -266,9 +266,9 @@ class CandidateSearch extends React.Component<any, any> {
             itemClass="page-item"
             linkClass="page-link"
             // Would be good to do an initial call to see how many items there is
-            itemsCountPerPage={10}
-            totalItemsCount={450}
-            pageRangeDisplayed={5}
+            itemsCountPerPage={2}
+            totalItemsCount={100}
+            pageRangeDisplayed={3}
             onChange={this.handlePageChange}
           />
         </div>
