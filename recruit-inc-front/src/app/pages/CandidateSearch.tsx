@@ -9,6 +9,7 @@ import { CandidateAdapter } from '../adapter/CandidateAdapter';
 import { ObtainCandidates } from '../services/ObtainCandidates';
 import { ObtainLocations } from '../services/ObtainLocations';
 import { ObtainTechnologies } from '../services/ObtainTechnologies';
+import Pagination from 'react-js-pagination';
 
 class CandidateSearch extends React.Component<any, any> {
   private logger: Logger;
@@ -97,13 +98,19 @@ class CandidateSearch extends React.Component<any, any> {
   }
 
   handlePageChange(pageNumber: number) {
+    this.getCandidates(true, pageNumber);
+    this.setState({ activePage: pageNumber });
+
     this.logger.info({
       class: 'CandidateSearch',
       method: 'handlePageChange',
       action: 'Changing the page to ' + pageNumber,
       params: { pageNumber },
     });
+
     this.setState({ activePage: pageNumber });
+
+    this.render();
   }
 
   handleLanguageChange(
@@ -116,10 +123,12 @@ class CandidateSearch extends React.Component<any, any> {
     });
   }
 
-  getCandidates = (isSearchFilter: boolean) => {
+  getCandidates = (isSearchFilter: boolean, page: number) => {
     let localCandidates: ICandidate[] = [];
     let candidatesService: ObtainCandidates = new ObtainCandidates();
-    candidatesService.changePage(1);
+
+    candidatesService.changePage(page);
+    this.setState({ activePage: page });
 
     if (isSearchFilter) {
       console.log(this.state.selectedTechOptions);
@@ -146,12 +155,14 @@ class CandidateSearch extends React.Component<any, any> {
   };
 
   handleSearchClick = () => {
-    this.getCandidates(true);
+    const page: number = 1;
+    this.getCandidates(true, page);
     this.render();
   };
 
   handleLoadClick = () => {
-    this.getCandidates(false);
+    const page: number = 1;
+    this.getCandidates(false, page);
     this.render();
   };
 
@@ -249,6 +260,17 @@ class CandidateSearch extends React.Component<any, any> {
             </button>
           </div>
           <div className="card-body">{this.renderCards()}</div>
+
+          <Pagination
+            activePage={this.state.activePage}
+            itemClass="page-item"
+            linkClass="page-link"
+            // Would be good to do an initial call to see how many items there is
+            itemsCountPerPage={10}
+            totalItemsCount={450}
+            pageRangeDisplayed={5}
+            onChange={this.handlePageChange}
+          />
         </div>
       </div>
     );
