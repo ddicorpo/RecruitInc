@@ -83,7 +83,7 @@ export class ObtainCandidatesCommand extends AbstractCommand {
     }
   }
 
-  private getQuery(filters: string[]): {} {
+  public getQuery(filters: string[]): {} {
     let findQuery: {} =
       filters.length > 0
         ? {
