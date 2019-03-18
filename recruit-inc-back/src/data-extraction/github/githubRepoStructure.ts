@@ -52,7 +52,10 @@ export class GithubRepoStructure {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes('abuse detection mechanism')) {
+      if (
+        error.toString().includes('API rate limit exceeded') &&
+        !error.toString().includes('data')
+      ) {
         throw error;
       }
       return null;
@@ -112,7 +115,12 @@ export class GithubRepoStructure {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes('rate-limiting')) {
+      if (
+        error
+          .toString()
+          .includes('https://developer.github.com/v3/#rate-limiting') &&
+        !error.toString().includes('sha')
+      ) {
         throw error;
       }
       return [];

@@ -21,6 +21,26 @@ export class ApplicantGithub {
         });
       });
 
+    //count
+    app
+      .route('/commitcount/:RepoName/:OwnerUsername/:UserLogin')
+      .get(async (req: Request, res: Response) => {
+        let RepoName: string = req.params.RepoName;
+        let OwnerUsername: string = req.params.OwnerUsername;
+        let username: string = req.params.UserLogin;
+        let githubUserCommits: GithubUserCommits = new GithubUserCommits();
+        let userID: string = await githubUserCommits.getUserID(username);
+
+        let data: number = await githubUserCommits.getCommitCount(
+          RepoName,
+          OwnerUsername,
+          userID
+        );
+        //let jsonData = JSON.parse(data)
+
+        res.status(200).send(`${data}`);
+      });
+
     //Get all user commits on a given repo
     app
       .route(
@@ -56,7 +76,7 @@ export class ApplicantGithub {
             projectInputs: [
               {
                 projectName: 'MinistocksRework',
-                url: "x",
+                url: 'x',
                 owner: 'AyoubeAkaouch',
                 applicantCommits: [],
                 projectStructure: [],
@@ -64,7 +84,7 @@ export class ApplicantGithub {
               },
               {
                 projectName: 'rufus',
-                url: "x",
+                url: 'x',
                 owner: 'MewtR',
                 applicantCommits: [],
                 projectStructure: [],
@@ -110,7 +130,7 @@ export class ApplicantGithub {
             projectInputs: [
               {
                 projectName: 'MinistocksRework',
-                url: "x",
+                url: 'x',
                 owner: 'AyoubeAkaouch',
                 applicantCommits: [],
                 projectStructure: [],
@@ -118,7 +138,7 @@ export class ApplicantGithub {
               },
               {
                 projectName: 'rufus',
-                url: "x",
+                url: 'x',
                 owner: 'MewtR',
                 applicantCommits: [],
                 projectStructure: [],
