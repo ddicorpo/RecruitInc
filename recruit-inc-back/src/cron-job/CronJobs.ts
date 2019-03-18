@@ -23,6 +23,7 @@ export class CronJobs {
 
   //Default crontime: Run everyday at midnight
   //Explanation: Run at second 0, minute 0, hour 0, every day, every month, from sunday to saturday
+  //TODO possible source of interference, in the case that there is a cron already running
   public async scheduleCron(
     //cronTime: CronTime = '0 0 0 * * 0-6'
     cronTime: CronTime = '0 0 */4 * * 0-6'
@@ -33,6 +34,19 @@ export class CronJobs {
     const job = new CronJob(cronTime, async function() {
       let cronjobs: CronJobs = new CronJobs();
       await cronjobs.scan();
+    });
+    job.start();
+
+    return job;
+  }
+
+  //for key rotations at every time minutes = 20
+  public async scheduleCron2(cronTime: CronTime = '0 */20 * * * 0-6'): CronJob {
+    const CronJob = require('cron').CronJob;
+
+    const job = new CronJob(cronTime, async function() {
+      let cronjobs: CronJobs = new CronJobs();
+      this.controller.rotateKeys();
     });
     job.start();
 
@@ -82,7 +96,7 @@ export class CronJobs {
     }
     await this.githubUsersTDG.insertMany(githubUsersModel);
   }
-
+  //TODO risk of starvation here with key swapping present
   async scan() {
     await this.controller.execute();
     await this.controller.processUsers();

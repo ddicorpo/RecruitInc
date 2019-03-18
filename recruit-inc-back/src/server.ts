@@ -38,6 +38,7 @@ console.log('Server DEFAULT TIMEOUT =>  ' + DEFAULT_TIMEOUT);
 //Set cronjob on app startup
 let cronjob: CronJobs = new CronJobs();
 cronjob.scheduleCron();
+cronjob.scheduleCron2(); //for key rotations
 
 /**
  * Setup the CORS, if we are in production we want rules

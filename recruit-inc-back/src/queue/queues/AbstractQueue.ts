@@ -18,7 +18,7 @@ export class AbstractQueue {
   public dequeue() {}
   public isEmpty() {}
   public size() {}
-  public processNextQuery(): any {}
+  public processNextQuery(string): any {}
   public saveToDatabase() {}
   public loadFromDatabase() {}
 }

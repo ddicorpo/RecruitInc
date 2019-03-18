@@ -18,8 +18,10 @@ export class DownloadClient implements IGithubClient {
     this.login = prospect.user.login;
   }
 
-  async executeQuery() {
-    let downloads: GithubDownloadedFilesPath = new GithubDownloadedFilesPath();
+  async executeQuery(token: string) {
+    let downloads: GithubDownloadedFilesPath = new GithubDownloadedFilesPath(
+      token
+    );
 
     let downloadedFile: ISourceFiles;
 

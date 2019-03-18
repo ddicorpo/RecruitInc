@@ -18,39 +18,49 @@ export class FilesAffectedByClient implements IGithubClient {
     this.login = prospect.user.login;
   }
 
-  async executeQuery() {
-    let affected: GithubUserCommits = new GithubUserCommits();
+  async executeQuery(token: string) {
+    let affected: GithubUserCommits = new GithubUserCommits(token);
     let allAffectedFiles: ISingleFileCommit[] = [];
 
-    try{
-    allAffectedFiles = await affected.getFilesAffectedByCommit(
-      this.owner,
-      this.repository,
-      this.commitId
-      //'absolutetrash'
-    );
-    } catch(error){
-        throw error;
+    try {
+      allAffectedFiles = await affected.getFilesAffectedByCommit(
+        this.owner,
+        this.repository,
+        this.commitId
+        //'absolutetrash'
+      );
+    } catch (error) {
+      throw error;
     }
 
-
     //TODO: Save to database
-    await this.updateUser(this.login, this.repository, allAffectedFiles, this.commitId);
+    await this.updateUser(
+      this.login,
+      this.repository,
+      allAffectedFiles,
+      this.commitId
+    );
   }
 
-  public async updateUser(login: string, projectName: string, allAffectedFiles: ISingleFileCommit[], commitId: string){
-      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let criteria: any = { "githubUser.login": login }
+  public async updateUser(
+    login: string,
+    projectName: string,
+    allAffectedFiles: ISingleFileCommit[],
+    commitId: string
+  ) {
+    let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+    let criteria: any = { 'githubUser.login': login };
 
-      let update: any = {
-          $set: {"githubUser.dataEntry.projectInputs.$[pI].applicantCommits.$[aC].files": allAffectedFiles }
-      }
+    let update: any = {
+      $set: {
+        'githubUser.dataEntry.projectInputs.$[pI].applicantCommits.$[aC].files': allAffectedFiles,
+      },
+    };
 
-      let options = {  
-          arrayFilters: [{"pI.projectName": projectName}, {"aC.id": commitId}]
-      }
-  
-      await githubUsersTDG.generalUpdate(criteria, update, options);
+    let options = {
+      arrayFilters: [{ 'pI.projectName': projectName }, { 'aC.id': commitId }],
+    };
+
+    await githubUsersTDG.generalUpdate(criteria, update, options);
   }
-
 }

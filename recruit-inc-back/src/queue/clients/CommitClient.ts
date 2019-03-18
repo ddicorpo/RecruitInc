@@ -1,7 +1,7 @@
 import { IGithubClient } from './IGithubClient';
 import { RequiredClientInformation } from '../RequiredClientInformation';
 import { GithubUserCommits } from '../../data-extraction/github/githubUserCommits';
-import { FilesAffectedByQueue } from "../queues/FilesAffectedByQueue";
+import { FilesAffectedByQueue } from '../queues/FilesAffectedByQueue';
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 import { ICommit } from '../../matching-algo/data-model/input-model/ICommit';
 
@@ -20,18 +20,18 @@ export class CommitClient implements IGithubClient {
     this.prospect = prospect;
   }
 
-  async executeQuery() {
-    let commits: GithubUserCommits = new GithubUserCommits();
+  async executeQuery(token: string) {
+    let commits: GithubUserCommits = new GithubUserCommits(token);
     let allCommits: ICommit[] = [];
 
-    try{
-    allCommits = await commits.getCommits(
-      this.repository,
-      this.owner,
-      this.userId
-    );
-    } catch (error){
-        throw error;
+    try {
+      allCommits = await commits.getCommits(
+        this.repository,
+        this.owner,
+        this.userId
+      );
+    } catch (error) {
+      throw error;
     }
     //pull the filesAffectedByQueue instance, so that we can populate its queue in this method
     let filesAffected = FilesAffectedByQueue.get_instance();
@@ -44,21 +44,30 @@ export class CommitClient implements IGithubClient {
     }
 
     //TODO: Save to database
-    await this.updateUser(this.prospect.user.login, this.projectUrl, allCommits);
+    await this.updateUser(
+      this.prospect.user.login,
+      this.projectUrl,
+      allCommits
+    );
   }
 
-  public async updateUser(login: string, projectUrl: string, allCommits: ICommit[] ){
-      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let criteria: any = { "githubUser.login": login }
-      let update: any = {
-          $set: {"githubUser.dataEntry.projectInputs.$[pi].applicantCommits": allCommits }
-      }
-      let options = {                         //Might cause issues if user contributes to several project with same name
-          arrayFilters: [{"pi.url": projectUrl}]
-      }
+  public async updateUser(
+    login: string,
+    projectUrl: string,
+    allCommits: ICommit[]
+  ) {
+    let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+    let criteria: any = { 'githubUser.login': login };
+    let update: any = {
+      $set: {
+        'githubUser.dataEntry.projectInputs.$[pi].applicantCommits': allCommits,
+      },
+    };
+    let options = {
+      //Might cause issues if user contributes to several project with same name
+      arrayFilters: [{ 'pi.url': projectUrl }],
+    };
 
-      await githubUsersTDG.generalUpdate(criteria, update, options);
-  
+    await githubUsersTDG.generalUpdate(criteria, update, options);
   }
-
 }

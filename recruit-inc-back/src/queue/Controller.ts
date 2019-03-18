@@ -19,7 +19,6 @@ import { tokens } from '../../tokenlist.json';
 
 export class Controller {
   private static _instance: Controller;
-  //TODO replace tokens in tokenlist with tokens from a fake account, and remove tokenlistjson from the gitignore
   public githubTokens = tokens;
   private constructor() {
     this.logger = new Logger();
@@ -97,7 +96,7 @@ export class Controller {
       }
       githubTDG.update(currentUserSchema._id, currentUserSchema);
       // ********************************************************************************************
-
+      //TODO Consider putting the run matchin algo here
       if (canStillScan) {
         if (usersSchemas.length === 0) {
           //fixing the cannot read login of undefined error because a user is still enqueued even though the users array is empty
@@ -220,7 +219,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.repoQueue.size() > 0) {
-        await this.repoQueue.processNextQuery();
+        await this.repoQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleError('executeRepo', e.toString());
@@ -233,7 +232,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.treeQueue.size() > 0) {
-        await this.treeQueue.processNextQuery();
+        await this.treeQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleError('executeTree', e.toString());
@@ -246,7 +245,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.commitQueue.size() > 0) {
-        await this.commitQueue.processNextQuery();
+        await this.commitQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleError('executeCommit', e.toString());
@@ -259,7 +258,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.filesAffectedByQueue.size() > 0) {
-        await this.filesAffectedByQueue.processNextQuery();
+        await this.filesAffectedByQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleError('executeExecuteFilesAffected', e.toString());
@@ -272,7 +271,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.downloadQueue.size() > 0) {
-        await this.downloadQueue.processNextQuery();
+        await this.downloadQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleError('executeDownload', e.toString());
@@ -297,5 +296,10 @@ export class Controller {
     await this.commitQueue.saveToDatabase();
     await this.filesAffectedByQueue.saveToDatabase();
     await this.downloadQueue.saveToDatabase();
+  }
+  //take the top token in the array, and push it to the bottom
+  public rotateKeys() {
+    let temp = this.githubTokens.pop();
+    this.githubTokens.push(temp);
   }
 }

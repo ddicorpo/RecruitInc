@@ -2,5 +2,5 @@ import { IGithubUser } from '../../data-extraction/github/api-entities/IGithubUs
 
 export interface IGithubClient {
   //executeQuery(username: string, githubUser: IGithubUser, token?: string);
-  executeQuery();
+  executeQuery(string);
 }

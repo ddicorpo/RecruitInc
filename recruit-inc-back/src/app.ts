@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import * as bodyParser from 'body-parser'; //used to parse the form data that you pass in the request
 import { Examples } from './routes/examples';
 import { ApplicantGithub } from './routes/github/applicantGithub';
