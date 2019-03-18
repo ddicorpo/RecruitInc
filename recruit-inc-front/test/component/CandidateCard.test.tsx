@@ -11,7 +11,8 @@ const JSONimport = require('../samples/FakeCandidateCard.json');
 describe.only('CandidateCard Component Testing', () => {
   const adapter: CandidateAdapter = new CandidateAdapter();
   const results: ICandidate[] = adapter.adapt(JSONimport);
-  it('Testing Email for Candidate Component with data', () => {
+  //TODO: Refactor to use the a real JSON from back-end
+  xit('Testing Email for Candidate Component with data', () => {
     const email: string = results[0].email ? results[0].email : ' ';
     const props = {
       userInfo: results[0],
@@ -33,7 +34,7 @@ describe.only('CandidateCard Component Testing', () => {
     expect(itShallContains).toBe(true);
   });
 
-  it('Testing email for Candidate', () => {
+  xit('Testing email for Candidate', () => {
     const username: string = results[0].username ? results[0].username : ' ';
     const props = {
       userInfo: results[0],
