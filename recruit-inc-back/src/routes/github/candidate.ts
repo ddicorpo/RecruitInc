@@ -15,11 +15,8 @@ import { CronFinder } from '../../data-source/finder/CronFinder';
 import { ICronModel } from '../../domain/model/ICronModel';
 import { Status } from '../../domain/model/ICronModel';
 import { Logger } from '../../Logger';
-import { SSL_OP_EPHEMERAL_RSA } from 'constants';
 import { CronJobs } from '../../cron-job/CronJobs';
 import { Controller } from '../../queue/Controller';
-import { RepositoryQueue } from '../../queue/queues/RepositoryQueue';
-import { CronTime, CronJob } from 'cron';
 const logger = new Logger();
 const { fork } = require('child_process');
 

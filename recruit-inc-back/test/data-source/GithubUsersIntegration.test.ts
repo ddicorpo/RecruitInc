@@ -7,7 +7,6 @@ import { GithubUsersFinder } from '../../src/data-source/finder/GithubUsersFinde
 import { ScanningStatus } from '../../src/data-source/schema/githubUserSchema';
 import { expect } from 'chai';
 import * as mongoose from 'mongoose';
-import { Platform } from '../../src/domain/model/IGitDataModel';
 
 require('dotenv').config(); //Get environment variables
 

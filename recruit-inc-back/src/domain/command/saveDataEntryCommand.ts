@@ -1,4 +1,4 @@
-import { AbstractCommand } from './abstractCommand';
+import { AbstractCommand } from './AbstractCommand';
 
 export class SaveDataEntryCommand extends AbstractCommand {
   public execute() {

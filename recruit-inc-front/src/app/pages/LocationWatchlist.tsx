@@ -1,13 +1,9 @@
 import * as React from 'react';
 import { ObtainScan } from '../services/ObtainScan';
-import { ScanAdapter } from '../adapter/Location/ScanAdapter';
-import { ObtainUserToScan } from '../services/ObtainUserToScan';
-import { ObtainUnscanUser } from '../services/ObtainUnscanUser';
-import { LocationAdapter } from '../adapter/Location/LocationAdapter';
-import { LocationWatch } from '../model/Location/LocationWatch';
 import { LocationList } from '../model/Location/LocationList';
 import { LocationWatchListState } from '../states/LocationWatchListState';
 import { LocationListComponent } from '../components/Location/LocationListComponent';
+import { LocationAdapter } from '../adapter/Location/LocationAdapter';
 
 class LocationWatchList extends React.Component<any, LocationWatchListState> {
   constructor(props) {
@@ -23,59 +19,18 @@ class LocationWatchList extends React.Component<any, LocationWatchListState> {
   componentDidMount() {
     this.loadLocationWatchList();
   }
-
-  fillLocationWatchList = locations => {
-    const allUserService: ObtainUserToScan = new ObtainUserToScan();
-    const unScanUserService: ObtainUnscanUser = new ObtainUnscanUser();
-    const locationAdapter: LocationAdapter = new LocationAdapter();
-    let finalLocation: LocationWatch[] = [];
-
-    var allPromises: Promise<any>[] = [];
-    for (let loc of locations) {
-      let prom: Promise<any> = allUserService.execute(loc);
-      allPromises.push(prom);
-      let promUnscan: Promise<any> = unScanUserService.execute(loc);
-      allPromises.push(promUnscan);
-    }
-
-    Promise.all(allPromises).then(values => {
-      let allUserJSONs: any[] = [];
-      let unScanUserJSONs: any[] = [];
-
-      // Separate the results back in proper place
-      for (let index = 0; index < values.length; index++) {
-        if (index % 2 == 0) {
-          allUserJSONs.push(values[index]);
-        } else {
-          unScanUserJSONs.push(values[index]);
-        }
-      }
-
-      // Build proper data struc.
-      for (let index = 0; index < allUserJSONs.length; index++) {
-        let loca: LocationWatch = locationAdapter.adapt(
-          locations[index],
-          allUserJSONs[index].data,
-          unScanUserJSONs[index].data
-        );
-        finalLocation.push(loca);
-      }
-      this.setState({
-        locationState: new LocationList(finalLocation),
-      });
-    });
-  };
   loadLocationWatchList = (event?) => {
     const scanService: ObtainScan = new ObtainScan();
-    const scanAdapter: ScanAdapter = new ScanAdapter();
-
-    let locations: string[] = [];
+    const adapter: LocationAdapter = new LocationAdapter();
     scanService
       .execute()
       .then(results => {
-        locations = scanAdapter.adapt(results.data);
+        console.log(results.data);
+        let locations: LocationList = adapter.adapt(results.data);
         scanService.logActionCompleted(scanService.serviceName);
-        this.fillLocationWatchList(locations);
+        this.setState({
+          locationState: locations,
+        });
       })
       .catch(error => {
         scanService.logActionFailure(scanService.serviceName, error, error);

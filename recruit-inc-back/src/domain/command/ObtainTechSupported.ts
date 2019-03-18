@@ -1,4 +1,4 @@
-import { AbstractCommand } from './abstractCommand';
+import { AbstractCommand } from './AbstractCommand';
 import { Technologies } from '../../matching-algo/data-model/output-model/Technologies'
 import {RequestContext } from './RequestContext';
 
