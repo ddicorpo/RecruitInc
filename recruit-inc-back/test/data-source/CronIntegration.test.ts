@@ -59,8 +59,8 @@ xdescribe('Test mongo cronObj', () => {
       .findByLocationAndStatus(cron2.location, cron2.status)
       .then(doc => {
         let cronFound: ICronModel = doc;
-        expect(cron2.location).to.equal( cronFound.location);
-        expect(cron2.status).to.equal( cronFound.status);
+        expect(cron2.location).to.equal(cronFound.location);
+        expect(cron2.status).to.equal(cronFound.status);
       });
   });
 
