@@ -20,15 +20,11 @@ export class CronJobs {
   private cronFinder: CronFinder = new CronFinder();
   private githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
   private controller: Controller = Controller.get_instance();
+  private controllerRunning: boolean = false;
 
-  //Default crontime: Run everyday at midnight
+  //Default crontime: checks to see if the controller is running or not
   //Explanation: Run at second 0, minute 0, hour 0, every day, every month, from sunday to saturday
-  //TODO possible source of interference, in the case that there is a cron already running
-  public async scheduleCron(
-    //cronTime: CronTime = '0 0 0 * * 0-6'
-    cronTime: CronTime = '0 0 */4 * * 0-6'
-    //cronTime: CronTime = '0 21 20 * * 0-6'
-  ): CronJob {
+  public async scheduleCron(cronTime: CronTime = '0 0 */2 * * 0-6'): CronJob {
     const CronJob = require('cron').CronJob;
 
     const job = new CronJob(cronTime, async function() {
@@ -41,12 +37,30 @@ export class CronJobs {
   }
 
   //for key rotations at every time minutes = 20
-  public async scheduleCron2(cronTime: CronTime = '0 */20 * * * 0-6'): CronJob {
+  public async cronKeyRotation(
+    cronTime: CronTime = '0 */20 * * * 0-6'
+  ): CronJob {
     const CronJob = require('cron').CronJob;
 
     const job = new CronJob(cronTime, async function() {
       let cronjobs: CronJobs = new CronJobs();
       this.controller.rotateKeys();
+    });
+    job.start();
+
+    return job;
+  }
+  //launches the matching algo every 5 hours
+  public async updateMatchingAlgo(
+    //cronTime: CronTime = '0 0 0 * * 0-6'
+    cronTime: CronTime = '0 0 */5 * * 0-6'
+    //cronTime: CronTime = '0 21 20 * * 0-6'
+  ): CronJob {
+    const CronJob = require('cron').CronJob;
+
+    const job = new CronJob(cronTime, async function() {
+      let cronjobs: CronJobs = new CronJobs();
+      await this.controller.processUsers();
     });
     job.start();
 
@@ -96,10 +110,13 @@ export class CronJobs {
     }
     await this.githubUsersTDG.insertMany(githubUsersModel);
   }
-  //TODO risk of starvation here with key swapping present
+
   async scan() {
-    await this.controller.execute();
-    await this.controller.processUsers();
+    if (!this.controllerRunning) {
+      this.controllerRunning = true;
+      await this.controller.execute();
+      this.controllerRunning = false;
+    }
   }
 
   async stopScan(location: string) {
