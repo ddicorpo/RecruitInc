@@ -38,6 +38,13 @@ export class ApplicantFinder {
     );
   }
 
+  public findRankedPaginatedQuery(
+    query: {}[],
+    page: number
+  ): Promise<IApplicantModel> {
+    return this.baseFinder.aggregate(query);
+  }
+
   public findAll(): Promise<IApplicantModel> {
     return this.baseFinder.findAll();
   }

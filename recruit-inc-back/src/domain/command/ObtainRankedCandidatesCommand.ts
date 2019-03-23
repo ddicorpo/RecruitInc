@@ -35,10 +35,9 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
       if (page < 1) {
         page = 1;
       }
-      let allCandidates: IApplicantModel = await this.finder.findByPageQuery(
-        query,
-        page,
-        this.queryExclude
+      let allCandidates: IApplicantModel = await this.finder.findRankedPaginatedQuery(
+        [query],
+        page
       );
       return JSON.stringify(allCandidates);
     } catch (CommandException) {
