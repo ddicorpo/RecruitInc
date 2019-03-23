@@ -5,20 +5,15 @@ import { IApplicantModel } from '../model/IApplicantModel';
 import { allMatchers } from '../../matching-algo/matcher-client/AllMatchers';
 import { AbstractLanguageMatcher } from '../../matching-algo/matcher/AbstractLanguageMatcher';
 import { Technologies } from '../../matching-algo/data-model/output-model/Technologies';
-
-export interface ITechnology {
-  [key: string]: string[];
-}
-
-export interface ILanguageAndFrameworkPair {
-  language: string;
-  framework?: string;
-}
+import {
+  ILanguageAndFrameworkPair,
+  ITechnology,
+} from './ObtainCandidatesCommand';
 
 // Usually you want to go through a factory/Data Mapper model
 // This is a temporary command
 
-export class ObtainCandidatesCommand extends AbstractCommand {
+export class ObtainRankedCandidatesCommand extends AbstractCommand {
   private languagesAndFrameworkSupported: AbstractLanguageMatcher[] = allMatchers;
 
   private queryExclude: {} = {
