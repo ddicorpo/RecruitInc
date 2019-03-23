@@ -26,9 +26,8 @@ export class CronJobs {
   //Explanation: Run at second 0, minute 0, hour 0, every day, every month, from sunday to saturday
   public async scheduleCron(cronTime: CronTime = '0 0 */2 * * 0-6'): CronJob {
     const CronJob = require('cron').CronJob;
-
+    let cronjobs: CronJobs = new CronJobs();
     const job = new CronJob(cronTime, async function() {
-      let cronjobs: CronJobs = new CronJobs();
       await cronjobs.scan();
     });
     job.start();
@@ -42,8 +41,8 @@ export class CronJobs {
   ): CronJob {
     const CronJob = require('cron').CronJob;
 
+    let controller: Controller = Controller.get_instance();
     const job = new CronJob(cronTime, function() {
-      let controller: Controller = Controller.get_instance();
       controller.rotateKeys();
     });
     job.start();
@@ -58,8 +57,8 @@ export class CronJobs {
   ): CronJob {
     const CronJob = require('cron').CronJob;
 
+    let controller: Controller = Controller.get_instance();
     const job = new CronJob(cronTime, async function() {
-      let controller: Controller = Controller.get_instance();
       await controller.processUsers();
     });
     job.start();
