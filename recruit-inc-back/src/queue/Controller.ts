@@ -384,6 +384,6 @@ export class Controller {
   //take the top token in the array, and push it to the bottom
   public rotateKeys() {
     let temp = this.githubTokens.pop();
-    this.githubTokens.push(temp);
+    this.githubTokens.unshift(temp);
   }
 }

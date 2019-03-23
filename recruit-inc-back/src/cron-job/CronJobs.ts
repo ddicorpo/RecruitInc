@@ -42,9 +42,9 @@ export class CronJobs {
   ): CronJob {
     const CronJob = require('cron').CronJob;
 
-    const job = new CronJob(cronTime, async function() {
-      let cronjobs: CronJobs = new CronJobs();
-      this.controller.rotateKeys();
+    const job = new CronJob(cronTime, function() {
+      let controller: Controller = Controller.get_instance();
+      controller.rotateKeys();
     });
     job.start();
 
@@ -59,8 +59,8 @@ export class CronJobs {
     const CronJob = require('cron').CronJob;
 
     const job = new CronJob(cronTime, async function() {
-      let cronjobs: CronJobs = new CronJobs();
-      await this.controller.processUsers();
+      let controller: Controller = Controller.get_instance();
+      await controller.processUsers();
     });
     job.start();
 
