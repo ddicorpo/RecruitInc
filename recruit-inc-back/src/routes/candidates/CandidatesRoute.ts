@@ -50,7 +50,7 @@ export class CandidatesRoute extends baseRoute {
       });
 
     app
-      .route('/api/candidates/ranked')
+      .route('/api/candidates/ranking')
       .get(async (request: Request, response: Response) => {
         try {
           const candidatesCommand: ObtainRankedCandidatesCommand = new ObtainRankedCandidatesCommand();

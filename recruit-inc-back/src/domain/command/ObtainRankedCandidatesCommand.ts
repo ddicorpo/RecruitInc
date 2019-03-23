@@ -17,10 +17,12 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
   private languagesAndFrameworkSupported: AbstractLanguageMatcher[] = allMatchers;
 
   private queryExclude: {} = {
-    'iGit.IGitData.dataEntry.projectInputs.applicantCommits': 0,
-    'iGit.IGitData.dataEntry.projectInputs.projectStructure': 0,
-    'iGit.IGitData.dataEntry.projectInputs.downloadedSourceFile': 0,
-    'iGit.IToken': 0,
+    $project: {
+      'iGit.IGitData.dataEntry.projectInputs.applicantCommits': 0,
+      'iGit.IGitData.dataEntry.projectInputs.projectStructure': 0,
+      'iGit.IGitData.dataEntry.projectInputs.downloadedSourceFile': 0,
+      'iGit.IToken': 0,
+    },
   };
 
   private finder: ApplicantFinder = new ApplicantFinder();
@@ -36,7 +38,7 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
         page = 1;
       }
       let allCandidates: IApplicantModel = await this.finder.findRankedPaginatedQuery(
-        [query],
+        [query, this.queryExclude],
         page
       );
       return JSON.stringify(allCandidates);
@@ -81,8 +83,10 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
     let findQuery: {} =
       filters.length > 0
         ? {
-            'iGit.IGitData.gitProjectSummary.totalOutput': {
-              $all: this.getFilterMatch(filters),
+            $match: {
+              'iGit.IGitData.gitProjectSummary.totalOutput': {
+                $all: this.getFilterMatch(filters),
+              },
             },
           }
         : {};
