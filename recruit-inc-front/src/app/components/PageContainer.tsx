@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Pages } from '../pages/Pages';
 import CandidateSearch from '../pages/CandidateSearch';
 import LocationWatchList from '../pages/LocationWatchlist';
+import CandidateQuestionnaire from "../pages/CandidateQuestionnaire";
 
 class PageContainer extends React.Component<any, any> {
   constructor(props: any) {
@@ -16,6 +17,10 @@ class PageContainer extends React.Component<any, any> {
 
       case Pages.LOCATION_WATCHLIST: {
         return <LocationWatchList />;
+      }
+
+      case Pages.CANDIDATE_QUESTIONNAIRE: {
+        return <CandidateQuestionnaire />;
       }
 
       default: {

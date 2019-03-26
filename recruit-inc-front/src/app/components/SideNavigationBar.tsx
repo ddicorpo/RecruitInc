@@ -30,6 +30,11 @@ class SideNavigationBar extends React.Component<any, any> {
                             iconClass="mdi mdi-map-marker"
                             handleSidebarClick={this.props.handleSidebarClick}
                         />
+                        <SideNavigationItem
+                            menuTitle={Pages.CANDIDATE_QUESTIONNAIRE}
+                            iconClass="mdi mdi-magnify"
+                            handleSidebarClick={this.props.handleSidebarClick}
+                        />
                     </ul>
                 </div>
             </div>
