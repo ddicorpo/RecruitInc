@@ -1,7 +1,6 @@
 import { baseService } from './baseService';
 import { Routes } from '../Routes';
 import axios from 'axios';
-import { ToggleFeature } from '../toggle-feature/ToggleFeature';
 
 export class ObtainCandidates extends baseService {
   private page: number = 1;
@@ -21,18 +20,8 @@ export class ObtainCandidates extends baseService {
     this.filters = filters;
   }
 
-  public async execute(): Promise<any> {
-    let toggleFeature: ToggleFeature = new ToggleFeature();
-    await toggleFeature.retrieveToggleFeature();
-
-    let addressToExecute: string = this.serviceAddress;
-
-    //Toggle that we can turn on with the toggle feature
-    if (toggleFeature.isNewFeatureRollout()) {
-      addressToExecute = addressToExecute + '/ranking';
-    }
-
-    addressToExecute = addressToExecute + '?page=' + this.page;
+  public execute(): any {
+    let addressToExecute: string = this.serviceAddress + '?page=' + this.page;
 
     let filterParams: string = '';
     if (typeof this.filters != 'undefined') {

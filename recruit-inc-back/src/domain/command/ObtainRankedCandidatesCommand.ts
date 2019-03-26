@@ -42,7 +42,7 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
         '\n\n\nTHIS IS THE QUERY!!!\n\n\n',
         JSON.stringify([query, this.queryExclude])
       );
-      return;
+      // return;
 
       let allCandidates: IApplicantModel = await this.finder.findRankedPaginatedQuery(
         [query, this.queryExclude],

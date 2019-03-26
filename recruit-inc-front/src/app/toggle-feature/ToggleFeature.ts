@@ -14,11 +14,7 @@ export class ToggleFeature {
       criteria: criteria,
       features: feature,
     });
-
-    //could check for more features conditions here
-    if (fflip.features.newFeatureRollout.enabled) {
-      this.newFeatureRollout = true;
-    }
+    this.newFeatureRollout = fflip.features.newFeatureRollout.enabled;
   }
 
   //Toggle enabled for new feature Rollout. (example)

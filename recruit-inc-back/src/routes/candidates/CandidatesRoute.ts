@@ -49,44 +49,53 @@ export class CandidatesRoute extends baseRoute {
         }
       });
 
+      // Duplicate code since we want to use feature toggle for ranking
+    
     app
       .route('/api/candidates/ranking')
       .get(async (request: Request, response: Response) => {
-        try {
-          const candidatesCommand: ObtainRankedCandidatesCommand = new ObtainRankedCandidatesCommand();
-          let candidates: IApplicantModel[];
-          let page: number = request.query.page;
-          if (request.query.filter === undefined && page === undefined) {
-            // User wants all candidates
-            candidates = await candidatesCommand.getAllCandidates();
-          } else {
-            //User wants candidates by page
-            const rawFilters = request.query.filter;
+        //TODO: Add feature toggle request
+        const isRankingEnable : boolean = true;
+        if(isRankingEnable){
+          try {
+            const candidatesCommand: ObtainRankedCandidatesCommand = new ObtainRankedCandidatesCommand();
+            let candidates: IApplicantModel[];
+            let page: number = request.query.page;
+            if (request.query.filter === undefined && page === undefined) {
+              // User wants all candidates, can't ranked on nothing
+              candidates = await candidatesCommand.getAllCandidates();
+            } else {
+              //User wants candidates by page
+              const rawFilters = request.query.filter;
 
-            // Make sure the filters always are in an array
-            let filter: string[] = [];
+              // Make sure the filters always are in an array
+              let filter: string[] = [];
 
-            if (rawFilters !== undefined) {
-              filter = Array.isArray(rawFilters) ? rawFilters : [rawFilters];
+              if (rawFilters !== undefined) {
+                filter = Array.isArray(rawFilters) ? rawFilters : [rawFilters];
+              }
+
+              candidates = await candidatesCommand.getCandidates(page, filter);
             }
 
-            candidates = await candidatesCommand.getCandidates(page, filter);
+            this.logCommandCompleted(
+              this.routes.name,
+              ' GET candidates with filter and ranking... '
+            );
+            response.status(200).send(candidates);
+          } catch (CommandException) {
+            this.logCommandFailure(
+              this.routes.name,
+              'GET Candidates',
+              CommandException.name,
+              CommandException.message
+            );
+            response.send(404).send("Can't get Candidates");
           }
-
-          this.logCommandCompleted(
-            this.routes.name,
-            ' GET candidates with filter... '
-          );
-          response.status(200).send(candidates);
-        } catch (CommandException) {
-          this.logCommandFailure(
-            this.routes.name,
-            'GET Candidates',
-            CommandException.name,
-            CommandException.message
-          );
-          response.send(404).send("Can't get Candidates");
+        }else{
+          response.send(404).send("Route not found");
         }
+
       });
 
     app
