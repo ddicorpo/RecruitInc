@@ -10,6 +10,7 @@ import { ObtainCandidates } from '../services/ObtainCandidates';
 import { ObtainLocations } from '../services/ObtainLocations';
 import { ObtainTechnologies } from '../services/ObtainTechnologies';
 import Pagination from 'react-js-pagination';
+import { ObtainFilteredCandidates } from '../services/ObtainFilteredCandidates';
 
 class CandidateSearch extends React.Component<any, any> {
   private logger: Logger;
@@ -17,9 +18,11 @@ class CandidateSearch extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.logger = new Logger();
+    //We don't need bind if we use event... check handleRankChange
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleLanguageChange = this.handleLanguageChange.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
+
     this.state = {
       activePage: 1,
       selectedTechnology: [],
@@ -30,7 +33,6 @@ class CandidateSearch extends React.Component<any, any> {
       isLoaded: false,
       error: undefined,
       isRankEnabled: false,
-      selectedTechOption: [],
       rankedOption: [],
     };
   }
@@ -158,9 +160,48 @@ class CandidateSearch extends React.Component<any, any> {
       });
   };
 
+  getSortedCandidates = (isSearchFilter: boolean, page: number) => {
+    let localCandidates: ICandidate[] = [];
+    let candidatesService: ObtainFilteredCandidates = new ObtainFilteredCandidates();
+
+    candidatesService.changePage(page);
+    this.setState({ activePage: page });
+
+    if (isSearchFilter) {
+      candidatesService.applyFilters(this.state.selectedTechOptions);
+    }
+
+    candidatesService
+      .execute()
+      .then(result => {
+        candidatesService.logActionCompleted(candidatesService.serviceName);
+        let adapter: CandidateAdapter = new CandidateAdapter();
+        localCandidates = adapter.adapt(result.data);
+        this.setState({
+          candidates: localCandidates,
+        });
+      })
+      .catch(error => {
+        candidatesService.logActionFailure(
+          candidatesService.serviceName,
+          error,
+          error
+        );
+      });
+  };
+
   handleSearchClick = () => {
     const page: number = 1;
-    this.getCandidates(true, page);
+    const filterActivated: boolean =
+      this.state.selectedTechOptions !== undefined;
+    if (
+      this.state.rankChoose == undefined ||
+      this.state.rankChoose.value === 'unsorted'
+    ) {
+      this.getCandidates(filterActivated, page);
+    } else {
+      this.getSortedCandidates(filterActivated, page);
+    }
     this.render();
   };
 
