@@ -25,30 +25,58 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
     },
   };
 
+  private queryTmp: {} = {
+    $addFields: { tmp: { $arrayElemAt: ['$iGit.IGitData', 0] } },
+  };
+
+  private queryRemoveTmp: {} = { $project: { tmp: 0 } };
+
+  private querySort: {} = {
+    $sort: { totalLOCQueried: -1, totalCommitsQueried: -1 },
+  };
+
   private finder: ApplicantFinder = new ApplicantFinder();
   constructor(applicationContext?: RequestContext) {
     super();
   }
   public async getCandidates(page: number, filters: string[]): Promise<any> {
     try {
-      const query: {} = this.getQuery(filters);
+      const matchingQuery: {} = this.getMatchingQuery(filters);
 
       //Prevent crash of the application by inserting page=-1 or page=0
       if (page < 1) {
         page = 1;
       }
 
+      const rankQuery: {} = this.getRankingQuery(filters);
+
+      const aggregateQuery: {}[] = [
+        matchingQuery,
+        this.queryExclude,
+        this.queryTmp,
+        rankQuery,
+        this.queryRemoveTmp,
+        this.querySort,
+      ];
+
+      console.log(
+        'THIS IS ALL TEH TECHSSS',
+        JSON.stringify(this.flattenTechnologySupported())
+      );
+
       console.log(
         '\n\n\nTHIS IS THE QUERY!!!\n\n\n',
-        JSON.stringify([query, this.queryExclude])
+        JSON.stringify(aggregateQuery)
       );
-      // return;
+      return new Promise(() => {
+        console.log('HERE IS YOUR PROMISE!!');
+      });
 
-      let allCandidates: IApplicantModel = await this.finder.findRankedPaginatedQuery(
-        [query, this.queryExclude],
-        page
-      );
-      return JSON.stringify(allCandidates);
+      // let allCandidates: IApplicantModel = await this.finder.findRankedPaginatedQuery(
+      //   [matchingQuery, this.queryExclude],
+      //   page
+      // );
+      // return JSON.stringify(allCandidates);
     } catch (CommandException) {
       throw CommandException;
     }
@@ -86,7 +114,71 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
     }
   }
 
-  public getQuery(filters: string[]): {} {
+  private getRankingMatch(filters: string[]) {
+    const cleanedFilters: Set<string> = new Set<string>();
+    for (const filter of filters) {
+      cleanedFilters.add(filter.toLowerCase());
+    }
+
+    // {"Javascript":["React","Typescript","Vue","Angular"],"Python":["Django","Flask"],"Csharp":[],"Java":[],"Ruby":[]}
+    const technologies: ITechnology = this.getTechnologiesSupported();
+
+    const elementsToProcess: ILanguageAndFrameworkPair[] = this.getPairsOfLanguageAndFrameworks(
+      cleanedFilters,
+      technologies
+    );
+
+    const technologiesToQuery: ITechnology = this.getTechnologiesToQuery(
+      elementsToProcess
+    );
+
+    // ["Javascript", "Python", "Csharp", "Java", "Ruby"]
+    const languages: string[] = Object.keys(technologiesToQuery);
+
+    const languagesQuery: {}[] = [];
+
+    for (const language of languages) {
+      const languageCriterias: {}[] = [];
+      languageCriterias.push({ linesOfCode: { $gt: 0 } });
+      languageCriterias.push({ numberOfCommits: { $gt: 0 } });
+
+      const frameworks: string[] = technologiesToQuery[language];
+      for (const framework of frameworks) {
+        languageCriterias.push({
+          frameworks: {
+            $elemMatch: {
+              technologyName: framework,
+              $and: [
+                { linesOfCode: { $gt: 0 } },
+                { numberOfCommits: { $gt: 0 } },
+              ],
+            },
+          },
+        });
+      }
+
+      languagesQuery.push({
+        $elemMatch: {
+          languageOrFramework: language,
+          $and: languageCriterias,
+        },
+      });
+    }
+    return languagesQuery;
+  }
+
+  public getRankingQuery(filters: string[]): {} {
+    let findQuery: {} = {
+      $addFields:
+        filters.length > 0
+          ? this.getRankingMatch(filters)
+          : this.getRankingMatch(this.flattenTechnologySupported()),
+    };
+
+    return findQuery;
+  }
+
+  public getMatchingQuery(filters: string[]): {} {
     let findQuery: {} =
       filters.length > 0
         ? {
@@ -115,6 +207,19 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
     // Returns something like this:
     // {"Javascript":["React","Typescript","Vue","Angular"],"Python":["Django","Flask"],"Csharp":[],"Java":[],"Ruby":[]}
     return technologies;
+  }
+
+  private flattenTechnologySupported(): string[] {
+    const technologies: ITechnology = this.getTechnologiesSupported();
+    const techList: string[] = [];
+    const languages: string[] = Object.keys(technologies);
+    for (const language of languages) {
+      techList.push(language);
+      for (const framework of technologies[language]) {
+        techList.push(framework);
+      }
+    }
+    return techList;
   }
 
   // This monstrosity of a method will generate the object corresponding to a query similar to this:
