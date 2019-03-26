@@ -1,8 +1,8 @@
-import { baseService } from './baseService';
+import { BaseService } from './BaseService';
 import { Routes } from '../Routes';
 import axios from 'axios';
 
-export class ObtainCandidates extends baseService {
+export class ObtainCandidates extends BaseService {
   private page: number = 1;
   private filters: any[];
 

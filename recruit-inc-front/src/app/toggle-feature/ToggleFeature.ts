@@ -6,7 +6,6 @@ export class ToggleFeature {
   private newFeatureRollout: boolean = false;
 
   public async retrieveToggleFeature(): Promise<void> {
-    console.log('Retrieving toggle feature configs ');
     let feature = await this.getFeature();
     let criteria = await this.getCriteria();
 

@@ -28,9 +28,10 @@ class CandidateSearch extends React.Component<any, any> {
       locationFromBackEnd: [],
       candidates: [],
       isLoaded: false,
-      isRankedActive: this.props.isRanking,
       error: undefined,
+      isRankEnabled: false,
       selectedTechOption: [],
+      rankedOption: [],
     };
   }
 
@@ -135,7 +136,6 @@ class CandidateSearch extends React.Component<any, any> {
     this.setState({ activePage: page });
 
     if (isSearchFilter) {
-      console.log(this.state.selectedTechOptions);
       candidatesService.applyFilters(this.state.selectedTechOptions);
     }
 
@@ -164,18 +164,30 @@ class CandidateSearch extends React.Component<any, any> {
     this.render();
   };
 
-  handleLoadClick = () => {
-    const page: number = 1;
-    this.getCandidates(false, page);
-    this.render();
-  };
-
   handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {
     // Once we have a call to the backend, we'll capture this through the button press
     this.setState({
       cityOption: value,
     });
   }
+
+  handleRankChange = event => {
+    //we'll capture this through the button press
+    this.setState({
+      rankChoose: event,
+    });
+  };
+
+  private loadSortOption() {
+    let choices: IOptionsBox[] = [];
+    choices.push({ value: 'sorted', label: 'Most Experienced' });
+    choices.push({ value: 'unsorted', label: 'No Sort' });
+
+    this.setState({
+      rankOption: choices,
+    });
+  }
+
   /**
    * Function call before the render()
    */
@@ -184,10 +196,11 @@ class CandidateSearch extends React.Component<any, any> {
     this.loadSupportedTechnologies();
     // Load Supported Location
     this.loadSupportedLocations();
+    // Add supported sorting
+    this.loadSortOption();
   }
 
   render() {
-    //let isResultEmpty = this.state.candidates == undefined || this.state.candidates.length < 1;
     return (
       <div className="container-fluid">
         <div className="page-header">
@@ -230,7 +243,25 @@ class CandidateSearch extends React.Component<any, any> {
                   </div>
                 </div>
               </div>
-              {this.state.isRankedActive ? <p> active </p> : <p> not active</p>}
+              {this.props.isRanking ? (
+                <div className="col-md-4">
+                  <div className="p-h-10">
+                    <div className="form-group">
+                      <label className="control-label">Sort</label>
+                      <Select
+                        value={this.state.rankChoose}
+                        onChange={event => this.handleRankChange(event)}
+                        isSearchable={true}
+                        placeholder="Sort"
+                        options={this.state.rankOption}
+                        className="form-control"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <p />
+              )}
               <div className="col-md-4">
                 <div className="p-h-10">
                   <div className="form-group">
