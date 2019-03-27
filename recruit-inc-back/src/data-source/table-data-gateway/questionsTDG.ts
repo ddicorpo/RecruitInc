@@ -7,7 +7,7 @@ export class questionsTDG {
   private baseTDG: BaseTDG;
 
   constructor() {
-    this.baseTDG = new BaseTDG(questionsSchema);
+    this.baseTDG = new BaseTDG(questionsModel);
   }
 
   public create(

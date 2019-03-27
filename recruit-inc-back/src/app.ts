@@ -7,6 +7,7 @@ import { Logger } from './Logger';
 import { LocationsRoute } from './routes/locations/LocationsRoute';
 import { TechnologiesRoute } from './routes/technologies/TechnologiesRoute';
 import { CandidatesRoute } from './routes/candidates/CandidatesRoute';
+import { QuestionsRoute } from './routes/questions/QuestionsRoute';
 var cors = require('cors');
 
 class App {
@@ -15,9 +16,10 @@ class App {
   public applicantGithub: ApplicantGithub = new ApplicantGithub();
   public candidateDataRout: Candidate = new Candidate();
   public oauthCodeRoute: OAuthCode = new OAuthCode();
-  public locationRoute : LocationsRoute = new LocationsRoute();
-  public techRoute : TechnologiesRoute = new TechnologiesRoute();
-  public candidateRoute : CandidatesRoute = new CandidatesRoute();
+  public locationRoute: LocationsRoute = new LocationsRoute();
+  public techRoute: TechnologiesRoute = new TechnologiesRoute();
+  public candidateRoute: CandidatesRoute = new CandidatesRoute();
+  public questionRoute: QuestionsRoute = new QuestionsRoute();
   private logger: Logger;
   constructor() {
     this.logger = new Logger();
@@ -70,6 +72,7 @@ class App {
     this.locationRoute.routes(this.app);
     this.techRoute.routes(this.app);
     this.candidateRoute.routes(this.app);
+    this.questionRoute.routes(this.app);
   }
 
   private config(): void {

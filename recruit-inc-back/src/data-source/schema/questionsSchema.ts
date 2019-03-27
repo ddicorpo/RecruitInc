@@ -5,7 +5,7 @@ import { ApplicantSchema } from './applicantSchema';
 import { IQuestionsModel } from '../../domain/model/IQuestionModel';
 import { IAnswersModel } from '../../domain/model/IAnswersModel';
 
-export class questionsSchema extends Typegoose {
+export class questionsSchema extends Typegoose implements IQuestionsModel {
   @prop()
   _id?: mongoose.Types.ObjectId;
 
@@ -17,9 +17,16 @@ export class questionsSchema extends Typegoose {
 
   @prop()
   answers: Array<IAnswersModel>;
+
+  public static getModel(schema: Schema, collection: string) {
+    return new schema().getModelForClass(schema, {
+      schemaOptions: { collection: collection },
+    });
+  }
 }
+
 //TODO: Add Model
-export const questionsModel: Model<IQuestionsModel> = ApplicantSchema.getModel(
+export const questionsModel: Model<IQuestionsModel> = questionsSchema.getModel(
   questionsSchema,
   'questions'
 );

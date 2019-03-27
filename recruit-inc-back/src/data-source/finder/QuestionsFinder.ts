@@ -1,6 +1,6 @@
 import { BaseFinder } from './BaseFinder';
 import { Types } from 'mongoose';
-import { questionsSchema } from '../schema/questionsSchema';
+import { questionsModel, questionsSchema } from '../schema/questionsSchema';
 import { IQuestionsModel } from '../../domain/model/IQuestionModel';
 
 /**
@@ -13,12 +13,20 @@ import { IQuestionsModel } from '../../domain/model/IQuestionModel';
  * *************************************************************
  */
 export class QuestionsFinder {
-  private baseFinder: BaseFinder = new BaseFinder(questionsSchema);
+  private baseFinder: BaseFinder = new BaseFinder(questionsModel);
 
   /**
    * Getting all tree queues
    */
   public findAll(): Promise<IQuestionsModel[]> {
     return this.baseFinder.findAll();
+  }
+
+  /**
+   * get all the questions as part of a group
+   * @param group
+   */
+  public findAllByGroup(group: string): Promise<IQuestionsModel> {
+    return this.baseFinder.findBy({ type: group });
   }
 }
