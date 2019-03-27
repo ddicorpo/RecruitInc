@@ -10,9 +10,6 @@ import {
   ITechnology,
 } from './ObtainCandidatesCommand';
 
-// Usually you want to go through a factory/Data Mapper model
-// This is a temporary command
-
 export class ObtainRankedCandidatesCommand extends AbstractCommand {
   private languagesAndFrameworkSupported: AbstractLanguageMatcher[] = allMatchers;
 
@@ -114,7 +111,14 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
     }
   }
 
-  private getRankingMatch(filters: string[]) {
+  private getNewRankingFields(filters: string[]): {} {
+    return {
+      totalLOCQueried: this.getRankingMatch(filters, 'linesOfCode'),
+      totalCommitsQueried: this.getRankingMatch(filters, 'numberOfCommits'),
+    };
+  }
+
+  private getRankingMatch(filters: string[], target: string): {} {
     const cleanedFilters: Set<string> = new Set<string>();
     for (const filter of filters) {
       cleanedFilters.add(filter.toLowerCase());
@@ -135,44 +139,238 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
     // ["Javascript", "Python", "Csharp", "Java", "Ruby"]
     const languages: string[] = Object.keys(technologiesToQuery);
 
-    const languagesQuery: {}[] = [];
-
+    const languagesInFilters: Set<string> = this.getLanguageSetUserAskedFor(
+      filters
+    );
+    const languagesNotToCount: string[] = [];
+    const languagesToCount: string[] = [];
     for (const language of languages) {
-      const languageCriterias: {}[] = [];
-      languageCriterias.push({ linesOfCode: { $gt: 0 } });
-      languageCriterias.push({ numberOfCommits: { $gt: 0 } });
+      // This is for the case where the user wants to count people that have LOC in React but not count Javascript
+      const isLanguageOnlyHereForFramework: boolean = !languagesInFilters.has(
+        language.toLowerCase()
+      );
+      if (isLanguageOnlyHereForFramework) {
+        languagesNotToCount.push(language);
+      } else {
+        languagesToCount.push(language);
+      }
+    }
 
-      const frameworks: string[] = technologiesToQuery[language];
-      for (const framework of frameworks) {
-        languageCriterias.push({
-          frameworks: {
-            $elemMatch: {
-              technologyName: framework,
-              $and: [
-                { linesOfCode: { $gt: 0 } },
-                { numberOfCommits: { $gt: 0 } },
-              ],
+    const hasLanguagesToCount: boolean = languagesToCount.length > 0;
+    const hasLanguagesToSkipContainingFrameworksToCount: boolean =
+      languagesNotToCount.length > 0;
+
+    const matchingLanguageToCountArray = this.getMongoTechnologyArrayOfConditions(
+      '$$totalOutput.languageOrFramework',
+      languagesToCount
+    );
+
+    const matchingLanguageNotToCountArray: {}[] = this.getMongoTechnologyArrayOfConditions(
+      '$$totalOutput.languageOrFramework',
+      languagesNotToCount
+    );
+
+    const frameworksBelongingToLanguagesToCount: string[] = this.getFrameworksRelatedToLanguageArray(
+      languagesToCount,
+      technologiesToQuery
+    );
+
+    const frameworksBelongingToLanguagesNotToCount: string[] = this.getFrameworksRelatedToLanguageArray(
+      languagesNotToCount,
+      technologiesToQuery
+    );
+
+    const languageTarget: string = '$$totalOutput.'.concat(target);
+    const frameworkTarget: string = '$$frameworks.'.concat(target);
+
+    let insideRankQuery: {};
+    if (hasLanguagesToCount && !hasLanguagesToSkipContainingFrameworksToCount) {
+      insideRankQuery = {
+        $cond: {
+          if: {
+            $or: matchingLanguageToCountArray,
+          },
+          then: {
+            $add: [
+              {
+                $sum: {
+                  $map: {
+                    input: '$$totalOutput.frameworks',
+                    as: 'frameworks',
+                    in: {
+                      $cond: {
+                        if: {
+                          $or: this.getMongoTechnologyArrayOfConditions(
+                            '$$frameworks.technologyName',
+                            frameworksBelongingToLanguagesToCount
+                          ),
+                        },
+                        then: {
+                          frameworkTarget,
+                        },
+                        else: 0,
+                      },
+                    },
+                  },
+                },
+              },
+              languageTarget,
+            ],
+          },
+          else: 0,
+        },
+      };
+    } else if (
+      !hasLanguagesToCount &&
+      hasLanguagesToSkipContainingFrameworksToCount
+    ) {
+      insideRankQuery = {
+        $cond: {
+          if: {
+            $or: matchingLanguageNotToCountArray,
+          },
+          then: {
+            $sum: {
+              $map: {
+                input: '$$totalOutput.frameworks',
+                as: 'frameworks',
+                in: {
+                  $cond: {
+                    if: {
+                      $or: this.getMongoTechnologyArrayOfConditions(
+                        '$$frameworks.technologyName',
+                        frameworksBelongingToLanguagesNotToCount
+                      ),
+                    },
+                    then: {
+                      frameworkTarget,
+                    },
+                    else: 0,
+                  },
+                },
+              },
             },
           },
-        });
-      }
-
-      languagesQuery.push({
-        $elemMatch: {
-          languageOrFramework: language,
-          $and: languageCriterias,
+          else: 0,
         },
-      });
+      };
+    } else if (
+      hasLanguagesToCount &&
+      hasLanguagesToSkipContainingFrameworksToCount
+    ) {
+      insideRankQuery = {
+        $cond: {
+          if: {
+            $or: matchingLanguageToCountArray,
+          },
+          then: {
+            $add: [
+              {
+                $sum: {
+                  $map: {
+                    input: '$$totalOutput.frameworks',
+                    as: 'frameworks',
+                    in: {
+                      $cond: {
+                        if: {
+                          $or: this.getMongoTechnologyArrayOfConditions(
+                            '$$frameworks.technologyName',
+                            frameworksBelongingToLanguagesToCount
+                          ),
+                        },
+                        then: {
+                          frameworkTarget,
+                        },
+                        else: 0,
+                      },
+                    },
+                  },
+                },
+              },
+              languageTarget,
+            ],
+          },
+          else: {
+            $cond: {
+              if: {
+                $or: matchingLanguageNotToCountArray,
+              },
+              then: {
+                $sum: {
+                  $map: {
+                    input: '$$totalOutput.frameworks',
+                    as: 'frameworks',
+                    in: {
+                      $cond: {
+                        if: {
+                          $or: this.getMongoTechnologyArrayOfConditions(
+                            '$$frameworks.technologyName',
+                            frameworksBelongingToLanguagesNotToCount
+                          ),
+                        },
+                        then: {
+                          frameworkTarget,
+                        },
+                        else: 0,
+                      },
+                    },
+                  },
+                },
+              },
+              else: 0,
+            },
+          },
+        },
+      };
+    } else {
+      // This case is supposed to be impossible
     }
-    return languagesQuery;
+
+    // const insideMap: {} = {$cond: {if: {$or: }}}
+    const sum: {} = {
+      $sum: {
+        $map: {
+          input: '$tmp.gitProjectSummary.totalOutput',
+          as: 'totalOutput',
+          in: insideRankQuery,
+        },
+      },
+    };
+
+    return sum;
+  }
+
+  private getFrameworksRelatedToLanguageArray(
+    languagesToCount: string[],
+    technologiesToQuery: ITechnology
+  ): string[] {
+    const frameworkArray: string[] = [];
+    for (const language of languagesToCount) {
+      const frameworks: string[] = technologiesToQuery[language];
+      for (const framework of frameworks) {
+        frameworkArray.push(framework);
+      }
+    }
+    return frameworkArray;
+  }
+
+  private getMongoTechnologyArrayOfConditions(
+    expression: string,
+    languagesToCount: string[]
+  ) {
+    const matchingLanguageToCountArray: {}[] = [];
+    for (const language of languagesToCount) {
+      matchingLanguageToCountArray.push({ $eq: [expression, language] });
+    }
+    return matchingLanguageToCountArray;
   }
 
   public getRankingQuery(filters: string[]): {} {
     let findQuery: {} = {
       $addFields:
         filters.length > 0
-          ? this.getRankingMatch(filters)
-          : this.getRankingMatch(this.flattenTechnologySupported()),
+          ? this.getNewRankingFields(filters)
+          : this.getNewRankingFields(this.flattenTechnologySupported()),
     };
 
     return findQuery;
@@ -380,5 +578,15 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
       }
     }
     return null;
+  }
+
+  private getLanguageSetUserAskedFor(filters: string[]): Set<string> {
+    const languages: Set<string> = new Set<string>();
+    const technologies: ITechnology = this.getTechnologiesSupported();
+    const languagesSupported: string[] = Object.keys(technologies);
+    for (const language of languagesSupported) {
+      languages.add(language.toLowerCase());
+    }
+    return languages;
   }
 }
