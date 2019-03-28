@@ -1,7 +1,6 @@
 import { prop, Typegoose } from 'typegoose';
 import { mongoose } from 'mongoose';
 import { Model, Schema } from 'mongoose';
-import { ApplicantSchema } from './applicantSchema';
 import { IQuestionsModel } from '../../domain/model/IQuestionModel';
 import { IAnswersModel } from '../../domain/model/IAnswersModel';
 
