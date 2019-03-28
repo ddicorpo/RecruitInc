@@ -1,6 +1,6 @@
 import { BaseTDG } from './baseTDG';
 import { Types, Model } from 'mongoose';
-import { questionsSchema, questionsModel } from '../schema/questionsSchema';
+import { questionsModel } from '../schema/questionsSchema';
 import { IQuestionsModel } from '../../domain/model/IQuestionModel';
 
 export class questionsTDG {
@@ -39,7 +39,7 @@ export class questionsTDG {
       );
       return this.baseTDG.update(Types.ObjectId(_id), questionsModelToUpdate);
     } catch (Exception) {
-      throw new Error('Error while updating questions Model');
+      throw new Error('Error while updating questions model');
     }
   }
 
@@ -47,7 +47,7 @@ export class questionsTDG {
     try {
       return this.baseTDG.delete(Types.ObjectId(_id));
     } catch (Exception) {
-      throw new Error('Error while deleting questions Model');
+      throw new Error('Error while deleting questions model');
     }
   }
 }

@@ -1,7 +1,7 @@
 import { BaseFinder } from './BaseFinder';
 import { Types } from 'mongoose';
-import { questionsModel } from '../schema/questionsSchema';
-import { IQuestionsModel } from '../../domain/model/IQuestionModel';
+import { resultsModel } from '../schema/resultsSchema';
+import { IResultsModel } from '../../domain/model/IResultsModel';
 
 /**
  * Inspired by: https://github.com/gsi-manuel/ts-nodejs-express-webpack/blob/master/src/services/province.service.ts
@@ -12,21 +12,13 @@ import { IQuestionsModel } from '../../domain/model/IQuestionModel';
  * NOTE: This class doesn't include logic it's only transaction
  * *************************************************************
  */
-export class QuestionsFinder {
-  private baseFinder: BaseFinder = new BaseFinder(questionsModel);
+export class ResultsFinder {
+  private baseFinder: BaseFinder = new BaseFinder(resultsModel);
 
   /**
-   * Getting all questions
+   * Getting all results
    */
-  public findAll(): Promise<IQuestionsModel[]> {
+  public findAll(): Promise<IResultsModel[]> {
     return this.baseFinder.findAll();
-  }
-
-  /**
-   * get all the questions as part of a group
-   * @param group
-   */
-  public findAllByGroup(group: string): Promise<IQuestionsModel> {
-    return this.baseFinder.findBy({ type: group });
   }
 }
