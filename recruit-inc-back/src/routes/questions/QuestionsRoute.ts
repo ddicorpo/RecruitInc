@@ -1,29 +1,29 @@
 import { baseRoute } from '../baseRoute';
 import { Response, Request } from 'express';
-import { ObrtainQuestionaireQuestionsCommand } from '../../domain/command/ObtainQuestionnaireQuestionsCommand';
+import { ObtainQuestionaireQuestionsCommand } from '../../domain/command/ObtainQuestionnaireQuestionsCommand';
 import { questionsTDG } from '../../data-source/table-data-gateway/questionsTDG';
 
 export class QuestionsRoute extends baseRoute {
   public routes(app): void {
     /**
-     * GET to obtain all candidate in database (assuming we only have Montreal people for now)
+     * GET to obtain all questions in database
      */
     app
       .route('/api/questions')
       .get(async (request: Request, response: Response) => {
         try {
-          const questionsCommand: ObrtainQuestionaireQuestionsCommand = new ObrtainQuestionaireQuestionsCommand();
+          const questionsCommand: ObtainQuestionaireQuestionsCommand = new ObtainQuestionaireQuestionsCommand();
           let questions: any[];
           let page: number = request.query.page || 1;
 
           if (request.query.filter === undefined && page === undefined) {
-            // User wants all candidates
-            questions = await questionsCommand.getQuestionnaireResults(
+            // User wants all questions
+            questions = await questionsCommand.getQuestionnaireQuestions(
               page,
               []
             );
           } else {
-            //User wants candidates by page
+            //User wants questions by page
             const rawFilters = request.query.filter;
 
             // Make sure the filters always are in an array
@@ -33,16 +33,11 @@ export class QuestionsRoute extends baseRoute {
               filter = Array.isArray(rawFilters) ? rawFilters : [rawFilters];
             }
 
-            questions = await questionsCommand.getQuestionnaireResults(
+            questions = await questionsCommand.getQuestionnaireQuestions(
               page,
               filter
             );
           }
-
-          // const questionsFinder: QuestionsFinder = new QuestionsFinder();
-          //
-          // try {
-          //     const questions = await questionsModel.findAll();
 
           this.logCommandCompleted(
             this.routes.name,
@@ -60,6 +55,9 @@ export class QuestionsRoute extends baseRoute {
         }
       });
 
+    /**
+     * Add a question to the database
+     */
     app
       .route('/api/questions')
       .post(async (request: Request, response: Response) => {
@@ -82,6 +80,9 @@ export class QuestionsRoute extends baseRoute {
         }
       });
 
+    /**
+     * Update a question in the database given the ID
+     **/
     app
       .route('/api/questions/:id')
       .patch(async (request: Request, response: Response) => {
@@ -108,6 +109,9 @@ export class QuestionsRoute extends baseRoute {
         }
       });
 
+    /**
+     * Delete a question from the database given an ID
+     */
     app
       .route('/api/questions/:id')
       .delete(async (request: Request, response: Response) => {

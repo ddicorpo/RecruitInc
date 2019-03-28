@@ -3,14 +3,14 @@ import { RequestContext } from './RequestContext';
 import { QuestionsFinder } from '../../data-source/finder/QuestionsFinder';
 import { IQuestionsModel } from '../model/IQuestionModel';
 
-export class ObrtainQuestionaireQuestionsCommand extends AbstractCommand {
+export class ObtainQuestionaireQuestionsCommand extends AbstractCommand {
   private finder: QuestionsFinder = new QuestionsFinder();
 
   constructor(applicationContext?: RequestContext) {
     super();
   }
 
-  public async getQuestionnaireResults(
+  public async getQuestionnaireQuestions(
     page: number,
     filters: string[]
   ): Promise<any> {
