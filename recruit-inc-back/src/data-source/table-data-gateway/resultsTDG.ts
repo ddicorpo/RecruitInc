@@ -3,7 +3,7 @@ import { Types, Model } from 'mongoose';
 import { resultsModel } from '../schema/resultsSchema';
 import { IResultsModel } from '../../domain/model/IResultsModel';
 
-export class questionsTDG {
+export class resultsTDG {
   private baseTDG: BaseTDG;
 
   constructor() {

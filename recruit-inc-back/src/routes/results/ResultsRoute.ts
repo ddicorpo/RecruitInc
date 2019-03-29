@@ -1,9 +1,13 @@
 import { baseRoute } from '../baseRoute';
 import { Response, Request } from 'express';
 import { ObtainQuestionnaireResultsCommand } from '../../domain/command/ObtainQuestionnaireResultsCommand';
+import { resultsTDG } from '../../data-source/table-data-gateway/resultsTDG';
 
 export class ResultsRoute extends baseRoute {
   public routes(app): void {
+    /**
+     * Get to obtain all results in database
+     */
     app
       .route('/api/results')
       .get(async (request: Request, response: Response) => {
@@ -30,13 +34,13 @@ export class ResultsRoute extends baseRoute {
               page,
               filter
             );
-
-            this.logCommandCompleted(
-              this.routes.name,
-              'Get results with filter...'
-            );
-            return response.status(200).send(results);
           }
+
+          this.logCommandCompleted(
+            this.routes.name,
+            'Get results with filter...'
+          );
+          return response.status(200).send(results);
         } catch (CommandException) {
           this.logCommandFailure(
             this.routes.name,
@@ -45,6 +49,31 @@ export class ResultsRoute extends baseRoute {
             CommandException.message
           );
           return response.status(400).send("Can't get Results");
+        }
+      });
+
+    /**
+     * Add a result to the database
+     */
+    app
+      .route('/api/results')
+      .post(async (request: Request, response: Response) => {
+        const { fullName, total, group } = request.body;
+
+        const resultTDG: resultsTDG = new resultsTDG();
+
+        try {
+          await resultTDG.create({ fullName, total, group });
+
+          return response.status(201).send('Result Created Successfully');
+        } catch (CommandException) {
+          this.logCommandFailure(
+            this.routes.name,
+            'POST Result',
+            CommandException.name,
+            CommandException.message
+          );
+          return response.status(400).send("Can't add Result");
         }
       });
   }

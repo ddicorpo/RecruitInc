@@ -76,7 +76,7 @@ export class QuestionsRoute extends baseRoute {
             CommandException.name,
             CommandException.message
           );
-          return response.status(400).send("Can't get Questions");
+          return response.status(400).send("Can't add Questions");
         }
       });
 
