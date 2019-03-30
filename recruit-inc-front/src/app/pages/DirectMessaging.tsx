@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as Realtime from 'realtime-messaging';
+import '../assets/css/chat.css';
 import { ChatMessage } from '../components/ChatMessage';
 
 import MessageInput from '../components/MessageInput';
@@ -117,13 +118,16 @@ class DirectMessaging extends React.Component<ChatProps, ChatState> {
           <h2 className="header-title">Direct Messaging</h2>
         </div>
 
-        <div>
+        <div className="chat-message">
+          <ChatMessages chatId={this.ID} messages={this.state.messages} />
+        </div>
+
+        <div className="message-input">
           <MessageInput
             realtime={this.realtime}
             channel={this.channel}
             chatId={this.ID}
           />
-          <ChatMessages chatId={this.ID} messages={this.state.messages} />
         </div>
       </div>
     );

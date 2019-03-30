@@ -20,3 +20,16 @@
   padding: 0;
   color: red;
 }
+
+.message-input {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+}
+
+.chat-message {
+  position: absolute;
+  max-height: 360px;
+  overflow-y: auto;
+  width: 78%;
+}

@@ -56,7 +56,8 @@ class MessageInput extends React.Component<MessageInputProps, any> {
           className="materialize-input msgInput"
           placeholder="Enter your message"
           onKeyPress={this.onEnter.bind(this)}
-        />
+        />{' '}
+        {'    '}
         <button
           className="btn waves-effect waves-light"
           type="submit"
