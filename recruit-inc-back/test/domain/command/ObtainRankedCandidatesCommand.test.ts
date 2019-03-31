@@ -4,7 +4,7 @@ import { ObtainRankedCandidatesCommand } from '../../../src/domain/command/Obtai
 
 require('dotenv').config(); //Get environment variables
 
-describe.only('Query created to fetch different filters', () => {
+describe('Query created to fetch different filters', () => {
   it('Should return the right ranked query when single language is passed', async () => {
     // GIVEN
     const obtainCandidatesCommand: ObtainRankedCandidatesCommand = new ObtainRankedCandidatesCommand();
