@@ -19,9 +19,13 @@ export class CronJobs {
   private githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
   private cronFinder: CronFinder = new CronFinder();
   private githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-  private controller: Controller = Controller.get_instance();
+  public githubTokens: string = process.env.GITHUB_DEFAULT_TOKEN_ARRAY;
+  public controller: Controller = Controller.get_instance();
   private controllerRunning: boolean = false;
 
+  constructor() {
+    this.controller.initTokens(this.githubTokens.split(','));
+  }
   //Default crontime: checks to see if the controller is running or not
   //Explanation: Run at second 0, minute 0, hour 0, every day, every month, from sunday to saturday
   public async scheduleCron(cronTime: CronTime = '0 0 */2 * * 0-6'): CronJob {

@@ -15,7 +15,6 @@ import {
   ScanningStatus,
 } from '../data-source/schema/githubUserSchema';
 import { GithubUsersTDG } from '../data-source/table-data-gateway/githubUsersTDG';
-import { tokens } from '../../tokenlist.json';
 import { IncreaseScanUserCommand } from '../domain/command/IncreaseScanUserCommand';
 import { InsertCandidateCommand } from '../domain/command/InsertCandidateCommand';
 import { IApplicantModel, UserType } from '../domain/model/IApplicantModel';
@@ -385,5 +384,9 @@ export class Controller {
   public rotateKeys() {
     let temp = this.githubTokens.pop();
     this.githubTokens.unshift(temp);
+  }
+
+  public initTokens(tokens: string[]) {
+    this.githubTokens = tokens;
   }
 }
