@@ -74,7 +74,6 @@ export class CandidatesRoute extends baseRoute {
               if (rawFilters !== undefined) {
                 filter = Array.isArray(rawFilters) ? rawFilters : [rawFilters];
               }
-
               candidates = await candidatesCommand.getCandidates(page, filter);
             }
 

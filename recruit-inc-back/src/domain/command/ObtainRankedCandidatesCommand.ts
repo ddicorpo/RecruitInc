@@ -5,6 +5,7 @@ import { IApplicantModel } from '../model/IApplicantModel';
 import { allMatchers } from '../../matching-algo/matcher-client/AllMatchers';
 import { AbstractLanguageMatcher } from '../../matching-algo/matcher/AbstractLanguageMatcher';
 import { Technologies } from '../../matching-algo/data-model/output-model/Technologies';
+import {CandidatePage} from '../model/CandidatePageModel'
 import {
   ILanguageAndFrameworkPair,
   ITechnology,
@@ -38,15 +39,23 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
   }
   public async getCandidates(page: number, filters: string[]): Promise<any> {
     try {
-      const matchingQuery: {} = this.getMatchingQuery(filters);
+ 
 
       //Prevent crash of the application by inserting page=-1 or page=0
       if (page < 1) {
         page = 1;
       }
+      let matchingQuery: {} = this.getMatchingQuery(filters);
+      let rankQuery: {} = this.getRankingQuery(filters);
 
-      const rankQuery: {} = this.getRankingQuery(filters);
 
+      if (filters.length == 0) {
+        // If not filter provided we get best java dev... by default filter
+        matchingQuery = this.getMatchingQuery(['Java']);
+        rankQuery = this.getRankingQuery(['Java']);
+      }
+      const numberOfResults : number = page * CandidatePage.size
+      const numberOfResultsToSkip: number = (page - 1) * CandidatePage.size;
       const aggregateQuery: {}[] = [
         matchingQuery,
         this.queryExclude,
@@ -54,26 +63,11 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
         rankQuery,
         this.queryRemoveTmp,
         this.querySort,
+        {$limit: numberOfResults},
+        {$skip: numberOfResultsToSkip}
       ];
-
-      console.log(
-        'THIS IS ALL TEH TECHSSS',
-        JSON.stringify(this.flattenTechnologySupported())
-      );
-
-      console.log(
-        '\n\n\nTHIS IS THE QUERY!!!\n\n\n',
-        JSON.stringify(aggregateQuery)
-      );
-      return new Promise(() => {
-        console.log('HERE IS YOUR PROMISE!!');
-      });
-
-      // let allCandidates: IApplicantModel = await this.finder.findRankedPaginatedQuery(
-      //   [matchingQuery, this.queryExclude],
-      //   page
-      // );
-      // return JSON.stringify(allCandidates);
+      let applicantsFound : IApplicantModel = await this.finder.findRankedPaginatedQuery(aggregateQuery, page);
+      return JSON.stringify(applicantsFound);
     } catch (CommandException) {
       throw CommandException;
     }
@@ -324,6 +318,7 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
       };
     } else {
       // This case is supposed to be impossible
+      //TODO: Return or log error 
     }
 
     // const insideMap: {} = {$cond: {if: {$or: }}}
@@ -384,7 +379,7 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
               'iGit.IGitData.gitProjectSummary.totalOutput': {
                 $all: this.getFilterMatch(filters),
               },
-            },
+            }
           }
         : {};
 
