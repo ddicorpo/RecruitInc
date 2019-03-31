@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Realtime from 'realtime-messaging';
 import { ChatMessage } from './ChatMessage';
+import '../assets/css/chat.css';
 
 export interface MessageInputProps {
   realtime: Realtime.Client;
@@ -51,14 +52,16 @@ class MessageInput extends React.Component<MessageInputProps, any> {
     return (
       <div>
         <input
+          id="messageBox"
           ref="msgInput"
           type="text"
           className="materialize-input msgInput"
           placeholder="Enter your message"
           onKeyPress={this.onEnter.bind(this)}
         />{' '}
-        {'    '}
+        &emsp;
         <button
+          id="sendButton"
           className="btn waves-effect waves-light"
           type="submit"
           name="action"
