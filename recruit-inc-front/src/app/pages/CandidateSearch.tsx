@@ -105,7 +105,12 @@ class CandidateSearch extends React.Component<any, any> {
   }
 
   handlePageChange(pageNumber: number) {
-    this.getCandidates(true, pageNumber);
+    if (this.state.rankChoose.value === 'sorted') {
+      this.getSortedCandidates(true, pageNumber);
+    } else {
+      this.getCandidates(true, pageNumber);
+    }
+
     this.setState({ activePage: pageNumber });
 
     this.logger.info({
