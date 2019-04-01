@@ -76,5 +76,32 @@ export class ResultsRoute extends baseRoute {
           return response.status(400).send("Can't add Result");
         }
       });
+
+    /**
+     * Delete a result from the database given an ID (Only used for testing)
+     */
+    app
+      .route('/api/results/:id')
+      .delete(async (request: Request, response: Response) => {
+        const { id: resultId } = request.params;
+
+        try {
+          const resultTDG: resultsTDG = new resultsTDG();
+
+          await resultTDG.delete(resultId);
+
+          return response.status(203).send('Result Deleted Successfully');
+        } catch (CommandException) {
+          this.logCommandFailure(
+            this.routes.name,
+            'DELETE Result',
+            CommandException.name,
+            CommandException.message
+          );
+          return response
+            .status(400)
+            .send("Can't delete Result with id " + resultId);
+        }
+      });
   }
 }
