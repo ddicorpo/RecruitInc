@@ -15,6 +15,12 @@ class BackendFeatures{
                 //criteria: // if criteria is put, no need for the "enabled"
             },
             {
+                id: 'cronActive',
+                name: 'Cron job is activated and should run',
+                description: 'Cron job should be running',
+                enabled: true
+            },
+            {
                 id: 'experimentalFeature',
                 name: 'An Experimental Feature',
                 description: 'Experimental feature still in development, useful for internal development',
