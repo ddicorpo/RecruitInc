@@ -24,7 +24,7 @@ import { ITokenModel } from '../domain/model/ITokenModel';
 
 export class Controller {
   private static _instance: Controller;
-  public githubTokens = tokens;
+  public githubTokens: string[];
   private constructor() {
     this.logger = new Logger();
   }
