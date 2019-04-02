@@ -23,7 +23,7 @@ export class HomeRoute {
                     return res.status(HttpStatus.BAD_REQUEST).send('invalid name');
                 }
 
-                res.redirect(`/questionnaire?name=${name}`);
+                res.redirect(`/questionnaire?name=${name}&step=0`);
             })
 
     }
