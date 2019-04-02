@@ -2,9 +2,12 @@
 
     <div class="col-lg-12">
 
-        <form action="/test" method="post">
+        <h2>{{questionGroup.type}}</h2>
 
-            <input type="text" value="{{id}}" name="userId" style="display: none">
+        <form action="/questionnaire" method="post">
+
+            <input type="text" value="{{name}}" name="name" style="display: none">
+            <input type="text" value="{{step}}" name="step" style="display: none">
 
             {{#each questionGroup.questions}}
             <h5>{{this.question}}</h5>
@@ -13,8 +16,11 @@
 
                     {{#each this.answers}}
 
-                    <input type="radio" name="{{this.answer}}" id="{{this.answer}}" autocomplete="off" value="{{this.answer}}" required>
-                    <label for="{{this.answer}}">{{this.answer}}</label>
+                    <label>
+                        <input type="radio" name="{{../_id}}" id="{{this.answer}}" autocomplete="off"
+                            value="{{this.answer}}" required>
+                        {{this.answer}}
+                    </label>
                     <br>
 
                     {{/each}}
@@ -25,7 +31,12 @@
             {{/each}}
 
             <div class="text-right">
+                {{#if isLastStep}}
                 <button type="submit" class="btn btn-primary">Submit</button>
+                {{else}}
+                <button type="submit" class="btn btn-primary">Next</button>
+                {{/if}}
+
             </div>
 
         </form>

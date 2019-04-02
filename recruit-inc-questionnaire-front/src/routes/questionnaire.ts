@@ -4,6 +4,7 @@ import axios from 'axios';
 export class QuestionnaireRoute {
 
     private static questions: Array<any>;
+    private static answers: Array<any>;
     private static step: number;
 
     public static routes(app: express.Application): void {
@@ -41,11 +42,49 @@ export class QuestionnaireRoute {
 
                 if (questions) {
                     res.render('questionnaire', {
-                        questionGroup: questions[QuestionnaireRoute.step]
+                        questionGroup: questions[QuestionnaireRoute.step],
+                        isLastStep: QuestionnaireRoute.step == QuestionnaireRoute.questions.length - 1,
+                        name,
+                        step
                     });
                 } else {
                     res.redirect('/');
                 }
+
+            });
+
+        app
+            .route('/questionnaire')
+            .post((req: Request, res: Response) => {
+
+                const { body } = req;
+
+                if (!body.step || !body.name) {
+                    return res.redirect('/');
+                } else {
+                    QuestionnaireRoute.step++;
+                }
+
+                if (!body) {
+                    return res.redirect('/');
+                }
+
+                if (!QuestionnaireRoute.answers) {
+                    QuestionnaireRoute.answers = [];
+                }
+
+                QuestionnaireRoute.answers.push(body);
+
+                const isLastStep = QuestionnaireRoute.step == QuestionnaireRoute.questions.length;
+                if (isLastStep) {
+
+                    console.log(QuestionnaireRoute.answers);
+                    return res.redirect('/finished');
+
+                } else {
+                    res.redirect(`/questionnaire?name=${body.name}&step=${QuestionnaireRoute.step}`)
+                }
+
 
             });
     }
@@ -73,10 +112,6 @@ export class QuestionnaireRoute {
             })
             return gq;
         });
-
-        console.log(groupedQuestions[0]['questions'][0]['question'], groupedQuestions[0]['questions'][0]['answers']);
-
-
 
         QuestionnaireRoute.questions = groupedQuestions;
         // console.log('setting questions', groupedQuestions);
