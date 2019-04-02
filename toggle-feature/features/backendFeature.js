@@ -18,7 +18,7 @@ class BackendFeatures{
                 id: 'cronActive',
                 name: 'Cron job is activated and should run',
                 description: 'Cron job should be running',
-                enabled: true
+                enabled: false
             },
             {
                 id: 'experimentalFeature',
