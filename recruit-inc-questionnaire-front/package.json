@@ -14,6 +14,7 @@
   "author": "Daniel DiCorpo <ddicorpo@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^7.0.0",

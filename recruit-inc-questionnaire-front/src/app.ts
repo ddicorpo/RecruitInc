@@ -6,6 +6,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import expHbs from 'express-handlebars';
+import path from 'path';
+
 import { HttpStatus } from './http/http-status.enum';
 
 // routes
@@ -25,6 +27,8 @@ app.engine('handlebars', expHbs({
     partialsDir: 'src/views/partials',
 }));
 app.set('view engine', 'handlebars');
+
+app.use('/', express.static(path.join(__dirname, './views')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import { HttpStatus } from '../http/http-status.enum';
 
 export class HomeRoute {
 
@@ -11,6 +12,19 @@ export class HomeRoute {
                 res.render('home');
 
             });
+
+        app
+            .route('/')
+            .post(async (req: Request, res: Response) => {
+
+                const { name } = req.body;
+
+                if (!name) {
+                    return res.status(HttpStatus.BAD_REQUEST).send('invalid name');
+                }
+
+                res.redirect(`/questionnaire?name=${name}`);
+            })
 
     }
 }
