@@ -232,6 +232,10 @@ class CandidateSearch extends React.Component<any, any> {
     this.setState({
       rankOption: choices,
     });
+
+    this.setState({
+      rankChoose: choices[0],
+    });
   }
 
   /**
@@ -298,7 +302,6 @@ class CandidateSearch extends React.Component<any, any> {
                         value={this.state.rankChoose}
                         onChange={event => this.handleRankChange(event)}
                         isSearchable={true}
-                        placeholder="Sort"
                         options={this.state.rankOption}
                         className="form-control"
                       />
