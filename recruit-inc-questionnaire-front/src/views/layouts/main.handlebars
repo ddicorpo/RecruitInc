@@ -8,19 +8,30 @@
     <title>RecruitInc Questionnaire</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
-<nav class="navbar navbar-expand navbar-dark" style="background-color: #26d3ca;">
+<nav class="navbar navbar-expand navbar-dark"
+     style="background: linear-gradient(120deg, #1dccdf 0%, #1de4bd 100%); height: 100px; box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.16);">
     <div class="nav navbar-nav">
         <a class="navbar-brand" href="/"><img src="/assets/logo-white.png"></a>
     </div>
 </nav>
-<div class="container mt-4">
-    {{{ body }}}
+<div class="d-flex flex-column" style="min-height: calc(100vh - 100px);">
+    <div class="flex-grow-1 container mt-4 mb-2">
+        {{{ body }}}
+    </div>
+    <div class="footer text-center mx-4 p-4" style="min-height: 75px; border-top: 1px solid rgb(240, 240, 240)">
+        &copy; <span id="copyDate"></span> - RecruitInc
+    </div>
 </div>
+
+<script>
+    document.getElementById('copyDate').innerText = new Date().getFullYear();
+</script>
 </body>
 
 </html>

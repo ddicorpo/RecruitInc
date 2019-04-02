@@ -1,9 +1,10 @@
 import express, { Request, Response } from 'express';
 import axios from 'axios';
+import { HttpStatus } from '../http/http-status.enum';
 
 export class QuestionnaireRoute {
 
-    private static questions: Array<{ type: string, questions: Array<any> }>;
+    private static groupedQuestions: Array<{ type: string, questions: Array<any> }>;
     private static answers: Array<any>;
     private static step: number;
 
@@ -18,35 +19,28 @@ export class QuestionnaireRoute {
                 // simply redirect to start if these are missing, avoids unwanted users from accessing the questionnaire page
                 // there is definitely and opportunity to increase security here but for our purposes this implementation will suffice
                 if (!name) {
+                    console.log({ status: HttpStatus.BAD_REQUEST, error: 'missing name' })
                     return res.redirect('/');
                 }
                 if (!step) {
+                    console.log({ status: HttpStatus.BAD_REQUEST, error: 'missing step' })
                     return res.redirect('/');
                 }
-
 
                 // record the step globally for later use
                 // this should also overwrite any previous value as starting a questionnaire from the start sends a 0 value
                 QuestionnaireRoute.step = step;
 
-                // attempt a request to get all the questions
-                let questions;
                 try {
-
-                    // if questions don't exist globally, process the response
-                    // else take the global values
+                    // if questions don't exist globally, make the request
+                    // else continue using whats is stored globally
                     // this is done so that only one request is sent over the lifetime of the questionnaire
                     // may provide opportunity to allow a candidate to refresh the page without the questions changing
-                    if (!QuestionnaireRoute.questions) {
+                    if (!QuestionnaireRoute.groupedQuestions) {
                         const request = await axios.get(`${process.env.API_URI}/api/questions`);
+                        QuestionnaireRoute.groupedQuestions = QuestionnaireRoute.processQuestions(request.data);
 
-                        QuestionnaireRoute.questions = QuestionnaireRoute.processQuestions(request.data);
-                        questions = QuestionnaireRoute.questions
-
-                    } else {
-                        questions = QuestionnaireRoute.questions;
                     }
-
                 } catch (err) {
                     console.error(err);
                     // TODO - logger
@@ -54,17 +48,17 @@ export class QuestionnaireRoute {
 
                 // if everything succeeded and we have questions, render the questionnaire page with the first group of questions
                 // else redirect to the start
-                if (questions) {
-                    res.render('questionnaire', {
-                        questionGroup: questions[QuestionnaireRoute.step],
-                        isLastStep: QuestionnaireRoute.step == QuestionnaireRoute.questions.length - 1,
+                if (QuestionnaireRoute.groupedQuestions && QuestionnaireRoute.groupedQuestions.length > 0) {
+                    return res.render('questionnaire', {
+                        questionGroup: QuestionnaireRoute.groupedQuestions[QuestionnaireRoute.step],
+                        isLastStep: QuestionnaireRoute.step == QuestionnaireRoute.groupedQuestions.length - 1,
                         name,
                         step
                     });
                 } else {
-                    res.redirect('/');
+                    console.log({ status: HttpStatus.INTERNAL_SERVER_ERROR, error: 'questions not set' });
+                    return res.redirect('/');
                 }
-
             });
 
         app
@@ -97,12 +91,12 @@ export class QuestionnaireRoute {
 
                 // if we are in the last step of the questionnaire, we calculate the scores and attempt to post the to the db
                 // else we continue with the questionnaire by redirecting to the next set of questions by providing the next step
-                const isLastStep = QuestionnaireRoute.step == QuestionnaireRoute.questions.length;
+                const isLastStep = QuestionnaireRoute.step == QuestionnaireRoute.groupedQuestions.length;
                 if (isLastStep) {
 
                     // calculate scores
                     const scores: { fullName: string, total: number, group: Array<{ type: string, total: number }> } =
-                        QuestionnaireRoute.calculateScores(QuestionnaireRoute.questions, QuestionnaireRoute.answers);
+                        QuestionnaireRoute.calculateScores(QuestionnaireRoute.groupedQuestions, QuestionnaireRoute.answers);
 
                     // attempt to post the score to the db
                     try {
@@ -142,8 +136,7 @@ export class QuestionnaireRoute {
             })
             return gq;
         });
-        return QuestionnaireRoute.questions;
-
+        return groupedQuestions;
     }
 
     private static getNRandomQuestions(questions: Array<any>, n: number): Array<any> {
@@ -173,13 +166,13 @@ export class QuestionnaireRoute {
             });
 
             // for each group of answers, extract the ids of the questions the answer matches
-            const answerKeys = Object.keys(group);
+            const questionKeys = Object.keys(group);
 
             // iterate through answer keys to get the correct answer from the global values
-            answerKeys.forEach(answerKey => {
+            questionKeys.forEach(questionKey => {
 
-                const matchingQuestion = groupedQuestions[step].questions.filter((q: any) => q._id === answerKey)[0];
-                const matchingAnswer = matchingQuestion.answers.filter((a: any) => a.answer === group.answerKey)[0];
+                const matchingQuestion = groupedQuestions[step].questions.filter((q: any) => q._id === questionKey)[0];
+                const matchingAnswer = matchingQuestion.answers.filter((answerObject: { answer: string, isCorrect: boolean }) => answerObject.answer === group[questionKey])[0];
                 /*
                     matchedAnswer =
                     {

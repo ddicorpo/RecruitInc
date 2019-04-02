@@ -3,7 +3,9 @@
     <div class="col-lg-12">
 
         {{!-- get the group type as a title for this step in the questionnaire --}}
-        <h2>{{questionGroup.type}}</h2>
+        <div class="mb-4" style="border-bottom: 1px solid rgb(240, 240, 240)">
+            <h2>{{questionGroup.type}}</h2>
+        </div>
 
         <form action="/questionnaire" method="post">
 
@@ -47,9 +49,9 @@
 </div>
 
 
-<script type="text/javascript">
-    // warn the candidate if they refresh the page they may lose their progress
-    window.onbeforeunload = function () {
-        return 'Refreshing this page will restart the questionnaire. Are you sure?';
-    }
-</script>
+<!--<script type="text/javascript">-->
+    <!--// warn the candidate if they refresh the page they may lose their progress-->
+    <!--window.onbeforeunload = function () {-->
+        <!--return 'Refreshing this page will restart the questionnaire. Are you sure?';-->
+    <!--}-->
+<!--</script>-->
