@@ -4,17 +4,24 @@ import axios from 'axios';
 export class QuestionnaireRoute {
 
     private static questions: Array<any>;
+    private static step: number;
 
     public static routes(app: express.Application): void {
         app
             .route('/questionnaire')
             .get(async (req: Request, res: Response) => {
 
-                const { name } = req.query;
+                const { name, step } = req.query;
 
                 if (!name) {
                     return res.redirect('/');
                 }
+
+                if (!step) {
+                    return res.redirect('/');
+                }
+
+                QuestionnaireRoute.step = step;
 
                 let questions;
                 try {
@@ -28,16 +35,18 @@ export class QuestionnaireRoute {
                         questions = QuestionnaireRoute.questions;
                     }
 
-                    // console.log('displaying questions', questions[0]);
-                    // questions[0].answers.forEach((a: any) => {
-                    //     console.log(a.answer);
-                    // })
-
                 } catch (err) {
                     console.error(err);
                 }
 
-                res.render('questionnaire')
+                if (questions) {
+                    res.render('questionnaire', {
+                        questionGroup: questions[QuestionnaireRoute.step]
+                    });
+                } else {
+                    res.redirect('/');
+                }
+
             });
     }
 
