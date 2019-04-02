@@ -2,14 +2,16 @@ import { BaseService } from './BaseService';
 import { Routes } from '../Routes';
 import axios from 'axios';
 
-export class ObtainCandidates extends BaseService {
+export class ObtainFilteredCandidates extends BaseService {
   private page: number = 1;
   private filters: any[];
 
   constructor() {
     super();
-    this.serviceName = Routes.ObtainCandidates;
-    this.serviceAddress = this.buildServiceAddress(Routes.ObtainCandidates);
+    this.serviceName = Routes.ObtainFilterCandidates;
+    this.serviceAddress = this.buildServiceAddress(
+      Routes.ObtainFilterCandidates
+    );
   }
 
   public changePage(page: number) {

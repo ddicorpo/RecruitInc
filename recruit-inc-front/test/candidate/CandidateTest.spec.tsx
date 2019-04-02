@@ -9,7 +9,7 @@ describe('Candidate Search Page', () => {
    */
   it('Candidate Search Page Rendering ', () => {
     //fetch.mockResponses(JSON.stringify(candidatesJSON));
-    const wrapper = shallow(<CandidateSearch />);
+    const wrapper = shallow(<CandidateSearch isRanking={true} />);
     const labelCandidate = <h2 className="header-title">Candidate Search</h2>;
     const labelFilters = <h4 className="card-title">Search Filters</h4>;
     const labelLanguage = (

@@ -35,6 +35,16 @@ export class BaseFinder {
     });
   }
 
+  public aggregate(query: any): Promise<any> {
+    return new Promise((resolve: any, reject: any) => {
+      const aggregateErrorHandler: any = (error: any, obj: any) =>
+        this.errorHandler(error, obj, this.aggregate.name, resolve, reject);
+      this.model
+      .aggregate(query, aggregateErrorHandler)
+      .allowDiskUse(true)
+    });
+  }
+
   public findOneBy(query: any): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
       const findOneByErrorHandler: any = (error: any, obj: any) =>
