@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import * as bodyParser from 'body-parser'; //used to parse the form data that you pass in the request
 import { ApplicantGithub } from './routes/github/applicantGithub';
 import { Candidate } from './routes/github/candidate';
@@ -15,9 +15,9 @@ class App {
   public applicantGithub: ApplicantGithub = new ApplicantGithub();
   public candidateDataRout: Candidate = new Candidate();
   public oauthCodeRoute: OAuthCode = new OAuthCode();
-  public locationRoute : LocationsRoute = new LocationsRoute();
-  public techRoute : TechnologiesRoute = new TechnologiesRoute();
-  public candidateRoute : CandidatesRoute = new CandidatesRoute();
+  public locationRoute: LocationsRoute = new LocationsRoute();
+  public techRoute: TechnologiesRoute = new TechnologiesRoute();
+  public candidateRoute: CandidatesRoute = new CandidatesRoute();
   private logger: Logger;
   constructor() {
     this.logger = new Logger();

@@ -24,7 +24,7 @@ import { ITokenModel } from '../domain/model/ITokenModel';
 
 export class Controller {
   private static _instance: Controller;
-
+  public githubTokens: string[];
   private constructor() {
     this.logger = new Logger();
   }
@@ -38,8 +38,8 @@ export class Controller {
   private commitQueue: CommitQueue = CommitQueue.get_instance();
   private downloadQueue: DownloadQueue = DownloadQueue.get_instance();
   private filesAffectedByQueue: FilesAffectedByQueue = FilesAffectedByQueue.get_instance();
-  private increaseByOneCommand : IncreaseScanUserCommand = new IncreaseScanUserCommand();
-  private insertCandidateCommand : InsertCandidateCommand = new InsertCandidateCommand();
+  private increaseByOneCommand: IncreaseScanUserCommand = new IncreaseScanUserCommand();
+  private insertCandidateCommand: InsertCandidateCommand = new InsertCandidateCommand();
   private logger: Logger;
 
   //main method, runs all the queues and finds the information
@@ -103,7 +103,6 @@ export class Controller {
       }
       githubTDG.update(currentUserSchema._id, currentUserSchema);
       // ********************************************************************************************
-
       if (canStillScan) {
         if (usersSchemas.length === 0) {
           //fixing the cannot read login of undefined error because a user is still enqueued even though the users array is empty
@@ -208,27 +207,37 @@ export class Controller {
         try {
           //We do not log info in here since we will log all in command class...
 
-          const newCandidate: IApplicantModel = this.convertToCandidate(user, summary);
-          const increaseByOneStatus: Boolean = await this.increaseByOneCommand.increasedByOne(user.location);
-          const insertCandidateStatus: Boolean = await this.insertCandidateCommand.insertCandidate(newCandidate);
+          const newCandidate: IApplicantModel = this.convertToCandidate(
+            user,
+            summary
+          );
+          const increaseByOneStatus: Boolean = await this.increaseByOneCommand.increasedByOne(
+            user.location
+          );
+          const insertCandidateStatus: Boolean = await this.insertCandidateCommand.insertCandidate(
+            newCandidate
+          );
 
           if (increaseByOneStatus) {
-            this.handleLog(this.fetchSpecificUserFromDatabase.name,
-               "Successfully increased the number of scan user by one");
+            this.handleLog(
+              this.fetchSpecificUserFromDatabase.name,
+              'Successfully increased the number of scan user by one'
+            );
           }
 
           if (insertCandidateStatus) {
-            this.handleLog(this.fetchSpecificUserFromDatabase.name,
-              "Successfully insert new candidate to candidates table");
+            this.handleLog(
+              this.fetchSpecificUserFromDatabase.name,
+              'Successfully insert new candidate to candidates table'
+            );
           }
-
         } catch (Exception) {
-          this.handleLog(this.fetchSpecificUserFromDatabase.name,
-           "Problem while adding data to other table..."  + Exception.message);
+          this.handleLog(
+            this.fetchSpecificUserFromDatabase.name,
+            'Problem while adding data to other table...' + Exception.message
+          );
         }
       }
-
-
 
       let criteria: any = { 'githubUser.login': user.githubUser.login };
       let update: any = { $set: { 'githubUser.projectSummary': summary } };
@@ -252,7 +261,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.repoQueue.size() > 0) {
-        await this.repoQueue.processNextQuery();
+        await this.repoQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleLog('executeRepo', e.toString());
@@ -265,7 +274,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.treeQueue.size() > 0) {
-        await this.treeQueue.processNextQuery();
+        await this.treeQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleLog('executeTree', e.toString());
@@ -278,7 +287,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.commitQueue.size() > 0) {
-        await this.commitQueue.processNextQuery();
+        await this.commitQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleLog('executeCommit', e.toString());
@@ -291,7 +300,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.filesAffectedByQueue.size() > 0) {
-        await this.filesAffectedByQueue.processNextQuery();
+        await this.filesAffectedByQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleLog('executeExecuteFilesAffected', e.toString());
@@ -304,7 +313,7 @@ export class Controller {
     let canStillScan: boolean = true;
     try {
       while (this.downloadQueue.size() > 0) {
-        await this.downloadQueue.processNextQuery();
+        await this.downloadQueue.processNextQuery(this.githubTokens[0]);
       }
     } catch (e) {
       this.handleLog('executeDownload', e.toString());
@@ -312,45 +321,47 @@ export class Controller {
     }
     return canStillScan;
   }
-  private convertToCandidate(user : any, summary : any) : IApplicantModel{
+  private convertToCandidate(user: any, summary: any): IApplicantModel {
     //Prevent error since table applicant expect email
-    const email: string = (user.githubUser.email != undefined && user.githubUser.email.length > 2) ?
-     user.github.email : this.hashCode(user.githubUser.login);
+    const email: string =
+      user.githubUser.email != undefined && user.githubUser.email.length > 2
+        ? user.github.email
+        : this.hashCode(user.githubUser.login);
     const gitDataModel: IGitDataModel = {
       dataEntry: user.githubUser.dataEntry,
       gitProjectSummary: summary,
       lastKnownInfoDate: user.githubUser.createdAt,
-      platform: Platform.Github
-    }
+      platform: Platform.Github,
+    };
     //We assume token will be emptu
     const token: ITokenModel = {
       platform: Platform.Github,
-      AccessToken: "",
-      RefreshToken: "",
-      ExpiryDate: ""
-    }
+      AccessToken: '',
+      RefreshToken: '',
+      ExpiryDate: '',
+    };
     const gitModel: IGitModel = {
       IGitData: [gitDataModel],
-      IToken: token
-    }
+      IToken: token,
+    };
     const newCandidate: IApplicantModel = {
       platformUsername: user.githubUser.login,
       platformEmail: email,
       iGit: gitModel,
-      userType: UserType.Candidate
-    }
+      userType: UserType.Candidate,
+    };
 
     return newCandidate;
   }
 
   //Function from https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0
-  private hashCode(username : string ) {
-    var h = 0, l = username.length, i = 0;
-    if (l > 0)
-      while (i < l)
-        h = (h << 5) - h + username.charCodeAt(i++) | 0;
+  private hashCode(username: string) {
+    var h = 0,
+      l = username.length,
+      i = 0;
+    if (l > 0) while (i < l) h = ((h << 5) - h + username.charCodeAt(i++)) | 0;
     return h.toString();
-  };
+  }
 
   //load back all queues from DB
   private async reloadQueues() {
@@ -368,5 +379,14 @@ export class Controller {
     await this.commitQueue.saveToDatabase();
     await this.filesAffectedByQueue.saveToDatabase();
     await this.downloadQueue.saveToDatabase();
+  }
+  //take the top token in the array, and push it to the bottom
+  public rotateKeys() {
+    let temp = this.githubTokens.pop();
+    this.githubTokens.unshift(temp);
+  }
+
+  public initTokens(tokens: string[]) {
+    this.githubTokens = tokens;
   }
 }

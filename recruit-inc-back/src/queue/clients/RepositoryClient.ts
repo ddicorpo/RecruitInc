@@ -3,8 +3,8 @@ import { GithubUserRepos } from '../../data-extraction/github/githubUserRepos';
 import { IGithubProjectInput } from '../../matching-algo/data-model/input-model/IGithubProjectInput';
 import { GithubUsersTDG } from '../../data-source/table-data-gateway/githubUsersTDG';
 import { RequiredClientInformation } from '../RequiredClientInformation';
-import { TreeQueue } from "../queues/TreeQueue";
-import { CommitQueue } from "../queues/CommitQueue";
+import { TreeQueue } from '../queues/TreeQueue';
+import { CommitQueue } from '../queues/CommitQueue';
 
 export class RepositoryClient implements IGithubClient {
   public readonly accessToken: string;
@@ -18,18 +18,16 @@ export class RepositoryClient implements IGithubClient {
   }
 
   //executeQuery(username: string, githubUser: IGithubUser, token?: string) {}
-  async executeQuery() {
-    let githubUserRepos: GithubUserRepos = new GithubUserRepos(
-      this.accessToken
-    );
+  async executeQuery(token: string) {
+    let githubUserRepos: GithubUserRepos = new GithubUserRepos(token);
     let allRepos: IGithubProjectInput[] = [];
 
     //modifies the user, which means duplicate data stored in db
     //Need a method that simply returns repos
-    try{
-    allRepos = await githubUserRepos.getRepos(this.prospect.user);
-    }catch(error){
-        throw error;
+    try {
+      allRepos = await githubUserRepos.getRepos(this.prospect.user);
+    } catch (error) {
+      throw error;
     }
 
     // pull the instances of treeQueue and CommitQueue to be populated later
@@ -37,15 +35,14 @@ export class RepositoryClient implements IGithubClient {
     let commitQueue = CommitQueue.get_instance();
 
     for (let repo of allRepos) {
-
-      let newProspect : RequiredClientInformation = new RequiredClientInformation(
-          this.prospect.user,
-          repo.projectName,
-          repo.owner,
-          '',
-          '',
-          '',
-          repo.url
+      let newProspect: RequiredClientInformation = new RequiredClientInformation(
+        this.prospect.user,
+        repo.projectName,
+        repo.owner,
+        '',
+        '',
+        '',
+        repo.url
       );
 
       treeQueue.enqueue(newProspect);
@@ -59,15 +56,14 @@ export class RepositoryClient implements IGithubClient {
     //await treeQueue.saveToDatabase();
   }
 
-  public async updateUser(login: string, projectInputs: IGithubProjectInput[] ){
-      let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
-      let criteria: any = { "githubUser.login": login }
+  public async updateUser(login: string, projectInputs: IGithubProjectInput[]) {
+    let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+    let criteria: any = { 'githubUser.login': login };
 
-      let update: any = {
-          $set: {"githubUser.dataEntry": { projectInputs: projectInputs}}
-      }
+    let update: any = {
+      $set: { 'githubUser.dataEntry': { projectInputs: projectInputs } },
+    };
 
-      await githubUsersTDG.generalUpdate(criteria, update);
+    await githubUsersTDG.generalUpdate(criteria, update);
   }
-
 }

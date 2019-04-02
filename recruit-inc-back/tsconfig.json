@@ -5,7 +5,9 @@
     "module": "commonjs", //CommonJs style module in output
     "outDir": "dist", //change the output directory
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": [
     "src/**/*.ts",

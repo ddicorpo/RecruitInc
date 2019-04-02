@@ -1,14 +1,14 @@
-import { Logger } from "../../Logger";
+import { Logger } from '../../Logger';
 
 export abstract class AbstractCommand {
-  private logger : Logger;
-  constructor(){
+  private logger: Logger;
+  constructor() {
     this.logger = new Logger();
   }
 
   public logActionCompleted(methodName: string): void {
     this.logger.info({
-      class:  'Base Command',
+      class: 'Base Command',
       method: methodName,
       action: 'Command Completed',
       params: {},
