@@ -198,9 +198,7 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
                             frameworksBelongingToLanguagesToCount
                           ),
                         },
-                        then: {
-                          frameworkTarget,
-                        },
+                        then: frameworkTarget,
                         else: 0,
                       },
                     },
@@ -235,9 +233,7 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
                         frameworksBelongingToLanguagesNotToCount
                       ),
                     },
-                    then: {
-                      frameworkTarget,
-                    },
+                    then: frameworkTarget,
                     else: 0,
                   },
                 },
@@ -271,9 +267,7 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
                             frameworksBelongingToLanguagesToCount
                           ),
                         },
-                        then: {
-                          frameworkTarget,
-                        },
+                        then: frameworkTarget,
                         else: 0,
                       },
                     },
@@ -301,9 +295,7 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
                             frameworksBelongingToLanguagesNotToCount
                           ),
                         },
-                        then: {
-                          frameworkTarget,
-                        },
+                        then: frameworkTarget,
                         else: 0,
                       },
                     },
@@ -317,7 +309,6 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
       };
     } else {
       // This case is supposed to be impossible
-      //TODO: Return or log error
     }
 
     // const insideMap: {} = {$cond: {if: {$or: }}}
@@ -578,8 +569,14 @@ export class ObtainRankedCandidatesCommand extends AbstractCommand {
     const languages: Set<string> = new Set<string>();
     const technologies: ITechnology = this.getTechnologiesSupported();
     const languagesSupported: string[] = Object.keys(technologies);
+    const filterSet: Set<string> = new Set<string>();
+    for (const filter of filters) {
+      filterSet.add(filter.toLowerCase());
+    }
     for (const language of languagesSupported) {
-      languages.add(language.toLowerCase());
+      if (filterSet.has(language.toLowerCase())) {
+        languages.add(language.toLowerCase());
+      }
     }
     return languages;
   }
