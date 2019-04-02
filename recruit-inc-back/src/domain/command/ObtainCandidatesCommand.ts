@@ -6,11 +6,11 @@ import { allMatchers } from '../../matching-algo/matcher-client/AllMatchers';
 import { AbstractLanguageMatcher } from '../../matching-algo/matcher/AbstractLanguageMatcher';
 import { Technologies } from '../../matching-algo/data-model/output-model/Technologies';
 
-interface ITechnology {
+export interface ITechnology {
   [key: string]: string[];
 }
 
-interface ILanguageAndFrameowrkPair {
+export interface ILanguageAndFrameworkPair {
   language: string;
   framework?: string;
 }
@@ -160,7 +160,7 @@ export class ObtainCandidatesCommand extends AbstractCommand {
     // {"Javascript":["React","Typescript","Vue","Angular"],"Python":["Django","Flask"],"Csharp":[],"Java":[],"Ruby":[]}
     const technologies: ITechnology = this.getTechnologiesSupported();
 
-    const elementsToProcess: ILanguageAndFrameowrkPair[] = this.getPairsOfLanguageAndFrameworks(
+    const elementsToProcess: ILanguageAndFrameworkPair[] = this.getPairsOfLanguageAndFrameworks(
       cleanedFilters,
       technologies
     );
@@ -207,8 +207,8 @@ export class ObtainCandidatesCommand extends AbstractCommand {
   private getPairsOfLanguageAndFrameworks(
     filters: Set<string>,
     technologies: ITechnology
-  ): ILanguageAndFrameowrkPair[] {
-    const elementsToProcess: ILanguageAndFrameowrkPair[] = [];
+  ): ILanguageAndFrameworkPair[] {
+    const elementsToProcess: ILanguageAndFrameworkPair[] = [];
     for (const languageOrFramework of filters) {
       const languageFrameworkPairs = this.generateLanguageFrameworkPair(
         languageOrFramework,
@@ -222,7 +222,7 @@ export class ObtainCandidatesCommand extends AbstractCommand {
   }
 
   private getTechnologiesToQuery(
-    elementsToProcess: ILanguageAndFrameowrkPair[]
+    elementsToProcess: ILanguageAndFrameworkPair[]
   ) {
     const technologiesToQuery: ITechnology = {};
     const encountedLanguages: Set<string> = new Set<string>();
@@ -245,7 +245,7 @@ export class ObtainCandidatesCommand extends AbstractCommand {
   private generateLanguageFrameworkPair(
     target: string,
     technologies: ITechnology
-  ): ILanguageAndFrameowrkPair {
+  ): ILanguageAndFrameworkPair {
     const languages: string[] = Object.keys(technologies);
     const languageSet: Set<string> = new Set<string>();
 

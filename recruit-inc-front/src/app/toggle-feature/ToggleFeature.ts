@@ -6,7 +6,6 @@ export class ToggleFeature {
   private newFeatureRollout: boolean = false;
 
   public async retrieveToggleFeature(): Promise<void> {
-    console.log('Retrieving toggle feature configs ');
     let feature = await this.getFeature();
     let criteria = await this.getCriteria();
 
@@ -14,11 +13,7 @@ export class ToggleFeature {
       criteria: criteria,
       features: feature,
     });
-
-    //could check for more features conditions here
-    if (fflip.features.newFeatureRollout.enabled) {
-      this.newFeatureRollout = true;
-    }
+    this.newFeatureRollout = fflip.features.newFeatureRollout.enabled;
   }
 
   //Toggle enabled for new feature Rollout. (example)
