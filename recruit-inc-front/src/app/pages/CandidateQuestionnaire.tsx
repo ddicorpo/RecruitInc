@@ -57,7 +57,7 @@ class CandidateQuestionnaire extends React.Component<any, any> {
                     </div>
                     <div className="card-body">
                         <div className="row m-t-30">
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="p-h-10">
                                     <div className="form-group">
                                         <label className="control-label">&nbsp;</label>
@@ -65,7 +65,7 @@ class CandidateQuestionnaire extends React.Component<any, any> {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="p-h-10">
                                     <div className="form-group">
                                         <label className="control-label">&nbsp;</label>
