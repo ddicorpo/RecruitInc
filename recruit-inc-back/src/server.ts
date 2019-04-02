@@ -4,6 +4,8 @@ import { ToggleFeature } from './toggle-feature/ToggleFeature';
 import { CronJobs } from './cron-job/CronJobs';
 const PORT = process.env.PORT || 6969;
 const DEFAULT_TIMEOUT: number = parseInt(process.env.DEFAULT_TIMEOUT);
+let newFeatureRollout: boolean = false;
+let cronActive: boolean = false;
 
 /**
  * Connecting to database using default .env setting
@@ -15,11 +17,25 @@ function connectToDatabase(): void {
   mongoConn.getConnection();
 }
 
+async function setToggles(): Promise<void> {
+  let toggleFeature: ToggleFeature = new ToggleFeature();
+  await toggleFeature.retrieveToggleFeature();
+
+  newFeatureRollout = toggleFeature.getNewFeatureRollout();
+  cronActive = toggleFeature.getCronActive();
+}
+
 var server = app.listen(PORT, async () => {
   console.log('Listening on PORT => ' + PORT);
   connectToDatabase();
-  let toggleFeature: ToggleFeature = new ToggleFeature();
-  await toggleFeature.retrieveToggleFeature();
+
+  setToggles().then(function(){
+    if(cronActive){
+      scheduleCron();
+    }else{
+      console.log("Cron job will NOT be scheduled to run. (Make sure to enable the toggle feature cronActive)");
+    }
+  }).catch(function(error){console.log("Error with toggle for cron job or scheduling. More info: " + error)});
 });
 
 /**
@@ -36,10 +52,13 @@ server.setTimeout(DEFAULT_TIMEOUT);
 console.log('Server DEFAULT TIMEOUT =>  ' + DEFAULT_TIMEOUT);
 
 //Set cronjob on app startup
-let cronjob: CronJobs = new CronJobs();
-cronjob.scheduleCron();
-cronjob.cronKeyRotation(); //for key rotations
-cronjob.updateMatchingAlgo(); //launches the update
+function scheduleCron(): void{
+  console.log("The Cron Job is scheduled to run");
+  let cronjob: CronJobs = new CronJobs();
+  cronjob.scheduleCron();
+  cronjob.cronKeyRotation(); //for key rotations
+  cronjob.updateMatchingAlgo(); //launches the update
+}
 
 /**
  * Setup the CORS, if we are in production we want rules

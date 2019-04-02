@@ -4,15 +4,15 @@ let fflip = require('fflip');
 
 export class ToggleFeature {
 
-  private _newFeatureRollout: boolean = false;
-  private _cronActive: boolean = false;
+  private newFeatureRollout: boolean = false;
+  private cronActive: boolean = false;
 
-  get newFeatureRollout(): boolean {
-    return this._newFeatureRollout;
+  public getNewFeatureRollout(): boolean {
+    return this.newFeatureRollout;
   }
 
-  get cronActive(): boolean {
-    return this._cronActive;
+  public getCronActive(): boolean {
+    return this.cronActive;
   }
 
   public async retrieveToggleFeature(): Promise<void> {
@@ -22,13 +22,13 @@ export class ToggleFeature {
       features: await this.getFeature(),
     });
     //Toggle enabled for new feature rollout.
-    if (fflip.features._newFeatureRollout.enabled) {
-      this._newFeatureRollout = true;
+    if (fflip.features.newFeatureRollout.enabled) {
+      this.newFeatureRollout = true;
       console.log('New Feature Rollout is Enabled');
     }
     //Feature is retrieved to see if the cron job should run
-    if (fflip.features._cronActive.enabled) {
-      this._cronActive = true;
+    if (fflip.features.cronActive.enabled) {
+      this.cronActive = true;
       console.log('Cron job is activated using feature toggle "cronActive"');
     }
   }
