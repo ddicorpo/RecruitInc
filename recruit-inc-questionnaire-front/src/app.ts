@@ -8,8 +8,6 @@ import bodyParser from 'body-parser';
 import expHbs from 'express-handlebars';
 import path from 'path';
 
-import { HttpStatus } from './http/http-status.enum';
-
 // routes
 import { HomeRoute } from './routes/home';
 import { QuestionnaireRoute } from './routes/questionnaire';

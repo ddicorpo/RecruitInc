@@ -12,19 +12,20 @@ export class ObtainQuestionaireQuestionsCommand extends AbstractCommand {
 
   public async getQuestionnaireQuestions(
     page: number,
-    filters: string[]
+    filters?: string[]
   ): Promise<any> {
     try {
-      const query =
-        filters.length > 0
-          ? filters
-              .map(filter => {
-                return {
-                  // todo
-                };
-              })
-              .reduce((aggregate, item) => Object.assign(aggregate, item), {})
-          : {};
+      //Not Required - Always returning all the questions
+      // const query =
+      //   filters.length > 0
+      //     ? filters
+      //         .map(filter => {
+      //           return {
+      //             // todo
+      //           };
+      //         })
+      //         .reduce((aggregate, item) => Object.assign(aggregate, item), {})
+      //     : {};
 
       //Prevent crash of the application by inserting page=-1 or page=0
       if (page < 1) {
