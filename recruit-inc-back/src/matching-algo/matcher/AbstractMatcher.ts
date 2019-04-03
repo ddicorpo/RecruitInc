@@ -100,6 +100,7 @@ export abstract class AbstractMatcher {
     const codeOutput: ICodeOutput = {
       linesOfCode: 0,
       numberOfCommits: 0,
+      ratio: 0,
     };
     let numberOfLines: number = 0;
     for (const commit of commits) {
@@ -114,6 +115,14 @@ export abstract class AbstractMatcher {
       }
     }
     codeOutput.linesOfCode = numberOfLines;
+
+    if(codeOutput.numberOfCommits===0){
+      codeOutput.ratio=0;
+    }
+    else{
+    codeOutput.ratio= codeOutput.linesOfCode/codeOutput.numberOfCommits;
+    }
+   
     return codeOutput;
   }
 

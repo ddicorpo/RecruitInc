@@ -14,6 +14,7 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
     const codeOutput: ICodeOutput = {
       linesOfCode: 0,
       numberOfCommits: 0,
+      ratio: 0,
     };
     // Here we process all the downloaded files to see if they match our technology
     const sourceFiles: IProcessedSourceFile[] = this.processSourceFiles();
@@ -49,6 +50,12 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
         '        + codeOutput.numberOfCommits',
       params: {},
     });
+    if(codeOutput.numberOfCommits===0){
+      codeOutput.ratio=0;
+    }
+    else{
+    codeOutput.ratio= codeOutput.linesOfCode/codeOutput.numberOfCommits;
+    }
     return codeOutput;
   }
 
@@ -57,6 +64,7 @@ export abstract class AbstractFrameworkMatcher extends AbstractMatcher {
       technologyName: this.technology,
       linesOfCode: codeOutput.linesOfCode,
       numberOfCommits: codeOutput.numberOfCommits,
+      ratio:codeOutput.ratio,
     };
 
     return frameworkOutput;

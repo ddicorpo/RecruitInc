@@ -22,12 +22,12 @@ export class GithubDataExtraction {
     this.accessToken = accessToken;
   }
 
-  async extractData(login: string, email: string = ''): Promise<IGithubUser> {
+  async extractData(login: string, id: string): Promise<IGithubUser> {
     let user: IGithubUser = {
       login: login,
       createdAt: '',
       url: '',
-      email: email,
+      id: id,
     };
 
     //Get all of the user's repos
@@ -65,11 +65,12 @@ export class GithubDataExtraction {
 
   async matchGithubUser(
     login: string,
-    email: string = ''
+    id: string
+    
   ): Promise<IGitProjectSummary> {
     const dataEntryTDG: DataEntryTDG = new DataEntryTDG();
     const gitProjectSummaryTDG: GitProjectSummaryTDG = new GitProjectSummaryTDG();
-    let user: IGithubUser = await this.extractData(login, email);
+    let user: IGithubUser = await this.extractData(login, id);
 
     let client: MatcherClient = new MatcherClient(user.dataEntry);
     // Save Data Entry

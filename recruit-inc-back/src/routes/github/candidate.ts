@@ -24,6 +24,12 @@ export class Candidate {
   public routes(app): void {
     let users: IGithubUser[];
 
+    app.route('/CommitsRatio').get(async (request: Request, response: Response) => {
+      let controller: Controller = Controller.get_instance();
+      await controller.processUsers();
+      response.sendStatus(200);
+    });
+
     app.route('/process').get(async (request: Request, response: Response) => {
       let controller: Controller = Controller.get_instance();
       await controller.processUsers();
@@ -335,8 +341,9 @@ export class Candidate {
       });
 
     app
-      .route('/api/githubainofevents/:login/:accessToken?')
+      .route('/api/githubainofevents/:login/:id/:accessToken?')
       .get(async (req: Request, res: Response) => {
+        let id : string = req.params.id;
         let login: string = req.params.login;
         let accessToken: string = req.params.accessToken;
 
@@ -347,14 +354,14 @@ export class Candidate {
         } else {
           githubDataExtractor = new GithubDataExtraction();
         }
-        let user: IGithubUser = await githubDataExtractor.extractData(login);
+        let user: IGithubUser = await githubDataExtractor.extractData(login,id);
 
         res.status(200).send(user);
         console.log(user);
       });
 
     app
-      .route('/api/github/matchingalgo/:login/:accessToken?')
+      .route('/api/github/matchingalgo/:login/:id/:accessToken?')
       .get(async (req: Request, res: Response) => {
         logger.info({
           class: 'Candidate',
@@ -364,6 +371,7 @@ export class Candidate {
           value: { req, res },
         });
         let login: string = req.params.login;
+        let id: string = req.params.login;
         let accessToken: string = req.params.accessToken;
         let output: IGitProjectSummary;
         let githubDataExtractor: GithubDataExtraction;
@@ -374,7 +382,7 @@ export class Candidate {
           } else {
             githubDataExtractor = new GithubDataExtraction();
           }
-          output = await githubDataExtractor.matchGithubUser(login);
+          output = await githubDataExtractor.matchGithubUser(login,id);
         } catch (e) {
           res.status(500).json({ error: e.toString() });
         }

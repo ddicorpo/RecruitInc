@@ -49,6 +49,7 @@ export abstract class AbstractLanguageMatcher extends AbstractMatcher {
       languageOrFramework: this.technology,
       linesOfCode: codeOutput.linesOfCode,
       numberOfCommits: codeOutput.numberOfCommits,
+      ratio: codeOutput.ratio,
       frameworks: frameworksOutput,
     };
     return languageOutput;

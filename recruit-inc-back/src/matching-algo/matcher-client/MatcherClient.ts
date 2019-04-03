@@ -74,6 +74,7 @@ export class MatcherClient {
           technologyName: framework.getTechnology(),
           numberOfCommits: 0,
           linesOfCode: 0,
+          ratio: 0
         });
         indexedFrameworkMap.set(framework.getTechnology(), indexHelper);
         indexHelper++;
@@ -82,6 +83,7 @@ export class MatcherClient {
         languageOrFramework: languageTech,
         linesOfCode: 0,
         numberOfCommits: 0,
+        ratio: 0,
         frameworks: frameworks,
       };
 
