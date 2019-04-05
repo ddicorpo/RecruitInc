@@ -1,6 +1,6 @@
 import { Logger } from '../Logger';
 
-export abstract class baseService {
+export abstract class BaseService {
   private logger: Logger;
   serviceName: string;
   serviceAddress: string;
@@ -48,8 +48,8 @@ export abstract class baseService {
     errorName: string,
     errorDesc: string
   ): void {
-    console.log('action complete ' + serviceName);
-    this.logger.info({
+    console.log('action not completed !!! ' + serviceName);
+    this.logger.error({
       class: serviceName,
       method: this.execute.name,
       action:

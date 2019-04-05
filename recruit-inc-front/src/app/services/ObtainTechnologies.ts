@@ -1,8 +1,8 @@
-import { baseService } from './baseService';
+import { BaseService } from './BaseService';
 import { Routes } from '../Routes';
 import axios from 'axios';
 
-export class ObtainTechnologies extends baseService {
+export class ObtainTechnologies extends BaseService {
   constructor() {
     super();
     this.serviceName = Routes.ObtainTechnologies;

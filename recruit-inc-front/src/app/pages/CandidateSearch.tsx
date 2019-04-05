@@ -10,6 +10,7 @@ import { ObtainCandidates } from '../services/ObtainCandidates';
 import { ObtainLocations } from '../services/ObtainLocations';
 import { ObtainTechnologies } from '../services/ObtainTechnologies';
 import Pagination from 'react-js-pagination';
+import { ObtainFilteredCandidates } from '../services/ObtainFilteredCandidates';
 
 class CandidateSearch extends React.Component<any, any> {
   private logger: Logger;
@@ -17,9 +18,11 @@ class CandidateSearch extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.logger = new Logger();
+    //We don't need bind if we use event... check handleRankChange
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleLanguageChange = this.handleLanguageChange.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
+
     this.state = {
       activePage: 1,
       selectedTechnology: [],
@@ -27,6 +30,10 @@ class CandidateSearch extends React.Component<any, any> {
       techFromBackEnd: [],
       locationFromBackEnd: [],
       candidates: [],
+      isLoaded: false,
+      error: undefined,
+      isRankEnabled: false,
+      rankedOption: [],
     };
   }
 
@@ -98,7 +105,12 @@ class CandidateSearch extends React.Component<any, any> {
   }
 
   handlePageChange(pageNumber: number) {
-    this.getCandidates(true, pageNumber);
+    if (this.state.rankChoose.value === 'sorted') {
+      this.getSortedCandidates(true, pageNumber);
+    } else {
+      this.getCandidates(true, pageNumber);
+    }
+
     this.setState({ activePage: pageNumber });
 
     this.logger.info({
@@ -131,7 +143,36 @@ class CandidateSearch extends React.Component<any, any> {
     this.setState({ activePage: page });
 
     if (isSearchFilter) {
-      console.log(this.state.selectedTechOptions);
+      candidatesService.applyFilters(this.state.selectedTechOptions);
+    }
+
+    candidatesService
+      .execute()
+      .then(result => {
+        candidatesService.logActionCompleted(candidatesService.serviceName);
+        let adapter: CandidateAdapter = new CandidateAdapter();
+        localCandidates = adapter.adapt(result.data);
+        this.setState({
+          candidates: localCandidates,
+        });
+      })
+      .catch(error => {
+        candidatesService.logActionFailure(
+          candidatesService.serviceName,
+          error,
+          error
+        );
+      });
+  };
+
+  getSortedCandidates = (isSearchFilter: boolean, page: number) => {
+    let localCandidates: ICandidate[] = [];
+    let candidatesService: ObtainFilteredCandidates = new ObtainFilteredCandidates();
+
+    candidatesService.changePage(page);
+    this.setState({ activePage: page });
+
+    if (isSearchFilter) {
       candidatesService.applyFilters(this.state.selectedTechOptions);
     }
 
@@ -156,13 +197,16 @@ class CandidateSearch extends React.Component<any, any> {
 
   handleSearchClick = () => {
     const page: number = 1;
-    this.getCandidates(true, page);
-    this.render();
-  };
-
-  handleLoadClick = () => {
-    const page: number = 1;
-    this.getCandidates(false, page);
+    const filterActivated: boolean =
+      this.state.selectedTechOptions !== undefined;
+    if (
+      this.state.rankChoose == undefined ||
+      this.state.rankChoose.value === 'unsorted'
+    ) {
+      this.getCandidates(filterActivated, page);
+    } else {
+      this.getSortedCandidates(filterActivated, page);
+    }
     this.render();
   };
 
@@ -172,6 +216,28 @@ class CandidateSearch extends React.Component<any, any> {
       cityOption: value,
     });
   }
+
+  handleRankChange = event => {
+    //we'll capture this through the button press
+    this.setState({
+      rankChoose: event,
+    });
+  };
+
+  private loadSortOption() {
+    let choices: IOptionsBox[] = [];
+    choices.push({ value: 'sorted', label: 'Most Experienced' });
+    choices.push({ value: 'unsorted', label: 'No Sort' });
+
+    this.setState({
+      rankOption: choices,
+    });
+
+    this.setState({
+      rankChoose: choices[0],
+    });
+  }
+
   /**
    * Function call before the render()
    */
@@ -180,10 +246,11 @@ class CandidateSearch extends React.Component<any, any> {
     this.loadSupportedTechnologies();
     // Load Supported Location
     this.loadSupportedLocations();
+    // Add supported sorting
+    this.loadSortOption();
   }
 
   render() {
-    //let isResultEmpty = this.state.candidates == undefined || this.state.candidates.length < 1;
     return (
       <div className="container-fluid">
         <div className="page-header">
@@ -226,6 +293,24 @@ class CandidateSearch extends React.Component<any, any> {
                   </div>
                 </div>
               </div>
+              {this.props.isRanking ? (
+                <div className="col-md-4">
+                  <div className="p-h-10">
+                    <div className="form-group">
+                      <label className="control-label">Sort</label>
+                      <Select
+                        value={this.state.rankChoose}
+                        onChange={event => this.handleRankChange(event)}
+                        isSearchable={true}
+                        options={this.state.rankOption}
+                        className="form-control"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <p />
+              )}
               <div className="col-md-4">
                 <div className="p-h-10">
                   <div className="form-group">
@@ -249,16 +334,6 @@ class CandidateSearch extends React.Component<any, any> {
           <div className="card-header border bottom">
             <h4 className="card-title">Results</h4>
           </div>
-          {/*<div className="form-group middle-man">*/}
-          {/*<button*/}
-          {/*id="load"*/}
-          {/*className="btn btn-gradient-primary form-control super-button"*/}
-          {/*type="button"*/}
-          {/*onClick={this.handleLoadClick}*/}
-          {/*>*/}
-          {/*Load All*/}
-          {/*</button>*/}
-          {/*</div>*/}
           <div className="card-body">{this.renderCards()}</div>
 
           <Pagination

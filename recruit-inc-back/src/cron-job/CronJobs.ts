@@ -19,20 +19,51 @@ export class CronJobs {
   private githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
   private cronFinder: CronFinder = new CronFinder();
   private githubUsersFinder: GithubUsersFinder = new GithubUsersFinder();
-  private controller: Controller = Controller.get_instance();
+  public githubTokens: string = process.env.GITHUB_DEFAULT_TOKEN_ARRAY;
+  public controller: Controller = Controller.get_instance();
+  private controllerRunning: boolean = false;
 
-  //Default crontime: Run everyday at midnight
+  constructor() {
+    this.controller.initTokens(this.githubTokens.split(','));
+  }
+  //Default crontime: checks to see if the controller is running or not
   //Explanation: Run at second 0, minute 0, hour 0, every day, every month, from sunday to saturday
-  public async scheduleCron(
+  public async scheduleCron(cronTime: CronTime = '0 0 */2 * * 0-6'): CronJob {
+    const CronJob = require('cron').CronJob;
+    let cronjobs: CronJobs = new CronJobs();
+    const job = new CronJob(cronTime, async function() {
+      await cronjobs.scan();
+    });
+    job.start();
+
+    return job;
+  }
+
+  //for key rotations at every time minutes = 20
+  public async cronKeyRotation(
+    cronTime: CronTime = '0 */20 * * * 0-6'
+  ): CronJob {
+    const CronJob = require('cron').CronJob;
+
+    let controller: Controller = Controller.get_instance();
+    const job = new CronJob(cronTime, function() {
+      controller.rotateKeys();
+    });
+    job.start();
+
+    return job;
+  }
+  //launches the matching algo every 5 hours
+  public async updateMatchingAlgo(
     //cronTime: CronTime = '0 0 0 * * 0-6'
-    cronTime: CronTime = '0 0 */4 * * 0-6'
+    cronTime: CronTime = '0 0 */5 * * 0-6'
     //cronTime: CronTime = '0 21 20 * * 0-6'
   ): CronJob {
     const CronJob = require('cron').CronJob;
 
+    let controller: Controller = Controller.get_instance();
     const job = new CronJob(cronTime, async function() {
-      let cronjobs: CronJobs = new CronJobs();
-      await cronjobs.scan();
+      await controller.processUsers();
     });
     job.start();
 
@@ -84,8 +115,11 @@ export class CronJobs {
   }
 
   async scan() {
-    await this.controller.execute();
-    await this.controller.processUsers();
+    if (!this.controllerRunning) {
+      this.controllerRunning = true;
+      await this.controller.execute();
+      this.controllerRunning = false;
+    }
   }
 
   async stopScan(location: string) {

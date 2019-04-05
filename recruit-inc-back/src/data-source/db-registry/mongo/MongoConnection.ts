@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { Connection } from '../Connection';
 import { Logger } from '../../../Logger';
-
+const mongoose = require('mongoose');
 const logger = new Logger();
 export class MongoConnection extends Connection {
   private logger: Logger;

@@ -1,17 +1,6 @@
 import 'mocha';
-import { InsertCandidateCommand } from '../../../src/domain/command/InsertCandidateCommand';
-import {
-  IApplicantModel,
-  UserType,
-} from '../../../src/domain/model/IApplicantModel';
-import { Platform } from '../../../src/domain/model/IGitDataModel';
 import { expect } from 'chai';
-import { MongoConnectionFactory } from '../../../src/data-source/db-registry/mongo/MongoConnectionFactory';
-import * as mongoose from 'mongoose';
 import { ObtainCandidatesCommand } from '../../../src/domain/command/ObtainCandidatesCommand';
-import { MatcherClient } from '../../../src/matching-algo/matcher-client/MatcherClient';
-import { IGitProjectSummary } from '../../../src/matching-algo/data-model/output-model/IGitProjectSummary';
-import { IGitProjectOutput } from '../../../src/matching-algo/data-model/output-model/IGitProjectOutput';
 require('dotenv').config(); //Get environment variables
 
 describe('Query created to fetch different languages and filters', () => {
