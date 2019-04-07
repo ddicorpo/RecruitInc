@@ -13,4 +13,4 @@ RUN ls
 
 EXPOSE 3001
 
-CMD ["npm", "dev"]
+CMD ["npm", "start"]
