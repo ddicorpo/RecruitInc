@@ -8,13 +8,29 @@ export interface ChatMessagesProps {
 }
 
 class ChatMessages extends React.Component<ChatMessagesProps, any> {
+  refs: {
+    divContainerMessage: HTMLDivElement;
+  };
+
+  scrollToBottom = () => {
+    const messagesContainer = this.refs.divContainerMessage;
+    messagesContainer.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+      inline: 'nearest',
+    });
+  };
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   render() {
     return (
-      <div id="log">
+      <div ref="divContainerMessage" id="log">
         {this.props.messages.map(message => {
-          const msgAlign = message.id === this.props.chatId ? 'right' : 'left';
           return (
-            <div key={message.key} className={'blockquote-' + msgAlign}>
+            <div key={message.key}>
               <p id="nickname"> {message.id} </p>
               <div className="chatter">
                 {message.text}
