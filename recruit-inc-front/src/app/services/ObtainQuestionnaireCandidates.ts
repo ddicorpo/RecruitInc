@@ -1,8 +1,8 @@
-import { baseService } from './baseService';
+import { BaseService } from './BaseService';
 import { Routes } from '../Routes';
 import axios from 'axios';
 
-export class ObtainQuestionnaireCandidates extends baseService{
+export class ObtainQuestionnaireCandidates extends BaseService{
 
     constructor() {
         super();

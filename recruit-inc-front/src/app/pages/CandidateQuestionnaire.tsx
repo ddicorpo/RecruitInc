@@ -34,7 +34,7 @@ class CandidateQuestionnaire extends React.Component<any, any> {
         questionnaireService
             .execute()
             .then(result => {
-                questionnaireService.logActionCompleted(questionnaireService.serviceName);
+                //questionnaireService.logActionCompleted(questionnaireService.serviceName);
                 let adapter: QuestionnaireAdapter = new QuestionnaireAdapter();
                 localQuestionnaireCandidates = adapter.adapt(result.data);
                 this.setState({
