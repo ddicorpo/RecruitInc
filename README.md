@@ -33,6 +33,9 @@ To connect to a database set your DB_NAME variable to your db of choice.
 
 You need to write one `.env` in the recruit-inc-front
 It needs to have the same variables as `recruit-inc-front/.env.example`
+you need to set your NODE_ENV as either dev or production
+Make sure your PORT=3000
+Make sure Set your BACK_END_PORT=6969
 
 
 ### Launch Containers
@@ -156,6 +159,12 @@ A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
  - The command will create a folder: `coverage` with all results inside
 
  ###how to run an integration test
+-All Integration tests files contain the keyword "Intergration" in their file names
+-In each integration file, make sure to remove x from the xdescribe
+-Open your terminal, navigate to the recruit-inc-back folder and type the command npm run test.
+
+
+
 
  ###current mock test
 
