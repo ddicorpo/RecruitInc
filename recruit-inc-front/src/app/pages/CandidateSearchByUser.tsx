@@ -1,18 +1,12 @@
 import * as React from 'react';
 import CandidateCard, { ICardProps } from '../components/CandidateCard';
-import { Logger } from '../Logger';
 import { ICandidate } from '../model/Candidate/ICandidate';
 import { CandidateAdapter } from '../adapter/CandidateAdapter';
-import { ObtainCandidates } from '../services/ObtainCandidates';
-import Pagination from 'react-js-pagination';
-//import { ObtainFilteredCandidates } from '../services/ObtainFilteredCandidates';
+import { ObtainCandidatesByUser } from '../services/ObtainCandidatesByUser';
 
 class CandidateSearchByUser extends React.Component<any, any> {
-  private logger: Logger;
-
   constructor(props: any) {
     super(props);
-    this.logger = new Logger();
     this.state = {
       username: '',
       activePage: 1,
@@ -23,7 +17,6 @@ class CandidateSearchByUser extends React.Component<any, any> {
       rankedOption: [],
     };
     //We don't need bind if we use event... check handleRankChange
-    this.handlePageChange = this.handlePageChange.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
   }
 
@@ -49,37 +42,11 @@ class CandidateSearchByUser extends React.Component<any, any> {
     return array;
   }
 
-  handlePageChange(pageNumber: number) {
-    // if (this.state.rankChoose.value === 'sorted') {
-    //   this.getSortedCandidates(true, pageNumber);
-    // } else {
-    //   this.getCandidates(true, pageNumber);
-    // }
-    //
-    // this.setState({ activePage: pageNumber });
-    //
-    this.logger.info({
-      class: 'CandidateSearchByUser',
-      method: 'handlePageChange',
-      action: 'Changing the page to ' + pageNumber,
-      params: { pageNumber },
-    });
-    //
-    // this.setState({ activePage: pageNumber });
-    //
-    // this.render();
-  }
-
-  getCandidates = (isSearchFilter: boolean, page: number) => {
+  getCandidates = (username: string) => {
     let localCandidates: ICandidate[] = [];
-    let candidatesService: ObtainCandidates = new ObtainCandidates();
+    let candidatesService: ObtainCandidatesByUser = new ObtainCandidatesByUser();
 
-    candidatesService.changePage(page);
-    this.setState({ activePage: page });
-
-    if (isSearchFilter) {
-      candidatesService.applyFilters(this.state.selectedTechOptions);
-    }
+    candidatesService.setUsername(username);
 
     candidatesService
       .execute()
@@ -103,7 +70,7 @@ class CandidateSearchByUser extends React.Component<any, any> {
   handleSearchClick = () => {
     let username = this.state.username;
     if (username != '') {
-      console.log(username);
+      this.getCandidates(username);
     }
     this.render();
   };
@@ -116,7 +83,7 @@ class CandidateSearchByUser extends React.Component<any, any> {
     return (
       <div className="container-fluid">
         <div className="page-header">
-          <h2 className="header-title">Candidate Search</h2>
+          <h2 className="header-title">Candidate Search By User</h2>
         </div>
         <div className="card">
           <div className="card-header border bottom">
@@ -162,17 +129,6 @@ class CandidateSearchByUser extends React.Component<any, any> {
             <h4 className="card-title">Results</h4>
           </div>
           <div className="card-body">{this.renderCards()}</div>
-
-          <Pagination
-            activePage={this.state.activePage}
-            itemClass="page-item"
-            linkClass="page-link"
-            // Would be good to do an initial call to see how many items there is
-            itemsCountPerPage={2}
-            totalItemsCount={100}
-            pageRangeDisplayed={3}
-            onChange={this.handlePageChange}
-          />
         </div>
       </div>
     );
