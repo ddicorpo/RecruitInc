@@ -175,3 +175,4 @@ A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
 - At this point you can use mongo shell commands. You can autocomplete commands by typing the beginning of a command and hitting <TAB> twice. For example, to view the names of collections in the database, type `db.getCollectionNames()`. To view all entries in the 'applicants' collection, type `db.applicants.find()` etc. 
 
 #Where the logs are stored
+#Add explanation on toggle-feature
