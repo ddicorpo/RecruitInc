@@ -174,5 +174,11 @@ A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
 - Type `use <db>` and replace '<db>' with the database you wish to use. For example: `use test` for the 'test' database or `use recruitinc` for our production database
 - At this point you can use mongo shell commands. You can autocomplete commands by typing the beginning of a command and hitting <TAB> twice. For example, to view the names of collections in the database, type `db.getCollectionNames()`. To view all entries in the 'applicants' collection, type `db.applicants.find()` etc. 
 
+
+
 #Where the logs are stored
+-Navigate to the folder: recruit-inc-back. 
+-Among the sub-directories, choose the folder called log.
+-Inside the log folder, you will find 6 different JSON files.
+
 #Add explanation on toggle-feature
