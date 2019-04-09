@@ -5,7 +5,7 @@ import { ICandidate } from '../model/Candidate/ICandidate';
 import { CandidateAdapter } from '../adapter/CandidateAdapter';
 import { ObtainCandidates } from '../services/ObtainCandidates';
 import Pagination from 'react-js-pagination';
-import { ObtainFilteredCandidates } from '../services/ObtainFilteredCandidates';
+//import { ObtainFilteredCandidates } from '../services/ObtainFilteredCandidates';
 
 class CandidateSearchByUser extends React.Component<any, any> {
   private logger: Logger;
@@ -13,21 +13,18 @@ class CandidateSearchByUser extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.logger = new Logger();
-    //We don't need bind if we use event... check handleRankChange
-    this.handlePageChange = this.handlePageChange.bind(this);
-
     this.state = {
+      username: '',
       activePage: 1,
-      selectedTechnology: [],
-      selectedLocation: '',
-      techFromBackEnd: [],
-      locationFromBackEnd: [],
       candidates: [],
       isLoaded: false,
       error: undefined,
       isRankEnabled: false,
       rankedOption: [],
     };
+    //We don't need bind if we use event... check handleRankChange
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleUserInput = this.handleUserInput.bind(this);
   }
 
   private renderCards(): JSX.Element[] {
@@ -53,24 +50,24 @@ class CandidateSearchByUser extends React.Component<any, any> {
   }
 
   handlePageChange(pageNumber: number) {
-    if (this.state.rankChoose.value === 'sorted') {
-      this.getSortedCandidates(true, pageNumber);
-    } else {
-      this.getCandidates(true, pageNumber);
-    }
-
-    this.setState({ activePage: pageNumber });
-
+    // if (this.state.rankChoose.value === 'sorted') {
+    //   this.getSortedCandidates(true, pageNumber);
+    // } else {
+    //   this.getCandidates(true, pageNumber);
+    // }
+    //
+    // this.setState({ activePage: pageNumber });
+    //
     this.logger.info({
       class: 'CandidateSearchByUser',
       method: 'handlePageChange',
       action: 'Changing the page to ' + pageNumber,
       params: { pageNumber },
     });
-
-    this.setState({ activePage: pageNumber });
-
-    this.render();
+    //
+    // this.setState({ activePage: pageNumber });
+    //
+    // this.render();
   }
 
   getCandidates = (isSearchFilter: boolean, page: number) => {
@@ -103,55 +100,17 @@ class CandidateSearchByUser extends React.Component<any, any> {
       });
   };
 
-  getSortedCandidates = (isSearchFilter: boolean, page: number) => {
-    let localCandidates: ICandidate[] = [];
-    let candidatesService: ObtainFilteredCandidates = new ObtainFilteredCandidates();
-
-    candidatesService.changePage(page);
-    this.setState({ activePage: page });
-
-    if (isSearchFilter) {
-      candidatesService.applyFilters(this.state.selectedTechOptions);
-    }
-
-    candidatesService
-      .execute()
-      .then(result => {
-        candidatesService.logActionCompleted(candidatesService.serviceName);
-        let adapter: CandidateAdapter = new CandidateAdapter();
-        localCandidates = adapter.adapt(result.data);
-        this.setState({
-          candidates: localCandidates,
-        });
-      })
-      .catch(error => {
-        candidatesService.logActionFailure(
-          candidatesService.serviceName,
-          error,
-          error
-        );
-      });
-  };
-
   handleSearchClick = () => {
-    const page: number = 1;
-    const filterActivated: boolean =
-      this.state.selectedTechOptions !== undefined;
-    if (
-      this.state.rankChoose == undefined ||
-      this.state.rankChoose.value === 'unsorted'
-    ) {
-      this.getCandidates(filterActivated, page);
-    } else {
-      this.getSortedCandidates(filterActivated, page);
+    let username = this.state.username;
+    if (username != '') {
+      console.log(username);
     }
     this.render();
   };
 
-  /**
-   * Function call before the render()
-   */
-  componentWillMount() {}
+  handleUserInput(event) {
+    this.setState({ username: event.target.value });
+  }
 
   render() {
     return (
@@ -165,6 +124,20 @@ class CandidateSearchByUser extends React.Component<any, any> {
           </div>
           <div className="card-body">
             <div className="row m-t-30">
+              <div className="col-md-4">
+                <div className="p-h-10">
+                  <div className="form-group">
+                    <label className="control-label">Username</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={this.state.username}
+                      onChange={this.handleUserInput}
+                    />
+                  </div>
+                </div>
+              </div>
+
               <div className="col-md-4">
                 <div className="p-h-10">
                   <div className="form-group">

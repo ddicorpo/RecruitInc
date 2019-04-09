@@ -22,7 +22,7 @@ class SideNavigationBar extends React.Component<any, any> {
             />
             <SideNavigationItem
               menuTitle={Pages.CANDIDATE_SEARCH_BY_USER}
-              iconClass="mdi mdi-magnify"
+              iconClass="mdi mdi-account"
               handleSidebarClick={this.props.handleSidebarClick}
             />
             <SideNavigationItem
