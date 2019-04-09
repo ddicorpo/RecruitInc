@@ -325,7 +325,7 @@ export class Controller {
     //Prevent error since table applicant expect email
     const email: string =
       user.githubUser.email != undefined && user.githubUser.email.length > 2
-        ? user.github.email
+        ? user.githubUser.email
         : this.hashCode(user.githubUser.login);
     const gitDataModel: IGitDataModel = {
       dataEntry: user.githubUser.dataEntry,
