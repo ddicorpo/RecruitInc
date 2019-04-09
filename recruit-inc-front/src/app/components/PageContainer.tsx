@@ -4,6 +4,7 @@ import CandidateSearch from '../pages/CandidateSearch';
 import LocationWatchList from '../pages/LocationWatchlist';
 import { ToggleFeature } from '../toggle-feature/ToggleFeature';
 import { Logger } from '../Logger';
+import CandidateSearchByUser from '../pages/CandidateSearchByUser';
 
 class PageContainer extends React.Component<any, any> {
   private toggles: ToggleFeature;
@@ -21,6 +22,10 @@ class PageContainer extends React.Component<any, any> {
     switch (page) {
       case Pages.CANDIDATE_SEARCH: {
         return <CandidateSearch isRanking={isRankActive} />;
+      }
+
+      case Pages.CANDIDATE_SEARCH_BY_USER: {
+        return <CandidateSearchByUser />;
       }
 
       case Pages.LOCATION_WATCHLIST: {
