@@ -25,6 +25,10 @@
 
 You need to write one `.env` in the recruit-inc-back
 It needs to have the same variable as `recruit-inc-back/.env.example`
+you need to set your NODE_ENV as either dev or production
+In order to reach the front end, set your DOMAIN_FRONT_END=http://localhost:3000
+To reach your back end set your DOMAIN_BACK_END=localhost:6969
+To connect to a database set your DB_NAME variable to your db of choice.
 
 
 You need to write one `.env` in the recruit-inc-front
@@ -151,6 +155,10 @@ A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
  - Run the command: `npm run testWithCoverage` to run the test coverage
  - The command will create a folder: `coverage` with all results inside
 
+ ###how to run an integration test
+
+ ###current mock test
+
 
 
 
@@ -176,9 +184,12 @@ A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
 
 
 
-#Where the logs are stored
+###Where the logs are stored
 -Navigate to the folder: recruit-inc-back. 
 -Among the sub-directories, choose the folder called log.
--Inside the log folder, you will find 6 different JSON files.
+-Inside the log folder, you will find 6 different JSON files: (debug,error,info,silly,verbose,warn).
 
-#Add explanation on toggle-feature
+###toggle-feature
+
+
+###cron job and controller
