@@ -97,6 +97,18 @@ export class CandidatesRoute extends baseRoute {
 
       });
 
+    //Route to retrieve info for a specific user. ex: /api/candidates/search?username=robert
+    app
+        .route('/api/candidates/search')
+        .get(async (request: Request, response: Response) => {
+          try{
+            let username: number = request.query.username;
+            response.status(202).send("Username sent: " + username);
+          }catch (e) {
+            console.log(e);
+          }
+        });
+
     app
       .route('/api/candidates/technologies')
       .get(async (request: Request, response: Response) => {
