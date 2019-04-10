@@ -3,10 +3,9 @@ import { Pages } from '../pages/Pages';
 import CandidateSearch from '../pages/CandidateSearch';
 import LocationWatchList from '../pages/LocationWatchlist';
 import DirectMessaging from '../pages/DirectMessaging';
-import CandidateQuestionnaire from "../pages/CandidateQuestionnaire";
+import CandidateQuestionnaire from '../pages/CandidateQuestionnaire';
 import { ToggleFeature } from '../toggle-feature/ToggleFeature';
 import { Logger } from '../Logger';
-
 
 class PageContainer extends React.Component<any, any> {
   private toggles: ToggleFeature;
@@ -34,7 +33,8 @@ class PageContainer extends React.Component<any, any> {
         return (
           <DirectMessaging appkey="wmfGqY" token="TypeScriptReactExample" />
         );
-        
+      }
+
       case Pages.CANDIDATE_QUESTIONNAIRE: {
         return <CandidateQuestionnaire />;
       }
