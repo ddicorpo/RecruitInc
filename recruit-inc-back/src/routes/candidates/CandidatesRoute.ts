@@ -49,14 +49,14 @@ export class CandidatesRoute extends baseRoute {
         }
       });
 
-      // Duplicate code since we want to use feature toggle for ranking
-    
+    // Duplicate code since we want to use feature toggle for ranking
+
     app
       .route('/api/candidates/ranking')
       .get(async (request: Request, response: Response) => {
         //TODO: Add feature toggle request
-        const isRankingEnable : boolean = true;
-        if(isRankingEnable){
+        const isRankingEnable: boolean = true;
+        if (isRankingEnable) {
           try {
             const candidatesCommand: ObtainRankedCandidatesCommand = new ObtainRankedCandidatesCommand();
             let candidates: IApplicantModel[];
@@ -91,10 +91,9 @@ export class CandidatesRoute extends baseRoute {
             );
             response.send(404).send("Can't get Candidates");
           }
-        }else{
-          response.send(404).send("Route not found");
+        } else {
+          response.send(404).send('Route not found');
         }
-
       });
 
     app

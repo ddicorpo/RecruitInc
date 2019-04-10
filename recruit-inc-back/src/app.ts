@@ -7,6 +7,8 @@ import { Logger } from './Logger';
 import { LocationsRoute } from './routes/locations/LocationsRoute';
 import { TechnologiesRoute } from './routes/technologies/TechnologiesRoute';
 import { CandidatesRoute } from './routes/candidates/CandidatesRoute';
+import { QuestionsRoute } from './routes/questions/QuestionsRoute';
+import { ResultsRoute } from './routes/results/ResultsRoute';
 var cors = require('cors');
 
 class App {
@@ -18,6 +20,8 @@ class App {
   public locationRoute: LocationsRoute = new LocationsRoute();
   public techRoute: TechnologiesRoute = new TechnologiesRoute();
   public candidateRoute: CandidatesRoute = new CandidatesRoute();
+  public questionRoute: QuestionsRoute = new QuestionsRoute();
+  public resultsRoute: ResultsRoute = new ResultsRoute();
   private logger: Logger;
   constructor() {
     this.logger = new Logger();
@@ -70,6 +74,8 @@ class App {
     this.locationRoute.routes(this.app);
     this.techRoute.routes(this.app);
     this.candidateRoute.routes(this.app);
+    this.questionRoute.routes(this.app);
+    this.resultsRoute.routes(this.app);
   }
 
   private config(): void {

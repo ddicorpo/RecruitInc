@@ -48,5 +48,4 @@ export class ApplicantFinder {
   public findAll(): Promise<IApplicantModel> {
     return this.baseFinder.findAll();
   }
-
 }

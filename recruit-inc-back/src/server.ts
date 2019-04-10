@@ -29,13 +29,21 @@ var server = app.listen(PORT, async () => {
   console.log('Listening on PORT => ' + PORT);
   connectToDatabase();
 
-  setToggles().then(function(){
-    if(cronActive){
-      scheduleCron();
-    }else{
-      console.log("Cron job will NOT be scheduled to run. (Make sure to enable the toggle feature cronActive)");
-    }
-  }).catch(function(error){console.log("Error with toggle for cron job or scheduling. More info: " + error)});
+  setToggles()
+    .then(function() {
+      if (cronActive) {
+        scheduleCron();
+      } else {
+        console.log(
+          'Cron job will NOT be scheduled to run. (Make sure to enable the toggle feature cronActive)'
+        );
+      }
+    })
+    .catch(function(error) {
+      console.log(
+        'Error with toggle for cron job or scheduling. More info: ' + error
+      );
+    });
 });
 
 /**
@@ -52,8 +60,8 @@ server.setTimeout(DEFAULT_TIMEOUT);
 console.log('Server DEFAULT TIMEOUT =>  ' + DEFAULT_TIMEOUT);
 
 //Set cronjob on app startup
-function scheduleCron(): void{
-  console.log("The Cron Job is scheduled to run");
+function scheduleCron(): void {
+  console.log('The Cron Job is scheduled to run');
   let cronjob: CronJobs = new CronJobs();
   cronjob.scheduleCron();
   cronjob.cronKeyRotation(); //for key rotations

@@ -3,7 +3,6 @@ import fetch from 'node-fetch';
 let fflip = require('fflip');
 
 export class ToggleFeature {
-
   private newFeatureRollout: boolean = false;
   private cronActive: boolean = false;
 

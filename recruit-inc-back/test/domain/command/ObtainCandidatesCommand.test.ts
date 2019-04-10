@@ -1,9 +1,10 @@
 import 'mocha';
 import { expect } from 'chai';
-import { ObtainCandidatesCommand } from '../../../src/domain/command/ObtainCandidatesCommand';require('dotenv').config(); //Get environment variables
+import { ObtainCandidatesCommand } from '../../../src/domain/command/ObtainCandidatesCommand';
+require('dotenv').config(); //Get environment variables
 
 describe('Query created to fetch different languages and filters', () => {
-  it('Should return the right query when no language or framework is passed', async () => {
+  it('Should return the right query when no type or framework is passed', async () => {
     // GIVEN
     const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
     const filters: string[] = [];
@@ -15,7 +16,7 @@ describe('Query created to fetch different languages and filters', () => {
     expect('{}').to.equal(JSON.stringify(actual));
   });
 
-  it('Should return the right query when a single language is passed', async () => {
+  it('Should return the right query when a single type is passed', async () => {
     // GIVEN
     const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
     const filters: string[] = ['java'];
@@ -43,7 +44,7 @@ describe('Query created to fetch different languages and filters', () => {
     ).to.equal(JSON.stringify(actual));
   });
 
-  it('Should return the right query when a language and a framework are passed', async () => {
+  it('Should return the right query when a type and a framework are passed', async () => {
     // GIVEN
     const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
     const filters: string[] = ['java', 'javascript'];
