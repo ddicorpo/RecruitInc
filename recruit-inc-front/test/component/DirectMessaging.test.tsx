@@ -1,12 +1,10 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 import DirectMessaging from '../../src/app/pages/DirectMessaging';
-/* import MessageInput from 'src/app/components/MessageInput';
-import * as Realtime from 'realtime-messaging'; */
 import ChatMessages from '../../src/app/components/ChatMessages';
 import { ChatMessage } from '../../src/app/components/ChatMessage';
 
-describe.only('Testing Direct Messaging', () => {
+describe('Testing Direct Messaging', () => {
   it('render correctly direct messaging component ', () => {
     const props = {
       appkey: 'wmfGqY',
@@ -18,7 +16,7 @@ describe.only('Testing Direct Messaging', () => {
     expect(itShallContains).toBe(true);
   });
 
-  it('render correctly direct messaging component ', () => {
+  it('render correctly Chat message component ', () => {
     const props = {
       chatId: '55',
       messages: Array<ChatMessage>(),
