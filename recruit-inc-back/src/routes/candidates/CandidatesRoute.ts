@@ -101,12 +101,30 @@ export class CandidatesRoute extends baseRoute {
     app
         .route('/api/candidates/search')
         .get(async (request: Request, response: Response) => {
-          try{
-            let username: number = request.query.username;
-            response.status(202).send("Username sent: " + username);
-          }catch (e) {
-            console.log(e);
+
+          try {
+            const candidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
+            let username: string = request.query.username;
+            let candidates: IApplicantModel[];
+
+            candidates = await candidatesCommand.getCandidateByUsername(username);
+
+            this.logCommandCompleted(
+                this.routes.name,
+                ' GET Search candidate by username... '
+            );
+            response.status(200).send(candidates);
+          } catch (CommandException) {
+            this.logCommandFailure(
+                this.routes.name,
+                'GET Candidates by username',
+                CommandException.name,
+                CommandException.message
+            );
+            response.send(404).send("Can't get Candidates");
           }
+
+
         });
 
     app
