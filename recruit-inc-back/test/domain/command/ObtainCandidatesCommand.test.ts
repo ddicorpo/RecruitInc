@@ -80,6 +80,6 @@ describe('Query created to fetch users either with different languages and filte
     const actual: {} = obtainCandidatesCommand.getUserQuery(username);
 
     // THEN
-    expect('{"platformUsername" : "bob-test"}').to.equal(JSON.stringify(actual));
+    expect('{"platformUsername":"bob-test"}').to.equal(JSON.stringify(actual));
   });
 });
