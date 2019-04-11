@@ -9,6 +9,8 @@ import { CandidateAdapter } from '../adapter/CandidateAdapter';
 import { ObtainCandidates } from '../services/ObtainCandidates';
 import { ObtainLocations } from '../services/ObtainLocations';
 import { ObtainTechnologies } from '../services/ObtainTechnologies';
+import Pagination from 'react-js-pagination';
+import { ObtainFilteredCandidates } from '../services/ObtainFilteredCandidates';
 
 class CandidateSearch extends React.Component<any, any> {
   private logger: Logger;
@@ -16,9 +18,11 @@ class CandidateSearch extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.logger = new Logger();
+    //We don't need bind if we use event... check handleRankChange
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleLanguageChange = this.handleLanguageChange.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
+
     this.state = {
       activePage: 1,
       selectedTechnology: [],
@@ -26,6 +30,10 @@ class CandidateSearch extends React.Component<any, any> {
       techFromBackEnd: [],
       locationFromBackEnd: [],
       candidates: [],
+      isLoaded: false,
+      error: undefined,
+      isRankEnabled: false,
+      rankedOption: [],
     };
   }
 
@@ -33,18 +41,17 @@ class CandidateSearch extends React.Component<any, any> {
     const array: JSX.Element[] = [];
     let index: number;
     for (index = 0; index < this.state.candidates.length; index++) {
-      if (!this.state.candidates[index].isFilter) {
-        let tmpProps: ICardProps = {
-          userInfo: this.state.candidates[index],
-          projectInfo: this.state.candidates[index].projectSummary,
-        };
-        array.push(
-          <CandidateCard
-            userInfo={tmpProps.userInfo}
-            projectInfo={tmpProps.projectInfo}
-          />
-        );
-      }
+      let tmpProps: ICardProps = {
+        userInfo: this.state.candidates[index],
+        projectInfo: this.state.candidates[index].projectSummary,
+      };
+      array.push(
+        <CandidateCard
+          key={tmpProps.userInfo.username}
+          userInfo={tmpProps.userInfo}
+          projectInfo={tmpProps.projectInfo}
+        />
+      );
     }
     if (this.state.candidates.length < 1) {
       array.push(<div>No result</div>);
@@ -98,13 +105,24 @@ class CandidateSearch extends React.Component<any, any> {
   }
 
   handlePageChange(pageNumber: number) {
+    if (this.state.rankChoose.value === 'sorted') {
+      this.getSortedCandidates(true, pageNumber);
+    } else {
+      this.getCandidates(true, pageNumber);
+    }
+
+    this.setState({ activePage: pageNumber });
+
     this.logger.info({
       class: 'CandidateSearch',
       method: 'handlePageChange',
       action: 'Changing the page to ' + pageNumber,
       params: { pageNumber },
     });
+
     this.setState({ activePage: pageNumber });
+
+    this.render();
   }
 
   handleLanguageChange(
@@ -117,26 +135,53 @@ class CandidateSearch extends React.Component<any, any> {
     });
   }
 
-  getCandidates = (isSearchFilter: boolean) => {
+  getCandidates = (isSearchFilter: boolean, page: number) => {
     let localCandidates: ICandidate[] = [];
-    const candidatesService: ObtainCandidates = new ObtainCandidates();
+    let candidatesService: ObtainCandidates = new ObtainCandidates();
+
+    candidatesService.changePage(page);
+    this.setState({ activePage: page });
+
+    if (isSearchFilter) {
+      candidatesService.applyFilters(this.state.selectedTechOptions);
+    }
+
     candidatesService
       .execute()
       .then(result => {
         candidatesService.logActionCompleted(candidatesService.serviceName);
         let adapter: CandidateAdapter = new CandidateAdapter();
         localCandidates = adapter.adapt(result.data);
-        for (let candidates of localCandidates) {
-          let isFilter: boolean = false;
-          if (
-            isSearchFilter &&
-            !this.isTechUsedByCandidate(candidates.projectSummary.totalOutput)
-          ) {
-            isFilter = true;
-          }
-          candidates.isFilter = isFilter;
-        }
+        this.setState({
+          candidates: localCandidates,
+        });
+      })
+      .catch(error => {
+        candidatesService.logActionFailure(
+          candidatesService.serviceName,
+          error,
+          error
+        );
+      });
+  };
 
+  getSortedCandidates = (isSearchFilter: boolean, page: number) => {
+    let localCandidates: ICandidate[] = [];
+    let candidatesService: ObtainFilteredCandidates = new ObtainFilteredCandidates();
+
+    candidatesService.changePage(page);
+    this.setState({ activePage: page });
+
+    if (isSearchFilter) {
+      candidatesService.applyFilters(this.state.selectedTechOptions);
+    }
+
+    candidatesService
+      .execute()
+      .then(result => {
+        candidatesService.logActionCompleted(candidatesService.serviceName);
+        let adapter: CandidateAdapter = new CandidateAdapter();
+        localCandidates = adapter.adapt(result.data);
         this.setState({
           candidates: localCandidates,
         });
@@ -151,61 +196,18 @@ class CandidateSearch extends React.Component<any, any> {
   };
 
   handleSearchClick = () => {
-    this.getCandidates(true);
-    this.render();
-  };
-
-  handleLoadClick = () => {
-    this.getCandidates(false);
-    this.render();
-  };
-
-  isTechUsedByCandidate = (candidateProjectSummaryTotalOutput): boolean => {
-    let techIndex: number;
-    for (
-      techIndex = 0;
-      techIndex < this.state.selectedTechOptions.length;
-      techIndex++
+    const page: number = 1;
+    const filterActivated: boolean =
+      this.state.selectedTechOptions !== undefined;
+    if (
+      this.state.rankChoose == undefined ||
+      this.state.rankChoose.value === 'unsorted'
     ) {
-      let tech = this.state.selectedTechOptions[techIndex].value;
-
-      let languageIndex: number;
-      for (
-        languageIndex = 0;
-        languageIndex < candidateProjectSummaryTotalOutput.length;
-        languageIndex++
-      ) {
-        if (
-          tech ==
-            candidateProjectSummaryTotalOutput[languageIndex]
-              .languageOrFramework &&
-          candidateProjectSummaryTotalOutput[languageIndex].linesOfCode > 0
-        ) {
-          return true;
-        } else {
-          let frameworkIndex: number;
-          for (
-            frameworkIndex = 0;
-            frameworkIndex <
-            candidateProjectSummaryTotalOutput[languageIndex].frameworks.length;
-            frameworkIndex++
-          ) {
-            if (
-              tech ==
-                candidateProjectSummaryTotalOutput[languageIndex].frameworks[
-                  frameworkIndex
-                ].technologyName &&
-              candidateProjectSummaryTotalOutput[languageIndex].frameworks[
-                frameworkIndex
-              ].linesOfCode > 0
-            ) {
-              return true;
-            }
-          }
-        }
-      }
+      this.getCandidates(filterActivated, page);
+    } else {
+      this.getSortedCandidates(filterActivated, page);
     }
-    return false;
+    this.render();
   };
 
   handleCityChange(value: ValueType<IOptionsBox>, action: ActionMeta): void {
@@ -214,6 +216,28 @@ class CandidateSearch extends React.Component<any, any> {
       cityOption: value,
     });
   }
+
+  handleRankChange = event => {
+    //we'll capture this through the button press
+    this.setState({
+      rankChoose: event,
+    });
+  };
+
+  private loadSortOption() {
+    let choices: IOptionsBox[] = [];
+    choices.push({ value: 'sorted', label: 'Most Experienced' });
+    choices.push({ value: 'unsorted', label: 'No Sort' });
+
+    this.setState({
+      rankOption: choices,
+    });
+
+    this.setState({
+      rankChoose: choices[0],
+    });
+  }
+
   /**
    * Function call before the render()
    */
@@ -222,10 +246,11 @@ class CandidateSearch extends React.Component<any, any> {
     this.loadSupportedTechnologies();
     // Load Supported Location
     this.loadSupportedLocations();
+    // Add supported sorting
+    this.loadSortOption();
   }
 
   render() {
-    //let isResultEmpty = this.state.candidates == undefined || this.state.candidates.length < 1;
     return (
       <div className="container-fluid">
         <div className="page-header">
@@ -268,6 +293,24 @@ class CandidateSearch extends React.Component<any, any> {
                   </div>
                 </div>
               </div>
+              {this.props.isRanking ? (
+                <div className="col-md-4">
+                  <div className="p-h-10">
+                    <div className="form-group">
+                      <label className="control-label">Sort</label>
+                      <Select
+                        value={this.state.rankChoose}
+                        onChange={event => this.handleRankChange(event)}
+                        isSearchable={true}
+                        options={this.state.rankOption}
+                        className="form-control"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <p />
+              )}
               <div className="col-md-4">
                 <div className="p-h-10">
                   <div className="form-group">
@@ -291,17 +334,18 @@ class CandidateSearch extends React.Component<any, any> {
           <div className="card-header border bottom">
             <h4 className="card-title">Results</h4>
           </div>
-          <div className="form-group middle-man">
-            <button
-              id="load"
-              className="btn btn-gradient-primary form-control super-button"
-              type="button"
-              onClick={this.handleLoadClick}
-            >
-              Load All
-            </button>
-          </div>
           <div className="card-body">{this.renderCards()}</div>
+
+          <Pagination
+            activePage={this.state.activePage}
+            itemClass="page-item"
+            linkClass="page-link"
+            // Would be good to do an initial call to see how many items there is
+            itemsCountPerPage={2}
+            totalItemsCount={100}
+            pageRangeDisplayed={3}
+            onChange={this.handlePageChange}
+          />
         </div>
       </div>
     );

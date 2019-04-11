@@ -57,7 +57,12 @@ export class GithubDownloadedFilesPath {
         params: {},
         value: error.toString(),
       });
-      if (error.toString().includes('rate-limiting')) {
+      if (
+        error
+          .toString()
+          .includes('https://developer.github.com/v3/#rate-limiting') &&
+        !error.toString().includes('sha')
+      ) {
         throw error;
       }
       return data;

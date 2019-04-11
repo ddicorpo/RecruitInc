@@ -1,0 +1,74 @@
+import 'mocha';
+import { expect } from 'chai';
+import { ObtainCandidatesCommand } from '../../../src/domain/command/ObtainCandidatesCommand';
+require('dotenv').config(); //Get environment variables
+
+describe('Query created to fetch different languages and filters', () => {
+  it('Should return the right query when no type or framework is passed', async () => {
+    // GIVEN
+    const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
+    const filters: string[] = [];
+
+    // WHEN
+    const actual: {} = obtainCandidatesCommand.getQuery(filters);
+
+    // THEN
+    expect('{}').to.equal(JSON.stringify(actual));
+  });
+
+  it('Should return the right query when a single type is passed', async () => {
+    // GIVEN
+    const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
+    const filters: string[] = ['java'];
+
+    // WHEN
+    const actual: {} = obtainCandidatesCommand.getQuery(filters);
+
+    // THEN
+    expect(
+      '{"iGit.IGitData.gitProjectSummary.totalOutput":{"$all":[{"$elemMatch":{"languageOrFramework":"Java","$and":[{"linesOfCode":{"$gt":0}},{"numberOfCommits":{"$gt":0}}]}}]}}'
+    ).to.equal(JSON.stringify(actual));
+  });
+
+  it('Should return the right query when two languages are passed', async () => {
+    // GIVEN
+    const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
+    const filters: string[] = ['java', 'javascript'];
+
+    // WHEN
+    const actual: {} = obtainCandidatesCommand.getQuery(filters);
+
+    // THEN
+    expect(
+      '{"iGit.IGitData.gitProjectSummary.totalOutput":{"$all":[{"$elemMatch":{"languageOrFramework":"Java","$and":[{"linesOfCode":{"$gt":0}},{"numberOfCommits":{"$gt":0}}]}},{"$elemMatch":{"languageOrFramework":"Javascript","$and":[{"linesOfCode":{"$gt":0}},{"numberOfCommits":{"$gt":0}}]}}]}}'
+    ).to.equal(JSON.stringify(actual));
+  });
+
+  it('Should return the right query when a type and a framework are passed', async () => {
+    // GIVEN
+    const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
+    const filters: string[] = ['java', 'javascript'];
+
+    // WHEN
+    const actual: {} = obtainCandidatesCommand.getQuery(filters);
+
+    // THEN
+    expect(
+      '{"iGit.IGitData.gitProjectSummary.totalOutput":{"$all":[{"$elemMatch":{"languageOrFramework":"Java","$and":[{"linesOfCode":{"$gt":0}},{"numberOfCommits":{"$gt":0}}]}},{"$elemMatch":{"languageOrFramework":"Javascript","$and":[{"linesOfCode":{"$gt":0}},{"numberOfCommits":{"$gt":0}}]}}]}}'
+    ).to.equal(JSON.stringify(actual));
+  });
+
+  it('Should return the right query when a single framework is passed', async () => {
+    // GIVEN
+    const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
+    const filters: string[] = ['angular'];
+
+    // WHEN
+    const actual: {} = obtainCandidatesCommand.getQuery(filters);
+
+    // THEN
+    expect(
+      '{"iGit.IGitData.gitProjectSummary.totalOutput":{"$all":[{"$elemMatch":{"languageOrFramework":"Javascript","$and":[{"linesOfCode":{"$gt":0}},{"numberOfCommits":{"$gt":0}},{"frameworks":{"$elemMatch":{"technologyName":"Angular","$and":[{"linesOfCode":{"$gt":0}},{"numberOfCommits":{"$gt":0}}]}}}]}}]}}'
+    ).to.equal(JSON.stringify(actual));
+  });
+});

@@ -53,9 +53,9 @@ export class CommitQueue extends AbstractQueue {
     return this.queue.length;
   }
 
-  public async processNextQuery() {
+  public async processNextQuery(token: string) {
     try {
-      await this.queue[0].executeQuery();
+      await this.queue[0].executeQuery(token);
       //remove the first object from the queue
       this.dequeue();
     } catch (error) {

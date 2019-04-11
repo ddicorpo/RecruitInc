@@ -88,7 +88,7 @@
     "dotenv-webpack": "1.7.0",
     "express": "4.16.4",
     "fflip": "4.0.0",
-    "font-awesome": "^4.7.0",
+    "font-awesome": "4.7.0",
     "fs": "0.0.1-security",
     "lint-staged": "8.1.4",
     "localtunnel": "1.9.1",
@@ -98,7 +98,7 @@
     "react-js-pagination": "3.0.2",
     "react-select": "2.4.1",
     "realtime-messaging": "^2.1.42",
-    "sinon": "^7.2.6",
+    "sinon": "7.2.6",
     "ts-node": "7.0.1",
     "winston": "3.2.1"
   }

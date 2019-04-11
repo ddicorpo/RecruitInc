@@ -39,12 +39,34 @@ describe('Get User repositories', () => {
 
 describe('Populates an IGithubUser with his repositories', () => {
   beforeEach(() => {
-    user = { login: 'MewtR', url: '', createdAt: '' };
+    user = {
+      login: 'MewtR',
+      url: '',
+      createdAt: '',
+      id: 'MDQ6VXNlcjI1MTU1NjMx',
+    };
     //mocking the API
-    nock('https://api.github.com')
-      .post('/graphql')
+    const scope = nock('https://api.github.com')
+      .post('/graphql', body => body.query.includes('repositories'))
       .reply(200, githubRepositoryResponse);
   });
+
+  const scope = nock('https://api.github.com')
+    .post('/graphql', body => body.query.includes('totalCount'))
+    .reply(200, {
+      data: {
+        repository: {
+          ref: {
+            target: {
+              history: {
+                totalCount: 48,
+              },
+            },
+          },
+        },
+      },
+    })
+    .persist();
 
   it('Populates an IGithubUser with his repositories', () => {
     return test.getUserRepos(user).then(response => {

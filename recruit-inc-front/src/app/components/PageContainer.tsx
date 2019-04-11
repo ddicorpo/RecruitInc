@@ -3,16 +3,27 @@ import { Pages } from '../pages/Pages';
 import CandidateSearch from '../pages/CandidateSearch';
 import LocationWatchList from '../pages/LocationWatchlist';
 import DirectMessaging from '../pages/DirectMessaging';
+import CandidateQuestionnaire from "../pages/CandidateQuestionnaire";
+import { ToggleFeature } from '../toggle-feature/ToggleFeature';
+import { Logger } from '../Logger';
+
 
 class PageContainer extends React.Component<any, any> {
+  private toggles: ToggleFeature;
+  private logger: Logger;
   constructor(props: any) {
     super(props);
+    this.logger = new Logger();
+    this.state = {
+      isRankingActive: false,
+    };
   }
 
   renderSwitch(page: string) {
+    const isRankActive: boolean = this.state.isRankingActive;
     switch (page) {
       case Pages.CANDIDATE_SEARCH: {
-        return <CandidateSearch />;
+        return <CandidateSearch isRanking={isRankActive} />;
       }
 
       case Pages.LOCATION_WATCHLIST: {
@@ -23,6 +34,9 @@ class PageContainer extends React.Component<any, any> {
         return (
           <DirectMessaging appkey="wmfGqY" token="TypeScriptReactExample" />
         );
+        
+      case Pages.CANDIDATE_QUESTIONNAIRE: {
+        return <CandidateQuestionnaire />;
       }
 
       default: {
@@ -31,6 +45,26 @@ class PageContainer extends React.Component<any, any> {
     }
   }
 
+  componentWillMount() {
+    this.toggles = new ToggleFeature();
+    this.toggles
+      .retrieveToggleFeature()
+      .then(v => {
+        const active: boolean = this.toggles.isNewFeatureRollout();
+        this.setState({
+          isRankingActive: active,
+        });
+      })
+      .catch(error => {
+        console.log("can't get feature toggle" + error);
+        this.logger.error({
+          class: 'PageContainer',
+          method: this.componentWillMount.name,
+          action: error,
+          params: { error },
+        });
+      });
+  }
   render() {
     return (
       <div className="page-container">

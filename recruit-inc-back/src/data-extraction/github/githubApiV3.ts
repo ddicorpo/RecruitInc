@@ -34,16 +34,20 @@ export class GithubApiV3 {
           params: {},
           value: body,
         });
-      if (body.toString().includes("https://developer.github.com/v3/#rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
-        console.log("Actually throwing the error v3", body.toString());
-        throw body;
-      }
+        if (
+          body
+            .toString()
+            .includes('https://developer.github.com/v3/#rate-limiting') &&
+          !body.toString().includes('sha')
+        ) {
+          //Only throw error to calling function if it is due to rate-limit abuse
+          console.log('Actually throwing the error v3', body.toString());
+          throw body;
+        }
         console.log(body);
         return body;
       })
       .catch(error => {
-        console.log("Caught an error dawg v3: ", error.toString());
-        console.log("Rate abuse", error.toString().includes("rate-limiting"));
         logger.error({
           class: 'githubApiV3',
           method: 'queryUserCommits',
@@ -51,10 +55,10 @@ export class GithubApiV3 {
           params: {},
           value: error,
         });
-      if (error.toString().includes("rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
-        console.log("Actually throwing the error v3", error.toString());
-        throw error;
-      }
+        if (error.toString().includes('rate-limiting')) {
+          //Only throw error to calling function if it is due to rate-limit abuse
+          throw error;
+        }
         return error;
       });
   }
@@ -89,16 +93,19 @@ export class GithubApiV3 {
           params: {},
           value: body,
         });
-      if (body.toString().includes("https://developer.github.com/v3/#rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
-        console.log("Actually throwing the error v3", body.toString());
-        throw body;
-      }
+        if (
+          body
+            .toString()
+            .includes('https://developer.github.com/v3/#rate-limiting') &&
+          !body.toString().includes('sha')
+        ) {
+          //Only throw error to calling function if it is due to rate-limit abuse
+          throw body;
+        }
         console.log(body);
         return body;
       })
       .catch(error => {
-        console.log("Caught an error dawg v3: ", error.toString());
-        console.log("Rate abuse", error.toString().includes("rate-limiting"));
         logger.error({
           class: 'githubApiV3',
           method: 'getGitTree',
@@ -106,10 +113,9 @@ export class GithubApiV3 {
           params: {},
           value: error,
         });
-      if (error.toString().includes("rate-limiting")){ 
-        console.log("Actually throwing the error v3", error.toString());
-        throw error;
-      }
+        if (error.toString().includes('rate-limiting')) {
+          throw error;
+        }
         return error;
       });
   }
@@ -144,16 +150,19 @@ export class GithubApiV3 {
           params: {},
           value: body,
         });
-      if (body.toString().includes("https://developer.github.com/v3/#rate-limiting")){ //Only throw error to calling function if it is due to rate-limit abuse
-        console.log("Actually throwing the error v3", body.toString());
-        throw body;
-      }
+        if (
+          body
+            .toString()
+            .includes('https://developer.github.com/v3/#rate-limiting') &&
+          !body.toString().includes('sha')
+        ) {
+          //Only throw error to calling function if it is due to rate-limit abuse
+          throw body;
+        }
         console.log(body);
         return body;
       })
       .catch(error => {
-        console.log("Caught an error dawg v3: ", error.toString());
-        console.log("Rate abuse", error.toString().includes("rate-limiting"));
         logger.error({
           class: 'githubApiV3',
           method: 'downloadFile',
@@ -161,10 +170,9 @@ export class GithubApiV3 {
           params: {},
           value: error,
         });
-      if (error.toString().includes("rate-limiting")){ 
-        console.log("Actually throwing the error v3", error.toString());
-        throw error;
-      }
+        if (error.toString().includes('rate-limiting')) {
+          throw error;
+        }
         return error;
       });
   }

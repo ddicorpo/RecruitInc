@@ -1,8 +1,8 @@
 import { Routes } from '../Routes';
-import { baseService } from './baseService';
+import { BaseService } from './BaseService';
 import axios from 'axios';
 
-export class ObtainLocations extends baseService {
+export class ObtainLocations extends BaseService {
   constructor() {
     super();
     this.serviceName = Routes.ObtainLocations;

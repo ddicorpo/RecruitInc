@@ -1,0 +1,26 @@
+{
+    "include": [
+        "src/**/*",
+        "package.json"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts",
+        ".env",
+        "dir"
+    ],
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "commonjs",
+        "lib": [
+            "es6",
+            "es7"
+        ],
+        "sourceMap": true,
+        "outDir": "./dist",
+        "strict": true,
+        "alwaysStrict": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    }
+}
