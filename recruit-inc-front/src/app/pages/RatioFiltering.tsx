@@ -18,25 +18,26 @@ class RatioFiltering extends React.Component<any, any> {
           <div className="card-body">
             <div className="row m-t-30">
               <div className="col-md-4">
-                <div className="p-h-10" />
-              </div>
-              <div className="col-md-4">
-                <div className="p-h-10" />
-              </div>
-              <div className="col-md-4">
                 <div className="p-h-10">
                   <div className="form-group">
-                    <label className="control-label">&nbsp;</label>
-                    <button
-                      id="save"
-                      className="btn btn-success form-control super-button"
-                      type="button"
-                      //onClick={this.handleSearchClick}
-                    >
-                      Search
-                    </button>
+                    <label className="control-label">Language Search</label>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="p-h-10">
+              <div className="form-group">
+                <label className="control-label">Ratio Selection</label>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="p-h-10">
+              <div className="form-group">
+                <label className="control-label">City Search</label>
               </div>
             </div>
           </div>
