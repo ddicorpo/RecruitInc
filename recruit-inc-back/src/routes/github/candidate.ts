@@ -216,10 +216,11 @@ export class Candidate {
       });
 
     app
-      .route('/api/github/candidate/repo/:username')
+      .route('/api/github/candidate/repo/:username/:id')
       .get(async (req: Request, res: Response) => {
         let username: string = req.params.username;
-        let user: IGithubUser = { login: username, url: '', createdAt: '' };
+        let id: string = req.params.id;
+        let user: IGithubUser = { login: username,id:id,url: '', createdAt: '' };
         let query: GithubUserRepos = new GithubUserRepos();
         user = await query.getUserRepos(user);
 
@@ -371,7 +372,7 @@ export class Candidate {
           value: { req, res },
         });
         let login: string = req.params.login;
-        let id: string = req.params.login;
+        let id: string = req.params.id;
         let accessToken: string = req.params.accessToken;
         let output: IGitProjectSummary;
         let githubDataExtractor: GithubDataExtraction;

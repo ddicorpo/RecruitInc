@@ -28,6 +28,7 @@ export class GithubDataExtraction {
       createdAt: '',
       url: '',
       id: id,
+      email:"mohamed_2_27@hotmai.com"
     };
 
     //Get all of the user's repos
