@@ -5,6 +5,7 @@ export enum Routes {
   ObtainScan = '/findScanning',
   ObtainUserToScan = '/getUsersDB/',
   ObtainUnscanUser = '/unscannedusers/',
+  ObtainFilterCandidates = '/api/candidates/ranking',
+  ObtainCandidateByUser = '/api/candidates/search',
   ObtainQuestionnaireCandidates = '/api/results',
-  ObtainFilterCandidates = '/api/candidates/ranking'
 }

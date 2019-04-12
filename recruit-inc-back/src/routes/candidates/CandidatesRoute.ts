@@ -96,6 +96,36 @@ export class CandidatesRoute extends baseRoute {
         }
       });
 
+    //Route to retrieve info for a specific user. ex: /api/candidates/search?username=robert
+    app
+        .route('/api/candidates/search')
+        .get(async (request: Request, response: Response) => {
+
+          try {
+            const candidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
+            let username: string = request.query.username;
+            let candidates: IApplicantModel[];
+
+            candidates = await candidatesCommand.getCandidateByUsername(username);
+
+            this.logCommandCompleted(
+                this.routes.name,
+                ' GET Search candidate by username... '
+            );
+            response.status(200).send(candidates);
+          } catch (CommandException) {
+            this.logCommandFailure(
+                this.routes.name,
+                'GET Candidates by username',
+                CommandException.name,
+                CommandException.message
+            );
+            response.send(404).send("Can't get Candidates");
+          }
+
+
+        });
+
     app
       .route('/api/candidates/technologies')
       .get(async (request: Request, response: Response) => {
