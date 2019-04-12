@@ -10,28 +10,8 @@ export class ObtainQuestionaireQuestionsCommand extends AbstractCommand {
     super();
   }
 
-  public async getQuestionnaireQuestions(
-    page: number,
-    filters?: string[]
-  ): Promise<any> {
+  public async getQuestionnaireQuestions(): Promise<any> {
     try {
-      //Not Required - Always returning all the questions
-      // const query =
-      //   filters.length > 0
-      //     ? filters
-      //         .map(filter => {
-      //           return {
-      //             // todo
-      //           };
-      //         })
-      //         .reduce((aggregate, item) => Object.assign(aggregate, item), {})
-      //     : {};
-
-      //Prevent crash of the application by inserting page=-1 or page=0
-      if (page < 1) {
-        page = 1;
-      }
-
       let allQuestions: IQuestionsModel[] = await this.finder.findAll();
 
       return JSON.stringify(allQuestions);

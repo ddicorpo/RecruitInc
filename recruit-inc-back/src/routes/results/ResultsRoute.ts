@@ -18,7 +18,7 @@ export class ResultsRoute extends baseRoute {
 
           if (request.query.filter === undefined && page === undefined) {
             // User wants all results
-            results = await resultsCommand.getQuestionnaireResults(page, []);
+            results = await resultsCommand.getQuestionnaireResults();
           } else {
             // User wants results by page
             const rawFilters = request.query.filter;
@@ -30,10 +30,7 @@ export class ResultsRoute extends baseRoute {
               filter = Array.isArray(rawFilters) ? rawFilters : [rawFilters];
             }
 
-            results = await resultsCommand.getQuestionnaireResults(
-              page,
-              filter
-            );
+            results = await resultsCommand.getQuestionnaireResults();
           }
 
           this.logCommandCompleted(

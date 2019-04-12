@@ -18,7 +18,7 @@ export class QuestionsRoute extends baseRoute {
 
           if (request.query.filter === undefined && page === undefined) {
             // User wants all questions
-            questions = await questionsCommand.getQuestionnaireQuestions(page);
+            questions = await questionsCommand.getQuestionnaireQuestions();
           } else {
             //User wants questions by page
             const rawFilters = request.query.filter;
@@ -30,10 +30,7 @@ export class QuestionsRoute extends baseRoute {
               filter = Array.isArray(rawFilters) ? rawFilters : [rawFilters];
             }
 
-            questions = await questionsCommand.getQuestionnaireQuestions(
-              page,
-              filter
-            );
+            questions = await questionsCommand.getQuestionnaireQuestions();
           }
 
           this.logCommandCompleted(
