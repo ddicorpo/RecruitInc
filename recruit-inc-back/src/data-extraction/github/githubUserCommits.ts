@@ -21,6 +21,49 @@ export class GithubUserCommits {
     }
   }
 
+  async getCommiterEmail(
+    owner: string,
+    repo: string,
+    sha: string
+  ): Promise<string> {
+    let data: string;
+    let result: string;
+    let jsonData;
+    try {
+      data = await new GithubApiV3().queryUserCommits(
+        this.accessToken,
+        owner,
+        repo,
+        sha
+      );
+
+      jsonData = JSON.parse(data);
+      if (!jsonData.hasOwnProperty('files'))
+        throw new Error(
+          "You probably triggered the api's abuse detecting mechanism."
+        );
+    } catch (error) {
+      this.logger.error({
+        class: 'GithubUserCommits',
+        method: 'getFilesAffectedByCommit',
+        action: "Error while trying to obtain the commiter's email.",
+        params: {},
+        value: error.toString(),
+      });
+      if (
+        error
+          .toString()
+          .includes('https://developer.github.com/v3/#rate-limiting') &&
+        !error.toString().includes('sha')
+      )
+        //Only throw error to calling function if it is due to rate-limit abuse
+        throw error;
+      return result;
+    }
+
+    return jsonData.commit.author.email;
+  }
+
   async getFilesAffectedByCommit(
     owner: string,
     repo: string,

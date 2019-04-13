@@ -17,6 +17,7 @@ import { Status } from '../../domain/model/ICronModel';
 import { Logger } from '../../Logger';
 import { CronJobs } from '../../cron-job/CronJobs';
 import { Controller } from '../../queue/Controller';
+import { GithubUserCommits } from '../../data-extraction/github/githubUserCommits';
 const logger = new Logger();
 const { fork } = require('child_process');
 
@@ -24,6 +25,20 @@ export class Candidate {
   public routes(app): void {
     let users: IGithubUser[];
 
+    app
+      .route('/email/:owner/:repo/:sha')
+      .get(async (request: Request, response: Response) => {
+        let repo: string = request.params.repo;
+        let owner: string = request.params.owner;
+        let sha: string = request.params.sha;
+        let githubUserCommits: GithubUserCommits = new GithubUserCommits();
+        let result: string = await githubUserCommits.getCommiterEmail(
+          owner,
+          repo,
+          sha
+        );
+        response.send(result);
+      });
     app.route('/process').get(async (request: Request, response: Response) => {
       let controller: Controller = Controller.get_instance();
       await controller.processUsers();
