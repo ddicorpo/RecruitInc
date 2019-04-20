@@ -56,13 +56,5 @@ export class Candidate {
 
         response.sendStatus(200);
       });
-
-    app
-      .route('/location/:location')
-      .get(async (request: Request, response: Response) => {
-        let location: string = request.params.location;
-        let cronjob: CronJobs = new CronJobs();
-        cronjob.addToWatchlist(location);
-      });
   }
 }

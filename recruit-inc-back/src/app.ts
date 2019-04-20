@@ -1,6 +1,5 @@
 import express from 'express';
 import * as bodyParser from 'body-parser'; //used to parse the form data that you pass in the request
-import { ApplicantGithub } from './routes/github/applicantGithub';
 import { Candidate } from './routes/github/candidate';
 import { OAuthCode } from './routes/OAuth/OAuthCode';
 import { Logger } from './Logger';
@@ -14,7 +13,6 @@ var cors = require('cors');
 class App {
   public app: express.Application;
   public candidateDataRoute: Candidate = new Candidate();
-  public applicantGithub: ApplicantGithub = new ApplicantGithub();
   public candidateDataRout: Candidate = new Candidate();
   public oauthCodeRoute: OAuthCode = new OAuthCode();
   public locationRoute: LocationsRoute = new LocationsRoute();
@@ -68,7 +66,6 @@ class App {
     this.app.use(cors(corsOptionsDelegate));
     this.config();
     this.candidateDataRoute.routes(this.app);
-    this.applicantGithub.routes(this.app);
     this.candidateDataRout.routes(this.app);
     this.oauthCodeRoute.routes(this.app);
     this.locationRoute.routes(this.app);
