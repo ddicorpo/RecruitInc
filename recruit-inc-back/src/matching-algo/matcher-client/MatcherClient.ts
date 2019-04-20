@@ -108,6 +108,7 @@ export class MatcherClient {
           // Adding Language Stats
           language.linesOfCode += targetLangStats.linesOfCode;
           language.numberOfCommits += targetLangStats.numberOfCommits;
+          language.ratio = language.linesOfCode / language.numberOfCommits;
 
           // Adding the Framework Stats
           for (const computedFrameworkStat of targetedFrameworksStats) {
