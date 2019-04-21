@@ -54,11 +54,11 @@ export class GithubDataExtraction {
       this.accessToken
     );
     user = await githubDownloadedFilesPath.downloadFileForUser(user);
-    let client: MatcherClient = new MatcherClient(user.dataEntry);
+    //let client: MatcherClient = new MatcherClient(user.dataEntry);
 
     //ariles
-    let outputwithratio: IGitProjectSummary =client.execute()
-    console.log(outputwithratio)
+    //let outputwithratio: IGitProjectSummary =client.execute()
+    //console.log(outputwithratio)
     return user;
   }
 

@@ -17,6 +17,8 @@ import { Status } from '../../domain/model/ICronModel';
 import { Logger } from '../../Logger';
 import { CronJobs } from '../../cron-job/CronJobs';
 import { Controller } from '../../queue/Controller';
+import { MatcherClient } from '../../matching-algo/matcher-client/MatcherClient';
+
 const logger = new Logger();
 const { fork } = require('child_process');
 
@@ -356,9 +358,34 @@ export class Candidate {
           githubDataExtractor = new GithubDataExtraction();
         }
         let user: IGithubUser = await githubDataExtractor.extractData(login,id);
-
+      
         res.status(200).send(user);
-        console.log(user);
+        //console.log(user);
+      });
+
+      app
+      .route('/api/getRatio/:login/:id')
+      .get(async (req: Request, res: Response) => {
+        let id : string = req.params.id;
+        let login: string = req.params.login;
+        let accessToken: string = req.params.accessToken;
+
+        let githubDataExtractor: GithubDataExtraction;
+
+        if (accessToken) {
+          githubDataExtractor = new GithubDataExtraction(accessToken);
+        } else {
+          githubDataExtractor = new GithubDataExtraction();
+        }
+        let user: IGithubUser = await githubDataExtractor.extractData(login,id);
+        
+        let client: MatcherClient = new MatcherClient(user.dataEntry);
+
+        //ariles
+        let outputwithratio: IGitProjectSummary =client.execute()
+
+        res.status(200).send(outputwithratio);
+        //console.log(user);
       });
 
     app
