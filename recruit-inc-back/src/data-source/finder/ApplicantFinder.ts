@@ -48,4 +48,9 @@ export class ApplicantFinder {
   public findAll(): Promise<IApplicantModel> {
     return this.baseFinder.findAll();
   }
+
+  public findUser(query: {}): Promise<IApplicantModel> {
+    return this.baseFinder.findUser(query);
+  }
+
 }

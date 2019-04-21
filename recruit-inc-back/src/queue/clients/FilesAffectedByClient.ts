@@ -10,12 +10,14 @@ export class FilesAffectedByClient implements IGithubClient {
   public repository: string;
   public commitId: string;
   public login: string;
+  public email: string;
 
   constructor(prospect: RequiredClientInformation) {
     this.owner = prospect.repoOwner;
     this.repository = prospect.repoName;
     this.commitId = prospect.commitId;
     this.login = prospect.user.login;
+    this.email = prospect.user.email;
   }
 
   async executeQuery(token: string) {
@@ -27,10 +29,18 @@ export class FilesAffectedByClient implements IGithubClient {
         this.owner,
         this.repository,
         this.commitId
-        //'absolutetrash'
       );
     } catch (error) {
       throw error;
+    }
+    if (!this.email) {
+      await this.setUserEmail(
+        this.login,
+        this.owner,
+        this.repository,
+        this.commitId,
+        token
+      );
     }
 
     //TODO: Save to database
@@ -42,6 +52,27 @@ export class FilesAffectedByClient implements IGithubClient {
     );
   }
 
+  public async setUserEmail(
+    login: string,
+    owner: string,
+    repository: string,
+    commitId: string,
+    token: string
+  ) {
+    let githubUserCommits: GithubUserCommits = new GithubUserCommits(token);
+    let githubUsersTDG: GithubUsersTDG = new GithubUsersTDG();
+    let email: string = await githubUserCommits.getCommiterEmail(
+      owner,
+      repository,
+      commitId
+    );
+    let criteria: any = { 'githubUser.login': login };
+    let update: any = {
+      $set: { 'githubUser.email': email },
+    };
+
+    await githubUsersTDG.generalUpdate(criteria, update);
+  }
   public async updateUser(
     login: string,
     projectName: string,

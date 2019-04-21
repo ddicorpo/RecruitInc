@@ -67,6 +67,14 @@ export class BaseFinder {
     });
   }
 
+  public findUser(query: any): Promise<any>{
+    return new Promise((resolve: any, reject: any) => {
+      const findUserErrorHandler: any = (error: any, obj: any) =>
+          this.errorHandler(error, obj, this.findUser.name, resolve, reject);
+      this.model.find(query, findUserErrorHandler);
+    });
+  }
+
   public findByWithPage(
     query: any,
     page: number,
