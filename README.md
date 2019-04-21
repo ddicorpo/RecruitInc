@@ -1,9 +1,18 @@
 
 # RecruitInc
 
+
 ## Demo UI 
 
 A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
+
+## Project purpose
+The purpose of this software is to facilitate the job of HR employees in charge of finding new developers. We were tasked with finding a new way to gather information about potential candidates to be hired.
+
+The tool outputs a ranked list of Github users in a specific location tailored to the specific skills the HR employee is looking for. With the help of a matching algorithm and a process continuously running to find new users on Github, we were able to rank these users in a comprehensive visual list.
+
+
+
 
 ## Environment Setup
 

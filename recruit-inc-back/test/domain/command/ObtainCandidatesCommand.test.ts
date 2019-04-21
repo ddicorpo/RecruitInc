@@ -1,9 +1,12 @@
 import 'mocha';
 import { expect } from 'chai';
-import { ObtainCandidatesCommand } from '../../../src/domain/command/ObtainCandidatesCommand';require('dotenv').config(); //Get environment variables
+import { ObtainCandidatesCommand } from '../../../src/domain/command/ObtainCandidatesCommand';
+require('dotenv').config(); //Get environment variables
 
-describe('Query created to fetch different languages and filters', () => {
+
+describe('Query created to fetch users either with different languages and filters, or by username', () => {
   it('Should return the right query when no language or framework is passed', async () => {
+
     // GIVEN
     const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
     const filters: string[] = [];
@@ -15,7 +18,7 @@ describe('Query created to fetch different languages and filters', () => {
     expect('{}').to.equal(JSON.stringify(actual));
   });
 
-  it('Should return the right query when a single language is passed', async () => {
+  it('Should return the right query when a single type is passed', async () => {
     // GIVEN
     const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
     const filters: string[] = ['java'];
@@ -43,7 +46,7 @@ describe('Query created to fetch different languages and filters', () => {
     ).to.equal(JSON.stringify(actual));
   });
 
-  it('Should return the right query when a language and a framework are passed', async () => {
+  it('Should return the right query when a type and a framework are passed', async () => {
     // GIVEN
     const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
     const filters: string[] = ['java', 'javascript'];
@@ -69,5 +72,17 @@ describe('Query created to fetch different languages and filters', () => {
     expect(
       '{"iGit.IGitData.gitProjectSummary.totalOutput":{"$all":[{"$elemMatch":{"languageOrFramework":"Javascript","$and":[{"linesOfCode":{"$gt":0}},{"numberOfCommits":{"$gt":0}},{"frameworks":{"$elemMatch":{"technologyName":"Angular","$and":[{"linesOfCode":{"$gt":0}},{"numberOfCommits":{"$gt":0}}]}}}]}}]}}'
     ).to.equal(JSON.stringify(actual));
+  });
+
+  it('Should return the right query when a username is passed', async () => {
+    // GIVEN
+    const obtainCandidatesCommand: ObtainCandidatesCommand = new ObtainCandidatesCommand();
+    const username = 'bob-test';
+
+    // WHEN
+    const actual: {} = obtainCandidatesCommand.getUserQuery(username);
+
+    // THEN
+    expect('{"platformUsername":"bob-test"}').to.equal(JSON.stringify(actual));
   });
 });

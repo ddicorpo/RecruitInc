@@ -23,6 +23,10 @@
     ]
   },
   "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/fileMock.js"
+    },
     "automock": false,
     "setupFiles": [
       "<rootDir>/test-shim.js",
@@ -93,6 +97,7 @@
     "react-dom": "16.8.3",
     "react-js-pagination": "3.0.2",
     "react-select": "2.4.1",
+    "realtime-messaging": "^2.1.42",
     "sinon": "7.2.6",
     "ts-node": "7.0.1",
     "winston": "3.2.1"

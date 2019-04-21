@@ -39,9 +39,7 @@ export class BaseFinder {
     return new Promise((resolve: any, reject: any) => {
       const aggregateErrorHandler: any = (error: any, obj: any) =>
         this.errorHandler(error, obj, this.aggregate.name, resolve, reject);
-      this.model
-      .aggregate(query, aggregateErrorHandler)
-      .allowDiskUse(true)
+      this.model.aggregate(query, aggregateErrorHandler).allowDiskUse(true);
     });
   }
 
@@ -66,6 +64,14 @@ export class BaseFinder {
       const findAllErrorHandler: any = (error: any, obj: any) =>
         this.errorHandler(error, obj, this.findAll.name, resolve, reject);
       this.model.find({}, findAllErrorHandler);
+    });
+  }
+
+  public findUser(query: any): Promise<any>{
+    return new Promise((resolve: any, reject: any) => {
+      const findUserErrorHandler: any = (error: any, obj: any) =>
+          this.errorHandler(error, obj, this.findUser.name, resolve, reject);
+      this.model.find(query, findUserErrorHandler);
     });
   }
 

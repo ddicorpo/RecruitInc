@@ -60,6 +60,17 @@ export class ObtainCandidatesCommand extends AbstractCommand {
     }
   }
 
+  public async getCandidateByUsername(username: string) : Promise<any> {
+    try {
+      const query: {} = this.getUserQuery(username);
+
+      let allCandidates: IApplicantModel = await this.finder.findUser(query);
+      return JSON.stringify(allCandidates);
+    } catch (CommandException) {
+      throw CommandException;
+    }
+  }
+
   public async getCandidatesTechnologies(
     page: number,
     filter: string
@@ -94,6 +105,15 @@ export class ObtainCandidatesCommand extends AbstractCommand {
         : {};
 
     return findQuery;
+  }
+
+  public getUserQuery(username: string): {}{
+
+    let query: {} = {
+      platformUsername: username
+    };
+
+    return query;
   }
 
   private getTechnologiesSupported(): ITechnology {
@@ -150,6 +170,7 @@ export class ObtainCandidatesCommand extends AbstractCommand {
   //             }
   //       }
   //   ]
+
 
   private getFilterMatch(filters: string[]) {
     const cleanedFilters: Set<string> = new Set<string>();
