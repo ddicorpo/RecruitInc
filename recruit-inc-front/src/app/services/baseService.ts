@@ -13,7 +13,10 @@ export abstract class baseService {
   /**
    * Main method to execute a transaction
    */
-  abstract async execute(parameter?: string): Promise<any>;
+  abstract async execute(
+    parameter?: string,
+    anotherparameter?: string
+  ): Promise<any>;
 
   /**
    * Use by other Service class, it used to build the API address
