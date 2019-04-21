@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Pages } from '../pages/Pages';
 import CandidateSearch from '../pages/CandidateSearch';
 import LocationWatchList from '../pages/LocationWatchlist';
-import CandidateQuestionnaire from "../pages/CandidateQuestionnaire";
+import DirectMessaging from '../pages/DirectMessaging';
+import CandidateQuestionnaire from '../pages/CandidateQuestionnaire';
 import { ToggleFeature } from '../toggle-feature/ToggleFeature';
 import { Logger } from '../Logger';
 import CandidateSearchByUser from '../pages/CandidateSearchByUser';
@@ -31,6 +32,12 @@ class PageContainer extends React.Component<any, any> {
 
       case Pages.LOCATION_WATCHLIST: {
         return <LocationWatchList />;
+      }
+
+      case Pages.Direct_Messaging: {
+        return (
+          <DirectMessaging appkey="wmfGqY" token="TypeScriptReactExample" />
+        );
       }
 
       case Pages.CANDIDATE_QUESTIONNAIRE: {
@@ -70,7 +77,7 @@ class PageContainer extends React.Component<any, any> {
         <footer className="content-footer">
           <div className="footer">
             <div className="copyright">
-              <span>RecruitInc © 2018. All rights reserved.</span>
+              <span>RecruitInc © 2019. All rights reserved.</span>
             </div>
           </div>
         </footer>
