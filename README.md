@@ -7,32 +7,20 @@ A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
 
 ## Environment Setup
 
-    Tool       | Version      | Usage                       | Link
-    ---------- | ------------ | ------------------------------ | ------------------------------------------------------------------------------
-    `docker`   | `>= v18.3.1` | Build container images         | [docker.com](https://docs.docker.com/install/#supported-platforms)
-    `NodeJS`  | `>= v11.14` | Main Server/Run time    | [nodejs](https://nodejs.org/en/)
-    `npm` | `v6.9 ` | Package manager | [npm](https://www.npmjs.com/)
-    `MongoDB` | `>= v3.4` | NoSQL cluster   | [MongoDB](https://www.mongodb.com/)
+Tool | Version | Usage | Link |
+|---------- | ------------ | ------------------------------ | ----------------------------------------------------------------------------
+`docker` | ` v18.3.1` | Build container images | [docker.com](https://docs.docker.com/install/#supported-platforms)
+`NodeJS` | ` v11.14` | Main Server Run time | [nodejs](https://nodejs.org/en/)
+`npm` | `v6.9 ` | Package manager | [npm](https://www.npmjs.com/)
+`MongoDB` | `>= v3.4` | NoSQL cluster | [MongoDB](https://www.mongodb.com/)
 
-
-
-## Debug Configuration for back-end using Intellij
-
-- Install `nodejs` plugin is they are not installed
-- Choose **add configuration** in **Run/Debug Configurations** panel
-- In the configuration tab, set the `Node Interpreter:` to `usr/local/bin/node`
-- In the configuration tab, set the  `Node parameter` to `--inspect-brk`
-- In the configuration tab, set the `working directory:` to `YOUR_PATH.../recruit-inc-back`
-- In the configuration tab, set the `JavaScript File:` to `dist/server.js`
-- Give a name to the configuration and save.
-- You should be able to debug from normal runtime (not from a test)
 
 ## How to start the project?
 
 1. Setup the multiple .env files
 2. Start all services using docker
 
-### Setup `.env` envrionment 
+### Setup `.env` environment 
 
 
 #### Back-End
@@ -197,3 +185,14 @@ Features like `candidate sorting` are controlled by feature toggle.
 ### Cron-job
 
 Our unique cron-job is used to collect data from `GitHub`. 
+
+## Debug Configuration for back-end using Intellij
+
+- Install `nodejs` plugin is they are not installed
+- Choose **add configuration** in **Run/Debug Configurations** panel
+- In the configuration tab, set the `Node Interpreter:` to `usr/local/bin/node`
+- In the configuration tab, set the  `Node parameter` to `--inspect-brk`
+- In the configuration tab, set the `working directory:` to `YOUR_PATH.../recruit-inc-back`
+- In the configuration tab, set the `JavaScript File:` to `dist/server.js`
+- Give a name to the configuration and save.
+- You should be able to debug from normal runtime (not from a test)
