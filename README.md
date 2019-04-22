@@ -1,119 +1,110 @@
 
 # RecruitInc
 
+
+## Demo UI 
+
+A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
+
 ## Project purpose
 The purpose of this software is to facilitate the job of HR employees in charge of finding new developers. We were tasked with finding a new way to gather information about potential candidates to be hired.
 
 The tool outputs a ranked list of Github users in a specific location tailored to the specific skills the HR employee is looking for. With the help of a matching algorithm and a process continuously running to find new users on Github, we were able to rank these users in a comprehensive visual list.
 
-## How install the Project with JetBrain IntelliJ ?
 
-### Initialize Project
-- Download and install intellij Ultimate
-- Import or Create a project from the git folder
 
-### Debug Configuration for back-end
 
-- Install `nodejs` plugin is they are not installed
-- Choose **add configuration** in **Run/Debug Configurations** panel
-- In the configuration tab, set the `Node Interpreter:` to `usr/local/bin/node`
-- In the configuration tab, set the  `Node parameter` to `--inspect-brk`
-- In the configuration tab, set the `working directory:` to `YOUR_PATH.../recruit-inc-back`
-- In the configuration tab, set the `JavaScript File:` to `dist/server.js`
-- Give a name to the configuration and save.
-- You should be able to debug from normal runtime (not from a test)
+## Environment Setup
+
+Tool | Version | Usage | Link |
+|---------- | ------------ | ------------------------------ | ----------------------------------------------------------------------------
+`docker` | ` v18.3.1` | Build container images | [docker.com](https://docs.docker.com/install/#supported-platforms)
+`NodeJS` | ` v11.14` | Main Server Run time | [nodejs](https://nodejs.org/en/)
+`npm` | `v6.9 ` | Package manager | [npm](https://www.npmjs.com/)
+`MongoDB` | `>= v3.4` | NoSQL cluster | [MongoDB](https://www.mongodb.com/)
+
 
 ## How to start the project?
 
-### Write `.env` file 
+1. Setup the multiple .env files
+2. Start all services using docker
 
-You need to write one `.env` in the recruit-inc-back
-It needs to have the same variable as `recruit-inc-back/.env.example`
+### Setup `.env` environment 
 
 
-You need to write one `.env` in the recruit-inc-front
-It needs to have the same variables as `recruit-inc-front/.env.example`
+#### Back-End
+
+- You need to write one `.env` in the recruit-inc-back
+- It needs to have the same variable as `recruit-inc-back/.env.example`
+- You need to set your NODE_ENV as either dev or production
+- In order to reach the front end, set your DOMAIN_FRONT_END=http://localhost:3000
+- To reach your back end set your DOMAIN_BACK_END=localhost:6969
+- To connect to a database set your DB_NAME variable to your db of choice.
+
+
+#### Front-End
+
+- You need to write one `.env` in the recruit-inc-front
+- It needs to have the same variables as `recruit-inc-front/.env.example`
+- You need to set your NODE_ENV as either dev or production
+- Make sure your PORT=3000
+- Make sure Set your BACK_END_PORT=6969
+
+#### Logging-system
+- You need to write a `.env` for the Logging
+- You can simply copy/paste and rename `.env.example`
+- Fill all variable in new `.env` file
+
+
+#### Toggle-Feature
+- You need to write a `.env` for the Feature-Toggle
+- You can simply copy/paste and rename `.env.example`
+- Fill all variable in new `.env` file
+
+#### Recruit-Inc-Questionnaire-Front
+- You need to write a `.env` for the Feature-Toggle
+- You can simply copy/paste and rename `.env.example`
+- Modify the variable in new `.env` file
 
 
 ### Launch Containers
 
-Back-End Docker Commands:
+Each service has a `Dockerfile` the project can be launched using Docker.
+You should make sure to launch the `toggle-feature` first. 
+
+#### Toggle-feature Commands:
 - docker login [...]
-- cd recruit-inc-back
-- docker build -t $USER/node-app .
-- docker run -p 6969:6969 winterhart/node-app .
+- Navigate to directory `cd toggle-feature`
+- Build the docker container `docker build -t $USER/features`
+- Start the docker container: `docker run -p 3547:3547 $USER/features .`
 
-Front-End Docker Commands:
+### Logging System Docker Commands:
 - docker login [...]
-- cd recruit-inc-front
-- docker build -t $USER/node-app-front .
-- docker run -p 3000:3000 winterhart/node-app-front .
+- Navigate to directory `cd logging-system`
+- Build the docker container `docker build -t $USER/logging`
+- Start the docker container: `docker run -p 5656:5656 $USER/logging .`
 
 
+#### Back-End Docker Commands:
+- docker login [...]
+- Navigate to the directory `cd recruit-inc-back`
+- Build the docker container: `docker build -t $USER/node-app .`
+- Start the docker container: `docker run -p 6969:6969 $USER/node-app .`
+
+#### Front-End Docker Commands:
+- docker login [...]
+- Navigate to the directory: `cd recruit-inc-front`
+- Build the docker container: `docker build -t $USER/node-app-front .`
+- Start the docker container: `docker run -p 3000:3000 $USER/node-app-front .`
+
+#### Front-End Questionnaire Commands:
+- docker login [...]
+- Navigate to the directory: `cd recruit-inc-questionnaire-front`
+- Build the docker container: `docker build -t $USER/node-app-frontq`
+- Start the docker container: `docker run -p 3001:3001 $USER/node-app-frontq `
 
 
-## API Endpoints
-
-#### Back-end calls
-
-- GET: http://localhost:6969/api/github/applicant/{accessToken}/{userName}
-- GET: http://localhost:6969/api/github/applicant/admin
-
-
-
-## How to run the project from terminal ?
-- Open Two terminal windows 
-
-### Start the Back-End Node 
- - Create your `.env` file based on `.env.example`
- - Set the `NODE_ENV` variable to `dev`
- - The back-end is inspired from the boiler plate: https://github.com/priyesh18/typescript-node-api
- - Navigate to the folder `recruit-inc-back`
- - You always need to install the node_modules folder
- run:  `npm install`
- - You can run the project using terminal with: `npm run dev`
- - You should receive a message: `listening on port 6969`
- - You can check the result at: **http://localhost:6969/api/hi**
- 
-### Start the Front-End Node
- - Navigate to the folder `recruit-inc-front`
- - You always need to install the node_modules folder
- run:  `npm install`
- - You can run the project using terminal with: `npm run dev`
- - You can build the project with `npm run build`
- - You should receive a message: `You can now view recruit-inc-front in the browser.`
- - You can check the result at: **http://localhost:3000/**
-
- 
-### Communication Between NodeJS application
-You can try the system by sending a message to the Back-End from the Front-End
-- Back-End node has a function called: http://localhost:6969/api/hi
-- Front-End will attempt to get the data returned by the get at: http://localhost:6969/api/hi
-- In the Front-End, application you wil be able to see a object:
-
-`state (3) [{…}, {…}, {…}] 0: {name: "Hi"} 1: {name: "Bonjour"} 2: {name: "Hello"} `
-
-These data are from the other node. There are contained in `./src/fakeStorage.json`
-
-
-### Start the application in **demo** mode
-- You can demo the front-end or the back-end or both
-- Open a terminal and navigate to `recruit-inc-front` or `recruit-inc-back`
-- Run the command `npm run demo` , a localtunel url address usually `https://recruit-back.localtunnel.me/` or `https://recruit-front.localtunnel.me/` will be available on the internet
-- This is a tunnel from the internet to your computer, don't forget to close it when your done, your terminal needs to run
-
-## Deployement Instructions
-
-You need to deploy the back-end node and the front-end node. You also need to set two `.env`
-files (one for each node).
-
-### Back-End Node Deployement
-- Make sure to set the `NODE_END` variable to `production` in `.env`
-- Set all `token` and `credential` 
-- Add Front-End domain name to `DOMAIN_FRONT_END` variable in `.env` folder
-- Run the command `npm run prod`
-
-## Run Tests
+## Testing
 
 ### Run Unit Test (Back-End)
  - The test are written in `test` folder
@@ -128,23 +119,6 @@ files (one for each node).
  
 ![alt text](https://github.com/ddicorpo/RecruitInc/blob/master/CourseAdmin/assets/SampleTestCoverage.png "Sample Test Coverage")
 
-(attempt to use/install Jest + enzyme + webpack + typescript)
-### Testing Front-End
-The front-end will be tested with `Enzyme`. (https://github.com/airbnb/enzyme)
-The library will provide a `shallow` method in which we can use react components and test those.
-The library is allowing us to build integration UI test and UI unit test.
-The library is allowing simulating 'click'.
-
-`shallow`: isolate test to a single component 
-`mount`: Used for DOM rendering, can test using lifecycle `componentDidMount`
-`render`: redering static HTML in react componenent (optional function)
-
-#### Demo UI Test 
-
-A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
-
-
- 
 ### Run Unit Test (Front-End)
  - The test are written in `test` folder
  - You can run all unit test by entering the command `npm run test`
@@ -157,15 +131,37 @@ A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
 
 
 
+ ### How to run an integration test
+
+- All Integration tests files contain the keyword "Integration" in their file names
+- In each integration file, make sure to remove `x` from the `xdescribe`
+- Open your terminal, navigate to the recruit-inc-back folder and type the command: `npm run test`.
+
+
+
+(attempt to use/install Jest + enzyme + webpack + typescript)
+
+### Testing Front-End
+- The front-end will be tested with `Enzyme`. (https://github.com/airbnb/enzyme)
+- The library will provide a `shallow` method in which we can use react components and test those.
+- The library is allowing us to build integration UI test and UI unit test.
+- The library is allowing simulating 'click'.
+
+
+`shallow`: isolate test to a single component 
+`mount`: Used for DOM rendering, can test using lifecycle `componentDidMount`
+`render`: redering static HTML in react componenent (optional function)
+
 
 ## Database
 
 ### Connect to Mongo DB from Intellij IDE
+
 - Download and install Mongo plugin from David
 - Restart the IDE
 - Search for the tool: 'Mongo Explorer'
 - Create a new connection with the '[+]' button
-- Enter the URL to the database e.g. `cluster0-shard-00-00-celgm.mongodb.net:27017,cluster0-shard-00-01-celgm.mongodb.net:27017,cluster0-shard-00-02-celgm.mongodb.net:27017`
+- Enter the URL to the database
 - Check the SSL box
 - Enter your username and password in the 'Authentication' tab and check the 'SCRAM-SHA-1' box
 - Give a name to your connection in the 'label' box
@@ -177,3 +173,35 @@ A testing demo is available at: https://youtu.be/nvL2ha0XUYo?t=342
 - Inside the docker container, type `mongo` to get a mongodb shell
 - Type `use <db>` and replace '<db>' with the database you wish to use. For example: `use test` for the 'test' database or `use recruitinc` for our production database
 - At this point you can use mongo shell commands. You can autocomplete commands by typing the beginning of a command and hitting <TAB> twice. For example, to view the names of collections in the database, type `db.getCollectionNames()`. To view all entries in the 'applicants' collection, type `db.applicants.find()` etc. 
+
+
+## Logging
+
+### Online Log Storage
+- In production, all logs are stored in a MongoDB database
+
+### Local Log Storage
+
+- Navigate to the folder: recruit-inc-back. 
+- Among the sub-directories, choose the folder called log.
+- Inside the log folder, you will find 6 different JSON files: (debug,error,info,silly,verbose,warn).
+
+### Toggle-feature
+
+The back-end and front-end a dependent on the feature toggle. 
+Features like `candidate sorting` are controlled by feature toggle.
+
+### Cron-job
+
+Our unique cron-job is used to collect data from `GitHub`. 
+
+## Debug Configuration for back-end using Intellij
+
+- Install `nodejs` plugin is they are not installed
+- Choose **add configuration** in **Run/Debug Configurations** panel
+- In the configuration tab, set the `Node Interpreter:` to `usr/local/bin/node`
+- In the configuration tab, set the  `Node parameter` to `--inspect-brk`
+- In the configuration tab, set the `working directory:` to `YOUR_PATH.../recruit-inc-back`
+- In the configuration tab, set the `JavaScript File:` to `dist/server.js`
+- Give a name to the configuration and save.
+- You should be able to debug from normal runtime (not from a test)
